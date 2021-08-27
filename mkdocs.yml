@@ -1,0 +1,38 @@
+# Project Information
+site_name: NERC Documentation
+site_description: NERC Documentation
+site_author: NERC
+# site_dir: public
+site_url: "https://docs.nerc.mghpcc.org/"
+repo_name: GitLab/NERC/docs
+repo_url: https://github.com/nerc-project/nerc-docs
+
+nav:
+    - Home: index.md
+    - About: about.md
+theme:
+  name: material
+  custom_dir: nerc-theme
+  favicon: assets/images/favicon.ico
+  logo: assets/images/logo.png
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+
+# Extensions
+markdown_extensions:
+  - admonition
+
+
+

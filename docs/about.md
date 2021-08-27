@@ -12,7 +12,6 @@ The longer term objectives will be centered around activities that will focus on
 2. Connecting regularly with the [Mass Open Cloud](https://massopen.cloud/) (MOC) leadership to understand when new technologies they are developing with RedHat, Inc. – and as part of the new NSF funded [Open Cloud Testbed](https://massopen.cloud/connected-initiatives/open-cloud-testbed) – might be ready for adoption into the production NERC environment
 3. Broadening the local deployment team of NERC to include partner universities within the MGHPCC consortium.
 
-<a name="fig1"></a>
 ![NERC-overview](images/NERC-Diagram-MOC.png)
 *Figure 1: NERC Overview*
 

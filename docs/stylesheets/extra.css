@@ -2,3 +2,28 @@
   width: 68px !important;
   height: 24px !important;
 }
+
+.md-footer {
+  background-color: rgb(228 228 228 / 87%);
+  color: var(--md-footer-fg-color);
+  padding: 25px 0px 25px 0px;
+}
+
+footer [class ^= 'footer-'] {
+  width: 33.3333%;
+  display: inline-block;
+  text-align: center;
+}
+
+footer .footer-left {
+  float: left;
+}
+
+footer .footer-right {
+  float: right;
+  padding-top: 25px;
+}
+
+footer .footer-center {
+  padding-top: 25px;
+}

@@ -1,12 +1,16 @@
 name: Build Documentation using MkDocs
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
+# Controls when the action will run. Triggers the workflow on push events on any branch 
+# but pull request events only for the main branch
 on:
-  push:
-    branches: [main]
+  push: #  for any branch
+    # branches:
+    #   - '**'
   pull_request:
-    branches: [main]
+    branches: [ main ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -32,6 +36,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Deploy
+        # this part will only run if the PR has been merged
+        # if: github.event.pull_request.merged == true
+        # this part will only run if the branch or tag ref 
+        # that triggered the workflow is main i.e. PR merged with main
+        if: github.ref == 'refs/heads/main'
         run: |
-          git pull
           mkdocs gh-deploy --force

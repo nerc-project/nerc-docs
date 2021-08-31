@@ -4,8 +4,8 @@ name: Build and Deploy Documentation using MkDocs
 # but pull request events on any branch but deployement happens only for the main branch
 on:
   push:
-    # branches:
-    #   - main
+    branches:
+      - main
   pull_request:
     # branches: [ main ]
 

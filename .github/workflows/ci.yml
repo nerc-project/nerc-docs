@@ -1,4 +1,4 @@
-name: Build Documentation using MkDocs
+name: Build and Deploy Documentation using MkDocs
 
 # Controls when the action will run. Triggers the workflow on push events on any branch 
 # but pull request events only for the main branch
@@ -13,8 +13,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build and Deploy Documentation
+  setup: 
+    name: Setup Ubuntu 
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,13 +29,25 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-
-      - name: Install dependencies
-        run: |
+      - name: Install dependencies and setup git config
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
+  build:
+    name: Build Documentation
+    needs: setup
+    runs-on: ubuntu-latest
 
+    steps:    
+      - name: Clean Build
+        run: |
+          mkdocs build --clean
+  deploy:
+    name: Deploy Documentation
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Deploy
         # this part will only run if the PR has been merged
         # if: github.event.pull_request.merged == true

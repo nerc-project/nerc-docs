@@ -1,6 +1,6 @@
-A router acts as a gateway for external connectivity. 
+A router acts as a gateway for external connectivity.
 
-By connecting your private network to the public network via a router, you can connect your instance to the Internet, 
+By connecting your private network to the public network via a router, you can connect your instance to the Internet,
 install packages, etc. without needing to associate it with a public IP address.
 
 You can view routers by clicking Project, then click Network panel and choose Routers from the tabs that appears.

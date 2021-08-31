@@ -41,7 +41,7 @@ The new rule now appears in the list. This signifies that any instances using th
 ![Adding SSH in Security Group Rules](images/added_ssh_security_rule.png)
 
 ### Allowing Ping
-The default configuration blocks ping responses, so you will need to add an additional group and/or rule 
+The default configuration blocks ping responses, so you will need to add an additional group and/or rule
 if you want your public IPs to respond to ping requests.
 
 Ping is ICMP traffic, so the easiest way to allow it is to add a new rule and choose "ALL ICMP" from the dropdown.

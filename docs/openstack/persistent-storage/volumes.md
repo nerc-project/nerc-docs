@@ -1,13 +1,13 @@
-A volume is a detachable block storage device, similar to a USB hard drive. You can attach a volume to only one instance. 
+A volume is a detachable block storage device, similar to a USB hard drive. You can attach a volume to only one instance.
 
-Volumes are the Block Storage devices that you attach to instances to enable persistent storage. Users can attach a volume to a running instance or detach a volume and attach it to another instance at any time. 
+Volumes are the Block Storage devices that you attach to instances to enable persistent storage. Users can attach a volume to a running instance or detach a volume and attach it to another instance at any time.
 
 Ownership of volumes can be transferred to another project.
 
 Some uses for volumes:
  -  Persistent data storage for ephemeral instances.
  -  Transfer of data between projects
- -  Bootable image where disk changes persist 
+ -  Bootable image where disk changes persist
  -  Mounting the disk of one instance to another for troubleshooting
 
 Navigate to Project -> Volumes -> Volumes.
@@ -19,7 +19,7 @@ An empty volume is like an unformatted USB stick.  We'll attach it to an instanc
 
 Click "Create Volume".
 
-In the Create Volume dialog box, give your volume a name.  The description field is optional. 
+In the Create Volume dialog box, give your volume a name.  The description field is optional.
 
 Choose "empty volume" from the Source dropdown.  This will create a volume that is like an unformatted hard disk.  Choose a size (In GiB) for your volume. Leave Type and Availibility Zone as it as. Only admin to the NERC OpenStack will be able to manage volume types.
 
@@ -71,7 +71,7 @@ Create a filesystem on the volume and mount it - in the example we create an `ex
 ```
   # mkfs.ext4 /dev/vdb
   # mkdir /mnt/test_volume
-  # mount /dev/vdb /mnt/test_volume 
+  # mount /dev/vdb /mnt/test_volume
 ```
 
 The volume is now available at the mount point:
@@ -114,7 +114,7 @@ This time, in the Create Volume dialog box, for Volume Source, choose 'Image'.  
 To use this volume to launch an instance, you can choose Boot From Volume in the Instance "Select Boot Source" dropdown when creating an instance, then select your volume from the Volumes list.
 
 Make sure 'Delete Volume on Instance Delete' is selected "No" if you want the volume to persist even after the instance is terminated.
- 
+
 !!! note "Note"
     Only one instance at a time can be booted from a given volume.
 

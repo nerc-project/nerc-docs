@@ -6,10 +6,10 @@ If you just need to review a specific step, you can find the page you need in th
 
 ### Logging In
  -  [Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md)  **<<-- Start Here**
- -  [Dashboard Overview](logging-in/dashboard-overview.md) 
+ -  [Dashboard Overview](logging-in/dashboard-overview.md)
 
 ### Setting Up A Network
- -  [Set up a Private Network](setting-up-a-network/set-up-a-private-network.md)  
+ -  [Set up a Private Network](setting-up-a-network/set-up-a-private-network.md)
  -  [Create a Router](setting-up-a-network/create-a-router.md)
 
 ### Access and Security
@@ -24,12 +24,12 @@ If you just need to review a specific step, you can find the page you need in th
 ### Persistent Storage
  -  [Volumes](persistent-storage/volumes.md)
 
-### OpenStack CLI 
+### OpenStack CLI
  -  [OpenStack CLI](openstack-cli/openstack-CLI.md)
  -  [Launch a VM using OpenStack CLI](openstack-cli/launch-a-VM-using-openstack-CLI.md)
 
 ### Python SDK
  -  [Python SDK](python-sdk/python-SDK.md)
 
-### Getting Help 
+### Getting Help
  -  [Help & FAQs]()

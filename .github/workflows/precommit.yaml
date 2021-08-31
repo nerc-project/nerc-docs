@@ -1,0 +1,31 @@
+name: Run pre-commit checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run-linters:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '^3.9'
+
+      - name: Configure caching
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pre-commit
+          key: precommit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Install requirements
+        run: |
+          pip install -r test-requirements.txt
+
+      - name: Run linters
+        run: |
+          pre-commit run --all-files

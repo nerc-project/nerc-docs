@@ -2,10 +2,18 @@
 
 This guide outlines how to contribute to this project and standards which should be observed when adding to this repository. This repository contains NERC technical documentation written in Markdown which is converted to html/css/js with the [mkdocs](http://www.mkdocs.org) static site generator. The theme is based on [mkdocs-material](https://github.com/squidfunk/mkdocs-material) with NERC customizations for layout and design.
 
-### Cloning repository
+## How to Contribute
+Never made an open-source contribution before? Wondering how contributions work in this project? Here's a quick rundown!
 
-To get started you can **clone** the repository, however it's recommended to create a fork and clone your fork.
+### Finding or adding issues
 
+Find an issue that you are interested in addressing or a feature that you would like to add in the [issue tracker](https://github.com/nerc-project/nerc-docs/issues). Don't see your issue? Submit one!
+
+### Forking and Cloning repository
+
+To get started, you can fork the repository associated with the issue to your local GitHub account. This means that you will have a copy of the repository under your-GitHub-username/repository-name.
+
+Clone the repository to your local machine.
 ```
 # SSH method
 git clone git@github.com:nerc-project/nerc-docs.git
@@ -24,9 +32,9 @@ Activate the virtual environment by running:
   **on Linux/Mac**:
 
     source venv/bin/activate
-  
-  **on Windows**: 
-  
+
+  **on Windows**:
+
     venv\Scripts\activate
 
 Once virtual environment is activated, install dependencies listed in `requirements.txt` file running:
@@ -63,5 +71,17 @@ git push origin <BRANCH>
 Next create a merge request to the `main` branch with your newly created branch.
 
 ## Merge Requests
+Title the pull request with a short description of the changes made and the issue or bug number associated with your change. For example, you can title an issue like so "WIP: Fixed spelling mistake to resolve #100".
+
+In the description of the pull request, explain the changes that you made, any issues you think exist with the pull request you made, and any questions you have for the maintainer. It's OK if your pull request is not perfect (no pull request is), the reviewer will be able to help you fix any problems and improve it!
+
+Wait for the pull request to be reviewed by a maintainer.
+
+Make changes to the pull request if the reviewing maintainer recommends them.
+
+Celebrate your success after your pull request is merged!
+
+## Getting Help
+If you need help, you can ask questions on the [issue tracker](https://github.com/nerc-project/nerc-docs/issues).
 
 ## NERC Staff

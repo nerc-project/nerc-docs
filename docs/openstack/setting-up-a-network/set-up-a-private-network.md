@@ -26,16 +26,16 @@ You do not have to specify a subnet when you create a network, but if you do not
 
 Subnet Name: Specify a name for the subnet.
 
-Network Address: Specify the IP address for the subnet. For your private networks, you should use IP addresses which fall within the ranges that are specifically reserved for private networks: 
+Network Address: Specify the IP address for the subnet. For your private networks, you should use IP addresses which fall within the ranges that are specifically reserved for private networks:
 
 ```
-  10.0.0.0/8   
-  172.16.0.0/12   
-  192.168.0.0/16   
+  10.0.0.0/8
+  172.16.0.0/12
+  192.168.0.0/16
 ```
 
 In the example below, we configure a network containing addresses 192.168.0.1 to 192.168.0.255 using CIDR 192.168.0.0/24
-*Technically, your private network will still work if you choose any IP outside these ranges, 
+*Technically, your private network will still work if you choose any IP outside these ranges,
 but this causes problems with connecting to IPs in the outside world - so don't do it!*
 
 ![Network Topology](images/![Network Topology](images/network_subnet.png)

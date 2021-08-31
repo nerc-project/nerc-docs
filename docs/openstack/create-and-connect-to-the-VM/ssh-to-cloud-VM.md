@@ -18,7 +18,7 @@ Default usernames for all the base images are:
  -  **all RHEL images**: ubuntu
  -  **all Fedora images**: fedora
 
-Our example VM was launched with the **ubuntu-21.04-x86_64** base image, the user we need is 'ubuntu'.  
+Our example VM was launched with the **ubuntu-21.04-x86_64** base image, the user we need is 'ubuntu'.
 
 Open a Terminal window and type:
 ```
@@ -41,7 +41,7 @@ When the VMs are launched, a strong, randomly-generated password is created for 
 
 Once you connect to your VM, you will want to set a password in case you ever need to log in via the console in the web dashboard.
 
-For example, if your network connections aren't working right.  
+For example, if your network connections aren't working right.
 
 Since you are not using it to log in over SSH or to sudo, it doesn't really matter how hard it is to type, and we recommend using a randomly-generated password.
 
@@ -54,7 +54,7 @@ Create a random password like this:
 ```
 The 'count' parameter controls the number of characters.
 
-The first <count> characters of the output are your randomly generated output, followed immediately by "<count>+0", 
+The first <count> characters of the output are your randomly generated output, followed immediately by "<count>+0",
 so in the above example the password is: `T1W16HCyfZf8V5`.
 
 Set the password for ubuntu using the command:
@@ -89,7 +89,7 @@ Copy the file to the vm:
 ```
 If the copy works, you will see the output:
 ```
-  teammates.txt                  100%    0     0KB/s   00:00 
+  teammates.txt                  100%    0     0KB/s   00:00
 ```
 Append the file's contents to authorized_keys:
 ```
@@ -102,13 +102,13 @@ Make sure to use `>>` instead of `>` to avoid overwriting your own key.
 ---
 
 ### Adding users to the instance
-You may decide that each teammate should have their own user on the VM instead of everyone logging in to the default user. 
+You may decide that each teammate should have their own user on the VM instead of everyone logging in to the default user.
 
 Once you log into the VM, you can create another user like this.
 
 !!! tip "Note"
     The 'sudo_group' is different for different OS - in CentOS and Red Hat, the group is called 'wheel', while in Ubuntu, the group is called 'sudo'.
-    
+
 ```
   $ sudo su
   # useradd -m <username>

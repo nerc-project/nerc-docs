@@ -96,12 +96,12 @@ Syntax :
       <Instance_Name>
 ```
 
-**NOTE:** 
+**NOTE:**
 If you boot an instance with an "**Instance_Name**" greater than **63 characters**, Compute truncates it automatically when turning it into a hostname to ensure the correct functionality of `dnsmasq`.
 
-Optionally, you can provide a key name for access control and a security group for security. 
+Optionally, you can provide a key name for access control and a security group for security.
 
-You can also include metadata key and value pairs: `--key-name {Keypair-Name}`. For example, you can add a description for your server by providing the `--property description="My Server"` parameter. 
+You can also include metadata key and value pairs: `--key-name {Keypair-Name}`. For example, you can add a description for your server by providing the `--property description="My Server"` parameter.
 
 You can pass user data in a local file at instance launch by using the `--user-data USER-DATA-FILE` parameter. If you do not provide a key pair, you will be unable to access the instance.
 

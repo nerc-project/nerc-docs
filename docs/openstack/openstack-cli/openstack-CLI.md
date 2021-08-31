@@ -1,7 +1,7 @@
 ### References
 [OpenStack Command Line Client(CLI) Cheat Sheet](https://docs.openstack.org/ocata/user-guide/cli-cheat-sheet.html
 
-The OpenStack CLI is designed for interactive use. OpenStackClient (aka OSC) is a command-line client for OpenStack that brings the command set for Compute, Identity, Image, Object Storage and Block Storage APIs together in a single shell with a uniform command structure. OpenStackClient is primarily configured using command line options and environment variables. Most of those settings can also be placed into a configuration file to simplify managing multiple cloud configurations. Most global options have a corresponding environment variable that may also be used to set the value. If both are present, the command-line option takes priority. 
+The OpenStack CLI is designed for interactive use. OpenStackClient (aka OSC) is a command-line client for OpenStack that brings the command set for Compute, Identity, Image, Object Storage and Block Storage APIs together in a single shell with a uniform command structure. OpenStackClient is primarily configured using command line options and environment variables. Most of those settings can also be placed into a configuration file to simplify managing multiple cloud configurations. Most global options have a corresponding environment variable that may also be used to set the value. If both are present, the command-line option takes priority.
 
 It's also possible to call it from a bash script or similar, but typically it is too slow for heavy scripting use.
 
@@ -79,7 +79,7 @@ If you don't have any instances, you will get the error `list index out of range
 ```
 
 If you see this error:
-```   
+```
   [user@laptop ~]$ openstack server list
   The request you have made requires authentication. (HTTP 401) (Request-ID: req-6a827bf3-d5e8-47f2-984c-b6edeeb2f7fb)
 ```
@@ -105,7 +105,7 @@ If you just occasionally want to run 1 or 2 of these commands from your terminal
 
 However, this isn't a very optimized  way to do complex interactions with OpenStack. For that, you want to write scripts that interact with the python SDK bindings directly.
 
-*Pro Tip: If you find yourself fiddling extensively with awk and grep to extract things like project IDs from the CLI output, 
+*Pro Tip: If you find yourself fiddling extensively with awk and grep to extract things like project IDs from the CLI output,
 it's time to move on to using the client libraries or the RESTful API directly in your scripts.*
 
 ---

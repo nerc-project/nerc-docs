@@ -32,9 +32,9 @@ Activate the virtual environment by running:
   **on Linux/Mac**:
 
     source venv/bin/activate
-  
-  **on Windows**: 
-  
+
+  **on Windows**:
+
     venv\Scripts\activate
 
 Once virtual environment is activated, install dependencies listed in `requirements.txt` file running:

@@ -39,6 +39,7 @@ jobs:
           mkdocs build --clean
   deploy:
     name: Deploy Documentation
+    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:

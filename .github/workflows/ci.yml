@@ -1,7 +1,7 @@
 name: Build and Deploy Documentation using MkDocs
 
-# Controls when the action will run. Triggers the workflow on push events on any branch
-# but pull request events only for the main branch
+# Controls when the action will run. Triggers the workflow on push events on main branch
+# but pull request events on any branch but deployement happens only for the main branch
 on:
   push:
     branches:
@@ -44,6 +44,11 @@ jobs:
       matrix:
         python-version: [ 3.8 ]
 
+    # this part will only run if the PR has been merged
+    # if: github.event.pull_request.merged == true
+    # this part will only run if the branch or tag ref
+    # that triggered the workflow is main i.e. pushed or PR merged in main
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Main
         uses: actions/checkout@v2
@@ -58,11 +63,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
-      - name: Deploy
-        # this part will only run if the PR has been merged
-        # if: github.event.pull_request.merged == true
-        # this part will only run if the branch or tag ref
-        # that triggered the workflow is main i.e. pushed or PR merged in main
-        if: github.ref == 'refs/heads/main'
+      - name: Deploy        
         run: |
           mkdocs gh-deploy --force

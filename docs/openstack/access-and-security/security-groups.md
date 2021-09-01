@@ -1,18 +1,31 @@
 # Security Groups
 
-Before you launch an instance, you should add security group rules to enable users to ping and use SSH to connect to the instance. Security groups are sets of IP filter rules that define networking access and are applied to all instances within a project. To do so, you either add rules to the default security group Add a rule to the default security group or add a new security group with rules.
+Before you launch an instance, you should add security group rules to enable
+users to ping and use SSH to connect to the instance. Security groups are sets
+of IP filter rules that define networking access and are applied to all
+instances within a project. To do so, you either add rules to the default
+security group Add a rule to the default security group or add a new security
+group with rules.
 
-You can view security groups by clicking Project, then click Network panel and choose Security Groups from the tabs that appears.
+You can view security groups by clicking Project, then click Network panel and
+choose Security Groups from the tabs that appears.
 
-You should see a ‘default’ security group. The default security group allows traffic only between members of the security group, so by default you can always connect between VMs in this group. However, it blocks all traffic from outside, including incoming SSH connections. In order to access instances via a public IP, an additional security group is needed.
+You should see a ‘default’ security group. The default security group allows
+traffic only between members of the security group, so by default you can
+always connect between VMs in this group. However, it blocks all traffic from
+outside, including incoming SSH connections. In order to access instances via a
+public IP, an additional security group is needed.
 
 ![Security Groups](images/security_groups.png)
 
-Security groups are very highly configurable, so you can create different security groups for different types of VMs used in your project.
+Security groups are very highly configurable, so you can create different
+security groups for different types of VMs used in your project.
 
-For example, for a VM that hosts a web page, you need a security group which allows access to ports 80 and 443.
+For example, for a VM that hosts a web page, you need a security group which
+allows access to ports 80 and 443.
 
-You can also limit access based on where the traffic originates, using either IP addresses or security groups to define the allowed sources.
+You can also limit access based on where the traffic originates, using either
+IP addresses or security groups to define the allowed sources.
 
 ## Create a new Security Group
 
@@ -26,7 +39,8 @@ You will see some existing rules:
 
 Let's create the new rule to allow SSH. Click on "Add Rule".
 
-You will see there are a lot of options you can configure on the Add Rule dialog box.
+You will see there are a lot of options you can configure on the Add Rule
+dialog box.
 
 ![Adding SSH in Security Group Rules](images/security_group_add_rule.png)
 
@@ -37,18 +51,23 @@ Enter the following values:
 - CIDR: 0.0.0.0/0
 
 !!! note "Note"
-    To accept requests from a particular range of IP addresses, specify the IP address block in the CIDR box.
+    To accept requests from a particular range of IP addresses, specify the IP
+    address block in the CIDR box.
 
-The new rule now appears in the list. This signifies that any instances using this newly added Security Group will now have SSH port 22 open for requests from any IP address.
+The new rule now appears in the list. This signifies that any instances using
+this newly added Security Group will now have SSH port 22 open for requests
+from any IP address.
 
 ![Adding SSH in Security Group Rules](images/added_ssh_security_rule.png)
 
 ## Allowing Ping
 
-The default configuration blocks ping responses, so you will need to add an additional group and/or rule
+The default configuration blocks ping responses, so you will need to add an
+additional group and/or rule
 if you want your public IPs to respond to ping requests.
 
-Ping is ICMP traffic, so the easiest way to allow it is to add a new rule and choose "ALL ICMP" from the dropdown.
+Ping is ICMP traffic, so the easiest way to allow it is to add a new rule and
+choose "ALL ICMP" from the dropdown.
 
 In the Add Rule dialog box, enter the following values:
 

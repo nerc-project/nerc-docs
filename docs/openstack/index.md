@@ -2,13 +2,16 @@
 
 If you're just starting out, we recommend starting from
 
-[Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md) and going through the tutorial in order.
+[Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md)
+and going through the tutorial in order.
 
-If you just need to review a specific step, you can find the page you need in the list below.
+If you just need to review a specific step, you can find the page you need in
+the list below.
 
 ## Logging In
 
-- [Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md)  **<<-- Start Here**
+- [Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md)
+**<<-- Start Here**
 - [Dashboard Overview](logging-in/dashboard-overview.md)
 
 ## Setting Up A Network

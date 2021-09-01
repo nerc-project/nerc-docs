@@ -1,13 +1,5 @@
-Title: OpenStack Python SDK
-Date: 2021-08-23 12:00
-Modified: 2021-08-23 17:00
-Category: Python-SDK
-Tags: horizon, dashboard, python
-Slug: python-sdk
-Authors: Milson Munakami
-Summary: This shows details about offering an python SDK that provides the native Python bindings for the OpenStack APIs.
+# References
 
-### References
 [Python SDK page at PyPi](https://pypi.org/project/openstacksdk/)
 
 [OpenStack Python SDK User Guide](https://docs.openstack.org/mitaka/user-guide/sdk.html)
@@ -15,7 +7,7 @@ Summary: This shows details about offering an python SDK that provides the nativ
 From the Python SDK page at Pypi:
 
 !!! cite "Definition"
-    openstacksdk is a client library for building applications to work with OpenStack clouds. The project aims to provide a consistent and complete set of interactions with OpenStack’s many services, along with complete documentation, examples, and tools.
+openstacksdk is a client library for building applications to work with OpenStack clouds. The project aims to provide a consistent and complete set of interactions with OpenStack's many services, along with complete documentation, examples, and tools.
 
 If you need to plug OpenStack into existing scripts using another language, there are a variety of other SDKs at various levels of active development.
 

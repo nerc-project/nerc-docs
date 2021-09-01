@@ -1,3 +1,5 @@
+# Assign a Floating IP
+
 When an instance is created in OpenStack, it is automatically assigned a fixed IP address in the network to which the instance is assigned. This IP address is permanently associated with the instance until the instance is terminated.
 
 However, in addition to the fixed IP address, a floating IP address can also be attached to an instance. Unlike fixed IP addresses, floating IP addresses can have their associations modified at any time, regardless of the state of the instances involved. Floating IPs are a limited resource, so your project will have a quota based on its needs.
@@ -7,7 +9,8 @@ By attaching a Floating IP to your instance, you can ssh into your vm from your 
 
 Make sure you are using key forwarding as described in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
 
-### Allocate a Floating IP
+## Allocate a Floating IP
+
 Navigate to Project -> Compute -> Instances
 
 Next to Instance Name -> Click Actions dropdown arrow (far right) -> Choose Associate Floating IP
@@ -41,7 +44,8 @@ NOw click on "Associate" button. Then, a green "success" popup in the top left a
 
 ![Floating IP Successfully Associated](images/floating_ip_is_associated.png)
 
-### Disassociate a Floating IP
+## Disassociate a Floating IP
+
 You may need to disassociate a Floating IP from an instance which no longer needs it, so you can assign it to one that does.
 
 Navigate to Project -> Compute -> Instances
@@ -52,7 +56,8 @@ This IP will be disassociated from the instance, but it will still remain alloca
 
 ![Floating IP Disassociate](images/floating_ip_disassociate.png)
 
-### Release a Floating IP
+## Release a Floating IP
+
 You may discover that your project does not need all the floating IPs that are allocated to it.
 
 We can release a Floating IP while disassociating it just we need to check the "Release Floating IP" option as shown here:

@@ -1,3 +1,5 @@
+# Security Groups
+
 Before you launch an instance, you should add security group rules to enable users to ping and use SSH to connect to the instance. Security groups are sets of IP filter rules that define networking access and are applied to all instances within a project. To do so, you either add rules to the default security group Add a rule to the default security group or add a new security group with rules.
 
 You can view security groups by clicking Project, then click Network panel and choose Security Groups from the tabs that appears.
@@ -12,7 +14,8 @@ For example, for a VM that hosts a web page, you need a security group which all
 
 You can also limit access based on where the traffic originates, using either IP addresses or security groups to define the allowed sources.
 
-### Create a new Security Group
+## Create a new Security Group
+
 Click on "Create Security Group"  Give your new group a name, and a brief description.
 
 ![Create a Security Group](images/create_security_group.png)
@@ -40,7 +43,8 @@ The new rule now appears in the list. This signifies that any instances using th
 
 ![Adding SSH in Security Group Rules](images/added_ssh_security_rule.png)
 
-### Allowing Ping
+## Allowing Ping
+
 The default configuration blocks ping responses, so you will need to add an additional group and/or rule
 if you want your public IPs to respond to ping requests.
 

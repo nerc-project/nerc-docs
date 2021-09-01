@@ -1,3 +1,5 @@
+# Launch a VM using OpenStack CLI
+
 First find the following details using openstack command, we would required these details during the creation of virtual machine.
 
 - Flavor
@@ -7,7 +9,8 @@ First find the following details using openstack command, we would required thes
 - Key Name
 
 Get the flavor list using below openstack command:
-```
+
+```sh
   [user@laptop ~]$ openstack flavor list
   +--------------------------------------+---------------------+--------+------+-----------+-------+-----------+
 | ID                                   | Name                |    RAM | Disk | Ephemeral | VCPUs | Is Public |
@@ -42,14 +45,16 @@ Get the flavor list using below openstack command:
 ```
 
 Get the image name and its ID,
-```
+
+```sh
   [user@laptop ~]$ openstack image list  | grep centos
   | f43b9e94-2862-4edc-8844-4a4e348a2d49 | centos-7-x86_64     | active |
   | 482f489c-d8db-47be-8f55-53096fb37c07 | centos-8.4-x86_64   | active |
 ```
 
 Get Private Virtual network details, which will be attached to the VM:
-```
+
+```sh
   [user@laptop ~]$ openstack network list
   +--------------------------------------+-----------------+--------------------------------------+
   | ID                                   | Name            | Subnets                              |
@@ -60,7 +65,8 @@ Get Private Virtual network details, which will be attached to the VM:
 ```
 
 Find the Security Group:
-```
+
+```sh
   [user@laptop ~]$ openstack security group list
   +--------------------------------------+----------+------------------------+----------------------------------+------+
   | ID                                   | Name     | Description            | Project                          | Tags |
@@ -71,7 +77,8 @@ Find the Security Group:
 ```
 
 Find the Key pair, in my case you can choose your own,
-```
+
+```sh
   [user@laptop ~]$ openstack keypair list | grep -i cloud_key
   | cloud_key | d5:ab:dc:1f:e5:08:44:7f:a6:21:47:23:85:32:cc:04 | ssh  |
 ```
@@ -79,13 +86,13 @@ Find the Key pair, in my case you can choose your own,
 !!! note "Note"
     Above details will be different for you based on your project and env.
 
-## Launch an instance from an Image:
+## Launch an instance from an Image
 
 Now we have all the details, let’s create a virtual machine using "openstack server create" command
 
 Syntax :
 
-```
+```sh
   $ openstack server create --flavor {Flavor-Name-Or-Flavor-ID } \
       --image {Image-Name-Or-Image-ID} \
       --nic net-id={Network-ID} \
@@ -107,14 +114,16 @@ You can pass user data in a local file at instance launch by using the `--user-d
 
 You can also place arbitrary local files into the instance file system at creation time by using the `--file <dest-filename=source-filename>` parameter. You can store up to five files.
 For example, if you have a special authorized keys file named special_authorized_keysfile that you want to put on the instance rather than using the regular SSH key injection, you can add the –file option as shown in the following example.
-```
+
+```sh
   --file /root/.ssh/authorized_keys=special_authorized_keysfile
 ```
 
 To create a VM in Specific "**Availability Zone and compute Host**" specify `--availability-zone {Availbility-Zone-Name}:{Compute-Host}` in above syntax.
 
 Example:
-```
+
+```sh
   [user@laptop ~]$ openstack server create --flavor m1.medium \
       --image centos-8.4-x86_64 \
       --nic net-id=e0be93b8-728b-4d4d-a272-7d672b2560a6 \
@@ -125,11 +134,14 @@ Example:
 ```
 
 **NOTE:** To get more help on "openstack server create" command , use:
-```
+
+```sh
   [user@laptop ~]$ openstack -h server create
 ```
+
 Detailed syntax:
-```
+
+```sh
   openstack server create
     (--image <image> | --volume <volume>)
     --flavor <flavor>
@@ -154,41 +166,49 @@ Detailed syntax:
 *NOTE: Similarly we can lauch a VM using "Volume".*
 
 Now Verify the test vm status using below commands:
-```
+
+```sh
   [user@laptop ~]$ openstack server list | grep test_vm_using_cli
 ```
+
 **OR,**
-```
+
+```sh
   [user@laptop ~]$ openstack server show test_vm_using_cli
 ```
 
-## Associating a Floating IP to VM:
+## Associating a Floating IP to VM
+
 To Associate a floating IP to VM, first get the unused floating IP using the following command:
-```
+
+```sh
   [user@laptop ~]$ openstack floating ip list | grep None | head -2
   | 071f08ac-cd10-4b89-aee4-856ead8e3ead | 169.144.107.154 | None | None                                 |
   | 1baf4232-9cb7-4a44-8684-c604fa50ff60 | 169.144.107.184 | None | None                                 |
 ```
 
 Now Associate the first IP to the server using following command:
-```
+
+```sh
   [user@laptop ~]$ openstack server add floating ip test_vm_using_cli 169.144.107.154
 ```
 
 Use the following command to verify whether floating IP is assigned to the VM or not:
-```
+
+```sh
   [user@laptop ~]$ openstack server list | grep test_vm_using_cli
   | 056c0937-6222-4f49-8405-235b20d173dd | test_vm_using_cli | ACTIVE  | ...Internal=192.168.15.62, 169.144.107.154 |
 ```
 
-## Remove existing floating ip from the VM:
-```
-  $ openstack server remove floating ip <INSTANCE_NAME_OR_ID> <FLOATING_IP_ADDRESS>
+## Remove existing floating ip from the VM
+
+```sh
+  openstack server remove floating ip <INSTANCE_NAME_OR_ID> <FLOATING_IP_ADDRESS>
 ```
 
-## Add existing security group to the VM:
-### Get all available security group in your project:
-```
+### Get all available security group in your project
+
+```sh
   $ openstack security group list
   +--------------------------------------+----------+------------------------+----------------------------------+------+
   | 3ca248ac-56ac-4e5f-a57c-777ed74bbd7c | default  | Default security group | f01df1439b3141f8b76e68a3b58ef74a | []   |
@@ -196,47 +216,54 @@ Use the following command to verify whether floating IP is assigned to the VM or
   +--------------------------------------+----------+------------------------+----------------------------------+------+
 ```
 
-### Add existing security group to the VM:
-```
-  $ openstack server add security group <INSTANCE_NAME_OR_ID> <SECURITY_GROUP>
+### Add existing security group to the VM
+
+```sh
+  openstack server add security group <INSTANCE_NAME_OR_ID> <SECURITY_GROUP>
 ```
 
 Example:
-```
-  $ openstack server add security group test_vm_using_cli ssh_only
+
+```sh
+  openstack server add security group test_vm_using_cli ssh_only
 ```
 
-## Remove existing security group from the VM:
-```
-  $ openstack server remove security group <INSTANCE_NAME_OR_ID> <SECURITY_GROUP>
+## Remove existing security group from the VM
+
+```sh
+  openstack server remove security group <INSTANCE_NAME_OR_ID> <SECURITY_GROUP>
 ```
 
 Example:
-```
-  $ openstack server remove security group test_vm_using_cli ssh_only
+
+```sh
+  openstack server remove security group test_vm_using_cli ssh_only
 ```
 
 **Alternatively**, you can use the openstack port unset command to remove the group from a port:
 
-```
-  $ openstack port unset --security-group <SECURITY_GROUP> <PORT>
+```sh
+  openstack port unset --security-group <SECURITY_GROUP> <PORT>
 ```
 
-## Adding volume to the VM:
-```
+## Adding volume to the VM
+
+```sh
   $ openstack server add volume
     [--device <device>]
     <INSTANCE_NAME_OR_ID>
     <VOLUME_NAME_OR_ID>
 ```
 
-## Remove existing volume from the VM:
-```
-  $ openstack server remove volume <INSTANCE_NAME_OR_ID> <volume>
+## Remove existing volume from the VM
+
+```sh
+  openstack server remove volume <INSTANCE_NAME_OR_ID> <volume>
 ```
 
-## Deleting Virtual Machine from Command Line:
-```
+## Deleting Virtual Machine from Command Line
+
+```sh
   [user@laptop ~]$ openstack server delete test_vm_using_cli
 ```
 

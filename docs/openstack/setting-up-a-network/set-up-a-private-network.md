@@ -1,4 +1,8 @@
-### Create a Network
+
+# Set up a Private Network
+
+## Create a Network
+
 You can view your/ existing network topology by clicking Project, then click Network panel and choose Network Topology from the tabs that appears. This shows public network which is accessible to all projects.
 
 ![Network Topology](images/network_blank.png)
@@ -28,7 +32,7 @@ Subnet Name: Specify a name for the subnet.
 
 Network Address: Specify the IP address for the subnet. For your private networks, you should use IP addresses which fall within the ranges that are specifically reserved for private networks:
 
-```
+```sh
   10.0.0.0/8
   172.16.0.0/12
   192.168.0.0/16

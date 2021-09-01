@@ -1,3 +1,5 @@
+# Create a Router
+
 A router acts as a gateway for external connectivity.
 
 By connecting your private network to the public network via a router, you can connect your instance to the Internet,
@@ -19,7 +21,8 @@ Notice that it is now connected to the public network, but not your private netw
 
 ![Router in Network](images/network_router.png)
 
-### Set Internal Interface on the Router
+## Set Internal Interface on the Router
+
 In order to route between your private network and the outside world, you must give the router an interface on your private network.
 
 Perform the following steps in order to To connect a private network to the newly created router:

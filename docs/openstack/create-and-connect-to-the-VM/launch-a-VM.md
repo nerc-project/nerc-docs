@@ -1,7 +1,11 @@
-### Background
+# Launch a VM
+
+## Background
+
 To start a VM, we will need a base image.  NERC has made several Public images available to users.
 
-### Launch an Instance
+## Launch an Instance
+
 Navigate: Project -> Compute -> Images.
 
 ![VM Images](images/vm_images.png)

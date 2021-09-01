@@ -1,3 +1,5 @@
+# Access the OpenStack Dashboard
+
 The OpenStack Dashboard which is a web-based graphical interface, code named Horizon, is located at [https://nerc.rc.fas.harvard.edu](https://nerc.rc.fas.harvard.edu).
 
 The NERC Authentication supports OpenID Connect using Globus Auth that provides federated login via your institution accounts and it is the recommended authentication method. Select "OpenID Connect" as shown here:

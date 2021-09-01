@@ -1,3 +1,7 @@
+# Persistent Storage
+
+## Volumes
+
 A volume is a detachable block storage device, similar to a USB hard drive. You can attach a volume to only one instance.
 
 Volumes are the Block Storage devices that you attach to instances to enable persistent storage. Users can attach a volume to a running instance or detach a volume and attach it to another instance at any time.
@@ -5,16 +9,18 @@ Volumes are the Block Storage devices that you attach to instances to enable per
 Ownership of volumes can be transferred to another project.
 
 Some uses for volumes:
- -  Persistent data storage for ephemeral instances.
- -  Transfer of data between projects
- -  Bootable image where disk changes persist
- -  Mounting the disk of one instance to another for troubleshooting
+
+- Persistent data storage for ephemeral instances.
+- Transfer of data between projects
+- Bootable image where disk changes persist
+- Mounting the disk of one instance to another for troubleshooting
 
 Navigate to Project -> Volumes -> Volumes.
 
 ![Volumes](images/volumes.png)
 
 ### Create an empty volume
+
 An empty volume is like an unformatted USB stick.  We'll attach it to an instance, create a filesystem on it, and mount it to the instance.
 
 Click "Create Volume".
@@ -32,6 +38,7 @@ In a few moments, the newly created volume will appear in the Volumes list with 
 ![Volumes List](images/volumes_list.png)
 
 ### Attach the volume to an instance
+
 In the Actions column, click the dropdown and select "Manage Attachments".
 
 ![Volume Dropdown Options](images/volume_options.png)
@@ -49,8 +56,10 @@ Make note of the device name of your volume.
 ![Attaching Volume Successful](images/volume_in_use.png)
 
 ### Format and mount the volume
+
 SSH to your instance.  You should now see the volume as an additional disk in the output of `sudo fdisk -l` or `lsblk`.
-```
+
+```sh
   # lsblk
   NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
   ...
@@ -68,14 +77,16 @@ In this case it's easy to spot because there is only one additional disk attache
 Also, a given volume might not get the same device name the second time you attach it to an instance.
 
 Create a filesystem on the volume and mount it - in the example we create an `ext4` filesystem:
-```
+
+```sh
   # mkfs.ext4 /dev/vdb
   # mkdir /mnt/test_volume
   # mount /dev/vdb /mnt/test_volume
 ```
 
 The volume is now available at the mount point:
-```ell
+
+```sh
   # lsblk
   NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
   ...
@@ -89,11 +100,13 @@ The volume is now available at the mount point:
 If you place data in the directory `/mnt/test_volume`, detach the volume, and mount it to another instance, the second instance will have access to the data.
 
 ### Detach a volume
+
 To detach a mounted volume by going back to Manage Attachments and choosing Detach Volume.
 
 Once it is successfully detached, you can use Manage Attachments to attach it to another instance if desired.
 
 ### Delete volumes
+
 When you delete an instance, the data of its attached volumes is not destroyed.
 
 Navigate to Project -> Volumes -> Volumes.
@@ -105,6 +118,7 @@ Click "Delete Volumes" button.
 In the Confirm Delete Volumes window, click the Delete Volumes button to confirm the action.
 
 ### Create Volume from Image
+
 You can create a volume from an existing image.  If the image is bootable, you can use the volume to launch an instance.
 
 Click "Create Volume".

@@ -21,9 +21,10 @@ your issue? Submit one!
 
 ### Forking and Cloning repository
 
-To get started, you can fork the repository associated with the issue to your
-local GitHub account. This means that you will have a copy of the repository
-under your-GitHub-username/repository-name.
+To get started, you can
+[fork the repository](https://guides.github.com/activities/forking/)
+associated with the issue to your local GitHub account. This means that you
+will have a copy of the repository under your-GitHub-username/repository-name.
 
 Clone the repository to your local machine.
 
@@ -46,11 +47,11 @@ py -3 -m venv venv
 
 Activate the virtual environment by running:
 
-  **on Linux/Mac**:
-    source venv/bin/activate
+**on Linux/Mac**:
+source venv/bin/activate
 
-  **on Windows**:
-    venv\Scripts\activate
+**on Windows**:
+venv\Scripts\activate
 
 Once virtual environment is activated, install dependencies listed in
 `requirements.txt` file running:
@@ -95,12 +96,15 @@ git commit -m <COMMIT MESSAGE>
 git push origin <BRANCH>
 ```
 
-Next create a merge request to the `main` branch with your newly created branch.
+Next create a merge request to the `main` branch with your newly created
+branch, following all [pull request requirements](#pull-request-requirements).
 
 ## Merge Requests
 
-Title the pull request with a short description of the changes made and the
-issue or bug number associated with your change. For example, you can title an
+Title the
+[GitHub Pull Request](https://help.github.com/articles/about-pull-requests/)
+with a short description of the changes made and the issue or bug number
+associated with your change. For example, you can title an
 issue like so "WIP: Fixed spelling mistake to resolve #100".
 
 In the description of the pull request, explain the changes that you made, any
@@ -110,9 +114,27 @@ request is), the reviewer will be able to help you fix any problems and improve 
 
 Wait for the pull request to be reviewed by a maintainer.
 
-Make changes to the pull request if the reviewing maintainer recommends them.
+Participate in a [Code Review](#code-review-process) with the project
+maintainers on the pull request. Make changes to the pull request if the
+reviewing maintainer recommends them.
 
 Celebrate your success after your pull request is merged!
+
+### Pull Request Requirements
+
+NERC strives to ensure high quality documentation for the project. In order to
+promote this, we require that all pull requests to pass all tests related to
+standard quality documentation.
+
+### Code Review Process
+
+Code review takes place in GitHub pull requests. Read [this
+article](https://help.github.com/articles/about-pull-requests/) to learn more
+about GitHub Pull Requests.
+
+Once you open a pull request, project maintainers will review your changes and
+respond to your pull request with any feedback they might have. Your changes
+will be merged into the project's `main` branch.
 
 ## Getting Help
 

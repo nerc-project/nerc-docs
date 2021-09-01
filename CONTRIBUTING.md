@@ -101,7 +101,7 @@ branch, following all [pull request requirements](#pull-request-requirements).
 
 ## Merge Requests
 
-Title the
+Title your
 [GitHub Pull Request](https://help.github.com/articles/about-pull-requests/)
 with a short description of the changes made and the issue or bug number
 associated with your change. For example, you can title an

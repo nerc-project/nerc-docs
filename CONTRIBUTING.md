@@ -105,7 +105,7 @@ Title your
 [GitHub Pull Request](https://help.github.com/articles/about-pull-requests/)
 with a short description of the changes made and the issue or bug number
 associated with your change. For example, you can title an
-issue like so "WIP: Fixed spelling mistake to resolve #100".
+issue like so "WIP : Fixed spelling mistake to resolve #100".
 
 In the description of the pull request, explain the changes that you made, any
 issues you think exist with the pull request you made, and any questions you

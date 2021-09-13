@@ -16,7 +16,7 @@ available for this project.
 ## Import a Key Pair
 
 !!! note "Prerequisite"
-  You need ssh installed in your system
+    You need ssh installed in your system
 
 You can create a key pair on your local machine, then upload the public key to
 the cloud.  This is the **recommended method**.

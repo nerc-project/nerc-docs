@@ -1,0 +1,418 @@
+# Nova flavors
+
+In NERC OpenStack, flavors define the compute, memory, and storage capacity of
+nova computing instances. In other words, a flavor is an available hardware
+configuration for a server.
+
+## Currently, our setup supports following flavors
+
+As we can see each flavors includes enforced quotas for disk limits through
+maximum disk read, write and total bytes per second, using the
+`quota:disk_read_bytes_sec`, `quota:disk_write_bytes_sec` and
+`quota:disk_total_bytes_sec` extra specs, respectively. They also includes
+enforced disk limits through maximum disk read, write and total I/O operations
+per second, using the `quota:disk_read_iops_sec`, `quota:disk_write_iops_sec`
+and `quota:disk_total_iops_sec` extra specs, respectively.
+
+They also includes enforced network bandwidth limits through inbound and
+outbound average, using the `quota:vif_inbound_average` and
+`quota:vif_outbound_average` extra specs, respectively. In addition, optional
+peak values, which specifies the maximum rate at which a bridge can send data
+(KB/s), and burst values, which specifies the amount of bytes that can be burst
+at peak speed (kilobytes), can be specified for both inbound and outbound
+traffic, using the `quota:vif_inbound_peak` / `quota:vif_outbound_peak` and
+`quota:vif_inbound_burst` / `quota:vif_outbound_burst` extra specs, respectively.
+
+So, always be mindful while choosing any flavor for your instance while
+launching a VM that fits your requirements and use-cases.
+
+!!! note "Note"
+    The speed limit values in the following table are specified in kilobytes/
+    second, whereas the burst value is in kilobytes.
+
+| Field                        | Value         |
+|------------------------------|---------------|
+| disk                         | 10            |
+| name                         | m1.tiny       |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 12500000      |
+|   quota:disk_read_iops_sec   | 1000          |
+|   quota:disk_write_bytes_sec | 3125000       |
+|   quota:disk_write_iops_sec  | 250           |
+|   quota:vif_inbound_average  | 2500          |
+|   quota:vif_inbound_burst    | 3750000       |
+|   quota:vif_inbound_peak     | 12500         |
+|   quota:vif_outbound_average | 2500          |
+|   quota:vif_outbound_burst   | 3750000       |
+|   quota:vif_outbound_peak    | 12500         |
+| ram                          | 1024          |
+| vcpus                        | 1             |
+|                              |               |
+| disk                         | 10            |
+| name                         | m1.small      |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 25000000      |
+|   quota:disk_read_iops_sec   | 2000          |
+|   quota:disk_write_bytes_sec | 6250000       |
+|   quota:disk_write_iops_sec  | 500           |
+|   quota:vif_inbound_average  | 5000          |
+|   quota:vif_inbound_burst    | 7500000       |
+|   quota:vif_inbound_peak     | 25000         |
+|   quota:vif_outbound_average | 5000          |
+|   quota:vif_outbound_burst   | 7500000       |
+|   quota:vif_outbound_peak    | 25000         |
+| ram                          | 2048          |
+| vcpus                        | 1             |
+|                              |               |
+| disk                         | 10            |
+| name                         | m1.medium     |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 50000000      |
+|   quota:disk_read_iops_sec   | 4000          |
+|   quota:disk_write_bytes_sec | 12500000      |
+|   quota:disk_write_iops_sec  | 1000          |
+|   quota:vif_inbound_average  | 10000         |
+|   quota:vif_inbound_burst    | 15000000      |
+|   quota:vif_inbound_peak     | 50000         |
+|   quota:vif_outbound_average | 10000         |
+|   quota:vif_outbound_burst   | 15000000      |
+|   quota:vif_outbound_peak    | 50000         |
+| ram                          | 4096          |
+| vcpus                        | 2             |
+|                              |               |
+| disk                         | 10            |
+| name                         | m1.large      |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 64000000      |
+|   quota:disk_read_iops_sec   | 6000          |
+|   quota:disk_write_bytes_sec | 16000000      |
+|   quota:disk_write_iops_sec  | 1500          |
+|   quota:vif_inbound_average  | 20000         |
+|   quota:vif_inbound_burst    | 30000000      |
+|   quota:vif_inbound_peak     | 100000        |
+|   quota:vif_outbound_average | 20000         |
+|   quota:vif_outbound_burst   | 30000000      |
+|   quota:vif_outbound_peak    | 100000        |
+| ram                          | 8192          |
+| vcpus                        | 4             |
+|                              |               |
+| disk                         | 10            |
+| name                         | m1.xlarge     |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 128000000     |
+|   quota:disk_read_iops_sec   | 8000          |
+|   quota:disk_write_bytes_sec | 32000000      |
+|   quota:disk_write_iops_sec  | 2000          |
+|   quota:vif_inbound_average  | 40000         |
+|   quota:vif_inbound_burst    | 60000000      |
+|   quota:vif_inbound_peak     | 200000        |
+|   quota:vif_outbound_average | 40000         |
+|   quota:vif_outbound_burst   | 60000000      |
+|   quota:vif_outbound_peak    | 200000        |
+| ram                          | 16384         |
+| vcpus                        | 8             |
+|                              |               |
+| disk                         | 10            |
+| name                         | c1.xlarge     |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 46080         |
+| vcpus                        | 10            |
+|                              |               |
+| disk                         | 10            |
+| name                         | c1.2xlarge    |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 262144000     |
+|   quota:disk_read_iops_sec   | 16000         |
+|   quota:disk_write_bytes_sec | 65536000      |
+|   quota:disk_write_iops_sec  | 4000          |
+|   quota:vif_inbound_average  | 256000        |
+|   quota:vif_inbound_burst    | 92160000      |
+|   quota:vif_inbound_peak     | 510000        |
+|   quota:vif_outbound_average | 256000        |
+|   quota:vif_outbound_burst   | 92160000      |
+|   quota:vif_outbound_peak    | 512000        |
+| ram                          | 92160         |
+| vcpus                        | 20            |
+|                              |               |
+| disk                         | 10            |
+| name                         | c1.4xlarge    |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 524288000     |
+|   quota:disk_read_iops_sec   | 32000         |
+|   quota:disk_write_bytes_sec | 131072000     |
+|   quota:disk_write_iops_sec  | 8000          |
+|   quota:vif_inbound_average  | 512000        |
+|   quota:vif_inbound_burst    | 184320000     |
+|   quota:vif_inbound_peak     | 1020000       |
+|   quota:vif_outbound_average | 512000        |
+|   quota:vif_outbound_burst   | 184320000     |
+|   quota:vif_outbound_peak    | 1020000       |
+| ram                          | 184320        |
+| vcpus                        | 40            |
+|                              |               |
+| disk                         | 10            |
+| name                         | gpu.A100      |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 262144000     |
+|   quota:disk_read_iops_sec   | 16000         |
+|   quota:disk_write_bytes_sec | 65536000      |
+|   quota:disk_write_iops_sec  | 4000          |
+|   quota:vif_inbound_average  | 256000        |
+|   quota:vif_inbound_burst    | 92160000      |
+|   quota:vif_inbound_peak     | 510000        |
+|   quota:vif_outbound_average | 256000        |
+|   quota:vif_outbound_burst   | 92160000      |
+|   quota:vif_outbound_peak    | 512000        |
+|   pci_passthrough:alias      | A100:1        |
+| ram                          | 96256         |
+| vcpus                        | 12            |
+|                              |               |
+| disk                         | 10            |
+| name                         | custom.4c.16g |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 16384         |
+| vcpus                        | 4             |
+|                              |               |
+| disk                         | 10            |
+| name                         | custom.4c.32g |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 32768         |
+| vcpus                        | 4             |
+|                              |               |
+| disk                         | 10            |
+| name                         | custom.8c.32g |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 32768         |
+| vcpus                        | 8             |
+|                              |               |
+| disk                         | 10            |
+| name                         | custom.8c.64g |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 65536         |
+| vcpus                        | 8             |
+|                              |               |
+| disk                         | 25            |
+| name                         | m1.s2.tiny    |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 12500000      |
+|   quota:disk_read_iops_sec   | 1000          |
+|   quota:disk_write_bytes_sec | 3125000       |
+|   quota:disk_write_iops_sec  | 250           |
+|   quota:vif_inbound_average  | 2500          |
+|   quota:vif_inbound_burst    | 3750000       |
+|   quota:vif_inbound_peak     | 12500         |
+|   quota:vif_outbound_average | 2500          |
+|   quota:vif_outbound_burst   | 3750000       |
+|   quota:vif_outbound_peak    | 12500         |
+| ram                          | 1024          |
+| vcpus                        | 1             |
+|                              |               |
+| disk                         | 25            |
+| name                         | m1.s2.small   |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 25000000      |
+|   quota:disk_read_iops_sec   | 2000          |
+|   quota:disk_write_bytes_sec | 6250000       |
+|   quota:disk_write_iops_sec  | 500           |
+|   quota:vif_inbound_average  | 5000          |
+|   quota:vif_inbound_burst    | 7500000       |
+|   quota:vif_inbound_peak     | 25000         |
+|   quota:vif_outbound_average | 5000          |
+|   quota:vif_outbound_burst   | 7500000       |
+|   quota:vif_outbound_peak    | 25000         |
+| ram                          | 2048          |
+| vcpus                        | 1             |
+|                              |               |
+| disk                         | 25            |
+| name                         | m1.s2.medium  |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 50000000      |
+|   quota:disk_read_iops_sec   | 4000          |
+|   quota:disk_write_bytes_sec | 12500000      |
+|   quota:disk_write_iops_sec  | 1000          |
+|   quota:vif_inbound_average  | 10000         |
+|   quota:vif_inbound_burst    | 15000000      |
+|   quota:vif_inbound_peak     | 50000         |
+|   quota:vif_outbound_average | 10000         |
+|   quota:vif_outbound_burst   | 15000000      |
+|   quota:vif_outbound_peak    | 50000         |
+| ram                          | 4096          |
+| vcpus                        | 2             |
+|                              |               |
+| disk                         | 25            |
+| name                         | m1.s2.large   |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 64000000      |
+|   quota:disk_read_iops_sec   | 6000          |
+|   quota:disk_write_bytes_sec | 16000000      |
+|   quota:disk_write_iops_sec  | 1500          |
+|   quota:vif_inbound_average  | 20000         |
+|   quota:vif_inbound_burst    | 30000000      |
+|   quota:vif_inbound_peak     | 100000        |
+|   quota:vif_outbound_average | 20000         |
+|   quota:vif_outbound_burst   | 30000000      |
+|   quota:vif_outbound_peak    | 100000        |
+| ram                          | 8192          |
+| vcpus                        | 4             |
+|                              |               |
+| disk                         | 25            |
+| name                         | m1.s2.xlarge  |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 128000000     |
+|   quota:disk_read_iops_sec   | 8000          |
+|   quota:disk_write_bytes_sec | 32000000      |
+|   quota:disk_write_iops_sec  | 2000          |
+|   quota:vif_inbound_average  | 40000         |
+|   quota:vif_inbound_burst    | 60000000      |
+|   quota:vif_inbound_peak     | 200000        |
+|   quota:vif_outbound_average | 40000         |
+|   quota:vif_outbound_burst   | 60000000      |
+|   quota:vif_outbound_peak    | 200000        |
+| ram                          | 16384         |
+| vcpus                        | 8             |
+|                              |               |
+| disk                         | 25            |
+| name                         | c1.s2.xlarge  |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 46080         |
+| vcpus                        | 10            |
+|                              |               |
+| disk                         | 25            |
+| name                         | c1.s2.2xlarge |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 262144000     |
+|   quota:disk_read_iops_sec   | 16000         |
+|   quota:disk_write_bytes_sec | 65536000      |
+|   quota:disk_write_iops_sec  | 4000          |
+|   quota:vif_inbound_average  | 256000        |
+|   quota:vif_inbound_burst    | 92160000      |
+|   quota:vif_inbound_peak     | 510000        |
+|   quota:vif_outbound_average | 256000        |
+|   quota:vif_outbound_burst   | 92160000      |
+|   quota:vif_outbound_peak    | 512000        |
+| ram                          | 92160         |
+| vcpus                        | 20            |
+|                              |               |
+| disk                         | 25            |
+| name                         | c1.s2.4xlarge |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 524288000     |
+|   quota:disk_read_iops_sec   | 32000         |
+|   quota:disk_write_bytes_sec | 131072000     |
+|   quota:disk_write_iops_sec  | 8000          |
+|   quota:vif_inbound_average  | 512000        |
+|   quota:vif_inbound_burst    | 184320000     |
+|   quota:vif_inbound_peak     | 1020000       |
+|   quota:vif_outbound_average | 512000        |
+|   quota:vif_outbound_burst   | 184320000     |
+|   quota:vif_outbound_peak    | 1020000       |
+| ram                          | 184320        |
+| vcpus                        | 40            |
+|                              |               |
+| disk                         | 25            |
+| name                         | c2.s2.xlarge  |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 131072000     |
+|   quota:disk_read_iops_sec   | 12000         |
+|   quota:disk_write_bytes_sec | 32768000      |
+|   quota:disk_write_iops_sec  | 3000          |
+|   quota:vif_inbound_average  | 128000        |
+|   quota:vif_inbound_burst    | 46080000      |
+|   quota:vif_inbound_peak     | 255000        |
+|   quota:vif_outbound_average | 128000        |
+|   quota:vif_outbound_burst   | 46080000      |
+|   quota:vif_outbound_peak    | 255000        |
+| ram                          | 32768         |
+| vcpus                        | 16            |
+|                              |               |
+| disk                         | 25            |
+| name                         | c2.s2.2xlarge |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 262144000     |
+|   quota:disk_read_iops_sec   | 16000         |
+|   quota:disk_write_bytes_sec | 65536000      |
+|   quota:disk_write_iops_sec  | 4000          |
+|   quota:vif_inbound_average  | 256000        |
+|   quota:vif_inbound_burst    | 92160000      |
+|   quota:vif_inbound_peak     | 510000        |
+|   quota:vif_outbound_average | 256000        |
+|   quota:vif_outbound_burst   | 92160000      |
+|   quota:vif_outbound_peak    | 512000        |
+| ram                          | 65536         |
+| vcpus                        | 32            |
+|                              |               |
+| disk                         | 25            |
+| name                         | c2.s2.4xlarge |
+| properties                   |               |
+|   quota:disk_read_bytes_sec  | 524288000     |
+|   quota:disk_read_iops_sec   | 32000         |
+|   quota:disk_write_bytes_sec | 131072000     |
+|   quota:disk_write_iops_sec  | 8000          |
+|   quota:vif_inbound_average  | 512000        |
+|   quota:vif_inbound_burst    | 184320000     |
+|   quota:vif_inbound_peak     | 1020000       |
+|   quota:vif_outbound_average | 512000        |
+|   quota:vif_outbound_burst   | 184320000     |
+|   quota:vif_outbound_peak    | 1020000       |
+| ram                          | 81920         |
+| vcpus                        | 40            |

@@ -59,10 +59,11 @@ is 1.
 from the 'Flavor' tab by clicking on the "+" icon.
 
 !!! note "Note"
-    *In OpenStack, flavors define the compute, memory, and storage capacity of
-    nova computing instances. In other words, a flavor is an available hardware
-    configuration for a server. The default flavor is `m1.small` which is too
-    small for the available base images so please do not use it.*
+    *In NERC OpenStack, flavors define the compute, memory, and storage
+    capacity of nova computing instances. In other words, a flavor is an
+    available hardware configuration for a server. The default flavor is `m1.
+    small` which is too small for the available base images so please do not
+    use it.* **More details about available flavors and quotas can be found [here](flavors.md).**
 
 After choosing `m1.large`, you should see it moved up to "Allocated".
 

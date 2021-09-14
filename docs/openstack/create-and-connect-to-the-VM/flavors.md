@@ -6,30 +6,6 @@ configuration for a server.
 
 ## Currently, our setup supports following flavors
 
-As we can see each flavors includes enforced quotas for disk limits through
-maximum disk read, write and total bytes per second, using the
-`quota:disk_read_bytes_sec`, `quota:disk_write_bytes_sec` and
-`quota:disk_total_bytes_sec` extra specs, respectively. They also includes
-enforced disk limits through maximum disk read, write and total I/O operations
-per second, using the `quota:disk_read_iops_sec`, `quota:disk_write_iops_sec`
-and `quota:disk_total_iops_sec` extra specs, respectively.
-
-They also includes enforced network bandwidth limits through inbound and
-outbound average, using the `quota:vif_inbound_average` and
-`quota:vif_outbound_average` extra specs, respectively. In addition, optional
-peak values, which specifies the maximum rate at which a bridge can send data
-(KB/s), and burst values, which specifies the amount of bytes that can be burst
-at peak speed (kilobytes), can be specified for both inbound and outbound
-traffic, using the `quota:vif_inbound_peak` / `quota:vif_outbound_peak` and
-`quota:vif_inbound_burst` / `quota:vif_outbound_burst` extra specs, respectively.
-
-So, always be mindful while choosing any flavor for your instance while
-launching a VM that fits your requirements and use-cases.
-
-!!! note "Note"
-    The speed limit values in the following table are specified in kilobytes/
-    second, whereas the burst value is in kilobytes.
-
 | Field                        | Value         |
 |------------------------------|---------------|
 | disk                         | 10            |
@@ -416,3 +392,27 @@ launching a VM that fits your requirements and use-cases.
 |   quota:vif_outbound_peak    | 1020000       |
 | ram                          | 81920         |
 | vcpus                        | 40            |
+
+As we can see each flavor includes enforced quotas for disk limits through
+maximum disk read, write, and total bytes per second, using the
+`quota:disk_read_bytes_sec`, `quota:disk_write_bytes_sec` and
+`quota:disk_total_bytes_sec` extra specs, respectively. They also include
+enforced disk limits through maximum disk read, write, and total I/O operations
+per second, using the `quota:disk_read_iops_sec`, `quota:disk_write_iops_sec`
+and `quota:disk_total_iops_sec` extra specs, respectively.
+
+They also include enforced network bandwidth limits through inbound and
+outbound average, using the `quota:vif_inbound_average` and
+`quota:vif_outbound_average` extra specs, respectively. In addition, optional
+peak values, which specifies the maximum rate at which a bridge can send data
+(KB/s), and burst values, which specifies the number of bytes that can be burst
+at peak speed (kilobytes), can be specified for both inbound and outbound
+traffic, using the `quota:vif_inbound_peak` / `quota:vif_outbound_peak` and
+`quota:vif_inbound_burst` / `quota:vif_outbound_burst` extra specs, respectively.
+
+So, always be mindful while choosing any flavor for your instance while
+launching a VM that fits your requirements and use-cases.
+
+!!! note "Note"
+    The speed limit values in the following table are specified in kilobytes/
+    second, whereas the burst value is in kilobytes.

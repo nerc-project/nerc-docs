@@ -55,14 +55,16 @@ is 1.
 
     ![VM Launch with persistent Volume](images/persistent_volume.png)
 
-- **Flavor** tab: Specify the size of the instance to launch. Choose `m1.small`
+- **Flavor** tab: Specify the size of the instance to launch. Choose `m1.large`
 from the 'Flavor' tab by clicking on the "+" icon.
 
 !!! note "Note"
-    *The default flavor is `m1.small` which is too small for the base images*
-    *so please not use it.*
+    *In OpenStack, flavors define the compute, memory, and storage capacity of
+    nova computing instances. In other words, a flavor is an available hardware
+    configuration for a server. The default flavor is `m1.small` which is too
+    small for the available base images so please do not use it.*
 
-After choosing m1.small, you should see it moved up to "Allocated".
+After choosing `m1.large`, you should see it moved up to "Allocated".
 
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 

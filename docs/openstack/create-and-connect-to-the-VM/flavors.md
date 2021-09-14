@@ -416,3 +416,5 @@ launching a VM that fits your requirements and use-cases.
 !!! note "Note"
     The speed limit values in the following table are specified in kilobytes/
     second, whereas the burst value is in kilobytes.
+
+---

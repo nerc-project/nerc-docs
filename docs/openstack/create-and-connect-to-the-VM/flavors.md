@@ -133,7 +133,7 @@ maximum disk read, write, and total bytes per second and disk limits through
 maximum disk read, write, and total I/O operations per second. They also
 include enforced network bandwidth limits through inbound and outbound average.
 
-So, always be mindful while choosing any flavor for your instance while
-launching a VM that fits your requirements and use-cases.
+So, while launching a VM choose the flavor for your instance that fits your
+requirements and use-cases.
 
 ---

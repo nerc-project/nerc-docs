@@ -7,10 +7,10 @@
 From the Python SDK page at Pypi:
 
 !!! cite "Definition"
-openstacksdk is a client library for building applications to work with
-OpenStack clouds. The project aims to provide a consistent and complete set of
-interactions with OpenStack's many services, along with complete documentation,
-examples, and tools.
+    openstacksdk is a client library for building applications to work with
+    OpenStack clouds. The project aims to provide a consistent and complete set of
+    interactions with OpenStack's many services, along with complete documentation,
+    examples, and tools.
 
 If you need to plug OpenStack into existing scripts using another language,
 there are a variety of other SDKs at various levels of active development.

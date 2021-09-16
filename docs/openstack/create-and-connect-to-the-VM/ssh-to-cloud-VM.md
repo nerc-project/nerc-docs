@@ -1,16 +1,17 @@
 # SSH to Cloud VM
 
+**Shell**, or **SSH**, is used to administering and managing Linux workloads.
 Before trying to access instances from the outside world, you need to make sure
 you have followed these steps:
 
-- You followed the instruction in [Create a Key Pair](../access-and-security/
-create-a-key-pair.md) to set up a public ssh key.
+- You followed the instruction in [Create a Key Pair](../../access-and-security/
+create-a-key-pair/) to set up a public ssh key.
 - Your public ssh-key was selected (in the Access and Security tab) while
 [launching the instance](launch-a-VM.md).
 - [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
 access it from outside world.
-- Make sure you have added rules in the [Security Groups](../
-access-and-security/security-groups.md) to allow ssh to the instance.
+- Make sure you have added rules in the [Security Groups](../../
+access-and-security/security-groups/) to allow ssh to the instance.
 
 Make a note of the floating IP you have associated to your instance.
 

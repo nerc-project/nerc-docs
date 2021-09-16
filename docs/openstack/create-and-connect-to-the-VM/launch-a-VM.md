@@ -40,19 +40,33 @@ is 1.
 - **Source** tab: Double check that in the dropdown "Select Boot Source,"
 "Image" is selected.
 
-To create an image that uses the boot volume sized according to the flavor
-ensure that "No" is selected under the "Create New Volume" section as shown
-here:
-
 ![VM Launch Instance Source](images/launch_source.png)
 
-- **Flavor** tab: Specify the size of the instance to launch. Choose `m1.small`
+!!! note "Note"
+    - To create an image that uses the boot volume sized according to the flavor
+    ensure that "No" is selected under the "Create New Volume" section.
+
+    - When you deploy a non-ephemeral instance (i.e. Creating a new volume), and
+    indicate "Yes" in "Delete Volume on Instance delete", then when you delete
+    the instance, the volume is also removed. This is not desired while the
+    data of its attached volumes need to persist even instance is deleted. But
+    this incures the Volumes quotas so ideally you can select "Yes" only for
+    those instances you will not be storing persistent data.
+
+    ![VM Launch with persistent Volume](images/persistent_volume.png)
+
+- **Flavor** tab: Specify the size of the instance to launch. Choose `m1.large`
 from the 'Flavor' tab by clicking on the "+" icon.
 
-*NOTE: the default flavor is `m1.small` which is too small for the base images
-so please not use it.*
+!!! note "Note"
+    In NERC OpenStack, flavors define the compute, memory, and storage
+    capacity of nova computing instances. In other words, a flavor is an
+    available hardware configuration for a server. The default flavor is `m1.
+    small` which is too small for the available base images so please do not
+    use it. **More details about available flavors and corresponding quotas
+    details can be found [here](flavors.md).**
 
-After choosing m1.small, you should see it moved up to "Allocated".
+After choosing `m1.large`, you should see it moved up to "Allocated".
 
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 
@@ -89,7 +103,8 @@ from "No State" to "running".
 
 ![VM Launch Instance Successful](images/running_instance.png)
 
-*NOTE: You can also launch an instance from the "Instances" or "Volumes"
-category when you launch an instance from an instance or a volume respectively.*
+!!! note "Note"
+    You can also launch an instance from the "Instances" or "Volumes" category
+    when you launch an instance from an instance or a volume respectively.
 
 ---

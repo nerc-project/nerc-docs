@@ -85,7 +85,7 @@ Set the password for ubuntu using the command:
   ubuntu@test-vm:~$ sudo passwd ubuntu
   New password:
   Retype new password:
-  passwd: password updated successfully
+  ... password updated successfully
 ```
 
 Store the password in a secure place. Don't send it over email, post it on your

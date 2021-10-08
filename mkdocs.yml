@@ -41,6 +41,20 @@ nav:
           - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
           - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
       - Python SDK: openstack/python-sdk/python-SDK.md
+      - Kubernetes:
+          - Kubernetes Overview: kubernetes/kubernetes.md
+          - Development environment:
+              - Minikube: kubernetes/minikube.md
+              - Minishift: kubernetes/minishift.md
+              - Kind: kubernetes/kind.md
+              - MicroK8s: kubernetes/microk8s.md
+              - K3s: kubernetes/k3s.md
+              - CRC - Red Hat Code Ready Containers: kubernetes/crc.md
+          - Production environment:
+              - Kubeadm:
+                - Bootstrapping cluster with kubeadm: kubeadm/single-master-clusters-with-kubeadm.md
+                - Creating a HA cluster with kubeadm: kubeadm/HA-clusters-with-kubeadm.md
+              - Kubespray: kubernetes/kubespray.md
 
 theme:
   name: material

@@ -159,7 +159,7 @@ sysctl net.bridge.bridge-nf-call-iptables=1
 ## Configure kubeadm to bootstrap the cluster on master node
 
 Run the below command on the master node i.e. `master` that you want to setup as
-control plane. 
+control plane.
 
 - SSH into **master** machine
 - Switch to root user: `sudo su`

@@ -19,8 +19,8 @@ We will need 1 control-plane(master) and 2 worker node to create a single
 control-plane kubernetes cluster using `kubeadm`. We are using following setting
 for this purpose:
 
-- 1 Linux machines for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
- 4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 1 Linux machine for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
+4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to the master node.
 - 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage.

@@ -8,7 +8,7 @@ slick tool. It runs on macOS, Linux, and all versions of Windows 10.
 
 ---
 
-## Minimum system requirements for minikube
+## Minimum system requirements for CRC
 
 CodeReady Containers requires the following system resources:
 
@@ -27,7 +27,7 @@ We are using following setting for this purpose:
 
 ## Prepare host for CRC
 
-Run the below command on the Ubuntu VM:
+Run the below command on the CRC's VM:
 
 - SSH into **crc** machine
 
@@ -223,11 +223,6 @@ This can be done in several ways:
 `/etc/hosts` file or for **Windows** users find it at `C:\Windows\System32\Drivers\etc\hosts`.
 
 Associate your CRC servers public ip retrieved from Horizon with hostnames:
-
-- api.crc.testing
-- console-openshift-console.apps-crc.testing
-- oauth-openshift.apps-crc.testing
-- apps-crc.testing
 
 - api.crc.testing
 - canary-openshift-ingress-canary.apps-crc.testing

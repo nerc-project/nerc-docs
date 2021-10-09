@@ -350,6 +350,13 @@ kubectl get svc hello-minikube
 minikube service hello-minikube --url
 ```
 
+Go to browser, visit `http://<Floating-IP>:<NodePort>`
+i.e. <http://140.247.152.235:31293/> to check the hello minikube default page.
+
+For your example,
+
+![Hello Minikube default page](../images/minikube_hello-minikube_page.png)
+
 ### Clean up
 
 Now you can clean up the app resources you created in your cluster:

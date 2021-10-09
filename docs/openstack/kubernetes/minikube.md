@@ -3,7 +3,7 @@
 ## Minimum system requirements for minikube
 
 - 2 GB RAM or more
-- 2 CPU / vCPU or more
+- 2 CPU / vCPUs or more
 - 20 GB free hard disk space or more
 - Docker / Virtual Machine Manager – KVM & VirtualBox. Docker, Hyperkit, Hyper-V,
 KVM, Parallels, Podman, VirtualBox, or VMWare are examples of container or virtual

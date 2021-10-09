@@ -384,6 +384,17 @@ TOKEN     TTL  EXPIRES      USAGES           DESCRIPTION            EXTRA GROUPS
                                                                     default-node-token
 ```
 
+If you missed the join command, execute the following command
+`kubeadm token create --print-join-command` in the master node to recreate the
+token with the join command.
+
+```sh
+root@master:~$ kubeadm token create --print-join-command
+
+kubeadm join 10.2.0.4:6443 --token xyzeyi.wxer3eg9vj8hcpp2 \
+--discovery-token-ca-cert-hash sha256:ccfc92b2a31b002c3151cdbab77ff4dc32ef13b213fa3a9876e126831c76f7fa
+```
+
 By default, tokens expire after 24 hours. If you are joining a node to the cluster
 after the current token has expired, you can create a new token by running the
 following command on the control-plane node:
@@ -542,7 +553,7 @@ it will be in a Running state.
 Output Example:
 
 ```sh
-ubuntu@loadbalancer:~$ sudo kubectl get po -n kube-system
+root@loadbalancer:~$ kubectl get po -n kube-system
  NAME                               READY  STATUS   RESTARTS  AGE
 coredns-558bd4d5db-5jktc             0/1   Pending   0        10m
 coredns-558bd4d5db-xdc5x             0/1   Pending   0        10m

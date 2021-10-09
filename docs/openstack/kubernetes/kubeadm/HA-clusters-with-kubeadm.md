@@ -242,6 +242,7 @@ EOF
 
 systemctl enable --now docker
 usermod -aG docker ubuntu
+systemctl daemon-reload
 systemctl restart docker
 ```
 
@@ -648,6 +649,12 @@ The assigned NodePort can be found running:
 kubectl get svc --namespace=kube-system
 ```
 
+**OR,**
+
+```sh
+kubectl get po,svc -n kube-system
+```
+
 ![Skooner Service Port](../images/skooner_port.png)
 
 Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>` i.e.
@@ -674,5 +681,57 @@ kubectl describe secret skooner-sa-token-xxxxx
 
 Copy the token value from the secret and enter it into the login screen to access
 the dashboard.
+
+---
+
+### Clean Up
+
+- To view the Cluster info:
+
+```sh
+kubectl cluster-info
+```
+
+- To delete your local references to the cluster:
+
+```sh
+kubectl config delete-cluster
+```
+
+## How to Remove the node?
+
+Talking to the control-plane node with the appropriate credentials, run:
+
+```sh
+kubectl drain <node name> --delete-emptydir-data --force --ignore-daemonsets
+```
+
+- Before removing the node, reset the state installed by kubeadm:
+
+```sh
+kubeadm reset
+```
+
+The reset process does not reset or clean up iptables rules or IPVS tables. If
+you wish to reset iptables, you must do so manually:
+
+```sh
+iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+```
+
+If you want to reset the IPVS tables, you must run the following command:
+
+```sh
+ipvsadm -C
+```
+
+- Now remove the node:
+
+```sh
+kubectl delete node <node name>
+```
+
+If you wish to start over, run `kubeadm init` or `kubeadm join` with the
+appropriate arguments.
 
 ---

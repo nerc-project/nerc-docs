@@ -9,6 +9,9 @@
 
 ## Components and architecure
 
+This shows components and architecture of a highly-available, production-grade
+Kubernetes cluster.
+
 ![Components and architecure](../images/k8s_HA_cluster.png)
 
 You can learn about each component from [Kubernetes Componets](https://kubernetes.io/docs/concepts/overview/components/).
@@ -223,6 +226,8 @@ apt-mark hold kubelet kubeadm
 ```
 
 ---
+
+## Install **Docker**
 
 - Install container runtime - **docker**
 
@@ -588,6 +593,26 @@ should work for **Flannel** CNI.
     `--pod-network-cidr` with `kubeadm init` and then you can run:
     `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl
     version | base64 | tr -d '\n')"`
+
+- Dual Network:
+It is **highly recommended** to follow an internal/external network layout for your
+cluster, as showed in this diagram:
+![Dual Network Diagram](../images/network-layout.png)
+
+To enable this just give two different names to the internal and external interface,
+according to your distro of choiche naming scheme:
+
+```sh
+external_interface: eth0
+internal_interface: eth1
+```
+
+Also you can decide here what CIDR should your cluster use
+
+```sh
+cluster_cidr: 10.43.0.0/16
+service_cidr: 10.44.0.0/16
+```
 
 Once you successfully installed the **Flannel** CNI component to your cluster.
 You can now verify your HA cluster running:

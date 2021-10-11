@@ -51,7 +51,7 @@ to a file somewhere (for example ~fedora/pull-secret)
 - Setup crc binary to be accessable
 
 ```sh
-tar xvf crc-linux-amd64.tar.xz
+tar -zxvf crc-linux-amd64.tar.xz
 mkdir -p ~/bin
 mv crc-linux-1.33.1-amd64/crc ~/bin/
 export PATH=$PATH:$HOME/bin

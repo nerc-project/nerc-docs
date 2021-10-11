@@ -52,6 +52,8 @@ apt-get update && apt-get install -y curl wget apt-transport-https
 
 ---
 
+## Install **Docker**
+
 - Install container runtime - **docker**
 
 ```sh

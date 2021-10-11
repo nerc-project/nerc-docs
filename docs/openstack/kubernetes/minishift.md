@@ -81,7 +81,7 @@ adduser $(whoami) libvirtd
 usermod -a -G libvirt $(whoami)
 ```
 
-**OR**,
+**OR,**
 
 ```sh
 usermod -a -G libvirt $USER
@@ -123,7 +123,7 @@ curl -LO https://github.com/minishift/minishift/releases/download/v1.34.3/minish
 - Unzip and Copy MiniShift in your path
 
 ```sh
-tar xvf minishift-1.34.3-linux-amd64.tgz --strip=1 -C/usr/local/bin minishift-1.34.3-linux-amd64/minishift
+tar -zxvf minishift-1.34.3-linux-amd64.tgz --strip=1 -C/usr/local/bin minishift-1.34.3-linux-amd64/minishift
 ```
 
 ### Starting Minishift

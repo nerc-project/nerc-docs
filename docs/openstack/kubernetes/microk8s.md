@@ -81,7 +81,7 @@ microk8s dashboard-proxy
 Checking if Dashboard is running.
 Dashboard will be available at https://127.0.0.1:10443
 Use the following token to login:
-eyJhbGciOiJSUzI1NiIsImtpZCI6Ii1fOThpSjRWTWlLWGc4ZGRHdTdING8wMFQ4eTRBNm93NE5OblZZUGgyOGsifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkZWZhdWx0LXRva2VuLWcyN2txIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImRlZmF1bHQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJhNTY3YjIzOC00Y2I3LTRlMTYtYjM0OS03MmRlMGIyMTQ4ODkiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06ZGVmYXVsdCJ9.OkDKxoc4qVKbzq3BEEzA0ELzFN9kVEXyGVKmK9dXcp5_qrrMC6qxnRuEMStJjFFfE5D70yZ-h2aJe3Q5JIUg2ccgkFSFMjW9xwx1-kbgYHCZbb_tbYQxxlvrqLJNZkX42gYCgkgqkghPKI2ItPdrQWC8gA4JKNPzvwwqLVNb0ig33c_2wEuOa-1RUvtyDhXXr-hApb9Kh3t9wuMgEIKJ_6s47_pUMsGXTQu91pu39yw_rzuJXyPgtNA3ItjIw01AotFMcRZKNmAWwT3bQpCx7DROgN02R12yh1CM3P4GbjlSo96QT6B-m3XIgz0mZ2IpEVS3F-bP3oqbj4dCMTetwQ
+eyJhbGc....
 ```
 
 **OR,**
@@ -89,7 +89,8 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6Ii1fOThpSjRWTWlLWGc4ZGRHdTdING8wMFQ4eTRBNm93NE5OblZZ
 To access the dashboard use the default token retrieved with:
 
 ```sh
-token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d " " -f1)
+token=$(microk8s kubectl -n kube-system get secret | grep default-token | \
+    cut -d " " -f1)
 microk8s kubectl -n kube-system describe secret $token
 ```
 

@@ -23,7 +23,7 @@ For this kind ofhigh availability k3s setup [read this](k3s-ha-cluster.md).
 
 ## Pre-requisite
 
-We will need 1 control-plane(master) and 2 worker node to create a single
+We will need 1 control-plane(master) and 2 worker nodes to create a single
 control-plane kubernetes cluster using `k3s`. We are using following setting
 for this purpose:
 
@@ -444,8 +444,8 @@ helm repo update
 
 ### Deploy A Sample Nginx Application using **Helm**
 
-**Nginx** can be used as a web proxy to expose ingress web traffic routes in and
-out of the cluster.
+**Nginx** can be used as a web proxy to expose [ingress](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx)
+web traffic routes in and out of the cluster.
 
 - You can install "nginx web-proxy" using Helm:
 

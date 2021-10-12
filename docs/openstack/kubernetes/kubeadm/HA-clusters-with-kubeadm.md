@@ -512,6 +512,10 @@ scp master1:/etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
+---
+
+## Install **kubectl**
+
 - Install kubectl binary
 • **kubectl**: the command line util to talk to your cluster.
 

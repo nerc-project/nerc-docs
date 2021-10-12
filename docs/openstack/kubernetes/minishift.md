@@ -147,7 +147,7 @@ The server is accessible via web console at:
 
 You are logged in as:
     User:     developer
-    Password: <any value>
+    Password: <any value> #pragma: allowlist secret
 
 To login as administrator:
     oc login -u system:admin

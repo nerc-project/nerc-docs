@@ -11,11 +11,64 @@ Availability clusters just with few commands.
 !!!note: "Note"
     For using `k3d` you must have **docker** installed in your system
 
+---
+
+## Install **Docker**
+
+- Install container runtime - **docker**
+
+```sh
+apt-get install docker.io -y
+```
+
+- Configure the Docker daemon, in particular to use systemd for the management
+of the container’s cgroups
+
+```sh
+cat <<EOF | sudo tee /etc/docker/daemon.json
+{
+"exec-opts": ["native.cgroupdriver=systemd"]
+}
+EOF
+
+systemctl enable --now docker
+usermod -aG docker ubuntu
+systemctl daemon-reload
+systemctl restart docker
+```
+
+---
+
+## Install **kubectl**
+
+- Install kubectl binary
+• **kubectl**: the command line util to talk to your cluster.
+
+```sh
+snap install kubectl --classic
+
+kubectl 1.22.2 from Canonical✓ installed
+```
+
+- Now verify the kubectl version:
+
+```sh
+kubectl version -o yaml
+```
+
+---
+
 - k3d Installation:
 The below command will install the k3d, in your system using the installation script.
 
 ```sh
 wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
+```
+
+**OR,**
+
+```sh
+curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
 ```
 
 To verify the installation, please run the following command:
@@ -55,8 +108,10 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     Here, the above single command spawns a K3s cluster with six containers:
 
     i. load balancer
-    ii. servers (control-plane nodes)
-    iii. agents (formerly worker nodes)
+    ii. 3 servers (control-plane nodes)
+    iii. 2 agents (formerly worker nodes)
+
+    ---
     With the `--api-port 127.0.0.1:6445`, you tell k3d to map the Kubernetes API
     Port (6443 internally) to `127.0.0.1/localhost`’s port **6445**. That means
     that you will have this connection string in your Kubeconfig:
@@ -96,10 +151,15 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
         cumbersome after a while, so you may want to have a look at tools like
         `dnsmasq` (MacOS/UNIX) or `Acrylic` (Windows)  to ease the burden.
 
-2. Switch context to newly created cluster:
+2. Getting the cluster’s kubeconfig:
+Get the new cluster’s connection details merged into your default kubeconfig (usually
+specified using the `KUBECONFIG` environment variable or the default path
+`$HOME/.kube/config`) and directly switch to the new context:
 
     ```sh
-    kubectl config use-context k3d-k3d-demo-cluster
+    k3d kubeconfig merge k3d-demo-cluster --kubeconfig-switch-context
+
+    /root/.k3d/kubeconfig-k3d-demo-cluster.yaml
     ```
 
 3. Checking the nodes running on k3d cluster:
@@ -182,11 +242,11 @@ cluster, you can create and deploy your applications over the cluster.
 k3d cluster delete k3d-demo-cluster
 
 INFO[0000] Deleting cluster 'k3d-demo-cluster'
-INFO[0000] Deleted k3d-k3d-demo-cluster-serverlb        
-INFO[0001] Deleted k3d-k3d-demo-cluster-server-0        
+INFO[0000] Deleted k3d-k3d-demo-cluster-serverlb
+INFO[0001] Deleted k3d-k3d-demo-cluster-server-0
 INFO[0001] Deleting cluster network 'k3d-k3d-demo-cluster'
-INFO[0001] Deleting image volume 'k3d-k3d-demo-cluster-images' 
-INFO[0001] Removing cluster details from default kubeconfig... 
+INFO[0001] Deleting image volume 'k3d-k3d-demo-cluster-images'
+INFO[0001] Removing cluster details from default kubeconfig...
 INFO[0001] Removing standalone kubeconfig file (if there is one)...
 INFO[0001] Successfully deleted cluster k3d-demo-cluster!
 ```

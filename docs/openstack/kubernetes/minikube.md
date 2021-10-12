@@ -82,6 +82,10 @@ systemctl restart docker
 sudo apt install virtualbox virtualbox-ext-pack -y
 ```
 
+---
+
+## Install **kubectl**
+
 - Install kubectl binary
 • **kubectl**: the command line util to talk to your cluster.
 
@@ -162,10 +166,10 @@ Perfect, above confirms that minikube cluster has been configured and started su
 minikube status
 
 minikube
-type: Control Plane   
+type: Control Plane
 host: Running
-kubelet: Running      
-apiserver: Running    
+kubelet: Running
+apiserver: Running
 kubeconfig: Configured
 ```
 

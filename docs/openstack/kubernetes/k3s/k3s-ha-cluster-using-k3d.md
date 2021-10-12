@@ -10,11 +10,18 @@ and also there is [Automated HA master deployment doc](https://github.com/kubern
 ## HA cluster with at least three control plane nodes
 
 ```sh
-k3d cluster create --servers 3 --image rancher/k3s:v1.19.3-k3s2
+k3d cluster create --servers 3 --image rancher/k3s:latest
 ```
 
 Here, `--server 3`: specifies requests three nodes to be created with the role server
-and `--image rancher/k3s:v1.19.3-k3s2`: specifies the K3s image to be used
+and `--image rancher/k3s:latest`: specifies the K3s image to be used here we are
+using `latest`
+
+- Switch context to the new cluster:
+
+```sh
+kubectl config use-context k3d-k3s-default
+```
 
 You can now check what has been created from the different points of view:
 
@@ -26,7 +33,7 @@ The output will looks like:
 ![k3d HA nodes](../images/k3d_ha_nodes.png)
 
 ```sh
-kubectl get podes --all-namespaces --output wide
+kubectl get pods --all-namespaces --output wide
 ```
 
 The output will looks like:
@@ -37,18 +44,19 @@ The output will looks like:
 You can quickly simulate the addition of another control plane node to the HA cluster:
 
 ```sh
-k3d node create extraCPnode --role=server --image=rancher/k3s:v1.19.3-k3s2
+k3d node create extraCPnode --role=server --image=rancher/k3s:latest
 
-INFO[0000] Adding 1 node(s) to the runtime local cluster 'k3s-default'... 
+INFO[0000] Adding 1 node(s) to the runtime local cluster 'k3s-default'...
 INFO[0000] Starting Node 'k3d-extraCPnode-0'
-INFO[0018] Updating loadbalancer config to include new server node(s) 
-INFO[0018] Successfully configured loadbalancer k3d-k3s-default-serverlb! 
+INFO[0018] Updating loadbalancer config to include new server node(s)
+INFO[0018] Successfully configured loadbalancer k3d-k3s-default-serverlb!
 INFO[0019] Successfully created 1 node(s)!
 ```
 
 Here, `extraCPnode`: specifies the name for the node,
 `--role=server` : sets the role for the node to be a control plane/server,
-`--image rancher/k3s:v1.19.3-k3s2`: specifies the K3s image to be used
+`--image rancher/k3s:latest`: specifies the K3s image to be used here we are
+using `latest`
 
 ```sh
 kubectl get nodes

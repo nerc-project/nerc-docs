@@ -79,7 +79,7 @@ kind v0.11.1 go1.16.4 linux/amd64
 kind create cluster --name k8s-kind-cluster1
 
 Creating cluster "k8s-kind-cluster1" ...
- ✓ Ensuring node image (kindest/node:v1.21.1) 🖼 
+ ✓ Ensuring node image (kindest/node:v1.21.1) 🖼
  ✓ Preparing nodes 📦
  ✓ Writing configuration 📜
  ✓ Starting control-plane 🕹️

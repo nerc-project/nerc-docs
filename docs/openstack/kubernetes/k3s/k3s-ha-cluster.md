@@ -30,7 +30,7 @@ to the 3 K3s Servers on port 6443 as shown below:
 
 ```sh
 events {}
-... 
+...
 
 stream {
   upstream k3s_servers {
@@ -54,7 +54,7 @@ In this example, you can create:
 
 database name: `<YOUR_DB_NAME>`
 database user: `<YOUR_DB_USER_NAME>`
-database password: `<YOUR_DB_USER_PASSWORD>`
+database password: `<YOUR_DB_USER_PASSWORD>` #pragma: allowlist secret
 
 ## Three VMs to run as K3s servers
 
@@ -204,7 +204,7 @@ sudo k3s kubectl proxy
 
 Then you can sign in at this URL using your *token* we got in the previous step:
 
-http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+`http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
 
 ### Deploying Nginx using deployment
 
@@ -221,16 +221,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysite
-  labels: 
+  labels:
     app: mysite
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: mysite
   template:
     metadata:
-      labels: 
+      labels:
         app : mysite
     spec:
       containers:

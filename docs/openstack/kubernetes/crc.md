@@ -35,7 +35,7 @@ Run the below command on the CRC's VM:
     Please run the following commands not using `root` user.
 
 On newly built VM download CRC using your redhat login, from:
-https://console.redhat.com/openshift/create/local
+`https://console.redhat.com/openshift/create/local`
 
 To save transfer hassle you can, curl CRC bundle directly to the VM, using the
 url from a **"Download CodeReady Containers"** button in redhat consnole.
@@ -90,11 +90,11 @@ The server is accessible via web console at:
 
 Log in as administrator:
   Username: kubeadmin
-  Password: MTNAK-YHvuU-FIuSt-qgAxd
+  Password: ... #pragma: allowlist secret
 
 Log in as user:
   Username: developer
-  Password: developer
+  Password: ... #pragma: allowlist secret
 
 Use the 'oc' command line interface:
   $ eval $(crc oc-env)
@@ -218,7 +218,7 @@ CRC to the Public IP i.e. Floating IP address of your openstack VM instance.
 
 This can be done in several ways:
 
-1) RH document [2] describes a dnsmasq configuration.  
+1) RH document [2] describes a dnsmasq configuration.
 2) A simpler path for **Linux** and **Mac** users is just to create an entry in your
 `/etc/hosts` file or for **Windows** users find it at `C:\Windows\System32\Drivers\etc\hosts`.
 

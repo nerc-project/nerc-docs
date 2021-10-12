@@ -58,6 +58,8 @@ kubectl version -o yaml
 
 ---
 
+## Installing k3d
+
 - k3d Installation:
 The below command will install the k3d, in your system using the installation script.
 

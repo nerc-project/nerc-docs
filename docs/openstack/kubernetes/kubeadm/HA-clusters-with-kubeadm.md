@@ -29,9 +29,10 @@ following set up for this purpose:
  to both of the worker nodes.
 - 1 Linux machine for loadbalancer, ubuntu-21.04-x86_64, m1.small flavor with
 1vCPU, 2GB RAM, 10GB storage
-- ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+- ssh access to all machines:  [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
+
     i. To be used by the master nodes:
     ![Control plane ports and protocols](../images/control_plane_ports_protocols.png)
     ii. To be used by the worker nodes:

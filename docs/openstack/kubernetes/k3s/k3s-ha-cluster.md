@@ -129,11 +129,12 @@ sudo systemctl stop k3s
 sudo systemctl restart k3s
 ```
 
-### On your local development machine
+### On your local development machine to access Kubernetes Cluster Remotely (Optional)
 
 !!!note "Important Requirement"
     Your local development machine must have installed `kubectl`.
 
+- Copy kubernetes config to your local machine:
 Copy the `kubeconfig` file's content located at the K3s master node at `/etc/rancher/k3s/k3s.yaml`
 to your local machine's `~/.kube/config` file. Before saving, please change the cluster
 server path from **127.0.0.1** to **`<Loadbalancer-Internal-IP>`**. This will allow

@@ -32,7 +32,7 @@ for this purpose:
  to the master node.
 - 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage.
-ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+- ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 
 ## Networking

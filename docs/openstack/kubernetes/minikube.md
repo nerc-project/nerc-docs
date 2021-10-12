@@ -101,7 +101,11 @@ kubectl 1.22.2 from Canonical✓ installed
 kubectl version -o yaml
 ```
 
-- Install minikube:
+---
+
+## Installing minikube
+
+- Install minikube
 
 ```sh
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb

@@ -88,7 +88,7 @@ Workloads: true
 ```sh
 k0s kubectl get nodes
 
-NAME   STATUS   ROLES    AGE    VERSION    
+NAME   STATUS   ROLES    AGE    VERSION
 k0s    Ready    <none>   8m3s   v1.22.2+k0s
 ```
 

@@ -271,7 +271,7 @@ Handling connection for 30723
 Handling connection for 30723
 ```
 
-Go to browser, visit `http://<Floating-IP>:8080`
+Go to browser, visit `http://<Master-Floating-IP>:8080`
 i.e. <http://140.247.152.235:8080/> to check the hello minikube default page.
 
 ### Clean up

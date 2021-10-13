@@ -51,9 +51,9 @@ on how to setup SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
     i. To be used by the master nodes:
-    ![Control plane ports and protocols](../images/control_plane_ports_protocols.png)
+    ![Control plane ports and protocols](images/control_plane_ports_protocols.png)
     ii. To be used by the worker nodes:
-    ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
+    ![Worker node ports and protocols](images/worker_nodes_ports_protocols.png)
 - setup Unique hostname to each machine using the following command:
 
 ```sh

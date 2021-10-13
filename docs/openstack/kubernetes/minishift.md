@@ -13,7 +13,7 @@ down by function:
 - Controllers, which read those APIs, apply changes to other objects, and report
 status or write back to the object.
 
-![OKD Architecture Overview](okd_architecture.png)
+![OKD Architecture Overview](images/okd_architecture.png)
 
 For more information on the node types in the architecture overview,
 see [Kubernetes Infrastructure](https://docs.okd.io/3.11/architecture/infrastructure_components/kubernetes_infrastructure.html#architecture-infrastructure-components-kubernetes-infrastructure).

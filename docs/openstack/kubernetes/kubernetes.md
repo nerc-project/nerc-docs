@@ -102,13 +102,13 @@ Installing Kubernetes with Kubespray [read this](kubespray.md).
 developed by Rancher Labs and now a CNCF sandbox project that fully implements the
 Kubernetes API and is less than  40MB in size. To do so, they got rid of a lot of
 additional drivers that didn't need to be in the core and could easily be replaced
-with add-ons. For more [read this](k3s.md).
+with add-ons. For more [read this](k3s/k3s.md).
 
 To setup a Single-Node K3s Cluster using k3d [read this](k3s/k3s-using-k3d.md)
 and if you would like to setup Multi-master K3s cluster setup using k3d [read this](k3s/k3s-ha-cluster-using-k3d.md)
 
 To setup a Multi-master HA K3s cluster using k3sup(pronounced **ketchup**)
-[read this](k3s-using-k3sup.md).
+[read this](k3s/k3s-using-k3sup.md).
 
 To choose a tool which best fits your use case, read [this comparison](comparisons.md).
 

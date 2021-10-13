@@ -306,7 +306,7 @@ kubectl get svc
 ```
 
 The output will show:
-![Minikube Running Services](../images/running_minikube_services.png)
+![Minikube Running Services](images/running_minikube_services.png)
 
 **OR,**
 
@@ -339,7 +339,7 @@ i.e. <http://140.247.152.235:31081/> to check the nginx default page.
 
 For your example,
 
-![nginx default page](../images/minikube_nginx_page.png)
+![nginx default page](images/minikube_nginx_page.png)
 
 ---
 
@@ -365,7 +365,7 @@ i.e. <http://140.247.152.235:31293/> to check the hello minikube default page.
 
 For your example,
 
-![Hello Minikube default page](../images/minikube_hello-minikube_page.png)
+![Hello Minikube default page](images/minikube_hello-minikube_page.png)
 
 ### Clean up
 

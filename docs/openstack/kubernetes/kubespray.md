@@ -6,12 +6,12 @@ We will need 1 control-plane(master) and 1 worker node to create a single
 control-plane kubernetes cluster using `Kubespray`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for Ansible master, ubuntu-21.04-x86_64, m1.medium flavor with
-2vCPU, 4GB RAM, 10GB storage.
-- 1 Linux machine for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
+- 1 Linux machine for Ansible master, ubuntu-bionic-18.04-x86_64, m1.medium flavor
+with 2vCPU, 4GB RAM, 10GB storage.
+- 1 Linux machine for master, ubuntu-bionic-18.04-x86_64, m1.medium flavor with 2vCPU,
 4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to the master node.
-- 1 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
+- 1 Linux machines for worker, ubuntu-bionic-18.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage.
 - ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
@@ -20,6 +20,27 @@ on how to setup SSH to your remote VMs.
 
     ```sh
     ssh-keygen -t rsa
+
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/root/.ssh/id_rsa): 
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /root/.ssh/id_rsa
+    Your public key has been saved in /root/.ssh/id_rsa.pub
+    The key fingerprint is:
+    SHA256:OMsKP7EmhT400AJA/KN1smKt6eTaa3QFQUiepmj8dx0 root@ansible-master
+    The key's randomart image is:
+    +---[RSA 3072]----+
+    |=o.oo.           |
+    |.o...            |
+    |..=  .           |
+    |=o.= ...         |
+    |o=+.=.o SE       |
+    |.+*o+. o. .      |
+    |.=== +o. .       |
+    |o+=o=..          |
+    |++o=o.           |
+    +----[SHA256]-----+
     ```
 
     Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
@@ -43,7 +64,7 @@ hostnamectl set-hostname <host_name>
 For example,
 
 ```sh
-echo "192.168.0.71 ansible_master" >> /etc/hosts
+echo "192.168.0.224 ansible_master" >> /etc/hosts
 hostnamectl set-hostname ansible_master
 ```
 
@@ -85,9 +106,10 @@ control plane.
 - Install Python3 and upgrade pip to pip3:
 
 ```sh
-apt install python3-pip
+apt install python3-pip -y
 pip3 install --upgrade pip
 python3 -V && pip3 -V
+pip -V
 ```
 
 - Clone the *Kubespray* git repository:
@@ -100,7 +122,7 @@ cd kubespray
 - Install dependencies from ``requirements.txt``:
 
 ```sh
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 - Copy ``inventory/sample`` as ``inventory/mycluster``
@@ -117,9 +139,23 @@ Now we are going to declare a variable **"IPS"** for storing the IP address of
 other K8s nodes .i.e. kubspray_master(192.168.0.130), kubspray_worker1(192.168.0.32)
 
 ```sh
-declare -a IPS=(192.168.0.130 192.168.0.32)
+declare -a IPS=(192.168.0.189 192.168.0.116)
 CONFIG_FILE=inventory/mycluster/hosts.yml python3 \
     contrib/inventory_builder/inventory.py ${IPS[@]}
+
+DEBUG: Adding group all
+DEBUG: Adding group kube_control_plane
+DEBUG: Adding group kube_node
+DEBUG: Adding group etcd
+DEBUG: Adding group k8s_cluster
+DEBUG: Adding group calico_rr
+DEBUG: adding host node1 to group all
+DEBUG: adding host node2 to group all
+DEBUG: adding host node1 to group etcd
+DEBUG: adding host node1 to group kube_control_plane
+DEBUG: adding host node2 to group kube_control_plane
+DEBUG: adding host node1 to group kube_node
+DEBUG: adding host node2 to group kube_node
 ```
 
 - After running the above commands do verify the `hosts.yml` and its content:
@@ -134,13 +170,13 @@ The content of the `hosts.yml` file should looks like:
 all:
   hosts:
     node1:
-      ansible_host: 192.168.0.130
-      ip: 192.168.0.130
-      access_ip: 192.168.0.130
+      ansible_host: 192.168.0.76
+      ip: 192.168.0.76
+      access_ip: 192.168.0.76
     node2:
-      ansible_host: 192.168.0.32
-      ip: 192.168.0.32
-      access_ip: 192.168.0.32
+      ansible_host: 192.168.0.176
+      ip: 192.168.0.176
+      access_ip: 192.168.0.176
   children:
     kube_control_plane:
       hosts:

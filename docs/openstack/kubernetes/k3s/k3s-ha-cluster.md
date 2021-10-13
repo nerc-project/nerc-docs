@@ -3,7 +3,7 @@
 First, Kubernetes HA has **two possible setups**: embedded or external database
 (DB). We’ll use the **external DB** in this HA K3s cluster setup. For which `MySQL`
 is the external DB as shown here:
-[k3s HA architecture with external database][../images/k3s_ha_architecture.jpg]
+![k3s HA architecture with external database](../images/k3s_ha_architecture.jpg)
 
 In the diagram above, both the user running `kubectl` and each of the two agents
 connect to the TCP **Load Balancer**. The Load Balancer uses a list of private IP
@@ -15,8 +15,11 @@ The servers use the **SQL data store** to synchronize the cluster’s state.
 ## Requirements
 
 i. Managed TCP Load Balancer
+
 ii. Managed MySQL service
+
 iii. Three VMs to run as K3s servers
+
 iv. Two VMs to run as K3s agents
 
 There are some strongly recommended [Kubernetes HA best practices](https://kubernetes.io/docs/tasks/administer-cluster/highly-available-master/#best-practices-for-replicating-masters-for-ha-clusters)

@@ -18,40 +18,39 @@ on how to setup SSH to your remote VMs.
 - To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../create-and-connect-to-the-VM/ssh-to-cloud-VM/#adding-other-peoples-ssh-keys-to-the-instance)
     Generate SSH key for Ansible master node using:
 
-    ```sh
-    ssh-keygen -t rsa
+```sh
+ssh-keygen -t rs
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:OMsKP7EmhT400AJA/KN1smKt6eTaa3QFQUiepmj8dxroot@ansible-master
+The key's randomart image is:
++---[RSA 3072]----+
+|=o.oo.           |
+|.o...            |
+|..=  .           |
+|=o.= ...         |
+|o=+.=.o SE       |
+|.+*o+. o. .      |
+|.=== +o. .       |
+|o+=o=..          |
+|++o=o.           |
++----[SHA256]-----+
+```
 
-    Generating public/private rsa key pair.
-    Enter file in which to save the key (/root/.ssh/id_rsa):
-    Enter passphrase (empty for no passphrase):
-    Enter same passphrase again:
-    Your identification has been saved in /root/.ssh/id_rsa
-    Your public key has been saved in /root/.ssh/id_rsa.pub
-    The key fingerprint is:
-    SHA256:OMsKP7EmhT400AJA/KN1smKt6eTaa3QFQUiepmj8dx0 root@ansible-master
-    The key's randomart image is:
-    +---[RSA 3072]----+
-    |=o.oo.           |
-    |.o...            |
-    |..=  .           |
-    |=o.= ...         |
-    |o=+.=.o SE       |
-    |.+*o+. o. .      |
-    |.=== +o. .       |
-    |o+=o=..          |
-    |++o=o.           |
-    +----[SHA256]-----+
-    ```
-
-    Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
-    other nodes's `~/.ssh/authorized_keys` file.
-    This will allow `ssh <other_nodes_internal_ip>` from the Ansible master node's
-    terminal.
+Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+other nodes's `~/.ssh/authorized_keys` file.
+This will allow `ssh <other_nodes_internal_ip>` from the Ansible master node's terminal.
 
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
     i. To be used by the master nodes:
     ![Control plane ports and protocols](images/control_plane_ports_protocols.png)
+
     ii. To be used by the worker nodes:
     ![Worker node ports and protocols](images/worker_nodes_ports_protocols.png)
 - setup Unique hostname to each machine using the following command:

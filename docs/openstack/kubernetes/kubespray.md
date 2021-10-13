@@ -6,12 +6,12 @@ We will need 1 control-plane(master) and 1 worker node to create a single
 control-plane kubernetes cluster using `Kubespray`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for Ansible master, ubuntu-bionic-18.04-x86_64, m1.medium flavor
-with 2vCPU, 4GB RAM, 10GB storage.
-- 1 Linux machine for master, ubuntu-bionic-18.04-x86_64, m1.medium flavor with 2vCPU,
+- 1 Linux machine for Ansible master, ubuntu-20.04-x86_64, m1.medium flavor with
+2vCPU, 4GB RAM, 10GB storage.
+- 1 Linux machine for master, ubuntu-20.04-x86_64, m1.medium flavor with 2vCPU,
 4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to the master node.
-- 1 Linux machines for worker, ubuntu-bionic-18.04-x86_64, m1.small flavor with 1vCPU,
+- 1 Linux machines for worker, ubuntu-20.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage.
 - ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
@@ -209,6 +209,12 @@ cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 (to make a copy of `kubeconfig` on the host that runs Ansible in
 `{ inventory_dir }/artifacts`) and `kubectl_localhost`
 (to download `kubectl` onto the host that runs Ansible in `{ bin_dir }`).
+
+!!!note "Very Important"
+    As **Ubuntu 20 kvm kernel** doesn't have **dummy module** we need to **modify**
+    the following two variables in `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`:
+    `enable_nodelocaldns: false` and `kube_proxy_mode: iptables` which will
+    *Disable nodelocal dns cache* and *Kube-proxy proxyMode to iptables* respectively.
 
 - Deploy Kubespray with Ansible Playbook - run the playbook as `root` user.
 The option `--become` is required, as for example writing SSL keys in `/etc/`,

@@ -48,7 +48,10 @@ nav:
               - Minishift: openstack/kubernetes/minishift.md
               - Kind: openstack/kubernetes/kind.md
               - MicroK8s: openstack/kubernetes/microk8s.md
-              - K3s: openstack/kubernetes/k3s.md
+              - K3s:
+                  - K3s: openstack/kubernetes/k3s/k3s.md
+                  - K3s with High Availibility: openstack/kubernetes/k3s/k3s-ha-cluster.md
+              - K0s: openstack/kubernetes/k0s.md
               - CRC - Red Hat Code Ready Containers: openstack/kubernetes/crc.md
           - Production environment:
               - Kubeadm:

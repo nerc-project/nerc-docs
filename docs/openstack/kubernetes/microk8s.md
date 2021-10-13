@@ -164,6 +164,6 @@ microbot-service   NodePort   10.152.183.8   <none>        80:31442/TCP   35h
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
 i.e. <http://128.31.26.4:31442/> to check the microbot default page.
 
-(images/microk8s_microbot_app.png)
+![Microk8s Microbot App](images/microk8s_microbot_app.png)
 
 ---

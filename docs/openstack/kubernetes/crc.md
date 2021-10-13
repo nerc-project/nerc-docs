@@ -250,5 +250,6 @@ command.
 
 ### References
 
-[1] `https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.30/html/getting_started_guide/index`
-[2] `https://cloud.redhat.com/blog/accessing-codeready-containers-on-a-remote-server/`
+[1] [Getting Started CRC](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.30/html/getting_started_guide/index)
+
+[2] [Accessing CRC on a remote server](https://cloud.redhat.com/blog/accessing-codeready-containers-on-a-remote-server/)

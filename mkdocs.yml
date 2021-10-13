@@ -51,6 +51,9 @@ nav:
               - K3s:
                   - K3s: openstack/kubernetes/k3s/k3s.md
                   - K3s with High Availibility: openstack/kubernetes/k3s/k3s-ha-cluster.md
+                  - Multi-master HA K3s cluster using k3sup: openstack/kubernetes/k3s/k3s-using-k3sup.md
+                  - Single-Node K3s Cluster using k3d: openstack/kubernetes/k3s/k3s-using-k3d.md
+                  - Multi-master K3s cluster setup using k3d: openstack/kubernetes/k3s/k3s-ha-cluster-using-k3d.md
               - K0s: openstack/kubernetes/k0s.md
               - CRC - Red Hat Code Ready Containers: openstack/kubernetes/crc.md
           - Production environment:

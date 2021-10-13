@@ -20,7 +20,7 @@ iii. Three VMs to run as K3s servers
 iv. Two VMs to run as K3s agents
 
 There are some strongly recommended [Kubernetes HA best practices](https://kubernetes.io/docs/tasks/administer-cluster/highly-available-master/#best-practices-for-replicating-masters-for-ha-clusters)
-and also there is [Automated HA master deployment doc](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cluster-lifecycle/ha_master.md)
+and also there is [Automated HA master deployment doc](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cluster-lifecycle/ha_master.md).
 
 ## Managed TCP Load Balancer
 

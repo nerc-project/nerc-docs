@@ -90,7 +90,7 @@ setup production-quality cluster, you can use the following deployment tools.
 performs the actions necessary to get a minimum viable, secure cluster up and
 running in a user friendly way.
 Bootstrapping cluster with kubeadm [read this](kubeadm/single-master-clusters-with-kubeadm.md)
-and if you would like to setup Multi-master cluster setup using Kubeadm [read this](kubeadm/HA-clusters-with-kubeadm.md)
+and if you would like to setup Multi-master cluster setup using Kubeadm [read this](kubeadm/HA-clusters-with-kubeadm.md).
 
 2. [Kubespray](https://kubernetes.io/docs/setup/production-environment/tools/kubespray/)
 helps to install a Kubernetes cluster on NERC OpenStack. Kubespray is a
@@ -105,7 +105,7 @@ additional drivers that didn't need to be in the core and could easily be replac
 with add-ons. For more [read this](k3s/k3s.md).
 
 To setup a Single-Node K3s Cluster using k3d [read this](k3s/k3s-using-k3d.md)
-and if you would like to setup Multi-master K3s cluster setup using k3d [read this](k3s/k3s-ha-cluster-using-k3d.md)
+and if you would like to setup Multi-master K3s cluster setup using k3d [read this](k3s/k3s-ha-cluster-using-k3d.md).
 
 To setup a Multi-master HA K3s cluster using k3sup(pronounced **ketchup**)
 [read this](k3s/k3s-using-k3sup.md).

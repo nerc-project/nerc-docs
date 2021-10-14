@@ -349,7 +349,7 @@ The output consists of 3 major tasks:
 As you are running as `root` user so you need to run the following command:
 
     ```sh
-    export KUBECONFIG=\etc\kubernetes\admin.conf
+    export KUBECONFIG=/etc/kubernetes/admin.conf
     ```
 
 2. Setup a new control plane (master) i.e. `master2` by running following

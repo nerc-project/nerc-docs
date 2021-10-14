@@ -710,16 +710,20 @@ The first (and easiest) option is to create a dedicated service account. Run the
 following commands:
 
 - Create the service account in the current namespace (we assume default)
-kubectl create serviceaccount skooner-sa
+
+`kubectl create serviceaccount skooner-sa`
 
 - Give that service account root on the cluster
-kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa
+
+`kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa`
 
 - Find the secret that was created to hold the token for the SA
-kubectl get secrets
+
+`kubectl get secrets`
 
 - Show the contents of the secret to extract the token
-kubectl describe secret skooner-sa-token-xxxxx
+
+`kubectl describe secret skooner-sa-token-xxxxx`
 
 Copy the token value from the secret and enter it into the login screen to access
 the dashboard.

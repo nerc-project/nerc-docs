@@ -237,7 +237,7 @@ The output consists of 2 major tasks:
 As you are running as `root` user so you need to run the following command:
 
     ```sh
-    export KUBECONFIG=\etc\kubernetes\admin.conf
+    export KUBECONFIG=/etc/kubernetes/admin.conf
     ```
 
 2. Join worker nodes running following command on individual workder nodes:
@@ -476,7 +476,7 @@ For your example,
 You will going to setup [K8dash/Skooner](https://github.com/skooner-k8s/skooner)
 to view a dashboard that shows all your K8s cluster components.
 
-- SSH into `loadbalancer` node
+- SSH into `master` node
 - Switch to root user: `sudo su`
 - Apply available deployment by running the following command:
 
@@ -510,16 +510,20 @@ The first (and easiest) option is to create a dedicated service account. Run the
 following commands:
 
 - Create the service account in the current namespace (we assume default)
-kubectl create serviceaccount skooner-sa
+
+`kubectl create serviceaccount skooner-sa`
 
 - Give that service account root on the cluster
-kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa
+
+`kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa`
 
 - Find the secret that was created to hold the token for the SA
-kubectl get secrets
+
+`kubectl get secrets`
 
 - Show the contents of the secret to extract the token
-kubectl describe secret skooner-sa-token-xxxxx
+
+`kubectl describe secret skooner-sa-token-xxxxx`
 
 Copy the token value from the secret and enter it into the login screen to access
 the dashboard.

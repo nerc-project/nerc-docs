@@ -36,6 +36,12 @@ The output will looks like:
 kubectl get pods --all-namespaces --output wide
 ```
 
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
 The output will looks like:
 ![k3d HA pods](../images/k3d_ha_pods.png)
 

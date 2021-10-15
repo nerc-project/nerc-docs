@@ -254,6 +254,18 @@ sudo k3s kubectl apply -f nginx.yaml
 sudo k3s kubectl get pods --all-namespaces
 ```
 
+**OR,**
+
+```sh
+kubectl get pods --all-namespaces --output wide
+```
+
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
 - Scale the pods to available agents:
 
 ```sh

@@ -659,6 +659,18 @@ The output will show:
 Once the deployment is up, you should be able to access the Nginx home page on
 the allocated NodePort from either of the worker nodes' Floating IP.
 
+To check which worker node is serving `nginx`, you can check **NODE** column running the following command:
+
+```sh
+kubectl get pods --all-namespaces --output wide
+```
+
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
 Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>`
 i.e. <http://128.31.25.246:32713> to check the nginx default page.
 

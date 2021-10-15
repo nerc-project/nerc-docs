@@ -19,7 +19,8 @@ on how to setup SSH to your remote VMs.
     Generate SSH key for Ansible master node using:
 
 ```sh
-ssh-keygen -t rs
+ssh-keygen -t rsa
+
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):

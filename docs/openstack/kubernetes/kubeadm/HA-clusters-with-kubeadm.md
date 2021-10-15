@@ -142,6 +142,12 @@ systemctl restart haproxy
 systemctl status haproxy
 ```
 
+Ensure haproxy config file is correctly formatted:
+
+```sh
+haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
+```
+
 Ensure haproxy is in running status.
 
 Run `nc` command as below:

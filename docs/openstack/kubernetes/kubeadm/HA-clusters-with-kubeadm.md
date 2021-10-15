@@ -227,9 +227,7 @@ apt-get install -y kubelet kubeadm
 apt-mark hold kubelet kubeadm
 ```
 
----
-
-## Install **Docker**
+### Install **Docker** on master and worker nodes
 
 - Install container runtime - **docker**
 

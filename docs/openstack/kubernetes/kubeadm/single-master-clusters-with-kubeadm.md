@@ -484,8 +484,8 @@ to view a dashboard that shows all your K8s cluster components.
 kubectl apply -f https://raw.githubusercontent.com/skooner-k8s/skooner/master/kubernetes-skooner-nodeport.yaml
 ```
 
-This will map Skooner port **4654** to a randomly selected port on the running node.
-The assigned NodePort can be found running:
+This will map Skooner port **4654** to a randomly selected port from the master node.
+The assigned NodePort on the master node can be found running:
 
 ```sh
 kubectl get svc --namespace=kube-system
@@ -499,7 +499,7 @@ kubectl get po,svc -n kube-system
 
 ![Skooner Service Port](../images/skooner_port.png)
 
-Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>` i.e.
+Go to browser, visit `http://<Master-Floating-IP>:<NodePort>` i.e.
 <http://128.31.25.246:30495> to check the skooner dashboard page.
 
 ![Skooner Dashboard](../images/skooner-dashboard.png)

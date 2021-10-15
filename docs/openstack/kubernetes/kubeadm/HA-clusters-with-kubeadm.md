@@ -126,8 +126,7 @@ backend be-apiserver
    option tcplog
    option tcp-check
    balance roundrobin
-   default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250
-   maxqueue 256 weight 100
+   default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100 #<!-- markdownlint-disable -->
 
        server master1 10.138.0.15:6443 check
        server master2 10.138.0.16:6443 check

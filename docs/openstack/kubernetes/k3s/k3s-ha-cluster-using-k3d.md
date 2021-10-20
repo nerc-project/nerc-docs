@@ -5,7 +5,11 @@ First, Kubernetes HA has **two possible setups**: embedded or external database
 is the default embedded DB.
 
 There are some strongly recommended [Kubernetes HA best practices](https://kubernetes.io/docs/tasks/administer-cluster/highly-available-master/#best-practices-for-replicating-masters-for-ha-clusters)
-and also there is [Automated HA master deployment doc](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cluster-lifecycle/ha_master.md)
+and also there is [Automated HA master deployment doc](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/cluster-lifecycle/ha_master.md).
+
+## Pre-requisite
+
+Make sure you have already installed k3d [following this](k3s-using-k3d.md#installing-k3d).
 
 ## HA cluster with at least three control plane nodes
 
@@ -132,7 +136,7 @@ kubectl get pods --all-namespaces --output wide
 ```
 
 As the output can be seen:
-[k3d self healing HA nodes](../images/k3d_self_healing_ha_nodes.png)
+![k3d self healing HA nodes](../images/k3d_self_healing_ha_nodes.png)
 
 Finally, to show the power of HA and how K3s manages it, let’s restart the node0
 and see it being re-included into the cluster as if nothing happened:

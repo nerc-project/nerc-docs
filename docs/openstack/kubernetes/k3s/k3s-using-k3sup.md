@@ -4,7 +4,7 @@ k3sup (pronounced **ketchup**) is a popular open source tool to install K3s over
 SSH.
 
 - Bootstrap the cluster
-[k3sup Setup](../images/k3sup.jpg)
+![k3sup Setup](../images/k3sup.jpg)
 
 The two most important commands in k3sup are:
 

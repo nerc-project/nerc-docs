@@ -19,7 +19,7 @@
 ![K3s Components and architecure](../images/k3s_high_availability.png) or,
 ![K3s Components and architecure](../images/k3s_ha_architecture.jpg)
 
-For this kind ofhigh availability k3s setup [read this](k3s-ha-cluster.md).
+For this kind of high availability k3s setup [read this](k3s-ha-cluster.md).
 
 ## Pre-requisite
 

@@ -333,7 +333,7 @@ vi nginx.yaml
 ```
 
 The **nginx.yaml** looks like this:
-[Nginx Deployment yaml file](../images/nginx_deployment_yaml.png)
+![Nginx Deployment yaml file](../images/nginx_deployment_yaml.png)
 
 ```sh
 kubectl apply -f nginx.yaml

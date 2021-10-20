@@ -333,7 +333,30 @@ vi nginx.yaml
 ```
 
 The **nginx.yaml** looks like this:
-![Nginx Deployment yaml file](../images/nginx_deployment_yaml.png)
+
+```sh
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysite
+  labels:
+    app: mysite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysite
+  template:
+    metadata:
+      labels:
+        app : mysite
+    spec:
+      containers:
+        - name : mysite
+          image: nginx
+          ports:
+            - containerPort: 80
+```
 
 ```sh
 kubectl apply -f nginx.yaml

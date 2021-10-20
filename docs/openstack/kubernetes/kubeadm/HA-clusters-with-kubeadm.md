@@ -743,6 +743,11 @@ following commands:
 Copy the token value from the secret and enter it into the login screen to access
 the dashboard.
 
+### Watch Demo Video
+
+Here’s a [recorded demo video](https://drive.google.com/file/d/1mALftMHEUkjQ7lK6oJ6S_tiY59Q0JASY/view?usp=sharing)
+on how to setup HA K8s cluster using `kubeadm`.
+
 ---
 
 ### Clean Up

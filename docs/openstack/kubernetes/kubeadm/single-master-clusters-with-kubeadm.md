@@ -323,6 +323,11 @@ This node has joined the cluster:
 
 ```
 
+### Watch Recoded Video
+
+Here’s a quick [recorded demo video](https://drive.google.com/file/d/19jMuR_pnQD9X3WRezNoZ4VHpE4nwpxU9/view?usp=sharing)
+upto this point.
+
 ---
 
 ## Validate all cluster components and nodes are visible on all nodes
@@ -527,6 +532,12 @@ following commands:
 
 Copy the token value from the secret and enter it into the login screen to access
 the dashboard.
+
+### Watch Demo Video
+
+Here’s a [recorded demo video](https://drive.google.com/file/d/14OyuP7i_eKiuhqEHWcOJ4EFWAXXsen2j/view?usp=sharing)
+on how to configure CNI and deploy applications listed
+above.
 
 ---
 

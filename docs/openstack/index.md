@@ -47,7 +47,7 @@ the list below.
 
 - [Kubernetes Overview](openstack/kubernetes/kubernetes.md)
 
-i. **Kubernetes Development environment**
+### i. **Kubernetes Development environment**
 
 1. [Minikube](openstack/kubernetes/minikube.md)
 2. [Minishift](openstack/kubernetes/minishift.md)
@@ -66,7 +66,7 @@ i. **Kubernetes Development environment**
 6. [k0s](openstack/kubernetes/k0s.md)
 7. [CRC](Red Hat Code Ready Containers: openstack/kubernetes/crc.md)
 
-ii. **Kubernetes Production environment**
+### ii. **Kubernetes Production environment**
 
 1. Kubeadm
 

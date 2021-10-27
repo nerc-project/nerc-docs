@@ -41,6 +41,26 @@ nav:
           - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
           - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
       - Python SDK: openstack/python-sdk/python-SDK.md
+      - Kubernetes:
+          - Kubernetes Overview: openstack/kubernetes/kubernetes.md
+          - Development environment:
+              - Minikube: openstack/kubernetes/minikube.md
+              - Minishift: openstack/kubernetes/minishift.md
+              - Kind: openstack/kubernetes/kind.md
+              - MicroK8s: openstack/kubernetes/microk8s.md
+              - K3s:
+                  - K3s: openstack/kubernetes/k3s/k3s.md
+                  - K3s with High Availibility(HA) setup: openstack/kubernetes/k3s/k3s-ha-cluster.md
+                  - Multi-master HA K3s cluster using k3sup: openstack/kubernetes/k3s/k3s-using-k3sup.md
+                  - Single-Node K3s Cluster using k3d: openstack/kubernetes/k3s/k3s-using-k3d.md
+                  - Multi-master K3s cluster setup using k3d: openstack/kubernetes/k3s/k3s-ha-cluster-using-k3d.md
+              - k0s: openstack/kubernetes/k0s.md
+              - CRC - Red Hat Code Ready Containers: openstack/kubernetes/crc.md
+          - Production environment:
+              - Kubeadm:
+                - Bootstrapping cluster with kubeadm: openstack/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
+                - Creating a HA cluster with kubeadm: openstack/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
+              - Kubespray: openstack/kubernetes/kubespray.md
 
 theme:
   name: material

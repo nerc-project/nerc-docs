@@ -51,7 +51,7 @@ stream {
 
 ## Managed MySQL service
 
-Create a MySQL database setver with a **new database** and create a new
+Create a MySQL database server with a **new database** and create a new
 **mysql user and password** with granted permission to read/write the new database.
 In this example, you can create:
 

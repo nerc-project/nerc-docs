@@ -168,9 +168,12 @@ Connection to localhost 6443 port [tcp/*] succeeded!
 `kubeadm` will not install or manage `kubelet` or `kubectl` for you, so you will
 need to ensure they match the version of the Kubernetes control plane you want kubeadm
 to install for you.  You will install these packages on all of your machines:
+
 • **kubeadm**: the command to bootstrap the cluster.
+
 • **kubelet**: the component that runs on all of the machines in your cluster and
 does things like starting pods and containers.
+
 • **kubectl**: the command line util to talk to your cluster.
 
 In this step, you will install kubelet and kubeadm on the below nodes

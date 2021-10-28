@@ -324,11 +324,6 @@ This node has joined the cluster:
 
 ```
 
-### Watch Recoded Video
-
-Here’s a quick [recorded demo video](https://drive.google.com/file/d/19jMuR_pnQD9X3WRezNoZ4VHpE4nwpxU9/view?usp=sharing)
-upto this point.
-
 ---
 
 ## Validate all cluster components and nodes are visible on all nodes
@@ -440,6 +435,11 @@ worker2   Ready    <none>                   10m   v1.16.2
 
 ```
 
+### Watch Recoded Video
+
+Here’s a quick [recorded demo video](https://drive.google.com/file/d/1kVQSX2CSFbB1WbzAMFOKFt1YuUy-nVh0/view?usp=sharing)
+upto this point where we successfully setup single master K8s cluster using Kubeadm.
+
 ---
 
 ### Deploy A Sample Nginx Application
@@ -536,9 +536,9 @@ the dashboard.
 
 ### Watch Demo Video
 
-Here’s a [recorded demo video](https://drive.google.com/file/d/14OyuP7i_eKiuhqEHWcOJ4EFWAXXsen2j/view?usp=sharing)
-on how to configure CNI and deploy applications listed
-above.
+Here’s a [recorded demo video](https://drive.google.com/file/d/1hTkgpXtzkhdOd6KnoQiVDWgNnsoN5VZB/view?usp=sharing)
+on how to deploy applications on top of setup single master K8s cluster as
+explained above.
 
 ---
 

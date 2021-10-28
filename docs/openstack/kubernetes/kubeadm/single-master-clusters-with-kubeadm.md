@@ -158,7 +158,7 @@ systemctl restart docker
 
 - Ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
 
-For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic)
+For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic).
 
 ```sh
 sysctl net.bridge.bridge-nf-call-iptables=1
@@ -386,7 +386,7 @@ kube-scheduler-master1               1/1   Running   0        11m
 
 To read more about the currently supported base CNI solutions for Kubernetes
 [read here](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network).
 
 The below command can be run on the master node to install the CNI plugin:
 

@@ -14,7 +14,7 @@ machine managers.
 We will need 1 VM to create a single node kubernetes cluster using `minikube`.
 We are using following setting for this purpose:
 
-- 1 Linux machine for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
+- 1 Linux machine for master, ubuntu-20.04-x86_64, m1.medium flavor with 2vCPU,
 4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to this VM.
 - setup Unique hostname to the machine using the following command:

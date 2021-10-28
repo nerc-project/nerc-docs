@@ -6,7 +6,7 @@ traditional ssh proxying.
 
 ## Installing sshuttle Server
 
-You can spin up a new instance with "**ubuntu-20.04-x86_64**" flavor
+You can spin up a new instance with "**ubuntu-21.04-x86_64**" flavor
 named "**sshuttle_server**" on OpenStack, with
 "**default**" and "**ssh_only**" Security Groups attached
 to it.

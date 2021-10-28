@@ -96,8 +96,8 @@ following command lists all the images available to your project:
   | 482f489c-d8db-47be-8f55-53096fb37c07 | centos-8.4-x86_64   | active |
   | d7a71175-bb1b-412c-a6d3-83e5e1ad0646 | debian-10-x86_64    | active |
   | 2a8e36a3-31ea-4c6d-adce-5c18101c6be2 | fedora-34-x86_64    | active |
-  | ef40d46e-88f9-4099-9d1d-c6c85297f042 | ubuntu-20.04-x86_64 | active |
-  | a44f1bac-35c8-4abd-8669-a6c6ae7ef2e1 | ubuntu-20.04-x86_64 | active |
+  | ef40d46e-88f9-4099-9d1d-c6c85297f042 | ubuntu-21.04-x86_64 | active |
+  | a44f1bac-35c8-4abd-8669-a6c6ae7ef2e1 | ubuntu-21.04-x86_64 | active |
   +--------------------------------------+---------------------+--------+
 ```
 

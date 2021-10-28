@@ -12,7 +12,7 @@ Navigate: Project -> Compute -> Images.
 ![VM Images](images/vm_images.png)
 
 Click Launch Instance next to the public image of your choice. In the example,
-we chose **ubuntu-20.04-x86_64**.
+we chose **ubuntu-21.04-x86_64**.
 
 *Important: There are multiple tabs along the top of the the pop up window.
 

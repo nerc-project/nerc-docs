@@ -29,7 +29,7 @@ your host.
 We will need 1 VM to create a single node kubernetes cluster using `minishift`.
 We are using following setting for this purpose:
 
-- 1 Linux machine, ubuntu-20.04-x86_64, m1.large flavor with 4vCPU, 8GB RAM,
+- 1 Linux machine, ubuntu-21.04-x86_64, m1.large flavor with 4vCPU, 8GB RAM,
 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to this VM.
 - setup Unique hostname to the machine using the following command:

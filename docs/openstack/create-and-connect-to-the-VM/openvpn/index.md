@@ -13,7 +13,7 @@ connect to a single OpenVPN server process over a single TCP or UDP port.
 
 You can read official documentation [here](https://openvpn.net/community-resources/how-to/#installing-openvpn).
 
-You can spin up a new instance with "**ubuntu-20.04-x86_64**" flavor, named
+You can spin up a new instance with "**ubuntu-21.04-x86_64**" flavor, named
 "**openvpn_server**" on OpenStack, with "**default**" and "**ssh_only**"
 Security Groups attached to it.
 

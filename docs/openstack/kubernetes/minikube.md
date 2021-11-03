@@ -116,8 +116,8 @@ sudo dpkg -i minikube_latest_amd64.deb
 
 ```sh
 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-cp minikube-linux-amd64 /usr/local/bin/minikube
-chmod +x /usr/local/bin/minikube
+cp minikube-linux-amd64 /usr/bin/minikube
+chmod +x /usr/bin/minikube
 ```
 
 - Verify the Minikube installation:

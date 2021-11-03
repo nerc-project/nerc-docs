@@ -97,8 +97,8 @@ newgrp libvirtd
 
 ```sh
 curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-ubuntu16.04
--o /usr/local/bin/docker-machine-driver-kvm
-chmod +x /usr/local/bin/docker-machine-driver-kvm
+-o /usr/bin/docker-machine-driver-kvm
+chmod +x /usr/bin/docker-machine-driver-kvm
 ```
 
 - Check the status of **libvirtd**:
@@ -123,7 +123,7 @@ curl -LO https://github.com/minishift/minishift/releases/download/v1.34.3/minish
 - Unzip and Copy MiniShift in your path
 
 ```sh
-tar -zxvf minishift-1.34.3-linux-amd64.tgz --strip=1 -C/usr/local/bin minishift-1.34.3-linux-amd64/minishift
+tar -zxvf minishift-1.34.3-linux-amd64.tgz --strip=1 -C/usr/bin minishift-1.34.3-linux-amd64/minishift
 ```
 
 ### Starting Minishift

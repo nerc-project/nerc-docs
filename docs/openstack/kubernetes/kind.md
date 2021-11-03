@@ -43,8 +43,8 @@ docker version
 
 ```sh
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-chmod +x /usr/local/bin/kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
+chmod +x /usr/bin/kubectl
 ```
 
 - Test to ensure the version you installed is up-to-date:
@@ -58,13 +58,13 @@ kubectl version --client
 ```sh
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64
 chmod +x ./kind
-mv ./kind /usr/local/bin
+mv ./kind /usr/bin
 ```
 
 ```sh
 which kind
 
-/usr/local/bin/kind
+/usr/bin/kind
 ```
 
 ```sh

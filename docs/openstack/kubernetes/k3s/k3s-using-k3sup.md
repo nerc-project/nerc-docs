@@ -16,7 +16,7 @@ agent
 
 ```sh
 curl -sLS https://get.k3sup.dev | sh
-sudo install k3sup /usr/local/bin/
+sudo install k3sup /usr/bin/
 
 k3sup --help
 ```

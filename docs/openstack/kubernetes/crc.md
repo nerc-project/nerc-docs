@@ -219,6 +219,7 @@ CRC to the Public IP i.e. Floating IP address of your openstack VM instance.
 This can be done in several ways:
 
 1) RH document [2] describes a dnsmasq configuration.
+
 2) A simpler path for **Linux** and **Mac** users is just to create an entry in your
 `/etc/hosts` file or for **Windows** users find it at `C:\Windows\System32\Drivers\etc\hosts`.
 

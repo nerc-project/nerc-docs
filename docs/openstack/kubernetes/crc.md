@@ -38,11 +38,13 @@ On newly built VM download CRC using your redhat login, from:
 `https://console.redhat.com/openshift/create/local`
 
 To save transfer hassle you can, curl CRC bundle directly to the VM, using the
-url from a **"Download CodeReady Containers"** button in redhat consnole.
+url from a **"Download CodeReady Containers"** button in redhat console.
 
 ```sh
-curl https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/
-crc-linux-amd64.tar.xz --output crc-linux-amd64.tar.xz -L
+curl \
+https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/\
+clients/crc/latest/crc-linux-amd64.tar.xz \
+--output crc-linux-amd64.tar.xz -L
 ```
 
 then click **"Copy pull secret"** button from the same console page and save it
@@ -51,7 +53,7 @@ to a file somewhere (for example ~fedora/pull-secret)
 - Setup crc binary to be accessable
 
 ```sh
-tar -zxvf crc-linux-amd64.tar.xz
+tar -xvf crc-linux-amd64.tar.xz
 mkdir -p ~/bin
 mv crc-linux-1.33.1-amd64/crc ~/bin/
 export PATH=$PATH:$HOME/bin

@@ -423,8 +423,8 @@ tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
 iii. Find the helm binary in the unpacked directory, and move it to its desired destination
 
 ```sh
-mv linux-amd64/helm /usr/local/bin/helm
-chmod +x /usr/local/bin/helm
+mv linux-amd64/helm /usr/bin/helm
+chmod +x /usr/bin/helm
 ```
 
 **OR,**
@@ -564,19 +564,19 @@ sudo service k3s-agent restart
 
 If you installed `K3s` with the help of the `install.sh` script, an uninstall script
 is generated during installation. The script is created on your master node at
-`/usr/local/bin/k3s-uninstall.sh` or as `k3s-agent-uninstall.sh` on your worker nodes.
+`/usr/bin/k3s-uninstall.sh` or as `k3s-agent-uninstall.sh` on your worker nodes.
 
 To remove K3s on the worker nodes, execute:
 
 ```sh
-sudo /usr/local/bin/k3s-agent-uninstall.sh
+sudo /usr/bin/k3s-agent-uninstall.sh
 sudo rm -rf /var/lib/rancher
 ```
 
 To remove k3s on the master node, execute:
 
 ```sh
-sudo /usr/local/bin/k3s-uninstall.sh
+sudo /usr/bin/k3s-uninstall.sh
 sudo rm -rf /var/lib/rancher
 ```
 

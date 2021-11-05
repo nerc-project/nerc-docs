@@ -19,10 +19,10 @@ We will need 1 control-plane(master) and 2 worker node to create a single
 control-plane kubernetes cluster using `kubeadm`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
+- 1 Linux machine for master, ubuntu-20.04-x86_64, m1.medium flavor with 2vCPU,
 4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to the master node.
-- 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
+- 2 Linux machines for worker, ubuntu-20.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage.
 - ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
@@ -158,7 +158,7 @@ systemctl restart docker
 
 - Ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
 
-For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic)
+For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic).
 
 ```sh
 sysctl net.bridge.bridge-nf-call-iptables=1
@@ -239,21 +239,19 @@ The output consists of 2 major tasks:
 1. Setup `kubeconfig` using on current master node:
 As you are running as `root` user so you need to run the following command:
 
-    ```sh
-    export KUBECONFIG=/etc/kubernetes/admin.conf
-    ```
+    `export KUBECONFIG=/etc/kubernetes/admin.conf`
 
 2. Join worker nodes running following command on individual workder nodes:
 
-    ```sh
-    kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
-        --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
-    ```
+```sh
+kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
+    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
+```
 
-    !!!note "Important Note"
-        **Your output will be different than what is provided here. While
-        performing the rest of the demo, ensure that you are executing the
-        command provided by your output and dont copy and paste from here.**
+!!!note "Important Note"
+    **Your output will be different than what is provided here. While
+    performing the rest of the demo, ensure that you are executing the
+    command provided by your output and dont copy and paste from here.**
 
 If you do not have the token, you can get it by running the following command on
 the control-plane node:
@@ -326,11 +324,6 @@ This node has joined the cluster:
 
 ```
 
-### Watch Recoded Video
-
-Here’s a quick [recorded demo video](https://drive.google.com/file/d/19jMuR_pnQD9X3WRezNoZ4VHpE4nwpxU9/view?usp=sharing)
-upto this point.
-
 ---
 
 ## Validate all cluster components and nodes are visible on all nodes
@@ -388,7 +381,7 @@ kube-scheduler-master1               1/1   Running   0        11m
 
 To read more about the currently supported base CNI solutions for Kubernetes
 [read here](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network).
 
 The below command can be run on the master node to install the CNI plugin:
 
@@ -441,6 +434,11 @@ worker1   Ready    <none>                   10m   v1.16.2
 worker2   Ready    <none>                   10m   v1.16.2
 
 ```
+
+### Watch Recoded Video
+
+Here’s a quick [recorded demo video](https://drive.google.com/file/d/1kVQSX2CSFbB1WbzAMFOKFt1YuUy-nVh0/view?usp=sharing)
+upto this point where we successfully setup single master K8s cluster using Kubeadm.
 
 ---
 
@@ -538,9 +536,9 @@ the dashboard.
 
 ### Watch Demo Video
 
-Here’s a [recorded demo video](https://drive.google.com/file/d/14OyuP7i_eKiuhqEHWcOJ4EFWAXXsen2j/view?usp=sharing)
-on how to configure CNI and deploy applications listed
-above.
+Here’s a [recorded demo video](https://drive.google.com/file/d/1hTkgpXtzkhdOd6KnoQiVDWgNnsoN5VZB/view?usp=sharing)
+on how to deploy applications on top of setup single master K8s cluster as
+explained above.
 
 ---
 

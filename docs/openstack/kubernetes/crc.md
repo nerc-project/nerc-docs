@@ -38,25 +38,31 @@ On newly built VM download CRC using your redhat login, from:
 `https://console.redhat.com/openshift/create/local`
 
 To save transfer hassle you can, curl CRC bundle directly to the VM, using the
-url from a **"Download CodeReady Containers"** button in redhat consnole.
+url from a **"Download CodeReady Containers"** button in redhat console.
 
 ```sh
-curl https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/
-crc-linux-amd64.tar.xz --output crc-linux-amd64.tar.xz -L
+curl \
+https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/\
+clients/crc/latest/crc-linux-amd64.tar.xz \
+--output crc-linux-amd64.tar.xz -L
 ```
 
 then click **"Copy pull secret"** button from the same console page and save it
-to a file somewhere (for example ~fedora/pull-secret)
+to a file somewhere (for example `~fedora/pull-secret`)
 
 - Setup crc binary to be accessable
 
 ```sh
-tar -zxvf crc-linux-amd64.tar.xz
+tar -xvf crc-linux-amd64.tar.xz
 mkdir -p ~/bin
-mv crc-linux-1.33.1-amd64/crc ~/bin/
+mv crc-linux-1.34.0-amd64/crc ~/bin/
 export PATH=$PATH:$HOME/bin
 echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
+
+!!!note "Note"
+  This CRC version `crc-linux-1.34.0-amd64` may be different when you
+  are installing! Please update it as your are running above command.
 
 ## Install and configure CRC
 
@@ -73,14 +79,14 @@ crc config set cpus 12
 ```
 
 - Paste crc secret copied during previous prep step when prompted for
-"? Please enter the pull secret" by `crc start` terminal.
+**"? Please enter the pull secret"** by `crc start` terminal.
 
 ```sh
 crc start
 ```
 
 - Make a note of user login info displayed once install is finished. Output would
-like below:
+look like below:
 
 ```sh
 Started the OpenShift cluster.
@@ -122,6 +128,8 @@ To login as an admin, run 'oc login -u kubeadmin -p MTNAK-YHvuU-FIuSt-qgAxd http
 ## Using CRC web interface
 
 ### Install and configure **HAPROXY** first
+
+- Switch as root: `sudo su`
 
 - Install the package
 
@@ -184,9 +192,6 @@ EOF
 
 - Plugin your servers and `crc ip` addresses
 
-!!!note "Note"
-    - To check the internal IP, run the `crc ip` command.
-
 ```sh
 # this may be different depending on your setup
 export SERVER_IP=$(hostname --ip-address |cut -d\  -f3)
@@ -205,6 +210,10 @@ sudo systemctl status haproxy
 
 Ensure haproxy is in running status.
 
+!!!note "Note"
+    - Switch out from `root` to `fedora` user.
+    - To check the internal IP, run the `crc ip` command.
+
 ### Configure your local workstation to resolve CRC addresses
 
 Add security groups for your CRC instance to open ports 80, 443 and 6443.
@@ -219,6 +228,7 @@ CRC to the Public IP i.e. Floating IP address of your openstack VM instance.
 This can be done in several ways:
 
 1) RH document [2] describes a dnsmasq configuration.
+
 2) A simpler path for **Linux** and **Mac** users is just to create an entry in your
 `/etc/hosts` file or for **Windows** users find it at `C:\Windows\System32\Drivers\etc\hosts`.
 

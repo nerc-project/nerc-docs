@@ -261,7 +261,7 @@ systemctl restart docker
 
 - Ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
 
-For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic)
+For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic).
 
 ```sh
 sysctl net.bridge.bridge-nf-call-iptables=1
@@ -354,31 +354,31 @@ The output consists of 3 major tasks:
 1. Setup `kubeconfig` using on current master node:
 As you are running as `root` user so you need to run the following command:
 
-    ```sh
-    export KUBECONFIG=/etc/kubernetes/admin.conf
-    ```
+```sh
+export KUBECONFIG=/etc/kubernetes/admin.conf
+```
 
 2. Setup a new control plane (master) i.e. `master2` by running following
 command on **master2** node:
 
-    ```sh
-    kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
-        --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e1
+```sh
+kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
+    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e1
         5ee37ab9834567333b939458a5bfb5 \
-        --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
-    ```
+    --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
+```
 
 3. Join worker nodes running following command on individual workder nodes:
 
-    ```sh
-    kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
-        --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
-    ```
+```sh
+kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
+    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
+```
 
-    !!!note "Important Note"
-        **Your output will be different than what is provided here. While
-        performing the rest of the demo, ensure that you are executing the
-        command provided by your output and dont copy and paste from here.**
+!!!note "Important Note"
+    **Your output will be different than what is provided here. While
+    performing the rest of the demo, ensure that you are executing the
+    command provided by your output and dont copy and paste from here.**
 
 If you do not have the token, you can get it by running the following command on
 the control-plane node:
@@ -585,7 +585,7 @@ kube-scheduler-master1               1/1   Running   0        11m
 
 To read more about the currently supported base CNI solutions for Kubernetes
 [read here](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network).
 
 The below command can be run on the Loadbalancer node to install the CNI plugin:
 

@@ -48,17 +48,21 @@ clients/crc/latest/crc-linux-amd64.tar.xz \
 ```
 
 then click **"Copy pull secret"** button from the same console page and save it
-to a file somewhere (for example ~fedora/pull-secret)
+to a file somewhere (for example `~fedora/pull-secret`)
 
 - Setup crc binary to be accessable
 
 ```sh
 tar -xvf crc-linux-amd64.tar.xz
 mkdir -p ~/bin
-mv crc-linux-1.33.1-amd64/crc ~/bin/
+mv crc-linux-1.34.0-amd64/crc ~/bin/
 export PATH=$PATH:$HOME/bin
 echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
+
+!!!note "Note"
+  This CRC version `crc-linux-1.34.0-amd64` may be different when you
+  are installing! Please update it as your are running above command.
 
 ## Install and configure CRC
 
@@ -75,14 +79,14 @@ crc config set cpus 12
 ```
 
 - Paste crc secret copied during previous prep step when prompted for
-"? Please enter the pull secret" by `crc start` terminal.
+**"? Please enter the pull secret"** by `crc start` terminal.
 
 ```sh
 crc start
 ```
 
 - Make a note of user login info displayed once install is finished. Output would
-like below:
+look like below:
 
 ```sh
 Started the OpenShift cluster.
@@ -124,6 +128,8 @@ To login as an admin, run 'oc login -u kubeadmin -p MTNAK-YHvuU-FIuSt-qgAxd http
 ## Using CRC web interface
 
 ### Install and configure **HAPROXY** first
+
+- Switch as root: `sudo su`
 
 - Install the package
 
@@ -186,9 +192,6 @@ EOF
 
 - Plugin your servers and `crc ip` addresses
 
-!!!note "Note"
-    - To check the internal IP, run the `crc ip` command.
-
 ```sh
 # this may be different depending on your setup
 export SERVER_IP=$(hostname --ip-address |cut -d\  -f3)
@@ -206,6 +209,10 @@ sudo systemctl status haproxy
 ```
 
 Ensure haproxy is in running status.
+
+!!!note "Note"
+    - Switch out from `root` to `fedora` user.
+    - To check the internal IP, run the `crc ip` command.
 
 ### Configure your local workstation to resolve CRC addresses
 

@@ -61,7 +61,9 @@ nav:
                 - Bootstrapping cluster with kubeadm: openstack/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
                 - Creating a HA cluster with kubeadm: openstack/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
               - Kubespray: openstack/kubernetes/kubespray.md
-
+      - CI/CD Pipeline:
+          - CI/CD Overview: openstack/CI-CD/CI-CD Pipeline.md
+          - Setup CI/CD on NERC: openstack/CI-CD/setup-CI-CD-pipeline.md
 theme:
   name: material
   custom_dir: nerc-theme

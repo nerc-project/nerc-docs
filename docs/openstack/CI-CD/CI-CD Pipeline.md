@@ -1,6 +1,6 @@
-# What is Continuous integration/continuous delivery (CI/CD) Pipeline?
+# What is Continuous Integration/Continuous Delivery (CI/CD) Pipeline?
 
-A Continuous integration/continuous delivery (CI/CD) pipeline involves a series of
+A Continuous Integration/Continuous Delivery (CI/CD) pipeline involves a series of
 steps that is performed in order to deliver a new version of application. CI/CD
 pipelines are a practice focused on improving software delivery using automation.
 

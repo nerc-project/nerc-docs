@@ -80,7 +80,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/milstein/nodeapp_test.git'
+        git branch: 'main', url: 'https://github.com/Milstein/nodeapp.git'
       }
     }
 
@@ -117,7 +117,7 @@ pipeline {
 ```
 
 This Jenkinsfile will checkout git repo from your application github repo. For
-example, in this case we are using: `https://github.com/milstein/nodeapp_test` as
+example, in this case we are using: `https://github.com/Milstein/nodeapp` as
 our git repo where our Node.js application resides. `dockerhublogin` is the ID
 given during the credential saving steps mentioned above. Similarly, `kubernetes`
 is the ID given for Kubeconfig credential.
@@ -141,5 +141,11 @@ triggers the Pipeline process i.e. Build docker image, Push Image to your Docker
 Hub Registry and Pull the image from Docker Registry and Deploy to K8s Cluster.
 You can see the Console Output logs of this pipeline process by clicking the icon
 before the id of the started Pipeline on the right bottom corner.
+
+![Jenkins console](images/Jenkins-console.png)
+
+We will continue on [next documentation](integrate-your-GitHub-repository.md) on
+how to setup GitHub Webhook in your Jenkins Pipeline so that Jenkins will trigger
+the build when a devops commits code to your GitHub repository's specific branch.
 
 ---

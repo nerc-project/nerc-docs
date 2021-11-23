@@ -23,7 +23,7 @@ Let's see how to configure and add a webhook in GitHub:
 
     ![GitHub Settings](images/github-settings.png)
 
-3. Click on "webhooks and then "Click "Add webhooks."
+3. Click on "Webhooks" and then "Click "Add webhooks."
 
     ![Github webhook](images/Github-webhook.png)
 

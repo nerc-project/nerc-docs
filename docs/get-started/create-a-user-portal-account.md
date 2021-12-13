@@ -32,11 +32,11 @@ on how to register a General User account on NERC, which are shown in the image 
 ![MGHPCC Shared Services (MGHPCC-SS) Account Portal Welcome Page](images/regapp-welcome-page.png)
 
 There are two options: either register for a new account or to manage an existing
-one. If you are new to NERC and want to register as a new MGHPCC-SS user, click on the
-"Register for an Account" button. This will redirect you to a new web page which
-shows details about how to register for a new MGHPCC-SS user account. NERC uses CILogon
-that supports login either using your Institutional Identity Provider (IdP) or some
-public commercial identity providers i.e. Google and Github.
+one. If you are new to NERC and want to register as a new MGHPCC-SS user, click
+on the "Register for an Account" button. This will redirect you to a new web page
+which shows details about how to register for a new MGHPCC-SS user account. NERC
+uses **CILogon** that supports login either using your Institutional Identity
+Provider (IdP) or some public commercial identity providers i.e. Google and Github.
 
 Clicking the "Begin MGHPCC-SS Account Creation Process" button will initiate the
 account creation process. You will be redirected to a site managed by CILogon where

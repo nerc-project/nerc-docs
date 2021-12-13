@@ -1,12 +1,17 @@
-# What is ColdFront?
+# What is NERC's ColdFront?
 
 NERC uses an open source resource allocation management system called
 [ColdFront](https://github.com/ubccr/coldfront) to provide a single point-of-entry
 for administration, reporting, and measuring scientific impact of NERC resources
 for PI.
 
-Once a PI Account request is granted, the PI will receive an email confirming the
-request approval and how to connect NERC’s ColdFront.
+## How to get access to NERC's ColdFront
+
+General Users who are not PIs or Managers on a project see a read-only view of the
+NERC's ColdFront.
+
+Whereas, once a PI Account request is granted, the PI will receive an email confirming
+the request approval and how to connect NERC’s ColdFront.
 
 PIs or Project Owners can use NERC's ColdFront as a self-service web-portal to do
 the following tasks:
@@ -36,7 +41,7 @@ periodic review by center director to demonstrate need for the resources
 Once logged in to NERC’s ColdFront, PIs can choose Projects sub-menu located under
 the Project menu.
 
-![Project](iamges/coldfront-project.png)
+![Project](images/coldfront-project.png)
 
 On clicking the "Add a project" button will show interface like below:
 

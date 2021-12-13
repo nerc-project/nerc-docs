@@ -10,7 +10,9 @@ repo_url: https://github.com/nerc-project/nerc-docs
 nav:
   - Home: index.md
   - About: about.md
-
+  - Getting Started:
+      - How to Create a User Account: get-started/create-a-user-portal-account.md
+      - How to Get An Allocation: get-started/get-an-allocation.md
   - OpenStack:
       - OpenStack: openstack/index.md
       - Logging In:
@@ -90,3 +92,4 @@ extra:
 # Extensions
 markdown_extensions:
   - admonition
+  - tables

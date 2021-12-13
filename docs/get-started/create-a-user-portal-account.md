@@ -58,12 +58,22 @@ to complete the account creation process.
 
 ![User Account Review Before Creation Page](images/user-account-review-page.png)
 
+!!!warning "Very Important"
+    If you don't click the "Create MGHPCC-SS Account" button, your account will not
+    be created! So this is a very important step, to review and also click on the
+    "Create MGHPCC-SS Account" button to save your information.
+
 You can make any corrections that you need and fill in any blank fields i.e. "Research
 Domain" and then click the "Create MGHPCC-SS Account" button. This will automatically
 send an email to your email address with a link to validate and confirm your account
 information.
 
 ![User Account Email Verification Page](images/account-email-verification-page.png)
+
+Once you get an email and click on the provided validation web link, you will make
+sure that your user account is created and valid by viewing the following page:
+
+![Successful Account Validation Page](images/successful-account-validation.png)
 
 !!!note "Important"
     If you have an institutional identity, it's preferable that you use that identity

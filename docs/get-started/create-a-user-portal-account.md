@@ -47,7 +47,7 @@ you will select your institutional or commercial identity provider as shown belo
 Once selected, you will be redirected to your institutional or commercial identity
 provider where you will login as shown here:
 
-![Institutional IdP Login Page] (images/instutional_IdP.png)
+![Institutional IdP Login Page](images/institutional_idp.png)
 
 At the completion of that logon, your browser will be redirected to the MGHPCC-SS
 Account Management site where you will complete your MGHPCC-SS account creation process.
@@ -75,7 +75,7 @@ sure that your user account is created and valid by viewing the following page:
 
 ![Successful Account Validation Page](images/successful-account-validation.png)
 
-!!!note "Important"
+!!!question "Help"
     If you have an institutional identity, it's preferable that you use that identity
     to create your MGHPCC-SS account. Institutional identities are vetted by identity
     management teams and provide a higher level of confidence to resource owners
@@ -125,6 +125,6 @@ and include the following information:
     - List software and system tools that you use or may use for computational research
     at NERC
 
-!!!note "Important"
+!!!info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration
     staff. You are going to get into NERC using the PI user role.

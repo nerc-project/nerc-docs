@@ -5,6 +5,10 @@ postdoctoral researchers and students, at a U.S. based institution in New Englan
 In order to get access to resources provided by NERC’s computational infrastructure,
 you must first register and obtain a user account.
 
+The overall user flow can be summarized using the following sequence diagram:
+
+![NERC user flow](images/user-flow-NERC.png)
+
 ## User Accounts
 
 NERC offers two types of user accounts: a **Principal Investigator (PI) Account**

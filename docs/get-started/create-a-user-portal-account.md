@@ -107,27 +107,7 @@ provided link on your email.
 ## How to request a Principal Investigator (PI) Account?
 
 The process for requesting and obtaining **PI Account** is relatively simple by
-sending an email to [help@nese.mghpcc.org](mailto:help@nese.mghpcc.org?subject=NERC%20PI%20User%20Account%Help)
-and include the following information:
-
-    - Name
-
-    - Title or appointment
-
-    - Affiliation:
-
-        - Student
-
-        - Faculty
-
-        - Staff
-
-    - Email address (if different than used during registration)
-
-    - Describe the research that you will accomplish at NERC in one to two paragraphs
-
-    - List software and system tools that you use or may use for computational research
-    at NERC
+filling out [this NERC Principal Investigator (PI) Account Request form](https://docs.google.com/forms/d/e/1FAIpQLSdscMlm3TQR09sl7P-0n4oN1uzpd7YikqDubEYF2QDLVz6djA/viewform?pli=1&fbzx=-8227359805748438031).
 
 !!!info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration

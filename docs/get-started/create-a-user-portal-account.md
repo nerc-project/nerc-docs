@@ -23,7 +23,7 @@ accounts are able to request Resource Allocations. A PI account enables a user t
 log into NERC's computational project space; apply for allocations of NERC resources
 and grant access to other users; and delegate responsibilities to other collaborators
 from the same institutions or elsewhere as managers using
-[NERC’s ColdFront interface](https://coldfront.apps.nerc-shift-1.rc.fas.harvard.edu/).
+[NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/).
 
 ## Getting Started
 

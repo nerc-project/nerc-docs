@@ -59,6 +59,10 @@ can separate the work into multiple projects.
 
 ![Request A New Allocation](images/coldfront-request-new-allocation.png)
 
+!!!warning "Very Important"
+    Make sure to select **NERC (OpenStack)** on Resource option and specify
+    expected Units of computing.
+
 ## Resource Allocation Quotas
 
 The amount of quota to start out a resource allocation after approval, can be

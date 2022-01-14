@@ -61,7 +61,8 @@ can separate the work into multiple projects.
 
 !!!warning "Very Important"
     Make sure to select **NERC (OpenStack)** on Resource option and specify
-    expected Units of computing.
+    your expected Units of computing. Be mindful, you can extend your current resource
+    allocations on your current project later on.
 
 ## Resource Allocation Quotas
 

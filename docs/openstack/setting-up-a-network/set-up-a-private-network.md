@@ -52,7 +52,7 @@ to 192.168.0.255 using CIDR 192.168.0.0/24
 these ranges, but this causes problems with connecting to IPs in the outside
 world - so don't do it!*
 
-![Network Topology](images/![Network Topology](images/network_subnet.png)
+![Network Topology](images/network_subnet.png)
 
 IP Version: Select IPv4 or IPv6.
 

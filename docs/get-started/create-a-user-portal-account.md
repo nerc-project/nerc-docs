@@ -5,6 +5,10 @@ postdoctoral researchers and students, at a U.S. based institution in New Englan
 In order to get access to resources provided by NERC’s computational infrastructure,
 you must first register and obtain a user account.
 
+The overall user flow can be summarized using the following sequence diagram:
+
+![NERC user flow](images/user-flow-NERC.png)
+
 ## User Accounts
 
 NERC offers two types of user accounts: a **Principal Investigator (PI) Account**
@@ -19,7 +23,7 @@ accounts are able to request Resource Allocations. A PI account enables a user t
 log into NERC's computational project space; apply for allocations of NERC resources
 and grant access to other users; and delegate responsibilities to other collaborators
 from the same institutions or elsewhere as managers using
-[NERC’s ColdFront interface](https://coldfront.apps.nerc-shift-1.rc.fas.harvard.edu/).
+[NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/).
 
 ## Getting Started
 
@@ -36,7 +40,7 @@ one. If you are new to NERC and want to register as a new MGHPCC-SS user, click
 on the "Register for an Account" button. This will redirect you to a new web page
 which shows details about how to register for a new MGHPCC-SS user account. NERC
 uses **CILogon** that supports login either using your Institutional Identity
-Provider (IdP) or some public commercial identity providers i.e. Google and Github.
+Provider (IdP).
 
 Clicking the "Begin MGHPCC-SS Account Creation Process" button will initiate the
 account creation process. You will be redirected to a site managed by CILogon where
@@ -103,28 +107,10 @@ provided link on your email.
 ## How to request a Principal Investigator (PI) Account?
 
 The process for requesting and obtaining **PI Account** is relatively simple by
-sending an email to [help@nese.mghpcc.org](mailto:help@nese.mghpcc.org?subject=NERC%20PI%20User%20Account%Help)
-and include the following information:
-
-    - Name
-
-    - Title or appointment
-
-    - Affiliation:
-
-        - Student
-
-        - Faculty
-
-        - Staff
-
-    - Email address (if different than used during registration)
-
-    - Describe the research that you will accomplish at NERC in one to two paragraphs
-
-    - List software and system tools that you use or may use for computational research
-    at NERC
+filling out [this NERC Principal Investigator (PI) Account Request form](https://docs.google.com/forms/d/e/1FAIpQLSdscMlm3TQR09sl7P-0n4oN1uzpd7YikqDubEYF2QDLVz6djA/viewform?pli=1&fbzx=-8227359805748438031).
 
 !!!info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration
-    staff. You are going to get into NERC using the PI user role.
+    staff - you will recieve an email confirmation form NERC's RT system. You are
+    going to get into NERC's ColdFront resource allocation management portal using
+    the PI user role.

@@ -1,7 +1,7 @@
 # Access the OpenStack Dashboard
 
 The OpenStack Dashboard which is a web-based graphical interface, code named
-Horizon, is located at [https://nerc.rc.fas.harvard.edu](https://nerc.rc.fas.harvard.edu).
+Horizon, is located at [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org).
 
 The NERC Authentication supports CILogon using Keycloak for gateway authentication
 and authorization that provides federated login via your institution accounts and

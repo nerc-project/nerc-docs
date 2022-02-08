@@ -35,35 +35,39 @@ nav:
                   - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
               - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
               - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
-      - Setting Up Your Own Network:
-          - Set up a Private Network: openstack/setting-up-a-network/set-up-a-private-network.md
-          - Create a Router: openstack/setting-up-a-network/create-a-router.md
-      - Persistent Storage:
-          - Volumes: openstack/persistent-storage/volumes.md
-      - OpenStack CLI:
-          - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
-          - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
-      - Python SDK: openstack/python-sdk/python-SDK.md
-      - Kubernetes:
-          - Kubernetes Overview: openstack/kubernetes/kubernetes.md
+      - Advanced Topics:
+          - Setting Up Own Network:
+              - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
+              - Create a Router: openstack/advanced-openstack-topics/setting-up-a-network/create-a-router.md
+          - Persistent Storage:
+              - Volumes: openstack/advanced-openstack-topics/persistent-storage/volumes.md
+          - OpenStack CLI:
+              - OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/openstack-CLI.md
+              - Launch a VM using OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md
+          - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md
+  - Other Tools On NERC:
+      - Other Useful Tools: other-tools/index.md
+      - Kubernetes:          
+          - Kubernetes Overview: other-tools/kubernetes/kubernetes.md
+          - K8s Flavors Comparision: other-tools/kubernetes/comparisons.md
           - Development environment:
-              - Minikube: openstack/kubernetes/minikube.md
-              - Minishift: openstack/kubernetes/minishift.md
-              - Kind: openstack/kubernetes/kind.md
-              - MicroK8s: openstack/kubernetes/microk8s.md
+              - Minikube: other-tools/kubernetes/minikube.md
+              - Minishift: other-tools/kubernetes/minishift.md
+              - Kind: other-tools/kubernetes/kind.md
+              - MicroK8s: other-tools/kubernetes/microk8s.md
               - K3s:
-                  - K3s: openstack/kubernetes/k3s/k3s.md
-                  - K3s with High Availibility(HA) setup: openstack/kubernetes/k3s/k3s-ha-cluster.md
-                  - Multi-master HA K3s cluster using k3sup: openstack/kubernetes/k3s/k3s-using-k3sup.md
-                  - Single-Node K3s Cluster using k3d: openstack/kubernetes/k3s/k3s-using-k3d.md
-                  - Multi-master K3s cluster setup using k3d: openstack/kubernetes/k3s/k3s-ha-cluster-using-k3d.md
-              - k0s: openstack/kubernetes/k0s.md
-              - CRC - Red Hat Code Ready Containers: openstack/kubernetes/crc.md
+                  - K3s: other-tools/kubernetes/k3s/k3s.md
+                  - K3s with High Availibility(HA) setup: other-tools/kubernetes/k3s/k3s-ha-cluster.md
+                  - Multi-master HA K3s cluster using k3sup: other-tools/kubernetes/k3s/k3s-using-k3sup.md
+                  - Single-Node K3s Cluster using k3d: other-tools/kubernetes/k3s/k3s-using-k3d.md
+                  - Multi-master K3s cluster setup using k3d: other-tools/kubernetes/k3s/k3s-ha-cluster-using-k3d.md
+              - k0s: other-tools/kubernetes/k0s.md
+              - CRC - Red Hat Code Ready Containers: other-tools/kubernetes/crc.md
           - Production environment:
               - Kubeadm:
-                - Bootstrapping cluster with kubeadm: openstack/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
-                - Creating a HA cluster with kubeadm: openstack/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
-              - Kubespray: openstack/kubernetes/kubespray.md
+                - Bootstrapping cluster with kubeadm: other-tools/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
+                - Creating a HA cluster with kubeadm: other-tools/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
+              - Kubespray: other-tools/kubernetes/kubespray.md
 
 theme:
   name: material

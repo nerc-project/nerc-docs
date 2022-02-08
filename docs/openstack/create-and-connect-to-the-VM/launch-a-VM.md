@@ -63,15 +63,22 @@ from the 'Flavor' tab by clicking on the "+" icon.
     capacity of nova computing instances. In other words, a flavor is an
     available hardware configuration for a server. The default flavor is `m1.
     small` which is too small for the available base images so please do not
-    use it. **More details about available flavors and corresponding quotas
+    use it.
+
+    Some of the flavors will not be available for your use as per your resource **Quota**
+    limits and will be shown as below:
+
+    ![Flavor Not Avaliable due to Your Quota](images/flavor-not-available-due-to-quota.png)
+
+    **More details about available flavors and corresponding quotas
     details can be found [here](flavors.md).**
 
 After choosing `m1.large`, you should see it moved up to "Allocated".
 
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 
-- **Networks:** tab: Make sure the Private Network you just created is moved up
-to "Allocated". If not, you can click on the "+" icon in "Available".
+- **Networks:** tab: Make sure the Default Network that is created by default is
+moved up to "Allocated". If not, you can click on the "+" icon in "Available".
 
 ![VM Launch Instance Networks](images/launch_networks.png)
 

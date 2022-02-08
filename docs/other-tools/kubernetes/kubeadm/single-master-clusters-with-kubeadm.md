@@ -1,35 +1,30 @@
-# Highly Available Kubernetes Cluster using kubeadm
+# Creating a Single Master cluster with kubeadm
 
 ## Objectives
 
-- Install a multi control-plane(master) Kubernetes cluster
+- Install a single control-plane(master) Kubernetes cluster
 - Install a Pod network on the cluster so that your Pods can talk to each other
 - Deploy and test a sample app
 - Deploy K8s Dashboard to view all cluster's components
 
 ## Components and architecure
 
-This shows components and architecture of a highly-available, production-grade
-Kubernetes cluster.
-
-![Components and architecure](../images/k8s_HA_cluster.png)
+![Components and architecure](../images/single_master_architecture.png)
 
 You can learn about each component from [Kubernetes Componets](https://kubernetes.io/docs/concepts/overview/components/).
 
 ## Pre-requisite
 
-You will need 2 control-plane(master node) and 2 worker nodes to create a
-multi-master kubernetes cluster using `kubeadm`. You are going to use the
-following set up for this purpose:
+We will need 1 control-plane(master) and 2 worker node to create a single
+control-plane kubernetes cluster using `kubeadm`. We are using following setting
+for this purpose:
 
-- 2 Linux machines for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
- 4GB RAM, 10GB storage
-- 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
- 2GB RAM, 10GB storage - also [assign Floating IPs](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
- to both of the worker nodes.
-- 1 Linux machine for loadbalancer, ubuntu-21.04-x86_64, m1.small flavor with
-1vCPU, 2GB RAM, 10GB storage
-- ssh access to all machines:  [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+- 1 Linux machine for master, ubuntu-20.04-x86_64, m1.medium flavor with 2vCPU,
+4GB RAM, 10GB storage - also [assign Floating IP](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+ to the master node.
+- 2 Linux machines for worker, ubuntu-20.04-x86_64, m1.small flavor with 1vCPU,
+ 2GB RAM, 10GB storage.
+- ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
@@ -48,120 +43,21 @@ hostnamectl set-hostname <host_name>
 For example,
 
 ```sh
-echo "192.168.0.167 loadbalancer" >> /etc/hosts
-hostnamectl set-hostname loadbalancer
+echo "192.168.0.167 master" >> /etc/hosts
+hostnamectl set-hostname master
 ```
 
 ## Steps
 
-1. Prepare the Loadbalancer node to communicate with the two master nodes'
-apiservers on their IPs via port 6443.
-2. Do following in all the nodes except the Loadbalancer node:
-    - Disable swap.
-    - Install `kubelet` and `kubeadm`.
-    - Install container runtime - you will be using *`Docker`*.
-3. Initiate `kubeadm` control plane configuration on one of the master nodes.
-4. Save the new master and worker node join commands with the token.
-5. Join the second master node to the control plane using the join command.
-6. Join the worker nodes to the control plane using the join command.
-7. Configure kubeconfig(`$HOME/.kube/config`) on loadbalancer node.
-8. Install `kubectl` on Loadbalancer node.
-9. Install CNI network plugin i.e. **Flannel** on Loadbalancer node.
-10. Validate all cluster components and nodes are visible on Loadbalancer node.
-11. Deploy a sample app and validate the app from Loadbalancer node.
-
----
-
-## Setting up loadbalancer
-
-You will use **HAPROXY** as the primary loadbalancer, but you can use any other
-options as well. This node will be not part of the K8s cluster but will be
-outside of the cluster and interacts with the cluster using ports.
-
-You have 2 master nodes. Which means the user can connect to either of the 2
-apiservers. The loadbalancer will be used to loadbalance between the 2 apiservers.
-
-- Login to the loadbalancer node
-
-- Switch as root - `sudo su`
-
-- Update your repository and your system
-
-```sh
-sudo apt-get update && sudo apt-get upgrade -y
-
-```
-
-- Install haproxy
-
-```sh
-sudo apt-get install haproxy -y
-```
-
-- Edit haproxy configuration
-
-```sh
-vi /etc/haproxy/haproxy.cfg
-```
-
-Add the below lines to create a frontend configuration for loadbalancer -
-
-```sh
-frontend fe-apiserver
-   bind 0.0.0.0:6443
-   mode tcp
-   option tcplog
-   default_backend be-apiserver
-```
-
-Add the below lines to create a backend configuration for master1 and master2
-nodes at port **6443**.
-
-!!!note "Note"
-    6443 is the default port of **kube-apiserver**
-
-```sh
-backend be-apiserver
-   mode tcp
-   option tcplog
-   option tcp-check
-   balance roundrobin
-   default-server inter 10s downinter 5s rise 2 fall 2 slowstart 60s maxconn 250 maxqueue 256 weight 100 #<!-- markdownlint-disable -->
-
-       server master1 10.138.0.15:6443 check
-       server master2 10.138.0.16:6443 check
-```
-
-Here - **master1** and **master2** are the hostnames of the master nodes and
-**10.138.0.15** and **10.138.0.16** are the corresponding internal IP addresses.
-
-- Restart and Verify haproxy
-
-```sh
-systemctl restart haproxy
-systemctl status haproxy
-```
-
-Ensure haproxy config file is correctly formatted:
-
-```sh
-haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
-```
-
-Ensure haproxy is in running status.
-
-Run `nc` command as below:
-
-```sh
-nc -v localhost 6443
-Connection to localhost 6443 port [tcp/*] succeeded!
-```
-
-!!!note "Note"
-    If you see failures for `master1` and `master2` connectivity, you can ignore
-    them for time being as you have not yet installed anything on the servers.
-
----
+1. Disable swap on all nodes.
+2. Install `kubeadm`, `kubelet`, and `kubectl` on all the nodes.
+3. Install container runtime on all nodes- you will be using *`Docker`*.
+4. Initiate `kubeadm` control plane configuration on the master node.
+5. Save the worker node join command with the token.
+6. Install CNI network plugin i.e. **Flannel** on master node.
+7. Join the worker node to the master node (control plane) using the join command.
+8. Validate all cluster components and nodes are visible on master node.
+9. Deploy a sample app and validate the app from master node.
 
 ## Install kubeadm, kubelet and docker on master and worker nodes
 
@@ -178,14 +74,13 @@ does things like starting pods and containers.
 
 In this step, you will install kubelet and kubeadm on the below nodes
 
-- master1
-- master2
+- master
 - worker1
 - worker2
 
 The below steps will be performed on all the above mentioned nodes:
 
-- SSH into all the 4 machines
+- SSH into all the 3 machines
 
 - Switch as root: `sudo su`
 
@@ -222,20 +117,22 @@ deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 ```
 
-- Install kubelet and kubeadm
+- Install kubelet, kubeadm, and kubectl
 
 ```sh
 apt-get update
-apt-get install -y kubelet kubeadm
+apt-get install -y kubelet kubeadm kubectl
 ```
 
 - `apt-mark hold` is used so that these packages will not be updated/removed automatically
 
 ```sh
-apt-mark hold kubelet kubeadm
+apt-mark hold kubelet kubeadm kubectl
 ```
 
-### Install **Docker** on master and worker nodes
+---
+
+## Install **Docker**
 
 - Install container runtime - **docker**
 
@@ -269,32 +166,24 @@ sysctl net.bridge.bridge-nf-call-iptables=1
 
 ---
 
-## Configure kubeadm to bootstrap the cluster
+## Configure kubeadm to bootstrap the cluster on master node
 
-You will start off by initializing only one master node. For this purpose, you
-choose `master1` to initialize our first control plane but you can also do the
-same in `master2`.
+Run the below command on the master node i.e. `master` that you want to setup as
+control plane.
 
-- SSH into **master1** machine
+- SSH into **master** machine
 - Switch to root user: `sudo su`
 - Execute the below command to initialize the cluster:
 
 ```sh
-kubeadm init --control-plane-endpoint
-"LOAD_BALANCER_IP_OR_HOSTNAME:LOAD_BALANCER_PORT" --upload-certs --pod-network-cidr=10.244.0.0/16
+export MASTER_IP=<Master-Internal-IP>
+kubeadm config images pull
+kubeadm init --apiserver-advertise-address=${MASTER_IP} --pod-network-cidr=10.244.0.0/16
 ```
 
-Here, you can use either the IP address or the hostname of the loadbalancer in
-place of <LOAD_BALANCER_IP_OR_HOSTNAME>. You have not enabled the hostname of
-the server, i.e. `loadbalancer` as the LOAD_BALANCER_IP_OR_HOSTNAME that is
-visible from the **master1** node. so instead of using not resolvable hostnames
-across your network, you will be using the IP address of the Loadbalancer server.
-
-The <LOAD_BALANCER_PORT> is the front end configuration port defined in HAPROXY
-configuration. For this, you have kept the port as **6443** which is the default
-`apiserver` port.
-
 !!!note "Important Note"
+    Please make sure you replace the correct IP of the node with
+    `<Master-Internal-IP>` which is the Internal IP of master node.
     `--pod-network-cidr` value depends upon what CNI plugin you going to use so
     need to be very careful while setting this CIDR values. In our case, you are
     going to use **Flannel** CNI network plugin so you will use:
@@ -303,10 +192,14 @@ configuration. For this, you have kept the port as **6443** which is the default
     if you are opted to use **Weave Net** no need to pass this parameter.
 
 For example, our `Flannel` CNI network plugin based kubeadm init command with
-*loadbalancer node* with internal IP: `192.168.0.167` look like below:
+*master node* with internal IP: `192.168.0.167` look like below:
+
+For example,
 
 ```sh
-kubeadm init --control-plane-endpoint "192.168.0.167:6443" --upload-certs --pod-network-cidr=10.244.0.0/16
+export MASTER_IP=192.168.0.167
+kubeadm config images pull
+kubeadm init --apiserver-advertise-address=${MASTER_IP} --pod-network-cidr=10.244.0.0/16
 ```
 
 Save the output in some secure file for future use. This will show an unique token
@@ -329,14 +222,6 @@ You should now deploy a pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
   https://kubernetes.io/docs/concepts/cluster-administration/addons/
 
-You can now join any number of the control-plane node running the following
-command on each as root:
-
-  kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
-    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee3
-    7ab9834567333b939458a5bfb5 \
-    --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
-
 Please note that the certificate-key gives access to cluster sensitive data, keep
 it secret!
 As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you
@@ -349,26 +234,14 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
 ```
 
-The output consists of 3 major tasks:
+The output consists of 2 major tasks:
 
 1. Setup `kubeconfig` using on current master node:
 As you are running as `root` user so you need to run the following command:
 
-```sh
-export KUBECONFIG=/etc/kubernetes/admin.conf
-```
+    `export KUBECONFIG=/etc/kubernetes/admin.conf`
 
-2. Setup a new control plane (master) i.e. `master2` by running following
-command on **master2** node:
-
-```sh
-kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
-    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e1
-        5ee37ab9834567333b939458a5bfb5 \
-    --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
-```
-
-3. Join worker nodes running following command on individual workder nodes:
+2. Join worker nodes running following command on individual workder nodes:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
@@ -428,42 +301,12 @@ $ kubeadm join <master-ip>:<master-port> --token <token> \
 
 ---
 
-- SSH into `master2`
-- Switch to root user:`sudo su`
-- Check the command provided by the output of `master1`:
-
-You can now use the below command to add another control-plane node(master) to
-the control plane:
-
-```sh
-kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb
-    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee3
-    7ab9834567333b939458a5bfb5 \
-    --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
-
-```
-
-- Execute the kubeadm join command for control plane on `master2`
-
-Your output should look like:
-
-```sh
- This node has joined the cluster and a new control plane instance was created:
-
-* Certificate signing request was sent to apiserver and approval was received.
-* The Kubelet was informed of the new secure connection details.
-* Control plane (master) label and taint were applied to the new node.
-* The Kubernetes control plane instances scaled up.
-* A new etcd member was added to the local/stacked etcd cluster.
-
-```
-
-Now that you have initialized both the masters - you can now work on
-bootstrapping the worker nodes.
+Now that you have initialized the master - you can now work on bootstrapping the
+worker nodes.
 
 - SSH into **worker1** and **worker2**
 - Switch to root user on both the machines: `sudo su`
-- Check the output given by the init command on **master1** to join worker node:
+- Check the output given by the init command on **master** to join worker node:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
@@ -483,53 +326,7 @@ This node has joined the cluster:
 
 ---
 
-## Configure kubeconfig on loadbalancer node
-
-Now that you have configured the master and the worker nodes, its now time to
-configure Kubeconfig (`.kube`) on the loadbalancer node. It is completely up to
-you if you want to use the loadbalancer node to setup kubeconfig. kubeconfig can
-also be setup externally on a separate machine which has access to loadbalancer
-node. For the purpose of this demo you will use loadbalancer node to host
-kubeconfig and `kubectl`.
-
-- SSH into `loadbalancer` node
-- Switch to root user: `sudo su`
-- Create a directory: .kube at $HOME of root user
-
-```sh
-mkdir -p $HOME/.kube
-```
-
-- SCP configuration file from any one **master** node to **loadbalancer** node
-
-```sh
-scp master1:/etc/kubernetes/admin.conf $HOME/.kube/config
-
-```
-
-!!!note "Important Note"
-    If you havent setup ssh connection between master node and loadbalancer, you
-    can manually copy content of the file `/etc/kubernetes/admin.conf` from
-    `master1` node and then past it to `$HOME/.kube/config` file on the
-    loadbalancer node. Ensure that the kubeconfig file path is
-    **`$HOME/.kube/config`** on the loadbalancer node.
-
-- Provide appropriate ownership to the copied file
-
-```sh
-chown $(id -u):$(id -g) $HOME/.kube/config
-```
-
----
-
-## Install **kubectl**
-
-- Install kubectl binary
-• **kubectl**: the command line util to talk to your cluster.
-
-```sh
-snap install kubectl --classic
-```
+## Validate all cluster components and nodes are visible on all nodes
 
 - Verify the cluster
 
@@ -537,8 +334,7 @@ snap install kubectl --classic
 kubectl get nodes
 
 NAME      STATUS        ROLES                  AGE     VERSION
-master1   NotReady      control-plane,master   21m     v1.16.2
-master2   NotReady      control-plane,master   15m     v1.16.2
+master    NotReady      control-plane,master   21m     v1.16.2
 worker1   Ready         <none>                 9m17s   v1.16.2
 worker2   Ready         <none>                 9m25s   v1.16.2
 
@@ -570,7 +366,7 @@ it will be in a Running state.
 Output Example:
 
 ```sh
-root@loadbalancer:~$ kubectl get po -n kube-system
+root@master:~$ kubectl get po -n kube-system
  NAME                               READY  STATUS   RESTARTS  AGE
 coredns-558bd4d5db-5jktc             0/1   Pending   0        10m
 coredns-558bd4d5db-xdc5x             0/1   Pending   0        10m
@@ -587,7 +383,7 @@ To read more about the currently supported base CNI solutions for Kubernetes
 [read here](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 and also [read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network).
 
-The below command can be run on the Loadbalancer node to install the CNI plugin:
+The below command can be run on the master node to install the CNI plugin:
 
 ```sh
 kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
@@ -633,12 +429,16 @@ You can now verify your HA cluster running:
 kubectl get nodes
 
 NAME      STATUS   ROLES                    AGE   VERSION
-master1   Ready    control-plane,master     22m   v1.16.2
-master2   Ready    control-plane,master     17m   v1.16.2
+master    Ready    control-plane,master     22m   v1.16.2
 worker1   Ready    <none>                   10m   v1.16.2
 worker2   Ready    <none>                   10m   v1.16.2
 
 ```
+
+### Watch Recoded Video
+
+Here’s a quick [recorded demo video](https://drive.google.com/file/d/1kVQSX2CSFbB1WbzAMFOKFt1YuUy-nVh0/view?usp=sharing)
+upto this point where we successfully setup single master K8s cluster using Kubeadm.
 
 ---
 
@@ -666,21 +466,9 @@ The output will show:
 ![Running Services](../images/running_services.png)
 
 Once the deployment is up, you should be able to access the Nginx home page on
-the allocated NodePort from either of the worker nodes' Floating IP.
+the allocated NodePort from the master node's Floating IP.
 
-To check which worker node is serving `nginx`, you can check **NODE** column running the following command:
-
-```sh
-kubectl get pods --all-namespaces --output wide
-```
-
-**OR,**
-
-```sh
-kubectl get pods -A -o wide
-```
-
-Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>`
+Go to browser, visit `http://<Master-Floating-IP>:<NodePort>`
 i.e. <http://128.31.25.246:32713> to check the nginx default page.
 
 For your example,
@@ -694,7 +482,7 @@ For your example,
 You will going to setup [K8dash/Skooner](https://github.com/skooner-k8s/skooner)
 to view a dashboard that shows all your K8s cluster components.
 
-- SSH into `loadbalancer` node
+- SSH into `master` node
 - Switch to root user: `sudo su`
 - Apply available deployment by running the following command:
 
@@ -702,8 +490,8 @@ to view a dashboard that shows all your K8s cluster components.
 kubectl apply -f https://raw.githubusercontent.com/skooner-k8s/skooner/master/kubernetes-skooner-nodeport.yaml
 ```
 
-This will map Skooner port **4654** to a randomly selected port on the running node.
-The assigned NodePort can be found running:
+This will map Skooner port **4654** to a randomly selected port from the master node.
+The assigned NodePort on the master node can be found running:
 
 ```sh
 kubectl get svc --namespace=kube-system
@@ -717,7 +505,7 @@ kubectl get po,svc -n kube-system
 
 ![Skooner Service Port](../images/skooner_port.png)
 
-Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>` i.e.
+Go to browser, visit `http://<Master-Floating-IP>:<NodePort>` i.e.
 <http://128.31.25.246:30495> to check the skooner dashboard page.
 
 ![Skooner Dashboard](../images/skooner-dashboard.png)
@@ -748,8 +536,9 @@ the dashboard.
 
 ### Watch Demo Video
 
-Here’s a [recorded demo video](https://drive.google.com/file/d/1mALftMHEUkjQ7lK6oJ6S_tiY59Q0JASY/view?usp=sharing)
-on how to setup HA K8s cluster using `kubeadm`.
+Here’s a [recorded demo video](https://drive.google.com/file/d/1hTkgpXtzkhdOd6KnoQiVDWgNnsoN5VZB/view?usp=sharing)
+on how to deploy applications on top of setup single master K8s cluster as
+explained above.
 
 ---
 

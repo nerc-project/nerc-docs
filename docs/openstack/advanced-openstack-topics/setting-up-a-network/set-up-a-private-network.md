@@ -1,9 +1,15 @@
 
 # Set up a Private Network
 
-## Create a Network
+!!! note "Default Network for your Project"
+    During your project setup, NERC will setup a default network, router and interface
+    for your project that is ready-to-use.
 
-You can view your/ existing network topology by clicking Project, then click
+    ![Deafult Network Topology](images/default-network.png)
+
+## Create Your Own Private Network
+
+You can view/ create your/ existing network topology by clicking Project, then click
 Network panel and choose Network Topology from the tabs that appears. This
 shows public network which is accessible to all projects.
 

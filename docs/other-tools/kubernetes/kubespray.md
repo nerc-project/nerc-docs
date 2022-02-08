@@ -9,13 +9,13 @@ for this purpose:
 - 1 Linux machine for Ansible master, ubuntu-21.04-x86_64, m1.medium flavor with
 2vCPU, 4GB RAM, 10GB storage.
 - 1 Linux machine for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
-4GB RAM, 10GB storage - also [assign Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
+4GB RAM, 10GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to the master node.
 - 1 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage.
-- ssh access to all machines: [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+- ssh access to all machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
-- To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../create-and-connect-to-the-VM/ssh-to-cloud-VM/#adding-other-peoples-ssh-keys-to-the-instance)
+- To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/#adding-other-peoples-ssh-keys-to-the-instance)
     Generate SSH key for Ansible master node using:
 
 ```sh

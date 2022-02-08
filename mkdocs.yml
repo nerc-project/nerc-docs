@@ -11,6 +11,7 @@ nav:
   - Home: index.md
   - About: about.md
   - Getting Started:
+      - User Onboarding Process: get-started/user-onboarding-on-NERC.md
       - How to Create a User Account: get-started/create-a-user-portal-account.md
       - How to Get An Allocation: get-started/get-an-allocation.md
   - OpenStack:
@@ -18,9 +19,6 @@ nav:
       - Logging In:
           - Access the OpenStack Dashboard: openstack/logging-in/access-the-openstack-dashboard.md
           - Dashboard Overview: openstack/logging-in/dashboard-overview.md
-      - Setting Up A Network:
-          - Set up a Private Network: openstack/setting-up-a-network/set-up-a-private-network.md
-          - Create a Router: openstack/setting-up-a-network/create-a-router.md
       - Access and Security:
           - Security Groups: openstack/access-and-security/security-groups.md
           - Create a Key Pair: openstack/access-and-security/create-a-key-pair.md
@@ -37,6 +35,9 @@ nav:
                   - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
               - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
               - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
+      - Setting Up Your Own Network:
+          - Set up a Private Network: openstack/setting-up-a-network/set-up-a-private-network.md
+          - Create a Router: openstack/setting-up-a-network/create-a-router.md
       - Persistent Storage:
           - Volumes: openstack/persistent-storage/volumes.md
       - OpenStack CLI:

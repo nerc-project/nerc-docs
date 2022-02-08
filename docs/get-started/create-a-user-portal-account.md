@@ -1,15 +1,4 @@
-# Overview
-
-NERC’s Research allocations are available to faculty members and researchers, including
-postdoctoral researchers and students, at a U.S. based institution in New England.
-In order to get access to resources provided by NERC’s computational infrastructure,
-you must first register and obtain a user account.
-
-The overall user flow can be summarized using the following sequence diagram:
-
-![NERC user flow](images/user-flow-NERC.png)
-
-## User Accounts
+# User Account Types
 
 NERC offers two types of user accounts: a **Principal Investigator (PI) Account**
 and a **General User Account**. All General Users must be sponsored by a PI with

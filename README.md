@@ -1,8 +1,8 @@
 # NERC Documentation
 
 User-facing documentation for the New England Research Cloud
-This repository contains NERC [documentation](https://nerc-project.github.io/nerc-docs/) written
-in Markdown which is converted to html/css/js with the
+This repository contains NERC [documentation](https://nerc-project.github.io/nerc-docs/)
+written in Markdown which is converted to html/css/js with the
 [mkdocs](http://www.mkdocs.org) static site generator. The theme is [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
 with NERC custom theme and template. The documentation pages can be found in
 top-level folder `docs`.

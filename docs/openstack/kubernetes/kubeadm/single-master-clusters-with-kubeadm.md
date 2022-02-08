@@ -192,7 +192,7 @@ kubeadm init --apiserver-advertise-address=${MASTER_IP} --pod-network-cidr=10.24
     if you are opted to use **Weave Net** no need to pass this parameter.
 
 For example, our `Flannel` CNI network plugin based kubeadm init command with
-*mster node* with internal IP: `192.168.0.167` look like below:
+*master node* with internal IP: `192.168.0.167` look like below:
 
 For example,
 

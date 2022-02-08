@@ -1,15 +1,4 @@
-# Overview
-
-NERC’s Research allocations are available to faculty members and researchers, including
-postdoctoral researchers and students, at a U.S. based institution in New England.
-In order to get access to resources provided by NERC’s computational infrastructure,
-you must first register and obtain a user account.
-
-The overall user flow can be summarized using the following sequence diagram:
-
-![NERC user flow](images/user-flow-NERC.png)
-
-## User Accounts
+# User Account Types
 
 NERC offers two types of user accounts: a **Principal Investigator (PI) Account**
 and a **General User Account**. All General Users must be sponsored by a PI with
@@ -28,7 +17,7 @@ from the same institutions or elsewhere as managers using
 ## Getting Started
 
 Any faculty, staff, student, and external collaborator must request an user account
-through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/)
+through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/).
 This is a web-based, single point-of-entry to the NERC system that displays a user
 welcome page. The welcome page of the account registration site displays instructions
 on how to register a General User account on NERC, which are shown in the image below:

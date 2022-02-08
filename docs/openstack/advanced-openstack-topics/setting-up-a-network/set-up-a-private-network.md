@@ -24,9 +24,6 @@ In the Create Network dialog box, specify the following values.
 
 Network Name: Specify a name to identify the network.
 
-Shared: Share the network with other projects. Non admin users are not allowed
-to set shared option and not even visible to them.
-
 Admin State: The state to start the network in.
 
 Create Subnet: Select this check box to create a subnet

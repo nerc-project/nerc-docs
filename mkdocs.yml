@@ -47,7 +47,7 @@ nav:
           - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
-      - Kubernetes:          
+      - Kubernetes:
           - Kubernetes Overview: other-tools/kubernetes/kubernetes.md
           - K8s Flavors Comparision: other-tools/kubernetes/comparisons.md
           - Development environment:

@@ -46,11 +46,9 @@ Network Address: Specify the IP address for the subnet. For your private
 networks, you should use IP addresses which fall within the ranges that are
 specifically reserved for private networks:
 
-```sh
-  10.0.0.0/8
-  172.16.0.0/12
-  192.168.0.0/16
-```
+    10.0.0.0/8
+    172.16.0.0/12
+    192.168.0.0/16
 
 In the example below, we configure a network containing addresses 192.168.0.1
 to 192.168.0.255 using CIDR 192.168.0.0/24

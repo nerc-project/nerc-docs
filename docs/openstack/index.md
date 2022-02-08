@@ -1,6 +1,5 @@
 # OpenStack Tutorial Index
 
-
 If you're just starting out, we recommend starting from
 
 [Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md)

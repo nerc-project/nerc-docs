@@ -20,10 +20,10 @@ control-plane kubernetes cluster using `kubeadm`. We are using following setting
 for this purpose:
 
 - 1 Linux machine for master, ubuntu-20.04-x86_64, m1.medium flavor with 2vCPU,
-4GB RAM, 10GB storage - also [assign Floating IP](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
- to the master node.
+4GB RAM, 10GB storage.
 - 2 Linux machines for worker, ubuntu-20.04-x86_64, m1.small flavor with 1vCPU,
- 2GB RAM, 10GB storage.
+ 2GB RAM, 10GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+ to both of the worker nodes.
 - ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
@@ -476,10 +476,29 @@ The output will show:
 ![Running Services](../images/running_services.png)
 
 Once the deployment is up, you should be able to access the Nginx home page on
-the allocated NodePort from the master node's Floating IP.
+the allocated NodePort from either of the worker nodes' Floating IP.
 
-Go to browser, visit `http://<Master-Floating-IP>:<NodePort>`
+To check which worker node is serving `nginx`, you can check **NODE** column
+running the following command:
+
+```sh
+kubectl get pods --all-namespaces --output wide
+```
+
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
+This will shows like below:
+
+![Nginx Pod and Worker](../images/nginx-pod-worker-node.png)
+
+Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>`
 i.e. <http://128.31.25.246:32713> to check the nginx default page.
+Here `Worker_Floating-IP` corresponds to the Floating IP of the `nginx` pod
+running worker node i.e. `worker2`.
 
 For your example,
 
@@ -515,8 +534,27 @@ kubectl get po,svc -n kube-system
 
 ![Skooner Service Port](../images/skooner_port.png)
 
-Go to browser, visit `http://<Master-Floating-IP>:<NodePort>` i.e.
+To check which worker node is serving `skooner-*`, you can check **NODE** column
+running the following command:
+
+```sh
+kubectl get pods --all-namespaces --output wide
+```
+
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
+This will shows like below:
+
+![Skooner Pod and Worker](../images/skooner-pod-worker-node.png)
+
+Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>` i.e.
 <http://128.31.25.246:30495> to check the skooner dashboard page.
+Here `Worker_Floating-IP` corresponds to the Floating IP of the `skooner-*` pod
+running worker node i.e. `worker2`.
 
 ![Skooner Dashboard](../images/skooner-dashboard.png)
 

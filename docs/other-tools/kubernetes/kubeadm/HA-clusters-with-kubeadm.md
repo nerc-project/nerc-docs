@@ -23,7 +23,7 @@ multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
 - 2 Linux machines for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
- 4GB RAM, 10GB storage
+ 4GB RAM, 10GB storage.
 - 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
  2GB RAM, 10GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
@@ -515,7 +515,7 @@ scp master1:/etc/kubernetes/admin.conf $HOME/.kube/config
 !!!note "Important Note"
     If you havent setup ssh connection between master node and loadbalancer, you
     can manually copy content of the file `/etc/kubernetes/admin.conf` from
-    `master1` node and then past it to `$HOME/.kube/config` file on the
+    `master1` node and then paste it to `$HOME/.kube/config` file on the
     loadbalancer node. Ensure that the kubeconfig file path is
     **`$HOME/.kube/config`** on the loadbalancer node.
 
@@ -685,8 +685,14 @@ kubectl get pods --all-namespaces --output wide
 kubectl get pods -A -o wide
 ```
 
+This will shows like below:
+
+![Nginx Pod and Worker](../images/nginx-pod-worker-node.png)
+
 Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>`
 i.e. <http://128.31.25.246:32713> to check the nginx default page.
+Here `Worker_Floating-IP` corresponds to the Floating IP of the `nginx` pod
+running worker node i.e. `worker2`.
 
 For your example,
 
@@ -722,8 +728,27 @@ kubectl get po,svc -n kube-system
 
 ![Skooner Service Port](../images/skooner_port.png)
 
+To check which worker node is serving `skooner-*`, you can check **NODE** column
+running the following command:
+
+```sh
+kubectl get pods --all-namespaces --output wide
+```
+
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
+This will shows like below:
+
+![Skooner Pod and Worker](../images/skooner-pod-worker-node.png)
+
 Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>` i.e.
 <http://128.31.25.246:30495> to check the skooner dashboard page.
+Here `Worker_Floating-IP` corresponds to the Floating IP of the `skooner-*` pod
+running worker node i.e. `worker2`.
 
 ![Skooner Dashboard](../images/skooner-dashboard.png)
 

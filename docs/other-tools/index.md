@@ -36,9 +36,3 @@
 ---
 
 ## CI/ CD Tools
-
----
-
-## Getting Help
-
-- [Help & FAQs]

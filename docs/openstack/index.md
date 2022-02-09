@@ -48,9 +48,3 @@ the list below.
 ## Python SDK
 
 - [Python SDK](advanced-openstack-topics/python-sdk/python-SDK.md)
-
----
-
-## Getting Help
-
-- [Help & FAQs]

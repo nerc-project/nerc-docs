@@ -280,6 +280,7 @@ same in `master2`.
 - Execute the below command to initialize the cluster:
 
 ```sh
+kubeadm config images pull
 kubeadm init --control-plane-endpoint
 "LOAD_BALANCER_IP_OR_HOSTNAME:LOAD_BALANCER_PORT" --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
@@ -306,6 +307,7 @@ For example, our `Flannel` CNI network plugin based kubeadm init command with
 *loadbalancer node* with internal IP: `192.168.0.167` look like below:
 
 ```sh
+kubeadm config images pull
 kubeadm init --control-plane-endpoint "192.168.0.167:6443" --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
 

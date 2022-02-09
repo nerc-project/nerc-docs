@@ -23,13 +23,13 @@ multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
 - 2 Linux machines for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
- 4GB RAM, 10GB storage
+ 4GB RAM, 10GB storage.
 - 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
- 2GB RAM, 10GB storage - also [assign Floating IPs](../../create-and-connect-to-the-VM/assign-a-floating-IP.md)
+ 2GB RAM, 10GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
 - 1 Linux machine for loadbalancer, ubuntu-21.04-x86_64, m1.small flavor with
 1vCPU, 2GB RAM, 10GB storage
-- ssh access to all machines:  [Read more here](../../create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+- ssh access to all machines:  [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
@@ -280,6 +280,7 @@ same in `master2`.
 - Execute the below command to initialize the cluster:
 
 ```sh
+kubeadm config images pull
 kubeadm init --control-plane-endpoint
 "LOAD_BALANCER_IP_OR_HOSTNAME:LOAD_BALANCER_PORT" --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
@@ -306,6 +307,7 @@ For example, our `Flannel` CNI network plugin based kubeadm init command with
 *loadbalancer node* with internal IP: `192.168.0.167` look like below:
 
 ```sh
+kubeadm config images pull
 kubeadm init --control-plane-endpoint "192.168.0.167:6443" --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
 
@@ -351,14 +353,17 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
 
 The output consists of 3 major tasks:
 
-1. Setup `kubeconfig` using on current master node:
+A. Setup `kubeconfig` using on current master node:
 As you are running as `root` user so you need to run the following command:
 
 ```sh
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
-2. Setup a new control plane (master) i.e. `master2` by running following
+!!!warning "Warning"
+    Kubeadm signs the certificate in the admin.conf to have `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a break-glass, super user group that bypasses the authorization layer (e.g. RBAC). Do not share the admin.conf file with anyone and instead grant users custom permissions by generating them a kubeconfig file using the `kubeadm kubeconfig user` command.
+
+B. Setup a new control plane (master) i.e. `master2` by running following
 command on **master2** node:
 
 ```sh
@@ -368,7 +373,7 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
 ```
 
-3. Join worker nodes running following command on individual workder nodes:
+C. Join worker nodes running following command on individual workder nodes:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
@@ -510,7 +515,7 @@ scp master1:/etc/kubernetes/admin.conf $HOME/.kube/config
 !!!note "Important Note"
     If you havent setup ssh connection between master node and loadbalancer, you
     can manually copy content of the file `/etc/kubernetes/admin.conf` from
-    `master1` node and then past it to `$HOME/.kube/config` file on the
+    `master1` node and then paste it to `$HOME/.kube/config` file on the
     loadbalancer node. Ensure that the kubeconfig file path is
     **`$HOME/.kube/config`** on the loadbalancer node.
 
@@ -680,8 +685,14 @@ kubectl get pods --all-namespaces --output wide
 kubectl get pods -A -o wide
 ```
 
+This will shows like below:
+
+![Nginx Pod and Worker](../images/nginx-pod-worker-node.png)
+
 Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>`
 i.e. <http://128.31.25.246:32713> to check the nginx default page.
+Here `Worker_Floating-IP` corresponds to the Floating IP of the `nginx` pod
+running worker node i.e. `worker2`.
 
 For your example,
 
@@ -717,8 +728,27 @@ kubectl get po,svc -n kube-system
 
 ![Skooner Service Port](../images/skooner_port.png)
 
+To check which worker node is serving `skooner-*`, you can check **NODE** column
+running the following command:
+
+```sh
+kubectl get pods --all-namespaces --output wide
+```
+
+**OR,**
+
+```sh
+kubectl get pods -A -o wide
+```
+
+This will shows like below:
+
+![Skooner Pod and Worker](../images/skooner-pod-worker-node.png)
+
 Go to browser, visit `http://<Worker-Floating-IP>:<NodePort>` i.e.
 <http://128.31.25.246:30495> to check the skooner dashboard page.
+Here `Worker_Floating-IP` corresponds to the Floating IP of the `skooner-*` pod
+running worker node i.e. `worker2`.
 
 ![Skooner Dashboard](../images/skooner-dashboard.png)
 

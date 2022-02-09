@@ -1,9 +1,15 @@
 
 # Set up a Private Network
 
-## Create a Network
+!!! note "Default Network for your Project"
+    During your project setup, NERC will setup a default network, router and interface
+    for your project that is ready-to-use.
 
-You can view your/ existing network topology by clicking Project, then click
+    ![Deafult Network Topology](images/default-network.png)
+
+## Create Your Own Private Network
+
+You can view/ create your/ existing network topology by clicking Project, then click
 Network panel and choose Network Topology from the tabs that appears. This
 shows public network which is accessible to all projects.
 
@@ -17,9 +23,6 @@ In the Create Network dialog box, specify the following values.
 - Network tab:
 
 Network Name: Specify a name to identify the network.
-
-Shared: Share the network with other projects. Non admin users are not allowed
-to set shared option and not even visible to them.
 
 Admin State: The state to start the network in.
 
@@ -40,11 +43,9 @@ Network Address: Specify the IP address for the subnet. For your private
 networks, you should use IP addresses which fall within the ranges that are
 specifically reserved for private networks:
 
-```sh
-  10.0.0.0/8
-  172.16.0.0/12
-  192.168.0.0/16
-```
+    10.0.0.0/8
+    172.16.0.0/12
+    192.168.0.0/16
 
 In the example below, we configure a network containing addresses 192.168.0.1
 to 192.168.0.255 using CIDR 192.168.0.0/24

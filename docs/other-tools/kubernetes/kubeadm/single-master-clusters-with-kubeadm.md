@@ -236,12 +236,22 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
 
 The output consists of 2 major tasks:
 
-1. Setup `kubeconfig` using on current master node:
+A. Setup `kubeconfig` using on current master node:
 As you are running as `root` user so you need to run the following command:
 
-    `export KUBECONFIG=/etc/kubernetes/admin.conf`
+```sh
+export KUBECONFIG=/etc/kubernetes/admin.conf
+```
 
-2. Join worker nodes running following command on individual workder nodes:
+!!!warning "Warning"
+    Kubeadm signs the certificate in the admin.conf to have
+    `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
+    break-glass, super user group that bypasses the authorization layer
+    (e.g. RBAC). Do not share the admin.conf file with anyone and instead
+    grant users custom permissions by generating them a kubeconfig file using
+    the `kubeadm kubeconfig user` command.
+
+B. Join worker nodes running following command on individual workder nodes:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \

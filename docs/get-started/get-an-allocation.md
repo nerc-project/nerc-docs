@@ -13,7 +13,7 @@ NERC's ColdFront.
 Whereas, once a PI Account request is granted, the PI will receive an email confirming
 the request approval and how to connect NERC’s ColdFront.
 
-PIs or Project Owners can use NERC's ColdFront as a self-service web-portal to do
+PI or project managers can use NERC's ColdFront as a self-service web-portal to do
 the following tasks:
 
 - Add or manage or archive projects
@@ -68,7 +68,7 @@ can separate the work into multiple projects.
 
 The amount of quota to start out a resource allocation after approval, can be
 specified using an integer field in the resource allocation request form as shown
-above. The provided unit value is computed as PIs or project managers request
+above. The provided unit value is computed as PI or project managers request
 resource quota. The basic unit of computational resources is defined in terms of
 integer value that corresponds to multiple openstack resource quotas. For example,
 1 Unit corresponds to:
@@ -109,7 +109,7 @@ Removing Users from the Project is straightforward by just clicking on the
 
 ![Remove User(s) From A Project](images/coldfront-remove-users-from-a-project.png)
 
-PIs or project owners can select the user(s) and then click on the "Remove Selected
+PI or project managers can select the user(s) and then click on the "Remove Selected
 Users From Project" button.
 
 ## User Roles
@@ -118,7 +118,7 @@ Access to ColdFront is role based so users see a read-only view of the allocatio
 details for any allocations they are on. PIs see the same allocation details as general
 users and can also add project users to the allocation if they're not already on
 it. Even on the first time, PIs add any user to the project as the User role. Later
-PIs or project owners can upgrade users on their project to the 'manager' role. This
+PI or project managers can upgrade users on their project to the 'manager' role. This
 allows multiple managers on the same project. This provides the user with the same
 access and abilities as the PI. The only things a PI can do that a manager can't,
 is create a new project or archive a project. All other project related tasks that
@@ -177,12 +177,47 @@ the "Remove Users" button. Then it shows the following interface:
 
 ![Removing User(s) from the Resource Allocation](images/coldfront-remove-users-from-allocation.png)
 
-PIs or project owners can select the user(s) on the checkboxes and then click on
+PI or project managers can select the user(s) on the checkboxes and then click on
 the "Remove Selected Users From Project" button.
+
+## Request change to Resource Allocation to an existing project
+
+If past resource allocation is not sufficient for an existing project, PIs or project
+managers can request for change by clicking "Request Change" button on project
+resource allocation detail page as show below:
+
+![Request Change Resource Allocation](images/coldfront-request-change-allocation.png)
+
+This will bring up the detailed Quota attributes for that project as shown below:
+
+![Request Change Resource Allocation Attributes](images/coldfront-allocation-attributes.png)
+
+PI or project managers can provide a new value for the individual quota attributes,
+and give justification for the requested changes so that the NERC admin can review
+the change request and approve or deny based on justification and quota change request.
+Then submitting the change request, this will notify the NERC admin about it. Please
+wait untill the NERC admin approves/ deny the change request to see the change on
+your resource allocation for the selected project.
+
+!!!info "Information"
+    PI or project managers can put the new values on the textboxes for **ONLY** quota
+    attributes they want to change others they can **left blank** so that will not
+    get changed!
+
+Once the request is processed by the NERC admin, any user can view that request change
+trails for the project by looking at the "Allocation Change Requests" section that
+looks like below:
+
+![Allocation Change Requests](images/coldfront-allocation-change-requests.png)
+
+Any user can click on Action button to view the details about the change request.
+This will shows more details about the change request like below:
+
+![Allocation Change Requeste Details](images/coldfront-change-requested-details.png)
 
 ## Adding a new Resource Allocation to the project
 
-If one resource allocation is not sufficient for a project, PIs or project owners
+If one resource allocation is not sufficient for a project, PI or project managers
 can request for another allocation(s) by clicking on the "Request Resource Allocation"
 button on the Allocations section of the project details. This will show the page
 where all existing users for the project will be listed on the bottom of the request

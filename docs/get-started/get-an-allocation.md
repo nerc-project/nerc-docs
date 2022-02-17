@@ -118,9 +118,9 @@ Access to ColdFront is role based so users see a read-only view of the allocatio
 details for any allocations they are on. PIs see the same allocation details as general
 users and can also add project users to the allocation if they're not already on
 it. Even on the first time, PIs add any user to the project as the User role. Later
-PI or project managers can upgrade users on their project to the 'manager' role. This
-allows multiple managers on the same project. This provides the user with the same
-access and abilities as the PI. The only things a PI can do that a manager can't,
+PI or project managers can upgrade users on their project to the 'manager' role.
+This allows multiple managers on the same project. This provides the user with the
+same access and abilities as the PI. The only things a PI can do that a manager can't,
 is create a new project or archive a project. All other project related tasks that
 a PI can do, a manager on that project can accomplish as well.
 

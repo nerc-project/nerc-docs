@@ -536,6 +536,8 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 snap install kubectl --classic
 ```
 
+This outputs: `kubectl 1.22.2 from Canonical✓ installed`
+
 - Verify the cluster
 
 ```sh

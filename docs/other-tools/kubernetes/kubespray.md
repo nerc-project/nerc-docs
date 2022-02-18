@@ -69,9 +69,12 @@ hostnamectl set-hostname ansible_master
 ```
 
 In this step, you will update packages and disable `swap` on the all 3 nodes:
-    i. 1 Ansible Master Node - ansible_master
-    ii. 1 Kubernetes Master Node - kubspray_master
-    iii.1 Kubernetes Worker Node - kubspray_worker1
+
+- 1 Ansible Master Node - ansible_master
+
+- 1 Kubernetes Master Node - kubspray_master
+
+- 1 Kubernetes Worker Node - kubspray_worker1
 
 The below steps will be performed on all the above mentioned nodes:
 
@@ -139,7 +142,7 @@ Now we are going to declare a variable **"IPS"** for storing the IP address of
 other K8s nodes .i.e. kubspray_master(192.168.0.130), kubspray_worker1(192.168.0.32)
 
 ```sh
-declare -a IPS=(192.168.0.189 192.168.0.116)
+declare -a IPS=(192.168.0.130 192.168.0.32)
 CONFIG_FILE=inventory/mycluster/hosts.yml python3 \
     contrib/inventory_builder/inventory.py ${IPS[@]}
 
@@ -170,13 +173,13 @@ The content of the `hosts.yml` file should looks like:
 all:
   hosts:
     node1:
-      ansible_host: 192.168.0.76
-      ip: 192.168.0.76
-      access_ip: 192.168.0.76
+      ansible_host: 192.168.0.130
+      ip: 192.168.0.130
+      access_ip: 192.168.0.130
     node2:
-      ansible_host: 192.168.0.176
-      ip: 192.168.0.176
-      access_ip: 192.168.0.176
+      ansible_host: 192.168.0.32
+      ip: 192.168.0.32
+      access_ip: 192.168.0.32
   children:
     kube_control_plane:
       hosts:
@@ -204,7 +207,7 @@ cat inventory/mycluster/group_vars/all/all.yml
 cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 ```
 
-- It can be useful to set the following two variables to true in
+- It can be useful to set the following two variables to **true** in
 `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`: `kubeconfig_localhost`
 (to make a copy of `kubeconfig` on the host that runs Ansible in
 `{ inventory_dir }/artifacts`) and `kubectl_localhost`
@@ -237,9 +240,9 @@ ansible-playbook -i inventory/mycluster/hosts.yml --become --become-user=root cl
 
 ```sh
 snap install kubectl --classic
-
-kubectl 1.22.2 from Canonical✓ installed
 ```
+
+This outputs: `kubectl 1.22.2 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
@@ -256,9 +259,9 @@ kubectl version -o yaml
 ```sh
 kubectl get nodes
 
-NAME               STATUS        ROLES                  AGE     VERSION
-kubspray_master    NotReady      control-plane,master   21m     v1.16.2
-kubspray_worker1   Ready         <none>                 9m17s   v1.16.2
+NAME    STATUS   ROLES                  AGE     VERSION
+node1   Ready    control-plane,master   6m7s    v1.23.3
+node2   Ready    control-plane,master   5m32s   v1.23.3
 
 ```
 
@@ -295,12 +298,6 @@ kubectl get svc hello-minikube
 
 NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 hello-minikube   LoadBalancer   10.233.35.126   <pending>     8080:30723/TCP   40s
-```
-
-- View the web url for the service:
-
-```sh
-minikube service hello-minikube --url
 ```
 
 - Expose the service locally

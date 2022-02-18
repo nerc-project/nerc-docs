@@ -8,7 +8,7 @@ working with K3s cluster management with some straight forward commands. k3d is
 efficient enough to create and manage K3s single node and well as K3s High
 Availability clusters just with few commands.
 
-!!!note: "Note"
+!!!note "Note"
     For using `k3d` you must have **docker** installed in your system
 
 ---
@@ -46,9 +46,9 @@ systemctl restart docker
 
 ```sh
 snap install kubectl --classic
-
-kubectl 1.22.2 from Canonical✓ installed
 ```
+
+This outputs: `kubectl 1.22.2 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
@@ -90,9 +90,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
 
 1. Create k3d Cluster:
 
-    ```sh
-    k3d cluster create k3d-demo-cluster
-    ```
+    `k3d cluster create k3d-demo-cluster`
 
     This single command spawns a K3s cluster with two containers: A Kubernetes
     **control-plane node(server)** and a **load balancer(serverlb)** in front of
@@ -102,16 +100,16 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
 
     You can also look for advance syntax for cluster creation:
 
-    ```sh
-    k3d cluster create mycluster --api-port 127.0.0.1:6445 --servers 3 \
-        --agents 2 --volume '/home/me/mycode:/code@agent[*]' --port '8080:80@loadbalancer'
-    ```
+    `k3d cluster create mycluster --api-port 127.0.0.1:6445 --servers 3 \
+        --agents 2 --volume '/home/me/mycode:/code@agent[*]' --port '8080:80@loadbalancer'`
 
     Here, the above single command spawns a K3s cluster with six containers:
 
-    i. load balancer
-    ii. 3 servers (control-plane nodes)
-    iii. 2 agents (formerly worker nodes)
+    - load balancer
+
+    - 3 servers (control-plane nodes)
+
+    - 2 agents (formerly worker nodes)
 
     ---
     With the `--api-port 127.0.0.1:6445`, you tell k3d to map the Kubernetes API
@@ -144,7 +142,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     interface to the load balancer. From there, it’s proxied to the cluster, where
     it passes via Ingress and Service to your application Pod.
 
-    !!!note: "Note"
+    !!!note "Note"
         You have to have some mechanism set up to route to resolve `myapp.k3d.localhost`
         to your local host IP (`127.0.0.1`). The most common way is using entries
         of the form `127.0.0.1` `myapp.k3d.localhost` in your `/etc/hosts` file
@@ -158,21 +156,17 @@ Get the new cluster’s connection details merged into your default kubeconfig (
 specified using the `KUBECONFIG` environment variable or the default path
 `$HOME/.kube/config`) and directly switch to the new context:
 
-    ```sh
-    k3d kubeconfig merge k3d-demo-cluster --kubeconfig-switch-context
+    `k3d kubeconfig merge k3d-demo-cluster --kubeconfig-switch-context`
 
-    /root/.k3d/kubeconfig-k3d-demo-cluster.yaml
-    ```
+    This outputs:
+
+    **/root/.k3d/kubeconfig-k3d-demo-cluster.yaml**
 
 3. Checking the nodes running on k3d cluster:
 
-    ```sh
-    k3d node list
+    `k3d node list`
 
-    NAME                            ROLE           CLUSTER            STATUS
-    k3d-k3d-demo-cluster-server-0   server         k3d-demo-cluster   running
-    k3d-k3d-demo-cluster-serverlb   loadbalancer   k3d-demo-cluster   running
-    ```
+    ![k3d nodes list](../images/k3d-nodes-list.png)
 
     You can see here two nodes. The (very) smart implementation here is that while
     the cluster is running on its node **k3d-k3s-default-server-0**, there is
@@ -182,15 +176,11 @@ specified using the `KUBECONFIG` environment variable or the default path
 
     i. The below command will list down the nodes available in our cluster:
 
-    ```sh
-    kubectl get nodes -o wide
-    ```
+    `kubectl get nodes -o wide`
 
     **OR,**
 
-    ```sh
-    kubectl get nodes --output wide
-    ```
+    `kubectl get nodes --output wide`
 
     The output will looks like:
     ![k3d nodes list](../images/k3d_nodes.png)
@@ -198,9 +188,7 @@ specified using the `KUBECONFIG` environment variable or the default path
     ii. To look at what’s inside the K3s cluster (pods, services, deployments,
     etc.):
 
-    ```sh
-    kubectl get all --all-namespaces
-    ```
+    `kubectl get all --all-namespaces`
 
     The output will looks like:
     ![k3d all](../images/k3d_all.png)
@@ -210,24 +198,17 @@ specified using the `KUBECONFIG` environment variable or the default path
 
     iii. List the active k3d clusters:
 
-    ```sh
-    k3d cluster list
+    `k3d cluster list`
 
-    NAME               SERVERS   AGENTS   LOADBALANCER
-    k3d-demo-cluster   1/1       0/0      true
-    ```
+    ![k3d cluster list](../images/ked-cluster-list.png)
 
     iv. Check the cluster connectivity:
 
-    ```sh
-    kubectl cluster-info
+    `kubectl cluster-info`
 
-    Kubernetes control plane is running at https://0.0.0.0:44921
-    CoreDNS is running at https://0.0.0.0:44921/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-    Metrics-server is running at https://0.0.0.0:44921/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    ![kubectl cluster-info](../images/k3d-cluster-info.png)
 
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-    ```
 
 5. Check the active containers:
 

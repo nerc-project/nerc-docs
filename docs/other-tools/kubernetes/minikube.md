@@ -91,9 +91,9 @@ sudo apt install virtualbox virtualbox-ext-pack -y
 
 ```sh
 snap install kubectl --classic
-
-kubectl 1.22.2 from Canonical✓ installed
 ```
+
+This outputs: `kubectl 1.22.2 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
@@ -256,7 +256,7 @@ The output looks like below:
 ![Current ClusterIP for Minikube Dashboard](images/minikube_dashboard_clusterip.png)
 
 ```sh
-kubectl  edit service kubernetes-dashboard -n kubernetes-dashboard
+kubectl edit service kubernetes-dashboard -n kubernetes-dashboard
 ```
 
 -- Replace type: "ClusterIP" to "NodePort":

@@ -149,7 +149,7 @@ tns    LoadBalancer   10.152.183.90   <pending>     8080:30012/TCP   14m
 ```
 
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
-i.e. <http://140.247.152.168:30012/> to check the nginx default page.
+i.e. <http://128.31.26.4:30012/> to check the nginx default page.
 
 ### Deploy A Sample Nginx Application
 
@@ -179,7 +179,7 @@ my-nginx   NodePort   10.152.183.41   <none>        80:31225/TCP   35h
 ```
 
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
-i.e. <http://140.247.152.168:31225/> to check the nginx default page.
+i.e. <http://128.31.26.4:31225/> to check the nginx default page.
 
 ### Deploy Another Application
 
@@ -206,7 +206,7 @@ microbot-service   NodePort   10.152.183.8   <none>        80:31442/TCP   35h
 ```
 
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
-i.e. <http://140.247.152.168:31442/> to check the microbot default page.
+i.e. <http://128.31.26.4:31442/> to check the microbot default page.
 
 ![Microk8s Microbot App](images/microk8s_microbot_app.png)
 

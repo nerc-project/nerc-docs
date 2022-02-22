@@ -149,6 +149,10 @@ kubectl get nodes
 
 ## Kubernetes Dashboard
 
+The [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+is a GUI tool to help you work more efficiently with K8s cluster. This is only
+accessible from within the cluster (at least not without some serious tweaking).
+
 check [releases](https://github.com/kubernetes/dashboard/releases) for the command
 to use for *Installation*:
 

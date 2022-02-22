@@ -50,12 +50,12 @@ microk8s status --wait-ready
 - Turn on the services you want:
 
 ```sh
-microk8s enable dns dashboard storage
+microk8s enable dns dashboard
 ```
 
 Try `microk8s enable --help` for a list of available services and optional features.
-`microk8s disable <name>` turns off a service. For example other services are:
-`registry istio`
+`microk8s disable <name>` turns off a service. For example other useful services
+are: `microk8s enable registry istio storage`
 
 - Start using Kubernetes
 
@@ -68,7 +68,9 @@ with `alias mkctl="microk8s kubectl"`. Since it is a standard upstream kubectl, 
 can also drive other Kubernetes clusters with it by pointing to the respective kubeconfig
 file via the `--kubeconfig` argument.
 
-- Access the Kubernetes dashboard UI:
+- Access the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+UI:
+
 ![Microk8s Dashboard Ports](images/microk8s_dashboard_ports.png)
 
 As we see above the kubernetes-dashboard service in the kube-system namespace has
@@ -76,15 +78,12 @@ a ClusterIP of 10.152.183.73 and listens on TCP port 443. The ClusterIP is rando
 assigned, so if you follow these steps on your host, make sure you check the IP
 adress you got.
 
-To access the dashboard use the default token retrieved with:
+!!!note "Note"
+    Another way to access the default token to be used for the dashboard access
+    can be retrieved with:
+    ![How to retrive The kubernetes-dashboad Token](images/k8s-dasboard-retrive-token.png)
 
-```sh
-token=$(microk8s kubectl -n kube-system get secret | grep default-token | \
-    cut -d " " -f1)
-microk8s kubectl -n kube-system describe secret $token
-```
-
-**OR,**
+- Keep running the kubernetes-dashboad on Proxy to access it via web browser:
 
 ```sh
 microk8s dashboard-proxy

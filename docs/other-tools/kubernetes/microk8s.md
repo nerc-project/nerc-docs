@@ -50,11 +50,12 @@ microk8s status --wait-ready
 - Turn on the services you want:
 
 ```sh
-microk8s enable dashboard dns registry istio
+microk8s enable dns dashboard storage
 ```
 
 Try `microk8s enable --help` for a list of available services and optional features.
-`microk8s disable <name>` turns off a service.
+`microk8s disable <name>` turns off a service. For example other services are:
+`registry istio`
 
 - Start using Kubernetes
 
@@ -75,6 +76,16 @@ a ClusterIP of 10.152.183.73 and listens on TCP port 443. The ClusterIP is rando
 assigned, so if you follow these steps on your host, make sure you check the IP
 adress you got.
 
+To access the dashboard use the default token retrieved with:
+
+```sh
+token=$(microk8s kubectl -n kube-system get secret | grep default-token | \
+    cut -d " " -f1)
+microk8s kubectl -n kube-system describe secret $token
+```
+
+**OR,**
+
 ```sh
 microk8s dashboard-proxy
 
@@ -84,28 +95,61 @@ Use the following token to login:
 eyJhbGc....
 ```
 
-**OR,**
-
-To access the dashboard use the default token retrieved with:
-
-```sh
-token=$(microk8s kubectl -n kube-system get secret | grep default-token | \
-    cut -d " " -f1)
-microk8s kubectl -n kube-system describe secret $token
-```
+!!!note "Important"
+    This tells us the IP address of the Dashboard and the port. The values assigned
+    to your Dashboard will differ. Please note the displayed **PORT** and also the
+    **TOKEN** that are required to access the kubernetes-dashboard. Make sure, the
+    exposed **PORT** is opened in Security Groups for the instance following
+    [this guide](../../openstack/access-and-security/security-groups.md).
 
 This will show the token to login to the Dashbord shown on the url with NodePort.
 
-- Start and stop Kubernetes:
-Kubernetes is a collection of system services that talk to each other all the time.
-If you don’t need them running in the background then you will save battery by
-stopping them. `microk8s start` and `microk8s stop` will those tasks for you.
+You’ll need to wait a few minutes before the dashboard becomes available. If you
+open a web browser on the same desktop you deployed Microk8s and point it to
+`https://<Floating-IP>:<PORT>` (where PORT is the PORT assigned to the Dashboard
+noted while running the above command), you’ll need to accept the risk
+(because the Dashboard uses a self-signed certificate). And, we can enter the previously
+noted **TOKEN** to access the kubernetes-dashboard.
 
-- To Reset the infrastructure to a clean state:
+![The K8s Dashboard service](images/k8s-dashboard.jpg)
+
+Once entered correct **TOKEN** the kubernetes-dashboard is accessed and looks
+like below:
+
+![The K8s Dashboard service interface](images/the_k8s_dashboard.png)
+
+!!!note "Information"
+    - Start and stop Kubernetes:
+    Kubernetes is a collection of system services that talk to each other all the
+    time. If you don’t need them running in the background then you will save
+    battery by stopping them. `microk8s start` and `microk8s stop` will those
+    tasks for you.
+    - To Reset the infrastructure to a clean state: `microk8s reset`
+
+### Deploy a Container using the Kubernetes-Dashboard
+
+Click on the **+ button** in the top left corner of the main window. On the resulting
+page, click Create from form and then fill out the necessary information as shown
+below:
+
+![Deploying a test NGINX container named tns](images/k8s-dashboard-docker-app.jpg)
+
+You should immediately be directed to a page that lists your new deployment as shown
+below:
+
+![The running NGINX container](images/running-nginx-container-app.jpg)
+
+Go back to the terminal window and issue the command:
 
 ```sh
-microk8s reset
+microk8s kubectl get svc tns -n kube-system
+
+NAME   TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+tns    LoadBalancer   10.152.183.90   <pending>     8080:30012/TCP   14m
 ```
+
+Go to browser, visit `http://<Floating-IP>:<NodePort>`
+i.e. <http://140.247.152.168:30012/> to check the nginx default page.
 
 ### Deploy A Sample Nginx Application
 
@@ -135,7 +179,7 @@ my-nginx   NodePort   10.152.183.41   <none>        80:31225/TCP   35h
 ```
 
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
-i.e. <http://128.31.26.4:31225/> to check the nginx default page.
+i.e. <http://140.247.152.168:31225/> to check the nginx default page.
 
 ### Deploy Another Application
 
@@ -162,7 +206,7 @@ microbot-service   NodePort   10.152.183.8   <none>        80:31442/TCP   35h
 ```
 
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
-i.e. <http://128.31.26.4:31442/> to check the microbot default page.
+i.e. <http://140.247.152.168:31442/> to check the microbot default page.
 
 ![Microk8s Microbot App](images/microk8s_microbot_app.png)
 

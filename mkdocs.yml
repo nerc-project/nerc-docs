@@ -3,7 +3,7 @@ site_name: NERC Documentation
 site_description: NERC Documentation
 site_author: NERC
 # site_dir: public
-site_url: "https://docs.nerc.mghpcc.org/"
+site_url: "https://nerc-project.github.io/nerc-docs/"
 repo_name: GitLab/NERC/docs
 repo_url: https://github.com/nerc-project/nerc-docs
 
@@ -83,7 +83,8 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-
+#  features:
+#    - navigation.tabs
 extra_css:
   - stylesheets/extra.css
 extra_javascript:

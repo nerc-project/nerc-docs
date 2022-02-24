@@ -27,3 +27,27 @@ footer .footer-right {
 footer .footer-center {
   padding-top: 25px;
 }
+
+.center {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  border: 5px solid #FFFF00;
+  padding: 10px;
+}
+
+.parent {
+  /* background: #CCCCCC; */
+  height: 55px;
+  /* width: 200px; */
+  position: relative;
+  }
+  .child {
+    /* background: #FFFF00;
+    width: 70px;
+    height: 70px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -35px;
+  }

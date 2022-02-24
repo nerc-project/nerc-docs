@@ -83,8 +83,8 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
-  # features:
-  #   - navigation.tabs
+#  features:
+#    - navigation.tabs
 extra_css:
   - stylesheets/extra.css
 extra_javascript:

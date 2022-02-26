@@ -4,6 +4,12 @@ An OpenStack Compute cloud needs to have virtual machine images in order to
 launch an instance. A virtual machine image is a single file which contains a
 virtual disk that has a bootable operating system installed on it.
 
+!!!warning "Very Important"
+    The provided Windows Server 2022 R2 image is for evaluation only. This evaluation
+    edition expires in **180 days**. This is intended to evaluate if the product
+    is right for you. This is on *user discretion* to update, extend, and handle
+    licensing issues for future usages.
+
 ## Existing Microsoft Windows Image
 
 Cloudbase Solutions provides [Microsoft Windows Server 2022 R2 Standard
@@ -83,12 +89,17 @@ are compatible with the NERC's OpenStack.
 image using Virtual Machine Manager.
 
     ![Virt-Manager New Virtual Machine](images/1.new_virtual_machine.png)
+
     ![Virt-Manager Local install media](images/2.select_local_ISO_image.png)
 
     ![Virt-Manager Browse Win ISO](images/3.0.Choose_ISO.png)
+
     ![Virt-Manager Browse Local](images/3.1.browse_local.png)
+
     ![Virt-Manager Select the ISO file](images/3.3.open_local_iso_file.png)
+
     ![Virt-Manager Selected ISO](images/3.4.select_iso.png)
+
     ![Virt-Manager default Memory and CPU](images/4.default_mem_cpu.png)
 
     Please set **15 GB disk image** size as shown below:
@@ -113,13 +124,17 @@ image using Virtual Machine Manager.
     **virtio-win-* ISO** file:
 
     ![Virt-Manager Add Hardware](images/7.4.add_virtio_iso_hardware.png)
+
     ![Virt-Manager Add CDROM with virtio ISO](images/7.5.add_virtio_iso_cdrom.png)
+
     ![Virt-Manager Browse virtio ISO](images/7.6.browse_virtio_iso.png)
+
     ![Virt-Manager Select virtio ISO](images/7.7.select_virtion_iso.png)
 
     Make sure the NIC is using the **virtio** Device model as show below:
 
     ![Virt-Manager Modify  NIC](images/7.2.customize_nic_virtio.png))
+
     ![Virt-Manager Apply Change on NIC](images/7.3.customize_nic_virtio_apply.png)
 
     Make sure to set proper order of **Boot Options** as shown below so that
@@ -147,7 +162,10 @@ image using Virtual Machine Manager.
 
     ![Select VirtIO CDROM](images/11.browse_CDRom_virtio_iso.png)
 
-    Select the `E:\virtio-win-*\viostor\2k22\amd64` folder.
+    Select the `E:\virtio-win-*\viostor\2k22\amd64` folder. When converting an
+    image file with Windows, ensure the virtio driver is installed. Otherwise,
+    you will get a blue screen when launching the image due to lack of the virtio
+    driver.
 
     ![Select Appropriate Win Version viostor driver](images/12.select_viostor_driver.png)
 
@@ -261,7 +279,7 @@ on virtual machine running Windows, you can escape registring and just click on
 
 12. You can copy/download this windows image to the folder where you configured
 your OpenStack CLI as described [Here](../openstack-cli/openstack-CLI.md) and
-upload to the NERC's OpenStack running the following command:
+upload to the NERC's OpenStack running the following OpenStack Image API command:
 
     `$ openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022`
 

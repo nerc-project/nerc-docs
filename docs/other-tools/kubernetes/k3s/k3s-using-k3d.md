@@ -200,7 +200,7 @@ specified using the `KUBECONFIG` environment variable or the default path
 
     `k3d cluster list`
 
-    ![k3d cluster list](../images/ked-cluster-list.png)
+    ![k3d cluster list](../images/k3d-cluster-list.png)
 
     iv. Check the cluster connectivity:
 

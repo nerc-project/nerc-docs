@@ -138,8 +138,7 @@ Syntax :
       <Instance_Name>
 ```
 
-**NOTE:**
-If you boot an instance with an "**Instance_Name**" greater than **63
+**NOTE:** If you boot an instance with an "**Instance_Name**" greater than **63
 characters**, Compute truncates it automatically when turning it into a
 hostname to ensure the correct functionality of `dnsmasq`.
 
@@ -211,7 +210,8 @@ Detailed syntax:
     <server-name>
 ```
 
-*NOTE: Similarly we can lauch a VM using "Volume".*
+!!!note "Note"
+    Similarly, we can lauch a VM using "Volume".
 
 Now Verify the test vm status using below commands:
 

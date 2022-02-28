@@ -287,12 +287,12 @@ upload to the NERC's OpenStack running the following OpenStack Image API command
 
     `$ openstack image list`
 
-    +--------------------------------------+---------------------+--------+
-    | ID                                   | Name                | Status |
-    +--------------------------------------+---------------------+--------+
-    | 7da9f5d4-4836-4bv8-bc5e-xc07ac6d8171 | MS-Windows-2022     | active |
-    | ...                                  | ...                 | ...    |
-    +--------------------------------------+---------------------+--------+
+        +--------------------------------------+---------------------+--------+
+        | ID                                   | Name                | Status |
+        +--------------------------------------+---------------------+--------+
+        | 7da9f5d4-4836-4bv8-bc5e-xc07ac6d8171 | MS-Windows-2022     | active |
+        | ...                                  | ...                 | ...    |
+        +--------------------------------------+---------------------+--------+
 
 13. Login to the [NERC's OpenStack](https://stack.nerc.mghpcc.org/) and verify
     the uploaded **MS-Windows-2022** is there also available on the NERC's OpenStack

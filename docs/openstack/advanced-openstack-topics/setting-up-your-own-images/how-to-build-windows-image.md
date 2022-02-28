@@ -249,9 +249,9 @@ running the following commands on **Command Prompt (Run as Adminstrator)**:
 
     ![C Drive on DIsk Management](images/new_c_drive.png)
 
-9. Install any new Windows updates.**(Optional)**
+9. Install any new Windows updates. **(Optional)**
 
-10. Download and install stable version of **cloudbase-init**(A Windows project
+10. Download and install stable version of **cloudbase-init** (A Windows project
 providing guest initialization features, similar to cloud-init) by browsing the
 [Download Page](https://cloudbase.it/cloudbase-init/#download) on the web browser
 on virtual machine running Windows, you can escape registring and just click on
@@ -317,10 +317,11 @@ upload to the NERC's OpenStack running the following OpenStack Image API command
 
     ![Running Windows Instance](images/win2k22_instance_running.png)
 
-    ![Associate Floating IP](iamges/win_instance_add_floating_ip.png)
+    ![Associate Floating IP](images/win_instance_add_floating_ip.png)
 
-    Click on detail view of the Instance and then click on COnsole tab menu
-    and click on **"Send CtrlAltDel"** button located on the top right as shown below:
+    Click on detail view of the Instance and then click on Console tab menu
+    and click on **"Send CtrlAltDel"** button located on the top right side of
+    the console as shown below:
 
     ![View Console of Instance](images/console_win_instance.png)
 

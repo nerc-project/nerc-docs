@@ -48,3 +48,7 @@ the list below.
 ## Python SDK
 
 - [Python SDK](advanced-openstack-topics/python-sdk/python-SDK.md)
+
+## Setting Up Your Own Images
+
+- [Microsoft Windows image](advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md)

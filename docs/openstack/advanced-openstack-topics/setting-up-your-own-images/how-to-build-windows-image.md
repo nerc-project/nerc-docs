@@ -259,8 +259,7 @@ on virtual machine running Windows, you can escape registring and just click on
 
     ![Download Cloudbase-init](images/install_cloudbase-init.png)
 
-    During Installation, set *Serial port for logging* to **COM1** as shown below
-    during installation:
+    During Installation, set *Serial port for logging* to **COM1** as shown below:
 
     ![Download Cloudbase-init setup for Admin](images/coludbase-init-serial-port-com1.png)
 

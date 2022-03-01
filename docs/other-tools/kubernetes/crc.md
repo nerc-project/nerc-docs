@@ -61,8 +61,8 @@ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
 
 !!!note "Note"
-  This CRC version `crc-linux-1.34.0-amd64` may be different when you
-  are installing! Please update it as your are running above command.
+    This CRC version `crc-linux-1.34.0-amd64` may be different when you
+    are installing! Please update it as your are running above command.
 
 ## Install and configure CRC
 
@@ -74,8 +74,6 @@ critical to it's performance.
 
 ```sh
 crc setup
-crc config set memory 24576
-crc config set cpus 12
 ```
 
 - Paste crc secret copied during previous prep step when prompted for
@@ -106,6 +104,10 @@ Use the 'oc' command line interface:
   $ eval $(crc oc-env)
   $ oc login -u developer https://api.crc.testing:6443
 ```
+
+!!!note "Note"
+    We can set memory and cpu for the CRC instance using:
+    `crc config set memory 24576` and `crc config set cpus 12`
 
 ## Using CRC CLI
 
@@ -190,6 +192,8 @@ server webserver1 CRC_IP:6443 check
 EOF
 ```
 
+Switch out from `root` to `fedora` user and then continue following steps:
+
 - Plugin your servers and `crc ip` addresses
 
 ```sh
@@ -197,7 +201,7 @@ EOF
 export SERVER_IP=$(hostname --ip-address |cut -d\  -f3)
 export CRC_IP=$(crc ip)
 sudo sed -i "s/SERVER_IP/$SERVER_IP/g" /etc/haproxy/haproxy.cfg
-sudo sed -i "s/CRC_IP/$CRC_IP/g" haproxy.cfg
+sudo sed -i "s/CRC_IP/$CRC_IP/g" /etc/haproxy/haproxy.cfg
 sudo semanage port -a -t http_port_t -p tcp 6443
 ```
 
@@ -209,10 +213,6 @@ sudo systemctl status haproxy
 ```
 
 Ensure haproxy is in running status.
-
-!!!note "Note"
-    - Switch out from `root` to `fedora` user.
-    - To check the internal IP, run the `crc ip` command.
 
 ### Configure your local workstation to resolve CRC addresses
 

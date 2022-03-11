@@ -213,7 +213,7 @@ cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 `{ inventory_dir }/artifacts`) and `kubectl_localhost`
 (to download `kubectl` onto the host that runs Ansible in `{ bin_dir }`).
 
-!!!note "Very Important"
+!!! note "Very Important"
     As **Ubuntu 20 kvm kernel** doesn't have **dummy module** we need to **modify**
     the following two variables in `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`:
     `enable_nodelocaldns: false` and `kube_proxy_mode: iptables` which will
@@ -228,7 +228,7 @@ installing packages and interacting with various `systemd` daemons. Without
 ansible-playbook -i inventory/mycluster/hosts.yml --become --become-user=root cluster.yml
 ```
 
-!!!note "Note"
+!!! note "Note"
     Running ansible playbook takes little time because it depends on the network
     bandwidth also.
 

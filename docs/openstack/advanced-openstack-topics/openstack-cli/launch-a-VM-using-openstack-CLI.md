@@ -210,7 +210,7 @@ Detailed syntax:
     <server-name>
 ```
 
-!!!note "Note"
+!!! note "Note"
     Similarly, we can lauch a VM using "Volume".
 
 Now Verify the test vm status using below commands:

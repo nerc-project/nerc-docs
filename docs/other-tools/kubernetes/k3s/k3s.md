@@ -56,7 +56,7 @@ that will be used by all 3 nodes:
 
     ![Inbound Rules for K3s Server Nodes](../images/k3s_security_group.png)
 
-!!!note "Important Note"
+!!! note "Important Note"
     The VXLAN overlay networking port on nodes should not be exposed to the world
     as it opens up your cluster network to be accessed by anyone. Run your nodes
     behind a firewall/security group that disables access to port **8472**.
@@ -149,7 +149,7 @@ container runtime, then just run without supplying the `--docker` argument.
 curl -sfL https://get.k3s.io | sh -
 ```
 
-!!!note "More Installation Options"
+!!! note "More Installation Options"
 
 After running this installation:
 
@@ -176,7 +176,7 @@ k3s --version
 kubectl version
 ```
 
-!!!note "Note"
+!!! note "Note"
     If you want to taint the node i.e. not to deploy pods on this node after
     installation then run: `kubectl taint nodes <master_node_name> k3s-controlplane=true:NoExecure`
     i.e. `kubectl taint nodes k3s-master k3s-controlplane=true:NoExecure`
@@ -525,7 +525,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" \
     sh -
 ```
 
-!!!note "Note"
+!!! note "Note"
     For more about on **"How to use flags and environment variables"** [read this](https://rancher.com/docs/k3s/latest/en/installation/install-options/how-to-flags/).
 
 ### Restarting K3s

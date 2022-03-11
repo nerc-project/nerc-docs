@@ -130,7 +130,7 @@ tar -zxvf minishift-1.34.3-linux-amd64.tgz --strip=1 -C/usr/bin minishift-1.34.3
 
 By running the command: `minishift start`
 
-!!!note "Note":
+!!! note "Note":
     cpu, and start memory, If you do not specify a disk-size 2vCPU, 4GB memory, with
     20GB disk. Other customized minishift can be started following this format:
     `minishift start --openshift-version v3.11.0 --iso-url centos --cpus 4 \
@@ -153,7 +153,7 @@ To login as administrator:
     oc login -u system:admin
 ```
 
-!!!note "Note"
+!!! note "Note"
     - The IP is dynamically generated for each OpenShift cluster. To check the IP,
     run the `minishift ip` command.
     - By default, Minishift uses the driver most relevant to the host OS. To

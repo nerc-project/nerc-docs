@@ -117,7 +117,7 @@ To deactivate config: `wg-quick down /path/to/file_name.config`
 
 ---
 
-!!!note "Important Note"
+!!! note "Important Note"
     You need to contact your project administrator to get your own WireGUard
     configuration file (file with .conf extension). Download it and Keep it in
     your local machine so in next steps we can use this configuration client

@@ -31,7 +31,7 @@ Run the below command on the CRC's VM:
 
 - SSH into **crc** machine
 
-!!!note "Important Note"
+!!! note "Important Note"
     Please run the following commands not using `root` user.
 
 On newly built VM download CRC using your redhat login, from:
@@ -60,7 +60,7 @@ export PATH=$PATH:$HOME/bin
 echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
 
-!!!note "Note"
+!!! note "Note"
     This CRC version `crc-linux-1.34.0-amd64` may be different when you
     are installing! Please update it as your are running above command.
 
@@ -105,7 +105,7 @@ Use the 'oc' command line interface:
   $ oc login -u developer https://api.crc.testing:6443
 ```
 
-!!!note "Note"
+!!! note "Note"
     We can set memory and cpu for the CRC instance using:
     `crc config set memory 24576` and `crc config set cpus 12`
 

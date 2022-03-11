@@ -144,7 +144,7 @@ for minikue, so start the minikube with the docker driver,
 minikube start --driver=none
 ```
 
-!!!note "Note"
+!!! note "Note"
     - To check the internal IP, run the `minikube ip` command.
     - By default, Minikube uses the driver most relevant to the host OS. To
     use a different driver, set the `--driver` flag in `minikube start`. For

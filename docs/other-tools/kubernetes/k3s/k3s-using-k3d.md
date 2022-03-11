@@ -8,7 +8,7 @@ working with K3s cluster management with some straight forward commands. k3d is
 efficient enough to create and manage K3s single node and well as K3s High
 Availability clusters just with few commands.
 
-!!!note "Note"
+!!! note "Note"
     For using `k3d` you must have **docker** installed in your system
 
 ---
@@ -127,7 +127,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     Replace * with an index (here: 0 or 1) to only mount it into one of them.
 
     The specification telling k3d which nodes it should mount the volume to is called
-    “node filter” and it’s also used for other flags, like the `--port` flag for
+    "node filter" and it’s also used for other flags, like the `--port` flag for
     port mappings.
 
     That said, `--port '8080:80@loadbalancer'` maps your local host’s port 8080 to
@@ -142,7 +142,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     interface to the load balancer. From there, it’s proxied to the cluster, where
     it passes via Ingress and Service to your application Pod.
 
-    !!!note "Note"
+    !!! note "Note"
         You have to have some mechanism set up to route to resolve `myapp.k3d.localhost`
         to your local host IP (`127.0.0.1`). The most common way is using entries
         of the form `127.0.0.1` `myapp.k3d.localhost` in your `/etc/hosts` file
@@ -170,7 +170,7 @@ specified using the `KUBECONFIG` environment variable or the default path
 
     You can see here two nodes. The (very) smart implementation here is that while
     the cluster is running on its node **k3d-k3s-default-server-0**, there is
-    another “node” that acts as the load balancer i.e. **k3d-k3d-demo-cluster-serverlb**.
+    another "node" that acts as the load balancer i.e. **k3d-k3d-demo-cluster-serverlb**.
 
 4. Firing **Kubectl** commands that allows you to run commands against Kubernetes:
 

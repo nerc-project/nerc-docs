@@ -91,7 +91,7 @@ the new client.
 
 ---
 
-!!!note "Important Note"
+!!! note "Important Note"
     You need to contact your project administrator to get your own OpenVPN
     configuration file (file with .ovpn extension). Download it and Keep it in
     your local machine so in next steps we can use this configuration client

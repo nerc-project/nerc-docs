@@ -78,7 +78,7 @@ a ClusterIP of 10.152.183.73 and listens on TCP port 443. The ClusterIP is rando
 assigned, so if you follow these steps on your host, make sure you check the IP
 adress you got.
 
-!!!note "Note"
+!!! note "Note"
     Another way to access the default token to be used for the dashboard access
     can be retrieved with:
     ![How to retrive The kubernetes-dashboad Token](images/k8s-dasboard-retrive-token.png)
@@ -94,7 +94,7 @@ Use the following token to login:
 eyJhbGc....
 ```
 
-!!!note "Important"
+!!! note "Important"
     This tells us the IP address of the Dashboard and the port. The values assigned
     to your Dashboard will differ. Please note the displayed **PORT** and also the
     **TOKEN** that are required to access the kubernetes-dashboard. Make sure, the
@@ -117,7 +117,7 @@ like below:
 
 ![The K8s Dashboard service interface](images/the_k8s_dashboard.png)
 
-!!!note "Information"
+!!! note "Information"
     - Start and stop Kubernetes:
     Kubernetes is a collection of system services that talk to each other all the
     time. If you don’t need them running in the background then you will save

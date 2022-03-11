@@ -134,7 +134,7 @@ sudo systemctl restart k3s
 
 ### On your local development machine to access Kubernetes Cluster Remotely (Optional)
 
-!!!note "Important Requirement"
+!!! note "Important Requirement"
     Your local development machine must have installed `kubectl`.
 
 - Copy kubernetes config to your local machine:
@@ -191,7 +191,7 @@ subjects:
 
 - Deploy the `admin-user` configuration:
 
-!!!note "Important Note"
+!!! note "Important Note"
     If you’re doing this from your local development machine, remove `sudo k3s` and
     just use `kubectl`)
 

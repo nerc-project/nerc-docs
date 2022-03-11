@@ -44,6 +44,8 @@ nav:
           - OpenStack CLI:
               - OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/openstack-CLI.md
               - Launch a VM using OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md
+          - Terraform:
+              - Terraform on NERC: openstack/advanced-openstack-topics/terraform/terraform-on-NERC.md
           - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md
           - Setting up custom images: openstack/advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md
   - Other Tools On NERC:

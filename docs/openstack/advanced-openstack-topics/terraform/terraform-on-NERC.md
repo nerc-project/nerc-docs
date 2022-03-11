@@ -63,7 +63,7 @@ v. Apply - Make the planned changes.
 
 The Terraform deployment workflow on the NERC looks like this:
 
-[Automating NERC resources using Terraform](images/NERC-Terrform.png)
+![Automating NERC resources using Terraform](images/NERC-Terrform.png)
 
 ### Prerequisite
 

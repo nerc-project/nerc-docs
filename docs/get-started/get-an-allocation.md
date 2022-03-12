@@ -59,7 +59,7 @@ can separate the work into multiple projects.
 
 ![Request A New Allocation](images/coldfront-request-new-allocation.png)
 
-!!!warning "Very Important"
+!!! warning "Very Important"
     Make sure to select **NERC (OpenStack)** on Resource option and specify
     your expected Units of computing. Be mindful, you can extend your current resource
     allocations on your current project later on.
@@ -146,7 +146,7 @@ Then toggle the "Role" from User to Manager:
 
 ![User Details](images/coldfront-user-details.png)
 
-!!!warning "Very Important"
+!!! warning "Very Important"
     Make sure to click the "Update" button to save the change.
 
 ## PI and Manager Allocation View
@@ -169,7 +169,7 @@ user(s) on the checkboxes and click on the "Add Selected Users to Allocation" bu
 
 ![Add Selected User(s) to Allocation](images/coldfront-add-users-to-allocation.png)
 
-!!!warning "Very Important"
+!!! warning "Very Important"
     The desired user must already be on the project to be added to the allocation.
 
 Removing Users from the Resource Allocation is straightforward by just clicking on

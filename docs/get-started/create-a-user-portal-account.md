@@ -51,7 +51,7 @@ to complete the account creation process.
 
 ![User Account Review Before Creation Page](images/user-account-review-page.png)
 
-!!!warning "Very Important"
+!!! warning "Very Important"
     If you don't click the "Create MGHPCC-SS Account" button, your account will not
     be created! So this is a very important step, to review and also click on the
     "Create MGHPCC-SS Account" button to save your information.

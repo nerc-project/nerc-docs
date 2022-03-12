@@ -243,7 +243,17 @@ As you are running as `root` user so you need to run the following command:
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
-!!!warning "Warning"
+We need to run the below commands as a normal user to use the kubectl from terminal.
+
+```sh
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+Now the machine is initialized as master.
+
+!!! warning "Warning"
     Kubeadm signs the certificate in the admin.conf to have
     `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
     break-glass, super user group that bypasses the authorization layer

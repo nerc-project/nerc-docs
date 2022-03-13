@@ -116,4 +116,23 @@ You can securely share your state with your teammates, provide a stable environm
 for Terraform to run in, and prevent race conditions when multiple people make
 configuration changes at once.
 
+## Some useful Terraform commands
+
+    ```sh
+    terraform init
+
+    terraform fmt
+
+    terraform validate
+
+    terraform plan
+
+    terraform apply
+
+    terraform show
+
+    terraform destroy
+
+    terraform output
+    ```
 ---

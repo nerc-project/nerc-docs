@@ -149,8 +149,6 @@ container runtime, then just run without supplying the `--docker` argument.
 curl -sfL https://get.k3s.io | sh -
 ```
 
-!!! note "More Installation Options"
-
 After running this installation:
 
 - The K3s service will be configured to automatically restart after node reboots

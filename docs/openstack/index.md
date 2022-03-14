@@ -45,6 +45,10 @@ the list below.
 - [OpenStack CLI](advanced-openstack-topics/openstack-cli/openstack-CLI.md)
 - [Launch a VM using OpenStack CLI](advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
 
+## Using Terraform to provision NERC resources
+
+- [Terraform on NERC](advanced-openstack-topics/terraform/terraform-on-NERC.md)
+
 ## Python SDK
 
 - [Python SDK](advanced-openstack-topics/python-sdk/python-SDK.md)

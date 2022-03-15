@@ -1,6 +1,7 @@
 # Create a Key-pair
 
-*NOTE: If you will be using PuTTY on Windows, please read [this first](#ssh-keys-with-putty-on-windows).*
+!!! note "NOTE"
+    If you will be using PuTTY on Windows, please read [this first](#ssh-keys-with-putty-on-windows).
 
 ## Add a Key Pair
 
@@ -45,8 +46,9 @@ This process creates two files in your `.ssh` folder:
   cloud.key.pub  # this is your public key
 ```
 
-*Pro Tip: The `-C "label"` field is not required, but it is useful to quickly
-identify different public keys later.
+!!! note "Pro Tip"
+    The `-C "label"` field is not required, but it is useful to quickly identify
+    different public keys later.
 
 You could use your email address as the label, or a user@host tag that
 identifies the computer the key is for.
@@ -61,8 +63,9 @@ On your terminal:
   pbcopy < ~/.ssh/cloud.key.pub  #copies the contents of public key to your clipboard
 ```
 
-*Pro Tip: If `pbcopy` isn't working, you can locate the hidden `.ssh` folder,
-open the file in your favorite text editor, and copy it to your clipboard.
+!!! note "Pro Tip"
+    If `pbcopy` isn't working, you can locate the hidden `.ssh` folder, open the
+    file in your favorite text editor, and copy it to your clipboard.
 
 ---
 Go back to the Openstack Dashboard, where you should still be on the Key Pairs tab

@@ -181,7 +181,7 @@ kubeadm config images pull
 kubeadm init --apiserver-advertise-address=${MASTER_IP} --pod-network-cidr=10.244.0.0/16
 ```
 
-!!!note "Important Note"
+!!! note "Important Note"
     Please make sure you replace the correct IP of the node with
     `<Master-Internal-IP>` which is the Internal IP of master node.
     `--pod-network-cidr` value depends upon what CNI plugin you going to use so
@@ -243,7 +243,17 @@ As you are running as `root` user so you need to run the following command:
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
-!!!warning "Warning"
+We need to run the below commands as a normal user to use the kubectl from terminal.
+
+```sh
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+Now the machine is initialized as master.
+
+!!! warning "Warning"
     Kubeadm signs the certificate in the admin.conf to have
     `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
     break-glass, super user group that bypasses the authorization layer
@@ -258,7 +268,7 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
 ```
 
-!!!note "Important Note"
+!!! note "Important Note"
     **Your output will be different than what is provided here. While
     performing the rest of the demo, ensure that you are executing the
     command provided by your output and dont copy and paste from here.**

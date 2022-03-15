@@ -117,7 +117,7 @@ frontend fe-apiserver
 Add the below lines to create a backend configuration for master1 and master2
 nodes at port **6443**.
 
-!!!note "Note"
+!!! note "Note"
     6443 is the default port of **kube-apiserver**
 
 ```sh
@@ -157,7 +157,7 @@ nc -v localhost 6443
 Connection to localhost 6443 port [tcp/*] succeeded!
 ```
 
-!!!note "Note"
+!!! note "Note"
     If you see failures for `master1` and `master2` connectivity, you can ignore
     them for time being as you have not yet installed anything on the servers.
 
@@ -295,7 +295,7 @@ The <LOAD_BALANCER_PORT> is the front end configuration port defined in HAPROXY
 configuration. For this, you have kept the port as **6443** which is the default
 `apiserver` port.
 
-!!!note "Important Note"
+!!! note "Important Note"
     `--pod-network-cidr` value depends upon what CNI plugin you going to use so
     need to be very careful while setting this CIDR values. In our case, you are
     going to use **Flannel** CNI network plugin so you will use:
@@ -360,7 +360,17 @@ As you are running as `root` user so you need to run the following command:
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
-!!!warning "Warning"
+We need to run the below commands as a normal user to use the kubectl from terminal.
+
+```sh
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+Now the machine is initialized as master.
+
+!!! warning "Warning"
     Kubeadm signs the certificate in the admin.conf to have `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a break-glass, super user group that bypasses the authorization layer (e.g. RBAC). Do not share the admin.conf file with anyone and instead grant users custom permissions by generating them a kubeconfig file using the `kubeadm kubeconfig user` command.
 
 B. Setup a new control plane (master) i.e. `master2` by running following
@@ -380,7 +390,7 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
 ```
 
-!!!note "Important Note"
+!!! note "Important Note"
     **Your output will be different than what is provided here. While
     performing the rest of the demo, ensure that you are executing the
     command provided by your output and dont copy and paste from here.**
@@ -512,7 +522,7 @@ scp master1:/etc/kubernetes/admin.conf $HOME/.kube/config
 
 ```
 
-!!!note "Important Note"
+!!! note "Important Note"
     If you havent setup ssh connection between master node and loadbalancer, you
     can manually copy content of the file `/etc/kubernetes/admin.conf` from
     `master1` node and then paste it to `$HOME/.kube/config` file on the
@@ -535,6 +545,8 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 ```sh
 snap install kubectl --classic
 ```
+
+This outputs: `kubectl 1.22.2 from Canonical✓ installed`
 
 - Verify the cluster
 

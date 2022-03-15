@@ -89,14 +89,14 @@ The output looks like below:
 
 ## Heavy Armored against crashes
 
-As we are working with containers, the best way to “crash” a node is to literally
+As we are working with containers, the best way to "crash" a node is to literally
 stop the container:
 
 ```sh
 docker stop k3d-k3s-default-server-0
 ```
 
-!!!note: "Note"
+!!! note "Note"
     The Docker and k3d commands will show the state change immediately. However,
     the Kubernetes (read: K8s or K3s) cluster needs a short time to see the state
     change to NotReady.

@@ -36,7 +36,7 @@ CILogon welcome page on subsequent visits and proceed directly to the selected i
 identity provider(IdP). Click "Log On". This will redirect to your respective institutional
 login page where you need to enter your institutional credentials.
 
-!!!note "Important Note"
+!!! note "Important Note"
     The NERC does not see or have access to your institutional account credentials
     and neither store them rather it just point to your selected insitution's identity
     provider and redirects back once authenticated.

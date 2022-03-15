@@ -134,7 +134,7 @@ sudo systemctl restart k3s
 
 ### On your local development machine to access Kubernetes Cluster Remotely (Optional)
 
-!!!note "Important Requirement"
+!!! note "Important Requirement"
     Your local development machine must have installed `kubectl`.
 
 - Copy kubernetes config to your local machine:
@@ -148,6 +148,10 @@ kubectl get nodes
 ```
 
 ## Kubernetes Dashboard
+
+The [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+is a GUI tool to help you work more efficiently with K8s cluster. This is only
+accessible from within the cluster (at least not without some serious tweaking).
 
 check [releases](https://github.com/kubernetes/dashboard/releases) for the command
 to use for *Installation*:
@@ -187,7 +191,7 @@ subjects:
 
 - Deploy the `admin-user` configuration:
 
-!!!note "Important Note"
+!!! note "Important Note"
     If you’re doing this from your local development machine, remove `sudo k3s` and
     just use `kubectl`)
 

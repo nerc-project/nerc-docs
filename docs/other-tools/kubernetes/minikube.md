@@ -91,9 +91,9 @@ sudo apt install virtualbox virtualbox-ext-pack -y
 
 ```sh
 snap install kubectl --classic
-
-kubectl 1.22.2 from Canonical✓ installed
 ```
+
+This outputs: `kubectl 1.22.2 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
@@ -144,7 +144,7 @@ for minikue, so start the minikube with the docker driver,
 minikube start --driver=none
 ```
 
-!!!note "Note"
+!!! note "Note"
     - To check the internal IP, run the `minikube ip` command.
     - By default, Minikube uses the driver most relevant to the host OS. To
     use a different driver, set the `--driver` flag in `minikube start`. For
@@ -256,7 +256,7 @@ The output looks like below:
 ![Current ClusterIP for Minikube Dashboard](images/minikube_dashboard_clusterip.png)
 
 ```sh
-kubectl  edit service kubernetes-dashboard -n kubernetes-dashboard
+kubectl edit service kubernetes-dashboard -n kubernetes-dashboard
 ```
 
 -- Replace type: "ClusterIP" to "NodePort":

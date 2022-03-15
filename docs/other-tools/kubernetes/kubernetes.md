@@ -60,7 +60,7 @@ helps you run **OpenShift** locally by running a single-node OpenShift cluster i
 a VM. For more [read this](minishift.md).
 
 3. [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) is a tool for running
-local Kubernetes clusters utilizing Docker container “nodes”. It was built for
+local Kubernetes clusters utilizing Docker container "nodes". It was built for
 Kubernetes testing, but it may also be used for local development and continuous
 integration. For more [read this](kind.md).
 

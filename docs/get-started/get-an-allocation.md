@@ -78,7 +78,13 @@ integer value that corresponds to multiple openstack resource quotas. For exampl
 | `Instances`           | 1                                     |
 | `vCPUs`               | 2                                     |
 | `RAM`                 | 4096                                  |
-| `Volumes`             | 1                                     |
+| `Volumes`             | 2                                     |
+| `Volume Storage(GB)`  | 100                                   |
+
+!!!info "Information"
+    By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security
+    Groups** are provided to each approved projects regardless of units of requested
+    quota units.
 
 ## Adding and removing User from the Project
 

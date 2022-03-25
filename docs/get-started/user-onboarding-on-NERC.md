@@ -12,7 +12,7 @@ The overall user flow can be summarized using the following sequence diagram:
 1. All users including PI need to register to NERC via: [https://regapp.mss.mghpcc.org/](https://regapp.mss.mghpcc.org/).
 
 2. **PI** will send a request for a Principal Investigator (PI) user account role
-by submitting: [NERC's PI Request Form](https://docs.google.com/forms/d/e/1FAIpQLSdscMlm3TQR09sl7P-0n4oN1uzpd7YikqDubEYF2QDLVz6djA/viewform?pli=1&fbzx=-8227359805748438031).
+by submitting: [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/).
 
 3. Wait until the PI request gets approved by the **NERC’s admin**.
 

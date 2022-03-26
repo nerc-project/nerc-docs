@@ -25,6 +25,7 @@ Default usernames for all the base images are:
 - **all CentOS images**: centos
 - **all RHEL images**: ubuntu
 - **all Fedora images**: fedora
+- **all Debian images**: debian
 
 Our example VM was launched with the **ubuntu-21.04-x86_64** base image, the
 user we need is 'ubuntu'.

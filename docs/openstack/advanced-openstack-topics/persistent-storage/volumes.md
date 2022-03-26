@@ -86,15 +86,10 @@ the output of `sudo fdisk -l` or `lsblk`.
 We see the volume here as the disk 'vdb', which matches the `/dev/vdb/` we
 noted in the Attached To column.
 
-In this case it's easy to spot because there is only one additional disk
-attached to the instance, but it's important to keep track of the device name,
-especially if you have multiple volumes attached.
-
-Also, a given volume might not get the same device name the second time you
-attach it to an instance.
-
 Create a filesystem on the volume and mount it - in the example we create an
 `ext4` filesystem:
+
+Run the following commands as `root` user:
 
 ```sh
   # mkfs.ext4 /dev/vdb
@@ -118,13 +113,40 @@ The volume is now available at the mount point:
 If you place data in the directory `/mnt/test_volume`, detach the volume, and
 mount it to another instance, the second instance will have access to the data.
 
+!!! note "Important Note"
+    In this case it's easy to spot because there is only one additional disk attached
+    to the instance, but it's important to keep track of the device name, especially
+    if you have multiple volumes attached.
+
 ### Detach a volume
 
 To detach a mounted volume by going back to Manage Attachments and choosing
 Detach Volume.
 
-Once it is successfully detached, you can use Manage Attachments to attach it
-to another instance if desired.
+### Attach an existing volume to an instance
+
+Once it is successfully detached, you can use "Manage Attachments" to attach it
+to another instance if desired as explaned before.
+
+**OR,**
+
+You can attach the existing volume (Detached!) to the new instance as shown below:
+
+![Attaching Volume to an Instance](images/attach-volume-to-an-instance.png)
+
+After this run the following commands as `root` user to mount it:
+
+```sh
+  # mkdir /mnt/test_volume
+  # mount /dev/vdb /mnt/test_volume
+```
+
+All the previous data from previous instance will be available under the mounted
+folder at `/mnt/test_volume`.
+
+!!! note "Very Important Note"
+    Also, a given volume might not get the same device name the second time you
+    attach it to an instance.
 
 ### Delete volumes
 

@@ -118,7 +118,6 @@ configuration changes at once.
 
 ## Some useful Terraform commands
 
-    ```sh
     terraform init
 
     terraform fmt
@@ -134,5 +133,5 @@ configuration changes at once.
     terraform destroy
 
     terraform output
-    ```
+
 ---

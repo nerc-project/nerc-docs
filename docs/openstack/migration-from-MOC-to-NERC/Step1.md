@@ -4,62 +4,62 @@ Please read the instructions in their entirety before proceeding. Allow yourself
 <span style="color:red">Snapshots will not be migrated</span>. If you have a Snapshot you wish to backup please “Create Volume” from it first.
 
 1. Go to the <a href="http://kaizen.massopen.cloud" target="_blank">MOC Dashboard</a>.
-   1. If you have SSO through your Institution or google select *Institution Account* from the dropdown.  
-   ![Login1](images/S1_Login1.png)
-      1. Click **Connect**.
-      2. Click on University Logins (highlighted in yellow below) if you are using SSO with your Institution.  
-      ![Login2](images/S1_Login2.png)  
-         1. Follow your Institution's login steps after that, and skip to step
-      1. Click Google (highlighted in purple above) if your SSO is through Google.
-         1. Follow standard Google login steps to get in this way, and skip to step 2.
-   1. If you have a standard login and password leave the dropdown as Keystone Credentials.  
+    1. If you have SSO through your Institution or google select *Institution Account* from the dropdown.  
+    ![Login1](images/S1_Login1.png)  
+        1. Click **Connect**.
+        2. Click on University Logins (highlighted in yellow below) if you are using SSO with your Institution.  
+        ![Login2](images/S1_Login2.png)  
+            1. Follow your Institution's login steps after that, and skip to step
+        1. Click Google (highlighted in purple above) if your SSO is through Google.
+            1. Follow standard Google login steps to get in this way, and skip to step 2.
+    1. If you have a standard login and password leave the dropdown as Keystone Credentials.  
    ![Login3](images/S1_Login3.png)  
-      1. Enter your User Name.
-      2. Enter your Password.
-      3. Click Connect.
-      4. If you do not know your login information please create a Password Reset <a href="https://osticket.massopen.cloud/" target="_blank">ticket</a>.  
-      ![OSticket1](images/S1_OSticket1.png)  
-         1. Click Open a New Ticket (highlighted in yellow above).  
-         ![OSticket2](images/S1_OSticket2.png)
-         1. Click the dropdown and select Forgot Pass & SSO Account Link (highlighted in blue above).
-         2. In the text field (highlighted in purple above) provide the Institution email, project you are working on and the email address you used to create the account. 
-         3. Click **Create Ticket** (highlighted in yellow above) and wait for the pinwheel.
-         4. You will receive an email to let you know that the MOC support staff will get back to you.
+        1. Enter your User Name.
+        2. Enter your Password.
+        3. Click Connect.
+        4. If you do not know your login information please create a Password Reset <a href="https://osticket.massopen.cloud/" target="_blank">ticket</a>.  
+        ![OSticket1](images/S1_OSticket1.png)  
+            1. Click Open a New Ticket (highlighted in yellow above).  
+         ![OSticket2](images/S1_OSticket2.png)  
+            2. Click the dropdown and select Forgot Pass & SSO Account Link (highlighted in blue above).
+            3. In the text field (highlighted in purple above) provide the Institution email, project you are working on and the email address you used to create the account. 
+            4. Click **Create Ticket** (highlighted in yellow above) and wait for the pinwheel.
+            5. You will receive an email to let you know that the MOC support staff will get back to you.
 2. You are then brought to the Project>Compute>Overview location of the Dashboard.  
-![Project_Compute_Instance](images/S1_Project_Compute_Instance.png)
+![Project_Compute_Instance](images/S1_Project_Compute_Instance.png)  
 3. Gather the Instance UUIDs (of only the instances that you need to migrate to the NERC).
-   1. Click <a href="https://kaizen.massopen.cloud/dashboard/project/instances/" target="_blank">Instances</a> (highlighted in pink above).  
-   ![Project_Compute_Instance_Name](images/S1_Project_Compute_Instance_Name.png)
-   2. Click the Instance Name (highlighted in Yellow above) of the first instance you would like to gather data on.  
-   ![Project_Compute_Instance_Details](images/S1_Project_Compute_Instance_Details.png)
-   3. Locate the ID row (highlighted in green above) and copy and save the ID (highlighted in purple above).
-      1. This is the UUID of your first Instance.
-   4. Locate the RAM, VCPUs & Disk rows (highlighted in yellow) and copy and save the associated values (highlighted in pink).
+    1. Click <a href="https://kaizen.massopen.cloud/dashboard/project/instances/" target="_blank">Instances</a> (highlighted in pink above).  
+    ![Project_Compute_Instance_Name](images/S1_Project_Compute_Instance_Name.png)  
+    2. Click the Instance Name (highlighted in Yellow above) of the first instance you would like to gather data on.  
+   ![Project_Compute_Instance_Details](images/S1_Project_Compute_Instance_Details.png)  
+    3. Locate the ID row (highlighted in green above) and copy and save the ID (highlighted in purple above).
+        1. This is the UUID of your first Instance.
+    4. Locate the RAM, VCPUs & Disk rows (highlighted in yellow) and copy and save the associated values (highlighted in pink).
 4. Repeat step 3 for each Instance you have.
 5. Gather the Volume UUIDs (of only the volumes that you need to migrate to the NERC).  
-![Project_Volumes_Volumes](images/S1_Project_Volumes_Volumes.png)
-   1. Click Volumes dropdown.
-   2. Select <a href="https://kaizen.massopen.cloud/dashboard/project/volumes/" target="_blank">Volumes</a> (highlighted in purple above).  
-   ![Project_Volumes_Names](images/S1_Project_Volumes_Names.png)
-   3. Click the Volume Name (highlighted in yellow above) of the first volume you would like to gather data on.
-      1. The name might be the same as the ID (highlighted in blue above).  
-         ![Project_Volumes_Details](images/S1_Project_Volumes_Details.png)
-   4. Locate the ID row (highlighted in green above) and copy and save the ID (highlighted in purple above).
-      1. This is the UUID of your first Volume.
-   5. Locate the Size row (highlighted in yellow above) and copy and save the Volume size (highlighted in pink above).
-   6. Locate the Attached To row (highlighted in blue above) and copy and save the Instance this Volume is attached to (highlighted in orange above).
-      1. If the volume is not attached to an image it will state “Not attached”.
+![Project_Volumes_Volumes](images/S1_Project_Volumes_Volumes.png)  
+    1. Click Volumes dropdown.
+    2. Select <a href="https://kaizen.massopen.cloud/dashboard/project/volumes/" target="_blank">Volumes</a> (highlighted in purple above).  
+    ![Project_Volumes_Names](images/S1_Project_Volumes_Names.png)  
+    3. Click the Volume Name (highlighted in yellow above) of the first volume you would like to gather data on.
+        1. The name might be the same as the ID (highlighted in blue above).  
+        ![Project_Volumes_Details](images/S1_Project_Volumes_Details.png)  
+    4. Locate the ID row (highlighted in green above) and copy and save the ID (highlighted in purple above).
+        1. This is the UUID of your first Volume.
+    5. Locate the Size row (highlighted in yellow above) and copy and save the Volume size (highlighted in pink above).
+    6. Locate the Attached To row (highlighted in blue above) and copy and save the Instance this Volume is attached to (highlighted in orange above).
+        1. If the volume is not attached to an image it will state “Not attached”.
 6. Repeat step 5 for each Volume you have.
 7. If you already have all of your Security Group information outside of the OpenStack Dashboard skip to step 10.
 8. Gather the Security Group information (of only the security groups that you need to migrate to the NERC).  
-![Project_Network_SecurityGroup](images/S1_Project_Network_SecurityGroup.png)
-   1. Click Network dropdown
-   2. Click <a href="https://kaizen.massopen.cloud/dashboard/project/security_groups/" target="_blank">Security</a> Groups (highlighted in yellow above).  
-   ![Project_Network_SecurityGroup_Names](images/S1_Project_Network_SecurityGroup_Names.png)
-   3. Click **Manage Rules** (highlighted in yellow above) of the first Security Group you would like to gather data on.  
-   ![Project_Network_SecurityGroup_Details](images/S1_Project_Network_SecurityGroup_Details.png)
-   4. Ignore the first 2 lines (highlighted in yellow above).
-   5. Write down the important information for all lines after (highlighted in blue above).
+![Project_Network_SecurityGroup](images/S1_Project_Network_SecurityGroup.png)  
+    1. Click Network dropdown
+    2. Click <a href="https://kaizen.massopen.cloud/dashboard/project/security_groups/" target="_blank">Security</a> Groups (highlighted in yellow above).  
+    ![Project_Network_SecurityGroup_Names](images/S1_Project_Network_SecurityGroup_Names.png)  
+    3. Click **Manage Rules** (highlighted in yellow above) of the first Security Group you would like to gather data on.  
+   ![Project_Network_SecurityGroup_Details](images/S1_Project_Network_SecurityGroup_Details.png)  
+    4. Ignore the first 2 lines (highlighted in yellow above).
+    5. Write down the important information for all lines after (highlighted in blue above).
       1. Direction, Ether Type, IP Protocol, Port Range, Remote IP Prefix, Remote Security Group.
 9. Repeat step 8 for each security group you have.
 10. Create 3 tables of all of your Instances, your Volumes and Security Groups, for example, if you have 2 instances, 3 volumes and 2 Security Groups like the sample above your lists might look like this:

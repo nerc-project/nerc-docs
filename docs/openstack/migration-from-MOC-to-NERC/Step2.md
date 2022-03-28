@@ -88,14 +88,16 @@
 4. Repeat step 3 for each Volume you have.
 5. Create 2 tables of all of your Instances and Volumes for example, if you have 2 instances and 2 volumes like the sample above your lists might look like this:
 
-NERC Instance information:  
+NERC Instance information:
+
 | Instance Name | NERC VCPUs | NERC Disk | NERC RAM | NERC UUID |
 | ------------- | ---------- | --------- | -------- | --------- |
 | Ubuntu_NERC | 1 | 10GB | 2GB | 9f1e100b-184b-4bc6-9658-0d82e7c2e4f2 |
 | Ubuntu_Test | 1 | 10GB | 1GB | 84f3d7c7-f4a0-45ef-9663-733421ce5da0 |
 | total | 2 | 20GB | 3GB | |
 
-NERC Volume Information:  
+NERC Volume Information:
+
 | Volume Name | NERC Disk | NERC Attached To | NERC UUID |
 | ----------- | --------- | ---------------- | --------- |
 | Ubuntu_NERC_Volume | 10GiB | Ubuntu_NERC | 601ccc62-130b-484a-8e8d-6c186ecdb229 |

@@ -64,22 +64,25 @@ Please read the instructions in their entirety before proceeding. Allow yourself
 9. Repeat step 8 for each security group you have.
 10. Create 3 tables of all of your Instances, your Volumes and Security Groups, for example, if you have 2 instances, 3 volumes and 2 Security Groups like the sample above your lists might look like this:
 
-MOC Instance information:  
+MOC Instance information:
+
 | Instance Name | MOC VCPUs | MOC Disk | MOC RAM | MOC UUID |
 | ------------- | --------- | -------- | ------- | -------- |
 | Fedora_test | 1 | 10GB | 1GB | 16a1bfc2-8c90-4361-8c13-64ab40bb6207 |
 | Ubuntu_Test | 1 | 10GB | 2GB | 6a40079a-59f7-407c-9e66-23bc5b749a95 |
 | total | 2 | 20GB | 3GB | |
 
-MOC Volume Information:  
-| Volume Name | MOC Disk | MOC UUID |
-| ----------- | -------- | -------- |
+MOC Volume Information:
+
+| Volume Name | MOC Disk | MOC Attached To | MOC UUID |
+| ----------- | -------- | --------------- | -------- |
 | Fedora | 10GiB | Fedora_test | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |
 | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | 10GiB | Ubuntu_Test | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 |
 | Snapshot of Fed_Test | 10GiB | Fedora_test | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |
 | total | 30GiB | Not attached | |
 
-MOC Security Group Information:  
+MOC Security Group Information:
+
 | Security Group Name | Direction | Ether Type | IP Protocol | Port Range | Remote IP Prefix |
 | ------------------- | --------- | ---------- | ----------- | ---------- | ---------------- |
 | ssh_only_test | Ingress | IPv4 | TCP | 22 | 0.0.0.0/0 |

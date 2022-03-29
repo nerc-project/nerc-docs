@@ -230,7 +230,7 @@ the NERC).
 4. Repeat step 3 for each Volume you have.
 
 5. Create 2 tables of all of your Instances and Volumes for example, if you
-have 2 instances and 2 volumes like the sample above your lists might look
+have 2 instances and 3 volumes like the sample above your lists might look
 like this:
 
 NERC Instance information:

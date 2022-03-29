@@ -77,9 +77,11 @@ integer value that corresponds to multiple openstack resource quotas. For exampl
 | :-------------------: | :-----------------------------------: |
 | `Instances`           | 1                                     |
 | `vCPUs`               | 2                                     |
+| `GPU`                 | 0                                     |
 | `RAM`                 | 4096                                  |
 | `Volumes`             | 2                                     |
 | `Volume Storage(GB)`  | 100                                   |
+| `Object Storage(GB)`  | 1                                     |
 
 !!!info "Information"
     By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security

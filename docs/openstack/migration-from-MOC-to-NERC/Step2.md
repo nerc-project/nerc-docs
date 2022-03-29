@@ -15,7 +15,7 @@
 to NERC [here](https://coldfront.mss.mghpcc.org/user/login)
 (link also in PI approval email).
 
-        ![ColdFront_Login](images/S2_ColdFront_Login.png)
+    ![ColdFront_Login](images/S2_ColdFront_Login.png)
 
     1. Log in with your institution login by clicking on
     **Log in via OpenID Connect** (highlighted in yellow above).

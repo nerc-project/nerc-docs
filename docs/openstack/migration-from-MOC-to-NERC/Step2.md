@@ -40,11 +40,12 @@ to NERC [here](https://coldfront.mss.mghpcc.org/user/login)
     “MOC Volume Information” table to calculate Disk space you will need.
 
     6. Using the up and down arrows (highlighted in yellow above) or by
-    entering the number manually select the multiple of 1 Instance, 2 vCPUs,
-    4GB RAM, 2 Volumes and 100GB Disk that you will need.
+    entering the number manually select the multiple of 1 Instance, 2 vCPUs, 0 GPUs,
+    4GB RAM, 2 Volumes and 100GB Disk and 1GB Object Storage that you will need.
 
         1. For example if I need 2 instances 2 vCPUs, 3GB RAM, 3 Volumes and
-        30GB of storage I would click the up arrow once to select 2 units.
+        30GB of storage I would type in 2 or click the up arrow once to select
+        2 units. 
 
     7. Click **Submit** (highlighted in green above).
 

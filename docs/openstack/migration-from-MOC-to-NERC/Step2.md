@@ -45,7 +45,7 @@ to NERC [here](https://coldfront.mss.mghpcc.org/user/login)
 
         1. For example if I need 2 instances 2 vCPUs, 3GB RAM, 3 Volumes and
         30GB of storage I would type in 2 or click the up arrow once to select
-        2 units. 
+        2 units.
 
     7. Click **Submit** (highlighted in green above).
 

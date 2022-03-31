@@ -57,7 +57,7 @@ Attach to Instance, and click "Attach Volume".
 
 ![Attach Volume](images/volume_attach.png)
 
-The volume now has a status of "In Use" and the Attached To column shows which
+The volume now has a status of "In-use" and "Attached To" column shows which
 instance it is attached to, and what device name it has.
 
 This will be something like `/dev/vdb` but it can vary depending on the state
@@ -84,7 +84,7 @@ the output of `sudo fdisk -l` or `lsblk`.
 ```
 
 We see the volume here as the disk 'vdb', which matches the `/dev/vdb/` we
-noted in the Attached To column.
+noted in "Attached To" column.
 
 Create a filesystem on the volume and mount it - in the example we create an
 `ext4` filesystem:
@@ -120,8 +120,12 @@ mount it to another instance, the second instance will have access to the data.
 
 ### Detach a volume
 
-To detach a mounted volume by going back to Manage Attachments and choosing
+To detach a mounted volume by going back to "Manage Attachments" and choosing
 Detach Volume.
+
+This will popup the following interface to proceed:
+
+![Detach a volume](images/detach-volume-from-an-instance.png)
 
 ### Attach an existing volume to an instance
 
@@ -180,5 +184,67 @@ volume to persist even after the instance is terminated.
 
 !!! note "Note"
     Only one instance at a time can be booted from a given volume.
+
+## Transfer a Volume
+
+You may wish to transfer a volume to a different project.
+
+!!! note "Important"
+    The volume to be transferred must not be attached to an instance. This can
+    be examined by looking into "Status" column of the volume i.e. it need to
+    be **"Available"** instead of "In-use"  and "Attached To" column need to be **empty**.
+
+Navigate to Project -> Volumes -> Volumes.
+Select the volume that you want to transfer and then click the dropdown next to
+the "Edit volume" and choose "Create Transfer".
+
+![Create Transfer of a Volume](images/create-transfer-a-volume.png)
+
+Give the transfer a name.
+
+![Volume Transfer Popup](images/transfer-volume-name.png)
+
+You will see a screen like shown below. Be sure to capture the **Transfer ID** and
+the **Authorization Key**.
+
+![](images/volume-transfer-key.png)
+
+!!! note "Important Note"
+    You can always get the transfer ID later if needed, but there is no way to
+    retrieve the key.
+    If the key is lost before the transfer is completed, you will have to cancel
+    the pending transfer and create a new one.
+
+Then the volume will show the status like below:
+
+![Volume Transfer Initiated](images/transfer-volume-initiated.png)
+
+Assuming you have access to the receiving project, switch to it using the Project
+dropdown at the top right.
+
+If you don't have access to the receiving project, give the transfer ID and
+Authorization Key to a collaborator who does, and have them complete the next steps.
+
+In the receiving project, go to the Volumes tab, and click "Accept Transfer"
+button as shown below:
+
+![Volumes in a New Project](images/volumes-in-a-new-project.png)
+
+Enter the "Transfer ID" and the "Authorization Key" that were captured when the
+transfer was created in the previous project.
+
+![Volume Transfer Accepted](images/volume-transfer-accepted.png)
+
+The volume should now appear in the Volumes list of the receiving project as shown
+below:
+
+![Successful Accepted Volume Transfer](images/successful_accepted_volume_transfer.png)
+
+!!! note "Important Note"
+    Any pending transfers can be cancelled if they are not yet accepted, but there
+    is no way to "undo" a transfer once it is complete.
+    To send the volume back to the original project, a new transfer would be required.
+
+
 
 ---

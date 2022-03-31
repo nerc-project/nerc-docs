@@ -207,7 +207,7 @@ Give the transfer a name.
 You will see a screen like shown below. Be sure to capture the **Transfer ID** and
 the **Authorization Key**.
 
-![](images/volume-transfer-key.png)
+![Volume Transfer Initiated](images/volume-transfer-key.png)
 
 !!! note "Important Note"
     You can always get the transfer ID later if needed, but there is no way to
@@ -244,7 +244,5 @@ below:
     Any pending transfers can be cancelled if they are not yet accepted, but there
     is no way to "undo" a transfer once it is complete.
     To send the volume back to the original project, a new transfer would be required.
-
-
 
 ---

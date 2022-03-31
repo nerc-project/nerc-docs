@@ -46,7 +46,8 @@ the list below.
 
 ## Persistent Storage
 
-- [Volumes](advanced-openstack-topics/persistent-storage/volumes.md)
+- [Block Storage/ Volumes](advanced-openstack-topics/persistent-storage/volumes.md)
+- [Object Storage](advanced-openstack-topics/persistent-storage/object-storage.md)
 
 ## OpenStack CLI
 

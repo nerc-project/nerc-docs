@@ -5,11 +5,15 @@ object/blob store. Object Storage is used to manage cost-effective and long-term
 preservation and storage of large amounts of data across clusters of standard server
 hardware. The common use cases include the storage, backup and archiving of unstructured
 data, such as documents, static web content, images, video files, and virtual
-machine images, etc. The end-users can use it based on provisioned quotas via
-using Horizon dashboard or using HTTP RESTful APIs. Swift also supports and is
-compatible with Amazon's Simple Storage Service (S3) API that makes it easier
-for the end-users to move data between multiple storage end points and supports
-hybrid cloud setup.
+machine images, etc.
+
+The end-users can interact with the object storage system through a RESTful HTTP
+API i.e. the Swift API or use one of the many client libraries that exist for all
+of the popular programming languages, such as Java, Python, Ruby, and C# based on
+provisioned quotas. Swift also supports and is compatible with [Amazon's Simple
+Storage Service (S3) API](https://docs.openstack.org/swift/latest/s3_compat.html)
+that makes it easier for the end-users to move data between multiple storage end
+points and supports hybrid cloud setup.
 
 ## Access by Web Interface
 
@@ -19,7 +23,7 @@ To get started, navigate to Project -> Object Store -> Containers.
 
 ### Create a Container
 
-In order to store objects, you need at least one **Container** to put them in.  
+In order to store objects, you need at least one **Container** to put them in.
 Containers are essentially top-level directories. Other services use the
 terminology **buckets**.
 
@@ -114,5 +118,52 @@ This will deactivate the public URL of the container and then it will show "Disa
 ![Disable Container Public Access](images/disable_public_access_container.png)
 
 ## Access by using APIs
+
+### Swift Interface
+
+This is a python client for the Swift API. There's a [Python API](https://github.com/openstack/python-swiftclient)
+(the `swiftclient` module), and a command-line script (`swift`).
+
+[Python Swift Client page at PyPi](https://pypi.org/project/python-swiftclient/)
+
+    - Install `python-swiftclient` and `python-keystoneclient`
+
+    ```sh
+    # pip install python-swiftclient python-keystoneclient
+    ```
+
+    - Swift authenticates using a user, tenant, and key, which map to your OpenStack username, project, and password.
+    For this, you need to download the **"NERC's OpenStack RC File"** with the credentials for
+    your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
+    Then you need to source that RC file using: `source *-openrc.sh`. You can
+    [read here](https://github.com/nerc-project/terraform-nerc#how-to-get-credential-to-connect-nercs-openstack)
+    on how to do this.
+
+    By sourcing the "NERC's OpenStack RC File", you will set the all required environmental variables by using
+    your openstackrc file, and then type the following command to get a lits of your containers:
+
+    ```sh
+    swift --os-auth-url $OS_AUTH_URL --auth-version $OS_IDENTITY_API_VERSION\
+      --os-application-credential-id $OS_APPLICATION_CREDENTIAL_ID \
+      --os-application-credential-secret $OS_APPLICATION_CREDENTIAL_SECRET \
+      --os-auth-type $OS_AUTH_TYPE list
+    ```
+
+    This will output your existing container on your project, for e.g.
+
+    `unique-container-test`
+
+    To upload a file to the above listed i.e. `unique-container-test`, you can run following command:
+
+    ```sh
+    swift --os-auth-url $OS_AUTH_URL --auth-version $OS_IDENTITY_API_VERSION\
+      --os-application-credential-id $OS_APPLICATION_CREDENTIAL_ID \
+      --os-application-credential-secret $OS_APPLICATION_CREDENTIAL_SECRET \
+      --os-auth-type $OS_AUTH_TYPE upload unique-container-test ./README.md
+    ```
+
+    !!! note "Helpful Tip"
+            Type `swift -h` to learn more about using the swift commands. The client has a `--debug` flag, which can be
+            useful if you are facing any issues.
 
 ---

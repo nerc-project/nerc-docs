@@ -234,7 +234,7 @@ credentials, and requests a listing of all the buckets that the user has access 
     # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#bucket
     s3 = boto3.resource('s3',
         aws_access_key_id='EC2_ACCESS_KEY_FROM_ec2rc_FILE',
-        aws_secret_access_key='EC2_SECRET_KEY_FROM_ec2rc_FILE',
+        aws_secret_access_key='EC2_SECRET_KEY_FROM_ec2rc_FILE', #pragma: allowlist secret
         endpoint_url='https://stack.nerc.mghpcc.org:13808',
     )
 

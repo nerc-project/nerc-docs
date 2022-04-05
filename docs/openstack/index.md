@@ -44,14 +44,15 @@ the list below.
 - [Set up your own Private Network](advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md)
 - [Create a Router](advanced-openstack-topics/setting-up-a-network/create-a-router.md)
 
-## Persistent Storage
-
-- [Volumes](advanced-openstack-topics/persistent-storage/volumes.md)
-
 ## OpenStack CLI
 
 - [OpenStack CLI](advanced-openstack-topics/openstack-cli/openstack-CLI.md)
 - [Launch a VM using OpenStack CLI](advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
+
+## Persistent Storage
+
+- [Block Storage/ Volumes/ Cinder](advanced-openstack-topics/persistent-storage/volumes.md)
+- [Object Storage/ Swift](advanced-openstack-topics/persistent-storage/object-storage.md)
 
 ## Using Terraform to provision NERC resources
 

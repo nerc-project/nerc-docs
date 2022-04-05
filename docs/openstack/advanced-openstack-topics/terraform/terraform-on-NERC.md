@@ -69,7 +69,7 @@ The Terraform deployment workflow on the NERC looks like this:
 
 1. You can download the **"NERC's OpenStack RC File"** with the credentials for
 your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
-Then you need to source that RC file using: `source *-openrc.sh.`. You can
+Then you need to source that RC file using: `source *-openrc.sh`. You can
 [read here](https://github.com/nerc-project/terraform-nerc#how-to-get-credential-to-connect-nercs-openstack)
 on how to do this.
 

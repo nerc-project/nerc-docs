@@ -133,7 +133,7 @@ image using Virtual Machine Manager.
 
     Make sure the NIC is using the **virtio** Device model as show below:
 
-    ![Virt-Manager Modify  NIC](images/7.2.customize_nic_virtio.png))
+    ![Virt-Manager Modify  NIC](images/7.2.customize_nic_virtio.png)
 
     ![Virt-Manager Apply Change on NIC](images/7.3.customize_nic_virtio_apply.png)
 
@@ -254,8 +254,8 @@ running the following commands on **Command Prompt (Run as Adminstrator)**:
 10. Download and install stable version of **cloudbase-init** (A Windows project
 providing guest initialization features, similar to cloud-init) by browsing the
 [Download Page](https://cloudbase.it/cloudbase-init/#download) on the web browser
-on virtual machine running Windows, you can escape registring and just click on
-"No. just show me the downloads" to navigate to the download page as shown below:
+on virtual machine running Windows, you can escape registering and just click on
+**"No. just show me the downloads"** to navigate to the download page as shown below:
 
     ![Download Cloudbase-init](images/install_cloudbase-init.png)
 

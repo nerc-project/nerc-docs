@@ -15,7 +15,7 @@ Storage Service (S3) API](https://docs.openstack.org/swift/latest/s3_compat.html
 that makes it easier for the end-users to move data between multiple storage end
 points and supports hybrid cloud setup.
 
-## Access by Web Interface
+## 1. Access by Web Interface
 
 To get started, navigate to Project -> Object Store -> Containers.
 
@@ -118,11 +118,11 @@ This will deactivate the public URL of the container and then it will show "Disa
 
 ![Disable Container Public Access](images/disable_public_access_container.png)
 
-## Access by using APIs
+## 2. Access by using APIs
 
-### 1. OpenStack CLI
+### i. OpenStack CLI
 
-#### Prerequisites
+- **Prerequisites**
 
 To run the OpenStack CLI commands, you need to have:
 
@@ -239,7 +239,7 @@ To check the space used by a specific container
     | storage_policy | Policy-0                              |
     +----------------+---------------------------------------+
 
-### 2. Swift Interface
+### ii. Swift Interface
 
 This is a python client for the Swift API. There's a [Python API](https://github.com/openstack/python-swiftclient)
 (the `swiftclient` module), and a command-line script (`swift`).
@@ -306,7 +306,7 @@ Other helpful Swift commands:
         Type `swift -h` to learn more about using the swift commands. The client
         has a `--debug`flag, which can be useful if you are facing any issues.
 
-### 3. Using [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html)
+### iii. Using [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html)
 
 The Ceph Object Gateway [supports basic operations through the Amazon S3 interface](http://docs.ceph.com/docs/master/radosgw/s3/).
 
@@ -314,7 +314,7 @@ You can use both [high-level (s3) commands with the AWS CLI](https://docs.aws.am
 and [API-Level (s3api) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-apicommands.html)
 to access object storage on your NERC project.
 
-#### **Prerequisites**
+- **Prerequisites**
 
 To run the `s3` or `s3api` commands, you need to have:
 
@@ -465,13 +465,167 @@ Output:
     aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
         s3 rb s3://<your-bucket>
 
-### 4. Using [rclone](https://rclone.org/swift/)
+### iv. Using [s3cmd](https://s3tools.org/s3cmd)
+
+`S3cmd` is a free command line tool and client for uploading, retrieving and
+managing data in Amazon S3 and other cloud storage service providers that use
+the S3 protocol.
+
+- **Prerequisites**
+
+- S3cmd installed, see [Download and Install the latest version of the S3cmd](https://s3tools.org/download)
+for more information.
+
+#### Configuring s3cmd
+
+The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
+file can then be plugged into `s3cfg` config file.
+
+The `.s3cfg` file requires the following configuration to work with our Object
+storage service:
+
+    # Setup endpoint
+    host_base = stack.nerc.mghpcc.org:13808
+    host_bucket = stack.nerc.mghpcc.org:13808
+    use_https = True
+
+    # Setup access keys
+    access_key = 'YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE'
+    secret_key = 'YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE', #pragma: allowlist secret
+
+    # Enable S3 v4 signature APIs
+    signature_v2 = False
+
+We are assuming that the configuration file is placed in default location i.e.
+`$HOME/.s3cfg`. If it is not the case you need to add the parameter `--config=FILE`
+with the location of your configuration file to override the config location.
+
+#### Using s3cmd
+
+##### To list buckets
+
+Use the following command to list all s3 buckets
+
+    s3cmd ls
+
+Or,
+
+    $ s3cmd ls s3://
+
+    2009-02-03 16:45  s3://nerc-test-container
+    2009-02-03 16:45  s3://second-mycontainer
+    2009-02-03 16:45  s3://unique-container-test
+
+##### Create a new bucket
+
+In order to create a bucket, you can use `s3cmd` with the following command
+
+    $ s3cmd mb s3://mybucket
+
+    Bucket 's3://mybucket/' created
+
+    $ s3cmd ls
+    2009-02-03 16:45  s3://mybucket
+
+    2009-02-03 16:45  s3://nerc-test-container
+    2009-02-03 16:45  s3://second-mycontainer
+    2009-02-03 16:45  s3://unique-container-test
+
+##### To copy an object to bucket
+
+Below command will upload file `file.txt` to the bucket using `s3cmd` command.
+
+    $ s3cmd put ~/file.txt s3://mybucket/
+
+    upload: 'file.txt' -> 's3://mybucket/file.txt'  [1 of 1]
+    0 of 0     0% in    0s     0.00 B/s  done
+
+`s3cmd` also allows to set additional properties to the objects stored. In the
+example below, we set the content type with the `--mime-type` option and the
+cache-control parameter to 1 hour with `--add-header`.
+
+    s3cmd put --mime-type='application/json' --add-header='Cache-Control: max-age=3600' ~/file.txt s3://mybucket
+
+##### Uploading Directory in bucket
+
+If we need to upload entire directory use `-r` to upload it recursively as below.
+
+    $ s3cmd put -r <your-directory> s3://mybucket/
+
+    upload: 'backup/hello.txt' -> 's3://mybucket/backup/hello.txt'  [1 of 1]
+    0 of 0     0% in    0s     0.00 B/s  done
+
+##### List the objects of bucket
+
+List the objects of the bucket using `ls` switch with s3cmd.
+
+    $ s3cmd ls s3://mybucket/
+
+                           DIR   s3://mybucket/backup/
+    2022-04-05 03:10         0   s3://mybucket/file.txt
+    2022-04-05 03:14         0   s3://mybucket/hello.txt
+
+##### To copy/ download an object to local system
+
+Use the following command to download files from the bucket:
+
+    $ s3cmd get s3://mybucket/file.txt
+
+    download: 's3://mybucket/file.txt' -> './file.txt'  [1 of 1]
+    0 of 0     0% in    0s     0.00 B/s  done
+
+##### To sync local file/directory to a bucket
+
+    $ s3cmd sync newdemo s3://mybucket
+
+    upload: 'newdemo/newdemo_file.txt' -> 's3://mybucket/newdemo/newdemo_file.txt'  [1 of 1]
+    0 of 0     0% in    0s     0.00 B/s  done
+
+#### To sync bucket or object with local filesystem
+
+    $ s3cmd sync  s3://unique-container-test otherlocalbucket
+
+    download: 's3://unique-container-test/README.md' -> 'otherlocalbucket/README.md'  [1 of 3]
+    653 of 653   100% in    0s     4.54 kB/s  done
+    download: 's3://unique-container-test/image.png' -> 'otherlocalbucket/image.png'  [2 of 3]
+    0 of 0     0% in    0s     0.00 B/s  done
+    download: 's3://unique-container-test/test-file' -> 'otherlocalbucket/test-file'  [3 of 3]
+    12 of 12   100% in    0s    83.83 B/s  done
+    Done. Downloaded 665 bytes in 1.0 seconds, 665.00 B/s.
+
+##### To delete an object from bucket
+
+You can delete files from the bucket with the following `s3cmd` command
+
+    $ s3cmd del s3://unique-container-test/README.md
+
+    delete: 's3://unique-container-test/README.md'
+
+##### To delete directory from bucket
+
+    $ s3cmd del s3://mybucket/newdemo
+
+    delete: 's3://mybucket/newdemo'
+
+##### To delete a bucket
+
+    $ s3cmd rb s3://mybucket
+
+    ERROR: S3 error: 409 (BucketNotEmpty): The bucket you tried to delete is not empty
+
+!!! note "Important Information"
+        The above command failed because of the bucket was not empty! You can remove
+        all objects inside the bucket and then use the command again. Or, you can
+        run the following command with `-r` or `--recursive` flag i.e.
+        `s3cmd rb s3://mybucket -r` or `s3cmd rb s3://mybucket --recursive`.
+
+### v. Using [rclone](https://rclone.org/swift/)
 
 `rclone` is a convenient and performant command-line tool for transferring files
 and synchronizing directories directly between your local file systems and the
 NERC's containers.
 
-#### *Prerequisites*
+- **Prerequisites**
 
 To run the `rclone` commands, you need to have:
 
@@ -513,8 +667,8 @@ More about the config for **AWS S3 compatible API** can be [seen here](https://r
     Mind that if set `env_auth = true` then it  will take variables from environment,
     so you shouldn't insert it in this case.
 
-**OR,** You can locally compy this content to a new config file and then use this
-flag to override the config location, e.g. `rclone --config=".myconfig"`
+**OR,** You can locally copy this content to a new config file and then use this
+flag to override the config location, e.g. `rclone --config=FILE`
 
 !!! note "Interactive Configuration"
         Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
@@ -610,7 +764,7 @@ in it.
 
 To unmount, simply press `CTRL-C` and the mount will be interrupted.
 
-### 5. Using client libraries
+### vi. Using client libraries
 
 a. The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
 file can then be plugged into your application. See below example using the

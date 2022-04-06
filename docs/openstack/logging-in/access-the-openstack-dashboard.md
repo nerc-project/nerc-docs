@@ -5,7 +5,10 @@ Horizon, is located at [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc
 
 The NERC Authentication supports CILogon using Keycloak for gateway authentication
 and authorization that provides federated login via your institution accounts and
-it is the recommended authentication method. Select "OpenID Connect" as shown here:
+it is the recommended authentication method.
+
+Make sure you are selecting "OpenID Connect" (which is selected by default) as
+shown here:
 
 ![OpenID Connect](images/openstack_login.png)
 

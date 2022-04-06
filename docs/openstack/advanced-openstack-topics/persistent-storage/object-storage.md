@@ -744,7 +744,7 @@ Then you can simply mount your object storage with:
 
 **Windows:**
 
-First you have to [download Winsfp](http://www.secfs.net/winfsp/rel/):
+First you have to [download Winfsp](http://www.secfs.net/winfsp/rel/):
 
 **WinFsp** is an open source Windows File System Proxy which provides a FUSE
 emulation layer.

@@ -16,8 +16,8 @@ Next, you will redirected to CILogon welcome page as shown below:
 
 ![CILogon Welcome Page](images/CILogon_interface.png)
 
-MSS Keycloak will request approval of access to the following information from the
-user:
+MGHPCC Shared Services (MSS) Keycloak will request approval of access to the
+following information from the user:
 
 - Your CILogon user identifier
 - Your name

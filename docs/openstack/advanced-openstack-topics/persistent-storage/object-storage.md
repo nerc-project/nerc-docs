@@ -15,7 +15,7 @@ Storage Service (S3) API](https://docs.openstack.org/swift/latest/s3_compat.html
 that makes it easier for the end-users to move data between multiple storage end
 points and supports hybrid cloud setup.
 
-## 1. Access by Web Interface
+## 1. Access by Web Interface i.e. Horizon Dashboard
 
 To get started, navigate to Project -> Object Store -> Containers.
 
@@ -847,5 +847,76 @@ that the user has access to.
     client.fput_object(
         "nerc-test-container", "nerc-backup-2022.zip", "./nerc-backup.zip",
     )
+
+## 3. Using Graphical User Inreface (GUI) Tools
+
+### i. Using WinSCP
+
+[WinSCP](https://winscp.net/eng/index.php) is a popular and free open-source SFTP
+client, SCP client, and FTP client for Windows. Its main function is file transfer
+between a local and a remote computer, with some basic file management functionality
+using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
+
+- **Prerequisites**
+
+- WinSCP installed, see [Download and Install the latest version of the S3cmd](https://winscp.net/eng/docs/guide_install)
+for more information.
+
+- Go to WinSCP menu and open "Options > Preferences".
+
+- When the "Preferences" dialog window appears, select "Transfer" in the options
+on the left pane.
+
+- Click on "Edit" button.
+
+- Then, on shown popup dialog box review the "Common options" group, uncheck the
+"Preserve timestamp" option as shown below:
+
+![Disable Preserve TimeStamp](images/winscp-perserve-timestamp-disable.png)
+
+#### Configuring WinSCP
+
+- Click on "New Session" tab button as shown below:
+
+![Login](images/winscp-new-session.png)
+
+- Select **"Amazon S3"** from the "File protocol" dropdown options as shown below:
+
+![Choose Amazon S3 File Protocol](images/choose_S3_protocol.png)
+
+- Provide the following required information:
+
+    **"Host name"**: "stack.nerc.mghpcc.org"
+
+    **"Port number"**: "13808"
+
+    The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
+    file can then be plugged into **"Access key ID"** and Secret **"access key"**
+    respectively.
+
+![Config WinSCP](images/config_winscp.png)
+
+!!! note "Helpful Tips"
+    You can save your above configured session with some preferred name by
+    clicking the "Save" button and then giving a proper name to your session.
+    So that next time you don't need to again manually enter all your configuration.
+
+#### Using WinSCP
+
+You can follow above step to manually add a new session next time you open WinSCP
+or, you can connect to your previosuly saved session (as listed on popup dialog
+will show your all saved seession name list) that will show up by just clicking on
+the session name.
+
+Then click "Login" button to connect to your NERC's OpenStack Object Storage as
+shown below:
+
+![Login](images/winscp-login.png)
+
+![Successful connection](images/winscp-successfully-connected.png)
+
+### ii. Using Cyberduck
+
+[Cyberduck](https://docs.cyberduck.io/cyberduck/)
 
 ---

@@ -859,7 +859,7 @@ using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
 
 - **Prerequisites**
 
-- WinSCP installed, see [Download and Install the latest version of the S3cmd](https://winscp.net/eng/docs/guide_install)
+- WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
 for more information.
 
 - Go to WinSCP menu and open "Options > Preferences".
@@ -884,14 +884,14 @@ on the left pane.
 
 ![Choose Amazon S3 File Protocol](images/choose_S3_protocol.png)
 
-- Provide the following required information:
+- Provide the following required endpoint information:
 
     **"Host name"**: "stack.nerc.mghpcc.org"
 
     **"Port number"**: "13808"
 
     The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
-    file can then be plugged into **"Access key ID"** and Secret **"access key"**
+    file can then be plugged into **"Access key ID"** and **"Secret access key"**
     respectively.
 
 ![Config WinSCP](images/config_winscp.png)
@@ -908,7 +908,7 @@ or, you can connect to your previosuly saved session (as listed on popup dialog
 will show your all saved seession name list) that will show up by just clicking on
 the session name.
 
-Then click "Login" button to connect to your NERC's OpenStack Object Storage as
+Then click "Login" button to connect to your NERC project's Object Storage as
 shown below:
 
 ![Login](images/winscp-login.png)
@@ -917,6 +917,42 @@ shown below:
 
 ### ii. Using Cyberduck
 
-[Cyberduck](https://docs.cyberduck.io/cyberduck/)
+[Cyberduck](https://docs.cyberduck.io/cyberduck/) is a libre server and cloud
+storage browser for Mac and Windows. With an easy-to-use interface, connect to
+servers, enterprise file sharing, and cloud storage.
+
+- **Prerequisites**
+
+- Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
+for more information.
+
+#### Configuring Cyberduck
+
+- Click on "Open Connection" tab button as shown below:
+
+![Open Connection](images/cyberduck-open-connection.png)
+
+- Select **"Amazon S3"** from the dropdown options as shown below:
+
+![Choose Amazon S3](images/cyberduck-select-Amazon-s3.png)
+
+- Provide the following required endpoint information:
+
+    **"Server"**: "stack.nerc.mghpcc.org"
+
+    **"Port"**: "13808"
+
+    The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
+    file can then be plugged into **"Access key ID"** and **"Secret Access Key"**
+    respectively
+
+![Cyberduck Amazon S3 Configuration](images/cyberduck-s3-configuration.png)
+
+#### Using Cyberduck
+
+Then click "Connect" button to connect to your NERC project's Object Storage as
+shown below:
+
+![Successful connection](images/cyberduck-successful-connection.png)
 
 ---

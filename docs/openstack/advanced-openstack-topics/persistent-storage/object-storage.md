@@ -333,7 +333,7 @@ for more information.
 
 #### Configuring the AWS CLI
 
-To access this interface you must login through the OpenStack Dashboard and navigate
+To access this interface, you must login through the OpenStack Dashboard and navigate
 to "Projects > API Access" where you can click on "Download OpenStack RC File" and
 select "EC2 Credentials".
 
@@ -361,7 +361,7 @@ keep them noted.
 
 - Source the downloaded OpenStack RC File by using: `source *-openrc.sh` command.
 
-- Sourcing the RC File will set the required `${OS_PROJECT_NAME}` envrionmnet variable.
+- Sourcing the RC File will set the required `${OS_PROJECT_NAME}` envrionment variable.
 Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
 `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (above):
 
@@ -453,7 +453,7 @@ Output:
 
 !!! note "Other Useful Flags"
 
-    Additionally, `aws cp` provides an `--exclude` flag to filter files not to be transfered, the syntax is: `--exclude "<regex>"`
+    Additionally, `aws cp` provides an `--exclude` flag to filter files not to be transferred, the syntax is: `--exclude "<regex>"`
 
 #### To delete an object from a bucket
 
@@ -678,7 +678,7 @@ flag to override the config location, e.g. `rclone --config=FILE`
 
 `rclone` supports many subcommands (see
 [the complete list of rclone subcommands](https://rclone.org/docs/#subcommands)).
-A few commonly-used subcommands (assuming you configured the NERC Object Storage
+A few commonly used subcommands (assuming you configured the NERC Object Storage
 as `nerc`):
 
 ##### Listing the Containers and Files and Folders within a Container
@@ -754,7 +754,7 @@ in advance):
 
 `rclone -vv --vfs-cache-mode writes mount nerc: C:/mnt-rclone`
 
-`vfs-cache-mode` flag enable file caching, you can use either `writes` or full`
+`vfs-cache-mode` flag enable file caching, you can use either `writes` or `full`
 option. For further explanation you can see [official documentation](https://rclone.org/commands/rclone_mount/#file-caching).
 
 Now that your object storage is mounted, you can list, create and delete files
@@ -848,7 +848,7 @@ that the user has access to.
         "nerc-test-container", "nerc-backup-2022.zip", "./nerc-backup.zip",
     )
 
-## 3. Using Graphical User Inreface (GUI) Tools
+## 3. Using Graphical User Interface (GUI) Tools
 
 ### i. Using WinSCP
 
@@ -904,8 +904,8 @@ on the left pane.
 #### Using WinSCP
 
 You can follow above step to manually add a new session next time you open WinSCP
-or, you can connect to your previosuly saved session (as listed on popup dialog
-will show your all saved seession name list) that will show up by just clicking on
+or, you can connect to your previously saved session (as listed on popup dialog
+will show your all saved session name list) that will show up by just clicking on
 the session name.
 
 Then click "Login" button to connect to your NERC project's Object Storage as

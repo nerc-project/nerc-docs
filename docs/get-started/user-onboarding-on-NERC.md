@@ -14,6 +14,14 @@ The overall user flow can be summarized using the following sequence diagram:
 2. **PI** will send a request for a Principal Investigator (PI) user account role
 by submitting: [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/).
 
+    !!! question "Principal Investigator Eligibility Information"
+        - MGHPCC consortium members, whereby they enter into an service agreement
+        with MGHPCC for the NERC services.
+
+        - Non-members of MGHPCC can also be PIs of NERC Services, but must also have an active non-member agreement with MGHPCC.
+
+        - External research focused institutions will be considered on a case-by-case basis and are subject to an external customer cost structure.
+
 3. Wait until the PI request gets approved by the **NERC’s admin**.
 
 4. Once a PI request is **approved**, **PI** can add a new project and also search

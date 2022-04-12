@@ -34,8 +34,8 @@ This mainly serves two purposes:
 - **As a backup mechanism:* save the main disk of your instance to an image and
 later boot a new instance from this image with the saved data.
 
-- *As a templating mechanism:* customise and upgrade a base image and save it to use as a
-template for new instances.
+- *As a templating mechanism:* customise and upgrade a base image and save it to
+use as a template for new instances.
 
 ### How to create an instance snapshot
 

@@ -49,6 +49,8 @@ nav:
           - Persistent Storage:
               - Block Storage/ Volumes/ Cinder: openstack/advanced-openstack-topics/persistent-storage/volumes.md
               - Object Storage/ Swift: openstack/advanced-openstack-topics/persistent-storage/object-storage.md
+          - Backup your instance and volume:
+              - Backup with snapshots: openstack/advanced-openstack-topics/backup/backup-with-snapshots.md
           - Terraform:
               - Terraform on NERC: openstack/advanced-openstack-topics/terraform/terraform-on-NERC.md
           - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md

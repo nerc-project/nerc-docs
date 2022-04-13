@@ -4,7 +4,7 @@ site_description: NERC Documentation
 site_author: NERC
 # site_dir: public
 site_url: "https://nerc-project.github.io/nerc-docs/"
-repo_name: GitLab/NERC/docs
+repo_name: nerc-project/nerc-docs
 repo_url: https://github.com/nerc-project/nerc-docs
 
 nav:

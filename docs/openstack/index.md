@@ -54,6 +54,10 @@ the list below.
 - [Block Storage/ Volumes/ Cinder](advanced-openstack-topics/persistent-storage/volumes.md)
 - [Object Storage/ Swift](advanced-openstack-topics/persistent-storage/object-storage.md)
 
+## Backup your instance and volume
+
+- [Backup with snapshots](advanced-openstack-topics/backup/backup-with-snapshots.md)
+
 ## Using Terraform to provision NERC resources
 
 - [Terraform on NERC](advanced-openstack-topics/terraform/terraform-on-NERC.md)

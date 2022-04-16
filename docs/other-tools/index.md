@@ -36,3 +36,9 @@
 ---
 
 ## CI/ CD Tools
+
+- [CI/CD Overview](CI-CD/CI-CD-pipeline.md)
+
+- [Setup CI/CD on NERC](CI-CD/setup-CI-CD-pipeline.md)
+
+- [GitHub to Jenkins Pipeline](CI-CD/integrate-your-GitHub-repository.md)

@@ -78,7 +78,10 @@ nav:
                 - Bootstrapping cluster with kubeadm: other-tools/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
                 - Creating a HA cluster with kubeadm: other-tools/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
               - Kubespray: other-tools/kubernetes/kubespray.md
-
+      - CI/CD Pipeline:
+          - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
+          - Setup CI/CD on NERC: other-tools/CI-CD/setup-CI-CD-pipeline.md
+          - GitHub to Jenkins Pipeline: other-tools/CI-CD/integrate-your-GitHub-repository.md
 theme:
   name: material
   custom_dir: nerc-theme

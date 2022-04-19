@@ -44,28 +44,9 @@ click on "Add webhook" button.
 We're done with the configuration on GitHub's side! Now let's config on Jenkins side
 to use this webhook.
 
-## Configuring Jenkins
-
-1. In Jenkins, click on "New Item" to create a new project.
-
-2. Give your project a name, then choose "Freestyle project" and finally, click
-on "OK" button.
-
-    ![Jenkins new item](images/Jenkins-new-item.png)
-
-3. Click on the "Source Code Management" tab.
-
-4. Click on Git and paste your GitHub repository URL in the ‘Repository URL’ field.
-Also, you can specify the "Branches to build" to your project's **"main"** branch.
-
-    ![Jenkins SCM config](images/Jenkins-SCM-config.png)
-
-5. Now go to the Jenkins pipeline and select "GitHub hook trigger for GITScm polling."
-
-    ![Jenkins Build Triggers](images/Jenkins-build-triggers.png)
-
 That's it! in this way we can add a webhook to our job and ensure that everytime
 you commits your changes to your Github repo, GitHub will trigger your new Jenkins
-job.
+job. As we already had setup "Github hook tirgger for GITScm polling" for our
+[Jenkins pipeline setup previously](setup-CI-CD-pipeline.md).
 
 ---

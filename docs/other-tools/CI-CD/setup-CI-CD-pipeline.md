@@ -10,7 +10,7 @@ troubleshooting.
     You need Kubernetes cluster running in your OpenStack environment. To setup your
     K8s cluster please [Read this](../kubernetes/kubeadm/single-master-clusters-with-kubeadm.md).
 
-![CI/CD Pipeline on NERC](images/CICD in Kubernetes.png)
+![CI/CD Pipeline on NERC](images/CICD-in-NERC-Kubernetes.png)
 *Figure: CI/CD Pipeline To Deploy To Kubernetes Cluster Using Jenkins on NERC*
 
 Please follow the following steps:
@@ -128,7 +128,7 @@ file from K8s master i.e. located at `/etc/kubernetes/admin.conf` with the ID 'k
     ![Kubernetes Configuration Credentials](images/kubernetes-config-secret-file.png)
 
   Once both credentials are successfully added the following credentials are shown:
-  
+
   ![Jenkins All Credentials](images/all-credentials.png)
 
 - Write a Jenkins Pipeline Script file named as ‘**Jenkinsfile**’ as following:
@@ -179,7 +179,7 @@ pipeline {
       }
     }
 
-    stage('Deploying App to Kubernetes') {      
+    stage('Deploying App to Kubernetes') {
       steps {
         sh "sed -i 's/nodeapp:latest/nodeapp:${env.BUILD_NUMBER}/g' deploymentservice.yml"
         withKubeConfig([credentialsId: 'kubernetes']) {

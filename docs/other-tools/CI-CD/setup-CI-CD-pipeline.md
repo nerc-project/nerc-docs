@@ -39,11 +39,15 @@ docker run -u 0 --privileged --name jenkins -it -d -p 8080:8080 -p 50000:50000 \
 ```
 
 Once successfully docker run, browse to `http://<Worker_Node_Floating_IP>:8080`
-this will show you where i.e. `/var/jenkins_home/secrets/initialAdminPassword`
-you can copy the comtent from that file to paste it to the password field shown
-on web GUI on the browser as the initial Administrator password as shown below:
+this will show you where to get the initial Administrator password to get started
+i.e. `/var/jenkins_home/secrets/initialAdminPassword` as shown below:
 
 ![Jenkins Successfully Installed](images/jenkins-admin-login.png)
+
+The `/var/jenkins_home` in Jenkins docker container is a mounted volume to the
+host's `/home/jenkins_home` so you can just browse to
+`/home/jenkins_home/secrets/initialAdminPassword` on your ssh'ed host machine to
+copy the same content from `/var/jenkins_home/secrets/initialAdminPassword`.
 
 **OR**, you can run `docker ps` on worker node where you run the Jenkins server.
 Note the **Name** of the docker container and then run: `docker logs -f <enkins_docker_container_name>`.

@@ -1,254 +1,214 @@
-# Steps to Create empty project/s in NERC and Gather UUID's for Migrating MOC to
+# Identify Volumes, Instances & Security Groups on the MOC that need to be Migrated to the NERC
 
-## Account Creation & Quota Request
+Please read the instructions in their entirety before proceeding.
+Allow yourself enough time to complete them.
 
-1. Register for your new NERC account [here](https://regapp.mss.mghpcc.org/reglanding/).
+Volume Snapshots will not be migrated.
+If you have a Snapshot you wish to backup please “Create Volume” from it first.
 
-    1. Wait for approval email.
+## Confirm Access and Login to MOC Dashboard
 
-2. Register to be a PI for a NERC account
-[here](https://docs.google.com/forms/d/e/1FAIpQLSdscMlm3TQR09sl7P-0n4oN1uzpd7YikqDubEYF2QDLVz6djA/viewform?pli=1&fbzx=-8227359805748438031).
+1. Go to the [MOC Dashboard](http://kaizen.massopen.cloud).
 
-    1. Wait for approval email.
+### SSO / Google Login
 
-3. Request the quota necessary for all of your MOC Projects to be added
-to NERC [here](https://coldfront.mss.mghpcc.org/user/login)
-(link also in PI approval email).
+1. If you have SSO through your Institution or google select
+*Institution Account* from the dropdown.
 
-    ![ColdFront_Login](images/S2_ColdFront_Login.png)
+    ![Login1](images/S1_Login1.png)
 
-    1. Log in with your institution login by clicking on
-    **Log in via OpenID Connect** (highlighted in yellow above).
+1. Click **Connect**.
 
-        ![ColdFront_Projects](images/S2_ColdFront_Projects.png)
+1. Click on University Logins (highlighted in yellow below)
+if you are using SSO with your Institution.
 
-    2. Under Projects>> Click on the name of your project
-    (highlighted in yellow above).
+    ![Login2](images/S1_Login2.png)
 
-        ![ColdFront_Projects](images/S2_ColdFront_ManageProject.png)
+    1. Follow your Institution's login steps after that, and skip to
+    [Gathering MOC information for the
+    Migration](#gathering-moc-information-for-the-migration).
 
-    3. Scroll down until you see **Request Resource Allocation**
-    (highlighted in yellow above) and click on it.
+1. Click Google (highlighted in purple above) if your SSO
+is through Google.
 
-        ![ColdFront_Allocation](images/S2_ColdFront_Allocation.png)
+    1. Follow standard Google login steps to get in this
+    way, and skip to [Gathering MOC information for the
+    Migration](#gathering-moc-information-for-the-migration).
 
-    4. Fill out the Justification (highlighted in purple above) for
-    the quota allocation.
+### Keystone Credentials
 
-    5. Using your “MOC Instance information” table you gathered from your MOC
-    project calculate the total number of Instances, VCPUs, RAM and use your
-    “MOC Volume Information” table to calculate Disk space you will need.
+1. If you have a standard login and password leave the dropdown
+as Keystone Credentials.
 
-    6. Using the up and down arrows (highlighted in yellow above) or by
-    entering the number manually select the multiple of 1 Instance, 2 vCPUs, 0 GPUs,
-    4GB RAM, 2 Volumes and 100GB Disk and 1GB Object Storage that you will need.
+    ![Login3](images/S1_Login3.png)
 
-        1. For example if I need 2 instances 2 vCPUs, 3GB RAM, 3 Volumes and
-        30GB of storage I would type in 2 or click the up arrow once to select
-        2 units.
+1. Enter your User Name.
 
-    7. Click **Submit** (highlighted in green above).
+1. Enter your Password.
 
-4. Wait for your allocation approval email.
+1. Click Connect.
 
-## Setup
+### Don't know your login?
 
-1. Log into the
-[NERC OpenStack Dashboard](https://stack.nerc.mghpcc.org/dashboard)
-using your OpenID Connect password.
+1. If you do not know your login information please create a
+Password Reset [ticket](https://osticket.massopen.cloud/).
 
-    ![Dashboard_Login](images/S2_Dashboard_Login.png)
+    ![OSticket1](images/S1_OSticket1.png)
 
-    1. Click **Connect**.
+1. Click Open a New Ticket (highlighted in yellow above).
 
-        ![Dashboard_Login_CILogon](images/S2_Dashboard_Login_CILogon.png)
+    ![OSticket2](images/S1_OSticket2.png)
 
-    2. Select your institution from the drop down (highlighted in yellow
-    above).
+1. Click the dropdown and select Forgot Pass & SSO Account
+Link (highlighted in blue above).
 
-    3. Click **Log On** (highlighted in purple).
+1. In the text field (highlighted in purple above) provide
+the Institution email, project you are working on and the email
+address you used to create the account.
 
-    4. Follow your institutions log on instructions.
+1. Click **Create Ticket** (highlighted in yellow above) and
+wait for the pinwheel.
 
-2. You are then brought to the Project>Compute>Overview location of
-the Dashboard.
+1. You will receive an email to let you know that the MOC support
+staff will get back to you.
 
-    ![Project_Comp_Overview](images/S2_Dashboard_Project_Compute_Overview.png)
+## Gathering MOC information for the Migration
 
-    1. This will look very familiar as the MOC and NERC Dashboard are quite
-    similar.
+1. You are then brought to the Project>Compute>Overview location of the
+Dashboard.
 
-    2. Follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network/)
-    to set up your network/s. (you may also use the default_network
-    if you wish)
+    ![Project_Compute_Instance](images/S1_Project_Compute_Instance.png)
 
-        1. The networks and security groups don't have to exactly match the
-        MOC. You only need the networks and security groups for creating
-        your new instances (and accessing them once we complete the migration).
+### Create Tables to hold your information
 
-    3. Follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/advanced-openstack-topics/setting-up-a-network/create-a-router/)
-    to set up your router/s. (you may also use the default_router if you wish)
+Create 3 tables of all of your Instances, your Volumes and Security Groups,
+for example, if you have 2 instances, 3 volumes and 2 Security Groups like the
+samples below your lists might look like this:
 
-    4. Follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/access-and-security/security-groups/)
-    to set up your Security Group/s.
+#### MOC Instance Information Table
 
-        1. This is where you can use your “MOC Security Group Information”
-        table to create similar Security Groups to the ones you had in the MOC.
-
-    5. Follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/access-and-security/create-a-key-pair/)
-    to set up your SSH Key-pair/s.
-
-    6. Follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/launch-a-VM/)
-    to set up your instance/s.
-
-        1. These will serve as blank targets for us to copy the data from the
-        old environment.
-
-        2. You can choose any source image when creating the instance
-        (provided the flavor can launch it).
-
-        3. If the size of the root disk is larger than the flavor in NERC,
-        then please launch your instance from a volume.
-
-            ![Dashboard_Instance](images/S2_Dashboard_Instance.png)
-
-            1. When selecting Source Click the Select Boot Source dropdown
-            (highlighted in yellow above) and select Volume
-            (highlighted in blue above).
-
-            2. Choose the Volume you wish to mount from and click the up
-            arrow (highlighted in purple above) to the right of the volume.
-
-        4. The Flavor will be important as this decides how much vCPUs, RAM,
-        and Disk this instance will consume of your total.
-
-            1. If for some reason the earlier approved resource quota is not
-            sufficient you can request further quota by following
-            [these steps](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project).
-
-        5. You do not need to install anything on these instances as you will
-        be bringing over your information from MOC
-
-        6. Make sure Volume Bootable column (highlighted in purple below)
-        matches MOC Bootable column.
-
-            ![Project_VolBoot](images/S2_Dashboard_Project_VolumeBootable1.png)
-
-            1. If it does not you can modify the checkbox by clicking on
-            **Edit Volume** (highlighted in yellow above).
-
-                ![Project_VolBot2](images/S2_Dashboard_Project_VolumeBootable2.png)
-
-            2. Adding or removing the check next to the Bootable flag
-            (highlighted in purple above).
-
-            3. Click **Submit** (highlighted in yellow above).
-
-    7. Follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/assign-a-floating-IP/)
-    to Assign Floating IPs to your Instances.
-
-        1. Your floating IPs will not be the same as the ones you had in the
-        MOC. Please claim new floating IPs to use.
-
-    8. If you have volumes in the MOC that are not attached to Instances
-    follow the instructions
-    [here](https://nerc-project.github.io/nerc-docs/openstack/advanced-openstack-topics/persistent-storage/volumes/)
-    to set up your volume/s, up until the “Format and mount the volume”
-    section.
-
-        1. When launching volumes please stick to the default volume type
-        unless your workload strictly requires performance volumes.
-
-        2. A common mistake here is to forget to attach all volumes to new
-        Instances/VMs causing them to fail to boot. PLEASE DOUBLE CHECK
-        new Instance/VM attachments are correct before creating unnecessary
-        tickets.
-
-## Data Gathering
-
-1. Gather the Instance UUIDs (of only the instances that you need to migrate
-to the NERC).
-
-    1. Click [Instances](https://stack.nerc.mghpcc.org/dashboard/project/instances/)
-    (highlighted in pink above).
-
-        ![Dashboard_Instance_Name](images/S2_Dashboard_Instance_Name.png)
-
-    2. Click the Instance Name (highlighted in Yellow above) of the first
-    instance you would like to gather data on.
-
-        ![Dashboard_Instance_Details](images/S2_Dashboard_Instance_Details.png)
-
-    3. Locate the ID row (highlighted in green above) and copy and save the ID
-    (highlighted in purple above).
-
-        1. This is the UUID of your first Instance.
-
-    4. Locate the RAM, VCPUs & Disk rows (highlighted in yellow) and copy and
-    save the associated values (highlighted in pink).
-
-2. Repeat step 1 for each Instance you have.
-
-3. Gather the Volume UUIDs (of only the volumes that you need to migrate to
-the NERC).
-
-    ![Dashboard_Volume](images/S2_Dashboard_Volume.png)
-
-    1. Click Volumes dropdown.
-
-    2. Select [Volumes](https://stack.nerc.mghpcc.org/dashboard/project/volumes/)
-    (highlighted in purple above).
-
-        ![Dashboard_Volume_Name](images/S2_Dashboard_Volume_Name.png)
-
-    3. Click the Volume Name (highlighted in yellow above) of the first
-    volume you would like to gather data on.
-
-        1. The name might be the same as the ID (highlighted in blue above).
-
-            ![Dashboard_Volume_Details](images/S2_Dashboard_Volume_Details.png)
-
-    4. Locate the ID row (highlighted in green above) and copy and save the ID
-    (highlighted in purple above).
-
-        1. This is the UUID of your first Volume.
-
-    5. Locate the Size row (highlighted in yellow above) and copy and save the
-    Volume size (highlighted in pink above).
-
-    6. Locate the Attached To row (highlighted in blue above) and copy and
-    save the Instance this Volume is attached to (highlighted in orange above).
-
-        1. If the volume is not attached to an image it will state
-        “Not attached”.
-
-4. Repeat step 3 for each Volume you have.
-
-5. Create 2 tables of all of your Instances and Volumes for example, if you
-have 2 instances and 3 volumes like the sample above your lists might look
-like this:
-
-NERC Instance information:
-
-| Instance Name | NERC VCPUs | NERC Disk | NERC RAM | NERC UUID |
-| ------------- | ---------- | --------- | -------- | --------- |
-| Ubuntu_NERC | 1 | 10GB | 2GB | 9f1e100b-184b-4bc6-9658-0d82e7c2e4f2 |
-| Ubuntu_Test | 1 | 10GB | 1GB | 84f3d7c7-f4a0-45ef-9663-733421ce5da0 |
+| Instance Name | MOC VCPUs | MOC Disk | MOC RAM | MOC UUID |
+| ------------- | --------- | -------- | ------- | -------- |
+| Fedora_test | 1 | 10GB | 1GB | 16a1bfc2-8c90-4361-8c13-64ab40bb6207 |
+| Ubuntu_Test | 1 | 10GB | 2GB | 6a40079a-59f7-407c-9e66-23bc5b749a95 |
 | total | 2 | 20GB | 3GB | |
 
-NERC Volume Information:
+#### MOC Volume Information Table
 
-| Volume Name | NERC Disk | NERC Attached To | NERC UUID |
-| ----------- | --------- | ---------------- | --------- |
-| Ubuntu_NERC_Volume | 10GiB | Ubuntu_NERC | 601ccc62-130b-484a-8e8d-6c186ecdb229 |
-| 4d46dc3a-93c7-42b8-bea0-e2a83a7e7849 | 10GiB | Fedora_NERC | 4d46dc3a-93c7-42b8-bea0-e2a83a7e7849 |
-| Empty_Volume_NERC | 10GiB | Not attached | 5cd61834-c52e-49df-b696-7b300f8af9cc |
+| Volume Name | MOC Disk | MOC Attached To | Bootable | MOC UUID |
+| ----------- | -------- | --------------- | -------- | -------- |
+| Fedora | 10GiB | Fedora_test | Yes | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |
+| 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | 10GiB | Ubuntu_Test | Yes | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 |
+| Snapshot of Fed_Test | 10GiB | Fedora_test | No | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |
 | total | 30GiB | Not attached | |
+
+#### MOC Security Group Information Table
+
+| Security Group Name | Direction | Ether Type | IP Protocol | Port Range | Remote IP Prefix |
+| ------------------- | --------- | ---------- | ----------- | ---------- | ---------------- |
+| ssh_only_test | Ingress | IPv4 | TCP | 22 | 0.0.0.0/0 |
+| ping_only_test | Ingress | IPv4 | ICMP | Any | 0.0.0.0/0 |
+
+### Gather the Instance Information
+
+Gather the Instance UUIDs (of only the instances that you need to migrate
+to the NERC).
+
+1. Click
+[Instances](https://kaizen.massopen.cloud/dashboard/project/instances/)
+(highlighted in pink in image above)
+
+    ![Project_Instance_Name](images/S1_Project_Compute_Instance_Name.png)
+
+1. Click the Instance Name (highlighted in Yellow above) of the first
+instance you would like to gather data on.
+
+    ![Project_Inst_Details](images/S1_Project_Compute_Instance_Details.png)
+
+1. Locate the ID row (highlighted in green above) and copy and save the ID
+(highlighted in purple above).
+
+    1. This is the UUID of your first Instance.
+
+1. Locate the RAM, VCPUs & Disk rows (highlighted in yellow) and copy and
+save the associated values (highlighted in pink).
+
+1. Repeat this [section](#gather-the-instance-information) for each
+Instance you have.
+
+### Gather the Volume Information
+
+Gather the Volume UUIDs (of only the volumes that you need to migrate
+to the NERC).
+
+![Project_Volumes_Volumes](images/S1_Project_Volumes_Volumes.png)
+
+1. Click Volumes dropdown.
+
+1. Select [Volumes](https://kaizen.massopen.cloud/dashboard/project/volumes/)
+(highlighted in purple above).
+
+    ![Project_Volumes_Names](images/S1_Project_Volumes_Names.png)
+
+1. Click the Volume Name (highlighted in yellow above) of the first
+volume you would like to gather data on.
+
+    1. The name might be the same as the ID (highlighted in blue above).
+
+        ![Project_Volumes_Details](images/S1_Project_Volumes_Details.png)
+
+1. Locate the ID row (highlighted in green above) and copy and save the ID
+(highlighted in purple above).
+
+    1. This is the UUID of your first Volume.
+
+1. Locate the Size row (highlighted in yellow above) and copy and save
+the Volume size (highlighted in pink above).
+
+1. Locate the Bootable row (highlighted in gray above) and copy and save
+the Volume size (highlighted in red above).
+
+1. Locate the Attached To row (highlighted in blue above) and copy and save
+the Instance this Volume is attached to (highlighted in orange above).
+
+    1. If the volume is not attached to an image it will state
+    “Not attached”.
+
+1. Repeat this [section](#gather-the-volume-information) for each Volume
+you have.
+
+### Gather your Security Group Information
+
+If you already have all of your Security Group information outside of the
+OpenStack Dashboard skip to the  section.
+
+Gather the Security Group information (of only the security groups that you
+need to migrate to the NERC).
+
+    ![Project_Network_SecGroup](images/S1_Project_Network_SecurityGroup.png)
+
+1. Click Network dropdown
+
+1. Click
+[Security](https://kaizen.massopen.cloud/dashboard/project/security_groups/)
+Groups (highlighted in yellow above).
+
+    ![Ntwrk_ScGrp_Names](images/S1_Project_Network_SecurityGroup_Names.png)
+
+1. Click **Manage Rules** (highlighted in yellow above) of the first
+Security Group you would like to gather data on.
+
+    ![Ntwrk_SGp_Detal](images/S1_Project_Network_SecurityGroup_Details.png)
+
+1. Ignore the first 2 lines (highlighted in yellow above).
+
+1. Write down the important information for all lines after (highlighted in
+blue above).
+
+    1. Direction, Ether Type, IP Protocol, Port Range, Remote IP Prefix,
+    Remote Security Group.
+
+1. Repeat this [section](#gather-your-security-group-information)
+for each security group you have.
 
 ---

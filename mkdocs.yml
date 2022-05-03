@@ -35,10 +35,10 @@ nav:
                   - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
               - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
               - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
-      - Migrating from MOC to NERC:
-        - Step 1 Gathering MOC information: openstack/migration-from-MOC-to-NERC/Step1.md
-        - Step 2 Creating NERC Containers to Migrate MOC Volumes into: openstack/migration-from-MOC-to-NERC/Step2.md
-        - Step 3 Moving Volumes from MOC to NERC: openstack/migration-from-MOC-to-NERC/Step3.md
+      - Migrating MOC to NERC:
+          - Step 1 Creating NERC Project and Networks: openstack/migration-from-MOC-to-NERC/Step1.md
+          - Step 2 Gathering MOC Information: openstack/migration-from-MOC-to-NERC/Step2.md
+          - Step 3 Moving Volumes from MOC to NERC & Creating Instance: openstack/migration-from-MOC-to-NERC/Step3.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md

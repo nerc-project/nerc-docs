@@ -27,14 +27,6 @@ the list below.
 
 ---
 
-## **Migrating from MOC to NERC**
-
-- [Step 1 Creating NERC Project and Networks](migration-from-MOC-to-NERC/Step1.md)
-- [Step 2 Gathering MOC Information](migration-from-MOC-to-NERC/Step2.md)
-- [Step 3 Moving Volumes from MOC to NERC & Creating Instance](migration-from-MOC-to-NERC/Step3.md)
-
----
-
 ## **Advanced OpenStack Topics**
 
 ---

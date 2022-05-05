@@ -35,10 +35,6 @@ nav:
                   - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
               - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
               - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
-      - Migrating MOC to NERC:
-          - Step 1 Creating NERC Project and Networks: openstack/migration-from-MOC-to-NERC/Step1.md
-          - Step 2 Gathering MOC Information: openstack/migration-from-MOC-to-NERC/Step2.md
-          - Step 3 Moving Volumes from MOC to NERC & Creating Instance: openstack/migration-from-MOC-to-NERC/Step3.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
@@ -82,6 +78,10 @@ nav:
           - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
           - Setup CI/CD on NERC: other-tools/CI-CD/setup-CI-CD-pipeline.md
           - GitHub to Jenkins Pipeline: other-tools/CI-CD/integrate-your-GitHub-repository.md
+  - Migrating MOC to NERC:
+    - Step 1 Creating NERC Project and Networks: migration-moc-to-nerc/Step1.md
+    - Step 2 Gathering MOC Information: migration-moc-to-nerc/Step2.md
+    - Step 3 Moving Volumes from MOC to NERC & Creating Instance: migration-moc-to-nerc/Step3.md
 theme:
   name: material
   custom_dir: nerc-theme

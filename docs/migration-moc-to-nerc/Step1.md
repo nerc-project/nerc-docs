@@ -2,7 +2,7 @@
 
 This process includes some waiting for emails and approvals. It is advised to
 start this process and then move to [step
-2](http://127.0.0.1:8000/nerc-docs/openstack/migration-from-MOC-to-NERC/Step2/)
+2](../Step2/)
 and continue with these steps once you recieve approval.
 
 ## Account Creation & Quota Request

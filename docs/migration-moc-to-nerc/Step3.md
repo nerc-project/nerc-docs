@@ -130,7 +130,7 @@ from are set to *Shut Down* (highlighted in yellow in image above).
 
 ## Backup and Move Volume Data from MOC to NERC
 
-1. SSH into the VM created at the top of this page. For steps for how to do
+1. SSH into the VM created at the top of this page. For steps on how to do
 this please see instructions [here][VMCon].
 
 [VMCon]: https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/
@@ -190,9 +190,7 @@ secret your generated earlier:
 ### Backup MOC Volumes
 
 1. Locate the first Volume ID from the list you created in
-[Step 2 Gathering MOC Information][Step2].
-
-[Step2]: https://nerc-project.github.io/nerc-docs/openstack/migration-from-MOC-to-NERC/Step2/
+[Step 2 Gathering MOC Information](../Step2/).
 
 1. Add the first Volume ID from your table to the code below in the
 `<MOCVolumeID>` field and create a Container Name to replace the

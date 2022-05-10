@@ -15,14 +15,14 @@ If you have a Snapshot you wish to backup please “Create Volume” from it fir
 1. If you have SSO through your Institution or google select
 *Institution Account* from the dropdown.
 
-    ![Login1](images/S1_Login1.png)
+    ![Login1](images/S2_Login1.png)
 
 1. Click **Connect**.
 
 1. Click on University Logins (highlighted in yellow below)
 if you are using SSO with your Institution.
 
-    ![Login2](images/S1_Login2.png)
+    ![Login2](images/S2_Login2.png)
 
     1. Follow your Institution's login steps after that, and skip to
     [Gathering MOC information for the
@@ -40,7 +40,7 @@ is through Google.
 1. If you have a standard login and password leave the dropdown
 as Keystone Credentials.
 
-    ![Login3](images/S1_Login3.png)
+    ![Login3](images/S2_Login3.png)
 
 1. Enter your User Name.
 
@@ -53,11 +53,11 @@ as Keystone Credentials.
 1. If you do not know your login information please create a
 Password Reset [ticket](https://osticket.massopen.cloud/).
 
-    ![OSticket1](images/S1_OSticket1.png)
+    ![OSticket1](images/S2_OSticket1.png)
 
 1. Click Open a New Ticket (highlighted in yellow above).
 
-    ![OSticket2](images/S1_OSticket2.png)
+    ![OSticket2](images/S2_OSticket2.png)
 
 1. Click the dropdown and select Forgot Pass & SSO Account
 Link (highlighted in blue above).
@@ -77,7 +77,7 @@ staff will get back to you.
 1. You are then brought to the Project>Compute>Overview location of the
 Dashboard.
 
-    ![Project_Compute_Instance](images/S1_Project_Compute_Instance.png)
+    ![Project_Compute_Instance](images/S2_Project_Compute_Instance.png)
 
 ### Create Tables to hold your information
 
@@ -118,12 +118,12 @@ to the NERC).
 [Instances](https://kaizen.massopen.cloud/dashboard/project/instances/)
 (highlighted in pink in image above)
 
-    ![Project_Instance_Name](images/S1_Project_Compute_Instance_Name.png)
+    ![Project_Instance_Name](images/S2_Project_Compute_Instance_Name.png)
 
 1. Click the Instance Name (highlighted in Yellow above) of the first
 instance you would like to gather data on.
 
-    ![Project_Inst_Details](images/S1_Project_Compute_Instance_Details.png)
+    ![Project_Inst_Details](images/S2_Project_Compute_Instance_Details.png)
 
 1. Locate the ID row (highlighted in green above) and copy and save the ID
 (highlighted in purple above).
@@ -141,21 +141,21 @@ Instance you have.
 Gather the Volume UUIDs (of only the volumes that you need to migrate
 to the NERC).
 
-![Project_Volumes_Volumes](images/S1_Project_Volumes_Volumes.png)
+![Project_Volumes_Volumes](images/S2_Project_Volumes_Volumes.png)
 
 1. Click Volumes dropdown.
 
 1. Select [Volumes](https://kaizen.massopen.cloud/dashboard/project/volumes/)
 (highlighted in purple above).
 
-    ![Project_Volumes_Names](images/S1_Project_Volumes_Names.png)
+    ![Project_Volumes_Names](images/S2_Project_Volumes_Names.png)
 
 1. Click the Volume Name (highlighted in yellow above) of the first
 volume you would like to gather data on.
 
     1. The name might be the same as the ID (highlighted in blue above).
 
-        ![Project_Volumes_Details](images/S1_Project_Volumes_Details.png)
+        ![Project_Volumes_Details](images/S2_Project_Volumes_Details.png)
 
 1. Locate the ID row (highlighted in green above) and copy and save the ID
 (highlighted in purple above).
@@ -185,7 +185,7 @@ OpenStack Dashboard skip to the  section.
 Gather the Security Group information (of only the security groups that you
 need to migrate to the NERC).
 
-    ![Project_Network_SecGroup](images/S1_Project_Network_SecurityGroup.png)
+![Project_Network_SecGroup](images/S2_Project_Network_SecurityGroup.png)
 
 1. Click Network dropdown
 
@@ -193,12 +193,12 @@ need to migrate to the NERC).
 [Security](https://kaizen.massopen.cloud/dashboard/project/security_groups/)
 Groups (highlighted in yellow above).
 
-    ![Ntwrk_ScGrp_Names](images/S1_Project_Network_SecurityGroup_Names.png)
+    ![Ntwrk_ScGrp_Names](images/S2_Project_Network_SecurityGroup_Names.png)
 
 1. Click **Manage Rules** (highlighted in yellow above) of the first
 Security Group you would like to gather data on.
 
-    ![Ntwrk_SGp_Detal](images/S1_Project_Network_SecurityGroup_Details.png)
+    ![Ntwrk_SGp_Detal](images/S2_Project_Network_SecurityGroup_Details.png)
 
 1. Ignore the first 2 lines (highlighted in yellow above).
 

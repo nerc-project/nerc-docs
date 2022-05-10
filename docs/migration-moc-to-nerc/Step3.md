@@ -6,20 +6,22 @@
 
     | Label | Value |
     | ----- | ----- |
-    | EC2MOCAccess | |
-    | EC2MOCSecret | |
-    | EC2NERCAccess | |
-    | EC2NERCSecret | |
-    | MOCVolumeBackupID | |
+    | MOCAccess | |
+    | MOCSecret | |
+    | NERCAccess | |
+    | NERCSecret | |
+    | MOCEndPoint | `https://kzn-swift.massopen.cloud` |
+    | NERCEndPoint | `https://stack.nerc.mghpcc.org:13808` |
     | MinIOVolume | |
+    | MOCVolumeBackupID | |
     | ContainerName | |
     | NERCVolumeBackupID | |
     | VolumeName | |
 
-1. It is also helpful to have a text editor open so that you can insert
+2. It is also helpful to have a text editor open so that you can insert
 the values from the spreadsheet into the commands that need to be run.
 
-## Create a New MOC Instance
+## Create a New MOC Mirror to NERC Instance
 
 1. Follow the instructions
 [here](https://docs.massopen.cloud/en/latest/openstack/launch-a-vm.html)
@@ -32,8 +34,21 @@ to set up your instance.
 
     1. Once the Instance is *Running* move onto the next step
 
-1. SSH into the new Instance. If you have any trouble please review the steps
-[here](https://docs.massopen.cloud/en/latest/openstack/SSH-to-Cloud-VM.html).
+1. Name your new instance something you will remember, `MirrorMOC2NERC`
+for example.
+
+1. Assign a Floating IP to your new instance. If you need assistance please
+review the Floating IP steps [here][FloatingIP].
+
+[FloatingIP]: https://docs.massopen.cloud/en/latest/openstack/assign-a-floating-ip.html
+
+    1. Your floating IPs will not be the same as the ones you had in the
+    MOC. Please claim new floating IPs to use.
+
+1. SSH into the MirrorMOC2NERC Instance. The user to use for login is `centos`.
+If you have any trouble please review the SSH steps [here][SSHMOC].
+
+[SSHMOC]: https://docs.massopen.cloud/en/latest/openstack/ssh-to-cloud-vm.html
 
 ## Setup Application Credentials
 
@@ -87,7 +102,7 @@ Credentials.
 
 ### Moving Application Credentials to VM
 
-1. SSH into the VM created at the top of this page.
+1. SSH into the VM created at the top of this page for example `MirrorMOC2NERC`.
 
 1. Create the openstack config folder and empty `clouds.yaml` file.
 
@@ -137,59 +152,70 @@ this please see instructions [here][VMCon].
 
 ### Create EC2 credentials in MOC & NERC
 
-1. Generate credentials for Kaizen with the command
-`openstack --os-cloud moc ec2 credentials create`.
+1. Generate credentials for Kaizen with the command below.
+
+        openstack --os-cloud moc ec2 credentials create
 
     ![EC2 for MOC](images/S3_EC2CredMOC.png)
 
-    1. Copy the `access` and `secret` values to use later as `<EC2MOCAccess>`
-    and `<EC2MOCSecret>`.
+    1. Copy the `access` (circled in red above) and `secret` (circled in blue
+    above) values into your table as `<MOCAccess>` and `<MOCSecret>`.
 
-2. Generate credentials for the NERC with the command
-`openstack --os-cloud nerc ec2 credentials create`.
+1. Generate credentials for the NERC with the command below.
+
+        openstack --os-cloud nerc ec2 credentials create
 
     ![EC2 for NERC](images/S3_EC2CredNERC.png)
 
-    1. Copy the `access` and `secret` values to use later as `<EC2NERCAccess>`
-    and `<EC2NERCSecret>`.
+    1. Copy the `access` (circled in red above) and `secret` (circled in blue
+    above) values into your table as as `<NERCAccess>`
+    and `<NERCSecret>`.
 
 ### Find Object Store Endpoints
 
 1. Look up information on the `object-store` service in MOC with the command
-`openstack --os-cloud moc catalog show object-store -c endpoints`.
+below.
+
+        openstack --os-cloud moc catalog show object-store -c endpoints
 
     ![MOC URL](images/S3_MOCEndpoint.png)
 
-    1. Copy the base URL for this service (highlighted in red above). In
-    this case it is `https://kzn-swift.massopen.cloud`.
+    1. If the value is different than `https://kzn-swift.massopen.cloud` copy
+    the base URL for this service (circled in red above).
 
 1. Look up information on the `object-store` service in NERC with the command
-`openstack --os-cloud nerc catalog show object-store -c endpoints`.
+below.
+
+        openstack --os-cloud nerc catalog show object-store -c endpoints
 
     ![NERC URL](images/S3_NERCEndpoint.png)
 
-    1. Copy the base URL for this service (highlighted in red above). In this
-    case it is `https://stack.nerc.mghpcc.org:13808`.
+    1. If the value is different than `https://stack.nerc.mghpcc.org:13808`
+    copy the base URL for this service (circled in red above).
 
-### Configure minio client
+### Configure minio client aliases
 
-1. Create a MinIO alias for both accounts using the base URL of the "public"
-interface of the object-store service and the EC2 access key (ex.
-`<EC2MOCAccess>`) & secret key (ex. `<EC2MOCSecret>`)
-secret your generated earlier:
+1. Create a MinIO alias for MOC using the base URL of the "public"
+interface of the object-store service `<MOCEndPoint>` and the EC2 access key
+(ex. `<MOCAccess>`) & secret key (ex. `<MOCSecret>`) from your table.
 
-        $ mc alias set moc https://kzn-swift.massopen.cloud <EC2MOCAccess> <EC2MOCSecret>
+        $ mc alias set moc https://kzn-swift.massopen.cloud <MOCAccess> <MOCSecret>
         mc: Configuration written to `/home/centos/.mc/config.json`. Please update your access credentials.
         mc: Successfully created `/home/centos/.mc/share`.
         mc: Initialized share uploads `/home/centos/.mc/share/uploads.json` file.
         mc: Initialized share downloads `/home/centos/.mc/share/downloads.json` file.
         Added `moc` successfully.
-        $ mc alias set nerc https://stack.nerc.mghpcc.org:13808 <EC2NERCAccess> <EC2NERCSecret>
+
+1. Create a MinIO alias for NERC using the base URL of the "public"
+interface of the object-store service `<NERCEndPoint>` and the EC2 access key (ex.
+`<NERCAccess>`) & secret key (ex. `<NERCSecret>`) from your table.
+
+        $ mc alias set nerc https://stack.nerc.mghpcc.org:13808 <NERCAccess> <NERCSecret>
         Added `nerc` successfully.
 
 ### Backup MOC Volumes
 
-1. Locate the first Volume ID from the list you created in
+1. Locate the desired Volume UUID from the table you created in
 [Step 2 Gathering MOC Information](../Step2/).
 
 1. Add the first Volume ID from your table to the code below in the
@@ -204,11 +230,11 @@ as unique so include your name. Maybe something like `thomasa-backups`.
         | id    | <MOCVolumeBackupID> |
         | name  | None                |
 
-    1. Copy down your `<MOCVolumeBackupID>`
+    1. Copy down your `<MOCVolumeBackupID>` to your table.
 
 1. Wait for the backup to become available. You can run the command below to
-check on the status. This can take a while depending on the size of your
-volume.
+check on the status. If your volume is 25 or larger this might be a good time
+to go get a warm beverage or lunch.
 
         $ openstack --os-cloud moc volume backup list
         +---------------------+------+-------------+-----------+------+
@@ -224,8 +250,8 @@ volume.
 
 ### Gather MinIO Volume data
 
-1. Get the volume information for future commands. Use
-the same `<ContainerName>` from when you created the volume backup. It is worth
+1. Get the volume information for future commands. Use the same
+`<ContainerName>` from when you created the volume backup. It is worth
 noting that this value shares the ID number with the VolumeID.
 
         $ mc ls moc/<ContainerName>
@@ -239,11 +265,11 @@ the same `<ContainerName>` from when you created the volume backup.
         $ mc mb nerc/<ContainerName>
         Bucket created successfully `nerc/<ContainerName>`.
 
-### Move the Volume from MOC to NERC
+### Mirror the Volume from MOC to NERC
 
 1. Using the volume label from MinIO `<MinIOVolume>` and the `<ContainerName>`
-for the command below you will kick off the move of your volume. This can
-take a while depending on the size of your volume.
+for the command below you will kick off the move of your volume. This takes
+around 30 sec per GB of data in your volume.
 
         $ mc mirror moc/<ContainerName>/<MinIOVolume> nerc/<ContainerName>/<MinIOVolume>
         ...123a30e_sha256file:  2.61GB / 2.61GB [=========...=========] 42.15Mib/s 1m3s
@@ -262,6 +288,8 @@ create the original Backup.
         $ openstack --os-cloud nerc volume backup record import -f value $(cat record.txt)
         <NERCVolumeBackupID>
         None
+
+    1. Copy `<NERCVolumeBackupID>` value into your table.
 
 ### Create an Empty Volume on NERC to Receive the Backup
 

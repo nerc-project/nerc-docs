@@ -82,6 +82,7 @@ nav:
     - Step 1 Creating NERC Project and Networks: migration-moc-to-nerc/Step1.md
     - Step 2 Gathering MOC Information: migration-moc-to-nerc/Step2.md
     - Step 3 Moving Volumes from MOC to NERC & Creating Instance: migration-moc-to-nerc/Step3.md
+    - Step 4 Remove Volume Backups to Conserve Storage: migration-moc-to-nerc/Step4.md
 theme:
   name: material
   custom_dir: nerc-theme

@@ -16,7 +16,7 @@
     | MOCVolumeBackupID | |
     | ContainerName | |
     | NERCVolumeBackupID | |
-    | VolumeName | |
+    | NERCVolumeName | |
 
 2. It is also helpful to have a text editor open so that you can insert
 the values from the spreadsheet into the commands that need to be run.
@@ -216,7 +216,7 @@ interface of the object-store service `<NERCEndPoint>` and the EC2 access key (e
 ### Backup MOC Volumes
 
 1. Locate the desired Volume UUID from the table you created in
-[Step 2 Gathering MOC Information](../Step2/).
+[Step 2 Gathering MOC Information](../Step2/#moc-volume-information-table).
 
 1. Add the first Volume ID from your table to the code below in the
 `<MOCVolumeID>` field and create a Container Name to replace the
@@ -296,11 +296,14 @@ create the original Backup.
 1. Create a volume in the NERC environment to receive the backup. This must be
 the same size or larger than the original volume which can be changed by
 modifying the `<size>` field. Remove the "--bootable" flag if you are not
-creating a bootable volume. The `<VolumeName>` field can be any name you want,
+creating a bootable volume. The `<NERCVolumeName>` field can be any name you want,
 I would suggest something that will help you keep track of what instance you
-want to attach it to.
+want to attach it to. Make sure to fill in the table you created in [Step 2][]
+with the `<NERCVolumeName>` value in the `NERC Volume Name` column.
 
-        $ openstack --os-cloud nerc volume create --bootable --size <size> <VolumeName>
+[Step 2]: ../Step2/#moc-volume-information-table
+
+        $ openstack --os-cloud nerc volume create --bootable --size <size> <NERCVolumeName>
         +---------------------+----------------+
         | Field               | Value          |
         +---------------------+----------------+
@@ -316,7 +319,7 @@ want to attach it to.
 
 1. Restore the Backup to the Volume you just created.
 
-        openstack --os-cloud nerc volume backup restore <NERCVolumeBackupID> <VolumeName>
+        openstack --os-cloud nerc volume backup restore <NERCVolumeBackupID> <NERCVolumeName>
 
 1. Wait for the volume to shift from `restoring-backup` to `available`.
 
@@ -349,7 +352,7 @@ the next steps.
 
         ![Volume Selection](images/S3_VolumeSelect.png)
 
-        1. Select the `<VolumeName>` you created in step [Create an Empty
+        1. Select the `<NERCVolumeName>` you created in step [Create an Empty
         Volume on NERC to Recieve the
         Backup](#create-an-empty-volume-on-nerc-to-receive-the-backup)
 

@@ -12,6 +12,8 @@ login is `centos`. If you have any trouble please review the SSH steps
 
 [SSHMirror]: https://nerc-project.github.io/nerc-docs/migration-moc-to-nerc/Step3/#create-a-new-moc-mirror-to-nerc-instance
 
+[SSHMOC]: https://docs.massopen.cloud/en/latest/openstack/ssh-to-cloud-vm.html
+
 ## Check Remaining MOC Volume Storage
 
 1. Log into the [MOC Dashboard][MOCDash] and go to Project > Compute >

@@ -43,11 +43,7 @@ sure you want to connect. Type `yes`.
 
 !!! tip "Note"
     If you haven't added your key to ssh-agent, you may need to specify the
-    private key file, like this:
-
-  ```sh
-    ssh -i ~/.ssh/cloud.key ubuntu@140.247.152.229
-  ```
+    private key file, like this: `ssh -i ~/.ssh/cloud.key ubuntu@140.247.152.229`
 
 ---
 

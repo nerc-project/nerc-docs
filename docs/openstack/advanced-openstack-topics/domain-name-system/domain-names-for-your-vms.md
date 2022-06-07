@@ -45,7 +45,7 @@ your NERC's virtual instances.
     ![Update Floating IP on Hostname](images/floating-ip-to-hostname.png)
 
     Then, browse your host or domain name as you setup during registration or later
-    i.e. http://nerc.hopto.org on above example.
+    i.e. [http://nerc.hopto.org](http://nerc.hopto.org) on above example.
 
     Easy video tutorial can be found [here](https://www.youtube.com/watch?v=1eeMxhpT868).
 

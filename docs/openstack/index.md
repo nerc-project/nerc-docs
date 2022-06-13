@@ -36,6 +36,10 @@ the list below.
 - [Set up your own Private Network](advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md)
 - [Create a Router](advanced-openstack-topics/setting-up-a-network/create-a-router.md)
 
+## Domain or Host Name for your VM
+
+- [Domain Name System (DNS)](advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md)
+
 ## OpenStack CLI
 
 - [OpenStack CLI](advanced-openstack-topics/openstack-cli/openstack-CLI.md)

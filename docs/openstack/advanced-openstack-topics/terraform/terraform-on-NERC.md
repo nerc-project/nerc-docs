@@ -22,15 +22,31 @@ like **Terraform**.
 
 To use Terraform you will need to install it from [here](https://www.terraform.io/downloads).
 
-## Basic Template on how to use Terraform on your NERC Project
+## Basic Template to use Terraform on your NERC Project
 
 You can Git clone: `git clone https://github.com/nerc-project/terraform-nerc.git`
 and run our base template for terraform to provision some basic NERC's OpenStack
 resources using this [terraform-nerc repo](https://github.com/nerc-project/terraform-nerc.git).
 
-!!! note "Note"
+!!! info "Note"
     The `main` branch of this git repo should be a good starting point in developing
     your own terraform code.
+
+## Template to setup R Shiny server using Terraform on your NERC Project
+
+You can Git clone: `git clone https://github.com/nerc-project/terraform-nerc-r-shiny.git`
+and can run this template locally using terraform to provision
+[R Shiny server](https://www.rstudio.com/products/shiny/shiny-server/) on NERC's
+OpenStack resources using this [terraform-nerc-r-shiny repo](https://github.com/nerc-project/terraform-nerc-r-shiny.git).
+
+!!! tip "Important Note"
+    Please make sure to review bash script file i.e. `install-R-Shiny.sh` located
+    in this repo that is pointing as `user-data-path` variable in `example.tfvars`.
+    This repo includes the script required to setup Shiny R server. You can use
+    similar concept to any other project that needs custom user defined scripts
+    while launching an instance. If you want to change and update this script you
+    can just change this file and then run `terraform plan` and `terraform apply`
+    command pointing this `example.tfvars` file.
 
 ## How Terraform Works
 

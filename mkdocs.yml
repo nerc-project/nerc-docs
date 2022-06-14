@@ -39,6 +39,8 @@ nav:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
               - Create a Router: openstack/advanced-openstack-topics/setting-up-a-network/create-a-router.md
+          - Domain Name System:
+              - Set up Domain names for your VMs: openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md
           - OpenStack CLI:
               - OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/openstack-CLI.md
               - Launch a VM using OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md

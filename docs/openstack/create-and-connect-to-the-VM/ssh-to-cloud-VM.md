@@ -23,9 +23,10 @@ Default usernames for all the base images are:
 
 - **all Ubuntu images**: ubuntu
 - **all CentOS images**: centos
-- **all RHEL images**: ubuntu
+- **all Rocky Linux images**: centos
 - **all Fedora images**: fedora
 - **all Debian images**: debian
+- **all RHEL images**: cloud-user
 
 Our example VM was launched with the **ubuntu-21.04-x86_64** base image, the
 user we need is 'ubuntu'.

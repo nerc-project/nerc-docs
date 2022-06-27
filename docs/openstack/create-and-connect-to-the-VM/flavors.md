@@ -6,127 +6,44 @@ configuration for a server.
 
 ## Currently, our setup supports the following flavors
 
-| Field                        | Value         |
-|------------------------------|---------------|
-| disk                         | 10            |
-| name                         | m1.tiny       |
-| ram                          | 1024          |
-| vcpus                        | 1             |
-|                              |               |
-| disk                         | 10            |
-| name                         | m1.small      |
-| ram                          | 2048          |
-| vcpus                        | 1             |
-|                              |               |
-| disk                         | 10            |
-| name                         | m1.medium     |
-| ram                          | 4096          |
-| vcpus                        | 2             |
-|                              |               |
-| disk                         | 10            |
-| name                         | m1.large      |
-| ram                          | 8192          |
-| vcpus                        | 4             |
-|                              |               |
-| disk                         | 10            |
-| name                         | m1.xlarge     |
-| ram                          | 16384         |
-| vcpus                        | 8             |
-|                              |               |
-| disk                         | 10            |
-| name                         | c1.xlarge     |
-| ram                          | 46080         |
-| vcpus                        | 10            |
-|                              |               |
-| disk                         | 10            |
-| name                         | c1.2xlarge    |
-| ram                          | 92160         |
-| vcpus                        | 20            |
-|                              |               |
-| disk                         | 10            |
-| name                         | c1.4xlarge    |
-| ram                          | 184320        |
-| vcpus                        | 40            |
-|                              |               |
-| disk                         | 10            |
-| name                         | gpu.A100      |
-| ram                          | 96256         |
-| vcpus                        | 12            |
-|                              |               |
-| disk                         | 10            |
-| name                         | custom.4c.16g |
-| ram                          | 16384         |
-| vcpus                        | 4             |
-|                              |               |
-| disk                         | 10            |
-| name                         | custom.4c.32g |
-| ram                          | 32768         |
-| vcpus                        | 4             |
-|                              |               |
-| disk                         | 10            |
-| name                         | custom.8c.32g |
-| ram                          | 32768         |
-| vcpus                        | 8             |
-|                              |               |
-| disk                         | 10            |
-| name                         | custom.8c.64g |
-| ram                          | 65536         |
-| vcpus                        | 8             |
-|                              |               |
-| disk                         | 25            |
-| name                         | m1.s2.tiny    |
-| ram                          | 1024          |
-| vcpus                        | 1             |
-|                              |               |
-| disk                         | 25            |
-| name                         | m1.s2.small   |
-| ram                          | 2048          |
-| vcpus                        | 1             |
-|                              |               |
-| disk                         | 25            |
-| name                         | m1.s2.medium  |
-| ram                          | 4096          |
-| vcpus                        | 2             |
-|                              |               |
-| disk                         | 25            |
-| name                         | m1.s2.large   |
-| ram                          | 8192          |
-| vcpus                        | 4             |
-|                              |               |
-| disk                         | 25            |
-| name                         | m1.s2.xlarge  |
-| ram                          | 16384         |
-| vcpus                        | 8             |
-|                              |               |
-| disk                         | 25            |
-| name                         | c1.s2.xlarge  |
-| ram                          | 46080         |
-| vcpus                        | 10            |
-|                              |               |
-| disk                         | 25            |
-| name                         | c1.s2.2xlarge |
-| ram                          | 92160         |
-| vcpus                        | 20            |
-|                              |               |
-| disk                         | 25            |
-| name                         | c1.s2.4xlarge |
-| ram                          | 184320        |
-| vcpus                        | 40            |
-|                              |               |
-| disk                         | 25            |
-| name                         | c2.s2.xlarge  |
-| ram                          | 32768         |
-| vcpus                        | 16            |
-|                              |               |
-| disk                         | 25            |
-| name                         | c2.s2.2xlarge |
-| ram                          | 65536         |
-| vcpus                        | 32            |
-|                              |               |
-| disk                         | 25            |
-| name                         | c2.s2.4xlarge |
-| ram                          | 81920         |
-| vcpus                        | 40            |
+| Instance Name | RAM (MB)  | Disk storage (GB) | VCPUs     |
+|---------------|-----------|-------------------|-----------|
+| m1.tiny       | 1024      | 10                | 1         |
+| m1.small      | 2048      | 10                | 1         |
+| m1.medium     | 4096      | 10                | 2         |
+| m1.large      | 8192      | 10                | 4         |
+| m1.xlarge     | 16384     | 10                | 8         |
+| c1.xlarge     | 46080     | 10                | 10        |
+| c1.2xlarge    | 92160     | 10                | 20        |
+| c1.4xlarge    | 184320    | 10                | 40        |
+| custom.4c.16g | 16384     | 10                | 4         |
+| custom.4c.32g | 32768     | 10                | 4         |
+| custom.8c.32g | 32768     | 10                | 8         |
+| custom.8c.64g | 65536     | 10                | 8         |
+| m1.s2.tiny    | 1024      | 25                | 1         |
+| m1.s2.small   | 2048      | 25                | 1         |
+| m1.s2.medium  | 4096      | 25                | 2         |
+| m1.s2.large   | 8192      | 25                | 4         |
+| m1.s2.xlarge  | 16384     | 25                | 8         |
+| c1.s2.xlarge  | 46080     | 25                | 10        |
+| c1.s2.2xlarge | 92160     | 25                | 20        |
+| c1.s2.4xlarge | 184320    | 25                | 40        |
+| c2.s2.xlarge  | 32768     | 25                | 16        |
+| c2.s2.2xlarge | 65536     | 25                | 32        |
+| c2.s2.4xlarge | 81920     | 25                | 40        |
+
+NERC also supports the most demanding workloads including Artificial Intelligence
+(AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
+analytics, data visualization, distributed databases, and more. For such demanding
+workloads, the NERC’s GPU based distributed computing flavor is recommended, which
+is integrated to a specialized hardware such as GPUs that produce unprecedented
+performance boosts for technical computing workloads. They are powered by the
+latest **NVIDIA A100 Tensor Core GPUs** and deliver industry-leading high throughput
+and low latency networking.
+
+| Instance Name | GPUs      | VCPUs     | RAM (MB)  | Disk storage (GB) |
+|---------------|-----------|-----------|-----------|-------------------|
+| gpu.A100      | 8         | 12        | 96256     | 10                |
 
 Each flavor includes enforced quotas for disk limits through
 maximum disk read, write, and total bytes per second and disk limits through

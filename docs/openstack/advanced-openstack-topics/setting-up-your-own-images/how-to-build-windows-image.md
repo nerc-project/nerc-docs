@@ -152,9 +152,11 @@ button.
 
 ![Windows Boot Options](images/7.8.boot_option_win_cdrom_first.png)
 
+Click "Apply" button.
+
 ### 4. Continue with the Windows installation
 
-Click "Apply" button and continue with the Windows installation
+You need to continue with the Windows installation process.
 
 When prompted you can choose "Windows Server 2022 Standard Evaluation (Desktop Experinece)"
 option as shown below:

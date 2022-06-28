@@ -1,6 +1,6 @@
 # Images
 
-Image compose of a virtual collection of a kernel, operating system, and configuration.
+Image composed of a virtual collection of a kernel, operating system, and configuration.
 
 ## Glance
 

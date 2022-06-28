@@ -47,8 +47,8 @@ the `mem-a` SU are available, and the price scales accordingly:
     NERC also supports the most demanding workloads including Artificial Intelligence
     (AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
     analytics, data visualization, distributed databases, and more. For such demanding
-    workloads, the NERC’s GPU based distributed computing flavor is recommended, which
-    is integrated to a specialized hardware such as GPUs that produce unprecedented
+    workloads, the NERC’s GPU - based distributed computing flavor is recommended, which
+    is integrated into a specialized hardware such as GPUs that produce unprecedented
     performance boosts for technical computing workloads.
 
 There are two flavors within the GPU tier, one featuring older **NVidia K80s**

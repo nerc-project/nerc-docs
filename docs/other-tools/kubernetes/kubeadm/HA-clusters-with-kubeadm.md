@@ -22,13 +22,13 @@ You will need 2 control-plane(master node) and 2 worker nodes to create a
 multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
-- 2 Linux machines for master, ubuntu-21.04-x86_64, m1.medium flavor with 2vCPU,
- 4GB RAM, 10GB storage.
-- 2 Linux machines for worker, ubuntu-21.04-x86_64, m1.small flavor with 1vCPU,
- 2GB RAM, 10GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 2 Linux machines for master, ubuntu-21.04-x86_64 or your choice of Ubuntu OS image,
+m1.medium flavor with 2vCPU, 4GB RAM, 10GB storage.
+- 2 Linux machines for worker, ubuntu-21.04-x86_64 or your choice of Ubuntu OS image,
+m1.small flavor with 1vCPU, 2GB RAM, 10GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
-- 1 Linux machine for loadbalancer, ubuntu-21.04-x86_64, m1.small flavor with
-1vCPU, 2GB RAM, 10GB storage
+- 1 Linux machine for loadbalancer, ubuntu-21.04-x86_64 or your choice of Ubuntu
+OS image, m1.small flavor with 1vCPU, 2GB RAM, 10GB storage.
 - ssh access to all machines:  [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):

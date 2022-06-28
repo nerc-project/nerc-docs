@@ -22,12 +22,12 @@ is too slow for heavy scripting use.
 To use the CLI, you must create an application credentials and set the
 appropriate environment variables.
 
-You can download the environment file with the credentials from the OpenStack dashboard.
+You can download the environment file with the credentials from the [OpenStack dashboard](https://stack.nerc.mghpcc.org/dashboard/identity/application_credentials/).
 
 - Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
 the project for which you want to download the OpenStack RC file.
 
-- Navigate to [**Identity > Application Credentials**](https://stack.nerc.mghpcc.org/dashboard/identity/application_credentials/)
+- Navigate to **Identity > Application Credentials**.
 
 - Click on "Create Application Credential" button and provide a **Name** and **Roles**
 for the application credential. All other fields are optional and leaving the

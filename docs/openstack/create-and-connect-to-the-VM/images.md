@@ -1,6 +1,6 @@
 # Images
 
-Image compose of a virtual collection of a kernel, operating system, and configuration.
+Image composed of a virtual collection of a kernel, operating system, and configuration.
 
 Glance is the API-driven OpenStack image service that provides services and associated
 libraries to store, browse, register, distribute, and retrieve bootable disk images.

@@ -35,8 +35,8 @@ configuration for a server.
 NERC also supports the most demanding workloads including Artificial Intelligence
 (AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
 analytics, data visualization, distributed databases, and more. For such demanding
-workloads, the NERC’s GPU based distributed computing flavor is recommended, which
-is integrated to a specialized hardware such as GPUs that produce unprecedented
+workloads, the NERC’s GPU - based distributed computing flavor is recommended, which
+is integrated into a specialized hardware such as GPUs that produce unprecedented
 performance boosts for technical computing workloads. They are powered by the
 latest **NVIDIA A100 Tensor Core GPUs** and deliver industry-leading high throughput
 and low latency networking.

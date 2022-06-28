@@ -49,7 +49,7 @@ local Windows 10 machine using WSL:
 - **Enable WSL on your local Windows 10 subsystem for Linux:**
 
     The steps given here are straightforward, however, before following them
-    make sure on your Windows 10, you have WSL enabled and have at least Ubuntu
+    make sure on Windows 10, you have WSL enabled and have at least Ubuntu
     20.04 or above LTS version running over it. If you don’t know how to do
     that then see our tutorial on [how to enable WSL and install Ubuntu over
     it](https://www.how2shout.com/how-to/enable-windows-subsystem-linux-feature.html).
@@ -128,10 +128,10 @@ detect the disk.
 
 ![Virt-Manager Disk with VirtIO driver](images/7.1.customize_sata_disk_virtio.png)
 
-Add a **New Hardware**  > select **CDROM device** and attach to downloaded
-**virtio-win-* ISO** file:
-
 ![Virt-Manager Add Hardware](images/7.4.add_virtio_iso_hardware.png)
+
+Click **Add Hardware**  > select **CDROM device** and attach to downloaded
+**virtio-win-* ISO** file:
 
 ![Virt-Manager Add CDROM with virtio ISO](images/7.5.add_virtio_iso_cdrom.png)
 
@@ -139,15 +139,15 @@ Add a **New Hardware**  > select **CDROM device** and attach to downloaded
 
 ![Virt-Manager Select virtio ISO](images/7.7.select_virtion_iso.png)
 
-Make sure the NIC is using the **virtio** Device model as show below:
+Make sure the NIC is using the **virtio** Device model as shown below:
 
 ![Virt-Manager Modify  NIC](images/7.2.customize_nic_virtio.png)
 
 ![Virt-Manager Apply Change on NIC](images/7.3.customize_nic_virtio_apply.png)
 
-Make sure to set proper order of **Boot Options** as shown below so that
+Make sure to set proper order of **Boot Options** as shown below, so that
 CDROM with Windows ISO is set on the first and Apply the order change.
-After this please begin windows installation clicking on **"Begin Installation"**
+After this please begin windows installation by clicking on **"Begin Installation"**
 button.
 
 ![Windows Boot Options](images/7.8.boot_option_win_cdrom_first.png)

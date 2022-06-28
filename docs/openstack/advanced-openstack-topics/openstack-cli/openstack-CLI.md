@@ -27,7 +27,7 @@ You can download the environment file with the credentials from the OpenStack da
 - Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
 the project for which you want to download the OpenStack RC file.
 
-- Navigate to **Identity > Application Credentials**.
+- Navigate to [**Identity > Application Credentials**](https://stack.nerc.mghpcc.org/dashboard/identity/application_credentials/)
 
 - Click on "Create Application Credential" button and provide a **Name** and **Roles**
 for the application credential. All other fields are optional and leaving the

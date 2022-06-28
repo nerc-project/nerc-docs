@@ -42,12 +42,14 @@ the `mem-a` SU are available, and the price scales accordingly:
 
 ### 3. GPU Tier
 
-NERC also supports the most demanding workloads including Artificial Intelligence
-(AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
-analytics, data visualization, distributed databases, and more. For such demanding
-workloads, the NERC’s GPU based distributed computing flavor is recommended, which
-is integrated to a specialized hardware such as GPUs that produce unprecedented
-performance boosts for technical computing workloads.
+!!! info "Information"
+
+    NERC also supports the most demanding workloads including Artificial Intelligence
+    (AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
+    analytics, data visualization, distributed databases, and more. For such demanding
+    workloads, the NERC’s GPU based distributed computing flavor is recommended, which
+    is integrated to a specialized hardware such as GPUs that produce unprecedented
+    performance boosts for technical computing workloads.
 
 There are two flavors within the GPU tier, one featuring older **NVidia K80s**
 and the newer **NVidia A100s technology**.
@@ -74,7 +76,8 @@ industry-leading high throughput and low latency networking.
 | gpu-a100.2    | 2      | $1.074       |
 | gpu-a100.4    | 4      | $2.148       |
 
-So, while launching a VM choose the flavor for your instance that fits your
-requirements, budget and use-cases.
+!!! tip "Tip"
+
+    So, while launching a VM you need to choose a flavor for your instance that suits your requirements, use-cases, and budget.
 
 ---

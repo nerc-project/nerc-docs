@@ -138,9 +138,10 @@ Syntax :
       <Instance_Name>
 ```
 
-**NOTE:** If you boot an instance with an "**Instance_Name**" greater than **63
-characters**, Compute truncates it automatically when turning it into a
-hostname to ensure the correct functionality of `dnsmasq`.
+!!! note "Important Note"
+    If you boot an instance with an "**Instance_Name**" greater than **63
+    characters**, Compute truncates it automatically when turning it into a
+    hostname to ensure the correct functionality of `dnsmasq`.
 
 Optionally, you can provide a key name for access control and a security group
 for security.

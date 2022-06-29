@@ -22,23 +22,29 @@ is too slow for heavy scripting use.
 To use the CLI, you must create an application credentials and set the
 appropriate environment variables.
 
-Navigate to Identity > Application Credentials
+You can download the environment file with the credentials from the [OpenStack dashboard](https://stack.nerc.mghpcc.org/dashboard/identity/application_credentials/).
 
-Click on "Create Application Credential" button and provide a **Name** and
-**Roles** for the application credential. All other fields are optional and
-leaving the "Secret" field empty will set it to autogenerate (recommended).
+- Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
+the project for which you want to download the OpenStack RC file.
+
+- Navigate to **Identity > Application Credentials**.
+
+- Click on "Create Application Credential" button and provide a **Name** and **Roles**
+for the application credential. All other fields are optional and leaving the
+"Secret" field empty will set it to autogenerate (recommended).
 
 ![OpenStackClient Credentials Setup](images/openstack_cli_cred.png)
 
-*NOTE: Please note that an application credential is only valid for a single
-project, and to access multiple projects you need to create an application
-credential for each. You can switch projects by clicking on the project name at
-the top right corner and choosing from the dropdown under "Project".*
+!!! note "Important Note"
+    Please note that an application credential is only valid for a single
+    project, and to access multiple projects you need to create an application
+    credential for each. You can switch projects by clicking on the project name
+    at the top right corner and choosing from the dropdown under "Project".
 
 After clicking "Create Application Credential" button, the **ID** and
 **Secret** will be displayed and you will be prompted to `Download openrc file`
 or to `Download clouds.yaml`. Both of these are different methods of
-configuring the client for CLI access.
+configuring the client for CLI access. Please save the file.
 
 ### Configuration
 
@@ -53,18 +59,19 @@ Find the file (by default it will be named  the same as the application
 credential name with the suffix `-openrc.sh` where project is the name of your
 OpenStack project).
 
-Source the file:
+Source your downloaded **OpenStack RC File**:
 
 ```sh
   [user@laptop ~]$ source app-cred-<Credential_Name>-openrc.sh
 ```
 
-*NOTE: When you source the file, environment variables are set for your current
-shell. The variables enable the OpenStack client commands to communicate with
-the OpenStack services that run in the cloud. This just stores your entry into
-the environment variable - there's no validation at this stage. You can inspect
-the downloaded file to retrieve the ID and Secret if necessary and see what
-other environment variables are set.*
+!!! note "Important Note"
+    When you source the file, environment variables are set for your current
+    shell. The variables enable the OpenStack client commands to communicate with
+    the OpenStack services that run in the cloud. This just stores your entry into
+    the environment variable - there's no validation at this stage. You can inspect
+    the downloaded file to retrieve the ID and Secret if necessary and see what
+    other environment variables are set.
 
 #### clouds.yaml
 

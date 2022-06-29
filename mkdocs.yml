@@ -24,6 +24,7 @@ nav:
           - Create a Key Pair: openstack/access-and-security/create-a-key-pair.md
       - Create &amp; Connect to the VM:
           - Launch a VM: openstack/create-and-connect-to-the-VM/launch-a-VM.md
+          - Available Images: openstack/create-and-connect-to-the-VM/images.md
           - Available NOVA Flavors: openstack/create-and-connect-to-the-VM/flavors.md
           - Assign a Floating IP: openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md
           - Connect to the VM:

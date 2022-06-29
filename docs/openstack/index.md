@@ -22,6 +22,8 @@ the list below.
 ## Create &amp; Connect to the VM
 
 - [Launch a VM](create-and-connect-to-the-VM/launch-a-VM.md)
+- [Available Images](create-and-connect-to-the-VM/images.md)
+- [Available NOVA Flavors](create-and-connect-to-the-VM/flavors.md)
 - [Assign a Floating IP](create-and-connect-to-the-VM/assign-a-floating-IP.md)
 - [SSH to Cloud VM](create-and-connect-to-the-VM/ssh-to-cloud-VM.md)
 

@@ -1,6 +1,7 @@
 # What is NERC's ColdFront?
 
-NERC uses an open source resource allocation management system called
+NERC uses [NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/), an
+open source resource allocation management system called
 [ColdFront](https://github.com/ubccr/coldfront) to provide a single point-of-entry
 for administration, reporting, and measuring scientific impact of NERC resources
 for PI.

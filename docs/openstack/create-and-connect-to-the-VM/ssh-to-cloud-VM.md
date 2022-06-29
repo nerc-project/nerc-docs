@@ -23,9 +23,10 @@ Default usernames for all the base images are:
 
 - **all Ubuntu images**: ubuntu
 - **all CentOS images**: centos
-- **all RHEL images**: ubuntu
+- **all Rocky Linux images**: centos
 - **all Fedora images**: fedora
 - **all Debian images**: debian
+- **all RHEL images**: cloud-user
 
 Our example VM was launched with the **ubuntu-21.04-x86_64** base image, the
 user we need is 'ubuntu'.
@@ -43,11 +44,7 @@ sure you want to connect. Type `yes`.
 
 !!! tip "Note"
     If you haven't added your key to ssh-agent, you may need to specify the
-    private key file, like this:
-
-  ```sh
-    ssh -i ~/.ssh/cloud.key ubuntu@140.247.152.229
-  ```
+    private key file, like this: `ssh -i ~/.ssh/cloud.key ubuntu@140.247.152.229`
 
 ---
 

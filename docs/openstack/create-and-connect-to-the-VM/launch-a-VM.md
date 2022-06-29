@@ -12,7 +12,7 @@ Navigate: Project -> Compute -> Images.
 ![VM Images](images/vm_images.png)
 
 Click Launch Instance next to the public image of your choice. In the example,
-we chose **ubuntu-21.04-x86_64**.
+we chose **ubuntu-21.04-x86_64**, you may choose any available images.
 
 *Important: There are multiple tabs along the top of the the pop up window.
 
@@ -25,9 +25,10 @@ In the Launch Instance dialog box, specify the following values:
 
 Instance Name: Give your instance a name that assign a name to the virtual machine.
 
-*NOTE: The name you assign here becomes the initial host name of the server. If
-the name is longer than 63 characters, the Compute service truncates it
-automatically to ensure dnsmasq works correctly.*
+!!! note "Important Note"
+    The instance name you assign here becomes the initial host name of the server.
+    If the name is longer than 63 characters, the Compute service truncates it
+    automatically to ensure dnsmasq works correctly.
 
 Availability Zone: By default, this value is set to the availability zone given
 by the cloud provider i.e. `nova`.
@@ -54,6 +55,9 @@ is 1.
     those instances you will not be storing persistent data.
 
     ![VM Launch with persistent Volume](images/persistent_volume.png)
+
+    **More details about available bootable images can be found [here](images.md).
+    Customers can also upload their own custom images, as demonstrated in [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
 
 - **Flavor** tab: Specify the size of the instance to launch. Choose `m1.large`
 from the 'Flavor' tab by clicking on the "+" icon.
@@ -92,9 +96,10 @@ use with this VM.
 
 ![VM Launch Instance Key Pairs](images/launch_security_key_pairs.png)
 
-*NOTE: If you did not provide a key pair, security groups, or rules, users can
-access the instance only from inside the cloud through VNC. Even pinging the
-instance is not possible without an ICMP rule configured.*
+!!! note "Important Note"
+    If you did not provide a key pair, security groups, or rules, users can
+    access the instance only from inside the cloud through VNC. Even pinging the
+    instance is not possible without an ICMP rule configured.
 
 - **Network Ports, Configuration, Server Groups, Schedular Hints, and
 Metadata:** tab: Ignore these tabs for now.

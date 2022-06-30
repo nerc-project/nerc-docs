@@ -31,8 +31,8 @@ an instance:
 Beside the above mentioned system provided images users can customize and upload
 their own images to the NERC, as demonstrated in [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).
 
-Please reference to [here](https://docs.openstack.org/image-guide/obtain-images.html)
-to understand more on how can we get other virtual machine images to NERC's
+Please refer to [this guide](https://docs.openstack.org/image-guide/obtain-images.html)
+to understand more on how can you get other virtual machine images to the NERC's
 OpenStack platform.
 
 ---

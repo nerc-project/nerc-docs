@@ -33,204 +33,222 @@ upload the image to the NERC's OpenStack Compute cloud. Please follow the follow
 steps which describes how to obtain, create, and modify virtual machine images that
 are compatible with the NERC's OpenStack.
 
-1. Follow these steps to prepare the installation:
+### 1. Prerequisite
 
-    a. Download a Windows Server 2022 installation ISO file. Evaluation images are
-    available on the [Microsoft website](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022)
-    (**registration required**).
+Follow these steps to prepare the installation
 
-    b. Download the signed **VirtIO drivers** ISO file from the [Fedora website](https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html).
+a. Download a Windows Server 2022 installation ISO file. Evaluation images are
+available on the [Microsoft website](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022)
+(**registration required**).
 
-    c. Install [Virtual Machine Manager](https://virt-manager.org/download/) on your
-    local Windows 10 machine using WSL:
+b. Download the signed **VirtIO drivers** ISO file from the [Fedora website](https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html).
 
-    - **Enable WSL on your local Windows 10 subsystem for Linux:**
-        The steps given here are straightforward, however, before following them
-        make sure on your Windows 10, you have WSL enabled and have at least Ubuntu
-        20.04 or above LTS version running over it. If you don’t know how to do
-        that then see our tutorial on [how to enable WSL and install Ubuntu over
-        it](https://www.how2shout.com/how-to/enable-windows-subsystem-linux-feature.html).
+c. Install [Virtual Machine Manager](https://virt-manager.org/download/) on your
+local Windows 10 machine using WSL:
 
-    - **Download and install MobaXterm:**
-        **MobaXterm** is a free application that can be downloaded using [this link](https://mobaxterm.mobatek.net/download-home-edition.html).
-        After downloading, install it like any other normal Windows software.
+- **Enable WSL on your local Windows 10 subsystem for Linux:**
 
-    - **Open MobaXterm and run WSL Linux:**
-        As you open this advanced terminal for Windows 10, WSL installed Ubuntu
-        app will show on the left side panel of it. Double click on that to start
-        the WSL session.
+    The steps given here are straightforward, however, before following them
+    make sure on Windows 10, you have WSL enabled and have at least Ubuntu
+    20.04 or above LTS version running over it. If you don’t know how to do
+    that then see our tutorial on [how to enable WSL and install Ubuntu over
+    it](https://www.how2shout.com/how-to/enable-windows-subsystem-linux-feature.html).
 
-        ![MobaXterm WSL Ubuntu-20.04 LTS](images/a.mobaxterm_ubuntu_WSL.png)
+- **Download and install MobaXterm:**
 
-    - **Install Virt-Manager:**
+    **MobaXterm** is a free application that can be downloaded using [this link](https://mobaxterm.mobatek.net/download-home-edition.html).
+    After downloading, install it like any other normal Windows software.
 
-            sudo apt update
-            sudo apt install virt-manager
+- **Open MobaXterm and run WSL Linux:**
 
-    - **Run Virtual Machine Manager:**
-        Start the Virtual Machine Manager running this command on the opened
-        terminal: `virt-manager` as shown below:
+    As you open this advanced terminal for Windows 10, WSL installed Ubuntu
+    app will show on the left side panel of it. Double click on that to start
+    the WSL session.
 
-        ![MobaXterm start Virt-Manager](images/b.mobaxterm_init_virt-manager.png)
+    ![MobaXterm WSL Ubuntu-20.04 LTS](images/a.mobaxterm_ubuntu_WSL.png)
 
-        This will open Virt-Manager as following:
+- **Install Virt-Manager:**
 
-        ![Virt-Manager interface](images/0.virtual-manager.png)
+        sudo apt update
+        sudo apt install virt-manager
 
-    - **Connect QEMU/KVM user session on Virt-Manager:**
+- **Run Virtual Machine Manager:**
 
-        ![Virt-Manager Add Connection](images/0.0.add_virtual_connection.png)
+    Start the Virtual Machine Manager running this command on the opened
+    terminal: `virt-manager` as shown below:
 
-        ![Virt-Manager QEMU/KVM user session](images/0.1.select_qemu_kvm_user_session.png)
+    ![MobaXterm start Virt-Manager](images/b.mobaxterm_init_virt-manager.png)
 
-        ![Virt-Manager Connect](images/0.2.qemu_kvm_user_session.png)
+    This will open Virt-Manager as following:
 
-2. Create a virtual machine with the storage set to a **15 GB** *qcow2* disk
-image using Virtual Machine Manager.
+    ![Virt-Manager interface](images/0.virtual-manager.png)
 
-    ![Virt-Manager New Virtual Machine](images/1.new_virtual_machine.png)
+- **Connect QEMU/KVM user session on Virt-Manager:**
 
-    ![Virt-Manager Local install media](images/2.select_local_ISO_image.png)
+    ![Virt-Manager Add Connection](images/0.0.add_virtual_connection.png)
 
-    ![Virt-Manager Browse Win ISO](images/3.0.Choose_ISO.png)
+    ![Virt-Manager QEMU/KVM user session](images/0.1.select_qemu_kvm_user_session.png)
 
-    ![Virt-Manager Browse Local](images/3.1.browse_local.png)
+    ![Virt-Manager Connect](images/0.2.qemu_kvm_user_session.png)
 
-    ![Virt-Manager Select the ISO file](images/3.3.open_local_iso_file.png)
+### 2. Create a virtual machine
 
-    ![Virt-Manager Selected ISO](images/3.4.select_iso.png)
+Create a virtual machine with the storage set to a **15 GB** *qcow2* disk image
+using Virtual Machine Manager
 
-    ![Virt-Manager default Memory and CPU](images/4.default_mem_cpu.png)
+![Virt-Manager New Virtual Machine](images/1.new_virtual_machine.png)
 
-    Please set **15 GB disk image** size as shown below:
+![Virt-Manager Local install media](images/2.select_local_ISO_image.png)
 
-    ![Virt-Manager disk image size](images/5.set_15_GB_disk_size.png)
+![Virt-Manager Browse Win ISO](images/3.0.Choose_ISO.png)
 
-    Set the virtual machine name and also make sure **"Customize configuration before
-    install"** is selected as shown below:
+![Virt-Manager Browse Local](images/3.1.browse_local.png)
 
-    ![Virt-Manager Virtual Machine Name](images/6.set_name.png)
+![Virt-Manager Select the ISO file](images/3.3.open_local_iso_file.png)
 
-3. Customize the Virtual machine:
+![Virt-Manager Selected ISO](images/3.4.select_iso.png)
 
-    ![Virt-Manager Customize Image](images/7.0.customize_iso.png)
+![Virt-Manager default Memory and CPU](images/4.default_mem_cpu.png)
 
-    Enable the **VirtIO** driver. By default, the Windows installer does not
-    detect the disk.
+Please set **15 GB disk image** size as shown below:
 
-    ![Virt-Manager Disk with VirtIO driver](images/7.1.customize_sata_disk_virtio.png)
+![Virt-Manager disk image size](images/5.set_15_GB_disk_size.png)
 
-    Add a **New Hardware**  > select **CDROM device** and attach to downloaded
-    **virtio-win-* ISO** file:
+Set the virtual machine name and also make sure **"Customize configuration before
+install"** is selected as shown below:
 
-    ![Virt-Manager Add Hardware](images/7.4.add_virtio_iso_hardware.png)
+![Virt-Manager Virtual Machine Name](images/6.set_name.png)
 
-    ![Virt-Manager Add CDROM with virtio ISO](images/7.5.add_virtio_iso_cdrom.png)
+### 3. Customize the Virtual machine
 
-    ![Virt-Manager Browse virtio ISO](images/7.6.browse_virtio_iso.png)
+![Virt-Manager Customize Image](images/7.0.customize_iso.png)
 
-    ![Virt-Manager Select virtio ISO](images/7.7.select_virtion_iso.png)
+Enable the **VirtIO** driver. By default, the Windows installer does not
+detect the disk.
 
-    Make sure the NIC is using the **virtio** Device model as show below:
+![Virt-Manager Disk with VirtIO driver](images/7.1.customize_sata_disk_virtio.png)
 
-    ![Virt-Manager Modify  NIC](images/7.2.customize_nic_virtio.png)
+![Virt-Manager Add Hardware](images/7.4.add_virtio_iso_hardware.png)
 
-    ![Virt-Manager Apply Change on NIC](images/7.3.customize_nic_virtio_apply.png)
+Click **Add Hardware**  > select **CDROM device** and attach to downloaded
+**virtio-win-* ISO** file:
 
-    Make sure to set proper order of **Boot Options** as shown below so that
-    CDROM with Windows ISO is set on the first and Apply the order change.
-    After this please begin windows installation clicking on **"Begin Installation"**
-    button.
+![Virt-Manager Add CDROM with virtio ISO](images/7.5.add_virtio_iso_cdrom.png)
 
-    ![Windows Boot Options](images/7.8.boot_option_win_cdrom_first.png)
+![Virt-Manager Browse virtio ISO](images/7.6.browse_virtio_iso.png)
 
-4. Click "Apply" button and continue with the Windows installation.
+![Virt-Manager Select virtio ISO](images/7.7.select_virtion_iso.png)
 
-    When prompted you can choose "Windows Server 2022 Standard Evaluation
-    (Desktop Experinece)" option as shown below:
+Make sure the NIC is using the **virtio** Device model as shown below:
 
-    ![Windows Desktop Installation](images/7.windows_installation_desktop.png)
+![Virt-Manager Modify  NIC](images/7.2.customize_nic_virtio.png)
 
-    ![Windows Custom Installation](images/8.custom_setup.png)
+![Virt-Manager Apply Change on NIC](images/7.3.customize_nic_virtio_apply.png)
 
-    Load VirtIO SCSI drivers and network drivers by choosing an installation
-    target when prompted. Click **Load driver** and browse the file system.
+Make sure to set proper order of **Boot Options** as shown below, so that
+CDROM with Windows ISO is set on the first and Apply the order change.
+After this please begin windows installation by clicking on **"Begin Installation"**
+button.
 
-    ![Windows Custom Load Driver](images/9.load_driver.png)
+![Windows Boot Options](images/7.8.boot_option_win_cdrom_first.png)
 
-    ![Browse Local Attached Drives](images/10.browse_driver.png)
+Click "Apply" button.
 
-    ![Select VirtIO CDROM](images/11.browse_CDRom_virtio_iso.png)
+### 4. Continue with the Windows installation
 
-    Select the `E:\virtio-win-*\viostor\2k22\amd64` folder. When converting an
-    image file with Windows, ensure the virtio driver is installed. Otherwise,
-    you will get a blue screen when launching the image due to lack of the virtio
-    driver.
+You need to continue with the Windows installation process.
 
-    ![Select Appropriate Win Version viostor driver](images/12.select_viostor_driver.png)
+When prompted you can choose "Windows Server 2022 Standard Evaluation (Desktop Experinece)"
+option as shown below:
 
-    The Windows installer displays a list of drivers to install. Select the
-    VirtIO SCSI drivers.
+![Windows Desktop Installation](images/7.windows_installation_desktop.png)
 
-    ![Windows viostor driver Installation](images/13.install_viostor_driver.png)
+![Windows Custom Installation](images/8.custom_setup.png)
 
-    Click **Load driver** again and browse the file system, and select the
-    `E:\NetKVM\2k22\amd64` folder.
+Load VirtIO SCSI drivers and network drivers by choosing an installation
+target when prompted. Click **Load driver** and browse the file system.
 
-    ![Select Appropriate Win Version NetKVM driver](images/14.select_netkvm_driver.png)
+![Windows Custom Load Driver](images/9.load_driver.png)
 
-    Select the network drivers, and continue the installation.
+![Browse Local Attached Drives](images/10.browse_driver.png)
 
-    ![Windows NetKVM driver Installation](images/15.install_netkvm_driver.png)
+![Select VirtIO CDROM](images/11.browse_CDRom_virtio_iso.png)
 
-    ![Windows Ready for Installation](images/16.install_win.png)
+Select the `E:\virtio-win-*\viostor\2k22\amd64` folder. When converting an
+image file with Windows, ensure the virtio driver is installed. Otherwise,
+you will get a blue screen when launching the image due to lack of the virtio
+driver.
 
-    ![Windows Continue Installation](images/17.wait_installation_finish.png)
+![Select Appropriate Win Version viostor driver](images/12.select_viostor_driver.png)
 
-5. Once the installation is completed, the virtual machine (VM) restarts.
+The Windows installer displays a list of drivers to install. Select the
+VirtIO SCSI drivers.
 
-    Define a password for the **Adminstrator** when prompted and click on
-    "Finish" button:
+![Windows viostor driver Installation](images/13.install_viostor_driver.png)
 
-    ![Windows Administrator Login](images/finalize_win_installtion_with_user.png)
+Click **Load driver** again and browse the file system, and select the
+`E:\NetKVM\2k22\amd64` folder.
 
-    Send the **"Ctrl+Alt+Delete"** key using **Send Key** Menu, this will
-    unlock the windows and then prompt login for the Administrator - please login
-    using the password you set on previous step:
+![Select Appropriate Win Version NetKVM driver](images/14.select_netkvm_driver.png)
 
-    ![Windows Send Key](images/send_ctrl_alt_delete_key.png)
+Select the network drivers, and continue the installation.
 
-    ![Administrator Login](images/login_administrator.png)
+![Windows NetKVM driver Installation](images/15.install_netkvm_driver.png)
 
-    ![Administrator Profile Finalize](images/setup_admininstrator_profile.png)
+![Windows Ready for Installation](images/16.install_win.png)
 
-    ![Windows Installation Successful](images/windows-successful-login.png)
+![Windows Continue Installation](images/17.wait_installation_finish.png)
 
-6. Go to device manager and install all unrecognized devices.
+### 5. Restart the installed virtual machine (VM)
 
-    ![Device Manager View](images/device-manager-update-drivers.png)
+Once the installation is completed, the VM restarts
 
-    ![Device Manager Update Driver](images/update_driver.png)
+Define a password for the **Adminstrator** when prompted and click on
+"Finish" button:
 
-    ![Device Manager Browse Driver](images/browse_driver.png)
+![Windows Administrator Login](images/finalize_win_installtion_with_user.png)
 
-    ![Browse To Attached vitio-win CDROM](images/browse_driver_CDROM.png)
+Send the **"Ctrl+Alt+Delete"** key using **Send Key** Menu, this will
+unlock the windows and then prompt login for the Administrator - please login
+using the password you set on previous step:
 
-    ![Select Attached vitio-win CDROM](images/select_attached_driver.png)
+![Windows Send Key](images/send_ctrl_alt_delete_key.png)
 
-    ![Successfully Installed Driver](images/installed_driver.png)
+![Administrator Login](images/login_administrator.png)
 
-    Similarly as shown above repeat and install all missing drivers.
+![Administrator Profile Finalize](images/setup_admininstrator_profile.png)
 
-7. Explicitly **enable** Remote Desktop Protocol (RDP) login and **uncheck**
-"Require computers to use Network Level Authentication to connect" option.
+![Windows Installation Successful](images/windows-successful-login.png)
 
-    ![Enable RDP](images/rdp-enable.png)
+### 6. Go to device manager and install all unrecognized devices
 
-    ![Disable Network Level Authentication](images/rdp-network-level-auth-not-required.png)
+![Device Manager View](images/device-manager-update-drivers.png)
 
-8. Delete the recovery parition which will allow expanding the Image as required
-running the following commands on **Command Prompt (Run as Adminstrator)**:
+![Device Manager Update Driver](images/update_driver.png)
+
+![Device Manager Browse Driver](images/browse_driver.png)
+
+![Browse To Attached vitio-win CDROM](images/browse_driver_CDROM.png)
+
+![Select Attached vitio-win CDROM](images/select_attached_driver.png)
+
+![Successfully Installed Driver](images/installed_driver.png)
+
+Similarly as shown above repeat and install all missing drivers.
+
+### 7. Enable Remote Desktop Protocol (RDP) login
+
+Explicitly **enable** RDP login and **uncheck** "Require computers to use Network
+Level Authentication to connect" option
+
+![Enable RDP](images/rdp-enable.png)
+
+![Disable Network Level Authentication](images/rdp-network-level-auth-not-required.png)
+
+### 8. Delete the recovery parition
+
+Delete the recovery parition which will allow expanding the Image as required
+running the following commands on **Command Prompt (Run as Adminstrator)**
 
         diskpart
         select disk 0
@@ -239,112 +257,123 @@ running the following commands on **Command Prompt (Run as Adminstrator)**:
         delete partition override
         list partition
 
-    ![Disk Partition 3 Delete using CMD](images/disk_partition_manager_delete_partition_3.png)
+![Disk Partition 3 Delete using CMD](images/disk_partition_manager_delete_partition_3.png)
 
-    and then extend `C:` drive to take up the remaining space using **"Disk Management"**.
+and then extend `C:` drive to take up the remaining space using **"Disk Management"**.
 
-    ![C Drive Extended using Disk Management](images/extend_C_drive_using_disk_manager.png)
+![C Drive Extended using Disk Management](images/extend_C_drive_using_disk_manager.png)
 
-    ![C Drive Extended to Take all Unallocated Space](images/c_drive_extended_to_take_all_unallocated_space.png)
+![C Drive Extended to Take all Unallocated Space](images/c_drive_extended_to_take_all_unallocated_space.png)
 
-    ![C Drive on DIsk Management](images/new_c_drive.png)
+![C Drive on DIsk Management](images/new_c_drive.png)
 
-9. Install any new Windows updates. **(Optional)**
+### 9. Install any new Windows updates. (Optional)
 
-10. Download and install stable version of **cloudbase-init** (A Windows project
+### 10. Setup cloudbase-init to generate QCOW2 image
+
+Download and install stable version of **cloudbase-init** (A Windows project
 providing guest initialization features, similar to cloud-init) by browsing the
 [Download Page](https://cloudbase.it/cloudbase-init/#download) on the web browser
-on virtual machine running Windows, you can escape registering and just click on
-**"No. just show me the downloads"** to navigate to the download page as shown below:
+on virtual machine running Windows, you can escape registering and just click
+on **"No. just show me the downloads"** to navigate to the download page as
+shown below:
 
-    ![Download Cloudbase-init](images/install_cloudbase-init.png)
+![Download Cloudbase-init](images/install_cloudbase-init.png)
 
-    During Installation, set *Serial port for logging* to **COM1** as shown below:
+During Installation, set *Serial port for logging* to **COM1** as shown below:
 
-    ![Download Cloudbase-init setup for Admin](images/coludbase-init-serial-port-com1.png)
+![Download Cloudbase-init setup for Admin](images/coludbase-init-serial-port-com1.png)
 
-    When the installation is done, in the *Complete the Cloudbase-Init Setup Wizard*
-    window, select the **Run Sysprep** and **Shutdown** check boxes and click "Finish"
-    as shown below:
+When the installation is done, in the *Complete the Cloudbase-Init Setup Wizard*
+window, select the **Run Sysprep** and **Shutdown** check boxes and click "Finish"
+as shown below:
 
-    ![Cloudbase-init Final Setup Options](images/cloudinit-final-setup.png)
+![Cloudbase-init Final Setup Options](images/cloudinit-final-setup.png)
 
-    Wait for the machine shutdown.
+Wait for the machine to shutdown.
 
-    ![Sysprep Setup in Progress](images/sysprep_in_progress.png)
+![Sysprep Setup in Progress](images/sysprep_in_progress.png)
 
-11. The Sysprep will generate **QCOW2** image i.e. `win2k22.qcow2` on `/home/<YourUserName>/.local/share/libvirt/images/`
+### 11. Where is the newly generated QCOW2 image?
 
-    ![Windows QCOW2 Image](images/download_icow2_win2022_image.png)
+The Sysprep will generate **QCOW2** image i.e. `win2k22.qcow2` on `/home/<YourUserName>/.local/share/libvirt/images/`
 
-12. You can copy/download this windows image to the folder where you configured
-your OpenStack CLI as described [Here](../openstack-cli/openstack-CLI.md) and
-upload to the NERC's OpenStack running the following OpenStack Image API command:
+![Windows QCOW2 Image](images/download_icow2_win2022_image.png)
 
-    `$ openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022`
+### 12. Create OpenStack image and push to NERC's image list
 
-    You can verify the uploaded image is available by running:
+You can copy/download this windows image to the folder where you configured your
+OpenStack CLI as described [Here](../openstack-cli/openstack-CLI.md) and upload
+to the NERC's OpenStack running the following OpenStack Image API command:
 
-    `$ openstack image list`
+    openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022
 
-        +--------------------------------------+---------------------+--------+
-        | ID                                   | Name                | Status |
-        +--------------------------------------+---------------------+--------+
-        | 7da9f5d4-4836-4bv8-bc5e-xc07ac6d8171 | MS-Windows-2022     | active |
-        | ...                                  | ...                 | ...    |
-        +--------------------------------------+---------------------+--------+
+You can verify the uploaded image is available by running:
 
-13. Login to the [NERC's OpenStack](https://stack.nerc.mghpcc.org/) and verify
-    the uploaded **MS-Windows-2022** is there also available on the NERC's OpenStack
-    Images List for your project as shown below:
+    openstack image list
 
-    ![MS-Windows-2022 OpenStack Image](images/stack_images_windows.png)
+    +--------------------------------------+---------------------+--------+
+    | ID                                   | Name                | Status |
+    +--------------------------------------+---------------------+--------+
+    | 7da9f5d4-4836-4bv8-bc5e-xc07ac6d8171 | MS-Windows-2022     | active |
+    | ...                                  | ...                 | ...    |
+    +--------------------------------------+---------------------+--------+
 
-    Create a **Volume** using that *Windows Image*:
+### 13. Launch an instance using newly uploaded MS-Windows-2022 image
 
-    ![MS-Winodws-2022 Image to Volume Create](images/stack_image_to_volume.png)
+Login to the [NERC's OpenStack](https://stack.nerc.mghpcc.org/) and verify the
+uploaded **MS-Windows-2022** is there also available on the NERC's OpenStack
+Images List for your project as shown below:
 
-    ![Create Volume](images/create_volume.png)
+![MS-Windows-2022 OpenStack Image](images/stack_images_windows.png)
 
-    Once successfully Volume is created, we can use the Volume to launch an instance
-    as shown below:
+Create a **Volume** using that *Windows Image*:
 
-    ![Launch Instance from Volume](images/launch_instance_from_volume.png)
+![MS-Winodws-2022 Image to Volume Create](images/stack_image_to_volume.png)
 
-    Add other information and setup a Security Group that allows RDP as shown below:
+![Create Volume](images/create_volume.png)
 
-    ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
+Once successfully Volume is created, we can use the Volume to launch an instance
+as shown below:
 
-    ![Running Windows Instance](images/win2k22_instance_running.png)
+![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
-    ![Associate Floating IP](images/win_instance_add_floating_ip.png)
+Add other information and setup a Security Group that allows RDP as shown below:
 
-    Click on detail view of the Instance and then click on Console tab menu
-    and click on **"Send CtrlAltDel"** button located on the top right side of
-    the console as shown below:
+![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
 
-    ![View Console of Instance](images/console_win_instance.png)
+![Running Windows Instance](images/win2k22_instance_running.png)
 
-    ![Administrator Sign in Prompt](images/administrator_singin_prompt.png)
+![Associate Floating IP](images/win_instance_add_floating_ip.png)
 
-    ![Administrator Prompted to Change Password](images/ok_to_change_password_administrator.png)
+Click on detail view of the Instance and then click on Console tab menu
+and click on **"Send CtrlAltDel"** button located on the top right side of
+the console as shown below:
 
-    ![Set Administrator Password](images/new_password_administrator.png)
+![View Console of Instance](images/console_win_instance.png)
 
-    ![Proceed Changed Administrator Password](images/proceed_change_password_administrator.png)
+![Administrator Sign in Prompt](images/administrator_singin_prompt.png)
 
-    ![Administrator Password Changed Successful](images/password_changed_success.png)
+![Administrator Prompted to Change Password](images/ok_to_change_password_administrator.png)
 
-14. Remote Desktop login should work with the FLoating IP associated with the instance:
+![Set Administrator Password](images/new_password_administrator.png)
 
-    ![Search Remote Desktop Protocol locally](images/RDP_on_local_machine.png)
+![Proceed Changed Administrator Password](images/proceed_change_password_administrator.png)
 
-    ![Connect to Remote Instance using Floating IP](images/remote_connection_floating_ip.png)
+![Administrator Password Changed Successful](images/password_changed_success.png)
 
-    ![Prompted Administrator Login](images/prompted_administrator_login.png)
+### 14. How to have Remote Desktop login to your Windows instance
 
-    ![Prompted RDP connection](images/prompted_rdp_connection.png)
+Remote Desktop login should work with the Floating IP associated with the instance:
 
-    ![Successfully Remote Connected Instance](images/remote_connected_instance.png)
+![Search Remote Desktop Protocol locally](images/RDP_on_local_machine.png)
+
+![Connect to Remote Instance using Floating IP](images/remote_connection_floating_ip.png)
+
+![Prompted Administrator Login](images/prompted_administrator_login.png)
+
+![Prompted RDP connection](images/prompted_rdp_connection.png)
+
+![Successfully Remote Connected Instance](images/remote_connected_instance.png)
 
 ---

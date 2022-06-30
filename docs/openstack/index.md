@@ -29,14 +29,6 @@ the list below.
 
 ---
 
-## **Migrating from MOC to NERC**
-
-- [Step 1 Gathering MOC information](migration-from-MOC-to-NERC/Step1.md)
-- [Step 2 Creating NERC Containers to Migrate MOC Volumes into](migration-from-MOC-to-NERC/Step2.md)
-- [Step 3 Moving Volumes from MOC to NERC](migration-from-MOC-to-NERC/Step3.md)
-
----
-
 ## **Advanced OpenStack Topics**
 
 ---
@@ -45,6 +37,10 @@ the list below.
 
 - [Set up your own Private Network](advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md)
 - [Create a Router](advanced-openstack-topics/setting-up-a-network/create-a-router.md)
+
+## Domain or Host Name for your VM
+
+- [Domain Name System (DNS)](advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md)
 
 ## OpenStack CLI
 
@@ -55,6 +51,10 @@ the list below.
 
 - [Block Storage/ Volumes/ Cinder](advanced-openstack-topics/persistent-storage/volumes.md)
 - [Object Storage/ Swift](advanced-openstack-topics/persistent-storage/object-storage.md)
+
+## Backup your instance and volume
+
+- [Backup with snapshots](advanced-openstack-topics/backup/backup-with-snapshots.md)
 
 ## Using Terraform to provision NERC resources
 

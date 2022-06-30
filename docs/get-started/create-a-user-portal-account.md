@@ -1,15 +1,19 @@
 # User Account Types
 
 NERC offers two types of user accounts: a **Principal Investigator (PI) Account**
-and a **General User Account**. All General Users must be sponsored by a PI with
-an active NERC PI account. All university faculty and staff researchers eligible
-to be a grant PI are eligible to obtain a NERC account by completing a PI Account
-Request.
+and a **General User Account**. All General Users must be assigned by a PI to their
+approved project by an active NERC PI account or by delegated manager(s).
 
-If you are unsure whether you qualify for an NERC PI account, see Principal Investigator
-Eligibility for information about the NERC’s policy concerning PI eligibility. PI
-accounts are able to request Resource Allocations. A PI account enables a user to
-log into NERC's computational project space; apply for allocations of NERC resources
+!!! question "Principal Investigator Eligibility Information"
+    - MGHPCC consortium members, whereby they enter into an service agreement with
+    MGHPCC for the NERC services.
+
+    - Non-members of MGHPCC can also be PIs of NERC Services, but must also have an active non-member agreement with MGHPCC.
+
+    - External research focused institutions will be considered on a case-by-case basis and are subject to an external customer cost structure.
+
+PI accounts are able to request Resource Allocations. A PI account enables a user
+to log into NERC's computational project space; apply for allocations of NERC resources
 and grant access to other users; and delegate responsibilities to other collaborators
 from the same institutions or elsewhere as managers using
 [NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/).
@@ -68,7 +72,7 @@ sure that your user account is created and valid by viewing the following page:
 
 ![Successful Account Validation Page](images/successful-account-validation.png)
 
-!!!question "Help"
+!!! question "Help"
     If you have an institutional identity, it's preferable that you use that identity
     to create your MGHPCC-SS account. Institutional identities are vetted by identity
     management teams and provide a higher level of confidence to resource owners
@@ -98,7 +102,7 @@ provided link on your email.
 The process for requesting and obtaining **PI Account** is relatively simple by
 filling out [this NERC Principal Investigator (PI) Account Request form](https://docs.google.com/forms/d/e/1FAIpQLSdscMlm3TQR09sl7P-0n4oN1uzpd7YikqDubEYF2QDLVz6djA/viewform?pli=1&fbzx=-8227359805748438031).
 
-!!!info "Information"
+!!! info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration
     staff - you will recieve an email confirmation form NERC's RT system. You are
     going to get into NERC's ColdFront resource allocation management portal using

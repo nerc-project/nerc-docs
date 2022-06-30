@@ -4,7 +4,7 @@ site_description: NERC Documentation
 site_author: NERC
 # site_dir: public
 site_url: "https://nerc-project.github.io/nerc-docs/"
-repo_name: GitLab/NERC/docs
+repo_name: nerc-project/nerc-docs
 repo_url: https://github.com/nerc-project/nerc-docs
 
 nav:
@@ -36,20 +36,20 @@ nav:
                   - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
               - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
               - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
-      - Migrating from MOC to NERC:
-        - Step 1 Gathering MOC information: openstack/migration-from-MOC-to-NERC/Step1.md
-        - Step 2 Creating NERC Containers to Migrate MOC Volumes into: openstack/migration-from-MOC-to-NERC/Step2.md
-        - Step 3 Moving Volumes from MOC to NERC: openstack/migration-from-MOC-to-NERC/Step3.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
               - Create a Router: openstack/advanced-openstack-topics/setting-up-a-network/create-a-router.md
+          - Domain Name System:
+              - Set up Domain names for your VMs: openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md
           - OpenStack CLI:
               - OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/openstack-CLI.md
               - Launch a VM using OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md
           - Persistent Storage:
               - Block Storage/ Volumes/ Cinder: openstack/advanced-openstack-topics/persistent-storage/volumes.md
               - Object Storage/ Swift: openstack/advanced-openstack-topics/persistent-storage/object-storage.md
+          - Backup your instance and volume:
+              - Backup with snapshots: openstack/advanced-openstack-topics/backup/backup-with-snapshots.md
           - Terraform:
               - Terraform on NERC: openstack/advanced-openstack-topics/terraform/terraform-on-NERC.md
           - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md
@@ -77,7 +77,15 @@ nav:
                 - Bootstrapping cluster with kubeadm: other-tools/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
                 - Creating a HA cluster with kubeadm: other-tools/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
               - Kubespray: other-tools/kubernetes/kubespray.md
-
+      - CI/CD Pipeline:
+          - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
+          - Setup CI/CD on NERC: other-tools/CI-CD/setup-CI-CD-pipeline.md
+          - GitHub to Jenkins Pipeline: other-tools/CI-CD/integrate-your-GitHub-repository.md
+  - Migrating MOC to NERC:
+    - Step 1 Creating NERC Project and Networks: migration-moc-to-nerc/Step1.md
+    - Step 2 Gathering MOC Information: migration-moc-to-nerc/Step2.md
+    - Step 3 Moving Volumes from MOC to NERC & Creating Instance: migration-moc-to-nerc/Step3.md
+    - Step 4 Remove Volume Backups to Conserve Storage: migration-moc-to-nerc/Step4.md
 theme:
   name: material
   custom_dir: nerc-theme

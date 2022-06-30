@@ -1,6 +1,7 @@
 # What is NERC's ColdFront?
 
-NERC uses an open source resource allocation management system called
+NERC uses [NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/), an
+open source resource allocation management system called
 [ColdFront](https://github.com/ubccr/coldfront) to provide a single point-of-entry
 for administration, reporting, and measuring scientific impact of NERC resources
 for PI.
@@ -83,7 +84,7 @@ integer value that corresponds to multiple openstack resource quotas. For exampl
 | `Volume Storage(GB)`  | 100                                   |
 | `Object Storage(GB)`  | 1                                     |
 
-!!!info "Information"
+!!! info "Information"
     By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security
     Groups** are provided to each approved projects regardless of units of requested
     quota units.
@@ -207,7 +208,7 @@ Then submitting the change request, this will notify the NERC admin about it. Pl
 wait untill the NERC admin approves/ deny the change request to see the change on
 your resource allocation for the selected project.
 
-!!!info "Information"
+!!! info "Information"
     PI or project managers can put the new values on the textboxes for **ONLY** quota
     attributes they want to change others they can **left blank** so that will not
     get changed!

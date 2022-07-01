@@ -79,6 +79,6 @@ with 20 GB root disk.
 
 !!! tip "Tip"
 
-    So, while launching a VM you need to choose a flavor for your instance that suits your requirements, use-cases, and budget.
+    Choose a flavor for your instance that suits your requirements, use-cases, and budget when launching a VM.
 
 ---

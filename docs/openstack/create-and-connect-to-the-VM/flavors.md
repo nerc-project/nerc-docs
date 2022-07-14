@@ -65,6 +65,12 @@ $0.190 /  hr of wall time. Multiples of the `gpu-k80` SU are available with
 | gpu-k80.2     | 2      | $0.380       |
 | gpu-k80.4     | 4      | $0.760       |
 
+!!! warning "The `gpu-k80` flavor will be available soon."
+
+    We are still working on setting up the hardware required to enable the cost-effective
+    **"gpu-k80"** flavor. We will let you know once it is ready
+    and available for your general use.
+
 The **"gpu-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz, 48
 core, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base service unit
@@ -78,7 +84,7 @@ with 20 GB root disk.
 | gpu-a100.2    | 2      | $1.074       |
 | gpu-a100.4    | 4      | $2.148       |
 
-!!! tip "Tip"
+!!! tip "Pro Tip"
 
     Choose a flavor for your instance that suits your requirements, use-cases, and budget when launching a VM.
 

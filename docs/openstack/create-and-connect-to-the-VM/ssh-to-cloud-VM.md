@@ -17,7 +17,7 @@ Make a note of the floating IP you have associated to your instance.
 
 ![Associated Instance Floating IP](images/floating_ip_is_associated.png)
 
-In our example, the IP is `140.247.152.229`.
+In our example, the IP is `199.94.60.66`.
 
 Default usernames for all the base images are:
 
@@ -28,13 +28,13 @@ Default usernames for all the base images are:
 - **all Debian images**: debian
 - **all RHEL images**: cloud-user
 
-Our example VM was launched with the **ubuntu-21.04-x86_64** base image, the
+Our example VM was launched with the **ubuntu-22.04-x86_64** base image, the
 user we need is 'ubuntu'.
 
 Open a Terminal window and type:
 
 ```sh
-  ssh ubuntu@140.247.152.229
+  ssh ubuntu@199.94.60.66
 ```
 
 Since you have never connected to this VM before, you will be asked if you are
@@ -44,7 +44,7 @@ sure you want to connect. Type `yes`.
 
 !!! tip "Note"
     If you haven't added your key to ssh-agent, you may need to specify the
-    private key file, like this: `ssh -i ~/.ssh/cloud.key ubuntu@140.247.152.229`
+    private key file, like this: `ssh -i ~/.ssh/cloud.key ubuntu@199.94.60.66`
 
 ---
 
@@ -124,7 +124,7 @@ every time you launch a new VM.
 Copy the file to the vm:
 
 ```sh
-  [you@your-laptop ~]$ scp teammates.txt ubuntu@140.247.152.229:~
+  [you@your-laptop ~]$ scp teammates.txt ubuntu@199.94.60.66:~
 ```
 
 If the copy works, you will see the output:
@@ -141,7 +141,8 @@ Append the file's contents to authorized_keys:
 
 Now your teammates should also be able to log in.
 
-Make sure to use `>>` instead of `>` to avoid overwriting your own key.
+!!! warning "Important Note"
+    Make sure to use `>>` instead of `>` to avoid overwriting your own key.
 
 ---
 

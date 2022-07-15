@@ -21,8 +21,8 @@ CodeReady Containers requires the following system resources:
 We will need 1 VM to create a single node kubernetes cluster using `crc`.
 We are using following setting for this purpose:
 
-- 1 Linux machine, fedora-34-x86_64, c2.s2.xlarge flavor with 16vCPUs,
-32GB RAM, 50GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 1 Linux machine, fedora-36-x86_64, cpu-a.16 flavor with 16vCPUs,
+32GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to this VM.
 
 ## Prepare host for CRC

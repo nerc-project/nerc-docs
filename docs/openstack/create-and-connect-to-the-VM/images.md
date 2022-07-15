@@ -23,7 +23,6 @@ an instance:
 | rocky-8-x86_64                        |
 | ubuntu-18.04-x86_64                   |
 | ubuntu-20.04-x86_64                   |
-| ubuntu-21.04-x86_64                   |
 | ubuntu-22.04-x86_64                   |
 
 ## How to create and upload own custom images?

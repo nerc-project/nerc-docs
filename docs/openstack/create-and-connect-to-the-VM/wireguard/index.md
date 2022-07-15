@@ -9,7 +9,7 @@ Here's what it will look like:
 
 ## Installing WireGuard Server
 
-You can spin up a new instance with "**ubuntu-21.04-x86_64**" or any available
+You can spin up a new instance with "**ubuntu-22.04-x86_64**" or any available
 Ubuntu OS image, named "**wireguard_server**" on OpenStack, with
 "**default**" and "**ssh_only**" Security Groups attached to it.
 

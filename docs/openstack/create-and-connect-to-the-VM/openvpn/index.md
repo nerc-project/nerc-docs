@@ -13,7 +13,7 @@ connect to a single OpenVPN server process over a single TCP or UDP port.
 
 You can read official documentation [here](https://openvpn.net/community-resources/how-to/#installing-openvpn).
 
-You can spin up a new instance with "**ubuntu-21.04-x86_64**" or any available
+You can spin up a new instance with "**ubuntu-22.04-x86_64**" or any available
 Ubuntu OS image, named "**openvpn_server**" on OpenStack, with "**default**"
 and "**ssh_only**" Security Groups attached to it.
 
@@ -30,7 +30,7 @@ like this:
 
 ```sh
 Host openvpn
-  HostName 140.247.152.229
+  HostName 199.94.60.66
   User ubuntu
   IdentityFile ~/.ssh/cloud.key
 ```

@@ -13,71 +13,30 @@ Get the flavor list using below openstack command:
 
 ```sh
   [user@laptop ~]$ openstack flavor list
-  +--------------------------------------+---------------------+--------+------+-----------+-------+-----------+
-| ID                                   | Name                |    RAM | Disk |
-Ephemeral | VCPUs | Is Public |
-+--------------------------------------+---------------------+--------+------+-----------+-------+-----------+
-| 010668a2-a228-4d9f-814b-33e76bb79ca6 | c1.2xlarge          |  92160 |   10
-|         0 |    20 | True      |
-| 042c3d1d-5031-48a9-91d8-2748ba2ea892 | c1.xlarge           |  46080 |   10
-|         0 |    10 | True      |
-| 04f533da-df73-4a07-bfd4-845d92e2236b | m1.s2.xlarge        |  16384 |   25
-|         0 |     8 | True      |
-| 2540eb5f-b39e-43aa-b9c4-bda7138f69b7 | c1.s2.4xlarge       | 184320 |   25
-|         0 |    40 | True      |
-| 39dc1cc9-8931-49c4-a6ae-fd56f85ded6f | c2.s2.xlarge        |  32768 |   25
-|         0 |    16 | True      |
-| 45aa2929-c2a7-49ff-b876-71f9cea3083a | m1.s2.medium        |   4096 |   25
-|         0 |     2 | True      |
-| 46489535-3bbe-445b-83dc-c24c11c13017 | gpu.A100            |  96256 |   10
-|         0 |    12 | True      |
-| 57f95588-c3ae-41ee-95d7-b8b5b15814ab | m1.xlarge           |  16384 |   10
-|         0 |     8 | True      |
-| 58377d5b-528f-4107-b5a4-9c840c76e2f9 | vm.2cpu.8ram        |   8192 |   10
-|         0 |     2 | True      |
-| 5add4073-0822-4939-b34e-a7bdfadd6157 | custom.8c.32g       |  32768 |   10
-|         0 |     8 | True      |
-| 5f098b1a-a14c-4c85-be39-4c2af6b0b9c3 | vm.24cpu.64ram.1gpu |  65536 |   50
-|         0 |    24 | True      |
-| 6e33d0e1-e604-4a99-9440-366f0c15b1f0 | m1.s2.small         |   2048 |   25
-|         0 |     1 | True      |
-| 8c01d1e5-a29e-4b15-bff9-3738ac55fef7 | custom.8c.64g       |  65536 |   10
-|         0 |     8 | True      |
-| 8d42c77c-3c4c-4417-991d-ab6bc39f7efb | m1.s2.large         |   8192 |   25
-|         0 |     4 | True      |
-| 8f41b20c-14b5-4442-987a-1b3081d75364 | m1.small            |   2048 |   10
-|         0 |     1 | True      |
-| aa182672-a501-46a2-9aa1-c41b23695960 | m1.tiny             |   1024 |   10
-|         0 |     1 | True      |
-| af4109aa-9571-471c-b8ad-aacce027d1fc | m1.large            |   8192 |   10
-|         0 |     4 | True      |
-| b602f97d-7870-4392-9cce-608fe8c23e30 | custom.4c.16g       |  16384 |   10
-|         0 |     4 | True      |
-| b6ac3856-d984-432e-a91e-ddff853e82c8 | c2.s2.2xlarge       |  65536 |   25
-|         0 |    32 | True      |
-| b7add244-7187-49c8-9cd3-1783bff483d7 | m1.s2.tiny          |   1024 |   25
-|         0 |     1 | True      |
-| bb4a3292-cdf0-429a-8cbb-05540da7db6c | c2.s2.4xlarge       |  81920 |   25
-|         0 |    40 | True      |
-| bd7caf51-8d5e-4019-b8ca-7af36d043ef6 | c1.4xlarge          | 184320 |   10
-|         0 |    40 | True      |
-| befdf5fa-8f8e-44ee-b945-2f2cf269970d | c1.s2.2xlarge       |  92160 |   25
-|         0 |    20 | True      |
-| cad489ad-3460-4a46-a867-926bdfcb2add | m1.medium           |   4096 |   10
-|         0 |     2 | True      |
-| e9b78693-9c59-4528-a2b5-47d037c76670 | custom.4c.32g       |  32768 |   10
-|         0 |     4 | True      |
-| fbedbef9-89dd-4549-86b1-7d34504211f2 | c1.s2.xlarge        |  46080 |   25
-|         0 |    10 | True      |
-+--------------------------------------+---------------------+--------+------+-----------+-------+-----------+
+  +--------------------------------------+------------+--------+------+-----------+-------+-----------+
+  | ID                                   | Name       |    RAM | Disk | Ephemeral | VCPUs | Is Public |
+  +--------------------------------------+------------+--------+------+-----------+-------+-----------+
+  | 12ded228-1a7f-4d35-b994-7dd394a6ca90 | gpu-a100.2 | 196608 |   20 |         0 |    24 | True      |
+  | 15581358-3e81-4cf2-a5b8-c0fd2ad771b4 | mem-a.8    |  65536 |   20 |         0 |     8 | True      |
+  | 17521416-0ecf-4d85-8d4c-ec6fd1bc5f9d | cpu-a.1    |   2048 |   20 |         0 |     1 | True      |
+  | 2b1dbea2-736d-4b85-b466-4410bba35f1e | cpu-a.8    |  16384 |   20 |         0 |     8 | True      |
+  | 2f33578f-c3df-4210-b369-84a998d77dac | mem-a.4    |  32768 |   20 |         0 |     4 | True      |
+  | 4498bfdb-5342-4e51-aa20-9ee74e522d59 | mem-a.1    |   8192 |   20 |         0 |     1 | True      |
+  | 4e43e6df-3637-4363-a7cd-732fbf9e7cfd | gpu-a100.4 | 393216 |   20 |         0 |    48 | True      |
+  | 7f2f5f4e-684b-4c24-bfc6-3fce9cf1f446 | mem-a.16   | 131072 |   20 |         0 |    16 | True      |
+  | 8c05db2f-6696-446b-9319-c32341a09c41 | cpu-a.16   |  32768 |   20 |         0 |    16 | True      |
+  | 9662b5b2-aeaa-4d56-9bd3-450deee668af | cpu-a.4    |   8192 |   20 |         0 |     4 | True      |
+  | b3377fdd-fd0f-4c88-9b4b-3b5c8ada0732 | gpu-a100.1 |  98304 |   20 |         0 |    12 | True      |
+  | e9125ab0-c8df-4488-a252-029c636cbd0f | mem-a.2    |  16384 |   20 |         0 |     2 | True      |
+  | ee6417bd-7cd4-4431-a6ce-d09f0fba3ba9 | cpu-a.2    |   4096 |   20 |         0 |     2 | True      |
+  +--------------------------------------+------------+--------+------+-----------+-------+-----------+
 ```
 
 Get the image name and its ID,
 
 ```sh
   [user@laptop ~]$ openstack image list  | grep centos
-  | f43b9e94-2862-4edc-8844-4a4e348a2d49 | centos-7-x86_64     | active |
-  | 482f489c-d8db-47be-8f55-53096fb37c07 | centos-8.4-x86_64   | active |
+  | 41eafa05-c264-4840-8c17-746e6a388c2d | centos-7-x86_64     | active |
 ```
 
 Get Private Virtual network details, which will be attached to the VM:
@@ -85,13 +44,10 @@ Get Private Virtual network details, which will be attached to the VM:
 ```sh
   [user@laptop ~]$ openstack network list
   +--------------------------------------+-----------------+--------------------------------------+
-  | ID                                   | Name            |
-  Subnets                              |
+  | ID                                   | Name            | Subnets                              |
   +--------------------------------------+-----------------+--------------------------------------+
-  | 7a9efc40-4624-429d-98b7-1364ab72d8b9 | provider        |
-  b7045d5e-892b-4d8c-8837-728f62bd8fe2 |
-  | 9aa6c35a-4fce-4a75-b167-8cfe7fb1f2d1 | harvard-network |
-  c95c3c17-fbc1-4fb7-bc2c-d463f2c4774f |
+  | 43613b84-e1fb-44a4-b1ea-c530edc49018 | provider        | 1cbbb98d-3b57-4f6d-8053-46045904d910 |
+  | 8a91900b-d43c-474d-b913-930283e0bf43 | default_network | e62ce2fd-b11c-44ce-b7cc-4ca943e75a23 |
   +--------------------------------------+-----------------+--------------------------------------+
 ```
 
@@ -99,15 +55,12 @@ Find the Security Group:
 
 ```sh
   [user@laptop ~]$ openstack security group list
-  +--------------------------------------+----------+------------------------+----------------------------------+------+
-  | ID                                   | Name     | Description            |
-  Project                          | Tags |
-  +--------------------------------------+----------+------------------------+----------------------------------+------+
-  | 3ca248ac-56ac-4e5f-a57c-777ed74bbd7c | default  | Default security group |
-  f01df1439b3141f8b76e68a3b58ef74a | []   |
-  | 5cdc5f33-78fc-4af8-bf25-60b8d4e5db2a | ssh_only | Enable SSH access.     |
-  f01df1439b3141f8b76e68a3b58ef74a | []   |
-  +--------------------------------------+----------+------------------------+----------------------------------+------+
+  +--------------------------------------+----------------------------------+------------------------+----------------------------------+------+
+  | ID                                   | Name                             | Description            | Project                          | Tags |
+  +--------------------------------------+----------------------------------+------------------------+----------------------------------+------+
+  | 8285530a-34e3-4d96-8e01-a7b309a91f9f | default                          | Default security group | 8ae3ae25c3a84c689cd24c48785ca23a | []   |
+  | bbb738d0-45fb-4a9a-8bc4-a3eafeb49ba7 | ssh_only                         |                        | 8ae3ae25c3a84c689cd24c48785ca23a | []   |
+  +--------------------------------------+----------------------------------+------------------------+----------------------------------+------+
 ```
 
 Find the Key pair, in my case you can choose your own,
@@ -172,9 +125,9 @@ To create a VM in Specific "**Availability Zone and compute Host**" specify
 Example:
 
 ```sh
-  [user@laptop ~]$ openstack server create --flavor m1.medium \
-      --image centos-8.4-x86_64 \
-      --nic net-id=e0be93b8-728b-4d4d-a272-7d672b2560a6 \
+  [user@laptop ~]$ openstack server create --flavor cpu-a.2 \
+      --image centos-7-x86_64 \
+      --nic net-id=8ee63932-464b-4999-af7e-949190d8fe93 \
       --security-group default \
       --key-name cloud_key \
       --property description="My Server" \

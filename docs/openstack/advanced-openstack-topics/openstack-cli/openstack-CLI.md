@@ -170,7 +170,7 @@ However, this isn't a very optimized  way to do complex interactions with
 OpenStack. For that, you want to write scripts that interact with the python
 SDK bindings directly.
 
-!!! note "Pro Tip"
+!!! tip "Pro Tip"
     If you find yourself fiddling extensively with awk and grep to extract things
     like project IDs from the CLI output, it's time to move on to using the client
     libraries or the RESTful API directly in your scripts.

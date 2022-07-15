@@ -16,7 +16,7 @@ the association of that address with a specific instance.
 By attaching a Floating IP to your instance, you can ssh into your vm from your
 local machine.
 
-Make sure you are using key forwarding as described in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+Make sure you are using key forwarding as described in [Create a Key Pair](../access-and-security/create-a-key-pair.md).
 
 ## Allocate a Floating IP
 

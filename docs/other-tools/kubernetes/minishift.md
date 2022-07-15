@@ -29,8 +29,8 @@ your host.
 We will need 1 VM to create a single node kubernetes cluster using `minishift`.
 We are using following setting for this purpose:
 
-- 1 Linux machine, ubuntu-21.04-x86_64 or your choice of Ubuntu OS image,
-m1.large flavor with 4vCPU, 8GB RAM, 10GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 1 Linux machine, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+cpu-a.4 flavor with 4vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to this VM.
 - setup Unique hostname to the machine using the following command:
 

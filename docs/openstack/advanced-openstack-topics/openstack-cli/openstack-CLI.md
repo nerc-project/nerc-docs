@@ -99,12 +99,14 @@ following command lists all the images available to your project:
   +--------------------------------------+---------------------+--------+
   | ID                                   | Name                | Status |
   +--------------------------------------+---------------------+--------+
-  | f43b9e94-2862-4edc-8844-4a4e348a2d49 | centos-7-x86_64     | active |
-  | 482f489c-d8db-47be-8f55-53096fb37c07 | centos-8.4-x86_64   | active |
-  | d7a71175-bb1b-412c-a6d3-83e5e1ad0646 | debian-10-x86_64    | active |
-  | 2a8e36a3-31ea-4c6d-adce-5c18101c6be2 | fedora-34-x86_64    | active |
-  | ef40d46e-88f9-4099-9d1d-c6c85297f042 | ubuntu-21.04-x86_64 | active |
-  | a44f1bac-35c8-4abd-8669-a6c6ae7ef2e1 | ubuntu-21.04-x86_64 | active |
+  | a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
+  | 41eafa05-c264-4840-8c17-746e6a388c2d | centos-7-x86_64     | active |
+  | 41fa5991-89d5-45ae-8268-b22224c772b2 | debian-10-x86_64    | active |
+  | 99194159-fcd1-4281-b3e1-15956c275692 | fedora-36-x86_64    | active |
+  | cf1be3e5-b6f6-466e-bac4-abe7587921a8 | rocky-8-x86_64      | active |
+  | 75a40234-702b-4ab7-9d83-f436b05827c9 | ubuntu-18.04-x86_64 | active |
+  | 126a1c8a-1802-434f-bee3-c3b6c8def513 | ubuntu-20.04-x86_64 | active |
+  | 8183fe83-1403-412c-8ef8-5608a5e09166 | ubuntu-22.04-x86_64 | active |
   +--------------------------------------+---------------------+--------+
 ```
 
@@ -113,18 +115,12 @@ of your project's instances:
 
 ```sh
   [user@laptop ~]$ openstack server list
-  +--------------------------------------+-----------+--------+------------------------------------------------+--------------------------+---------------------+
-  | ID                                   | Name      | Status |
-  Networks                                       | Image                    |
-  Flavor              |
-  +--------------------------------------+-----------+--------+------------------------------------------------+--------------------------+---------------------+
-  | 1c96ba49-a20f-4c88-bbcf-93e2364365f5 | vm-test   | ACTIVE |
-  harvard-network=140.247.152.235, 192.168.0.23  | N/A (booted from volume) |
-  m1.medium           |
-  | dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a | gpu-test  | ACTIVE |
-  harvard-network=140.247.152.195, 192.168.0.227 |                          |
-  vm.24cpu.64ram.1gpu |
-  +--------------------------------------+-----------+--------+------------------------------------------------+--------------------------+---------------------+
+  +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
+  | ID                                   | Name             | Status | Networks                                     | Image                    |  Flavor      |
+  +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
+  | 1c96ba49-a20f-4c88-bbcf-93e2364365f5 |    vm-test       | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  cpu-a.4     |
+  | dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a |    gpu-test      | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  gpu-a100.1  |
+  +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
 ```
 
 If you don't have any instances, you will get the error `list index out of
@@ -170,7 +166,7 @@ However, this isn't a very optimized  way to do complex interactions with
 OpenStack. For that, you want to write scripts that interact with the python
 SDK bindings directly.
 
-!!! note "Pro Tip"
+!!! tip "Pro Tip"
     If you find yourself fiddling extensively with awk and grep to extract things
     like project IDs from the CLI output, it's time to move on to using the client
     libraries or the RESTful API directly in your scripts.

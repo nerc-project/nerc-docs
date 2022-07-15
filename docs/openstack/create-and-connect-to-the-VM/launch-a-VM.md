@@ -12,7 +12,7 @@ Navigate: Project -> Compute -> Images.
 ![VM Images](images/vm_images.png)
 
 Click Launch Instance next to the public image of your choice. In the example,
-we chose **ubuntu-21.04-x86_64**, you may choose any available images.
+we chose **ubuntu-22.04-x86_64**, you may choose any available images.
 
 *Important: There are multiple tabs along the top of the the pop up window.
 
@@ -43,7 +43,7 @@ is 1.
 
 ![VM Launch Instance Source](images/launch_source.png)
 
-!!! note "Note"
+!!! danger "Important Note"
     - To create an image that uses the boot volume sized according to the flavor
     ensure that "No" is selected under the "Create New Volume" section.
 
@@ -59,15 +59,13 @@ is 1.
     **More details about available bootable images can be found [here](images.md).
     Customers can also upload their own custom images, as demonstrated in [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
 
-- **Flavor** tab: Specify the size of the instance to launch. Choose `m1.large`
+- **Flavor** tab: Specify the size of the instance to launch. Choose `cpu-a.4`
 from the 'Flavor' tab by clicking on the "+" icon.
 
-!!! note "Note"
+!!! question "Important Note"
     In NERC OpenStack, flavors define the compute, memory, and storage
     capacity of nova computing instances. In other words, a flavor is an
-    available hardware configuration for a server. The default flavor is `m1.
-    small` which is too small for the available base images so please do not
-    use it.
+    available hardware configuration for a server.
 
     Some of the flavors will not be available for your use as per your resource **Quota**
     limits and will be shown as below:
@@ -77,7 +75,7 @@ from the 'Flavor' tab by clicking on the "+" icon.
     **More details about available flavors and corresponding quotas
     details can be found [here](flavors.md).**
 
-After choosing `m1.large`, you should see it moved up to "Allocated".
+After choosing `cpu-a.4`, you should see it moved up to "Allocated".
 
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 

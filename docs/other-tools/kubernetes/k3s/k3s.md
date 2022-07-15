@@ -27,11 +27,11 @@ We will need 1 control-plane(master) and 2 worker nodes to create a single
 control-plane kubernetes cluster using `k3s`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for master, ubuntu-21.04-x86_64 or your choice of Ubuntu OS image,
-m1.medium flavor with 2vCPU, 4GB RAM, 10GB storage - also [assign Floating IP](../../../openstack/../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 1 Linux machine for master, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+cpu-a.2 flavor with 2vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../../openstack/../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to the master node.
-- 2 Linux machines for worker, ubuntu-21.04-x86_64 or your choice of Ubuntu OS image,
-m1.small flavor with 1vCPU, 2GB RAM, 10GB storage.
+- 2 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+cpu-a.1 flavor with 1vCPU, 2GB RAM, 20GB storage.
 - ssh access to all machines: [Read more here](../../../openstack/../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 

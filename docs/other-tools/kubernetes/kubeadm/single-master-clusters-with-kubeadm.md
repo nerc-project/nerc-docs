@@ -19,10 +19,10 @@ We will need 1 control-plane(master) and 2 worker node to create a single
 control-plane kubernetes cluster using `kubeadm`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for master, ubuntu-20.04-x86_64, m1.medium flavor with 2vCPU,
-4GB RAM, 10GB storage.
-- 2 Linux machines for worker, ubuntu-20.04-x86_64, m1.small flavor with 1vCPU,
- 2GB RAM, 10GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 1 Linux machine for master, ubuntu-20.04-x86_64, cpu-a.2 flavor with 2vCPU,
+4GB RAM, 20GB storage.
+- 2 Linux machines for worker, ubuntu-20.04-x86_64, cpu-a.1 flavor with 1vCPU,
+ 2GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
 - ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.

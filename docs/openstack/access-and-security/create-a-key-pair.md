@@ -46,7 +46,7 @@ This process creates two files in your `.ssh` folder:
   cloud.key.pub  # this is your public key
 ```
 
-!!! note "Pro Tip"
+!!! tip "Pro Tip"
     The `-C "label"` field is not required, but it is useful to quickly identify
     different public keys later.
 
@@ -63,7 +63,7 @@ On your terminal:
   pbcopy < ~/.ssh/cloud.key.pub  #copies the contents of public key to your clipboard
 ```
 
-!!! note "Pro Tip"
+!!! tip "Pro Tip"
     If `pbcopy` isn't working, you can locate the hidden `.ssh` folder, open the
     file in your favorite text editor, and copy it to your clipboard.
 
@@ -82,7 +82,7 @@ Click "Import Public Key". You will see your key pair appear in the list.
 
 ![New Key Pair](images/new_key_pair.png)
 
-You can now skip ahead to [Adding the key to an ssh-agent](#adding-your-ssh-key-to-the-ssh-agent)
+You can now skip ahead to [Adding the key to an ssh-agent](#adding-your-ssh-key-to-the-ssh-agent).
 
 ## Create a Key Pair
 
@@ -201,6 +201,6 @@ You have 2 options for generating keys that will work with PuTTY:
  key to OpenStack using the 'Import a Key Pair' instructions [above](#import-a-key-pair).
 
 There is a detailed walkthrough of how to use PuTTYgen here: [Use SSH Keys with
-PuTTY on Windows](https://devops.profitbricks.com/tutorials/use-ssh-keys-with-putty-on-windows/)
+PuTTY on Windows](https://devops.profitbricks.com/tutorials/use-ssh-keys-with-putty-on-windows/).
 
 ---

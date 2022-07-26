@@ -10,7 +10,7 @@
 }
 
 footer [class ^= 'footer-'] {
-  width: 33.3333%;
+  width: 25%;
   display: inline-block;
   text-align: center;
 }
@@ -21,7 +21,7 @@ footer .footer-left {
 
 footer .footer-right {
   float: right;
-  padding-top: 25px;
+  /* padding-top: 25px; */
 }
 
 footer .footer-center {

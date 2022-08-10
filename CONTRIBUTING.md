@@ -140,4 +140,4 @@ will be merged into the project's `main` branch.
 
 If you need help, you can ask questions on the [issue tracker](https://github.com/nerc-project/nerc-docs/issues).
 
-For other technical support, please contact us by email [help@nese.mghpcc.org](help@nese.mghpcc.org).
+For other technical support, please contact us by email [help@nerc.mghpcc.org](help@nerc.mghpcc.org).

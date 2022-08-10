@@ -80,7 +80,7 @@ sure that your user account is created and valid by viewing the following page:
     a MGHPCC-SS account; if you have multiple university accounts you will only be
     able to link one of those accounts to your MGHPCC-SS account. If at a later date,
     you want to change which account is connected to your MGHPCC-SS identity you
-    can by contacting [help@nese.mghpcc.org](mailto:help@nese.mghpcc.org?subject=NERC%20User%20Account%Help).
+    can by contacting [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20User%20Account%Help).
 
 ## How to update and modify your MGHPCC-SS account information?
 

@@ -104,6 +104,7 @@ filling out [this NERC Principal Investigator (PI) Account Request form](https:/
 
 !!! info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration
-    staff - you will recieve an email confirmation form NERC's RT system. You are
-    going to get into NERC's ColdFront resource allocation management portal using
-    the PI user role.
+    staff - you will recieve an email confirmation form NERC's support system i.e.
+    help@nerc.mghpcc.org. You are going to get into NERC's ColdFront resource
+    allocation management portal using the PI user role. If you want to request
+    a ticket you can submit it [here](https://mghpcc.supportsystem.com/open.php).

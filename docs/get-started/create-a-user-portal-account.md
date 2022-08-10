@@ -100,7 +100,13 @@ provided link on your email.
 ## How to request a Principal Investigator (PI) Account?
 
 The process for requesting and obtaining **PI Account** is relatively simple by
-filling out [this NERC Principal Investigator (PI) Account Request form](https://nerc.mghpcc.org/pi-account-request/).
+filling out [this NERC Principal Investigator (PI) Account Request form](https://nerc.mghpcc.org/pi-account-request/)
+
+**Alternatively,** by submitting a new ticket at
+[the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php)
+under "NERC PI Account Request" option on **Help Topic** as shown in the image below:
+
+![the NERC's Support Ticketing System PI Ticket](images/osticket-pi-request.png)
 
 !!! info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration

@@ -14,7 +14,8 @@ The overall user flow can be summarized using the following sequence diagram:
 2. **PI** will send a request for a Principal Investigator (PI) user account role
 by submitting: [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/).
 
-    **Alternatively,** by submitting a new ticket at
+    **Alternatively,** PI can request for a Principal Investigator (PI) user account
+    role by submitting a new ticket at
     [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php)
     under "NERC PI Account Request" option on **Help Topic** as shown in the image
     below:

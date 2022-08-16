@@ -80,7 +80,7 @@ sure that your user account is created and valid by viewing the following page:
     a MGHPCC-SS account; if you have multiple university accounts you will only be
     able to link one of those accounts to your MGHPCC-SS account. If at a later date,
     you want to change which account is connected to your MGHPCC-SS identity you
-    can by contacting [help@nese.mghpcc.org](mailto:help@nese.mghpcc.org?subject=NERC%20User%20Account%Help).
+    can by contacting [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20User%20Account%Help).
 
 ## How to update and modify your MGHPCC-SS account information?
 
@@ -100,10 +100,18 @@ provided link on your email.
 ## How to request a Principal Investigator (PI) Account?
 
 The process for requesting and obtaining **PI Account** is relatively simple by
-filling out [this NERC Principal Investigator (PI) Account Request form](https://nerc.mghpcc.org/pi-account-request/).
+filling out [this NERC Principal Investigator (PI) Account Request form](https://nerc.mghpcc.org/pi-account-request/)
+
+**Alternatively,** PI can request for a Principal Investigator (PI) user account
+by submitting a new ticket at
+[the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php)
+under "NERC PI Account Request" option on **Help Topic** as shown in the image below:
+
+![the NERC's Support Ticketing System PI Ticket](images/osticket-pi-request.png)
 
 !!! info "Information"
     So, once your PI user request is reviewed and approved by NERC's administration
-    staff - you will recieve an email confirmation form NERC's RT system. You are
-    going to get into NERC's ColdFront resource allocation management portal using
-    the PI user role.
+    staff - you will recieve an email confirmation form NERC's support system i.e.
+    help@nerc.mghpcc.org. You are going to get into NERC's ColdFront resource
+    allocation management portal using the PI user role. If you want to request
+    a ticket you can submit it [here](https://mghpcc.supportsystem.com/open.php).

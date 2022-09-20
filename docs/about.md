@@ -28,7 +28,7 @@ within the MGHPCC consortium.
 *Figure 1: NERC Overview*
 
 NERC production services (*red*) stand on top of the existing NESE storage
-services (*blue*) are built on the strong foundation of MGHPCC (*green*) that
+services (*blue*) that are built on the strong foundation of MGHPCC (*green*) that
 provides core facility and network access. The Innovation Hub (*grey*) enables
 new technologies to be rapidly adopted by the NERC or NESE services. On the
 far left (*purple*) are the Research and Learning communities which are the

@@ -45,7 +45,7 @@ all MOC Volume Backups you wish to remove.
 
 ## Delete MOC Container `<ContainerName>`
 
-Remove the Container created i.e. `<ContainerName>` on MOC side with an unique name
+Remove the Container created i.e. `<ContainerName>` on MOC side with a unique name
 during migration. Replace the `<ContainerName>` field with your own container name
 created during migration process:
 
@@ -98,7 +98,7 @@ all NERC Volume Backups you wish to remove.
 
 ## Delete NERC Container `<ContainerName>`
 
-Remove the Container created i.e. `<ContainerName>` on NERC side with an unique name
+Remove the Container created i.e. `<ContainerName>` on NERC side with a unique name
 during migration to mirror the Volume from MOC to NERC. Replace the `<ContainerName>`
 field with your own container name created during migration process:
 

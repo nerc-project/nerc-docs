@@ -43,7 +43,19 @@ with the command below you can delete Volume Backups.
 1. Repeat the [MOC Volume Backup](#delete-moc-volume-backups) section for
 all MOC Volume Backups you wish to remove.
 
-## Check Remaing NERC Volume Storage
+## Delete MOC Container `<ContainerName>`
+
+Remove the Container created i.e. `<ContainerName>` on MOC side with a unique name
+during migration. Replace the `<ContainerName>` field with your own container name
+created during migration process:
+
+        openstack --os-cloud moc container delete --recursive <ContainerName>
+
+Verify the `<ContainerName>` is removed from MOC:
+
+        openstack --os-cloud moc container list
+
+## Check Remaining NERC Volume Storage
 
 1. Log into the [NERC Dashboard][NERCDash] and go to Project > Compute >
 Overview.
@@ -83,5 +95,17 @@ have in NERC with the following command.
 
 1. Repeat the [NERC Volume Backup](#delete-nerc-volume-backups) section for
 all NERC Volume Backups you wish to remove.
+
+## Delete NERC Container `<ContainerName>`
+
+Remove the Container created i.e. `<ContainerName>` on NERC side with a unique name
+during migration to mirror the Volume from MOC to NERC. Replace the `<ContainerName>`
+field with your own container name created during migration process:
+
+        openstack --os-cloud nerc container delete --recursive <ContainerName>
+
+Verify the `<ContainerName>` is removed from NERC:
+
+        openstack --os-cloud nerc container list
 
 ---

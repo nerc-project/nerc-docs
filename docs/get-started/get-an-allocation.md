@@ -37,10 +37,35 @@ notifications when allocations change status - i.e. activated, expired, denied
 - Provide information such as grants, publications, and other reportable data for
 periodic review by center director to demonstrate need for the resources
 
+## How to login to NERC's ColdFront?
+
+[NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/) provides user with
+login page as shown here:
+
+![ColdFront Login Page](images/coldfront-login-page.png)
+
+Please click on "**Log In**" button. Then, it will show the login interface as
+shown below:
+
+![ColdFront Login Interface](images/coldfront-login-interface.png)
+
+You need to click on "**Log in via OpenID Connect**" button. This will redirect you
+to CILogon welcome pagewhere you can select your appropriate Identity Provider as
+shown below:
+
+![CILogon Welcome Page](images/CILogon.png)
+
+Once successful, you will be redirected to the ColdFront's main dashboard as shown
+below:
+
+![ColdFront Dashboard](images/coldfront-dashboard.png)
+
 ## What PIs need to fill in order to request a Project?
 
 Once logged in to NERC’s ColdFront, PIs can choose Projects sub-menu located under
 the Project menu.
+
+![Projects sub-menu](images/coldfront-projects-sub-menu.png)
 
 ![Project](images/coldfront-project.png)
 

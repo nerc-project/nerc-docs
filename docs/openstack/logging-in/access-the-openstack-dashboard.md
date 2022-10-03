@@ -12,7 +12,7 @@ shown here:
 
 ![OpenID Connect](images/openstack_login.png)
 
-Next, you will redirected to CILogon welcome page as shown below:
+Next, you will be redirected to CILogon welcome page as shown below:
 
 ![CILogon Welcome Page](images/CILogon_interface.png)
 

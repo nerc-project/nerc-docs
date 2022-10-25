@@ -15,8 +15,8 @@ virtual disk that has a bootable operating system installed on it.
     Remote desktop to your running Windows VM. Using the search function in your
     taskbar, look up **Command Prompt**. When you see it in the results, right-click
     on it and choose **Run as Administrator**. Your VM's current activation grace
-    period can be reset by running: `slmgr -rearm`. Once successfully run, restart
-    your instance for the changes to take effect.
+    period can be reset by running: `slmgr -rearm`. Once this command is run
+    successfully, restart your instance for the changes to take effect.
 
 ## Existing Microsoft Windows Image
 

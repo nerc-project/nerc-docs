@@ -16,7 +16,9 @@ virtual disk that has a bootable operating system installed on it.
     taskbar, look up **Command Prompt**. When you see it in the results, right-click
     on it and choose **Run as Administrator**. Your VM's current activation grace
     period can be reset by running: `slmgr -rearm`. Once this command is run
-    successfully, restart your instance for the changes to take effect.
+    successfully, restart your instance for the changes to take effect. This command
+    typically resets the activation timer to 180 days and can be performed only for
+    a limited number of times. For more about this [read here](https://www.dell.com/support/kbdoc/en-mv/000138586/windows-server-how-to-reset-the-activation-timer).
 
 ## Existing Microsoft Windows Image
 

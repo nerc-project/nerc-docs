@@ -59,7 +59,113 @@ the following restrictions:
 
 ![no-ip Free vs Paid Version](images/no-ip-free-vs-paid.png)
 
-### 2. Using your local Research Computing (RC) department or academic institution's Central IT services
+### 2. Using [Nginx Proxy Manager](https://nginxproxymanager.com/)
+
+You can setup [Nginx Proxy Manager](https://nginxproxymanager.com/) on one of
+your NERC VMs and then use this Nginx Proxy Manager as your gateway to forward
+to your other web based services.
+
+#### Quick Setup
+
+i. [Launch a VM](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/launch-a-VM/)
+with a security group that has opened rule for port **81** and **22** to enable
+SSH into the VM.
+
+ii. [SSH into your VM](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/)
+using your private key after [attaching a Floating IP](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/assign-a-floating-IP/).
+
+iii. Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/install/)
+based on your OS choice for your VM.
+
+iv. Create a `docker-compose.yml` file similar to this:
+
+```yaml
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+```
+
+v. Bring up your stack by running:
+
+```sh
+docker-compose up -d
+
+# If using docker-compose-plugin
+docker compose up -d
+```
+
+v. Log in to the Nginx Proxy Manager Admin UI on your web browser:
+
+Once the docker container runs successfully, connect to it on port **81** for
+the admin interface via VM's assigned floating IP as shown below:
+
+`http://<Floating-IP>:81`
+
+!!! note "Information"
+    It may take some time to spin up the Admin UI.
+
+Default Admin User:
+
+```sh
+Email:    admin@example.com
+Password: changeme
+```
+
+Immediately after logging in with this default user you will be asked to modify
+your admin details and change your password.
+
+#### How to create a Proxy Host with Let's Encrypt SSL Certificate attached to it
+
+i. Click on Hosts >> Proxy Hosts, then click on "Add Proxy Host" button as shown
+below:
+
+![Add Proxy Hosts](images/nginx-proxy-manager-proxy-host.png)
+
+ii. On the popup box, enter your Domain Names (This need to be registed from your
+research institution or purchased on other third party vendor services and your have
+its administrative access)
+
+!!! note "Important Note"
+    The Domain Name need to have an **A Record** pointing to the public floating
+    IP of your NERC VM where you are hosting the Nginx Proxy Manager!
+
+Please fill out the following information on this popup box:
+
+- Scheme: *http*
+
+- Forward Hostname/IP: *`<The Private-IP of your NERC VM where you are hosting the
+web services>`*
+
+- Forward Port: *`<Port exposed on your VM to the public>`*
+
+- Enable all toggles i.e. Cache Assets, Block Common Exploits, Websockets Support
+
+- Access List: *Publicly Accessible*
+
+For your reference, you can review your selection should looks like below with your
+own Domain Name and  other settings:
+
+![Add Proxy Hosts Settings](images/nginx-proxy-manager-add-proxy-host.png)
+
+Also, select the **SSL** tab and then "Request a new SSL Certificate" with settings
+as shown below:
+
+![Add Proxy Hosts SSL Settings](images/nginx-proxy-manager-ssl-setting.png)
+
+iii. Once Saved clicking the "Save" button. It should show you Status "Online" and
+when you click on the created Proxy Host link it will load the web services with
+https and domain name you defined i.e. `https://<Your-Domain-Name>`.
+
+### 3. Using your local Research Computing (RC) department or academic institution's Central IT services
 
 You need to contact and work with your Research Computing department or
 academic institution's Central IT services to create **A record** for your hostname
@@ -68,7 +174,7 @@ that maps to the address of a floating IP of your NERC virtual instance.
 **A record:** The primary DNS record used to connect your domain to an IP address
 that directs visitors to your website.
 
-### 3. Using commercial DNS providers
+### 4. Using commercial DNS providers
 
 Alternatively, you can purchase a fully registered domain name or host name from
 commercial hosting providers and then register DNS records for your virtual instance

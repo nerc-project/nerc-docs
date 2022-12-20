@@ -1,3 +1,7 @@
+---
+ᴴₒᴴₒᴴₒ: true
+---
+
 # NERC Technical Documentation
 
 !!! tip "NERC welcomes your contributions"

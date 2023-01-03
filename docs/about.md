@@ -1,7 +1,3 @@
----
-ᴴₒᴴₒᴴₒ: true
----
-
 # About NERC
 
 We are currently in the pilot phase of the project and are focusing on

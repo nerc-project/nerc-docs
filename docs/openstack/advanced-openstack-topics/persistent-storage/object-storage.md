@@ -467,7 +467,7 @@ Output:
 
 ### iv. Using [s3cmd](https://s3tools.org/s3cmd)
 
-`S3cmd` is a free command line tool and client for uploading, retrieving and
+`S3cmd` is a free command-line tool and client for uploading, retrieving and
 managing data in Amazon S3 and other cloud storage service providers that use
 the S3 protocol.
 

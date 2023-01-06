@@ -54,6 +54,22 @@ nav:
               - Terraform on NERC: openstack/advanced-openstack-topics/terraform/terraform-on-NERC.md
           - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md
           - Setting up custom images: openstack/advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md
+  - OpenShift:
+      - OpenShift: openshift/index.md
+      - OpenShift Getting Started:
+          - OpenShift Overview: openshift/get-started/openshift-overview.md
+      - OpenShift Web Console:
+          - Access the NERC's OpenShift Web Console: openshift/logging-in/access-the-openshift-web-console.md
+          - Web Console Overview: openshift/logging-in/web-console-overview.md
+      - OpenShift command-line interface (CLI) Tools:
+          - OpenShift CLI Tools Overview: openshift/logging-in/the-openshift-cli.md
+          - How to Setup the OpenShift CLI Tools: openshift/logging-in/setup-the-openshift-cli.md
+      - Creating Your First Application on OpenShift:
+          - Creating A Sample Application: openshift/applications/creating-a-sample-application.md
+      - Editing Applications:
+          - Editing your applications: openshift/applications/editing-applications.md
+      - Deleting Applications:
+          - Deleting your applications: openshift/applications/deleting-applications.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
       - Kubernetes:

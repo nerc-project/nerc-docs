@@ -21,7 +21,7 @@ see [Kubernetes Infrastructure](https://docs.okd.io/3.11/architecture/infrastruc
 ## Minishift Quickstart
 
 OKD also offers a comprehensive web console and the custom OpenShift CLI (oc) interface.
-The interaction with OpenShift is with the command line tool oc which is copied to
+The interaction with OpenShift is with the command-line tool oc which is copied to
 your host.
 
 ## Pre-requisite
@@ -90,14 +90,13 @@ usermod -a -G libvirt $USER
 - Update your current session to apply the group change:
 
 ```sh
-newgrp libvirtd
+newgrp libvirt
 ```
 
 - As root, install the KVM driver binary and make it executable as follows:
 
 ```sh
-curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-ubuntu16.04
--o /usr/bin/docker-machine-driver-kvm
+curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-ubuntu16.04 -o /usr/local/bin/docker-machine-driver-kvm
 chmod +x /usr/bin/docker-machine-driver-kvm
 ```
 
@@ -130,7 +129,7 @@ tar -zxvf minishift-1.34.3-linux-amd64.tgz --strip=1 -C/usr/bin minishift-1.34.3
 
 By running the command: `minishift start`
 
-!!! note "Note":
+!!! note "Note"
     cpu, and start memory, If you do not specify a disk-size 2vCPU, 4GB memory, with
     20GB disk. Other customized minishift can be started following this format:
     `minishift start --openshift-version v3.11.0 --iso-url centos --cpus 4 \

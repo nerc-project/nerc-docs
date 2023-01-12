@@ -112,7 +112,7 @@ below:
     ![Import YAML](images/import-yaml.png)
 
 2. On opened YAML editor paste the content of template copied from the
-`rstudio-server-template.yaml` file located at the provided[Git Repo](https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml).
+`rstudio-server-template.yaml` file located at the provided [Git Repo](https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml).
 
     ![YAML Editor](images/import-yaml-content.png)
 

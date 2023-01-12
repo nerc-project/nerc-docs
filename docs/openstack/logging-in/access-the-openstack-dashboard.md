@@ -12,7 +12,7 @@ shown here:
 
 ![OpenID Connect](images/openstack_login.png)
 
-Next, you will redirected to CILogon welcome page as shown below:
+Next, you will be redirected to CILogon welcome page as shown below:
 
 ![CILogon Welcome Page](images/CILogon_interface.png)
 
@@ -24,7 +24,7 @@ following information from the user:
 - Your email address
 - Your username and affiliation from your identity provider
 
-which are required in order to allow access your account to NERC's OpenStack
+which are required in order to allow access your account on NERC's OpenStack
 dashboard.
 
 From the **"Selected Identity Provider"** dropdown option, please select your institution's
@@ -36,10 +36,10 @@ login page where you need to enter your institutional credentials.
 
 !!! note "Important Note"
     The NERC does not see or have access to your institutional account credentials
-    and neither store them rather it just point to your selected insitution's identity
+    and neither store them rather it points to your selected insitution's identity
     provider and redirects back once authenticated.
 
-Once you successfully authenticated you should see an overview of the resources
+Once you successfully authenticate you should see an overview of the resources
 like Compute (instances, VCPUs, RAM, etc.), Volume and Network. You can also
 see usage summary for provided date range.
 

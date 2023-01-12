@@ -1,9 +1,9 @@
 # Creating A Sample Application
 
-NERC's OpenShift service is a platform that provides an cloud-native environment
+NERC's OpenShift service is a platform that provides a cloud-native environment
 for developing and deploying applications.
 
-Here, we walks through the process of creating a simple web application,
+Here, we walk through the process of creating a simple web application,
 deploying it. This example uses the Node.js programming language, but the process
 with other programming languages will be similar. Instructions provided show the
 tasks using both the web console and the command-line tool.
@@ -34,7 +34,7 @@ ignore this warning!*
 on the application name in the **Project Overview** page.
 
 7. On the **Topology View** menu, click on your application, or the application
-circle if you are in graphical topology view. In the details panel that display,
+circle if you are in graphical topology view. In the details panel that displays,
 scroll to the **Routes** section on the Resources tab and click on the link to
 go to the sample application. This will open your application in a new browser
 window. The link will look similar to `http://<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
@@ -55,7 +55,7 @@ machine following [these steps](../logging-in/install-the-openshift-cli/#first-t
     switch to a specific project space: `oc project <your-project-namespace>`.
 
 ii. To create an application, you will need to specify the language and runtime
-for your application. You can do this by using the oc new-app command and specifying
+for your application. You can do this by using the `oc new-app` command and specifying
 a language and runtime. For example, to create a Node.js application, you can run
 the following command:
 `oc new-app nodejs`
@@ -99,7 +99,7 @@ For more options and customization please [read this](https://docs.openshift.com
 
 ## Using the Developer Catalog on NERC's OpenShift Web Console
 
-Here, we walks through the process of creating a simple RStudio web server template
+Here, we walk through the process of creating a simple RStudio web server template
 that bundles all resources required to run the server i.e. ConfigMap, Pod, Route,
 Service, etc. and then initiate and deploy application from that template.
 
@@ -131,7 +131,7 @@ as shown below:
 
     ![Initiate Template](images/initiate-template.png)
 
-6. Based on our template definition, we asked user to input a preferred password
+6. Based on our template definition, we request that users input a preferred password
 for the RStudio server so the following interface will prompt for your password that
 will be used during login the RStudio server.
 

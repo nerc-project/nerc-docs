@@ -31,7 +31,7 @@ shells by following [these steps](https://docs.openshift.com/container-platform/
 
 Before you can use the *oc* command-line tool, you will need to authenticate to the
 NERC's OpenShift platform by running built-in *login* command obtained from the
-NERC's OpenShift Web Console. This will allows authentication and enables you to
+NERC's OpenShift Web Console. This will allow authentication and enables you to
 work with your NERC's OpenShift Container Platform projects. It will create a session
 that will last approximately 24 hours.
 

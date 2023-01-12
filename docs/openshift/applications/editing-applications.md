@@ -21,8 +21,8 @@ available as shown below:
 
     ![Edit an application](images/edit-an-application.png)
 
-2. Click on any of the options available to edit regarind your application, the
-pop-up form will be pre-populated with the values you had added while creating
+2. Click on any of the options available to edit resource used by your application,
+the pop-up form will be pre-populated with the values you had added while creating
 the applicaiton.
 
 3. Click **Save** to restart the build and deploy a new image.

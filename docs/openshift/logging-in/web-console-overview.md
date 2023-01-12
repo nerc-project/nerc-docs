@@ -37,7 +37,7 @@ the view to show additional information such as Details and Resources.
 
 ## Perspective Switcher
 
-When you logged-in, you will redirected to the **Developer** perspective which is
+When you logged-in, you will be redirected to the **Developer** perspective which is
 shown selected on the perspective switcher located at the Left side. You can switch
 between the **Administrator** perspective and the **Developer** perspective as per
 your roles and permissions in a project.
@@ -88,12 +88,12 @@ visual representation of all the applications within a project, their build stat
 and the components and services associated with them. If you have no workloads or
 applications in the project, the Topology view displays the available options to
 create applications. If you have existing workloads, the Topology view graphically
-displays your workload nodes. To read more about on how to view the topology of
-you application please read [this official documentation from Red Hat](https://docs.openshift.com/container-platform/4.10/applications/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-topology_viewing-application-composition-using-topology-view)
+displays your workload nodes. To read more about how to view the topology of
+your application please read [this official documentation from Red Hat](https://docs.openshift.com/container-platform/4.10/applications/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-topology_viewing-application-composition-using-topology-view)
 
 ### Observe
 
-This provides you with Dashboard to view the resource usage and also other metrics
+This provides you with a Dashboard to view the resource usage and also other metrics
 and events that occured on your project. Here you can identify, monitor, and inspect
 the usage of Memory, CPU, Network, and Storage in your project.
 
@@ -110,7 +110,7 @@ status and logs of your builds.
 ### Helm
 
 You can enable the Helm Charts here. Helm Charts is the pacakge manager that help
-to easily manage definiation, installations and upgrades of you complex application.
+to easily manage definitions, installations and upgrades of you complex application.
 It also shows catalog of all available helm charts for you to use by installing them.
 
 ### Project

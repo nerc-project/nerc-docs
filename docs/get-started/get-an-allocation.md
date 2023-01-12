@@ -246,7 +246,7 @@ looks like below:
 ![Allocation Change Requests for OpenStack Project](images/coldfront-openstack-allocation-change-requests.png)
 
 Any user can click on Action button to view the details about the change request.
-This will shows more details about the change request like below:
+This will show more details about the change request like below:
 
 ![Allocation Change Request Details for OpenStack Project](images/coldfront-openstack-change-requested-details.png)
 
@@ -255,7 +255,7 @@ This will shows more details about the change request like below:
 ![Allocation Change Requests for OpenShift Project](images/coldfront-openshift-allocation-change-requests.png)
 
 Any user can click on Action button to view the details about the change request.
-This will shows more details about the change request like below:
+This will show more details about the change request like below:
 
 ![Allocation Change Request Details for OpenShift Project](images/coldfront-openshift-change-requested-details.png)
 

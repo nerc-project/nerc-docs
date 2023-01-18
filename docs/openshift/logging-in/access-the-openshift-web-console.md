@@ -34,9 +34,9 @@ identity provider(IdP). Click "Log On". This will redirect to your respective in
 login page where you need to enter your institutional credentials.
 
 !!! note "Important Note"
-    The NERC does not see or have access to your institutional account credentials
-    and neither store them rather it points to your selected insitution's identity
-    provider and redirects back once authenticated.
+    The NERC does not see or have access to your institutional account credentials,
+    it points to your selected insitution's identity provider and redirects back
+    once authenticated.
 
 Once you successfully authenticate you should see a graphical user interface to
 visualize your project data and perform administrative, management, and troubleshooting

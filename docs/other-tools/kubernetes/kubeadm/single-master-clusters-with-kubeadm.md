@@ -33,25 +33,12 @@ on how to setup SSH to your remote VMs.
 
     ii. To be used by the worker nodes:
     ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
-- setup Unique hostname to each machine using the following command:
-
-```sh
-echo "<node_internal_IP> <host_name>" >> /etc/hosts
-hostnamectl set-hostname <host_name>
-```
-
-For example,
-
-```sh
-echo "192.168.0.167 master" >> /etc/hosts
-hostnamectl set-hostname master
-```
 
 ## Steps
 
 1. Disable swap on all nodes.
 2. Install `kubeadm`, `kubelet`, and `kubectl` on all the nodes.
-3. Install container runtime on all nodes- you will be using *`Docker`*.
+3. Install container runtime on all nodes- you will be using *`containerd`*.
 4. Initiate `kubeadm` control plane configuration on the master node.
 5. Save the worker node join command with the token.
 6. Install CNI network plugin i.e. **Flannel** on master node.
@@ -59,7 +46,7 @@ hostnamectl set-hostname master
 8. Validate all cluster components and nodes are visible on master node.
 9. Deploy a sample app and validate the app from master node.
 
-## Install kubeadm, kubelet and docker on master and worker nodes
+## Install kubeadm, kubelet and containerd on master and worker nodes
 
 `kubeadm` will not install or manage `kubelet` or `kubectl` for you, so you will
 need to ensure they match the version of the Kubernetes control plane you want kubeadm
@@ -132,36 +119,70 @@ apt-mark hold kubelet kubeadm kubectl
 
 ---
 
-## Install **Docker**
+## Install the **container runtime** i.e. **containerd** on master and worker nodes
 
-- Install container runtime - **docker**
+To run containers in Pods, Kubernetes uses a [container runtime](https://kubernetes.io/docs/setup/production-environment/container-runtimes/).
+
+By default, Kubernetes uses the **Container Runtime Interface (CRI)** to interface
+with your chosen container runtime.
+
+- Install container runtime - **containerd**
+
+The first thing to do is configure the persistent loading of the necessary
+`containerd` modules. This forwarding IPv4 and letting iptables see bridged
+trafficis is done with the following command:
 
 ```sh
-sudo apt-get install docker.io -y
-```
-
-- Configure the Docker daemon, in particular to use systemd for the management
-of the container’s cgroups
-
-```sh
-cat <<EOF | sudo tee /etc/docker/daemon.json
-{
-"exec-opts": ["native.cgroupdriver=systemd"]
-}
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
 EOF
 
-systemctl enable --now docker
-usermod -aG docker ubuntu
-systemctl daemon-reload
-systemctl restart docker
+sudo modprobe overlay
+sudo modprobe br_netfilter
 ```
 
-- Ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
-
-For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic).
+- Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
 
 ```sh
-sysctl net.bridge.bridge-nf-call-iptables=1
+# sysctl params required by setup, params persist across reboots
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+```
+
+- Apply sysctl params without reboot:
+
+```sh
+sudo sysctl --system
+```
+
+- Install the necessary dependencies with:
+
+```sh
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+```
+
+- The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
+Add the required GPG key with:
+
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+
+It's now time to Install and configure containerd:
+
+```sh
+sudo apt update -y
+sudo apt install -y containerd.io
+containerd config default | sudo tee /etc/containerd/config.toml
+
+# Start containerd
+sudo systemctl restart containerd
+sudo systemctl enable containerd
 ```
 
 ---
@@ -221,6 +242,14 @@ Alternatively, if you are the root user, you can run:
 You should now deploy a pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
   https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of the control-plane node running the following
+command on each worker nodes as root:
+
+  kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
+    --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee3
+    7ab9834567333b939458a5bfb5 \
+    --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
 
 Please note that the certificate-key gives access to cluster sensitive data, keep
 it secret!
@@ -455,14 +484,14 @@ worker2   Ready    <none>                   10m   v1.16.2
 
 ```
 
-### Watch Recoded Video
+## Watch Recorded Video showing the above steps on setting up the cluster
 
 Here’s a quick [recorded demo video](https://drive.google.com/file/d/1kVQSX2CSFbB1WbzAMFOKFt1YuUy-nVh0/view?usp=sharing)
 upto this point where we successfully setup single master K8s cluster using Kubeadm.
 
 ---
 
-### Deploy A Sample Nginx Application
+## Deploy A Sample Nginx Application From the master node
 
 Now that we have all the components to make the cluster and applications work,
 let’s deploy a sample Nginx application and see if we can access it over a
@@ -516,7 +545,7 @@ For your example,
 
 ---
 
-### Deploy A K8s Dashboard
+## Deploy A K8s Dashboard
 
 You will going to setup [K8dash/Skooner](https://github.com/skooner-k8s/skooner)
 to view a dashboard that shows all your K8s cluster components.
@@ -581,18 +610,41 @@ following commands:
 
 `kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa`
 
+- Create a secret that was created to hold the token for the SA:
+
+```sh
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: skooner-sa-token
+  annotations:
+    kubernetes.io/service-account.name: skooner-sa
+type: kubernetes.io/service-account-token
+EOF
+```
+
+!!! info "Information"
+    Since 1.22, this type of Secret is no longer used to mount credentials into
+    Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+    is recommended instead of using service account token Secret objects. Tokens
+    obtained from the *TokenRequest API* are more secure than ones stored in Secret
+    objects, because they have a bounded lifetime and are not readable by other API
+    clients. You can use the `kubectl create token` command to obtain a token from
+    the TokenRequest API. For example: `kubectl create token skooner-sa`.
+
 - Find the secret that was created to hold the token for the SA
 
 `kubectl get secrets`
 
 - Show the contents of the secret to extract the token
 
-`kubectl describe secret skooner-sa-token-xxxxx`
+`kubectl describe secret skooner-sa-token`
 
-Copy the token value from the secret and enter it into the login screen to access
-the dashboard.
+Copy the **token** value from the secret detail and enter it into the login screen
+to access the dashboard.
 
-### Watch Demo Video
+## Watch Demo Video showing how to deploy applications
 
 Here’s a [recorded demo video](https://drive.google.com/file/d/1hTkgpXtzkhdOd6KnoQiVDWgNnsoN5VZB/view?usp=sharing)
 on how to deploy applications on top of setup single master K8s cluster as
@@ -600,7 +652,7 @@ explained above.
 
 ---
 
-### Clean Up
+## Clean Up
 
 - To view the Cluster info:
 
@@ -614,7 +666,7 @@ kubectl cluster-info
 kubectl config delete-cluster
 ```
 
-## How to Remove the node?
+### How to Remove the node?
 
 Talking to the control-plane node with the appropriate credentials, run:
 

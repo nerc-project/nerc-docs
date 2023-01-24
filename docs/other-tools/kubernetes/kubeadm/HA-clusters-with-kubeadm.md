@@ -38,6 +38,7 @@ on how to setup SSH to your remote VMs.
 
     ii. To be used by the worker nodes:
     ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
+
 - setup Unique hostname to each machine using the following command:
 
 ```sh

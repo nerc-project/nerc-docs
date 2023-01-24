@@ -34,6 +34,20 @@ on how to setup SSH to your remote VMs.
     ii. To be used by the worker nodes:
     ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
 
+- setup Unique hostname to each machine using the following command:
+
+```sh
+echo "<node_internal_IP> <host_name>" >> /etc/hosts
+hostnamectl set-hostname <host_name>
+```
+
+For example,
+
+```sh
+echo "192.168.0.167 master" >> /etc/hosts
+hostnamectl set-hostname master
+```
+
 ## Steps
 
 1. Disable swap on all nodes.

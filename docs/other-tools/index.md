@@ -21,7 +21,6 @@
     5.d. [Multi-master K3s cluster setup using k3d](kubernetes/k3s/k3s-ha-cluster-using-k3d.md)
 
 6. [k0s](kubernetes/k0s.md)
-7. [Red Hat Code Ready Containers(CRC)](kubernetes/crc.md)
 
 ## ii. **Kubernetes Production environment**
 

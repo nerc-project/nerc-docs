@@ -87,12 +87,6 @@ configured with all of the features needed to build a Kubernetes cluster simply
 by copying and running an executable file on each target host.
 For more [read this](k0s.md).
 
-7. [CRC - Red Hat Code Ready Containers](https://developers.redhat.com/products/codeready-containers/overview)
-is a great way to experience the most recent version of OpenShift locally (CRC).
-CRC instals a minimum OpenShift 4.x cluster on your local machine, allowing you
-to create and test in a controlled environment. CRC is primarily designed for
-use on the workstations of programmers. For more [read this](crc.md).
-
 ### Production environment
 
 If your Kubernetes cluster has to run critical workloads, it must be configured

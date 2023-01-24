@@ -298,10 +298,25 @@ sudo apt update -y
 sudo apt install -y containerd.io
 containerd config default | sudo tee /etc/containerd/config.toml
 
+# Reload the systemd daemon with
+sudo systemctl daemon-reload
+
 # Start containerd
 sudo systemctl restart containerd
-sudo systemctl enable containerd
+sudo systemctl enable --now containerd
 ```
+
+You can verify `containerd` is running with the command:
+
+```sh
+sudo systemctl status containerd
+```
+
+!!! danger "Configuring the kubelet cgroup driver"
+    From 1.22 onwards, if you do not set the `cgroupDriver` field under
+    `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+    not need to do anything here by default but if you want you change it you can
+    refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
 ---
 
@@ -407,7 +422,12 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Now the machine is initialized as master.
 
 !!! warning "Warning"
-    Kubeadm signs the certificate in the admin.conf to have `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a break-glass, super user group that bypasses the authorization layer (e.g. RBAC). Do not share the admin.conf file with anyone and instead grant users custom permissions by generating them a kubeconfig file using the `kubeadm kubeconfig user` command.
+    Kubeadm signs the certificate in the admin.conf to have
+    `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
+    break-glass, super user group that bypasses the authorization layer
+    (e.g. RBAC). Do not share the admin.conf file with anyone and instead
+    grant users custom permissions by generating them a kubeconfig file using
+    the `kubeadm kubeconfig user` command.
 
 B. Setup a new control plane (master) i.e. `master2` by running following
 command on **master2** node:
@@ -419,7 +439,7 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
 ```
 
-C. Join worker nodes running following command on individual workder nodes:
+C. Join worker nodes running following command on individual worker nodes:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
@@ -721,7 +741,8 @@ The output will show:
 Once the deployment is up, you should be able to access the Nginx home page on
 the allocated NodePort from either of the worker nodes' Floating IP.
 
-To check which worker node is serving `nginx`, you can check **NODE** column running the following command:
+To check which worker node is serving `nginx`, you can check **NODE** column
+running the following command:
 
 ```sh
 kubectl get pods --all-namespaces --output wide

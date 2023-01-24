@@ -180,10 +180,25 @@ sudo apt update -y
 sudo apt install -y containerd.io
 containerd config default | sudo tee /etc/containerd/config.toml
 
+# Reload the systemd daemon with
+sudo systemctl daemon-reload
+
 # Start containerd
 sudo systemctl restart containerd
-sudo systemctl enable containerd
+sudo systemctl enable --now containerd
 ```
+
+You can verify `containerd` is running with the command:
+
+```sh
+sudo systemctl status containerd
+```
+
+!!! danger "Configuring the kubelet cgroup driver"
+    From 1.22 onwards, if you do not set the `cgroupDriver` field under
+    `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+    not need to do anything here by default but if you want you change it you can
+    refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
 ---
 
@@ -290,7 +305,7 @@ Now the machine is initialized as master.
     grant users custom permissions by generating them a kubeconfig file using
     the `kubeadm kubeconfig user` command.
 
-B. Join worker nodes running following command on individual workder nodes:
+B. Join worker nodes running following command on individual worker nodes:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \

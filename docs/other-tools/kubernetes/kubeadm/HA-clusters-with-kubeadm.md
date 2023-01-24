@@ -22,12 +22,12 @@ You will need 2 control-plane(master node) and 2 worker nodes to create a
 multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
-- 2 Linux machines for master, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+- 2 Linux machines for master, ubuntu-20.04-x86_64 or your choice of Ubuntu OS image,
 cpu-a.2 flavor with 2vCPU, 4GB RAM, 20GB storage.
-- 2 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+- 2 Linux machines for worker, ubuntu-20.04-x86_64 or your choice of Ubuntu OS image,
 cpu-a.1 flavor with 1vCPU, 2GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
-- 1 Linux machine for loadbalancer, ubuntu-22.04-x86_64 or your choice of Ubuntu
+- 1 Linux machine for loadbalancer, ubuntu-20.04-x86_64 or your choice of Ubuntu
 OS image, cpu-a.1 flavor with 1vCPU, 2GB RAM, 20GB storage.
 - ssh access to all machines:  [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
@@ -135,17 +135,17 @@ backend be-apiserver
 Here - **master1** and **master2** are the hostnames of the master nodes and
 **10.138.0.15** and **10.138.0.16** are the corresponding internal IP addresses.
 
+- Ensure haproxy config file is correctly formatted:
+
+```sh
+haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
+```
+
 - Restart and Verify haproxy
 
 ```sh
 systemctl restart haproxy
 systemctl status haproxy
-```
-
-Ensure haproxy config file is correctly formatted:
-
-```sh
-haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
 ```
 
 Ensure haproxy is in running status.
@@ -312,12 +312,6 @@ You can verify `containerd` is running with the command:
 sudo systemctl status containerd
 ```
 
-!!! danger "Configuring the kubelet cgroup driver"
-    From 1.22 onwards, if you do not set the `cgroupDriver` field under
-    `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
-    not need to do anything here by default but if you want you change it you can
-    refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
-
 ---
 
 ## Configure kubeadm to bootstrap the cluster
@@ -328,6 +322,21 @@ same in `master2`.
 
 - SSH into **master1** machine
 - Switch to root user: `sudo su`
+
+- You need to use `kubeadm`'s default `systemd` driver to the `cgroupfs` driver running the following command:
+
+```sh
+sed -i "s/cgroupDriver: systemd/cgroupDriver: cgroupfs/g" /var/lib/kubelet/config.yaml
+systemctl daemon-reload
+systemctl restart kubelet
+```
+
+!!! danger "Configuring the kubelet cgroup driver"
+    From 1.22 onwards, if you do not set the `cgroupDriver` field under
+    `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+    not need to do anything here by default but if you want you change it you can
+    refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
+
 - Execute the below command to initialize the cluster:
 
 ```sh

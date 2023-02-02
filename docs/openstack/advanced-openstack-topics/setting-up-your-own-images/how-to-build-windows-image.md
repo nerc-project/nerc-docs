@@ -10,6 +10,16 @@ virtual disk that has a bootable operating system installed on it.
     is right for you. This is on *user discretion* to update, extend, and handle
     licensing issues for future usages.
 
+!!!tip "How to extend activation grace
+    period for another 180 days?"
+    Remote desktop to your running Windows VM. Using the search function in your
+    taskbar, look up **Command Prompt**. When you see it in the results, right-click
+    on it and choose **Run as Administrator**. Your VM's current activation grace
+    period can be reset by running: `slmgr -rearm`. Once this command is run
+    successfully, restart your instance for the changes to take effect. This command
+    typically resets the activation timer to 180 days and can be performed only for
+    a limited number of times. For more about this [read here](https://www.dell.com/support/kbdoc/en-mv/000138586/windows-server-how-to-reset-the-activation-timer).
+
 ## Existing Microsoft Windows Image
 
 Cloudbase Solutions provides [Microsoft Windows Server 2022 R2 Standard

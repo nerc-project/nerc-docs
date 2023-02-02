@@ -22,12 +22,12 @@ You will need 2 control-plane(master node) and 2 worker nodes to create a
 multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
-- 2 Linux machines for master, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+- 2 Linux machines for master, ubuntu-20.04-x86_64 or your choice of Ubuntu OS image,
 cpu-a.2 flavor with 2vCPU, 4GB RAM, 20GB storage.
-- 2 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
+- 2 Linux machines for worker, ubuntu-20.04-x86_64 or your choice of Ubuntu OS image,
 cpu-a.1 flavor with 1vCPU, 2GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
-- 1 Linux machine for loadbalancer, ubuntu-22.04-x86_64 or your choice of Ubuntu
+- 1 Linux machine for loadbalancer, ubuntu-20.04-x86_64 or your choice of Ubuntu
 OS image, cpu-a.1 flavor with 1vCPU, 2GB RAM, 20GB storage.
 - ssh access to all machines:  [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
@@ -38,6 +38,7 @@ on how to setup SSH to your remote VMs.
 
     ii. To be used by the worker nodes:
     ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
+
 - setup Unique hostname to each machine using the following command:
 
 ```sh
@@ -59,7 +60,7 @@ apiservers on their IPs via port 6443.
 2. Do following in all the nodes except the Loadbalancer node:
     - Disable swap.
     - Install `kubelet` and `kubeadm`.
-    - Install container runtime - you will be using *`Docker`*.
+    - Install container runtime - you will be using *`containerd`*.
 3. Initiate `kubeadm` control plane configuration on one of the master nodes.
 4. Save the new master and worker node join commands with the token.
 5. Join the second master node to the control plane using the join command.
@@ -135,17 +136,17 @@ backend be-apiserver
 Here - **master1** and **master2** are the hostnames of the master nodes and
 **10.138.0.15** and **10.138.0.16** are the corresponding internal IP addresses.
 
+- Ensure haproxy config file is correctly formatted:
+
+```sh
+haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
+```
+
 - Restart and Verify haproxy
 
 ```sh
 systemctl restart haproxy
 systemctl status haproxy
-```
-
-Ensure haproxy config file is correctly formatted:
-
-```sh
-haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
 ```
 
 Ensure haproxy is in running status.
@@ -163,7 +164,7 @@ Connection to localhost 6443 port [tcp/*] succeeded!
 
 ---
 
-## Install kubeadm, kubelet and docker on master and worker nodes
+## Install kubeadm, kubelet and containerd on master and worker nodes
 
 `kubeadm` will not install or manage `kubelet` or `kubectl` for you, so you will
 need to ensure they match the version of the Kubernetes control plane you want kubeadm
@@ -235,36 +236,81 @@ apt-get install -y kubelet kubeadm
 apt-mark hold kubelet kubeadm
 ```
 
-### Install **Docker** on master and worker nodes
+---
 
-- Install container runtime - **docker**
+## Install the **container runtime** i.e. **containerd** on master and worker nodes
+
+To run containers in Pods, Kubernetes uses a [container runtime](https://kubernetes.io/docs/setup/production-environment/container-runtimes/).
+
+By default, Kubernetes uses the **Container Runtime Interface (CRI)** to interface
+with your chosen container runtime.
+
+- Install container runtime - **containerd**
+
+The first thing to do is configure the persistent loading of the necessary
+`containerd` modules. This forwarding IPv4 and letting iptables see bridged
+trafficis is done with the following command:
 
 ```sh
-sudo apt-get install docker.io -y
-```
-
-- Configure the Docker daemon, in particular to use systemd for the management
-of the container’s cgroups
-
-```sh
-cat <<EOF | sudo tee /etc/docker/daemon.json
-{
-"exec-opts": ["native.cgroupdriver=systemd"]
-}
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
 EOF
 
-systemctl enable --now docker
-usermod -aG docker ubuntu
-systemctl daemon-reload
-systemctl restart docker
+sudo modprobe overlay
+sudo modprobe br_netfilter
 ```
 
-- Ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
-
-For more [Read this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic).
+- Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
 
 ```sh
-sysctl net.bridge.bridge-nf-call-iptables=1
+# sysctl params required by setup, params persist across reboots
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+```
+
+- Apply sysctl params without reboot:
+
+```sh
+sudo sysctl --system
+```
+
+- Install the necessary dependencies with:
+
+```sh
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+```
+
+- The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
+Add the required GPG key with:
+
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+
+It's now time to Install and configure containerd:
+
+```sh
+sudo apt update -y
+sudo apt install -y containerd.io
+containerd config default | sudo tee /etc/containerd/config.toml
+
+# Reload the systemd daemon with
+sudo systemctl daemon-reload
+
+# Start containerd
+sudo systemctl restart containerd
+sudo systemctl enable --now containerd
+```
+
+You can verify `containerd` is running with the command:
+
+```sh
+sudo systemctl status containerd
 ```
 
 ---
@@ -277,6 +323,21 @@ same in `master2`.
 
 - SSH into **master1** machine
 - Switch to root user: `sudo su`
+
+- You need to use `kubeadm`'s default `systemd` driver to the `cgroupfs` driver running the following command:
+
+```sh
+sed -i "s/cgroupDriver: systemd/cgroupDriver: cgroupfs/g" /var/lib/kubelet/config.yaml
+systemctl daemon-reload
+systemctl restart kubelet
+```
+
+!!! danger "Configuring the kubelet cgroup driver"
+    From 1.22 onwards, if you do not set the `cgroupDriver` field under
+    `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+    not need to do anything here by default but if you want you change it you can
+    refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
+
 - Execute the below command to initialize the cluster:
 
 ```sh
@@ -332,7 +393,7 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
   https://kubernetes.io/docs/concepts/cluster-administration/addons/
 
 You can now join any number of the control-plane node running the following
-command on each as root:
+command on each worker nodes as root:
 
   kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee3
@@ -371,7 +432,12 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 Now the machine is initialized as master.
 
 !!! warning "Warning"
-    Kubeadm signs the certificate in the admin.conf to have `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a break-glass, super user group that bypasses the authorization layer (e.g. RBAC). Do not share the admin.conf file with anyone and instead grant users custom permissions by generating them a kubeconfig file using the `kubeadm kubeconfig user` command.
+    Kubeadm signs the certificate in the admin.conf to have
+    `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
+    break-glass, super user group that bypasses the authorization layer
+    (e.g. RBAC). Do not share the admin.conf file with anyone and instead
+    grant users custom permissions by generating them a kubeconfig file using
+    the `kubeadm kubeconfig user` command.
 
 B. Setup a new control plane (master) i.e. `master2` by running following
 command on **master2** node:
@@ -383,7 +449,7 @@ kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
     --control-plane --certificate-key 824d9a0e173a810416b4bca7038fb33b616108c17abcbc5eaef8651f11e3d146
 ```
 
-C. Join worker nodes running following command on individual workder nodes:
+C. Join worker nodes running following command on individual worker nodes:
 
 ```sh
 kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
@@ -659,7 +725,7 @@ worker2   Ready    <none>                   10m   v1.16.2
 
 ---
 
-### Deploy A Sample Nginx Application
+## Deploy A Sample Nginx Application From one of the master nodes
 
 Now that we have all the components to make the cluster and applications work,
 let’s deploy a sample Nginx application and see if we can access it over a
@@ -685,7 +751,8 @@ The output will show:
 Once the deployment is up, you should be able to access the Nginx home page on
 the allocated NodePort from either of the worker nodes' Floating IP.
 
-To check which worker node is serving `nginx`, you can check **NODE** column running the following command:
+To check which worker node is serving `nginx`, you can check **NODE** column
+running the following command:
 
 ```sh
 kubectl get pods --all-namespaces --output wide
@@ -712,7 +779,7 @@ For your example,
 
 ---
 
-### Deploy A K8s Dashboard
+## Deploy A K8s Dashboard
 
 You will going to setup [K8dash/Skooner](https://github.com/skooner-k8s/skooner)
 to view a dashboard that shows all your K8s cluster components.
@@ -777,25 +844,49 @@ following commands:
 
 `kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa`
 
+- Create a secret that was created to hold the token for the SA:
+
+```sh
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: skooner-sa-token
+  annotations:
+    kubernetes.io/service-account.name: skooner-sa
+type: kubernetes.io/service-account-token
+EOF
+```
+
+!!! info "Information"
+    Since 1.22, this type of Secret is no longer used to mount credentials into
+    Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+    is recommended instead of using service account token Secret objects. Tokens
+    obtained from the *TokenRequest API* are more secure than ones stored in Secret
+    objects, because they have a bounded lifetime and are not readable by other API
+    clients. You can use the `kubectl create token` command to obtain a token from
+    the TokenRequest API. For example: `kubectl create token skooner-sa`.
+
 - Find the secret that was created to hold the token for the SA
 
 `kubectl get secrets`
 
 - Show the contents of the secret to extract the token
 
-`kubectl describe secret skooner-sa-token-xxxxx`
+`kubectl describe secret skooner-sa-token`
 
-Copy the token value from the secret and enter it into the login screen to access
-the dashboard.
+Copy the **token** value from the secret detail and enter it into the login screen
+to access the dashboard.
 
-### Watch Demo Video
+## Watch Demo Video showing how to setup the cluster
 
 Here’s a [recorded demo video](https://drive.google.com/file/d/1mALftMHEUkjQ7lK6oJ6S_tiY59Q0JASY/view?usp=sharing)
-on how to setup HA K8s cluster using `kubeadm`.
+on how to setup HA K8s cluster using `kubeadm` as
+explained above.
 
 ---
 
-### Clean Up
+## Clean Up
 
 - To view the Cluster info:
 
@@ -809,7 +900,7 @@ kubectl cluster-info
 kubectl config delete-cluster
 ```
 
-## How to Remove the node?
+### How to Remove the node?
 
 Talking to the control-plane node with the appropriate credentials, run:
 

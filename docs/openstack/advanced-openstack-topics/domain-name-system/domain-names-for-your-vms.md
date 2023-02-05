@@ -68,8 +68,9 @@ to your other web based services.
 #### Quick Setup
 
 i. [Launch a VM](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/launch-a-VM/)
-with a security group that has opened rule for port **81** and **22** to enable
-SSH into the VM.
+with a security group that has opened rule for port **80**, **443** and **22** to
+enable [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
+i.e. **Local Port Forwarding** into the VM.
 
 ii. [SSH into your VM](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/)
 using your private key after [attaching a Floating IP](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/assign-a-floating-IP/).
@@ -103,15 +104,27 @@ docker-compose up -d
 docker compose up -d
 ```
 
-v. Log in to the Nginx Proxy Manager Admin UI on your web browser:
+vi. Once the docker container runs successfully, connect to it on Admin Web Port
+i.e. **81** opened for the admin interface via SSH Tunneling i.e. **Local Port Forwarding**
+from your local machine's terminal by running:
 
-Once the docker container runs successfully, connect to it on port **81** for
-the admin interface via VM's assigned floating IP as shown below:
+`ssh -N -L <Your_Preferred_Port>:localhost:81 <User>@<Floating-IP> -i <Path_To_Your_Private_Key>`
 
-`http://<Floating-IP>:81`
+Here, you can choose any port that is available on your machine as `<Your_Preferred_Port>`
+and then VM's assigned Floating IP as `<Floating-IP>` and associated Private
+Key pair attached to the VM as `<Path_To_Your_Private_Key>`.
 
-!!! note "Information"
-    It may take some time to spin up the Admin UI.
+For e.g. `ssh -N -L 8081:localhost:81 ubuntu@199.94.60.24 -i ~/.ssh/my_private.key`
+
+vii. Once the SSH Tunneling is successful, log in to the Nginx Proxy Manager
+Admin UI on your web browser:
+`http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8081`
+
+!!! info "Information"
+    It may take some time to spin up the Admin UI. Your terminal running the SSH
+    Tunneling i.e. Local Port Forwarding will not show any logs or output when
+    successfully done. Also your should not close or terminate the terminal while
+    runnng the tunneling sessions and using the Admin UI.
 
 Default Admin User:
 

@@ -267,7 +267,7 @@ username, project,and password.
 For this, you need to download the **"NERC's OpenStack RC File"** with the
 credentials for your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
 Then you need to source that RC file using: `source *-openrc.sh`. You can
-[read here](https://github.com/nerc-projectterraform-nerc#how-to-get-credential-to-connect-nercs-openstack)
+[read here](https://github.com/nerc-project/terraform-nerc#how-to-get-credential-to-connect-nercs-openstack)
 on how to do this.
 
 By sourcing the "NERC's OpenStack RC File", you will set the all required

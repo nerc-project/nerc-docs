@@ -7,10 +7,9 @@
 ## i. **Kubernetes Development environment**
 
 1. [Minikube](kubernetes/minikube.md)
-2. [Minishift](kubernetes/minishift.md)
-3. [Kind](kubernetes/kind.md)
-4. [MicroK8s](kubernetes/microk8s.md)
-5. [K3s](kubernetes/k3s/k3s.md)
+2. [Kind](kubernetes/kind.md)
+3. [MicroK8s](kubernetes/microk8s.md)
+4. [K3s](kubernetes/k3s/k3s.md)
 
     5.a. [K3s with High Availibility(HA) setup](kubernetes/k3s/k3s-ha-cluster.md)
 
@@ -20,7 +19,7 @@
 
     5.d. [Multi-master K3s cluster setup using k3d](kubernetes/k3s/k3s-ha-cluster-using-k3d.md)
 
-6. [k0s](kubernetes/k0s.md)
+5. [k0s](kubernetes/k0s.md)
 
 ## ii. **Kubernetes Production environment**
 

@@ -214,7 +214,7 @@ Then you can sign in at this URL using your *token* we got in the previous step:
 
 `http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
 
-### Deploying Nginx using deployment
+## Deploying Nginx using deployment
 
 - Create a deployment `nginx.yaml`:
 

@@ -42,7 +42,8 @@ systemctl restart docker
 ## Install **kubectl**
 
 - Install kubectl binary
-• **kubectl**: the command line util to talk to your cluster.
+
+    • **kubectl**: the command line util to talk to your cluster.
 
 ```sh
 snap install kubectl --classic

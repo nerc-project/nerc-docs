@@ -87,9 +87,11 @@ sudo apt install virtualbox virtualbox-ext-pack -y
 ## Install **kubectl**
 
 - Install kubectl binary
-• **kubectl**: the command line util to talk to your cluster.
+
+    • **kubectl**: the command line util to talk to your cluster.
 
 ```sh
+apt-get update
 snap install kubectl --classic
 ```
 
@@ -272,7 +274,7 @@ Now the output should look like below:
 So, now you can browser the K8s Dashboard, visit `http://<Floating-IP>:<NodePort>`
 i.e. <http://140.247.152.235:31881> to view the Dashboard.
 
-### Deploy A Sample Nginx Application
+## Deploy A Sample Nginx Application
 
 - Create a deployment, in this case **Nginx**:
 A Kubernetes Pod is a group of one or more Containers, tied together for the purposes
@@ -343,7 +345,7 @@ For your example,
 
 ---
 
-### Deploy A Hello Minikube Application
+## Deploy A Hello Minikube Application
 
 - Use the kubectl create command to create a Deployment that manages a Pod. The Pod
 runs a Container based on the provided Docker image.
@@ -367,7 +369,7 @@ For your example,
 
 ![Hello Minikube default page](images/minikube_hello-minikube_page.png)
 
-### Clean up
+## Clean up
 
 Now you can clean up the app resources you created in your cluster:
 
@@ -381,7 +383,7 @@ kubectl delete deployment hello-minikube
 
 ---
 
-### Managing Minikube Cluster
+## Managing Minikube Cluster
 
 - To stop the minikube, run
 

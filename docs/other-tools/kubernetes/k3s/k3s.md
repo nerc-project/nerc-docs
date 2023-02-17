@@ -322,7 +322,7 @@ to it.
 
 ---
 
-### Deploying Nginx using deployment
+## Deploying Nginx using deployment
 
 - Create a deployment `nginx.yaml` on master node
 
@@ -399,7 +399,7 @@ sudo k3s kubectl delete deploy mysite
     i.e. `sudo cp nginx.yaml /var/lib/rancher/k3s/server/manifests/.`. This will
     automatically deploy the newly copied deployment on your cluster.
 
-### Deploy Addons to K3s
+## Deploy Addons to K3s
 
 K3s is a lightweight kubernetes tool that doesn’t come packaged with all the tools
 but you can install them separately.
@@ -463,7 +463,7 @@ helm repo update
 
 ---
 
-### Deploy A Sample Nginx Application using **Helm**
+## Deploy A Sample Nginx Application using **Helm**
 
 **Nginx** can be used as a web proxy to expose [ingress](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx)
 web traffic routes in and out of the cluster.
@@ -491,7 +491,7 @@ nginx.. 1/1  Running 0        19m  10.42.1.5 k3s-worker1   <none>      <none>
 - We have successfully deployed nginx web-proxy on k3s. Go to browser, visit `http://<Master-Floating-IP>`
 i.e. <http://128.31.25.246> to check the nginx default page.
 
-### Upgrade K3s Using the Installation Script
+## Upgrade K3s Using the Installation Script
 
 To upgrade K3s from an older version you can re-run the installation script using
 the same flags, for example:
@@ -526,7 +526,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" \
 !!! note "Note"
     For more about on **"How to use flags and environment variables"** [read this](https://rancher.com/docs/k3s/latest/en/installation/install-options/how-to-flags/).
 
-### Restarting K3s
+## Restarting K3s
 
 Restarting K3s is supported by the installation script for `systemd` and `OpenRC`.
 
@@ -558,7 +558,7 @@ To restart agents manually:
 sudo service k3s-agent restart
 ```
 
-### Uninstalling
+## Uninstalling
 
 If you installed `K3s` with the help of the `install.sh` script, an uninstall script
 is generated during installation. The script is created on your master node at

@@ -49,7 +49,7 @@ systemctl restart docker
 snap install kubectl --classic
 ```
 
-This outputs: `kubectl 1.22.2 from Canonical✓ installed`
+This outputs: `kubectl 1.26.1 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 

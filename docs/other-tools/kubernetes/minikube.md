@@ -52,34 +52,20 @@ apt-get update && apt-get install -y curl wget apt-transport-https
 
 ---
 
-## Install **Docker**
+!!! info "Very Important"
+    Run the following step as non-root user i.e. **ubuntu**.
 
-- Install container runtime - **docker**
+## Download and install the latest version of **Docker CE**
 
 ```sh
-sudo apt-get install docker.io -y
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 ```
 
-- Configure the Docker daemon, in particular to use systemd for the management
-of the container’s cgroups
+- Configure the Docker daemon:
 
 ```sh
-cat <<EOF | sudo tee /etc/docker/daemon.json
-{
-"exec-opts": ["native.cgroupdriver=systemd"]
-}
-EOF
-
-systemctl enable --now docker
-usermod -aG docker ubuntu
-systemctl daemon-reload
-systemctl restart docker
-```
-
-**OR,** you can install VirtualBox Hypervisor as runtime:
-
-```sh
-sudo apt install virtualbox virtualbox-ext-pack -y
+sudo usermod -aG docker $USER && newgrp docker
 ```
 
 ---
@@ -91,16 +77,92 @@ sudo apt install virtualbox virtualbox-ext-pack -y
     • **kubectl**: the command line util to talk to your cluster.
 
 ```sh
-apt-get update
-snap install kubectl --classic
+sudo snap install kubectl --classic
 ```
 
-This outputs: `kubectl 1.22.2 from Canonical✓ installed`
+This outputs: `kubectl 1.26.1 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
 ```sh
-kubectl version -o yaml
+sudo kubectl version -o yaml
+```
+
+---
+
+## Install the **container runtime** i.e. **containerd** on master and worker nodes
+
+To run containers in Pods, Kubernetes uses a [container runtime](https://kubernetes.io/docs/setup/production-environment/container-runtimes/).
+
+By default, Kubernetes uses the **Container Runtime Interface (CRI)** to interface
+with your chosen container runtime.
+
+- Install container runtime - **containerd**
+
+The first thing to do is configure the persistent loading of the necessary
+`containerd` modules. This forwarding IPv4 and letting iptables see bridged
+trafficis is done with the following command:
+
+```sh
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+overlay
+br_netfilter
+EOF
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+```
+
+- Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
+
+```sh
+# sysctl params required by setup, params persist across reboots
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+EOF
+```
+
+- Apply sysctl params without reboot:
+
+```sh
+sudo sysctl --system
+```
+
+- Install the necessary dependencies with:
+
+```sh
+sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+```
+
+- The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
+Add the required GPG key with:
+
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+
+It's now time to Install and configure containerd:
+
+```sh
+sudo apt update -y
+sudo apt install -y containerd.io
+containerd config default | sudo tee /etc/containerd/config.toml
+
+# Reload the systemd daemon with
+sudo systemctl daemon-reload
+
+# Start containerd
+sudo systemctl restart containerd
+sudo systemctl enable --now containerd
+```
+
+You can verify `containerd` is running with the command:
+
+```sh
+sudo systemctl status containerd
 ```
 
 ---
@@ -127,15 +189,15 @@ chmod +x /usr/bin/minikube
 ```sh
 minikube version
 
-minikube version: v1.23.2
-commit: 0a0ad764652082477c00d51d2475284b5d39ceed
+minikube version: v1.29.0
+commit: ddac20b4b34a9c8c857fc602203b6ba2679794d3
 ```
 
 - Install conntrack:
-Kubernetes 1.22.2 requires conntrack to be installed in root's path:
+Kubernetes 1.26.1 requires conntrack to be installed in root's path:
 
 ```sh
-apt-get install -y conntrack
+sudo apt-get install -y conntrack
 ```
 
 - Start minikube:
@@ -143,18 +205,21 @@ As we are already stated in the beginning that we would be using docker as base
 for minikue, so start the minikube with the docker driver,
 
 ```sh
-minikube start --driver=none
+minikube start --driver=docker --container-runtime=containerd
 ```
 
 !!! note "Note"
     - To check the internal IP, run the `minikube ip` command.
     - By default, Minikube uses the driver most relevant to the host OS. To
     use a different driver, set the `--driver` flag in `minikube start`. For
-    example, to use Docker instead of others or none, run
-    `minikube start --driver=docker`. To persistent configuration so that
+    example, to use others or none instead of Docker, run
+    `minikube start --driver=none`. To persistent configuration so that
     you to run minikube start without explicitly passing i.e. in global scope the
     `--vm-driver docker` flag each time, run:
     `minikube config set vm-driver docker`.
+    - Other start options:
+    `minikube start --force --driver=docker --network-plugin=cni --container-runtime=containerd`
+
     ---
     - In case you want to start minikube with customize resources and want installer
     to automatically select the driver then you can run following command,
@@ -194,7 +259,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 kubectl get nodes
 
 NAME       STATUS   ROLES                  AGE   VERSION
-minikube   Ready    control-plane,master   5m    v1.22.2
+minikube   Ready    control-plane,master   5m    v1.26.1
 ```
 
 - To see the kubectl configuration use the command:
@@ -401,6 +466,19 @@ minikube delete
 
 ```sh
 minikube start
+```
+
+- Remove the Minikube configuration and data directories:
+
+```sh
+rm -rf ~/.minikube
+rm -rf ~/.kube
+```
+
+- If you have installed any Minikube related packages, remove them:
+
+```sh
+sudo apt remove -y conntrack
 ```
 
 - In case you want to start the minikube with higher resource like 8 GB RM and 4

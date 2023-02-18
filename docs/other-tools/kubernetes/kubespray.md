@@ -265,8 +265,8 @@ kubectl version -o yaml
 kubectl get nodes
 
 NAME    STATUS   ROLES                  AGE     VERSION
-node1   Ready    control-plane,master   6m7s    v1.23.3
-node2   Ready    control-plane,master   5m32s   v1.23.3
+node1   Ready    control-plane,master   6m7s    v1.26.1
+node2   Ready    control-plane,master   5m32s   v1.26.1
 
 ```
 

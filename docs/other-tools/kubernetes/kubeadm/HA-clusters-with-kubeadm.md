@@ -621,10 +621,10 @@ This outputs: `kubectl 1.26.1 from Canonical✓ installed`
 kubectl get nodes
 
 NAME      STATUS        ROLES                  AGE     VERSION
-master1   NotReady      control-plane,master   21m     v1.16.2
-master2   NotReady      control-plane,master   15m     v1.16.2
-worker1   Ready         <none>                 9m17s   v1.16.2
-worker2   Ready         <none>                 9m25s   v1.16.2
+master1   NotReady      control-plane,master   21m     v1.26.1
+master2   NotReady      control-plane,master   15m     v1.26.1
+worker1   Ready         <none>                 9m17s   v1.26.1
+worker2   Ready         <none>                 9m25s   v1.26.1
 
 ```
 
@@ -717,10 +717,10 @@ You can now verify your HA cluster running:
 kubectl get nodes
 
 NAME      STATUS   ROLES                    AGE   VERSION
-master1   Ready    control-plane,master     22m   v1.16.2
-master2   Ready    control-plane,master     17m   v1.16.2
-worker1   Ready    <none>                   10m   v1.16.2
-worker2   Ready    <none>                   10m   v1.16.2
+master1   Ready    control-plane,master     22m   v1.26.1
+master2   Ready    control-plane,master     17m   v1.26.1
+worker1   Ready    <none>                   10m   v1.26.1
+worker2   Ready    <none>                   10m   v1.26.1
 
 ```
 

@@ -75,7 +75,7 @@ echo "192.168.0.235 k3s-master" >> /etc/hosts
 hostnamectl set-hostname k3s-master
 ```
 
-In this step, you will install kubelet and kubeadm on the below nodes
+In this step, you will steup the following nodes
 
 - k3s-master
 - k3s-worker1
@@ -176,8 +176,8 @@ kubectl version
 
 !!! note "Note"
     If you want to taint the node i.e. not to deploy pods on this node after
-    installation then run: `kubectl taint nodes <master_node_name> k3s-controlplane=true:NoExecure`
-    i.e. `kubectl taint nodes k3s-master k3s-controlplane=true:NoExecure`
+    installation then run: `kubectl taint nodes <master_node_name> k3s-controlplane=true:NoExecute`
+    i.e. `kubectl taint nodes k3s-master k3s-controlplane=true:NoExecute`
 
 You can check if the master node is working by:
 

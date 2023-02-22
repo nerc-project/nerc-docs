@@ -141,7 +141,7 @@ To snapshot an instance to an image using the CLI, do this:
 
 ##### Using the openstack client commands
 
-    $ openstack volume snapshot create --volume <volume name or uuid> <name of my snapshot>
+`$ openstack volume snapshot create --volume <volume name or uuid> <name of my snapshot>`
 
 For e.g.
 

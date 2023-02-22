@@ -57,7 +57,7 @@ In this example, you can create:
 
 database name: `<YOUR_DB_NAME>`
 database user: `<YOUR_DB_USER_NAME>`
-database password: `<YOUR_DB_USER_PASSWORD>` #pragma: allowlist secret
+database password: `<YOUR_DB_USER_PASSWORD>`
 
 ## Three VMs to run as K3s servers
 

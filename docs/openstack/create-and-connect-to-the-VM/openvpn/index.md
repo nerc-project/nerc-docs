@@ -47,7 +47,7 @@ OpenVPN server on this ubuntu server.
 
     For that, run the script and follow the assistant:
 
-        wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
+      `wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh`
 
       ![Generating first client](images/generate_client_nerc.png)
 

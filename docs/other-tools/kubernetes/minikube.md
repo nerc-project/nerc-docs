@@ -219,8 +219,6 @@ minikube start --driver=docker --container-runtime=containerd
     `minikube config set vm-driver docker`.
     - Other start options:
     `minikube start --force --driver=docker --network-plugin=cni --container-runtime=containerd`
-
-    ---
     - In case you want to start minikube with customize resources and want installer
     to automatically select the driver then you can run following command,
     `minikube start --addons=ingress --cpus=2 --cni=flannel --install-addons=true

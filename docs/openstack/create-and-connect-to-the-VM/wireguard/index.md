@@ -43,7 +43,7 @@ install WireGuard server on this ubuntu server.
 
     For that, run the script and follow the assistant:
 
-        wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
+    `wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh`
 
     ![Generating first client](images/generate_client_nerc.png)
 

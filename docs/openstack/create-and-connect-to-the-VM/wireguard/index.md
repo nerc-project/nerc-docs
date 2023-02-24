@@ -17,6 +17,12 @@ Ubuntu OS image, named "**wireguard_server**" on OpenStack, with
 
 Also, attach a Floating IP to this instance so you can ssh into it from outside.
 
+Create a new Security Group that is listening on **UDP port 51820** as shown below:
+
+![WireGuard Security Rule](images/wireguard_security_rule.png)
+
+All Security Groups attached to the WireGuard Server looks like as shown below:
+
 ![Security Groups](images/security_groups.png)
 
 Finally, you'll want to configure the setting for the remote instances in your

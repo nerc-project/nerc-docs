@@ -293,3 +293,42 @@ will not be able to see the allocation in the Project view nor will they be able
 to access the Allocation detail page.
 
 ![General User View](images/coldfront-general-user-view.png)
+
+## Allocation Renewals
+
+When the requested allocation is approved, it must have an expiration date - which
+is normally 365 days or 1 year from the date it is approved. Automated emails are triggered
+to all users on an allocation when the expiration date is 60 days away, 30 days,
+7 days, and then expired, unless the user turns off notifications on the project.
+
+!!! danger "Very Important"
+    If the allocation renewal isn't processed prior to the original allocation
+    expiration date by the PI or Manager, the allocation will expire and the
+    allocation users will get a notification email letting them know the allocation
+    has expired!
+
+Allocation renewals may not require any additions or changes to the allocation
+attributes form the PI or Manager. By default, if the PI or Manager clicks on
+the 'Activate' button as shown below:
+
+![ColdFront Activate ExpiringAllocation](images/coldfront-activate-expiring-allocation.png)
+
+Then it will prompt for confirmation and allow the admin to review and submit the
+activation request by clicking on 'Submit' button as shown below:
+
+![ColdFront Allocation Renewal Submit](images/coldfront-submit-allocation-activation.png)
+
+Emails are sent to all allocation users letting them know the renewal request has
+been submitted.
+
+Then the allocation status will change to "Renewal Requested" as shown below:
+
+![ColdFront Allocation Renewal Requested](images/coldfront-allocation-renewal-requested.png)
+
+Once the renewal request is approved by NERC admins after reviewing, it will change into
+"Active" status and the expiration date is set to another 365 days as shown below:
+
+![ColdFront Allocation Renewal Successful](images/coldfront-renewed-allocation.png)
+
+Then automated email notification is sent to the PI and all users on the allocation who have turn on
+email notifications.

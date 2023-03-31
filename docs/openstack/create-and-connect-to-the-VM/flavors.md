@@ -89,8 +89,10 @@ with 20 GB root disk.
 | gpu-a100.4    | 4      | $8.136       |
 
 !!! question "NERC IaaS Storage Tiers Cost"
-    **OpenStack Swift (object storage):** Provided from NESE collaboration at $0.006 GB / mo
+    **OpenStack Swift (object storage):** Provided from NESE collaboration at
+    $0.006 GB / mo
 
-    **Cinder (block storage/ volumes):** Provide from NESE collaboration at $0.006 GB / mo
+    **Cinder (block storage/ volumes):** Provide from NESE collaboration at
+    $0.006 GB / mo
 
 ---

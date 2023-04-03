@@ -559,7 +559,7 @@ kubectl get pods --all-namespaces --output wide
 kubectl get pods -A -o wide
 ```
 
-This will shows like below:
+This will show like below:
 
 ![Nginx Pod and Worker](../images/nginx-pod-worker-node.png)
 
@@ -615,7 +615,7 @@ kubectl get pods --all-namespaces --output wide
 kubectl get pods -A -o wide
 ```
 
-This will shows like below:
+This will show like below:
 
 ![Skooner Pod and Worker](../images/skooner-pod-worker-node.png)
 

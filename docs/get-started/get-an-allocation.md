@@ -83,14 +83,18 @@ allocations, and provide information such as publications and grant data. PIs ca
 maintain all their research information under one project or if they require they
 can separate the work into multiple projects.
 
-![Request A New Allocation](images/coldfront-request-new-allocation.png)
+## How to request a new Resource Allocation
+
+### Request A New OpenStack Resource Allocation for OpenStack Project
+
+![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)
 
 !!! warning "Very Important"
     Make sure to select **NERC (OpenStack)** on Resource option and specify
     your expected Units of computing. Be mindful, you can extend your current resource
     allocations on your current project later on.
 
-## Resource Allocation Quotas
+#### Resource Allocation Quotas for OpenStack Project
 
 The amount of quota to start out a resource allocation after approval, can be
 specified using an integer field in the resource allocation request form as shown
@@ -113,6 +117,20 @@ integer value that corresponds to multiple openstack resource quotas. For exampl
     By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security
     Groups** are provided to each approved projects regardless of units of requested
     quota units.
+
+### Request A New OpenShift Resource Allocation for OpenShift project
+
+![Request A New OpenShift Resource Allocation](images/coldfront-request-new-openshift-allocation.png)
+
+!!! warning "Very Important"
+    Make sure to select **NERC-OCP (OpenShift)** on Resource option and specify
+    your expected Units of computing. Be mindful, you can extend your current resource
+    allocations on your current project later on.
+
+!!! info "Information"
+    By default, **2 CPU**, **5GB Ephemeral Storage** and **2GB RAM or Memory** are
+    provided to each approved resource allocation that can be updated as needed
+    later by the PI or project manager(s).
 
 ## Adding and removing User from the Project
 
@@ -224,7 +242,13 @@ resource allocation detail page as show below:
 
 This will bring up the detailed Quota attributes for that project as shown below:
 
-![Request Change Resource Allocation Attributes](images/coldfront-allocation-attributes.png)
+### Request Change Resource Allocation Attributes for OpenStack Project
+
+![Request Change Resource Allocation Attributes for OpenStack Project](images/coldfront-openstack-allocation-attributes.png)
+
+### Request Change Resource Allocation Attributes for OpenShift Project
+
+![Request Change Resource Allocation Attributes for OpenShift Project](images/coldfront-openshift-allocation-attributes.png)
 
 PI or project managers can provide a new value for the individual quota attributes,
 and give justification for the requested changes so that the NERC admin can review
@@ -242,12 +266,23 @@ Once the request is processed by the NERC admin, any user can view that request 
 trails for the project by looking at the "Allocation Change Requests" section that
 looks like below:
 
-![Allocation Change Requests](images/coldfront-allocation-change-requests.png)
+### Allocation Change Requests for OpenStack Project
+
+![Allocation Change Requests for OpenStack Project](images/coldfront-openstack-allocation-change-requests.png)
 
 Any user can click on Action button to view the details about the change request.
-This will shows more details about the change request like below:
+This will show more details about the change request like below:
 
-![Allocation Change Requeste Details](images/coldfront-change-requested-details.png)
+![Allocation Change Request Details for OpenStack Project](images/coldfront-openstack-change-requested-details.png)
+
+### Allocation Change Requests for OpenShift Project
+
+![Allocation Change Requests for OpenShift Project](images/coldfront-openshift-allocation-change-requests.png)
+
+Any user can click on Action button to view the details about the change request.
+This will show more details about the change request like below:
+
+![Allocation Change Request Details for OpenShift Project](images/coldfront-openshift-change-requested-details.png)
 
 ## Adding a new Resource Allocation to the project
 
@@ -256,9 +291,15 @@ can request for another allocation(s) by clicking on the "Request Resource Alloc
 button on the Allocations section of the project details. This will show the page
 where all existing users for the project will be listed on the bottom of the request
 form. PIs can select all or only desired user(s) to request the resource allocations
-to be available on NERC’s OpenStack.
+to be available on NERC's OpenStack or OpenShift projects.
 
-![Adding a new Resource Allocation to the project](images/coldfront-request-a-new-allocation.png)
+### Adding a new Resource Allocation to your OpenStack project
+
+![Adding a new Resource Allocation to your OpenStack project](images/coldfront-request-a-new-openstack-allocation.png)
+
+### Adding a new Resource Allocation to your OpenShift project
+
+![Adding a new Resource Allocation to your OpenShift project](images/coldfront-request-a-new-openshift-allocation.png)
 
 ## General User View
 
@@ -267,4 +308,10 @@ allocation details. If a user is on a project but not a particular allocation, t
 will not be able to see the allocation in the Project view nor will they be able
 to access the Allocation detail page.
 
-![General User View](images/coldfront-general-user-view.png)
+### General User View of OpenStack Resource Allocation
+
+![General User View of OpenStack Resource Allocation](images/coldfront-openstack-allocation-general-user-view.png)
+
+### General User View of OpenShift Resource Allocation
+
+![General User View of OpenShift Resource Allocation](images/coldfront-openshift-allocation-general-user-view.png)

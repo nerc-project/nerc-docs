@@ -1,16 +1,15 @@
-# Access the OpenStack Dashboard
+# Access the NERC's OpenShift Web Console
 
-The OpenStack Dashboard which is a web-based graphical interface, code named
-Horizon, is located at [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org).
+**The NERC's OpenShift Container Platform web console** is a user interface accessible
+from a web browser and is located at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
 
 The NERC Authentication supports CILogon using Keycloak for gateway authentication
 and authorization that provides federated login via your institution accounts and
 it is the recommended authentication method.
 
-Make sure you are selecting "OpenID Connect" (which is selected by default) as
-shown here:
+Make sure you are selecting "**mss-keycloak**" as shown here:
 
-![OpenID Connect](images/openstack_login.png)
+![OpenShift Login with KeyCloak](images/openshift_login.png)
 
 Next, you will be redirected to CILogon welcome page as shown below:
 
@@ -25,7 +24,7 @@ following information from the user:
 - Your username and affiliation from your identity provider
 
 which are required in order to allow access your account on NERC's OpenStack
-dashboard.
+web console.
 
 From the **"Selected Identity Provider"** dropdown option, please select your institution's
 name. If you would like to remember your selected institution name for future
@@ -39,10 +38,14 @@ login page where you need to enter your institutional credentials.
     it points to your selected insitution's identity provider and redirects back
     once authenticated.
 
-Once you successfully authenticate you should see an overview of the resources
-like Compute (instances, VCPUs, RAM, etc.), Volume and Network. You can also
-see usage summary for provided date range.
+Once you successfully authenticate you should see a graphical user interface to
+visualize your project data and perform administrative, management, and troubleshooting
+tasks.
 
-![OpenStack Horizon dashboard](images/horizon_dashboard.png)
+![OpenShift Web Console](images/openshift-web-console.png)
+
+!!! note "Important Note"
+    The default view for the OpenShift Container Platform web console is the **Developer**
+    perspective.
 
 ---

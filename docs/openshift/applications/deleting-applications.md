@@ -8,7 +8,7 @@ You can delete applications created in your project by using the
 To delete an application and all of its associated components using the
 **Topology view** menu in the **Developer** perspective:
 
-1. Go to the [NERC's OpenShift Web Console](https://shift.nerc.mghpcc.org).
+1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
 2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
 

@@ -10,7 +10,7 @@ tasks using both the web console and the command-line tool.
 
 ## Using the Developer perspective on NERC's OpenShift Web Console
 
-1. Go to the [NERC's OpenShift Web Console](https://shift.nerc.mghpcc.org).
+1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
 2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
 

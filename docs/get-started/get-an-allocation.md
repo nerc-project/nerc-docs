@@ -98,7 +98,7 @@ integer value that corresponds to multiple openstack resource quotas. For exampl
 ![Request A New OpenShift Resource Allocation](images/coldfront-request-new-openshift-allocation.png)
 
 !!! warning "Very Important"
-    Make sure to select **NERC (OpenShift)** on Resource option and specify
+    Make sure to select **NERC-OCP (OpenShift)** on Resource option and specify
     your expected Units of computing. Be mindful, you can extend your current resource
     allocations on your current project later on.
 

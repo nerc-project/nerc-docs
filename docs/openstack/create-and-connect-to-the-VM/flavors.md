@@ -60,7 +60,7 @@ and the newer **NVidia A100s technology**.
 The **"gpu-k80"** flavor is provided from Supermicro (2x Intel E5-2620 v3, 24 core,
 128GB memory, 2x NVidia K80s) servers. The base service unit is 25% of a whole
 server, so 1 SU provides 6 vCPU, 32 GB memory, 1 NVidia K80 at a rate of
-$0.190 /  hr of wall time. Multiples of the `gpu-k80` SU are available with
+$0.534 /  hr of wall time. Multiples of the `gpu-k80` SU are available with
 20 GB root disk.
 
 | Flavor        | SUs    | Cost / hr    |
@@ -79,7 +79,7 @@ The **"gpu-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz, 
 core, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base service unit
 is 25% of a whole server, so 1 SU provides 12 vCPU, 96 GB memory, 1 NVidia A100
-at a rate of $0.537 / hr of wall time. Multiples of the `gpu-a100` SU are available
+at a rate of $2.034 / hr of wall time. Multiples of the `gpu-a100` SU are available
 with 20 GB root disk.
 
 | Flavor        | SUs    | Cost / hr    |

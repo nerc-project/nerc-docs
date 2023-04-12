@@ -267,11 +267,11 @@ script with the `K3S_URL` and `K3S_TOKEN` environment variables. Here is an exam
 showing how to join a worker node:
 
 ```sh
-curl -sfL https://get.k3s.io | K3S_URL=https://<Master_IP>:6443 \
+curl -sfL https://get.k3s.io | K3S_URL=https://<Master-Internal-IP>:6443 \
 K3S_TOKEN=<Join_Token> sh -
 ```
 
-Where <Master_IP> is the Internal IP of the master node and <Join_Token>  is the
+Where <Master-Internal-IP> is the Internal IP of the master node and <Join_Token>  is the
 token obtained from the master node.
 
 For example,

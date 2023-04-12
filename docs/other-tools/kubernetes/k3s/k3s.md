@@ -247,7 +247,7 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 You will then obtain a token that looks like:
 
 ```sh
-K1097aace305b0c1077fc854547f34a598d23330ff047ddeed8beb3c428b38a1ca7::server:6cc9fbb6c5c9de96f37fb14b5535c778
+K1097aace305b0c1077fc854547f34a598d2::server:6cc9fbb6c5c9de96f37fb14b8
 ```
 
 ---
@@ -271,8 +271,8 @@ curl -sfL https://get.k3s.io | K3S_URL=https://<Master-Internal-IP>:6443 \
 K3S_TOKEN=<Join_Token> sh -
 ```
 
-Where <Master-Internal-IP> is the Internal IP of the master node and <Join_Token>  is the
-token obtained from the master node.
+Where `<Master-Internal-IP>` is the Internal IP of the master node and `<Join_Token>`
+is the token obtained from the master node.
 
 For example,
 
@@ -406,7 +406,8 @@ but you can install them separately.
 
 - Install **Helm** Commandline tool on K3s:
 
-i. Download the latest version of Helm commandline tool using `wget` from [this page](https://github.com/helm/helm/releases).
+i. Download the latest version of Helm commandline tool using `wget` from
+[this page](https://github.com/helm/helm/releases).
 
 ```sh
 wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
@@ -418,7 +419,8 @@ ii. Unpack it:
 tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
 ```
 
-iii. Find the helm binary in the unpacked directory, and move it to its desired destination
+iii. Find the helm binary in the unpacked directory, and move it to its desired
+destination
 
 ```sh
 mv linux-amd64/helm /usr/bin/helm

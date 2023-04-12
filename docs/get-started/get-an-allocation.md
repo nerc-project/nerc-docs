@@ -263,9 +263,9 @@ your resource allocation for the selected project.
     attributes they want to change others they can **left blank** so that will not
     get changed!
 
-Once the request is processed by the NERC admin, any user can view that request change
-trails for the project by looking at the "Allocation Change Requests" section that
-looks like below:
+Once the request is processed by the NERC admin, any user can view that request
+change trails for the project by looking at the "Allocation Change Requests" section
+that looks like below:
 
 ![Allocation Change Requests](images/coldfront-allocation-change-requests.png)
 
@@ -297,9 +297,10 @@ to access the Allocation detail page.
 ## Allocation Renewals
 
 When the requested allocation is approved, it must have an expiration date - which
-is normally 365 days or 1 year from the date it is approved. Automated emails are triggered
-to all users on an allocation when the expiration date is 60 days away, 30 days,
-7 days, and then expired, unless the user turns off notifications on the project.
+is normally 365 days or 1 year from the date it is approved. Automated emails are
+triggered to all users on an allocation when the expiration date is 60 days away,
+30 days, 7 days, and then expired, unless the user turns off notifications on the
+project.
 
 !!! danger "Very Important"
     If the allocation renewal isn't processed prior to the original allocation
@@ -325,10 +326,11 @@ Then the allocation status will change to "Renewal Requested" as shown below:
 
 ![ColdFront Allocation Renewal Requested](images/coldfront-allocation-renewal-requested.png)
 
-Once the renewal request is approved by NERC admins after reviewing, it will change into
-"Active" status and the expiration date is set to another 365 days as shown below:
+Once the renewal request is approved by NERC admins after reviewing, it will change
+into "Active" status and the expiration date is set to another 365 days as shown
+below:
 
 ![ColdFront Allocation Renewal Successful](images/coldfront-renewed-allocation.png)
 
-Then automated email notification is sent to the PI and all users on the allocation who have turn on
-email notifications.
+Then automated email notification is sent to the PI and all users on the allocation
+who have turn on email notifications.

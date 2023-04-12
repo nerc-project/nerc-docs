@@ -1,6 +1,6 @@
 # Dashboard Overview
 
-When you logged-in, you will redirected to the Compute panel which is under the
+When you logged-in, you will be redirected to the Compute panel which is under the
 Project tab. In the top bar, you can see the two small tabs: "Project" and "Identity".
 
 Beneath that you can see six panels in larger print: "Project", "Compute",

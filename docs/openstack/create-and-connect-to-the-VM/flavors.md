@@ -9,6 +9,10 @@ configuration for a server.
 NERC offers the following flavors based on our Infrastructure-as-a-Service
 (IaaS) - OpenStack offerings (Tiers of Service).
 
+!!! tip "Pro Tip"
+
+    Choose a flavor for your instance from the available Tier that suits your requirements, use-cases, and budget when launching a VM.
+
 ### 1. Standard Compute Tier
 
 The standard compute flavor **"cpu-a"** is provided from Lenovo SD530 (2x Intel 8268
@@ -18,11 +22,11 @@ available with 20 GB root disk, and the price scales accordingly:
 
 | Flavor        | SUs    | Cost / hr    |
 |---------------|--------|--------------|
-| cpu-a.1       | 1      | $0.016       |
-| cpu-a.2       | 2      | $0.032       |
-| cpu-a.4       | 4      | $0.064       |
-| cpu-a.8       | 8      | $0.128       |
-| cpu-a.16      | 16     | $0.256       |
+| cpu-a.1       | 1      | $0.018       |
+| cpu-a.2       | 2      | $0.036       |
+| cpu-a.4       | 4      | $0.072       |
+| cpu-a.8       | 8      | $0.144       |
+| cpu-a.16      | 16     | $0.288       |
 
 ### 2. Memory Optimized Tier
 
@@ -33,11 +37,11 @@ available with 20 GB root disk, and the price scales accordingly:
 
 | Flavor        | SUs    | Cost / hr    |
 |---------------|--------|--------------|
-| mem-a.1       | 1      | $0.030       |
-| mem-a.2       | 2      | $0.060       |
-| mem-a.4       | 4      | $0.120       |
-| mem-a.8       | 8      | $0.240       |
-| mem-a.16      | 16     | $0.480       |
+| mem-a.1       | 1      | $0.036       |
+| mem-a.2       | 2      | $0.072       |
+| mem-a.4       | 4      | $0.144       |
+| mem-a.8       | 8      | $0.288       |
+| mem-a.16      | 16     | $0.576       |
 
 ### 3. GPU Tier
 
@@ -56,14 +60,14 @@ and the newer **NVidia A100s technology**.
 The **"gpu-k80"** flavor is provided from Supermicro (2x Intel E5-2620 v3, 24 core,
 128GB memory, 2x NVidia K80s) servers. The base service unit is 25% of a whole
 server, so 1 SU provides 6 vCPU, 32 GB memory, 1 NVidia K80 at a rate of
-$0.190 /  hr of wall time. Multiples of the `gpu-k80` SU are available with
+$0.534 /  hr of wall time. Multiples of the `gpu-k80` SU are available with
 20 GB root disk.
 
 | Flavor        | SUs    | Cost / hr    |
 |---------------|--------|--------------|
-| gpu-k80.1     | 1      | $0.190       |
-| gpu-k80.2     | 2      | $0.380       |
-| gpu-k80.4     | 4      | $0.760       |
+| gpu-k80.1     | 1      | $0.534       |
+| gpu-k80.2     | 2      | $1.068       |
+| gpu-k80.4     | 4      | $2.136       |
 
 !!! warning "The `gpu-k80` flavor will be available soon."
 
@@ -75,17 +79,20 @@ The **"gpu-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz, 
 core, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base service unit
 is 25% of a whole server, so 1 SU provides 12 vCPU, 96 GB memory, 1 NVidia A100
-at a rate of $0.537 / hr of wall time. Multiples of the `gpu-a100` SU are available
+at a rate of $2.034 / hr of wall time. Multiples of the `gpu-a100` SU are available
 with 20 GB root disk.
 
 | Flavor        | SUs    | Cost / hr    |
 |---------------|--------|--------------|
-| gpu-a100.1    | 1      | $0.537       |
-| gpu-a100.2    | 2      | $1.074       |
-| gpu-a100.4    | 4      | $2.148       |
+| gpu-a100.1    | 1      | $2.034       |
+| gpu-a100.2    | 2      | $4.068       |
+| gpu-a100.4    | 4      | $8.136       |
 
-!!! tip "Pro Tip"
+!!! question "NERC IaaS Storage Tiers Cost"
+    **OpenStack Swift (object storage):** Provided from NESE collaboration at
+    $0.006 GB / mo
 
-    Choose a flavor for your instance that suits your requirements, use-cases, and budget when launching a VM.
+    **Cinder (block storage/ volumes):** Provide from NESE collaboration at
+    $0.006 GB / mo
 
 ---

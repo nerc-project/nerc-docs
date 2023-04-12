@@ -1,7 +1,8 @@
 # Web Console Overview
 
-The NERC's OpenShift Container Platform web console a web-based user interface for
-performing common management tasks such as building and deploying applications.
+The NERC's OpenShift Container Platform web console a web-based user interface
+which can be browsed from [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
+for performing common management tasks such as building and deploying applications.
 It provides tools to manage your application code and data, access to it.
 
 Below is a sample screenshot of the web interface with labels describing different

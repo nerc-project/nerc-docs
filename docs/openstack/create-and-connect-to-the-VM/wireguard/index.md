@@ -17,11 +17,13 @@ Ubuntu OS image, named "**wireguard_server**" on OpenStack, with
 
 Also, attach a Floating IP to this instance so you can ssh into it from outside.
 
-Create a new Security Group that is listening on **UDP port 51820** as shown below:
+Create a new Security Group i.e. "**wireguard**" that is listening on
+**UDP port 51820** as shown below:
 
 ![WireGuard Security Rule](images/wireguard_security_rule.png)
 
-All Security Groups attached to the WireGuard Server looks like as shown below:
+The Security Groups attached to the WireGuard server includes "**default**",
+"**ssh_only**" and "**wireguard**". It should look similar to the image shown below:
 
 ![Security Groups](images/security_groups.png)
 
@@ -83,9 +85,7 @@ even completely uninstall WireGuard.
 
 For this, run the script and follow the assistant:
 
-```sh
-wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
-```
+`wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh`
 
 ![Second Client Generate](images/second_client_generate.png)
 

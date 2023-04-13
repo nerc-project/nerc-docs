@@ -52,7 +52,7 @@ is 1.
     ![VM Launch with persistent Volume](images/persistent_volume.png)
 
     **More details about available bootable images can be found [here](images.md).
-    Customers can also upload their own custom images, as demonstrated in
+    Customers can also upload their own custom images, as documented in
     [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
 
 - **Flavor** tab: Specify the size of the instance to launch. Choose `cpu-a.4`
@@ -100,8 +100,8 @@ Metadata:** tab: Ignore these tabs for now.
 
 !!! info "How to use 'Configuration' tab"
     If you want to specify a customization script that runs after your instance
-    launches then you can write those custom script inside "**Customization Script**"
-    box. For example:
+    launches then you can write those custom script inside the
+    "**Customization Script**" text area. For example:
     ![VM Launch Instance Configuration Script](images/instance_configuration.png)
 
 You are now ready to launch your VM - go ahead and click "Launch Instance"!

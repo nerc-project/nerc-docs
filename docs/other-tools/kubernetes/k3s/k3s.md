@@ -75,7 +75,7 @@ echo "192.168.0.235 k3s-master" >> /etc/hosts
 hostnamectl set-hostname k3s-master
 ```
 
-In this step, you will steup the following nodes
+In this step, you will setup the following nodes
 
 - k3s-master
 - k3s-worker1

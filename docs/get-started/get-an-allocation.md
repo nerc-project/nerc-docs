@@ -154,7 +154,7 @@ first name, last name etc. as shown below:
     When adding a user to your project you can optionally designate them as a
     "Manager" by selecting their role using the drop down next to their email.
     Read more about user roles
-    [here](http://localhost:8000/nerc-docs/get-started/get-an-allocation/#user-roles).
+    [here](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#user-roles).
 
 Thus, found user(s) can be selected and assigned directly to the available resource
 allocation(s) on the given project using this interface. While adding the users,
@@ -220,11 +220,11 @@ Then toggle the "Role" from User to Manager:
 ![User Details](images/coldfront-user-details.png)
 
 !!! warning "Very Important"
-    Make sure to click the "Update" button to save the change. This delegation of
-    "Manager" role can be done when adding a user to your project you can optionally
-    designate them as a "Manager" by selecting their role using the drop down next
-    to their email as described
-    [here](http://localhost:8000/nerc-docs/get-started/get-an-allocation/#adding-and-removing-user-from-the-project).
+    Make sure to click the "Update" button to save the change.
+
+    This delegation of "Manager" role can be done when adding a user to your project.
+    You can optionally designate them as a "Manager" by selecting their role using
+    the drop down next to their email as described [here](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#adding-and-removing-user-from-the-project).
 
 ## PI and Manager Allocation View
 
@@ -356,7 +356,7 @@ project.
     has expired!
 
 Allocation renewals may not require any additions or changes to the allocation
-attributes form the PI or Manager. By default, if the PI or Manager clicks on
+attributes from the PI or Manager. By default, if the PI or Manager clicks on
 the 'Activate' button as shown below:
 
 ![ColdFront Activate ExpiringAllocation](images/coldfront-activate-expiring-allocation.png)
@@ -373,13 +373,13 @@ Then the allocation status will change to "Renewal Requested" as shown below:
 
 ![ColdFront Allocation Renewal Requested](images/coldfront-allocation-renewal-requested.png)
 
-Once the renewal request is approved by NERC admins after reviewing, it will change
+Once the renewal request is reviewed and approved by NERC admins, it will change
 into "Active" status and the expiration date is set to another 365 days as shown
 below:
 
 ![ColdFront Allocation Renewal Successful](images/coldfront-renewed-allocation.png)
 
-Then automated email notification is sent to the PI and all users on the allocation
-who have turn on email notifications.
+Then an automated email notification will be sent to the PI and all users on the
+allocation that have enabled email notifications.
 
 ---

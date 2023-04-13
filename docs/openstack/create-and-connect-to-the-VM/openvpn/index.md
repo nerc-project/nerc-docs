@@ -21,11 +21,16 @@ and "**ssh_only**" Security Groups attached to it.
 
 Also, attach a Floating IP to this instance so you can ssh into it from outside.
 
-Create a new Security Group that is listening on **UDP port 1194** as shown below:
+Create a new Security Group i.e. "**openvpn**" that is listening on
+**UDP port 1194** as shown below:
 
 ![OpenVPN Security Rule](images/openvpn_security_rule.png)
 
-All Security Groups attached to the OpenVPN Server looks like as shown below:
+The Security Groups attached to the OpenVPN server should look similar to the image
+below:
+
+The Security Groups attached to the OpenVPN server includes "**default**",
+"**ssh_only**" and "**openvpn**". It should look similar to the image shown below:
 
 ![Security Groups](images/security_groups.png)
 
@@ -82,9 +87,7 @@ even completely uninstall OpenVPN.
 
 For this, run the script and follow the assistant:
 
-```sh
-wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
-```
+`wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh`
 
 ![Second Client Generate](images/second_client_generate.png)
 

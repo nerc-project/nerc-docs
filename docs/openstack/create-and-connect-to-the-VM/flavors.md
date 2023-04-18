@@ -17,7 +17,7 @@ NERC offers the following flavors based on our Infrastructure-as-a-Service
 
 The standard compute flavor **"cpu-a"** is provided from Lenovo SD530 (2x Intel 8268
 2.9 GHz, 48 core, 384 GB memory) server. The base service unit (SU) is 1 vCPU, 2
-GB memory at a rate of $0.016 / hr of wall time. Multiples of the `cpu-a` SU are
+GB memory at a rate of $0.018 / hr of wall time. Multiples of the `cpu-a` SU are
 available with 20 GB root disk, and the price scales accordingly:
 
 | Flavor        | SUs    | Cost / hr    |
@@ -32,7 +32,7 @@ available with 20 GB root disk, and the price scales accordingly:
 
 The memory optimized flavor **"mem-a"** is provided from the same servers at **"cpu-a"**
 but with 8 GB of memory per core. The base service unit (SU) is 1 vCPU, 8 GB
-memory at a rate of $0.030 / hr of wall time. Multiples of the `mem-a` SU are
+memory at a rate of $0.036 / hr of wall time. Multiples of the `mem-a` SU are
 available with 20 GB root disk, and the price scales accordingly:
 
 | Flavor        | SUs    | Cost / hr    |

@@ -17,6 +17,14 @@ Ubuntu OS image, named "**wireguard_server**" on OpenStack, with
 
 Also, attach a Floating IP to this instance so you can ssh into it from outside.
 
+Create a new Security Group i.e. "**wireguard**" that is listening on
+**UDP port 51820** as shown below:
+
+![WireGuard Security Rule](images/wireguard_security_rule.png)
+
+The Security Groups attached to the WireGuard server includes "**default**",
+"**ssh_only**" and "**wireguard**". It should look similar to the image shown below:
+
 ![Security Groups](images/security_groups.png)
 
 Finally, you'll want to configure the setting for the remote instances in your
@@ -43,9 +51,7 @@ install WireGuard server on this ubuntu server.
 
     For that, run the script and follow the assistant:
 
-    ```sh
-    wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
-    ```
+    `wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh`
 
     ![Generating first client](images/generate_client_nerc.png)
 
@@ -79,9 +85,7 @@ even completely uninstall WireGuard.
 
 For this, run the script and follow the assistant:
 
-```sh
-wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
-```
+`wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh`
 
 ![Second Client Generate](images/second_client_generate.png)
 
@@ -338,5 +342,13 @@ sudo wireguard --config /etc/wireguard/client.conf
 ```sh
 sudo wireguard --config nerc.conf
 ```
+
+## To test the connection
+
+Once you are connected to the WireGuard server, you can run commands like shown
+below in your terminal to connect to the private instances: `ssh ubuntu@192.168.
+0.40 -A -i cloud.key`
+
+![SSH VPN Server](images/ssh_vpn_server.png)
 
 ---

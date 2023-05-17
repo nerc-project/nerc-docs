@@ -113,10 +113,10 @@ service/kubernetes  ClusterIP  10.96.0.1   <none>       443/TCP  5m25s
 kubectl get nodes
 
 NAME                             STATUS  ROLES                AGE    VERSION
-k8s-kind-cluster1-control-plane  Ready  control-plane,master  5m26s  v1.21.11
+k8s-kind-cluster1-control-plane  Ready  control-plane,master  5m26s  v1.26.1
 ```
 
-### Deleting a Cluster
+## Deleting a Cluster
 
 If you created a cluster with kind create cluster then deleting is equally simple:
 

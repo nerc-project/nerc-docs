@@ -57,7 +57,7 @@ In this example, you can create:
 
 database name: `<YOUR_DB_NAME>`
 database user: `<YOUR_DB_USER_NAME>`
-database password: `<YOUR_DB_USER_PASSWORD>` #pragma: allowlist secret
+database password: `<YOUR_DB_USER_PASSWORD>`
 
 ## Three VMs to run as K3s servers
 
@@ -214,7 +214,7 @@ Then you can sign in at this URL using your *token* we got in the previous step:
 
 `http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
 
-### Deploying Nginx using deployment
+## Deploying Nginx using deployment
 
 - Create a deployment `nginx.yaml`:
 

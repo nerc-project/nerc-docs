@@ -146,7 +146,11 @@ other K8s nodes .i.e. kubspray_master(192.168.0.130), kubspray_worker1(192.168.0
 declare -a IPS=(192.168.0.130 192.168.0.32)
 CONFIG_FILE=inventory/mycluster/hosts.yml python3 \
     contrib/inventory_builder/inventory.py ${IPS[@]}
+```
 
+This outputs:
+
+```sh
 DEBUG: Adding group all
 DEBUG: Adding group kube_control_plane
 DEBUG: Adding group kube_node
@@ -243,7 +247,7 @@ ansible-playbook -i inventory/mycluster/hosts.yml --become --become-user=root cl
 snap install kubectl --classic
 ```
 
-This outputs: `kubectl 1.22.2 from Canonical✓ installed`
+This outputs: `kubectl 1.26.1 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
@@ -261,14 +265,14 @@ kubectl version -o yaml
 kubectl get nodes
 
 NAME    STATUS   ROLES                  AGE     VERSION
-node1   Ready    control-plane,master   6m7s    v1.23.3
-node2   Ready    control-plane,master   5m32s   v1.23.3
+node1   Ready    control-plane,master   6m7s    v1.26.1
+node2   Ready    control-plane,master   5m32s   v1.26.1
 
 ```
 
 ---
 
-### Deploy A [Hello Minikube Application](minikube.md#deploy-a-hello-minikube-application)
+## Deploy A [Hello Minikube Application](minikube.md#deploy-a-hello-minikube-application)
 
 - Use the kubectl create command to create a Deployment that manages a Pod. The Pod
 runs a Container based on the provided Docker image.
@@ -305,6 +309,7 @@ hello-minikube   LoadBalancer   10.233.35.126   <pending>     8080:30723/TCP   4
 
 ```sh
 kubectl port-forward svc/hello-minikube 30723:8080
+
 Forwarding from [::1]:30723 -> 8080
 Forwarding from 127.0.0.1:30723 -> 8080
 Handling connection for 30723
@@ -314,14 +319,11 @@ Handling connection for 30723
 Go to browser, visit `http://<Master-Floating-IP>:8080`
 i.e. <http://140.247.152.235:8080/> to check the hello minikube default page.
 
-### Clean up
+## Clean up
 
 Now you can clean up the app resources you created in your cluster:
 
 ```sh
-kubectl delete service my-nginx
-kubectl delete deployment my-nginx
-
 kubectl delete service hello-minikube
 kubectl delete deployment hello-minikube
 ```

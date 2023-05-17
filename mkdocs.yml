@@ -77,7 +77,6 @@ nav:
           - K8s Flavors Comparision: other-tools/kubernetes/comparisons.md
           - Development environment:
               - Minikube: other-tools/kubernetes/minikube.md
-              - Minishift: other-tools/kubernetes/minishift.md
               - Kind: other-tools/kubernetes/kind.md
               - MicroK8s: other-tools/kubernetes/microk8s.md
               - K3s:

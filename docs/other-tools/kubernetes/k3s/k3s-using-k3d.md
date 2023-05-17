@@ -42,13 +42,14 @@ systemctl restart docker
 ## Install **kubectl**
 
 - Install kubectl binary
-• **kubectl**: the command line util to talk to your cluster.
+
+    • **kubectl**: the command line util to talk to your cluster.
 
 ```sh
 snap install kubectl --classic
 ```
 
-This outputs: `kubectl 1.22.2 from Canonical✓ installed`
+This outputs: `kubectl 1.26.1 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 

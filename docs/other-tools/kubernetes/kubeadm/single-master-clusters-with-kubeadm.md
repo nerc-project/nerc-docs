@@ -412,9 +412,9 @@ This node has joined the cluster:
 kubectl get nodes
 
 NAME      STATUS        ROLES                  AGE     VERSION
-master    NotReady      control-plane,master   21m     v1.16.2
-worker1   Ready         <none>                 9m17s   v1.16.2
-worker2   Ready         <none>                 9m25s   v1.16.2
+master    NotReady      control-plane,master   21m     v1.26.1
+worker1   Ready         <none>                 9m17s   v1.26.1
+worker2   Ready         <none>                 9m25s   v1.26.1
 
 ```
 
@@ -507,9 +507,9 @@ You can now verify your HA cluster running:
 kubectl get nodes
 
 NAME      STATUS   ROLES                    AGE   VERSION
-master    Ready    control-plane,master     22m   v1.16.2
-worker1   Ready    <none>                   10m   v1.16.2
-worker2   Ready    <none>                   10m   v1.16.2
+master    Ready    control-plane,master     22m   v1.26.1
+worker1   Ready    <none>                   10m   v1.26.1
+worker2   Ready    <none>                   10m   v1.26.1
 
 ```
 

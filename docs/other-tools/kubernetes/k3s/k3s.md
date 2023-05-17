@@ -75,7 +75,7 @@ echo "192.168.0.235 k3s-master" >> /etc/hosts
 hostnamectl set-hostname k3s-master
 ```
 
-In this step, you will install kubelet and kubeadm on the below nodes
+In this step, you will setup the following nodes
 
 - k3s-master
 - k3s-worker1
@@ -176,8 +176,8 @@ kubectl version
 
 !!! note "Note"
     If you want to taint the node i.e. not to deploy pods on this node after
-    installation then run: `kubectl taint nodes <master_node_name> k3s-controlplane=true:NoExecure`
-    i.e. `kubectl taint nodes k3s-master k3s-controlplane=true:NoExecure`
+    installation then run: `kubectl taint nodes <master_node_name> k3s-controlplane=true:NoExecute`
+    i.e. `kubectl taint nodes k3s-master k3s-controlplane=true:NoExecute`
 
 You can check if the master node is working by:
 
@@ -247,7 +247,7 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 You will then obtain a token that looks like:
 
 ```sh
-K1097aace305b0c1077fc854547f34a598d23330ff047ddeed8beb3c428b38a1ca7::server:6cc9fbb6c5c9de96f37fb14b5535c778
+K1097aace305b0c1077fc854547f34a598d2::server:6cc9fbb6c5c9de96f37fb14b8
 ```
 
 ---
@@ -267,12 +267,12 @@ script with the `K3S_URL` and `K3S_TOKEN` environment variables. Here is an exam
 showing how to join a worker node:
 
 ```sh
-curl -sfL https://get.k3s.io | K3S_URL=https://<Master_IP>:6443 \
+curl -sfL https://get.k3s.io | K3S_URL=https://<Master-Internal-IP>:6443 \
 K3S_TOKEN=<Join_Token> sh -
 ```
 
-Where <Master_IP> is the Internal IP of the master node and <Join_Token>  is the
-token obtained from the master node.
+Where `<Master-Internal-IP>` is the Internal IP of the master node and `<Join_Token>`
+is the token obtained from the master node.
 
 For example,
 
@@ -322,7 +322,7 @@ to it.
 
 ---
 
-### Deploying Nginx using deployment
+## Deploying Nginx using deployment
 
 - Create a deployment `nginx.yaml` on master node
 
@@ -399,14 +399,15 @@ sudo k3s kubectl delete deploy mysite
     i.e. `sudo cp nginx.yaml /var/lib/rancher/k3s/server/manifests/.`. This will
     automatically deploy the newly copied deployment on your cluster.
 
-### Deploy Addons to K3s
+## Deploy Addons to K3s
 
 K3s is a lightweight kubernetes tool that doesn’t come packaged with all the tools
 but you can install them separately.
 
 - Install **Helm** Commandline tool on K3s:
 
-i. Download the latest version of Helm commandline tool using `wget` from [this page](https://github.com/helm/helm/releases).
+i. Download the latest version of Helm commandline tool using `wget` from
+[this page](https://github.com/helm/helm/releases).
 
 ```sh
 wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
@@ -418,7 +419,8 @@ ii. Unpack it:
 tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
 ```
 
-iii. Find the helm binary in the unpacked directory, and move it to its desired destination
+iii. Find the helm binary in the unpacked directory, and move it to its desired
+destination
 
 ```sh
 mv linux-amd64/helm /usr/bin/helm
@@ -463,7 +465,7 @@ helm repo update
 
 ---
 
-### Deploy A Sample Nginx Application using **Helm**
+## Deploy A Sample Nginx Application using **Helm**
 
 **Nginx** can be used as a web proxy to expose [ingress](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx)
 web traffic routes in and out of the cluster.
@@ -491,7 +493,7 @@ nginx.. 1/1  Running 0        19m  10.42.1.5 k3s-worker1   <none>      <none>
 - We have successfully deployed nginx web-proxy on k3s. Go to browser, visit `http://<Master-Floating-IP>`
 i.e. <http://128.31.25.246> to check the nginx default page.
 
-### Upgrade K3s Using the Installation Script
+## Upgrade K3s Using the Installation Script
 
 To upgrade K3s from an older version you can re-run the installation script using
 the same flags, for example:
@@ -526,7 +528,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" \
 !!! note "Note"
     For more about on **"How to use flags and environment variables"** [read this](https://rancher.com/docs/k3s/latest/en/installation/install-options/how-to-flags/).
 
-### Restarting K3s
+## Restarting K3s
 
 Restarting K3s is supported by the installation script for `systemd` and `OpenRC`.
 
@@ -558,7 +560,7 @@ To restart agents manually:
 sudo service k3s-agent restart
 ```
 
-### Uninstalling
+## Uninstalling
 
 If you installed `K3s` with the help of the `install.sh` script, an uninstall script
 is generated during installation. The script is created on your master node at

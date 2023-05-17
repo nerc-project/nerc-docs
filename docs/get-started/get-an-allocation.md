@@ -150,6 +150,12 @@ first name, last name etc. as shown below:
 
 ![Add User(s) To Project](images/coldfront-add-user-to-project.png)
 
+!!! warning "Delegating user as 'Manager'"
+    When adding a user to your project you can optionally designate them as a
+    "Manager" by selecting their role using the drop down next to their email.
+    Read more about user roles
+    [here](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#user-roles).
+
 Thus, found user(s) can be selected and assigned directly to the available resource
 allocation(s) on the given project using this interface. While adding the users,
 their Role also can be selected from the dropdown options as either User or Manager.
@@ -164,17 +170,29 @@ Removing Users from the Project is straightforward by just clicking on the
 PI or project managers can select the user(s) and then click on the "Remove Selected
 Users From Project" button.
 
+## Notifications
+
+All users on a project will receive notifications about allocations including
+reminders of upcoming expiration dates and status changes. Users may uncheck
+the box next to their username to turn off notifications. Managers and PIs on
+the project are not able to turn off notifications.
+
+![User Notifications](images/coldfront-users-notification.png)
+
 ## User Roles
 
 Access to ColdFront is role based so users see a read-only view of the allocation
 details for any allocations they are on. PIs see the same allocation details as general
 users and can also add project users to the allocation if they're not already on
 it. Even on the first time, PIs add any user to the project as the User role. Later
-PI or project managers can upgrade users on their project to the 'manager' role.
+PI or project managers can delegate users on their project to the 'manager' role.
 This allows multiple managers on the same project. This provides the user with the
 same access and abilities as the PI. The only things a PI can do that a manager can't,
 is create a new project or archive a project. All other project related tasks that
-a PI can do, a manager on that project can accomplish as well.
+a PI can do, a manager on that project can accomplish as well. A "Manager" is a user
+who has the same permissions as the PI to add/remove users, request/renew allocations,
+add/remove project info such as grants, publications, and research output.
+Managers may also complete the annual project review.
 
 General User Accounts are not able to create/update projects and request Resource
 Allocations. Instead, these accounts must be associated with a Project that has
@@ -187,7 +205,10 @@ level. PIs also have the 'manager' status on a project. Managers can't turn off 
 notifications. This ensures they continue to get allocation expiration notification
 emails.
 
-## Adding User to Manager Role
+## Delegating User to Manager Role
+
+You can also modify a users role at any time by clicking on the Edit button next
+to the user's name.
 
 To change a user's role to 'manager' click on the edit icon next to the user's name
 on the Project Detail page:
@@ -200,6 +221,10 @@ Then toggle the "Role" from User to Manager:
 
 !!! warning "Very Important"
     Make sure to click the "Update" button to save the change.
+
+    This delegation of "Manager" role can be done when adding a user to your project.
+    You can optionally designate them as a "Manager" by selecting their role using
+    the drop down next to their email as described [here](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#adding-and-removing-user-from-the-project).
 
 ## PI and Manager Allocation View
 
@@ -266,9 +291,9 @@ Once the request is processed by the NERC admin, any user can view that request 
 trails for the project by looking at the "Allocation Change Requests" section that
 looks like below:
 
-### Allocation Change Requests for OpenStack Project
-
 ![Allocation Change Requests for OpenStack Project](images/coldfront-openstack-allocation-change-requests.png)
+
+### Allocation Change Requests for OpenStack Project
 
 Any user can click on Action button to view the details about the change request.
 This will show more details about the change request like below:
@@ -315,3 +340,46 @@ to access the Allocation detail page.
 ### General User View of OpenShift Resource Allocation
 
 ![General User View of OpenShift Resource Allocation](images/coldfront-openshift-allocation-general-user-view.png)
+
+## Allocation Renewals
+
+When the requested allocation is approved, it must have an expiration date - which
+is normally 365 days or 1 year from the date it is approved. Automated emails are
+triggered to all users on an allocation when the expiration date is 60 days away,
+30 days, 7 days, and then expired, unless the user turns off notifications on the
+project.
+
+!!! danger "Very Important"
+    If the allocation renewal isn't processed prior to the original allocation
+    expiration date by the PI or Manager, the allocation will expire and the
+    allocation users will get a notification email letting them know the allocation
+    has expired!
+
+Allocation renewals may not require any additions or changes to the allocation
+attributes from the PI or Manager. By default, if the PI or Manager clicks on
+the 'Activate' button as shown below:
+
+![ColdFront Activate ExpiringAllocation](images/coldfront-activate-expiring-allocation.png)
+
+Then it will prompt for confirmation and allow the admin to review and submit the
+activation request by clicking on 'Submit' button as shown below:
+
+![ColdFront Allocation Renewal Submit](images/coldfront-submit-allocation-activation.png)
+
+Emails are sent to all allocation users letting them know the renewal request has
+been submitted.
+
+Then the allocation status will change to "Renewal Requested" as shown below:
+
+![ColdFront Allocation Renewal Requested](images/coldfront-allocation-renewal-requested.png)
+
+Once the renewal request is reviewed and approved by NERC admins, it will change
+into "Active" status and the expiration date is set to another 365 days as shown
+below:
+
+![ColdFront Allocation Renewal Successful](images/coldfront-renewed-allocation.png)
+
+Then an automated email notification will be sent to the PI and all users on the
+allocation that have enabled email notifications.
+
+---

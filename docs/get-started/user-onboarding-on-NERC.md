@@ -36,14 +36,16 @@ by submitting: [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-reque
 and add user(s) to the project - Other **general user(s)** can also see the project(s)
 once they are added to a project via: [https://coldfront.mss.mghpcc.org](https://coldfront.mss.mghpcc.org/).
 
-5. **PI or project Manager** can request resource allocation for the newly added
-project and select which user(s) can use the requested allocation.*
+5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**
+or **NERC-OCP (OpenShift)** for the newly added project and select which user(s)
+can use the requested allocation.
 
 6. Wait until the requested resource allocation gets approved by the **NERC’s admin**.
 
-7. Once **approved**, **PI and the corresponding project users** can go to NERC
-Openstack horizon web interface:
-[https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org) and they can start
-using the NERC’s OpenStack resources based on the project **quotas**.
+7. Once **approved**, **PI and the corresponding project users** can go to either
+NERC Openstack horizon web interface: [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org)
+or NERC OpenShift web console: [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
+based on approved **Resource Type** and they can start using the NERC’s resources
+based on the approved project **quotas**.
 
 ---

@@ -125,7 +125,7 @@ like below:
     tasks for you.
     - To Reset the infrastructure to a clean state: `microk8s reset`
 
-### Deploy a Container using the Kubernetes-Dashboard
+## Deploy a Container using the Kubernetes-Dashboard
 
 Click on the **+ button** in the top left corner of the main window. On the resulting
 page, click Create from form and then fill out the necessary information as shown
@@ -150,7 +150,7 @@ tns    LoadBalancer   10.152.183.90   <pending>     8080:30012/TCP   14m
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
 i.e. <http://128.31.26.4:30012/> to check the nginx default page.
 
-### Deploy A Sample Nginx Application
+## Deploy A Sample Nginx Application
 
 - Create an alias:
 
@@ -180,7 +180,7 @@ my-nginx   NodePort   10.152.183.41   <none>        80:31225/TCP   35h
 Go to browser, visit `http://<Floating-IP>:<NodePort>`
 i.e. <http://128.31.26.4:31225/> to check the nginx default page.
 
-### Deploy Another Application
+## Deploy Another Application
 
 You can start by creating a microbot deployment with two pods via the kubectl cli:
 

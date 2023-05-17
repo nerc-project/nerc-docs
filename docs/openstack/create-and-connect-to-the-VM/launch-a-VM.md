@@ -14,11 +14,6 @@ Navigate: Project -> Compute -> Images.
 Click Launch Instance next to the public image of your choice. In the example,
 we chose **ubuntu-22.04-x86_64**, you may choose any available images.
 
-*Important: There are multiple tabs along the top of the the pop up window.
-
-Make sure you review all of them as per instructions before clicking on Launch!
-Otherwise, your launched VM may be inaccessible.*
-
 In the Launch Instance dialog box, specify the following values:
 
 - **Details** tab
@@ -57,7 +52,8 @@ is 1.
     ![VM Launch with persistent Volume](images/persistent_volume.png)
 
     **More details about available bootable images can be found [here](images.md).
-    Customers can also upload their own custom images, as demonstrated in [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
+    Customers can also upload their own custom images, as documented in
+    [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
 
 - **Flavor** tab: Specify the size of the instance to launch. Choose `cpu-a.4`
 from the 'Flavor' tab by clicking on the "+" icon.
@@ -85,12 +81,12 @@ moved up to "Allocated". If not, you can click on the "+" icon in "Available".
 ![VM Launch Instance Networks](images/launch_networks.png)
 
 - **Security Groups:** tab: Make sure to add the security group where you
-enabled SSH.
+enabled SSH. To add an SSH security group first, see [here](../access-and-security/security-groups.md).
 
 ![VM Launch Instance Security Groups](images/launch_security_groups.png)
 
 - **Key Pair:** Add the key pair you created for your local machine/laptop to
-use with this VM.
+use with this VM. To add a Key Pair first, see [here](../access-and-security/create-a-key-pair.md).
 
 ![VM Launch Instance Key Pairs](images/launch_security_key_pairs.png)
 
@@ -102,8 +98,19 @@ use with this VM.
 - **Network Ports, Configuration, Server Groups, Schedular Hints, and
 Metadata:** tab: Ignore these tabs for now.
 
+!!! info "How to use 'Configuration' tab"
+    If you want to specify a customization script that runs after your instance
+    launches then you can write those custom script inside the
+    "**Customization Script**" text area. For example:
+    ![VM Launch Instance Configuration Script](images/instance_configuration.png)
+
 You are now ready to launch your VM - go ahead and click "Launch Instance"!
 This will initiate a instance on a compute node in the cloud.
+
+!!! danger "Very Important"
+    There are multiple tabs along the top of the the pop up window. Make sure
+    you review all of them as per instructions before clicking on Launch!
+    Otherwise, your launched VM may be inaccessible.
 
 On a successful launch you would be redirected to Compute -> Instances tab and
 can see the VM spawning.

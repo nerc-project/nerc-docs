@@ -73,6 +73,9 @@ On clicking the "Add a project" button will show interface like below:
 
 ![Add A Project](images/coldfront-add-a-project.png)
 
+!!! warning "Project Title Length Limitation"
+    Please ensure that the project title is both concise and does not exceed a length of 63 characters.
+
 PIs need to specify appropriate title, description of their research work that you
 will accomplish at NERC in one to two paragraphs and Field of science or research
 domain and then click the "Save" button. Once saved successfully, PIs effectively

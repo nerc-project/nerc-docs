@@ -38,14 +38,14 @@ footer .footer-center {
 
 .parent {
   /* background: #CCCCCC; */
-  height: 110px;
+  height: 55px;
   /* width: 200px; */
   position: relative;
   }
 
   .maintain{
     position: absolute;
-    top: 5%;
+    top: 20%;
     /* left: 50%; */
     /* margin: -25px 0 0 -35px; */
   }

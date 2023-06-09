@@ -19,7 +19,7 @@ setting standards for deployments
 2. Connecting regularly with the [Mass Open Cloud](https://massopen.cloud/)
 (MOC) leadership to understand when new technologies they are developing with
 RedHat, Inc. – and as part of the new NSF funded [Open Cloud Testbed](https://
-assopen.cloud/connected-initiatives/open-cloud-testbed) – might be ready for
+massopen.cloud/connected-initiatives/open-cloud-testbed) – might be ready for
 adoption into the production NERC environment
 3. Broadening the local deployment team of NERC to include partner universities
 within the MGHPCC consortium.

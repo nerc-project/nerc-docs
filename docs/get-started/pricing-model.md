@@ -16,7 +16,6 @@ any obligations of long-term contracts or complicated licensing agreements.
 | CPU           | 0    | 1    | 4        | 20           | $0.013 |
 | A100 GPU      | 1    | 24   | 96       | 20           | $1.790 |
 | A2 GPU        | 1    | 8    | 64       | 20           | $0.463 |
-| Extra Storage | 0    | 0    | 0        | 1000         | $0.009 |
 
 ### High Level Function
 
@@ -39,20 +38,24 @@ rounded up to whole hour
 ### CPU/GPU SU
 
 Service Units can only be purchased as a whole unit. We will charge for Pods and
-VMs on a per hour basis, for any portion of an hour they are used, and any VM "flavor"
-/Pod reservation is charged as a multiplier of the base SU for the maximum resource
-they reserve.
+VMs on a per hour basis, for any portion of an hour they are used, and any VM
+"flavor"/Pod reservation is charged as a multiplier of the base SU for the maximum resource they reserve.
 
 For example, if a PI has a Pod or VM with 1 A100 GPU but 48 vCPUs, 192MB of RAM
-they would be charged for 2 A100 GPU SUs.
-Or 3 vCPU but 20 GB RAM they would be charged for 5 CPU SU.
+they would be charged for 2 A100 GPU SUs, due to the extra vCPUs. For 3 vCPU but
+20 GB RAM they would be charged for 5 CPU SUs, due to the extra RAM.
 
-### Extra Storage SU
+### Storage
 
-Storage included with flavors is not billed any additional storage is. For example
-if you have 4 CPU SU that includes root storage which means additional storage
-would be charged by the 1,000 GB/hr. For every 1,000 GB of volume storage you
-would be charged 1 Extra Storage SU.
+Storage is charged separately at a rate of $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr. OpenStack Volumes count until they are deleted. VM’s reserve
+volumes and you can also create extra volumes yourself. In OpenShift Pods only hold
+on to storage while they are active and PV’s hold onto storage until they are deleted.
+Storage includes all types of storage Object, Block, Ephemeral & Image.
+
+!!! note "Please note"
+    A Shutoff OpenStack VM will not use CPU or RAM but it will continue to use storage.
+    
+    Any extra Images you create will also use storage.
 
 ## Format
 

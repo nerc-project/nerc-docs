@@ -11,11 +11,11 @@ any obligations of long-term contracts or complicated licensing agreements.
 
 ### Service Units (SU)
 
-| Name          | vGPU | vCPU | RAM (GB) | Storage (GB) | Price  |
-| :-----------: | :--: | :--: | :------: | :----------: | :----: |
-| CPU           | 0    | 1    | 4        | 20           | $0.013 |
-| A100 GPU      | 1    | 24   | 96       | 20           | $1.790 |
-| A2 GPU        | 1    | 8    | 64       | 20           | $0.463 |
+| Name          | vGPU | vCPU | RAM (GB) | Price  |
+| :-----------: | :--: | :--: | :------: | :----: |
+| CPU           | 0    | 1    | 4        | $0.013 |
+| A100 GPU      | 1    | 24   | 96       | $1.790 |
+| A2 GPU        | 1    | 8    | 64       | $0.463 |
 
 ### High Level Function
 
@@ -23,15 +23,15 @@ For those who visualize better when they can use a function to think about how
 something works, here is a function of how the calculation works for OpenShift
 and OpenStack.
 
-1. **OpenStack** = (Resource (vCPU/RAM) assigned to flavor) * (time VM has been
-    running), rounded up to whole hour + Extra storage
+1. **OpenStack** = (Resource (vCPU/RAM) assigned to VM flavor converted to SU) *
+(time VM has been running), rounded up to whole hour + Extra storage 
 
     !!! info "NERC's OpenStack Flavor List"
         You can find the most up-to-date information on the current NERC's OpenStack
         flavor by referring to [this page](../openstack/create-and-connect-to-the-VM/flavors.md).
 
-2. **OpenShift** = (Resource (vCPU/RAM) requested by Pod) * (time Pod was running),
-rounded up to whole hour
+2. **OpenShift** = (Resource (vCPU/RAM) requested by Pod converted to SU) * (time
+Pod was running), rounded up to whole hour
 
 ## Breakdown
 
@@ -59,19 +59,20 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
 
 ## Format
 
-### Combined data CSV
+### Combined Data CSV
 
 This is the format of the csv that we will gather from ColdFront, Keycloak, OpenShift,
 and OpenStack so that we can calculate the [**Monthly Billing Data**](#monthly-billing-data).
 
 ![Combined data CSV](images/pricing-combined-data-csv-format.png)
 
-### Monthly Billing Data
+### Monthly Billing Data CSV
 
 This is the format of the data we wish to send to the billing software so that it
-provides all the information they need to bill an institution and allow that
-institution to properly bill their PIs, and for their PIs to properly track what
-projects are costing them what.
+provides all the information they need to bill an institution and allow that institution to properly bill their PIs, and for their PIs to properly track what projects are
+costing them what. Billing Type is broken into 4 types (CPU SU, A100 GPU SU, A2
+GPU SU, and Storage). Billing Type Multiplier represents SUs for the SUs and Storage
+size for Storage.
 
 ![Monthly Billing Data](images/pricing-monthly-billing-data.png)
 

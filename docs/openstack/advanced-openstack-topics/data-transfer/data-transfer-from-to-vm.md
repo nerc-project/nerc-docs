@@ -27,7 +27,8 @@ to configure an endpoint on your NERC VM. In general it is always fastest to set
 a Personal endpoint on your NERC VM, and then use that endpoint for transfers
 to / from a local machine or any other shared or private Globus endpoints.
 
-You can find instrctions for downloading and installing the Globus Connect Personal on the [Globus web site](https://docs.globus.org/how-to/).
+You can find instrctions for downloading and installing the Globus Connect Personal
+on the [Globus web site](https://docs.globus.org/how-to/).
 
 !!! tip "Helpful Tip"
     You may get a "Permission Denied" error for certain paths with Globus Connect
@@ -40,7 +41,7 @@ You can find instrctions for downloading and installing the Globus Connect Perso
     For example, to enable read-write access to the /data/tables directory, add
     the following line i.e. `/data/tables,0,1`.
 
-### Usage
+### Usage of Globus
 
 Once Personal Endpoint is setup on NERC VM, you will be able to find that named
 collection name on [Globus file explorer](https://app.globus.org/file-manager)
@@ -95,9 +96,7 @@ From a terminal/shell from your local machine you'll issue your SCP command by
 specifing the SSH Private Key to connect with the VM that has included corresponding
 SSH Public Key. The syntax is:
 
-```sh
-scp -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM>:~/<File In VM> .
-```
+    scp -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM>:~/<File In VM> .
 
 This copies the file `<File In VM>` from your VM's deault user's directory (`~`
 is a Unix shortcut for `my home directory`) on your VM to your current directory
@@ -105,24 +104,24 @@ is a Unix shortcut for `my home directory`) on your VM to your current directory
 is issued or you can specify the actual path instead of `.`.
 
 For e.g.
-`scp -i ~/.ssh/your_pem_key_file.pem centos@199.94.60.219:~/myfile.zip /my_local_directory/`
+
+    scp -i ~/.ssh/your_pem_key_file.pem centos@199.94.60.219:~/myfile.zip /my_local_directory/
 
 **ii. Copying Files From Another Computer to the NERC VM:**
 
 From a terminal/shell on your computer (or another server or cluster) where you
 have access to the SSH Private Key you’ll issue your SCP command. The syntax is:
 
-```sh
-scp -i <Your SSH Private Key including Path> ./<Your Local File> <Default User name based on OS>@<Your Floating IP of VM>:~/`
-```
+    scp -i <Your SSH Private Key including Path> ./<Your Local File> <Default User name based on OS>@<Your Floating IP of VM>:~/`
 
-This copies the file <Your Local File> from the current (i.e. `.` is a Unix shortcut
+This copies the file `<Your Local File>` from the current (i.e. `.` is a Unix shortcut
 for the current directory path) directory on the computer you issued the command
 on to your home (`~` is a Unix shortcut for `my home directory`) on your NERC's
 VM.
 
 For e.g.
-`scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip centos@199.94.60.219:~/myfile.zip:~/`
+
+    scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip centos@199.94.60.219:~/myfile.zip:~/
 
 !!! info "Important Note"
     While it’s probably best to compress all the files you intend to transfer into
@@ -130,7 +129,8 @@ For e.g.
     you can use the `-r` (for recursive) flag.
 
     For e.g.
-    `scp -i ~/.ssh/your_pem_key_file.pem -r centos@<Floating_IP>:~/mydata/ ./destination_directory/`
+
+        scp -i ~/.ssh/your_pem_key_file.pem -r centos@<Floating_IP>:~/mydata/ ./destination_directory/
 
     This copies all the files from ~/mydata/ (`~` is a Unix shortcut for `my home directory`)
     on the cluster to the current directory (i.e. `.`) on the computer you issued the
@@ -139,20 +139,17 @@ For e.g.
 
 ### Using tar+ssh
 
-When you want to transfer many small files in a directory, we recommend [Globus]()
-If you don't wish to use Globus, you can consider using ssh piped with tar.
+When you want to transfer many small files in a directory, we recommend
+[Globus](#using-globus). If you don't wish to use Globus, you can consider using
+ssh piped with tar.
 
 **i. Send a directory to NERC VM:**
 
-```sh
-tar cz /local/path/dirname | ssh -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM> tar zxv -C /remote/path
-```
+    tar cz /local/path/dirname | ssh -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM> tar zxv -C /remote/path
 
 **ii. Get a directory from NERC VM:**
 
-```sh
-ssh -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM> tar cz /remote/path/dirname | tar zxv -C /local/path
-```
+    ssh -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM> tar cz /remote/path/dirname | tar zxv -C /local/path
 
 ## Using rsync
 
@@ -172,37 +169,29 @@ working directory, or they can be remote but prefixing something like
 
 **i. Synchronizing from a local machine to NERC VM:**
 
-```sh
-rsync -avxz ./source_directory/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/destination_directory/
-```
+    rsync -avxz ./source_directory/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/destination_directory/
 
 **ii. Synchronizing from NERC VM to a local machine:**
 
-```sh
-rsync -avz -e "ssh -i ~/.ssh/your_pem_key_file.pem" -r <user_name>@<Floating_IP>:~/source_directory/ ./destination_directory/
-```
+    rsync -avz -e "ssh -i ~/.ssh/your_pem_key_file.pem" -r <user_name>@<Floating_IP>:~/source_directory/ ./destination_directory/
 
 **iii. Update a previously made copy of foo on the NERC VM after you’ve made changes
 to the local copy:**
 
-```sh
-rsync -avz --delete foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
-```
+    rsync -avz --delete foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
 !!! danger "Be careful with this option!"
-    The `--delete` option has no effect when making a new copy, and therefore can be
-    used the previous example, too (making the commands identical), but since it
-    recursively deletes files, it’s best to use it sparingly. If you want to maintain
-    a mirror, i.e. the `DESTINATION` is to be an exact copy of the `SOURCE`, then 
-    you will want to add the `--delete` option. This deletes stuff in the
-    `DESTINATION` that is no longer in the `SOURCE`.
+    The `--delete` option has no effect when making a new copy, and therefore can
+    be used the previous example, too (making the commands identical), but since
+    it recursively deletes files, it’s best to use it sparingly. If you want to
+    maintain a mirror, i.e. the `DESTINATION` is to be an exact copy of the
+    `SOURCE`, then you will want to add the `--delete` option. This deletes stuff
+    in the `DESTINATION` that is no longer in the `SOURCE`.
 
 **iv. Update a previously made copy of foo on the NERC VM after you or someone
 else has already updated it from a different source:**
 
-```sh
-rsync -aAvz --update foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
-```
+    rsync -aAvz --update foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
 !!! info "Information"
     The `--update` options has no effect when making a new copy, and can freely be
@@ -267,8 +256,8 @@ Edit the config file's content on the path location described by
     type = sftp
     host = 199.94.60.219
     user = centos
-    port = 
-    pass = 
+    port =
+    pass =
     key_file = C:\Users\Milson\.ssh\rshiny_bentley
     shell_type = unix
 
@@ -281,7 +270,7 @@ flag to override the config location, e.g. `rclone --config=FILE`
         Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
         for more details.
 
-### Using rclone
+### How to use rclone
 
 `rclone` supports many subcommands (see
 [the complete list of rclone subcommands](https://rclone.org/docs/#subcommands)).
@@ -299,7 +288,7 @@ or,
 
     rclone lsd "nerc:" --config=rclone.conf
 
-For e.g.,
+For e.g.
 
     $ rclone lsd "nerc:" --config=rclone.conf
             -1 2023-07-06 12:18:24        -1 .ssh
@@ -524,7 +513,9 @@ computer (shared drives, Dropbox, etc.)
 
 - **Prerequisites**
 
-- Filezilla installed, see [Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation) for more information.
+- Filezilla installed, see
+[Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation)
+for more information.
 
 #### Configuring Filezilla
 

@@ -1,4 +1,4 @@
-# Data Transfer To/ From NERC VM
+# Data Transfer To/From NERC VM
 
 ## Using Globus
 
@@ -15,19 +15,19 @@ flexible REST/API for creating scripted tasks and operations, please visit
 [Globus.org](https://globus.org/).
 
 !!! info "Important Information"
-    For large data sets and/or for access by external users, consider using Globus
-    Also, an institutional endpoint/ Collection is not required to use Globus;
-    you can set up a personal endpoint on your NERC VM and also in your local machine
-    if you need to transfer large amounts of data.
+    For large data sets and/or for access by external users, consider using Globus.
+    An institutional endpoint/collection is not required to use Globus - you can
+    set up a personal endpoint on your NERC VM and also on your local machine if
+    you need to transfer large amounts of data.
 
 ### Setting up a Personal Globus Endpoint on NERC VM
 
 You can do this using [Globus Connect Personal](https://docs.globus.org/how-to/globus-connect-personal-linux/#running_with_no_gui)
-to configure an endpoint on your NERC VM. In general it is always fastest to setup
+to configure an endpoint on your NERC VM. In general, it is always fastest to setup
 a Personal endpoint on your NERC VM, and then use that endpoint for transfers
-to / from a local machine or any other shared or private Globus endpoints.
+to/from a local machine or any other shared or private Globus endpoints.
 
-You can find instrctions for downloading and installing the Globus Connect Personal
+You can find instructions for downloading and installing the Globus Connect Personal
 on the [Globus web site](https://docs.globus.org/how-to/).
 
 !!! tip "Helpful Tip"
@@ -43,15 +43,15 @@ on the [Globus web site](https://docs.globus.org/how-to/).
 
 ### Usage of Globus
 
-Once Personal Endpoint is setup on NERC VM, you will be able to find that named
-collection name on [Globus file explorer](https://app.globus.org/file-manager)
-and then can be choosen as source or destination for data transfer to/from another
-Guest Collections (Globus Shared Endpoints). Login into the
-[Globus web interface](https://app.globus.org/), selecting your organization
+Once a Personal Endpoint is set up on a NERC VM, you will be able to find that named
+collection on [Globus file explorer](https://app.globus.org/file-manager)
+and then can be chosen as source or destination for data transfer to/from another
+Guest Collection (Globus Shared Endpoints). Login into the
+[Globus web interface](https://app.globus.org/), select your organization
 which will allow you to log in to Globus, and land on
 [File Manager page](https://docs.globus.org/how-to/get-started/).
 
-If your acocunt belong to [Globus Subscription](https://www.globus.org/subscriptions)
+If your account belong to [Globus Subscription](https://www.globus.org/subscriptions)
 that you will be able to use data transfers between two personal endpoints
 i.e. you can setup your local machine as another personal endpoint.
 
@@ -68,7 +68,7 @@ SCP is used to securely transfer files between two hosts using the Secure Shell
 (ssh) protocol. It’s usage is simple, but the order that file locations are
 specified is crucial. SCP always expects the 'from' location first, then the 'to'
 destination. Depending on which is the remote system, you will prefix your username
-and Flaoting IP of your NERC VM.
+and Floating IP of your NERC VM.
 
 `scp [username@Floating_IP:][location of file] [destination of file]`
 
@@ -78,7 +78,7 @@ or,
 
 ### Usage
 
-Below are some examples of the two most common scenaros of SCP to copy to and from
+Below are some examples of the two most common scenarios of SCP to copy to and from
 various sources.
 
 !!! tip "Helpful Tip"
@@ -92,13 +92,13 @@ various sources.
 
 **i. Copying Files From the NERC VM to Another Computer:**
 
-From a terminal/shell from your local machine you'll issue your SCP command by
-specifing the SSH Private Key to connect with the VM that has included corresponding
+From a terminal/shell from your local machine, you'll issue your SCP command by
+specifying the SSH Private Key to connect with the VM that has included corresponding
 SSH Public Key. The syntax is:
 
     scp -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM>:~/<File In VM> .
 
-This copies the file `<File In VM>` from your VM's deault user's directory (`~`
+This copies the file `<File In VM>` from your VM's default user's directory (`~`
 is a Unix shortcut for `my home directory`) on your VM to your current directory
 (`.` is a Unix shortcut the current directory) on your computer from where the command
 is issued or you can specify the actual path instead of `.`.
@@ -110,14 +110,14 @@ For e.g.
 **ii. Copying Files From Another Computer to the NERC VM:**
 
 From a terminal/shell on your computer (or another server or cluster) where you
-have access to the SSH Private Key you’ll issue your SCP command. The syntax is:
+have access to the SSH Private Key, you'll issue your SCP command. The syntax is:
 
     scp -i <Your SSH Private Key including Path> ./<Your Local File> <Default User name based on OS>@<Your Floating IP of VM>:~/`
 
-This copies the file `<Your Local File>` from the current (i.e. `.` is a Unix shortcut
-for the current directory path) directory on the computer you issued the command
-on to your home (`~` is a Unix shortcut for `my home directory`) on your NERC's
-VM.
+This copies the file `<Your Local File>` from the current directory on the computer
+you issued the command from, to your home directory on your NERC VM. (recall that
+`.` is a Unix shortcut for the current directory path and `~` is a Unix shortcut
+for `my home directory`)
 
 For e.g.
 
@@ -132,10 +132,10 @@ For e.g.
 
         scp -i ~/.ssh/your_pem_key_file.pem -r centos@<Floating_IP>:~/mydata/ ./destination_directory/
 
-    This copies all the files from ~/mydata/ (`~` is a Unix shortcut for `my home directory`)
-    on the cluster to the current directory (i.e. `.`) on the computer you issued the
-    command from. Here we can replace `./` with actual full path on you local machine
-    and also `~/` with actual full path on your NERC VM.
+    This copies all the files from `~/mydata/` on the cluster to the current
+    directory (i.e. `.`) on the computer you issued the command from. Here we can
+    replace `./` with actual full path on you local machine and also `~/` with
+    actual full path on your NERC VM.
 
 ### Using tar+ssh
 
@@ -175,30 +175,30 @@ working directory, or they can be remote but prefixing something like
 
     rsync -avz -e "ssh -i ~/.ssh/your_pem_key_file.pem" -r <user_name>@<Floating_IP>:~/source_directory/ ./destination_directory/
 
-**iii. Update a previously made copy of foo on the NERC VM after you’ve made changes
+**iii. Update a previously made copy of "foo" on the NERC VM after you’ve made changes
 to the local copy:**
 
     rsync -avz --delete foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
 !!! danger "Be careful with this option!"
     The `--delete` option has no effect when making a new copy, and therefore can
-    be used the previous example, too (making the commands identical), but since
+    be used in the previous example too (making the commands identical), but since
     it recursively deletes files, it’s best to use it sparingly. If you want to
-    maintain a mirror, i.e. the `DESTINATION` is to be an exact copy of the
-    `SOURCE`, then you will want to add the `--delete` option. This deletes stuff
-    in the `DESTINATION` that is no longer in the `SOURCE`.
+    maintain a mirror (i.e. the `DESTINATION` is to be an exact copy of the
+    `SOURCE`) then you will want to add the `--delete` option. This deletes
+    files/directories in the `DESTINATION` that are no longer in the `SOURCE`.
 
-**iv. Update a previously made copy of foo on the NERC VM after you or someone
+**iv. Update a previously made copy of "foo" on the NERC VM after you or someone
 else has already updated it from a different source:**
 
     rsync -aAvz --update foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
 !!! info "Information"
-    The `--update` options has no effect when making a new copy, and can freely be
-    specified in that case, also. If you’re updating a master copy, i.e. the
-    `DESTINATION` may have files that are newer than the versions in `SOURCE`, you
-    will want to add the `--update` option. This will leave those files alone, not
-    revert them to the older copy in `SOURCE`.
+    The `--update` option has no effect when making a new copy and can also be
+    specified in that case. If you're updating a master copy (i.e. the
+    `DESTINATION` may have files that are newer than the version(s) in `SOURCE`)
+    then you will also want to add the `--update` option. This will leave those
+    files alone and not revert them to the older copy in `SOURCE`.
 
 ### Progress, Verbosity, Statistics
 
@@ -207,47 +207,51 @@ Verbose mode — list each file transferred.
 Adding more vs makes it more verbose.
 
 `--progress`
-Show a progress meter for each file transfer (not a progress meter for the whole
-operation). If you have many small files, this can significantly slow down the transfer.
+Show a progress meter for each **individual** file transfer that is part of the
+entire operation. If you have many small files then this option can significantly
+slow down the transfer.
 
 `--stats`
-Print a short paragraph of statistics at the end of the session, like average transfer
-rate, total numbers of files transferred, etc.
+Print a short paragraph of statistics at the end of the session (e.g. average transfer
+rate, total number of files transferred, etc).
 
 ### Other Useful Options
 
 `--dry-run`
 Perform a dry-run of the session instead of actually modifying the `DESTINATION`.
-Most useful when adding multiple `-v` options, especially for verifying `--delete`
+Mostly useful when adding multiple `-v` options, especially for verifying `--delete`
 is doing what you want.
 
 `--exclude PATTERN`
-Skip some parts of the `SOURCE`.
+Skip files/directories in the `SOURCE` that match a given pattern (supports regular
+expressions)
 
 ## Using rclone
 
 `rclone` is a convenient and performant command-line tool for transferring files
-and synchronizing directories directly between your local file systems and the
-NERC's VM.
+and synchronizing directories directly between your local file systems and a
+given NERC VM.
 
 - **Prerequisites**
 
 To run the `rclone` commands, you need to have:
 
-- `rclone` installed, see [Downloading and Installing the latest version of the rclone](https://rclone.org/downloads/)
+- To run the `rclone` commands you will need to have `rclone` installed.
+See [Downloading and Installing the latest version of rclone](https://rclone.org/downloads/)
 for more information.
 
 ### Configuring rclone
 
-First, you’ll need to configure `rclone`. As the file systems protocol
-have quite complicated authentication these are kept in a config file.
+First you'll need to configure `rclone`. The filesystem protocols, especially,
+can have complicated authentication parameters so it's best to place these details
+in a config file.
 
-If you run `rclone config file` you will see where the default location is
-for you.
+If you run `rclone config file` you will see where the default location is for
+your current user.
 
 !!! note "Note"
-        For **Windows** users, you many need to specify the full path to the rclone
-        executable file, if its not included in your systems PATH variable.
+        For **Windows** users, you may need to specify the full path to the rclone
+        executable file if it's not included in your system's `%PATH%` variable.
 
 Edit the config file's content on the path location described by
 `rclone config file` command and add the following entry with the name **[nerc]**:
@@ -258,10 +262,10 @@ Edit the config file's content on the path location described by
     user = centos
     port =
     pass =
-    key_file = C:\Users\Milson\.ssh\rshiny_bentley
+    key_file = C:\Users\YourName\.ssh\rshiny_bentley
     shell_type = unix
 
-More about the config for **SFTP** can be [seen here](https://rclone.org/sftp/).
+More about the config for **SFTP** can be [found here](https://rclone.org/sftp/).
 
 **OR,** You can locally copy this content to a new config file and then use this
 flag to override the config location, e.g. `rclone --config=FILE`
@@ -294,8 +298,8 @@ For e.g.
             -1 2023-07-06 12:18:24        -1 .ssh
             -1 2023-07-06 19:27:19        -1 destination_directory
 
-To list the files and folders available within the directory i.e.
-"destination_directory" in this case, within a directory we can use the "ls" command
+To list the files and folders available within the directory (i.e.
+"destination_directory") we can use the "ls" command:
 
     $ rclone ls "nerc:destination_directory/"
       653 README.md
@@ -304,21 +308,22 @@ To list the files and folders available within the directory i.e.
 
 #### Uploading and Downloading Files and Folders
 
-`rclone` support a variety of options to allow you to Copy, Sync and Move
-files from one destination to another.
+`rclone` support a variety of options to allow you to copy, sync, and move files
+from one destination to another.
 
-A simple example of this can be seen below, where we copy (Upload) the file
-"upload.me" to the `<your-directory>` directory:
+A simple example of this can be seen below where we copy/upload the file
+`upload.me` to the `<your-directory>` directory:
 
     rclone copy "./upload.me" "nerc:<your-directory>/"
 
-Another example, to copy (Download) the file "upload.me" from the
-`<your-directory>` directory to your local:
+Another example, to copy/download the file `upload.me` from the remote
+directory, `<your-directory>`, to your local machine:
 
     rclone -P copy "nerc:<your-directory>/upload.me" "./"
 
-Also, to **Sync** files into  to the `<your-directory>` directory - try with
-`--dry-run` first
+Also, to **Sync** files into the `<your-directory>` directory it's recommended to
+first try with `--dry-run` first. This will give you a preview of what would be
+synced without actually performing any transfers.
 
     rclone --dry-run sync /path/to/files nerc:<your-directory>
 
@@ -350,10 +355,10 @@ in advance):
 
 `rclone -vv --vfs-cache-mode writes mount nerc: C:/mnt-rclone`
 
-`vfs-cache-mode` flag enable file caching, you can use either `writes` or `full`
-option. For further explanation you can see [official documentation](https://rclone.org/commands/rclone_mount/#file-caching).
+The `vfs-cache-mode` flag enables file caching. You can use either the `writes`
+or `full` option. For further explanation you can see the [official documentation](https://rclone.org/commands/rclone_mount/#file-caching).
 
-Now that your VM's filesystem is mounted locally, you can list, create and delete
+Now that your VM's filesystem is mounted locally,  you can list, create, and delete
 files in it.
 
 #### Unmount NERC VM filesystem
@@ -367,7 +372,7 @@ To unmount, simply press `CTRL-C` and the mount will be interrupted.
 [WinSCP](https://winscp.net/eng/index.php) is a popular and free open-source SFTP
 client, SCP client, and FTP client for Windows. Its main function is file transfer
 between a local and a remote computer, with some basic file management functionality
-using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
+using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
 - **Prerequisites**
 
@@ -379,16 +384,16 @@ for more information.
 - When the "Preferences" dialog window appears, select "Transfer" in the options
 on the left pane.
 
-- Click on "Edit" button.
+- Click on the "Edit" button.
 
-- Then, on shown popup dialog box review the "Common options" group, uncheck the
+- Then, in the popup dialog box, review the "Common options" group and uncheck the
 "Preserve timestamp" option as shown below:
 
 ![Disable Preserve TimeStamp](images/winscp-preferences-perserve-timestamp-disable.png)
 
 #### Configuring WinSCP
 
-- Click on "New Tab" tab button as shown below:
+- Click on the "New Tab" button as shown below:
 
 ![Login](images/winscp-new-tab.png)
 
@@ -420,8 +425,8 @@ as shown below:
 - Change Authentication Options
 
 Before saving, click the "Advanced" button.
-In the Advanced Site Settings, under SSH >> Authentication settings check
-“Allow agent forwarding” and select Private key file with `.ppk` extension from
+In the "Advanced Site Settings", under "SSH >> Authentication" settings, check
+"Allow agent forwarding" and select the private key file with `.ppk` extension from
 the file picker.
 
 ![Advanced Site Settings for SSH Authentication](images/winscp-ssh-auth.png)
@@ -429,31 +434,31 @@ the file picker.
 !!! tip "Helpful Tip"
     You can save your above configured site with some preferred name by
     clicking the "Save" button and then giving a proper name to your site.
-    So that next time you don't need to again manually enter all your configuration.
+    This prevents needing to manually enter all of your configuration again the
+    next time you need to use WinSCP.
     ![Save Site WinSCP](images/winscp-save-site.png)
 
 #### Using WinSCP
 
-You can follow above step to manually add a new site next time you open WinSCP
-or, you can connect to your previously saved site (as listed on popup dialog
-will show your all saved site name list) that will show up by just clicking on
-the site name.
+You can follow the above steps to manually add a new site the next time you open
+WinSCP, or you can connect to your previously saved site. Saved sites will be
+listed in the popup dialog and can be selected by clicking on the site name.
 
-Then click "Login" button to connect to your NERC project's VM as shown below:
+Then click the "Login" button to connect to your NERC project's VM as shown below:
 
 ![Login](images/winscp-site-login.png)
 
 ![Successful connection](images/winscp-site-successfully-connected.png)
 
 You should now be connected to the VM's remote directories/files. You can drag
-and drop your files to/from file windows to begin transfer. When done, click the
-X icon up top right to disconnect.
+and drop your files to/from file windows to begin transfer. When you're finished,
+click the "X" icon in the top right to disconnect.
 
 ### ii. Cyberduck
 
 [Cyberduck](https://docs.cyberduck.io/cyberduck/) is a libre server and cloud
-storage browser for Mac and Windows. With an easy-to-use interface, connect to
-servers, enterprise file sharing, and cloud storage.
+storage browser for Mac and Windows. Its user-friendly interface enables seamless
+connections to servers, enterprise file sharing, and various cloud storage platforms.
 
 - **Prerequisites**
 
@@ -462,7 +467,7 @@ for more information.
 
 #### Configuring Cyberduck
 
-- Click on "Open Connection" tab button as shown below:
+- Click on the "Open Connection" button as shown below:
 
 ![Open Connection](images/cyberduck-open-connection-new.png)
 
@@ -488,20 +493,20 @@ for more information.
 
     **"Password"**: "`<Leave blank as you using SSH key>`"
 
-    **"SSH Private Key"**: "Choose the appropriate SSH Private Key from you local
-    machine that has corresponding Public Key attached to your VM"
+    **"SSH Private Key"**: "Choose the appropriate SSH Private Key from your local
+    machine that has the corresponding public key attached to your VM"
 
 ![Cyberduck SFTP or FTP Configuration](images/cyberduck-open-connection-sftp.png)
 
 #### Using Cyberduck
 
-Then click "Connect" button to connect to your NERC VM as shown below:
+Then click the "Connect" button to connect to your NERC VM as shown below:
 
 ![Successful connection](images/cyberduck-sftp-successful-connection.png)
 
 You should now be connected to the VM's remote directories/files. You can drag
-and drop your files to/from file windows to begin transfer. When done, click the
-X icon up top right to disconnect.
+and drop your files to/from file windows to begin transfer. When you're
+finished, click the "X" icon in the top right to disconnect.
 
 ### iii. Filezilla
 
@@ -562,7 +567,7 @@ Then click "Connect" button to connect to your NERC VM as shown below:
 
 You should now be connected to the VM and see your local files in the left-hand
 pane and the remote files in the right-hand pane. You can drag and drop between
-them or drag and drop to/from file windows on your computer. When done, click the
-red X icon up top to disconnect.
+them or drag and drop to/from file windows on your computer. When you're
+finished, click the "X" icon in the top right to disconnect.
 
 ---

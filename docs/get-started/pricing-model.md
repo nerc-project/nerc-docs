@@ -78,7 +78,7 @@ it provides all the information they need to invoice an institution and allow th
 institution to properly allocate costs to their PIs, and for their PIs to properly
 track what projects are costing them what. SU Type is broken into 4 types (CPU,
 A100 GPU, A2 GPU, and Storage). SU Hours represents KB hrs for Storage and Resource
-Hours grouped as described in the [SU section](#service-units-su).
+Hours grouped as described in the [**SU section**](#service-units-su).
 
 ![Monthly Invoicing Data](images/pricing-monthly-invoicing-data.png)
 

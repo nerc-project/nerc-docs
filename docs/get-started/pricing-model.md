@@ -11,11 +11,7 @@ any obligations of long-term contracts or complicated licensing agreements.
 
 ### Service Units (SU)
 
-| Name          | vGPU | vCPU | RAM (GB) | Price  |
-| :-----------: | :--: | :--: | :------: | :----: |
-| CPU           | 0    | 1    | 4        | $0.013 |
-| A100 GPU      | 1    | 24   | 96       | $1.790 |
-| A2 GPU        | 1    | 8    | 64       | $0.463 |
+![Service Units (SU)](images/su.png)
 
 ### High Level Function
 
@@ -40,18 +36,25 @@ Pod was running), rounded up to whole hour
 Service Units can only be purchased as a whole unit. We will charge for Pods and
 VMs on a per hour basis, for any portion of an hour they are used, and any VM
 "flavor"/Pod reservation is charged as a multiplier of the base SU for the maximum
-resource they reserve.
+resource they reserve. 
 
 For example, if a PI has a Pod or VM with 1 A100 GPU but 48 vCPUs, 192MB of RAM
 they would be charged for 2 A100 GPU SUs, due to the extra vCPUs. For 3 vCPU but
 20 GB RAM they would be charged for 5 CPU SUs, due to the extra RAM.
 
+We will calculate GPU SU to use up as many pods as we can to get to the GPU SU
+resource size and then charge the rest as CPU SUs.
+
+OpenShift Pods are summed up to the project level so that fractions of CPU/RAM
+that some pods use will not get overcharged.
+
 ### Storage
 
 Storage is charged separately at a rate of $0.009 TB/hr or $9.00E-12 KB/hr at a
-granularity of KB/hr. OpenStack Volumes count until they are deleted. VM’s reserve
-volumes and you can also create extra volumes yourself. In OpenShift Pods only hold
-on to storage while they are active and PV’s hold onto storage until they are deleted.
+granularity of KB/hr. Storage SUs are therefore KB. OpenStack Volumes count until
+they are deleted. VM’s reserve volumes and you can also create extra volumes yourself.
+In OpenShift Pods only hold on to storage while they are active and Persistent
+Volumes hold onto storage until they are deleted.
 Storage includes all types of storage Object, Block, Ephemeral & Image.
 
 !!! note "Please note"
@@ -64,20 +67,20 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
 ### Combined Data CSV
 
 This is the format of the csv that we will gather from ColdFront, Keycloak, OpenShift,
-and OpenStack so that we can calculate the [**Monthly Billing Data**](#monthly-billing-data).
+and OpenStack so that we can calculate the [**Monthly Invoicing Data**](#monthly-invoicing-data-csv).
 
 ![Combined data CSV](images/pricing-combined-data-csv-format.png)
 
-### Monthly Billing Data CSV
+### Monthly Invoicing Data CSV
 
-This is the format of the data we wish to send to the billing software so that it
-provides all the information they need to bill an institution and allow that institution
-to properly bill their PIs, and for their PIs to properly track what projects are
-costing them what. Billing Type is broken into 4 types (CPU SU, A100 GPU SU, A2
-GPU SU, and Storage). Billing Type Multiplier represents SUs for the SUs and Storage
-size for Storage.
+This is the format of the data we wish to send to the Invoicing software so that
+it provides all the information they need to invoice an institution and allow that
+institution to properly allocate costs to their PIs, and for their PIs to properly
+track what projects are costing them what. SU Type is broken into 4 types (CPU,
+A100 GPU, A2 GPU, and Storage). SU Hours represents KB hrs for Storage and Resource
+Hours grouped as described in the [SU section](#service-units-su).
 
-![Monthly Billing Data](images/pricing-monthly-billing-data.png)
+![Monthly Invoicing Data](images/pricing-monthly-invoicing-data.png)
 
 ## Frequently Asked Questions
 

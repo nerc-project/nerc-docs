@@ -13,22 +13,6 @@ any obligations of long-term contracts or complicated licensing agreements.
 
 ![Service Units (SU)](images/su.png)
 
-### High Level Function
-
-For those who visualize better when they can use a function to think about how
-something works, here is a function of how the calculation works for OpenShift
-and OpenStack.
-
-1. **OpenStack** = (Resource (vCPU/RAM) assigned to VM flavor converted to SU) *
-(time VM has been running), rounded up to whole hour + Extra storage
-
-    !!! info "NERC's OpenStack Flavor List"
-        You can find the most up-to-date information on the current NERC's OpenStack
-        flavor by referring to [this page](../openstack/create-and-connect-to-the-VM/flavors.md).
-
-2. **OpenShift** = (Resource (vCPU/RAM) requested by Pod converted to SU) * (time
-Pod was running), rounded up to whole hour
-
 ## Breakdown
 
 ### CPU/GPU SU
@@ -61,6 +45,22 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
     A Shutoff OpenStack VM will not use CPU or RAM but it will continue to use storage.
 
     Any extra Images you create will also use storage.
+
+### High Level Function
+
+For those who visualize better when they can use a function to think about how
+something works, here is a function of how the calculation works for OpenShift
+and OpenStack.
+
+1. **OpenStack** = (Resource (vCPU/RAM) assigned to VM flavor converted to SU) *
+(time VM has been running), rounded up to whole hour + Extra storage
+
+    !!! info "NERC's OpenStack Flavor List"
+        You can find the most up-to-date information on the current NERC's OpenStack
+        flavor by referring to [this page](../openstack/create-and-connect-to-the-VM/flavors.md).
+
+2. **OpenShift** = (Resource (vCPU/RAM) requested by Pod converted to SU) * (time
+Pod was running), rounded up to whole hour
 
 ## Format
 

@@ -23,16 +23,18 @@ VMs on a per hour basis, for any portion of an hour they are used, and any VM
 resource they reserve.
 
 **GPU SU Example:**
-    - A Pod or VM with:
-        - 1 A100 GPU + 48 vCPUs + 192MB RAM
-    - Will be charged
-        - 2 A100 GPU SUs due to the extra vCPUs (48 vs 24)
+
+- A Pod or VM with:
+    - 1 A100 GPU + 48 vCPUs + 192MB RAM
+- Will be charged
+    - 2 A100 GPU SUs due to the extra vCPUs (48 vs 24)
 
 **CPU Example:**
-    - A Pod or VM with:
-        - 3 vCPU + 20 GB RAM
-    - Will be charged
-        - 5 CPU SUs due to the extra RAM (20GB vs 12GB(3*4GB))
+
+- A Pod or VM with:
+    - 3 vCPU + 20 GB RAM
+- Will be charged
+    - 5 CPU SUs due to the extra RAM (20GB vs 12GB(3*4GB))
 
 OpenShift Pods are summed up to the project level so that fractions of CPU/RAM
 that some pods use will not get overcharged. This will be split between CPU and

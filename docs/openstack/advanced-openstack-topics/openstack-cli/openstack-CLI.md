@@ -119,7 +119,7 @@ of your project's instances:
   | ID                                   | Name             | Status | Networks                                     | Image                    |  Flavor      |
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
   | 1c96ba49-a20f-4c88-bbcf-93e2364365f5 |    vm-test       | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  cpu-su.4     |
-  | dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a |    gpu-test      | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  gpu-su-a100..1  |
+  | dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a |    gpu-test      | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  gpu-su-a100.1  |
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
 ```
 

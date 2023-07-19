@@ -52,8 +52,8 @@ memory with 20 GB root disk at a rate of $0.032 / hr of wall time.
     is integrated into a specialized hardware such as GPUs that produce unprecedented
     performance boosts for technical computing workloads.
 
-There are two flavors within the GPU tier, one featuring older the newer
-**NVidia A100s**, **NVidia V100s**, and **NVidia A2s**.
+There are three flavors within the GPU tier, one featuring the newer
+**NVidia A100s** along with **NVidia V100s** and **NVidia A2s**.
 
 The **"gpu-su-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz,
 48 cores, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver

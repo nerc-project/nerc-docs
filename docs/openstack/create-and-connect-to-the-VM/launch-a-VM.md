@@ -55,7 +55,7 @@ is 1.
     Customers can also upload their own custom images, as documented in
     [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
 
-- **Flavor** tab: Specify the size of the instance to launch. Choose `cpu-a.4`
+- **Flavor** tab: Specify the size of the instance to launch. Choose `cpu-su.4`
 from the 'Flavor' tab by clicking on the "+" icon.
 
 !!! question "Important Note"
@@ -71,7 +71,7 @@ from the 'Flavor' tab by clicking on the "+" icon.
     **More details about available flavors and corresponding quotas
     details can be found [here](flavors.md).**
 
-After choosing `cpu-a.4`, you should see it moved up to "Allocated".
+After choosing `cpu-su.4`, you should see it moved up to "Allocated".
 
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 

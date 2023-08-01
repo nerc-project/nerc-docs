@@ -15,15 +15,16 @@ your faculty or administration contact us to discuss it soon by emailing us at
 [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
 or, by submitting a new ticket at the [NERC’s Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
 
-## Frequently Asked Questions
+## Questions & Answers
 
-???+ question "1. Will OpenStack & OpenShift show on one bill?"
+???+ question "1. Are we only invoicing when the VM/Pod is on?"
 
-    Yes
+    Yes. You will only be billed for utilization (cores x memory) which equates
+    to a [service unit](how-pricing-works.md#service-units-su).
 
-??? question "2. Are we only billing when the VM/Pod is on?"
+??? question "2.  Will OpenStack & OpenShift show on a single invoice?"
 
-    Yes
+    Yes, and utilization of each service by project can be viewed via XDMoD tool.
 
 ??? question "3. What happens when a Flavor is expanded during the month?"
 

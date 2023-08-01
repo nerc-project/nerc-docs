@@ -40,7 +40,7 @@ or, by submitting a new ticket at the [NERC’s Support Ticketing System (osTick
 
     Yes
 
-??? question "6. Are we Invoicing Storage using ColdFront Requests or OpenStack/Shift usage?"
+??? question "6. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
     a. Coldfront Requests
 
@@ -64,10 +64,10 @@ or, by submitting a new ticket at the [NERC’s Support Ticketing System (osTick
     a. requests.cpu & requests.memory
 
         i. ColdFront sets limits.cpu and memory which is the most you can use
-        
+
         ii. Yes, we realize this means there is potential for “free” resources
         because OpenShift will allow a Pod to go up to the limit.cpu/memory
-            
+
             1. Will require further investigation once we have more data on how
             this is working
 
@@ -79,6 +79,6 @@ or, by submitting a new ticket at the [NERC’s Support Ticketing System (osTick
 
     a. Current plan is no more than once a year
 
-    b. Additional types of offering may be more frequent - eg. new types of hardware or storage types. 
+    b. Additional types of offering may be more frequent - eg. new types of hardware or storage types.
 
 ---

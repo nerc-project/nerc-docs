@@ -4,6 +4,6 @@
 
 ## Institutions with established MOUs and Billing Processes
 
-## We are in the process of establishing MOUs for institutions not listed above.
+## We are in the process of establishing MOUs for institutions not listed above
 
 ---

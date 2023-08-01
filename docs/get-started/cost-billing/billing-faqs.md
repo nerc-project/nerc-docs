@@ -8,7 +8,7 @@ By adopting consistent cost structures across all institutions, we can make stra
 investments in infrastructure, expand our service portfolio, and enhance our
 support capabilities for a seamless user experience.
 
-Most of the intitutions using our services have an **MoU (Memorandum of Understanding)**
+Most of the institutions using our services have an **MoU (Memorandum of Understanding)**
 with us to be better aligned to a number of regulations, policies and requirements
 but if your institution does not have an MoU with us, please have someone from
 your faculty or administration contact us to discuss it soon by emailing us at

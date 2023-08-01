@@ -11,7 +11,10 @@ nav:
   - Home: index.md
   - About: about.md
   - Getting Started:
-      - NERC Pricing Model: get-started/pricing-model.md
+      - Cost & Billing:
+          - How does NERC pricing work?: get-started/cost-billing/how-pricing-works.md
+          - Billing Process for My Institution: get-started/cost-billing/billing-process-for-my-institution.md
+          - Billing FAQs: get-started/cost-billing/billing-faqs.md
       - User Onboarding Process: get-started/user-onboarding-on-NERC.md
       - How to Create a User Account: get-started/create-a-user-portal-account.md
       - How to Get An Allocation: get-started/get-an-allocation.md

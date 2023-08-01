@@ -52,6 +52,8 @@ nav:
           - Persistent Storage:
               - Block Storage/ Volumes/ Cinder: openstack/advanced-openstack-topics/persistent-storage/volumes.md
               - Object Storage/ Swift: openstack/advanced-openstack-topics/persistent-storage/object-storage.md
+          - Data Transfer:
+              - Data Transfer To/ From NERC VM: openstack/advanced-openstack-topics/data-transfer/data-transfer-from-to-vm.md
           - Backup your instance and volume:
               - Backup with snapshots: openstack/advanced-openstack-topics/backup/backup-with-snapshots.md
           - Terraform:
@@ -99,11 +101,6 @@ nav:
           - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
           - Setup CI/CD on NERC: other-tools/CI-CD/setup-CI-CD-pipeline.md
           - GitHub to Jenkins Pipeline: other-tools/CI-CD/integrate-your-GitHub-repository.md
-  - Migrating MOC to NERC:
-    - Step 1 Creating NERC Project and Networks: migration-moc-to-nerc/Step1.md
-    - Step 2 Gathering MOC Information: migration-moc-to-nerc/Step2.md
-    - Step 3 Moving Volumes from MOC to NERC & Creating Instance: migration-moc-to-nerc/Step3.md
-    - Step 4 Remove Volume Backups to Conserve Storage: migration-moc-to-nerc/Step4.md
 theme:
   name: material
   custom_dir: nerc-theme

@@ -76,7 +76,7 @@ or, by submitting a new ticket at the [NERC’s Support Ticketing System (osTick
 
     a. It will be invoiced as 2 or more GPU SU depending on how many multiples of the resources it exceeds.
 
-??? question "9. How often will we change the pricing"
+??? question "9. How often will we change the pricing?"
 
     a. Current plan is no more than once a year
 

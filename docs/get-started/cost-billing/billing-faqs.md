@@ -13,7 +13,7 @@ with us to be better aligned to a number of research regulations, policies and
 requirements but if your institution does not have an MoU with us, please have
 someone from your faculty or administration contact us to discuss it soon by emailing
 us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
 
 ## Questions & Answers
 
@@ -26,7 +26,7 @@ or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTick
 
     Please send your requests by emailing us at
     [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-    or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+    or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
 
 ??? question "3. How do I control costs?"
 
@@ -34,10 +34,13 @@ or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTick
     OpenStack (VMs),OpenShift (containers), and storage.  This is the maximum
     amount of resources you can consume at one time.
 
-??? question "4. Are we only invoicing when the OpenStack VM/ OpenShift Pod is on?"
+??? question "4. Are we only invoicing for CPUs/GPUs only when the VM or Pod is active?"
 
-    Yes. You will only be billed for utilization (cores x memory) which equates
-    to a [service unit](how-pricing-works.md#service-units-su).
+    Yes. You will only be billed based on your utilization (cores, memory, GPU)
+    while your VM or Pod is on.  Utilization will be translated into billable
+    [Service Units (SUs)](how-pricing-works.md#service-units-su).  Persistent
+    storage related to an OpenStack VM or OpenShift Pod will continue to be
+    billed even when the VM or Pod is off.
 
 ??? question "5.  Will OpenStack & OpenShift show on a single invoice?"
 
@@ -46,51 +49,55 @@ or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTick
 
 ??? question "6. What happens when a Flavor is expanded during the month?"
 
-    a. Flavors cannot be expanded
+    a. Flavors cannot be expanded.
 
-    b. You can create snapshot and a new VM/Instance with that snapshot but that
-    will be a new instance with a new flavor
+    b. You can create a snapshot of an existing VM/Instance and, with that snapshot,
+    deploy a new flavor of VM/Instance.
 
 ??? question "7. Is storage charged separately?"
 
-    Yes, but on the same invoice. To know [more about Storage](how-pricing-works.md#storage).
+    Yes, but on the same invoice. To learn more, see [our page on Storage](how-pricing-works.md#storage).
 
-??? question "8. Do we charge for storage attached to shut off instances?"
+??? question "8. Will I be charged for storage attached to shut-off instances?"
 
-    Yes
+    Yes.
 
 ??? question "9. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
-    a. Coldfront Requests
+    a. Storage is invoiced based on Coldfront Requests.
 
-    b. We would invoice for increases when requests are fulfilled and for decreases
-    when requests are placed, where “invoice” means “accumulate hours for whatever
-    storage quantity was added or removed..”
+    b. When you request additional storage through Coldfront, invoicing on that
+    additional storage will occur when your request is fulfilled.  When you request
+    a decrease in storage through Coldfront, your invoicing will adjust accordingly
+    when your request is made.  In both cases 'invoicing' means 'accumulate hours
+    for whatever storage quantity was added or removed'.
 
     For example:
 
-        1. I request an increase in storage, the request is approved and processed.
-        At this point we start Invoicing.
+    1. I request an increase in storage, the request is approved and processed.
+        - At this point we start Invoicing.
 
-        2. I request a decrease in storage. The Invoicing for that storage stops,
-        then at some point the request is processed.
+    2. I request a decrease in storage.
+        - The invoicing for that storage stops immediately.
 
-??? question "10. For OpenShift what value are we using to track CPU & Memory?"
+??? question "10. For OpenShift, what values are we using to track CPU & Memory?"
 
-    a. `requests.cpu` & `requests.memory`
+    a. For invoicing we utilize `requests.cpu` for tracking CPU utilization &
+    `requests.memory` for tracking memory utilization.
 
-        i. ColdFront sets `limits.cpu`` and memory which is the most you can use
+    b. Utilization will be capped based on the limits you set in ColdFront for
+    your resource allocations.
 
-??? question "11. If a single Pod exceeds the resources for a GPU SU how is it invoiced?"
+??? question "11. If a single Pod exceeds the resources for a GPU SU, how is it invoiced?"
 
-    a. It will be invoiced as 2 or more GPU SU depending on how many multiples of
+    It will be invoiced as 2 or more GPU SU's depending on how many multiples of
     the resources it exceeds.
 
 ??? question "12. How often will we change the pricing?"
 
-    a. Current plan is no more than once a year
+    a. Our current plan is no more than once a year for existing offerings.
 
-    b. Additional types of offering may be more frequent - eg. new types of hardware
-    or storage types.
+    b. Additional offerings may be added throughout the year (i.e. new types of
+    hardware or storage).
 
 ---

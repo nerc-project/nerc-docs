@@ -62,7 +62,7 @@ volumes, and you can also create extra volumes yourself. In OpenShift pods, stor
 is only provisioned while it is active, and in persistent volumes, storage remains
 provisioned until it is deleted.
 
-**Storage Example 1**
+**Storage Example 1:**
 
 - Volume or VM with:
 
@@ -74,7 +74,7 @@ provisioned until it is deleted.
 
     `$3.15`
 
-**Storage Example 2**
+**Storage Example 2:**
 
 - Volume or VM with:
 

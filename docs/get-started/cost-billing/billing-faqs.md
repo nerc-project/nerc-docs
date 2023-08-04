@@ -64,13 +64,14 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 
 ??? question "9. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
-    a. Storage is invoiced based on Coldfront Requests.
+    a. Storage is invoiced based on [Coldfront Requests](../get-an-allocation.md#how-to-request-a-new-resource-allocation).
 
     b. When you request additional storage through Coldfront, invoicing on that
     additional storage will occur when your request is fulfilled. When you request
-    a decrease in storage through Coldfront, your invoicing will adjust accordingly
-    when your request is made. In both cases 'invoicing' means 'accumulate hours
-    for whatever storage quantity was added or removed'.
+    a decrease in storage through [Request change using ColdFront](../get-an-allocation.md#request-change-to-resource-allocation-to-an-existing-project),
+    your invoicing will adjust accordingly when your request is made. In both cases
+    'invoicing' means 'accumulate hours for whatever storage quantity was added
+    or removed'.
 
     For example:
 

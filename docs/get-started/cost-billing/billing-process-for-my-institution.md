@@ -1,9 +1,14 @@
 # Billing Process for My Institution
 
-## MOU concept
+## MOU
 
 ## Institutions with established MOUs and Billing Processes
 
-## We are in the process of establishing MOUs for institutions not listed above
+1. [Harvard University](billing-process-for-harvard.md)
+
+2. [Boston University](billing-process-for-bu.md)
+
+!!! question "Upcoming MOU with other institutions"
+    We are in the process of establishing MOUs for institutions not listed above
 
 ---

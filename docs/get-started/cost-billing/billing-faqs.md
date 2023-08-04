@@ -28,10 +28,11 @@ or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTick
     [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
     or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
 
-
 ??? question "3. How do I control costs?"
 
-    Upon creating a project, you will set these resource limits (quotas) for OpenStack (VMs), OpenShift (containers), and storage.  This is the maximum amount of resources you can consume at one time.
+    Upon creating a project, you will set these resource limits (quotas) for
+    OpenStack (VMs),OpenShift (containers), and storage.  This is the maximum
+    amount of resources you can consume at one time.
 
 ??? question "4. Are we only invoicing when the OpenStack VM/ OpenShift Pod is on?"
 
@@ -82,12 +83,14 @@ or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTick
 
 ??? question "11. If a single Pod exceeds the resources for a GPU SU how is it invoiced?"
 
-    a. It will be invoiced as 2 or more GPU SU depending on how many multiples of the resources it exceeds.
+    a. It will be invoiced as 2 or more GPU SU depending on how many multiples of
+    the resources it exceeds.
 
 ??? question "12. How often will we change the pricing?"
 
     a. Current plan is no more than once a year
 
-    b. Additional types of offering may be more frequent - eg. new types of hardware or storage types.
+    b. Additional types of offering may be more frequent - eg. new types of hardware
+    or storage types.
 
 ---

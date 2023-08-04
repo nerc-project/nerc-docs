@@ -31,18 +31,18 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 ??? question "3. How do I control costs?"
 
     Upon creating a project, you will set these resource limits (quotas) for
-    OpenStack (VMs),OpenShift (containers), and storage.  This is the maximum
-    amount of resources you can consume at one time.
+    OpenStack (VMs), OpenShift (containers), and storage through ColdFront.
+    This is the maximum amount of resources you can consume at one time.
 
-??? question "4. Are we only invoicing for CPUs/GPUs only when the VM or Pod is active?"
+??? question "4. Are we invoicing for CPUs/GPUs only when the VM or Pod is active?"
 
     Yes. You will only be billed based on your utilization (cores, memory, GPU)
-    while your VM or Pod is on.  Utilization will be translated into billable
-    [Service Units (SUs)](how-pricing-works.md#service-units-sus).  Persistent
+    while your VM or Pod is on. Utilization will be translated into billable
+    [Service Units (SUs)](how-pricing-works.md#service-units-sus). Persistent
     storage related to an OpenStack VM or OpenShift Pod will continue to be
     billed even when the VM or Pod is off.
 
-??? question "5.  Will OpenStack & OpenShift show on a single invoice?"
+??? question "5. Will OpenStack & OpenShift show on a single invoice?"
 
     Yes. In the near future customers of NERC will be able to view per project service
     utilization via the XDMoD tool.
@@ -67,9 +67,9 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
     a. Storage is invoiced based on Coldfront Requests.
 
     b. When you request additional storage through Coldfront, invoicing on that
-    additional storage will occur when your request is fulfilled.  When you request
+    additional storage will occur when your request is fulfilled. When you request
     a decrease in storage through Coldfront, your invoicing will adjust accordingly
-    when your request is made.  In both cases 'invoicing' means 'accumulate hours
+    when your request is made. In both cases 'invoicing' means 'accumulate hours
     for whatever storage quantity was added or removed'.
 
     For example:

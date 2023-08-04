@@ -31,7 +31,7 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 ??? question "3. How do I control costs?"
 
     Upon creating a project, you will set these resource limits (quotas) for
-    OpenStack (VMs), OpenShift (containers), and storage through ColdFront.
+    OpenStack (VMs), OpenShift (containers), and storage through [ColdFront](../get-an-allocation.md).
     This is the maximum amount of resources you can consume at one time.
 
 ??? question "4. Are we invoicing for CPUs/GPUs only when the VM or Pod is active?"

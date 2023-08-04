@@ -53,7 +53,7 @@ or, by submitting a new ticket at [the NERC’s Support Ticketing System (osTick
 
 ??? question "7. Is storage charged separately?"
 
-    Yes, but on the same invoice. To know [more about Storage](how-pricing-works/#storage).
+    Yes, but on the same invoice. To know [more about Storage](how-pricing-works.md#storage).
 
 ??? question "8. Do we charge for storage attached to shut off instances?"
 

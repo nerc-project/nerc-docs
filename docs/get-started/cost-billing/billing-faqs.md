@@ -38,7 +38,7 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 
     Yes. You will only be billed based on your utilization (cores, memory, GPU)
     while your VM or Pod is on.  Utilization will be translated into billable
-    [Service Units (SUs)](how-pricing-works.md#service-units-su).  Persistent
+    [Service Units (SUs)](how-pricing-works.md#service-units-sus).  Persistent
     storage related to an OpenStack VM or OpenShift Pod will continue to be
     billed even when the VM or Pod is off.
 

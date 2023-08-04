@@ -12,17 +12,17 @@ the services and billing model.
 
 ## Calculations
 
-### Service Units (SU)
+### Service Units (SUs)
 
-![Service Units (SU)](images/su.png)
+![Service Units (SUs)](images/su.png)
 
 ## Breakdown
 
-### CPU/GPU SU
+### CPU/GPU SUs
 
-Service Units can only be purchased as a whole unit. We will charge for Pods and
-VMs on a per hour basis, for any portion of an hour they are used, and any VM
-“flavor”/Pod reservation is charged as a multiplier of the base SU for the maximum
+Service Units (SUs) can only be purchased as a whole unit. We will charge for Pods
+and VMs on a per-hour basis for any portion of an hour they are used, and any VM
+"flavor"/Pod reservation is charged as a multiplier of the base SU for the maximum
 resource they reserve.
 
 **GPU SU Example:**
@@ -45,13 +45,13 @@ resource they reserve.
 
 - Will be charged:
 
-    `5 CPU SUs due to the extra RAM (20GB vs 12GB(3 x 4GB)) x 720hrs x $0.013`
+    `5 CPU SUs due to the extra RAM (20GB vs. 12GB(3 x 4GB)) x 720hrs x $0.013`
 
     `$46.80`
 
 OpenShift Pods are summed up to the project level so that fractions of CPU/RAM
-that some pods use will not get overcharged. This will be split between CPU and
-GPU pods as GPU pods cannot currently share resources with CPU pods.
+that some pods use will not get overcharged. There will be a split between CPU and
+GPU pods, as GPU pods cannot currently share resources with CPU pods.
 
 ### Storage
 
@@ -62,28 +62,52 @@ volumes, and you can also create extra volumes yourself. In OpenShift pods, stor
 is only provisioned while it is active, and in persistent volumes, storage remains
 provisioned until it is deleted.
 
+**Storage Example 1**
+
+- Volume or VM with:
+
+    `500GB for 699.2hrs`
+
+- Will be charged:
+
+    `.5 Storage TB SU (.5 TB x 700hrs) x $0.009 TB/hr`
+
+    `$3.15`
+
+**Storage Example 2**
+
+- Volume or VM with:
+
+    `10TB for 720hrs (24hr x 30days)`
+
+- Will be charged:
+
+    `7,200 Storage TB SU (10TB x 720 hrs) x $0.009 TB/hr`
+
+    `$648`
+
 Storage includes all types of storage Object, Block, Ephemeral & Image.
 
 !!! note "Please note"
-    After issuing the *shutoff* command to an OpenStack VM, it will not use CPU or
-    RAM but will continue to use storage. Any extra *Images* you create will also
-    use storage.
+    After issuing the *shutoff* command to an OpenStack VM, it will not use CPU
+    or GPU but will continue to use storage. Any extra *Images* you create will
+    also use storage.
 
 ### High Level Function
 
-For those who visualize better when they can use a function to think about how
-something works, here is a function of how the calculation works for OpenShift
-and OpenStack.
+To provide a more practical way to calculate your usage, here is a function of
+how the calculation works for OpenShift and OpenStack.
 
-1. **OpenStack** = (Resource (vCPU/RAM) assigned to VM flavor converted to number
-of SU) * (time VM has been running), rounded up to whole hour + Extra storage
+1. **OpenStack** = (Resource (vCPU/RAM/vGPU) assigned to VM flavor converted to
+number of equivalent SUs) * (time VM has been running), rounded up to a whole
+hour + Extra storage.
 
     !!! info "NERC's OpenStack Flavor List"
         You can find the most up-to-date information on the current NERC's OpenStack
         flavors with corresponding SUs by referring to [this page](../../openstack/create-and-connect-to-the-VM/flavors.md).
 
-2. **OpenShift** = (Resource (vCPU/RAM) requested by Pod converted to number of
-SU) * (time Pod was running), rounded up to whole hour
+2. **OpenShift** = (Resource (vCPU/RAM/vGPU) requested by Pod converted to number
+of equivalent SUs) * (time Pod was running), rounded up to a whole hour.
 
 ## How to Pay?
 

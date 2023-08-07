@@ -8,9 +8,9 @@ adopting consistent cost structures across all institutions, we can make strateg
 investments in infrastructure, expand our service portfolio, and enhance our
 support capabilities for a seamless user experience.
 
-Most of the institutions using our services have an **MoU (Memorandum of Understanding)**
+Most of the institutions using our services have an **MOU (Memorandum Of Understanding)**
 with us to be better aligned to a number of research regulations, policies and
-requirements but if your institution does not have an MoU with us, please have
+requirements but if your institution does not have an MOU with us, please have
 someone from your faculty or administration contact us to discuss it soon by emailing
 us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
 or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).

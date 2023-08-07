@@ -1,6 +1,6 @@
 # OpenShift Overview
 
-OpenShift is a multifaceted, container orcheastration platform from Red Hat.
+OpenShift is a multifaceted, container orchestration platform from Red Hat.
 OpenShift Container Platform is a cloud-based Kubernetes container platform.
 NERC offers a cloud development **Platform-as-a-Service (PaaS)** solution based
 on Red Hat's OpenShift Container Platform that provides isolated, multi-tenant

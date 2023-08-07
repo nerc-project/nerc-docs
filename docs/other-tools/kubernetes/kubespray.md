@@ -7,13 +7,13 @@ control-plane kubernetes cluster using `Kubespray`. We are using following setti
 for this purpose:
 
 - 1 Linux machine for Ansible master, ubuntu-22.04-x86_64 or your choice of Ubuntu
-OS image, cpu-a.2 flavor with 2vCPU, 4GB RAM, 20GB.
+OS image, cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB.
 - 1 Linux machine for master, ubuntu-22.04-x86_64 or your choice of Ubuntu
-OS image, cpu-a.2 flavor with 2vCPU, 4GB RAM, 20GB -
+OS image, cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB -
 also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
 to the master node.
 - 1 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu
-OS image, cpu-a.1 flavor with 1vCPU, 2GB RAM, 20GB storage.
+OS image, cpu-su.1 flavor with 1vCPU, 4GB RAM, 20GB storage.
 - ssh access to all machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.
 - To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/#adding-other-peoples-ssh-keys-to-the-instance)

@@ -17,29 +17,29 @@ NERC offers the following flavors based on our Infrastructure-as-a-Service
 
 The standard compute flavor **"cpu-su"** is provided from Lenovo SD530 (2x Intel
 8268 2.9 GHz, 48 cores, 384 GB memory) server. The base unit is 1 vCPU, 4 GB
-memory with 20 GB root disk at a rate of $0.013 / hr of wall time.
+memory with default of 20 GB root disk at a rate of $0.013 / hr of wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |cpu-su.1       |1    |0    |1      |4        |20           |$0.013     |
-|cpu-su.2       |2    |0    |2      |8        |40           |$0.026     |
-|cpu-su.4       |4    |0    |4      |16       |80           |$0.052     |
-|cpu-su.8       |8    |0    |8      |32       |160          |$0.104     |
-|cpu-su.16      |16   |0    |16     |64       |320          |$0.256     |
+|cpu-su.2       |2    |0    |2      |8        |20           |$0.026     |
+|cpu-su.4       |4    |0    |4      |16       |20           |$0.052     |
+|cpu-su.8       |8    |0    |8      |32       |20           |$0.104     |
+|cpu-su.16      |16   |0    |16     |64       |20           |$0.256     |
 
 ### 2. Memory Optimized Tier
 
 The memory optimized flavor **"mem-su"** is provided from the same servers at
 **"cpu-su"** but with 8 GB of memory per core. The base unit is 1 vCPU, 8 GB
-memory with 20 GB root disk at a rate of $0.032 / hr of wall time.
+memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
-|mem-su.1       |1    |0    |1      |8        |20           |$0.032     |
-|mem-su.2       |2    |0    |2      |16       |40           |$0.064     |
-|mem-su.4       |4    |0    |4      |32       |80           |$0.128     |
-|mem-su.8       |8    |0    |8      |64       |160          |$0.256     |
-|em-su.16       |16   |0    |16     |128      |320          |$0.512     |
+|mem-su.1       |1    |0    |1      |8        |20           |$0.026     |
+|mem-su.2       |2    |0    |2      |16       |20           |$0.052     |
+|mem-su.4       |4    |0    |4      |32       |20           |$0.104     |
+|mem-su.8       |8    |0    |8      |64       |20           |$0.208     |
+|mem-su.16      |16   |0    |16     |128      |20           |$0.416     |
 
 ### 3. GPU Tier
 
@@ -58,12 +58,13 @@ There are two flavors within the GPU tier, one featuring the newer
 The **"gpu-su-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz,
 48 cores, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base unit is 24
-vCPU, 95 GB memory with 20 GB root disk at a rate of $1.803 / hr of wall time.
+vCPU, 95 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
+wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-a100.1  |1    |1    |24     |95       |20           |$1.803     |
-|gpu-su-a100.2  |2    |2    |48     |190      |40           |$3.606     |
+|gpu-su-a100.2  |2    |2    |48     |190      |20           |$3.606     |
 
 The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 6148,
 40 core, 768GB memory, 1x NVidia V100) servers. The base unit is 24 vCPU, 96 GB
@@ -74,7 +75,7 @@ Both gpu-su-v100 consumables are available with a 20 GB root disk.
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-v100.1  |1    |1    |24     |96       |20           |$0.902     |
-|gpu-su-v100.1m |2    |2    |48     |192      |20           |TBD        |
+|gpu-su-v100.1m |2    |1    |48     |192      |20           |$1.214     |
 
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and

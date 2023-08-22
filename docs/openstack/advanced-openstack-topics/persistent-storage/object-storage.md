@@ -491,8 +491,8 @@ storage service:
     use_https = True
 
     # Setup access keys
-    access_key = 'YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE'
-    secret_key = 'YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE', #pragma: allowlist secret
+    access_key = <YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE>
+    secret_key = <YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE>
 
     # Enable S3 v4 signature APIs
     signature_v2 = False
@@ -657,8 +657,8 @@ Edit the config file's content on the path location described by
     provider = Other
     endpoint = https://stack.nerc.mghpcc.org:13808
     acl = public-read
-    access_key_id = 'YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE'
-    secret_access_key = 'YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE', #pragma: allowlist secret
+    access_key_id = <YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE>
+    secret_access_key = <YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE>
     location_constraint =
     server_side_encryption =
 

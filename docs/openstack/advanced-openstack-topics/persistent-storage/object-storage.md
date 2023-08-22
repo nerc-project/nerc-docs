@@ -247,7 +247,8 @@ This is a python client for the Swift API. There's a [Python API](https://github
 - This example uses a `Python3` virtual environment, but you are free to choose
 any other method to create a local virtual environment like `Conda`.
 
-        py -3 -m venv venv
+        # make sure you are able to use python or python3 or py -3 (in Windows Only)
+        python3 -m venv venv
 
 - Activate the virtual environment by running:
 

@@ -80,8 +80,8 @@ vulnerabilities you may be exposed to.
 
 The Tenable agents runs transparently and can be enabled to work according to
 the parameters set for your school; the agent can be downloaded
-[here](https://agents.itsec.harvard.edu/) and configuration support can be found by
-filing a support request via HUIT support ticketing system:
+[here](https://agents.itsec.harvard.edu/) and configuration support can be found
+by filing a support request via HUIT support ticketing system:
 [ServiceNow](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9).
 
 ### Safer Applications/ Development
@@ -190,12 +190,9 @@ and Data Privacy group, specifically the Operations & Engineering team.
 ● Email: [itsec-ops@harvard.edu](mailto:itsec-ops@harvard.edu).
 
 ● Service Queue:
-[https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99
-000a53f7604a2ef9](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99
-000a53f7604a2ef9)
+[https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9)
 
-● Slack: [harvard-huit.slack.com](https://harvard-huit.slack.com)
-- Channel: **#isdp-public**
+● Slack: [harvard-huit.slack.com](https://harvard-huit.slack.com) Channel: **#isdp-public**
 
 ## Further References
 

@@ -15,10 +15,10 @@ found [here](https://policy.security.harvard.edu/all-servers).
 !!! danger "Harvard University Security Policy Information"
     *Please note that all assets deployed to your NERC project must be compliant
     with University Security policies. Please familiarize yourself with the
-    Harvard University Information Security Policy and your role in securing
-    data: [https://policy.security.harvard.edu/](https://policy.security.harvard.edu/).
-    If you have any questions about how Security should be implemented in the
-    Cloud, please contact your school security officer: [https://security.harvard.edu/](https://security.harvard.edu/).*
+    [Harvard University Information Security Policy](https://policy.security.harvard.edu/)
+    and your role in securing data. If you have any questions about how Security
+    should be implemented in the Cloud, please contact your school security
+    officer: ["Havard Security Officer"](https://security.harvard.edu/).*
 
 ## Know Your Data
 
@@ -38,7 +38,7 @@ Regulations and more information about your responsibilities can be found
 ## Host Protection
 
 The primary focus of this guide is to provide you with security essentials that
-we both support and that you can implement with little effort.
+we support and that you can implement with little effort.
 
 ### Endpoint Protection
 
@@ -78,7 +78,7 @@ information with a database of published vulnerabilities. This service will enab
 you to prioritize which component you need to upgrade or otherwise define which
 vulnerabilities you may be exposed to.
 
-The Tenable agents runs transparently and can be enabled to work according to
+The Tenable agent run transparently and can be enabled to work according to
 the parameters set for your school; the agent can be downloaded
 [here](https://agents.itsec.harvard.edu/) and configuration support can be found
 by filing a support request via HUIT support ticketing system:
@@ -137,7 +137,8 @@ and we recommend the following ways to strengthen your SSH accounts
 - In file `/etc/ssh/sshd_config` change `PasswordAuthentication` to `no` to disable
 tunneled clear text passwords i.e. `PasswordAuthentication no`.
 
-- Uncomment the second line, and, if needed, change yes to no.
+- Uncomment the permit empty passwords option in the second line, and, if needed,
+change `yes` to `no` i.e. `PermitEmptyPasswords no`
 
 - Then run `service ssh restart`.
 
@@ -159,7 +160,8 @@ endpoint detection service. This software understands activities that might be
 benign in isolation but coupled with other actions on the device may be
 indicative of a compromise. It also enables the quickest security response.
 
-Crowdstrike can be downloaded from our repository at: agents.itsec.harvard.edu
+Crowdstrike can be downloaded from our repository at:
+[agents.itsec.harvard.edu](https://agents.itsec.harvard.edu/)
 this software is needed for all devices owned by Harvard staff/faculty and
 available for all operating systems.
 
@@ -184,15 +186,14 @@ There are several ways you can report a security issue and they are all document
 on [HUIT Internet Security and Data Privacy group site](https://security.harvard.edu/report-incident).
 
 In the event you suspect a security issue has occurred or wanted someone to supply
-a security assessment, please feel free to reach out the HUIT Internet Security
+a security assessment, please feel free to reach out to the HUIT Internet Security
 and Data Privacy group, specifically the Operations & Engineering team.
 
-● Email: [itsec-ops@harvard.edu](mailto:itsec-ops@harvard.edu).
+● [Email Harvard ITSEC-OPS](mailto:itsec-ops@harvard.edu)
 
-● Service Queue:
-[https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9)
+● [Service Queue](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9)
 
-● Slack: [harvard-huit.slack.com](https://harvard-huit.slack.com) Channel: **#isdp-public**
+● [Harvard HUIT Slack](https://harvard-huit.slack.com) Channel: **#isdp-public**
 
 ## Further References
 

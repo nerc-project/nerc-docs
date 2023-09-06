@@ -2,7 +2,8 @@
 
 ## Institutions with the Best Practices outlines
 
-The following institutions using our services have already guidelines for best practices:
+The following institutions using our services have already provided guidelines
+for best practices:
 
 1. [Harvard University](best-practices-for-harvard.md)
 

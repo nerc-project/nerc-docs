@@ -80,14 +80,14 @@ connect to one or more clouds. It may contain private information and is
 generally considered private to a user.
 
 For more information on configuring the OpenStackClient with `clouds.yaml`
-please see the [OpenStack documentation](https://docs.openstack.org/python-openstackclient/wallaby/configuration/index.html#clouds-yaml)
+please see the [OpenStack documentation](https://docs.openstack.org/python-openstackclient/wallaby/configuration/index.html#clouds-yaml).
 
 ---
 
 ### Install the OpenStack command-line clients
 
 For more information on configuring the OpenStackClient please see the
-[OpenStack documentation](https://docs.openstack.org/ocata/user-guide/common/cli-install-openstack-command-line-clients.html)
+[OpenStack documentation](https://docs.openstack.org/ocata/user-guide/common/cli-install-openstack-command-line-clients.html).
 
 ### OpenStack Hello World
 

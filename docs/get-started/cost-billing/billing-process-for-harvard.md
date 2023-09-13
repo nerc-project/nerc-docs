@@ -50,9 +50,9 @@ and specify which OpenShift or OpenStack project this is for.
     !!! danger "Harvard University Security Policy Information"
         *Please note that all assets deployed to your NERC project must be compliant
         with University Security policies. Please familiarize yourself with the
-        Harvard University Information Security Policy and your role in securing
-        data: [https://policy.security.harvard.edu/](https://policy.security.harvard.edu/).
-        If you have any questions about how Security should be implemented in the
-        Cloud, please contact your school security officer: [https://security.harvard.edu/](https://security.harvard.edu/).*
+        [Harvard University Information Security Policy](https://policy.security.harvard.edu/)
+        and your role in securing data. If you have any questions about how Security
+        should be implemented in the Cloud, please contact your school security
+        officer: ["Havard Security Officer"](https://security.harvard.edu/).*
 
 ---

@@ -250,9 +250,9 @@ any other method to create a local virtual environment like `Conda`.
         python3 -m venv venv
 
     !!! note "Choosing Correct Python Interpreter"
-        Make sure you are able to use python or python3 or **py -3** (For Windows
-        Only) to create a directory named `venv` (or whatever name you specified)
-        in your current working directory.
+        Make sure you are able to use `python` or `python3` or `**py -3**` (For
+        Windows Only) to create a directory named `venv` (or whatever name you
+        specified) in your current working directory.
 
 - Activate the virtual environment by running:
 

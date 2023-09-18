@@ -247,7 +247,7 @@ This is a python client for the Swift API. There's a [Python API](https://github
 - This example uses a `Python3` virtual environment, but you are free to choose
 any other method to create a local virtual environment like `Conda`.
 
-        py -3 -m venv venv
+    `python3 -m venv venv`
 
 - Activate the virtual environment by running:
 
@@ -259,7 +259,7 @@ any other method to create a local virtual environment like `Conda`.
 
 - Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
 
-    pip install python-swiftclient python-keystoneclient
+    `pip install python-swiftclient python-keystoneclient`
 
 - Swift authenticates using a user, tenant, and key, which map to your OpenStack
 username, project,and password.

@@ -42,7 +42,7 @@ choose any other method to create a local virtual environment like Conda.
 
 ```sh
 cd nerc-docs
-py -3 -m venv venv
+python3 -m venv venv
 ```
 
 Activate the virtual environment by running:

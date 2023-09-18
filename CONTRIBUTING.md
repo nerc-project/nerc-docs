@@ -42,6 +42,10 @@ choose any other method to create a local virtual environment like Conda.
 
 ```sh
 cd nerc-docs
+```
+
+```sh
+# make sure you are able to use python or python3 or py -3 (in Windows Only)
 python3 -m venv venv
 ```
 

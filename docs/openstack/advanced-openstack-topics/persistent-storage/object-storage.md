@@ -247,7 +247,12 @@ This is a python client for the Swift API. There's a [Python API](https://github
 - This example uses a `Python3` virtual environment, but you are free to choose
 any other method to create a local virtual environment like `Conda`.
 
-    `python3 -m venv venv`
+        python3 -m venv venv
+
+    !!! note "Choosing Correct Python Interpreter"
+        Make sure you are able to use `python` or `python3` or **`py -3`** (For
+        Windows Only) to create a directory named `venv` (or whatever name you
+        specified) in your current working directory.
 
 - Activate the virtual environment by running:
 
@@ -259,7 +264,7 @@ any other method to create a local virtual environment like `Conda`.
 
 - Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
 
-    `pip install python-swiftclient python-keystoneclient`
+    pip install python-swiftclient python-keystoneclient
 
 - Swift authenticates using a user, tenant, and key, which map to your OpenStack
 username, project,and password.
@@ -490,8 +495,8 @@ storage service:
     use_https = True
 
     # Setup access keys
-    access_key = 'YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE'
-    secret_key = 'YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE', #pragma: allowlist secret
+    access_key = <YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE>
+    secret_key = <YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE>
 
     # Enable S3 v4 signature APIs
     signature_v2 = False
@@ -656,8 +661,8 @@ Edit the config file's content on the path location described by
     provider = Other
     endpoint = https://stack.nerc.mghpcc.org:13808
     acl = public-read
-    access_key_id = 'YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE'
-    secret_access_key = 'YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE', #pragma: allowlist secret
+    access_key_id = <YOUR_EC2_ACCESS_KEY_FROM_ec2rc_FILE>
+    secret_access_key = <YOUR_EC2_SECRET_KEY_FROM_ec2rc_FILE>
     location_constraint =
     server_side_encryption =
 

@@ -77,6 +77,17 @@ Both gpu-su-v100 consumables are available with a 20 GB root disk.
 |gpu-su-v100.1  |1    |1    |24     |96       |20           |$0.902     |
 |gpu-su-v100.1m |2    |1    |48     |192      |20           |$1.214     |
 
+The **"gpu-su-k80"** flavor is provided from Supermicro X10DRG-H (2x Intel
+E5-2620 2.40GHz, 24 core, 128GB memory, 4x NVidia K80) servers. The base unit
+is 6 vCPU, 31 GB memory with default of 20 GB root disk at a rate of $0.463 /
+hr of wall time.
+
+| Flavor       | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+|--------------|-----|-----|-------|---------|-------------|-----------|
+|gpu-su-k80.1  |1    |1    |6      |31       |20           |$0.463     |
+|gpu-su-k80.2  |2    |2    |12     |62       |20           |$0.926     |
+|gpu-su-k80.4  |4    |4    |24     |124      |20           |$1.852     |
+
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and
     **Cinder (block storage/ volumes)** are charged separately at a rate of

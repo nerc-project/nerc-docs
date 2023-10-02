@@ -236,7 +236,13 @@ PIs and managers can view important details of the allocation including start an
 end dates, creation and last modified dates, users on the allocation and public
 allocation attributes. PIs and managers can add or remove users from allocations.
 
-![PI and Manager Allocation View](images/coldfront-pi-manager-view.png)
+### PI and Manager Allocation View of OpenStack Resource Allocation
+
+![PI and Manager Allocation View of OpenStack Resource Allocation](images/coldfront-openstack-allocation-pi-manager-view.png)
+
+### PI and Manager Allocation View of OpenShift Resource Allocation
+
+![PI and Manager Allocation View of OpenShift Resource Allocation](images/coldfront-openshift-allocation-pi-manager-view.png)
 
 ## Adding and removing project Users to project Resource Allocation
 

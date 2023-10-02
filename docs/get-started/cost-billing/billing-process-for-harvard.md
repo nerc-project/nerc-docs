@@ -4,7 +4,7 @@ Direct Billing for NERC is a convenience service for Harvard Faculty and Departm
 HUIT will pay the monthly invoices and then allocate the monthly usage costs on
 the Harvard University General Ledger. This follows a similar pattern with how
 other Public Cloud Providers (AWS, Azure, GCP) accounts are billed and leverage
-the HUIT Central Billing [Portal](https://billing.huit.harvard.edu/). Your HUIT
+the [HUIT Central Billing Portal](https://billing.huit.harvard.edu/). Your HUIT
 Customer Code will be matched to your NERC Project Allocation Name as a Billing
 Asset. In this process you will be asked for your GL billing code, which you can
 change as needed per project. Please be cognizant that only a single billing code

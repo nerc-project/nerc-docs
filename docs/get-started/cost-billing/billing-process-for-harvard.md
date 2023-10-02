@@ -37,7 +37,7 @@ under "**NERC PI Account Request**" option on **Help Topic** dropdown list.
         Code then you can [contact HUIT Billing](https://billing.huit.harvard.edu/portal/allusers/contactus)
         to get the required Customer Code.*
 
-2. During Resource Allocation reviewal and approval process, we will use the HUIT
+2. During Resource Allocation review and approval process, we will use the HUIT
 "Customer Code" provided by the PI during step #1 to map to each approved allocations.
 Before mapping this Customer Code to Resource Allocation, we will send out an email
 to confirm with the PI or Manager(s). Additionally, there is an option for you to

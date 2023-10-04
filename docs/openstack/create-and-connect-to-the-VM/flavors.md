@@ -67,15 +67,12 @@ wall time.
 |gpu-su-a100.2  |2    |2    |48     |190      |20           |$3.606     |
 
 The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 6148,
-40 core, 768GB memory, 1x NVidia V100) servers. The base unit is 24 vCPU, 96 GB
-memory at a rate of $0.902 / hr of wall time. There is also a related "gpu-su-v100.1m"
-consumable that provides doubled vCPU and memory in comparision to "gpu-su-v100.1".
-Both gpu-su-v100 consumables are available with a 20 GB root disk.
+40 core, 768GB memory, 1x NVidia V100) servers. The base unit is 48 vCPU, 192 GB
+memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
-|gpu-su-v100.1  |1    |1    |24     |96       |20           |$0.902     |
-|gpu-su-v100.1m |2    |1    |48     |192      |20           |$1.214     |
+|gpu-su-v100.1  |1    |1    |48     |192      |20           |$1.214     |
 
 The **"gpu-su-k80"** flavor is provided from Supermicro X10DRG-H (2x Intel
 E5-2620 2.40GHz, 24 core, 128GB memory, 4x NVidia K80) servers. The base unit

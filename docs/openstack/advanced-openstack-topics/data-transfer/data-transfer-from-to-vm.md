@@ -415,7 +415,7 @@ as shown below:
     !!! info "Default User name based on OS"
         - **all Ubuntu images**: ubuntu
         - **all CentOS images**: centos
-        - **all Rocky Linux images**: centos
+        - **all Rocky Linux images**: rocky
         - **all Fedora images**: fedora
         - **all Debian images**: debian
         - **all RHEL images**: cloud-user
@@ -486,7 +486,7 @@ for more information.
     !!! info "Default User name based on OS"
         - **all Ubuntu images**: ubuntu
         - **all CentOS images**: centos
-        - **all Rocky Linux images**: centos
+        - **all Rocky Linux images**: rocky
         - **all Fedora images**: fedora
         - **all Debian images**: debian
         - **all RHEL images**: cloud-user
@@ -549,7 +549,7 @@ for more information.
     !!! info "Default User name based on OS"
         - **all Ubuntu images**: ubuntu
         - **all CentOS images**: centos
-        - **all Rocky Linux images**: centos
+        - **all Rocky Linux images**: rocky
         - **all Fedora images**: fedora
         - **all Debian images**: debian
         - **all RHEL images**: cloud-user

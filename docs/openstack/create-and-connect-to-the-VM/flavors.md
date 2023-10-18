@@ -67,13 +67,13 @@ wall time.
 |gpu-su-a100.2  |2    |2    |48     |190      |20           |$3.606     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-a100"** flavor based VM?"
-    Even you launch a VM based on GPU **NVidia A100s**, you will need to setup
-    NVIDIA driver to use the GPU based code and librabries in this machine. Please
-    run the following commands to setup the NVIDIA driver and CUDA version required
-    for this flavor based VM to execute GPU based codes properly.
+    After launching a VM with an **NVidia A100** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
     **Note:** These commands are **ONLY** applicable for the VM based on
-    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding packages
-    for your own OS of choice.
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
 
         sudo apt update
         sudo apt -y install nvidia-driver-495
@@ -94,13 +94,13 @@ memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
 |gpu-su-v100.1  |1    |1    |48     |192      |20           |$1.214     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-v100"** flavor based VM?"
-    Even you launch a VM based on GPU **NVidia V100s**, you will need to setup
-    NVIDIA driver to use the GPU based code and librabries in this machine. Please
-    run the following commands to setup the NVIDIA driver and CUDA version required
-    for this flavor based VM to execute GPU based codes properly.
+    After launching a VM with an **NVidia V100** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
     **Note:** These commands are **ONLY** applicable for the VM based on
-    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding packages
-    for your own OS of choice.
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
 
         sudo apt update
         sudo apt -y install nvidia-driver-470
@@ -124,13 +124,13 @@ hr of wall time.
 |gpu-su-k80.4  |4    |4    |24     |124      |20           |$1.852     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-k80"** flavor based VM?"
-    Even you launch a VM based on GPU **NVidia K80s**, you will need to setup
-    NVIDIA driver to use the GPU based code and librabries in this machine. Please
-    run the following commands to setup the NVIDIA driver and CUDA version required
-    for this flavor based VM to execute GPU based codes properly.
+    After launching a VM with an **NVidia K80** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
     **Note:** These commands are **ONLY** applicable for the VM based on
-    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding packages
-    for your own OS of choice.
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
 
         sudo apt update
         sudo apt -y install nvidia-driver-470

@@ -52,8 +52,8 @@ memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
     is integrated into a specialized hardware such as GPUs that produce unprecedented
     performance boosts for technical computing workloads.
 
-There are two flavors within the GPU tier, one featuring the newer
-**NVidia A100s** along with **NVidia V100s**.
+There are three flavors within the GPU tier, one featuring the newer
+**NVidia A100s** along with **NVidia V100s** and **NVidia K80s**.
 
 The **"gpu-su-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz,
 48 cores, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver
@@ -66,6 +66,25 @@ wall time.
 |gpu-su-a100.1  |1    |1    |24     |95       |20           |$1.803     |
 |gpu-su-a100.2  |2    |2    |48     |190      |20           |$3.606     |
 
+!!! note "How to setup NVIDIA driver for **"gpu-su-a100"** flavor based VM?"
+    After launching a VM with an **NVidia A100** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
+    **Note:** These commands are **ONLY** applicable for the VM based on
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
+
+        sudo apt update
+        sudo apt -y install nvidia-driver-495
+        # Just click *Enter* if any popups appear!
+        # Confirm and verify that you can see the NVIDIA device attached to your VM
+        lspci | grep -i nvidia
+        # 0:05.0 3D controller: NVIDIA Corporation GA100 [A100 PCIe 40GB] (rev a1)
+        sudo reboot
+        # SSH back to your VM and then you will be able to use nvidia-smi command
+        nvidia-smi
+
 The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 6148,
 40 core, 768GB memory, 1x NVidia V100) servers. The base unit is 48 vCPU, 192 GB
 memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
@@ -73,6 +92,25 @@ memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-v100.1  |1    |1    |48     |192      |20           |$1.214     |
+
+!!! note "How to setup NVIDIA driver for **"gpu-su-v100"** flavor based VM?"
+    After launching a VM with an **NVidia V100** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
+    **Note:** These commands are **ONLY** applicable for the VM based on
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
+
+        sudo apt update
+        sudo apt -y install nvidia-driver-470
+        # Just click *Enter* if any popups appear!
+        # Confirm and verify that you can see the NVIDIA device attached to your VM
+        lspci | grep -i nvidia
+        # 00:05.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100 PCIe 32GB] (rev a1)
+        sudo reboot
+        # SSH back to your VM and then you will be able to use nvidia-smi command
+        nvidia-smi
 
 The **"gpu-su-k80"** flavor is provided from Supermicro X10DRG-H (2x Intel
 E5-2620 2.40GHz, 24 core, 128GB memory, 4x NVidia K80) servers. The base unit
@@ -84,6 +122,25 @@ hr of wall time.
 |gpu-su-k80.1  |1    |1    |6      |31       |20           |$0.463     |
 |gpu-su-k80.2  |2    |2    |12     |62       |20           |$0.926     |
 |gpu-su-k80.4  |4    |4    |24     |124      |20           |$1.852     |
+
+!!! note "How to setup NVIDIA driver for **"gpu-su-k80"** flavor based VM?"
+    After launching a VM with an **NVidia K80** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
+    **Note:** These commands are **ONLY** applicable for the VM based on
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
+
+        sudo apt update
+        sudo apt -y install nvidia-driver-470
+        # Just click *Enter* if any popups appear!
+        # Confirm and verify that you can see the NVIDIA device attached to your VM
+        lspci | grep -i nvidia
+        # 00:05.0 3D controller: NVIDIA Corporation GK210GL [Tesla K80] (rev a1)
+        sudo reboot
+        # SSH back to your VM and then you will be able to use nvidia-smi command
+        nvidia-smi
 
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and

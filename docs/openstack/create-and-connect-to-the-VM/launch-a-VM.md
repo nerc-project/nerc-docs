@@ -38,9 +38,20 @@ is 1.
 
 ![VM Launch Instance Source](images/launch_source.png)
 
+!!! info "How to override the flavor's Default root disk volume size"
+    If you don't specify custom value for the "**Volume Size (GB)**", that will
+    be set to the root disk size of your selected Flavor. For more about the
+    default root disk size you can refer to [this documentation](flavors.md).
+    We can override this value by entering our own custom value (in GB) and that
+    is available as a Volume that is attach to the instance to enable persistent
+    storage.
+
 !!! danger "Important Note"
     - To create an image that uses the boot volume sized according to the flavor
-    ensure that "No" is selected under the "Create New Volume" section.
+    ensure that "No" is selected under the "Create New Volume" section. This will
+    **NOT** create a persistant block storage in the form of Volume can be risky
+    so we recommend to frequently take a snapshot of the running instance in case
+    you want to recover some important state of your instance.
 
     - When you deploy a non-ephemeral instance (i.e. Creating a new volume), and
     indicate "Yes" in "Delete Volume on Instance delete", then when you delete

@@ -21,7 +21,7 @@ the services and billing model.
 ### CPU/GPU SUs
 
 Service Units (SUs) can only be purchased as a whole unit. We will charge for
-Pods (summed up by Porject) and VMs on a per-hour basis for any portion of an
+Pods (summed up by Project) and VMs on a per-hour basis for any portion of an
 hour they are used, and any VM "flavor"/Pod reservation is charged as a multiplier
 of the base SU for the maximum resource they reserve.
 

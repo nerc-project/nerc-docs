@@ -20,14 +20,14 @@ the services and billing model.
 
 ### CPU/GPU SUs
 
-Service Units (SUs) can only be purchased as a whole unit. We will charge for Pods
-and VMs on a per-hour basis for any portion of an hour they are used, and any VM
-"flavor"/Pod reservation is charged as a multiplier of the base SU for the maximum
-resource they reserve.
+Service Units (SUs) can only be purchased as a whole unit. We will charge for
+Pods (summed up by Project) and VMs on a per-hour basis for any portion of an
+hour they are used, and any VM "flavor"/Pod reservation is charged as a multiplier
+of the base SU for the maximum resource they reserve.
 
 **GPU SU Example:**
 
-- A Pod or VM with:
+- A Project or VM with:
 
     `1 A100 GPU, 24 vCPUs, 95MB RAM, 199.2hrs`
 
@@ -37,9 +37,9 @@ resource they reserve.
 
     `$360.60`
 
-**CPU Example:**
+**CPU SU Example:**
 
-- A Pod or VM with:
+- A Project or VM with:
 
     `3 vCPU, 20 GB RAM, 720hrs (24hr x 30days)`
 
@@ -82,9 +82,9 @@ provisioned until it is deleted.
 
 - Will be charged:
 
-    `7,200 Storage TB SU (10TB x 720 hrs) x $0.009 TB/hr`
+    `10 Storage TB SU (10TB x 720 hrs) x $0.009 TB/hr`
 
-    `$648`
+    `$64.80`
 
 Storage includes all types of storage Object, Block, Ephemeral & Image.
 
@@ -93,7 +93,7 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
     or GPU but will continue to use storage. Any extra *Images* you create will
     also use storage.
 
-### High Level Function
+### High-Level Function
 
 To provide a more practical way to calculate your usage, here is a function of
 how the calculation works for OpenShift and OpenStack.
@@ -106,8 +106,9 @@ hour + Extra storage.
         You can find the most up-to-date information on the current NERC's OpenStack
         flavors with corresponding SUs by referring to [this page](../../openstack/create-and-connect-to-the-VM/flavors.md).
 
-2. **OpenShift** = (Resource (vCPU/RAM/vGPU) requested by Pod converted to number
-of equivalent SUs) * (time Pod was running), rounded up to a whole hour.
+2. **OpenShift** =  (Resource (vCPU/RAM) requested by Pod converted to the number
+of SU) * (time Pod was running), summed up to project level rounded up to the whole
+hour.
 
 ## How to Pay?
 

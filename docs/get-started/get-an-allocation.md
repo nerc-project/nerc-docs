@@ -145,7 +145,7 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
 | `Ephemeral Storage(GB)`  | 5                                     |
 
 !!! warning "Very Important"
-    Make sure to select **NERC-OCP (OpenShift)** on Resource option(Remember: the
+    Make sure to select **NERC-OCP (OpenShift)** on Resource option (Remember: the
     first option i.e. **NERC (OpenStack)** is selected by default!) and specify
     your expected Units of computing. Be mindful, you can extend your current resource
     allocations on your current project later on by following [this documentation](#request-change-resource-allocation-attributes-for-openshift-project).

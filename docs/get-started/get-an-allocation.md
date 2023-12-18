@@ -96,7 +96,7 @@ one project or, if they require, they can separate the work into multiple projec
 !!! warning "Very Important"
     Make sure to select **NERC (OpenStack)** on Resource option and specify
     your expected Units of computing. Be mindful, you can extend your current resource
-    allocations on your current project later on.
+    allocations on your current project later on by following [this documentation](#request-change-resource-allocation-attributes-for-openstack-project).
 
 #### Resource Allocation Quotas for OpenStack Project
 
@@ -104,17 +104,17 @@ The amount of quota to start out a resource allocation after approval, can be
 specified using an integer field in the resource allocation request form as shown
 above. The provided unit value is computed as PI or project managers request
 resource quota. The basic unit of computational resources is defined in terms of
-integer value that corresponds to multiple openstack resource quotas. For example,
+integer value that corresponds to multiple OpenStack resource quotas. For example,
 1 Unit corresponds to:
 
 | Resource Name         | Quota Amount x Unit                   |
 | :-------------------: | :-----------------------------------: |
 | `Instances`           | 1                                     |
-| `vCPUs`               | 2                                     |
+| `vCPUs`               | 1                                     |
 | `GPU`                 | 0                                     |
-| `RAM`                 | 4096                                  |
+| `RAM(MB)`                 | 4096                                  |
 | `Volumes`             | 2                                     |
-| `Volume Storage(GB)`  | 100                                   |
+| `Volume Storage(GB)`  | 20                                  |
 | `Object Storage(GB)`  | 1                                     |
 
 !!! info "Information"
@@ -126,15 +126,29 @@ integer value that corresponds to multiple openstack resource quotas. For exampl
 
 ![Request A New OpenShift Resource Allocation](images/coldfront-request-new-openshift-allocation.png)
 
-!!! warning "Very Important"
-    Make sure to select **NERC-OCP (OpenShift)** on Resource option and specify
-    your expected Units of computing. Be mindful, you can extend your current resource
-    allocations on your current project later on.
+#### Resource Allocation Quotas for OpenShift Project
 
-!!! info "Information"
-    By default, **2 CPU**, **5GB Ephemeral Storage** and **2GB RAM or Memory** are
-    provided to each approved resource allocation that can be updated as needed
-    later by the PI or project manager(s).
+The amount of quota to start out a resource allocation after approval, can be
+specified using an integer field in the resource allocation request form as shown
+above. The provided unit value is computed as PI or project managers request
+resource quota. The basic unit of computational resources is defined in terms of
+integer value that corresponds to multiple OpenShift resource quotas. For example,
+1 Unit corresponds to:
+
+| Resource Name         | Quota Amount x Unit                   |
+| :-------------------: | :-----------------------------------: |
+| `vCPUs`               | 1                                     |
+| `GPU`                 | 0                                     |
+| `RAM(MB)`                 | 4096                                  |
+| `Persistent Volume Claims (PVC)`             | 2                                     |
+| `Storage(GB)`  | 20                                  |
+| `Ephemeral Storage(GB)`  | 5                                     |
+
+!!! warning "Very Important"
+    Make sure to select **NERC-OCP (OpenShift)** on Resource option (Remember: the
+    first option i.e. **NERC (OpenStack)** is selected by default!) and specify
+    your expected Units of computing. Be mindful, you can extend your current resource
+    allocations on your current project later on by following [this documentation](#request-change-resource-allocation-attributes-for-openshift-project).
 
 ## Adding and removing User from the Project
 
@@ -158,7 +172,7 @@ first name, last name etc. as shown below:
     When adding a user to your project you can optionally designate them as a
     "Manager" by selecting their role using the drop down next to their email.
     Read more about user roles
-    [here](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#user-roles).
+    [here](#user-roles).
 
 Thus, found user(s) can be selected and assigned directly to the available resource
 allocation(s) on the given project using this interface. While adding the users,
@@ -228,7 +242,7 @@ Then toggle the "Role" from User to Manager:
 
     This delegation of "Manager" role can be done when adding a user to your project.
     You can optionally designate them as a "Manager" by selecting their role using
-    the drop down next to their email as described [here](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#adding-and-removing-user-from-the-project).
+    the drop down next to their email as described [here](#adding-and-removing-user-from-the-project).
 
 ## PI and Manager Allocation View
 

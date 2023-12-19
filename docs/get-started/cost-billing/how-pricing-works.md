@@ -14,7 +14,12 @@ the services and billing model.
 
 ### Service Units (SUs)
 
-![Service Units (SUs)](images/su.png)
+| Name | vGPU | vCPU | RAM (GB) | Current Price |
+| - | - | - | - | - |
+| CPU | 0 | 1 | 4 | $0.013 |
+| A100 GPU | 1 | 24 | 74 | $1.803 |
+| V100 GPU | 1 | 48 | 192 | $1.214 |
+| K80 GPU | 1 | 24 | 28.5 | $0.463 |
 
 ## Breakdown
 
@@ -37,7 +42,7 @@ of the base SU for the maximum resource they reserve.
 
     `$360.60`
 
-**CPU SU Example:**
+**OpenStack CPU SU Example:**
 
 - A Project or VM with:
 
@@ -46,6 +51,24 @@ of the base SU for the maximum resource they reserve.
 - Will be charged:
 
     `5 CPU SUs due to the extra RAM (20GB vs. 12GB(3 x 4GB)) x 720hrs x $0.013`
+
+    `$46.80`
+
+**OpenShift CPU SU Example:**
+
+- Project with 3 Pods with:
+
+     `1 vCPU, 3 GB RAM, 720hrs (24hr*30days)`
+     `0.1 vCPU, 8 GB RAM, 720hrs (24hr*30days)`
+     `2 vCPU, 4 GB RAM, 720hrs (24hr*30days)`
+
+- Will be charged:
+
+    `RoundUP(Sum(`
+    `1 CPU SUs due to first pod * 720hrs * $0.013`
+    `2 CPU SUs due to extra RAM (8GB vs 0.4GB(0.1*4GB)) * 720hrs * $0.013`
+    `2 CPU SUs due to more CPU (2vCPU vs 1vCPU(4GB/4)) * 720hrs * $0.013))`
+    `=RoundUP(Sum(720(1+2+2)))*0.013`
 
     `$46.80`
 

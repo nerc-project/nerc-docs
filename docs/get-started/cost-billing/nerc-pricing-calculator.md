@@ -26,7 +26,9 @@ your research needs by using [this online tool](https://docs.google.com/spreadsh
     you need to use the third sheet titled "**Calculate Storage**". And then the
     overall total cost will be reflected at the last sheet titled "**Total Cost**".
 
-For more information about how NERC pricing works, see [How does NERC pricing work](get-started/cost-billing/how-pricing-works.md) and to know more about billing process for your own
-institution, see [Billing Process for My Institution](get-started/cost-billing/billing-process-for-my-institution.md).
+For more information about how NERC pricing works, see
+[How does NERC pricing work](get-started/cost-billing/how-pricing-works.md) and
+to know more about billing process for your own institution, see
+[Billing Process for My Institution](get-started/cost-billing/billing-process-for-my-institution.md).
 
 ---

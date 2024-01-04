@@ -101,4 +101,10 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
     b. Additional offerings may be added throughout the year (i.e. new types of
     hardware or storage).
 
+??? question "12. Is there any NERC Pricing Calculator?"
+
+    Yes. Start your estimate with no commitment based on your resource needs by
+    using [this online tool](https://docs.google.com/spreadsheets/d/187bQgz3eB3W9OL7x9rrgaJ2pi7u85xMJvUJbnKzzBQM/edit#gid=0). For more information about how to use this tool, see
+    [How to use the NERC Pricing Calculator](nerc-pricing-calculator.md).
+
 ---

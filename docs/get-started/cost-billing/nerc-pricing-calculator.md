@@ -17,14 +17,15 @@ your research needs by using [this online tool](https://docs.google.com/spreadsh
     at the bottom as shown here:
     ![Estimator Available Sheets](images/cost-estimator-bottom-sheets.png)
     If you are more interested to calculate your cost estimates based on the available
-    **NERC OpenStack flavors** (which define the compute, memory, and storage capacity
-    for your dedicated instances), you can select and use the second sheet titled
-    "**OpenStack Flavor**". For cost estimating the NERC OpenShift resources,
-    you can use the first sheet titled "**Calculate SU**" and input pod specific
-    resource requests in each row. If you are scaling the pods more than one then
-    you need to enter a new row or entry for each scaled pods. For Storage cost,
-    you need to use the third sheet titled "**Calculate Storage**". And then the
-    overall total cost will be reflected at the last sheet titled "**Total Cost**".
+    **[NERC OpenStack flavors](../../openstack/create-and-connect-to-the-VM/flavors.md)**
+    (which define the compute, memory, and storage capacity for your dedicated
+    instances), you can select and use the second sheet titled "**OpenStack Flavor**".
+    For cost estimating the NERC OpenShift resources, you can use the first sheet
+    titled "**Calculate SU**" and input pod specific resource requests in each row.
+    If you are scaling the pods more than one then you need to enter a new row or
+    entry for each scaled pods. For Storage cost, you need to use the third sheet
+    titled "**Calculate Storage**". And then the total cost will be reflected at
+    the last sheet titled "**Total Cost**".
 
 For more information about how NERC pricing works, see
 [How does NERC pricing work](how-pricing-works.md) and

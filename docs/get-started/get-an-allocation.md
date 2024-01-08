@@ -87,6 +87,59 @@ new allocations, renew expiring allocations, and provide information such as
 publications and grant data. PIs can maintain all their research information under
 one project or, if they require, they can separate the work into multiple projects.
 
+### Project Annual Review Process
+
+NERC's ColdFront allows annual project reviews for NERC admins by mandating PIs
+to assess and update their projects. With the Project Review feature activated,
+each project undergoes a mandatory review every 365 days. During this process,
+PIs update project details, confirm project members, and input publications,
+grants, and research outcomes from the preceding year.
+
+!!! danger "Required Project Review"
+    ColdFront does not send notifications to PIs when project reviews are due.
+    Instead, when the PI or Manager(s) of a project views their project they will
+    find the notification that the project review is due. Additionally, when the
+    project review is pending, PIs or Project Manager(s) cannot request new
+    allocations or renew expiring allocations or change request to update the
+    allocated allocation attributes' values. This is to enforce PIs need to
+    review their projects annually. The PI or any managers on the project are
+    able to complete the project review process.
+
+### Project Reviews for PIs or Project Manager(s)
+
+When a PI or any Project Manager(s) of a project logs into NERC's ColdFront web
+console and their project review is due, they will see a banner next to the
+project name on the home page:
+
+![Project Review](images/coldfront-project-review.png)
+
+If they try to request a new allocation or renew an expiring allocation or change
+request to update the allocated allocation attributes' values, they will get an
+error message:
+
+![Project Review Pending Notification](images/coldfront-project-review-notifications.png)
+
+### Project Review Steps
+
+The PI or any manager(s) of a project must complete the project review once
+every 365 days. When they click on the "Review Project" link they're presented
+with the requirements and a description of why we're asking for this update:
+
+![Project Review Submit Details](images/coldfront-project-review-steps.png)
+
+The links in each step direct them to different parts of their Project Detail page.
+This review page lists the dates when grants and publications were last updated.
+If there are no grant or publications or at least one of them hasn't been udpated
+in the last year, we ask for a reason they're not updating the project information.
+This helps encourage PIs to provide updates if they have them. If not, they
+provide a reason and this is displayed for the NERC admins as part of the review
+process.
+
+Once the project review page if completed, the PI is redirected to the project
+detail page and they see the status change to "project review pending."
+
+![Project Review Pending Status](images/coldfront-project-review-pending-status.png)
+
 ## How to request a new Resource Allocation
 
 ### Request A New OpenStack Resource Allocation for OpenStack Project

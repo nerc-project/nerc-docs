@@ -96,13 +96,14 @@ PIs update project details, confirm project members, and input publications,
 grants, and research outcomes from the preceding year.
 
 !!! danger "Required Project Review"
-    when the PI views their project they will find the notification that the
-    project review is due. ColdFront does not send notifications to PIs when
-    project reviews are due. Additionally, when the project review is pending,
-    PIs or Project Manager(s) cannot request new allocations or renew expiring
-    allocations or change request to update the allocated allocation attributes'
-    values. This is to enforce PIs need to review their projects annually. The
-    PI or any managers on the project are able to complete the project review process.
+    ColdFront does not send notifications to PIs when project reviews are due.
+    Instead, when the PI or Manager(s) of a project views their project they will
+    find the notification that the project review is due. Additionally, when the
+    project review is pending, PIs or Project Manager(s) cannot request new
+    allocations or renew expiring allocations or change request to update the
+    allocated allocation attributes' values. This is to enforce PIs need to
+    review their projects annually. The PI or any managers on the project are
+    able to complete the project review process.
 
 ### Project Reviews for PIs or Project Manager(s)
 

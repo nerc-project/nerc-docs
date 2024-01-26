@@ -214,6 +214,13 @@ Once we click on the "Add Users" button, it will shows the following search inte
 
 ![User Search Interface](images/coldfront-user-search.png)
 
+!!! info "Searching multiple users at once!"
+    If you want to simultaneously search for multiple users in the system, you
+    can input multiple usernames **separated by space or newline**, as shown below:
+    ![Searching Multiple User(s)](images/coldfront-search-multiple-users.png)
+    **NOTE:** This will return a list of all users matching those provided usernames
+    only if they exist.
+
 They can search for any users in the system that are not already part of the project
 by providing exact matched username or partial text of other multiple fields. The
 search results show details about the user account such as email address, username,

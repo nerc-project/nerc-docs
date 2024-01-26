@@ -215,8 +215,6 @@ Once we click on the "Add Users" button, it will shows the following search inte
 ![User Search Interface](images/coldfront-user-search.png)
 
 !!! info "Searching multiple users at once!"
-    If you want to search for multiple users in the system at once then you can
-    provide exactly matched usernames in each new line as shown below:
     If you want to simultaneously search for multiple users in the system, you
     can input multiple usernames **separated by space or newline**, as shown below:
     ![Searching Multiple User(s)](images/coldfront-search-multiple-users.png)

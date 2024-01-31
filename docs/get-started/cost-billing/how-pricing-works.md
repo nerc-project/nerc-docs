@@ -58,9 +58,11 @@ of the base SU for the maximum resource they reserve.
 
 - Project with 3 Pods with:
 
-    - `1 vCPU, 3 GB RAM, 720hrs (24hr*30days)`
-    - `0.1 vCPU, 8 GB RAM, 720hrs (24hr*30days)`
-    - `2 vCPU, 4 GB RAM, 720hrs (24hr*30days)`
+    i. `1 vCPU, 3 GB RAM, 720hrs (24hr*30days)`
+
+    ii. `0.1 vCPU, 8 GB RAM, 720hrs (24hr*30days)`
+
+    iii. `2 vCPU, 4 GB RAM, 720hrs (24hr*30days)`
 
 - Project Will be charged:
 

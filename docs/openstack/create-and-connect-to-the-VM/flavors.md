@@ -25,7 +25,7 @@ memory with default of 20 GB root disk at a rate of $0.013 / hr of wall time.
 |cpu-su.2       |2    |0    |2      |8        |20           |$0.026     |
 |cpu-su.4       |4    |0    |4      |16       |20           |$0.052     |
 |cpu-su.8       |8    |0    |8      |32       |20           |$0.104     |
-|cpu-su.16      |16   |0    |16     |64       |20           |$0.256     |
+|cpu-su.16      |16   |0    |16     |64       |20           |$0.208     |
 
 ### 2. Memory Optimized Tier
 
@@ -63,8 +63,8 @@ wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
-|gpu-su-a100.1  |1    |1    |24     |95       |20           |$1.803     |
-|gpu-su-a100.2  |2    |2    |48     |190      |20           |$3.606     |
+|gpu-su-a100.1  |1    |1    |24     |74       |20           |$1.803     |
+|gpu-su-a100.2  |2    |2    |48     |148      |20           |$3.606     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-a100"** flavor based VM?"
     After launching a VM with an **NVidia A100** GPU flavor, you will need to
@@ -119,9 +119,9 @@ hr of wall time.
 
 | Flavor       | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |--------------|-----|-----|-------|---------|-------------|-----------|
-|gpu-su-k80.1  |1    |1    |6      |31       |20           |$0.463     |
-|gpu-su-k80.2  |2    |2    |12     |62       |20           |$0.926     |
-|gpu-su-k80.4  |4    |4    |24     |124      |20           |$1.852     |
+|gpu-su-k80.1  |1    |1    |6      |28.5     |20           |$0.463     |
+|gpu-su-k80.2  |2    |2    |12     |57       |20           |$0.926     |
+|gpu-su-k80.4  |4    |4    |24     |114      |20           |$1.852     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-k80"** flavor based VM?"
     After launching a VM with an **NVidia K80** GPU flavor, you will need to

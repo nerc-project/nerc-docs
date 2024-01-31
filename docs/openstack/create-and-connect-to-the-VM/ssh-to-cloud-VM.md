@@ -51,9 +51,7 @@ user we need is 'ubuntu'.
 
 Open a Terminal window and type:
 
-```sh
-  ssh ubuntu@199.94.60.66
-```
+    ssh ubuntu@199.94.60.66
 
 Since you have never connected to this VM before, you will be asked if you are
 sure you want to connect. Type `yes`.
@@ -82,12 +80,10 @@ password.
 
 Create a random password like this:
 
-```sh
-  ubuntu@test-vm:~$ cat /dev/urandom | base64 | dd count=14 bs=1
-  T1W16HCyfZf8V514+0 records in
-  14+0 records out
-  14 bytes copied, 0.00110367 s, 12.7 kB/s
-```
+    ubuntu@test-vm:~$ cat /dev/urandom | base64 | dd count=14 bs=1
+    T1W16HCyfZf8V514+0 records in
+    14+0 records out
+    14 bytes copied, 0.00110367 s, 12.7 kB/s
 
 The 'count' parameter controls the number of characters.
 
@@ -97,12 +93,10 @@ so in the above example the password is: `T1W16HCyfZf8V5`.
 
 Set the password for ubuntu using the command:
 
-```sh
-  ubuntu@test-vm:~$ sudo passwd ubuntu
-  New password:
-  Retype new password:
-  ... password updated successfully
-```
+    ubuntu@test-vm:~$ sudo passwd ubuntu
+    New password:
+    Retype new password:
+    ... password updated successfully
 
 Store the password in a secure place. Don't send it over email, post it on your
 wall on a sticky note, etc.
@@ -123,15 +117,13 @@ ssh-keygen, their public key is viewable from the Key Pairs tab.
 Click on the key pair name.  The public key starts with 'ssh-rsa' and looks
 something like this:
 
-```sh
-  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL6O5qNZHfgFwf4vnnib2XBub7ZU6khy6z6JQl3XRJg6I6gZ
-  +Ss6tNjz0Xgax5My0bizORcka/TJ33S36XZfzUKGsZqyEl/ax1Xnl3MfE/rgq415wKljg4
-  +QvDznF0OFqXjDIgL938N8G4mq/
-  cKKtRSMdksAvNsAreO0W7GZi24G1giap4yuG4XghAXcYxDnOSzpyP2HgqgjsPdQue919IYvgH8shr
-  +sPa48uC5sGU5PkTb0Pk/ef1Y5pLBQZYchyMakQvxjj7hHZaT/
-  Lw0wIvGpPQay84plkjR2IDNb51tiEy5x163YDtrrP7RM2LJwXm+1vI8MzYmFRrXiqUyznd
-  test_user@demo
-```
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL6O5qNZHfgFwf4vnnib2XBub7ZU6khy6z6JQl3XRJg6I6gZ
+    +Ss6tNjz0Xgax5My0bizORcka/TJ33S36XZfzUKGsZqyEl/ax1Xnl3MfE/rgq415wKljg4
+    +QvDznF0OFqXjDIgL938N8G4mq/
+    cKKtRSMdksAvNsAreO0W7GZi24G1giap4yuG4XghAXcYxDnOSzpyP2HgqgjsPdQue919IYvgH8shr
+    +sPa48uC5sGU5PkTb0Pk/ef1Y5pLBQZYchyMakQvxjj7hHZaT/
+    Lw0wIvGpPQay84plkjR2IDNb51tiEy5x163YDtrrP7RM2LJwXm+1vI8MzYmFRrXiqUyznd
+    test_user@demo
 
 Create a file called something like 'teammates.txt' and paste in your team's
 public keys, one per line.
@@ -141,21 +133,15 @@ every time you launch a new VM.
 
 Copy the file to the vm:
 
-```sh
-  [you@your-laptop ~]$ scp teammates.txt ubuntu@199.94.60.66:~
-```
+    [you@your-laptop ~]$ scp teammates.txt ubuntu@199.94.60.66:~
 
 If the copy works, you will see the output:
 
-```sh
   teammates.txt                  100%    0     0KB/s   00:00
-```
 
 Append the file's contents to authorized_keys:
 
-```sh
-  [cloud-user@test-vm ~] #cat teammates.txt >> ~/.ssh/authorized_keys
-```
+    [cloud-user@test-vm ~] #cat teammates.txt >> ~/.ssh/authorized_keys
 
 Now your teammates should also be able to log in.
 
@@ -175,19 +161,19 @@ Once you log into the VM, you can create another user like this.
     The 'sudo_group' is different for different OS - in CentOS and Red Hat, the
     group is called 'wheel', while in Ubuntu, the group is called 'sudo'.
 
-```sh
-  $ sudo su
-  # useradd -m <username>
-  # passwd <username>
-  # usermod -aG <sudo_group> <username>    <-- skip this step for users who
-  # should not have root access
-  # su username
-  $ cd ~
-  $ mkdir .ssh
-  $ chmod 700 .ssh
-  $ cd .ssh
-  $ vi authorized_keys   <-- paste the public key for that user in this file
-  $ chmod 600 authorized_keys
-```
+    ```
+      $ sudo su
+      # useradd -m <username>
+      # passwd <username>
+      # usermod -aG <sudo_group> <username>    <-- skip this step for users who
+      # should not have root access
+      # su username
+      $ cd ~
+      $ mkdir .ssh
+      $ chmod 700 .ssh
+      $ cd .ssh
+      $ vi authorized_keys   <-- paste the public key for that user in this file
+      $ chmod 600 authorized_keys
+    ```
 
 ---

@@ -177,7 +177,7 @@ from "No State" to "running".
     launch an instance from the "instance snapshot" or "volume" or "volume snapshot"
     option similar to the steps above. If you want to use OpenStack CLI to launch
     a VM you can [read this](../advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
-    or if you want to provisioning the NERC resources using **Terraform** you
-    can [read this](../advanced-openstack-topics/terraform/terraform-on-NERC.md).
+    or if you want to provision the NERC resources using **Terraform** you can
+    [read this](../advanced-openstack-topics/terraform/terraform-on-NERC.md).
 
 ---

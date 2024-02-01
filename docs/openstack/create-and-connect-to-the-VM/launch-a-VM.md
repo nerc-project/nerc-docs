@@ -40,7 +40,7 @@ following list:
 - boot from volume snapshot
 
 By default, when the instance boots from **Image** or from **Instance Snapshot**,
-the option to use persistent storage is set by creating a new volume by selected
+the option to use persistent storage is set by creating a new volume by selecting
 the **Yes** option on "Create New Volume". Also, "Delete Volume on Instance Delete"
 is set by default to **No** as shown here:
 
@@ -55,8 +55,8 @@ is set by default to **No** as shown here:
     the running instance as "instance snapshot" in case you want to recover some
     important state of your instance.
 
-    - Also, by default "Delete Volume on Instance Delete" is set to "No" that will
-    makes the created volume while launching a VM presistent and will not be
+    - Also, by default "Delete Volume on Instance Delete" is set to **No** that
+    will makes the created volume while launching a VM presistent and will not be
     deleted even if the instance is deleted, unless you explicitely selected the
     **Yes**. When you deploy a non-ephemeral instance (i.e. Creating a new volume),
     and indicate "Yes" in "Delete Volume on Instance delete", then when you delete
@@ -66,13 +66,13 @@ is set by default to **No** as shown here:
     Then the instance boots from **bootable volume** this means that it will use
     an existing volume listed in the "Volumes" menu. And that can be used to
     "Launch as Instance" later or can be backed up by creating a snapshot by
-    using ""Create Snapshot".But this incures the Volumes quotas so ideally you
-    can select "Yes" only for those instances you will not be storing persistent
-    data.
+    using "Create Snapshot". However, this results in the utilization of Volume
+    quotas i.e. "OpenStack Volume Quota". Ideally, you should choose "Yes" only
+    for instances where you won't be storing persistent data.
 
 To start a VM, for the first time we will need a base image so, please make sure
-"Image" dropdown option is selected. In the example, we chose
-**ubuntu-22.04-x86_64**, you may choose any available images.
+"Image" dropdown option is selected. In the example, we chose **ubuntu-22.04-x86_64**,
+you may choose any available images.
 
 !!! note "Bootable Images"
     NERC has made several Public bootable images available to the users as
@@ -149,8 +149,8 @@ described [here](../access-and-security/create-a-key-pair.md).
 !!! note "Important Note"
     If you did not provide a key pair, security groups, or rules, users can
     access the instance only from inside the cloud through VNC. Even pinging the
-    instance is not possible without an ICMP rule configured. We do recommend
-    limiting access as much as possible for [best security practices](../../get-started/best-practices/best-practices.md).
+    instance is not possible without an ICMP rule configured. We recommend limiting
+    access as much as possible for [best security practices](../../get-started/best-practices/best-practices.md).
 
 - **Network Ports, Configuration, Server Groups, Schedular Hints, and
 Metadata:** tab: Ignore these tabs for now.
@@ -175,6 +175,6 @@ from "No State" to "running".
 !!! note "Note"
     Here we explained about launching an instance using Image but you can also
     launch an instance from the "instance snapshot" or "volume" or "volume snapshot"
-    option similar to this steps.
+    option similar to the steps above.
 
 ---

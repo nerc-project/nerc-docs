@@ -6,7 +6,7 @@ you have followed these steps:
 
 - You followed the instruction in [Create a Key Pair](../../access-and-security/
 create-a-key-pair/) to set up a public ssh key.
-- Your public ssh-key was selected (in the Access and Security tab) while
+- Your public ssh-key has selected (in the Access and Security tab) while
 [launching the instance](launch-a-VM.md).
 - [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
 access it from outside world.
@@ -16,8 +16,8 @@ to the instance.
 
 !!! info "How to attach New Security Group(s) to any running VM?"
     If you want to attach any new Security Group(s) to a running VM after it was
-    launched. First create all new Security Group(s) with all rules required as
-    described [here](../access-and-security/security-groups.md). Note that same
+    launched. First create all new Security Group(s) with all the rules required
+    as described [here](../access-and-security/security-groups.md). Note that same
     Security Groups can be used by multiple VMs so don't create same or redundant
     Security Rules based Security Groups as there are Quota per project. Once have
     created all Security Groups, you can easily attach them with any existing

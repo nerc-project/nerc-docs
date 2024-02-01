@@ -31,7 +31,7 @@ while they are either running or stopped.
 
 This mainly serves two purposes:
 
-- **As a backup mechanism:* save the main disk of your instance to an image and
+- *As a backup mechanism:* save the main disk of your instance to an image and
 later boot a new instance from this image with the saved data.
 
 - *As a templating mechanism:* customise and upgrade a base image and save it to

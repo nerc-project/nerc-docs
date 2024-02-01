@@ -15,12 +15,12 @@ access-and-security/security-groups/) to allow **ssh** using Port 22 is opened
 to the instance.
 
 !!! info "How to attach New Security Group(s) to any running VM?"
-    If you want to attach any new Security Group(s) to a running VM after it was
+    If you want to attach any new Security Group(s) to a running VM after it has
     launched. First create all new Security Group(s) with all the rules required
     as described [here](../access-and-security/security-groups.md). Note that same
     Security Groups can be used by multiple VMs so don't create same or redundant
     Security Rules based Security Groups as there are Quota per project. Once have
-    created all Security Groups, you can easily attach them with any existing
+    created all Security Groups, you can easily attach them to any existing
     VM(s). You can select the VM from Compute -> Instances tab and then select
     "Edit Security Groups" as shown below:
 

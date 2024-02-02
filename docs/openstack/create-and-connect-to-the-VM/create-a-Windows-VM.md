@@ -45,6 +45,11 @@ as shown below:
 
 ![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
+!!! note "Note"
+    Only one instance at a time can be booted from a given volume. Make sure
+    'Delete Volume on Instance Delete' is selected "No" if you want the volume
+    to persist even after the instance is terminated.
+
 Add other information and setup a Security Group that allows RDP as shown below:
 
 ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
@@ -95,5 +100,8 @@ should work with the Floating IP associated with the instance:
 
 To attach additional disk to a running Windows machine you can follow
 [this documentation](../advanced-openstack-topics/persistent-storage/volumes.md).
+[This documentation](../advanced-openstack-topics/persistent-storage/volumes/#for-windows-virtual-machine)
+shows how you can format and mount the volume as an attached disk in Windows 
+virtual machine.
 
 ---

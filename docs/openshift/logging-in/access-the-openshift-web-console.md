@@ -46,6 +46,16 @@ tasks.
 
 ![OpenShift Web Console](images/openshift-web-console.png)
 
+!!! info "I can't find my project"
+    If you are a member of several projects i.e. ColdFront NERC-OCP (OpenShift)
+    allocations, you may need to switch the project before you can see and use
+    OpenShift resources you or your team has created. Clicking on the project dropdown
+    which is displayed near the top left side will popup the list of projects you
+    are in. You can search and select the new project by hovering and clicking
+    on the project name in that list as shown below:
+
+    ![OpenStack Project List](images/openshift_project_list.png)
+
 !!! note "Important Note"
     The default view for the OpenShift Container Platform web console is the **Developer**
     perspective.

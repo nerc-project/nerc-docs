@@ -1,4 +1,4 @@
-# Backup with snapshots
+# Backup with snapshots and volumes
 
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
@@ -8,21 +8,41 @@ following list:
 - boot from volume
 - boot from volume snapshot
 
+In its default configuration, when the instance is launched from an **Image** or
+an **Instance Snapshot**, the choice for utilizing persistent storage is configured
+by selecting the **Yes** option for "Create New Volume." Additionally, the "Delete
+Volume on Instance Delete" setting is pre-set to No, as indicated here:
+
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
 
-When the instance boots from image or from snapshot, the instance has an ephemeral
-disk. This means that the disk of the instance is not listed under the "Volumes"
-list. This also means that if you delete the instance all the data on that disk
-is lost forever.
+!!! danger "Very Important: How do you make your VM setup and data persistent?”"
+    - If you set the "Create New Volume" option to **No**, the instance will boot
+    from either an image or a snapshot, with the instance only being attached to
+    an ephemeral disk. It's crucial to note that this configuration does **NOT**
+    create persistent block storage in the form of a Volume, which can pose risks.
+    Consequently, the disk of the instance won't appear in the "Volumes" list. To
+    mitigate potential data loss, we strongly recommend regularly taking a snapshot
+    of such a running ephemeral instance, referred to as an "instance snapshot,"
+    especially if you want to safeguard or recover important states of your instance.
 
-To make a backup of the ephemeral disk you will need to create a snapshot of instance
-itself. The resulting snapshot in this case will be a openstack image type. You will
-be able to find it listed in the "Compute -> Images" list.
-
-When the instance boots from volume this means that it will use an existing volume
-listed in the "Volumes" menu. In this case the volume is persistent and will not
-be deleted even if the instance is deleted, unless explicitely selected the **Yes**
-option on "Delete Volume on Instance Delete".
+    - By default, the setting for "Delete Volume on Instance Delete" is configured
+    to use **No**. This setting ensures that the volume created during the launch
+    of a virtual machine remains persistent and won't be deleted alongside the
+    instance unless explicitly chosen as "Yes". When you delete virtual machines
+    backed by persistent volumes, the disk data is retained, continuing to consume
+    resources for which you will still be billed. When deploying a non-ephemeral
+    instance, which involves creating a new volume and selecting "Yes" for "Delete
+    Volume on Instance Delete", deleting the instance will also remove the
+    associated volume. Consequently, all data on that disk is permanently lost,
+    which is undesirable when the data on attached volumes needs to persist even
+    after the instance is deleted. Instances configured with "No" in "Delete
+    Volume on Instance Delete" boot from a **bootable volume**, utilizing an
+    existing volume listed in the "Volumes" menu. This configuration allows for
+    launching the instance later or creating a backup by generating a snapshot
+    through the "Create Snapshot" option. It's important to note that such usage
+    will impact your **Storage quotas**, specifically the "OpenStack Volume Quota"
+    and "OpenStack Volume GB Quota". Ideally, selecting "Yes" for this setting
+    should be reserved for instances where persistent data storage is not required.
 
 ## Create and use Instance snapshots
 
@@ -219,8 +239,17 @@ Any snapshots made into volumes can be found under Volumes:
 
 ![New Volume from Volume Snapshot](images/new-volume-from-snashot.png)
 
-!!! info "Information"
+!!! info "Very Important Information: About Storage Space and Cost"
     Keep in mind that any volumes and snapshots stored take up space in your project.
-    Delete any you no longer need to conserve space.
+    Delete any you no longer need to conserve space. Even in the event of deleting
+    volumes and snapshots, you will still incur charges based on your approved
+    [storage allocation](../../../get-started/get-an-allocation/#how-to-request-a-new-resource-allocation).
+    When you request and approve additional storage through Coldfront, invoicing
+    for the extra storage will take place upon fulfillment of your request.
+    Conversely, if you request a reduction in storage through a
+    [change request using ColdFront](../../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project), your invoicing
+    will be adjusted accordingly when the request is processed. In both scenarios,
+    'invoicing' refers to the accumulation of hours corresponding to the added or
+    removed storage quantity.
 
 ---

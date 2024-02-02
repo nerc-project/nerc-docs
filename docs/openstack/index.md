@@ -22,6 +22,7 @@ the list below.
 ## Create &amp; Connect to the VM
 
 - [Launch a VM](create-and-connect-to-the-VM/launch-a-VM.md)
+- [Create a Windows VM](openstack/create-and-connect-to-the-VM/create-a-Windows-VM.md)
 - [Available Images](create-and-connect-to-the-VM/images.md)
 - [Available NOVA Flavors](create-and-connect-to-the-VM/flavors.md)
 - [Assign a Floating IP](create-and-connect-to-the-VM/assign-a-floating-IP.md)

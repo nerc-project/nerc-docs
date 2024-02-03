@@ -58,7 +58,7 @@ Add other information and setup a Security Group that allows RDP as shown below:
 
 ![Associate Floating IP](images/win_instance_add_floating_ip.png)
 
-###Accessing the graphical console
+### Accessing the graphical console
 
 You can access the graphical console using the browser once the VM is in status
 ACTIVE. It can take up to 15 minutes to reach this state.
@@ -99,7 +99,7 @@ should work with the Floating IP associated with the instance:
 ### Connect additional disk using volume
 
 To attach additional disk to a running Windows machine you can follow
-[this documentation](../advanced-openstack-topics/persistent-storage/volumes.md). 
+[this documentation](../advanced-openstack-topics/persistent-storage/volumes.md).
 [**This guide**](../advanced-openstack-topics/persistent-storage/volumes.md#for-windows-virtual-machine)
 provides instructions on formatting and mounting a volume as an attached disk
 within a Windows virtual machine.

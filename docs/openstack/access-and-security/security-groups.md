@@ -34,7 +34,7 @@ hosts a web server, you need a security group which allows access to ports 80
     very highly configurable, for insance, you might create a basic/ generic group
     for ssh (port 22) and icmp (which is what we will show as an example here)
     and then a separate security group for http (port 80) and https (port 443)
-    access if you’re running a web service on your instance. 
+    access if you’re running a web service on your instance.
 
 You can also limit access based on where the traffic originates, using either
 IP addresses or security groups to define the allowed sources.
@@ -63,7 +63,7 @@ dialog box.
     You can choose the desired rule template as shown under Rule dropdown options.
     This will automatically select the Port required for the selected custom rule.
 
-    ![Security Group Rules Option](images/security_group_rules_options.png)    
+    ![Security Group Rules Option](images/security_group_rules_options.png)
 
 ![Adding SSH in Security Group Rules](images/security_group_add_rule.png)
 
@@ -119,7 +119,8 @@ Instances will now accept all incoming ICMP packets.
 
     ![View the security group](images/sg_view.png)
 
-    Specify the protocol, port range, and source/destination details for the new rule.
+    Specify the protocol, port range, and source/destination details for the new
+    rule.
 
     ![Add New Security Rules](images/sg_new_rule.png)
 
@@ -131,5 +132,22 @@ Instances will now accept all incoming ICMP packets.
     Security group changes may take some time to propagate to the instances
     associated with the modified group. Ensure that new rules align with your
     network security requirements.
+
+## Attach Newly Created Security Group(s) to a running VM
+
+If you want to attach any new Security Group(s) to a running VM after it was
+launched. First create all new Security Group(s) with all rules required as
+described here. Note that same Security Groups can be used by multiple VMs
+so don't create same or redundant Security Rules based Security Groups as
+there are Quota per project. Once have created all Security Groups, you can
+easily attach them with any existing VM(s). You can select the VM from
+Compute -> Instances tab and then select "Edit Security Groups" as shown below:
+
+![Edit Security Groups](images/adding_new_security_groups.png)
+
+Then select all Security Group(s) that you want to attach to this VM by clicking
+on [+] sign and then click "Save" as shown here:
+
+![Select Security Groups](images/edit_security_group.png)
 
 ---

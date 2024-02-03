@@ -122,7 +122,7 @@ This will deactivate the public URL of the container and then it will show "Disa
 
 ### i. OpenStack CLI
 
-- **Prerequisites**
+**Prerequisites**:
 
 To run the OpenStack CLI commands, you need to have:
 
@@ -319,7 +319,7 @@ You can use both [high-level (s3) commands with the AWS CLI](https://docs.aws.am
 and [API-Level (s3api) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-apicommands.html)
 to access object storage on your NERC project.
 
-- **Prerequisites**
+**Prerequisites**:
 
 To run the `s3` or `s3api` commands, you need to have:
 
@@ -476,7 +476,7 @@ Output:
 managing data in Amazon S3 and other cloud storage service providers that use
 the S3 protocol.
 
-- **Prerequisites**
+**Prerequisites**:
 
 - S3cmd installed, see [Download and Install the latest version of the S3cmd](https://s3tools.org/download)
 for more information.
@@ -630,7 +630,7 @@ You can delete files from the bucket with the following `s3cmd` command
 and synchronizing directories directly between your local file systems and the
 NERC's containers.
 
-- **Prerequisites**
+**Prerequisites**:
 
 To run the `rclone` commands, you need to have:
 
@@ -862,7 +862,7 @@ client, SCP client, and FTP client for Windows. Its main function is file transf
 between a local and a remote computer, with some basic file management functionality
 using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
 
-- **Prerequisites**
+**Prerequisites**:
 
 - WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
 for more information.
@@ -926,7 +926,7 @@ shown below:
 storage browser for Mac and Windows. With an easy-to-use interface, connect to
 servers, enterprise file sharing, and cloud storage.
 
-- **Prerequisites**
+**Prerequisites**:
 
 - Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
 for more information.

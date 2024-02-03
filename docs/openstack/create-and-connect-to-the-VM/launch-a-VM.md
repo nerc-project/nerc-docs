@@ -1,5 +1,14 @@
 # How to launch an Instance
 
+**Prerequisites**:
+
+- You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+to set up a public ssh key.
+
+- Make sure you have added rules in the
+[Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
+allow **ssh** using Port 22 is opened to the instance.
+
 Navigate: Project -> Compute -> Instances.
 
 Click on "Launch Instance" button:
@@ -43,9 +52,9 @@ Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
 
 !!! danger "Very Important: How do you make your VM setup and data persistent?”"
-    - If you set the **"Create New Volume"** option to **No**, the instance will boot
-    from either an image or a snapshot, with the instance only being attached to
-    an ephemeral disk. It's crucial to note that this configuration does **NOT**
+    - If you set the **"Create New Volume"** option to **No**, the instance will
+    boot from either an image or a snapshot, with the instance only being attached
+    to an ephemeral disk. It's crucial to note that this configuration does **NOT**
     create persistent block storage in the form of a Volume, which can pose risks.
     Consequently, the disk of the instance won't appear in the "Volumes" list. To
     mitigate potential data loss, we strongly recommend regularly taking a snapshot
@@ -125,21 +134,11 @@ enabled SSH. To add an SSH security group first, see [here](../access-and-securi
 ![VM Launch Instance Security Groups](images/launch_security_groups.png)
 
 !!! info "How to attach New Security Group(s) to any running VM?"
-    If you want to attach any new Security Group(s) to a running VM after it was
-    launched. First create all new Security Group(s) with all rules required as
-    described [here](../access-and-security/security-groups.md). Note that same
-    Security Groups can be used by multiple VMs so don't create same or redundant
-    Security Rules based Security Groups as there are Quota per project. Once have
-    created all Security Groups, you can easily attach them with any existing
-    VM(s). You can select the VM from Compute -> Instances tab and then select
-    "Edit Security Groups" as shown below:
-
-    ![Edit Security Groups](images/adding_new_security_groups.png)
-
-    Then select all Security Group(s) that you want to attach to this VM by clicking
-    on [+] sign and then click "Save" as shown here:
-
-    ![Select Security Groups](images/edit_security_group.png)
+    If you want to attach any new Security Group(s) to a running VM after it has
+    launched. First create all new Security Group(s) with all the rules required.
+    Following [this guide](../access-and-security/security-groups.md#attach-newly-created-security-groups-to-a-running-vm),
+    you'll be able to attach any newly created security group(s) with all the
+    required rules to a running VM.
 
 - **Key Pair:** Add the key pair you created for your local machine/laptop to
 use with this VM. To add a Key Pair first create and add them to your Project as
@@ -176,7 +175,7 @@ from "No State" to "running".
 !!! note "Note"
     Here we explained about launching an instance using Image but you can also
     launch an instance from the "instance snapshot" or "volume" or "volume snapshot"
-    option similar to the steps above. If you want to use OpenStack CLI to launch
+    option similar to the steps above. If you want to use **OpenStack CLI** to launch
     a VM you can [read this](../advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
     or if you want to provision the NERC resources using **Terraform** you can
     [read this](../advanced-openstack-topics/terraform/terraform-on-NERC.md).

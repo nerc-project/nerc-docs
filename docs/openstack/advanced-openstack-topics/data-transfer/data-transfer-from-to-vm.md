@@ -232,7 +232,7 @@ expressions)
 and synchronizing directories directly between your local file systems and a
 given NERC VM.
 
-- **Prerequisites**
+**Prerequisites**:
 
 To run the `rclone` commands, you need to have:
 
@@ -374,7 +374,7 @@ client, SCP client, and FTP client for Windows. Its main function is file transf
 between a local and a remote computer, with some basic file management functionality
 using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
-- **Prerequisites**
+**Prerequisites**:
 
 - WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
 for more information.
@@ -460,7 +460,7 @@ click the "X" icon in the top right to disconnect.
 storage browser for Mac and Windows. Its user-friendly interface enables seamless
 connections to servers, enterprise file sharing, and various cloud storage platforms.
 
-- **Prerequisites**
+**Prerequisites**:
 
 - Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
 for more information.
@@ -516,7 +516,7 @@ cross-platform (Mac, Windows and Linux) and is actively maintained. You can tran
 files to/from the cluster from your computer or any resources connected to your
 computer (shared drives, Dropbox, etc.)
 
-- **Prerequisites**
+**Prerequisites**:
 
 - Filezilla installed, see
 [Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation)

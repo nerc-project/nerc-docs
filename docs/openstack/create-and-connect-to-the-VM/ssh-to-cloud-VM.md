@@ -4,32 +4,25 @@
 Before trying to access instances from the outside world, you need to make sure
 you have followed these steps:
 
-- You followed the instruction in [Create a Key Pair](../../access-and-security/
-create-a-key-pair/) to set up a public ssh key.
-- Your public ssh-key has selected (in the Access and Security tab) while
+- You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+to set up a public ssh key.
+
+- Your public ssh-key has selected (in "Key Pair" tab) while
 [launching the instance](launch-a-VM.md).
+
 - [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
 access it from outside world.
-- Make sure you have added rules in the [Security Groups](../../
-access-and-security/security-groups/) to allow **ssh** using Port 22 is opened
-to the instance.
+
+- Make sure you have added rules in the
+[Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
+allow **ssh** using Port 22 is opened to the instance.
 
 !!! info "How to attach New Security Group(s) to any running VM?"
     If you want to attach any new Security Group(s) to a running VM after it has
-    launched. First create all new Security Group(s) with all the rules required
-    as described [here](../access-and-security/security-groups.md). Note that same
-    Security Groups can be used by multiple VMs so don't create same or redundant
-    Security Rules based Security Groups as there are Quota per project. Once have
-    created all Security Groups, you can easily attach them to any existing
-    VM(s). You can select the VM from Compute -> Instances tab and then select
-    "Edit Security Groups" as shown below:
-
-    ![Edit Security Groups](images/adding_new_security_groups.png)
-
-    Then select all Security Group(s) that you want to attach to this VM by clicking
-    on [+] sign and then click "Save" as shown here:
-
-    ![Select Security Groups](images/edit_security_group.png)
+    launched. First create all new Security Group(s) with all the rules required.
+    Following [this guide](../access-and-security/security-groups.md#attach-newly-created-security-groups-to-a-running-vm),
+    you'll be able to attach any newly created security group(s) with all the
+    required rules to a running VM.
 
 Make a note of the floating IP you have associated to your instance.
 

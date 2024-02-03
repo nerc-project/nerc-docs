@@ -16,9 +16,9 @@ Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
 
 !!! danger "Very Important: How do you make your VM setup and data persistent?”"
-    - If you set the **"Create New Volume"** option to **No**, the instance will boot
-    from either an image or a snapshot, with the instance only being attached to
-    an ephemeral disk. It's crucial to note that this configuration does **NOT**
+    - If you set the **"Create New Volume"** option to **No**, the instance will
+    boot from either an image or a snapshot, with the instance only being attached
+    to an ephemeral disk. It's crucial to note that this configuration does **NOT**
     create persistent block storage in the form of a Volume, which can pose risks.
     Consequently, the disk of the instance won't appear in the "Volumes" list. To
     mitigate potential data loss, we strongly recommend regularly taking a snapshot
@@ -61,7 +61,7 @@ use as a template for new instances.
 
 #### Using the CLI
 
-- **Prerequisites**
+**Prerequisites**:
 
 To run the OpenStack CLI commands, you need to have:
 
@@ -150,7 +150,7 @@ volume you are creating as it may entitle some data transfer.
 
 #### Using the OpenStack CLI
 
-- **Prerequisites**
+**Prerequisites**:
 
 To run the OpenStack CLI commands, you need to have:
 
@@ -247,9 +247,9 @@ Any snapshots made into volumes can be found under Volumes:
     When you request and approve additional storage through Coldfront, invoicing
     for the extra storage will take place upon fulfillment of your request.
     Conversely, if you request a reduction in storage through a
-    [change request using ColdFront](../../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project), your invoicing
-    will be adjusted accordingly when the request is processed. In both scenarios,
-    'invoicing' refers to the accumulation of hours corresponding to the added or
-    removed storage quantity.
+    [change request using ColdFront](../../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project),
+    your invoicing will be adjusted accordingly when the request is processed.
+    In both scenarios, 'invoicing' refers to the accumulation of hours
+    corresponding to the added or removed storage quantity.
 
 ---

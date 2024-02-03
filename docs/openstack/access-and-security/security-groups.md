@@ -1,5 +1,8 @@
 # Security Groups
 
+Security groups can be thought of like firewalls. They ultimately control inbound
+and outbound traffic to your virtual machines.
+
 Before you launch an instance, you should add security group rules to enable
 users to ping and use SSH to connect to the instance. Security groups are sets
 of IP filter rules that define networking access and are applied to all
@@ -10,24 +13,36 @@ group with rules.
 You can view security groups by clicking Project, then click Network panel and
 choose Security Groups from the tabs that appears.
 
+Navigate to Project -> Network -> Security Groups.
+
 You should see a ‘default’ security group. The default security group allows
 traffic only between members of the security group, so by default you can
 always connect between VMs in this group. However, it blocks all traffic from
 outside, including incoming SSH connections. In order to access instances via a
-public IP, an additional security group is needed.
+public IP, an additional security group is needed. on the other hand, for a VM that
+hosts a web server, you need a security group which allows access to ports 80
+(for http) and 443 (for https).
 
 ![Security Groups](images/security_groups.png)
 
-Security groups are very highly configurable, so you can create different
-security groups for different types of VMs used in your project.
-
-For example, for a VM that hosts a web page, you need a security group which
-allows access to ports 80 and 443.
+!!! warn "Important Note"
+    We strongly advise against altering the **default** security group and suggest
+    refraining from adding extra security rules to it. This is because the
+    **default** security group is automatically assigned to any newly created VMs.
+    It is considered a best practice to create separate security groups for related
+    services, as these groups can be reused multiple times.Security groups are
+    very highly configurable, for insance, you might create a basic/ generic group
+    for ssh (port 22) and icmp (which is what we will show as an example here)
+    and then a separate security group for http (port 80) and https (port 443)
+    access if you’re running a web service on your instance. 
 
 You can also limit access based on where the traffic originates, using either
 IP addresses or security groups to define the allowed sources.
 
 ## Create a new Security Group
+
+To allow access to your VM for things like SSH, you will need to create a
+security group and add rules to it.
 
 Click on "Create Security Group"  Give your new group a name, and a brief description.
 
@@ -41,6 +56,12 @@ Let's create the new rule to allow SSH. Click on "Add Rule".
 
 You will see there are a lot of options you can configure on the Add Rule
 dialog box.
+
+!!! note "To check all available Rule"
+    You can choose the desired rule template as shown under Rule dropdown options.
+    This will automatically select the Port required for the selected custom rule.
+
+    ![Security Group Rules Option](images/security_group_rules_options.png)    
 
 ![Adding SSH in Security Group Rules](images/security_group_add_rule.png)
 
@@ -79,5 +100,34 @@ In the Add Rule dialog box, enter the following values:
 ![Adding ICMP - ping in Security Group Rules](images/ping_icmp_security_rule.png)
 
 Instances will now accept all incoming ICMP packets.
+
+## Editing Existing Security Group and Adding New Security Rules
+
+- Navigate to Security Groups:
+
+    Navigate to Project -> Network -> Security Groups.
+
+- Select the Security Group:
+
+    Choose the security group to which you want to add new rules.
+
+- Add New Rule:
+
+    Look for an option to add a new rule within the selected security group.
+
+    ![View the security group](images/sg_view.png)
+
+    Specify the protocol, port range, and source/destination details for the new rule.
+
+    ![Add New Security Rules](images/sg_new_rule.png)
+
+- Save Changes:
+
+    Save the changes to apply the new security rules to the selected security group.
+
+!!! warn "Important Note"
+    Security group changes may take some time to propagate to the instances
+    associated with the modified group. Ensure that new rules align with your
+    network security requirements.
 
 ---

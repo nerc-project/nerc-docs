@@ -99,9 +99,9 @@ should work with the Floating IP associated with the instance:
 ### Connect additional disk using volume
 
 To attach additional disk to a running Windows machine you can follow
-[this documentation](../advanced-openstack-topics/persistent-storage/volumes.md).
-[This documentation](../advanced-openstack-topics/persistent-storage/volumes/#for-windows-virtual-machine)
-shows how you can format and mount the volume as an attached disk in Windows 
-virtual machine.
+[this documentation](../advanced-openstack-topics/persistent-storage/volumes.md). 
+[**This guide**](../advanced-openstack-topics/persistent-storage/volumes.md#for-windows-virtual-machine)
+provides instructions on formatting and mounting a volume as an attached disk
+within a Windows virtual machine.
 
 ---

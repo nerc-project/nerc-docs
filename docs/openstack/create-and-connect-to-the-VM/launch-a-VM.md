@@ -38,12 +38,12 @@ following list:
 In its default configuration, when the instance is launched from an **Image** or
 an **Instance Snapshot**, the choice for utilizing persistent storage is configured
 by selecting the **Yes** option for "Create New Volume." Additionally, the "Delete
-Volume on Instance Delete" setting is pre-set to No, as indicated here:
+Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
 
 !!! danger "Very Important: How do you make your VM setup and data persistent?”"
-    - If you set the "Create New Volume" option to **No**, the instance will boot
+    - If you set the **"Create New Volume"** option to **No**, the instance will boot
     from either an image or a snapshot, with the instance only being attached to
     an ephemeral disk. It's crucial to note that this configuration does **NOT**
     create persistent block storage in the form of a Volume, which can pose risks.
@@ -52,7 +52,7 @@ Volume on Instance Delete" setting is pre-set to No, as indicated here:
     of such a running ephemeral instance, referred to as an "instance snapshot,"
     especially if you want to safeguard or recover important states of your instance.
 
-    - By default, the setting for "Delete Volume on Instance Delete" is configured
+    - By default, the setting for **"Delete Volume on Instance Delete"** is configured
     to use **No**. This setting ensures that the volume created during the launch
     of a virtual machine remains persistent and won't be deleted alongside the
     instance unless explicitly chosen as "Yes". When you delete virtual machines
@@ -78,7 +78,7 @@ you may choose any available images.
 !!! note "Bootable Images"
     NERC has made several Public bootable images available to the users as
     listed [here](images.md). **Customers can also upload their own custom images,
-    as documented in [this documentation](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
+    as documented in [this guide](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
 
     To view them, Navigate: Project -> Compute -> Images.
 
@@ -107,8 +107,8 @@ from the 'Flavor' tab by clicking on the "+" icon.
 
     ![Flavor Not Avaliable due to Your Quota](images/flavor-not-available-due-to-quota.png)
 
-    **More details about available flavors can be found [here](flavors.md) and
-    how to change request the current allocation quota attributes can be found [here](../../get-started/get-an-allocation.md#request-change-resource-allocation-attributes-for-openstack-project).**
+    More details about available flavors can be found [**here**](flavors.md) and
+    how to change request the current allocation quota attributes can be found [**here**](../../get-started/get-an-allocation.md#request-change-resource-allocation-attributes-for-openstack-project).
 
 After choosing `cpu-su.4`, you should see it moved up to "Allocated".
 

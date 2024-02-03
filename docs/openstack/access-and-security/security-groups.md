@@ -41,6 +41,8 @@ IP addresses or security groups to define the allowed sources.
 
 ## Create a new Security Group
 
+### Allowing SSH
+
 To allow access to your VM for things like SSH, you will need to create a
 security group and add rules to it.
 
@@ -81,7 +83,7 @@ from any IP address.
 
 ![Adding SSH in Security Group Rules](images/added_ssh_security_rule.png)
 
-## Allowing Ping
+### Allowing Ping
 
 The default configuration blocks ping responses, so you will need to add an
 additional group and/or rule

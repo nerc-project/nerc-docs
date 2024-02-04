@@ -32,9 +32,9 @@ Click Create Container. Give your container a name.
 ![Create a Container](images/create-container.png)
 
 !!! note "Important Note"
-        The container name needs to be unique, not just within your project but
-        across all of our OpenStack installation. If you get **an error message**
-        after trying to create the container, try giving it a more unique name.
+    The container name needs to be unique, not just within your project but
+    across all of our OpenStack installation. If you get **an error message**
+    after trying to create the container, try giving it a more unique name.
 
 For now, leave the "Container Access" set to **Private**.
 
@@ -82,8 +82,8 @@ Click on your container's name, then check the "Public Access" checkbox. Note th
 Click "Link" to see a list of object in the container. This is the URL of your container.
 
 !!! note "Important Note"
-        Anyone who obtains the URL will be able to access the container, so this
-        is not recommended as a way to share sensitive data with collaborators.
+    Anyone who obtains the URL will be able to access the container, so this
+    is not recommended as a way to share sensitive data with collaborators.
 
 In addition, everything inside a public container is public, so we recommend creating
 a separate container specifically for files that should be made public.
@@ -91,9 +91,9 @@ a separate container specifically for files that should be made public.
 To download the file `test-file` we would use the [following url](https://stack.nerc.mghpcc.org:13808/v1/AUTH_4c5bccef73c144679d44cbc96b42df4e/unique-container-test/test-file).
 
 !!! note "Very Important Information"
-        Here `4c5bccef73c144679d44cbc96b42df4e` is specific **Tenant Id** or
-        **Project Id**. You can get this value when you click on the public container's
-        **Link** on a new browser tab.
+    Here `4c5bccef73c144679d44cbc96b42df4e` is specific **Tenant Id** or
+    **Project Id**. You can get this value when you click on the public container's
+    **Link** on a new browser tab.
 
 **Or**, you can just click on "Download" next to the file's name as shown below:
 
@@ -177,7 +177,6 @@ by using:
 `$ openstack object save mycontainer my_test_file --file test_file.txt`
 
 !!! danger "Very Important"
-
     Please note that this will overwrite the file in the local directory.
 
 Finally you can delete the object with the following command
@@ -308,8 +307,8 @@ Other helpful Swift commands:
                         bash_completion.
 
 !!! note "Helpful Tip"
-        Type `swift -h` to learn more about using the swift commands. The client
-        has a `--debug`flag, which can be useful if you are facing any issues.
+    Type `swift -h` to learn more about using the swift commands. The client
+    has a `--debug`flag, which can be useful if you are facing any issues.
 
 ### iii. Using [AWS CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html)
 
@@ -377,8 +376,8 @@ Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
         Default output format [None]:
 
 !!! note "Information"
-        We need to have a profile that you use must have permissions to allow
-        the AWS operations can be performed.
+    We need to have a profile that you use must have permissions to allow
+    the AWS operations can be performed.
 
 #### Listing buckets using **aws-cli**
 
@@ -457,8 +456,8 @@ Output:
     2022-04-04 16:25:50          <size> <fileN>
 
 !!! note "Other Useful Flags"
-
-    Additionally, `aws cp` provides an `--exclude` flag to filter files not to be transferred, the syntax is: `--exclude "<regex>"`
+    Additionally, `aws cp` provides an `--exclude` flag to filter files not to be
+    transferred, the syntax is: `--exclude "<regex>"`
 
 #### To delete an object from a bucket
 
@@ -619,10 +618,10 @@ You can delete files from the bucket with the following `s3cmd` command
     ERROR: S3 error: 409 (BucketNotEmpty): The bucket you tried to delete is not empty
 
 !!! note "Important Information"
-        The above command failed because of the bucket was not empty! You can remove
-        all objects inside the bucket and then use the command again. Or, you can
-        run the following command with `-r` or `--recursive` flag i.e.
-        `s3cmd rb s3://mybucket -r` or `s3cmd rb s3://mybucket --recursive`.
+    The above command failed because of the bucket was not empty! You can remove
+    all objects inside the bucket and then use the command again. Or, you can
+    run the following command with `-r` or `--recursive` flag i.e.
+    `s3cmd rb s3://mybucket -r` or `s3cmd rb s3://mybucket --recursive`.
 
 ### v. Using [rclone](https://rclone.org/swift/)
 
@@ -646,8 +645,8 @@ If you run `rclone config file` you will see where the default location is
 for you.
 
 !!! note "Note"
-        For **Windows** users, you many need to specify the full path to the rclone
-        executable file, if its not included in your systems PATH variable.
+    For **Windows** users, you many need to specify the full path to the rclone
+    executable file, if its not included in your systems PATH variable.
 
 The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
 file can then be plugged into `rclone` config file.
@@ -676,8 +675,8 @@ More about the config for **AWS S3 compatible API** can be [seen here](https://r
 flag to override the config location, e.g. `rclone --config=FILE`
 
 !!! note "Interactive Configuration"
-        Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
-        for more details.
+    Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
+    for more details.
 
 #### Using rclone
 

@@ -16,6 +16,6 @@ for best practices:
 If your institution already have outlined Best Practices guidelines with your
 internal IT department, please contact us to list it here soon by emailing us at
 [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Best%20Practices%20Question)
-or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

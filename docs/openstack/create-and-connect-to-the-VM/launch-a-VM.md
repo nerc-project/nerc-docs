@@ -9,6 +9,10 @@ to set up a public ssh key.
 [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
 allow **ssh** using Port 22 is opened to the instance.
 
+## Using Horizon dashboard
+
+Once you're logged in to NERC's Horizon dashboard.
+
 Navigate: Project -> Compute -> Instances.
 
 Click on "Launch Instance" button:
@@ -17,7 +21,7 @@ Click on "Launch Instance" button:
 
 In the Launch Instance dialog box, specify the following values:
 
-- **Details** tab
+### **Details** Tab
 
 Instance Name: Give your instance a name that assign a name to the virtual machine.
 
@@ -34,7 +38,9 @@ is 1.
 
 ![VM Launch Instance Detail](images/vm_launch_details.png)
 
-- **Source** tab: Double check that in the dropdown "Select Boot Source".
+### **Source** Tab
+
+Double check that in the dropdown "Select Boot Source".
 
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
@@ -103,16 +109,18 @@ you may choose any available images.
     is available as a Volume that is attach to the instance to enable persistent
     storage.
 
-- **Flavor** tab: Specify the size of the instance to launch. Choose `cpu-su.4`
-from the 'Flavor' tab by clicking on the "+" icon.
+### **Flavor** Tab
+
+Specify the size of the instance to launch. Choose `cpu-su.4` from the 'Flavor'
+tab by clicking on the "+" icon.
 
 !!! question "Important Note"
     In NERC OpenStack, flavors define the compute, memory, and storage
     capacity of nova computing instances. In other words, a flavor is an
     available hardware configuration for a server.
 
-    Some of the flavors will not be available for your use as per your resource **Quota**
-    limits and will be shown as below:
+    Some of the flavors will not be available for your use as per your resource
+    **Quota** limits and will be shown as below:
 
     ![Flavor Not Avaliable due to Your Quota](images/flavor-not-available-due-to-quota.png)
 
@@ -134,13 +142,17 @@ After choosing `cpu-su.4`, you should see it moved up to "Allocated".
     USB drive. The size of the volume can be selected when it is created within
     the storage quota limits for the particular resource allocation.
 
-- **Networks:** tab: Make sure the Default Network that is created by default is
-moved up to "Allocated". If not, you can click on the "+" icon in "Available".
+### **Networks** Tab
+
+Make sure the Default Network that is created by default is moved up to "Allocated".
+If not, you can click on the "+" icon in "Available".
 
 ![VM Launch Instance Networks](images/launch_networks.png)
 
-- **Security Groups:** tab: Make sure to add the security group where you
-enabled SSH. To add an SSH security group first, see [here](../access-and-security/security-groups.md).
+### **Security Groups** Tab
+
+Make sure to add the security group where you enabled SSH. To add an SSH
+security group first, see [here](../access-and-security/security-groups.md).
 
 ![VM Launch Instance Security Groups](images/launch_security_groups.png)
 
@@ -149,22 +161,26 @@ enabled SSH. To add an SSH security group first, see [here](../access-and-securi
     launched. First create all new Security Group(s) with all the rules required.
     Following [this guide](../access-and-security/security-groups.md#attach-newly-created-security-groups-to-a-running-vm),
     you'll be able to attach any newly created security group(s) with all the
-    required rules to a running VM.
+    required rules to a running VM. You can modify the Rules setup for any Security
+    Group(s) but that will affect all VMs using that security groups.
 
-- **Key Pair:** Add the key pair you created for your local machine/laptop to
-use with this VM. To add a Key Pair first create and add them to your Project as
-described [here](../access-and-security/create-a-key-pair.md).
+### **Key Pair** Tab
+
+Add the key pair you created for your local machine/laptop to use with this VM.
+To add a Key Pair first create and add them to your Project as described [here](../access-and-security/create-a-key-pair.md).
 
 ![VM Launch Instance Key Pairs](images/launch_security_key_pairs.png)
 
-!!! note "Important Note"
+!!! danger "Important Note"
     If you did not provide a key pair, security groups, or rules, users can
     access the instance only from inside the cloud through VNC. Even pinging the
     instance is not possible without an ICMP rule configured. We recommend limiting
     access as much as possible for [best security practices](../../get-started/best-practices/best-practices.md).
 
-- **Network Ports, Configuration, Server Groups, Schedular Hints, and
-Metadata:** tab: Ignore these tabs for now.
+### Ignore other Tabs
+
+**Network Ports, Configuration, Server Groups, Schedular Hints, and Metadata:**
+tab: Please ignore these tabs as these are not important and only for advance setup.
 
 !!! info "How to use 'Configuration' tab"
     If you want to specify a customization script that runs after your instance

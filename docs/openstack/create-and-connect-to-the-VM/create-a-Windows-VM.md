@@ -168,10 +168,10 @@ The console is accessed by selecting the Instance Details for the machine and th
 
 ![Administrator Sign in Prompt](images/administrator_singin_prompt.png)
 
-!!! warn "What is the user login for Windows Server 2022?"
+!!! warning "What is the user login for Windows Server 2022?"
     To connect with this Windows VM you need to contact us by emailing us at
     [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Windows%20Server%20Login%20Info)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
 
 ### How to have Remote Desktop login to your Windows instance
 
@@ -185,10 +185,10 @@ should work with the Floating IP associated with the instance:
 
 ![Prompted Administrator Login](images/prompted_administrator_login.png)
 
-!!! warn "What is the user login for Windows Server 2022?"
+!!! warning "What is the user login for Windows Server 2022?"
     To connect with this Windows VM you need to contact us by emailing us at
     [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Windows%20Server%20Login%20Info)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
 
 ![Prompted RDP connection](images/prompted_rdp_connection.png)
 

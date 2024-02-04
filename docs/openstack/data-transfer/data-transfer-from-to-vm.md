@@ -1,5 +1,15 @@
 # Data Transfer To/From NERC VM
 
+## Transfer using Volume
+
+You may wish to transfer a volume which includes all data to a different project
+which can be your own (with access in project dropdown list) or external collaborators
+with in NERC. For this you can follow [this guide](../persistent-storage/transfer-a-volume.md).
+
+!!! danger "Very Important Note"
+    If you transfer the volume then that will be removed from the source and will
+    only be available on destination project.
+
 ## Using Globus
 
 [Globus](https://globus.org/) is a web-based service that is the preferred method
@@ -250,8 +260,8 @@ If you run `rclone config file` you will see where the default location is for
 your current user.
 
 !!! note "Note"
-        For **Windows** users, you may need to specify the full path to the rclone
-        executable file if it's not included in your system's `%PATH%` variable.
+    For **Windows** users, you may need to specify the full path to the rclone
+    executable file if it's not included in your system's `%PATH%` variable.
 
 Edit the config file's content on the path location described by
 `rclone config file` command and add the following entry with the name **[nerc]**:
@@ -271,8 +281,8 @@ More about the config for **SFTP** can be [found here](https://rclone.org/sftp/)
 flag to override the config location, e.g. `rclone --config=FILE`
 
 !!! note "Interactive Configuration"
-        Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
-        for more details.
+    Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
+    for more details.
 
 ### How to use rclone
 

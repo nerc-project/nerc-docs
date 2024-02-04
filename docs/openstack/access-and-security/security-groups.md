@@ -25,7 +25,7 @@ hosts a web server, you need a security group which allows access to ports 80
 
 ![Security Groups](images/security_groups.png)
 
-!!! warn "Important Note"
+!!! warning "Important Note"
     We strongly advise against altering the **default** security group and suggest
     refraining from adding extra security rules to it. This is because the
     **default** security group is automatically assigned to any newly created VMs.
@@ -34,7 +34,7 @@ hosts a web server, you need a security group which allows access to ports 80
     very highly configurable, for insance, you might create a basic/ generic group
     for ssh (port 22) and icmp (which is what we will show as an example here)
     and then a separate security group for http (port 80) and https (port 443)
-    access if you’re running a web service on your instance.
+    access if you're running a web service on your instance.
 
 You can also limit access based on where the traffic originates, using either
 IP addresses or security groups to define the allowed sources.
@@ -128,7 +128,7 @@ Instances will now accept all incoming ICMP packets.
 
     Save the changes to apply the new security rules to the selected security group.
 
-!!! warn "Important Note"
+!!! warning "Important Note"
     Security group changes may take some time to propagate to the instances
     associated with the modified group. Ensure that new rules align with your
     network security requirements.
@@ -146,7 +146,7 @@ Compute -> Instances tab and then select "Edit Security Groups" as shown below:
 ![Edit Security Groups](images/adding_new_security_groups.png)
 
 Then select all Security Group(s) that you want to attach to this VM by clicking
-on [+] sign and then click "Save" as shown here:
+on "+" icon and then click "Save" as shown here:
 
 ![Select Security Groups](images/edit_security_group.png)
 

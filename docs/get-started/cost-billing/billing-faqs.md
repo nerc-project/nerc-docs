@@ -13,7 +13,7 @@ with us to be better aligned to a number of research regulations, policies and
 requirements but if your institution does not have an MOU with us, please have
 someone from your faculty or administration contact us to discuss it soon by emailing
 us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ## Questions & Answers
 
@@ -25,8 +25,8 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 ??? question "2. If I have an issue with my bill, who do I contact?"
 
     Please send your requests by emailing us at
-    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ??? question "3. How do I control costs?"
 

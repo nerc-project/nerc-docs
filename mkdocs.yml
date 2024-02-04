@@ -54,12 +54,23 @@ nav:
           - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
           - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
       - Persistent Storage:
-          - Block Storage/ Volumes/ Cinder: openstack/persistent-storage/volumes.md
+          - Block Storage/ Volumes/ Cinder:
+            - Block Storage/ Volumes/ Cinder: openstack/persistent-storage/volumes.md
+            - Create An Empty Volume: openstack/persistent-storage/create-an-empty-volume.md
+            - Attach The Volume To An Instance: openstack/persistent-storage/attach-the-volume-to-an-instance.md
+            - Format And Mount The Volume: openstack/persistent-storage/format-and-mount-the-volume.md
+            - Detach a Volume: openstack/persistent-storage/detach-a-volume.md
+            - Delete Volumes: openstack/persistent-storage/delete-volumes.md
+            - Extending Volume: openstack/persistent-storage/extending-volume.md
+            - Transfer a Volume: openstack/persistent-storage/transfer-a-volume.md
           - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
       - Data Transfer:
           - Data Transfer To/ From NERC VM: openstack/data-transfer/data-transfer-from-to-vm.md
       - Backup your instance and volume:
           - Backup with snapshots: openstack/backup/backup-with-snapshots.md
+      - Decommission OpenStack Resources:
+          - Decommission a VM: openstack/decommission/decommission-a-VM.md
+          - Release all other resources: openstack/decommission/release-all-other-resources.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md

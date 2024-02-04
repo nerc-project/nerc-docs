@@ -12,6 +12,10 @@ up new instances.
 
 ## NERC Images List
 
+Once you're logged in to NERC's Horizon dashboard.
+
+Navigate to Project -> Compute -> Images.
+
 NERC provides a set of default images that can be used as source while launching
 an instance:
 

@@ -47,15 +47,27 @@ Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 ## Create and use Instance snapshots
 
 The OpenStack snapshot mechanism allows you to create new images from your instances
-while they are either running or stopped.
+while they are either running or stopped. An instance snapshot captures the current
+state of a running VM along with its storage, configuration, and memory. It includes
+the VM's disk image, memory state, and any configuration settings. Useful for
+preserving the entire state of a VM, including its running processes and in-memory
+data.
 
 This mainly serves two purposes:
 
-- *As a backup mechanism:* save the main disk of your instance to an image and
-later boot a new instance from this image with the saved data.
+- *As a backup mechanism:* save the main disk of your instance to an image in
+Horizon dashboard under *Project -> Compute -> Images* and later boot a new instance
+from this image with the saved data.
 
 - *As a templating mechanism:* customise and upgrade a base image and save it to
 use as a template for new instances.
+
+!!! info "Considerations: using Instance snapshots"
+    It consumes more storage space due to including memory state. So, make sure
+    your resource allocations for Storage is sufficient to hold all. They are
+    suitable for scenarios where maintaining the exact VM state is crucial. The
+    creation time of instance snapshot will be proportional to the size of the
+    VM state.
 
 ### How to create an instance snapshot
 
@@ -96,7 +108,7 @@ For e.g.
 
 #### Using Horizon dashboard
 
-Once you’re logged in to NERC's Horizon dashboard, you can create a snapshot via
+Once you're logged in to NERC's Horizon dashboard, you can create a snapshot via
 the "Compute -> Instances" page by clicking on the "Create snapshot" action button
 on desired instance as shown below:
 
@@ -144,7 +156,9 @@ snapshot takes a few seconds and it can be done while the volume is in-use.
 
 Once you have the snapshot, you can use it to create other volumes based on
 this snapshot. Creation time for these volumes may depend on the type of the
-volume you are creating as it may entitle some data transfer.
+volume you are creating as it may entitle some data transfer. But this is efficient
+for backup and recovery of specific data without the need for the complete VM state.
+Also, it consumes **less storage space** compared to instance snapshots.
 
 ### How to create a volume snapshot
 
@@ -212,7 +226,7 @@ You can delete the snapshots just by issuing the following command
 
 #### Using NERC's Horizon dashboard
 
-Once you’re logged in to NERC's Horizon dashboard, you can create a snapshot via
+Once you're logged in to NERC's Horizon dashboard, you can create a snapshot via
 the "Volumes" menu by clicking on the "Create Snapshot" action button
 on desired volume as shown below:
 
@@ -237,19 +251,24 @@ In the dialog box that opens, enter a volume name and a brief description.
 
 Any snapshots made into volumes can be found under Volumes:
 
-![New Volume from Volume Snapshot](images/new-volume-from-snashot.png)
+![New Volume from Volume Snapshot](images/new-volume-from-snapshot.png)
 
-!!! info "Very Important Information: About Storage Space and Cost"
-    Keep in mind that any volumes and snapshots stored take up space in your project.
-    Delete any you no longer need to conserve space. Even in the event of deleting
-    volumes and snapshots, you will still incur charges based on your approved
-    [storage allocation](../../../get-started/get-an-allocation/#how-to-request-a-new-resource-allocation).
-    When you request and approve additional storage through Coldfront, invoicing
-    for the extra storage will take place upon fulfillment of your request.
+!!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+    Keep in mind that any volumes and snapshots stored take up storage space in
+    your project. You can delete any that no longer need to conserve space. Even
+    in the event of deleting volumes and snapshots, you will still incur charges
+    based on your approved and reserved [storage allocation](../../../get-started/get-an-allocation/#how-to-request-a-new-resource-allocation).
+    When you request additional storage through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    invoicing for the extra storage will take place upon fulfillment/approval of
+    your request as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
     Conversely, if you request a reduction in storage through a
     [change request using ColdFront](../../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project),
     your invoicing will be adjusted accordingly when the request is processed.
     In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.
+
+Please send your questions or concerns regarding Storage and Cost by emailing us
+at[help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

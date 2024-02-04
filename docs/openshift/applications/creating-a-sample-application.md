@@ -50,6 +50,7 @@ using the **oc new-app** command from the command line terminal.
 
 i. Make sure you have the `oc` CLI tool installed and configured on your local
 machine following [these steps](../logging-in/install-the-openshift-cli/#first-time-usage).
+
 !!! info "Information"
     Some users may have access to multiple projects. Run the following command to
     switch to a specific project space: `oc project <your-project-namespace>`.
@@ -74,6 +75,7 @@ as part of the new-app argument, with `oc new-app <image url>~<git url>`. If it 
 using a test application based on Node.js, we could use the same command as before
 but add `nodejs~` before the URL of the Git repository.
 For example: `oc new-app nodejs~https://github.com/myuser/mypublicrepo`.
+
 !!! note "Important Note"
     If you are using a private remote Git repository, you can use the
     `--source-secret` flag to specify an existing source clone secret that

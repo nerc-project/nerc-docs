@@ -52,7 +52,7 @@ store internal data in which information is chosen to keep confidential but the
 disclosure of which would not cause material harm to you, your users and your
 institution. Your institution may have already classified and categorized data
 and implemented security policies and guidance for each category. If your project
-includes sensitive data and information then you might need to contact NERC’s
+includes sensitive data and information then you might need to contact NERC's
 admin as soon as possible to discuss other potential options.
 
 - [Backups and/or snapshots](../../openstack/backup/backup-with-snapshots.md)

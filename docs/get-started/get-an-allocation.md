@@ -1,6 +1,6 @@
 # What is NERC's ColdFront?
 
-NERC uses [NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/), an
+NERC uses [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/), an
 open source resource allocation management system called
 [ColdFront](https://github.com/ubccr/coldfront) to provide a single point-of-entry
 for administration, reporting, and measuring scientific impact of NERC resources
@@ -12,14 +12,14 @@ General Users who are not PIs or Managers on a project see a read-only view of t
 NERC's ColdFront.
 
 Whereas, once a PI Account request is granted, the PI will receive an email confirming
-the request approval and how to connect NERC’s ColdFront.
+the request approval and how to connect NERC's ColdFront.
 
 PI or project managers can use NERC's ColdFront as a self-service web-portal to do
 the following tasks:
 
 - Add or manage or archive projects
 
-- Request allocations that fall under projects to NERC’s resources such as clusters,
+- Request allocations that fall under projects to NERC's resources such as clusters,
 cloud resources, servers, storage, and software licenses
 
 - Add/remove user access to/from allocated resources who is a member of the project
@@ -39,7 +39,7 @@ periodic review by center director to demonstrate need for the resources
 
 ## How to login to NERC's ColdFront?
 
-[NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/) provides user with
+[NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/) provides user with
 login page as shown here:
 
 ![ColdFront Login Page](images/coldfront-login-page.png)
@@ -62,7 +62,7 @@ below:
 
 ## What PIs need to fill in order to request a Project?
 
-Once logged in to NERC’s ColdFront, PIs can choose Projects sub-menu located under
+Once logged in to NERC's ColdFront, PIs can choose Projects sub-menu located under
 the Project menu.
 
 ![Projects sub-menu](images/coldfront-projects-sub-menu.png)
@@ -146,10 +146,18 @@ detail page and they see the status change to "project review pending".
 
 ![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)
 
-!!! warning "Very Important"
-    Make sure to select **NERC (OpenStack)** on Resource option and specify
-    your expected Units of computing. Be mindful, you can extend your current resource
-    allocations on your current project later on by following [this documentation](#request-change-resource-allocation-attributes-for-openstack-project).
+!!! warning "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+    Ensure to choose **NERC (OpenStack)** in the Resource option and specify your
+    anticipated computing units. Each allocation, whether requested or approved,
+    will be billed for the associated costs based on the **pay-as-you-go** model.
+    The exception is the **Storage quotas**, specifically the "OpenStack Volume
+    GB Quota" where the cost is determined by the requested and approved allocation
+    values to reserve storage from the total pool. If you have common questions
+    or need more information, refer to our [Billing FAQs](../get-started/cost-billing/billing-faqs.md)
+    for comprehensive answers. Keep in mind that you can easily scale and expand
+    your current resource allocations within your project by following this
+    [this documentation](#request-change-resource-allocation-attributes-for-openstack-project)
+    later on.
 
 #### Resource Allocation Quotas for OpenStack Project
 
@@ -197,11 +205,19 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
 | `Storage(GB)`  | 20                                  |
 | `Ephemeral Storage(GB)`  | 5                                     |
 
-!!! warning "Very Important"
-    Make sure to select **NERC-OCP (OpenShift)** on Resource option (Remember: the
-    first option i.e. **NERC (OpenStack)** is selected by default!) and specify
-    your expected Units of computing. Be mindful, you can extend your current resource
-    allocations on your current project later on by following [this documentation](#request-change-resource-allocation-attributes-for-openshift-project).
+!!! warning "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+    Ensure to choose **NERC-OCP (OpenShift)** in the Resource option (**Remember:**
+    the first option i.e. **NERC (OpenStack)** is selected by default!) and specify
+    your anticipated computing units. Each allocation, whether requested or approved,
+    will be billed for the associated costs based on the **pay-as-you-go** model.
+    The exception is the **Storage quotas**, specifically the "OpenShift Request
+    on Storage Quota (GB)" where the cost is determined by the requested and
+    approved allocation values to reserve storage from the total pool. If you
+    have common questions or need more information, refer to our
+    [Billing FAQs](../get-started/cost-billing/billing-faqs.md) for comprehensive
+    answers. Keep in mind that you can easily scale and expand your current
+    resource allocations within your project by following this [this documentation](#request-change-resource-allocation-attributes-for-openshift-project)
+    later on.
 
 ## Adding and removing User from the Project
 

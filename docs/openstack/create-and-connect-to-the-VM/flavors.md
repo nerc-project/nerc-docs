@@ -4,6 +4,10 @@ In NERC OpenStack, flavors define the compute, memory, and storage capacity of
 nova computing instances. In other words, a flavor is an available hardware
 configuration for a server.
 
+!!! info "Note"
+    Flavors are visible only while you are launching an instance and under "Flavor"
+    tab as [explained here](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab).
+
 The important fields are
 
 | Field      | Description                                      |
@@ -19,8 +23,8 @@ NERC offers the following flavors based on our Infrastructure-as-a-Service
 (IaaS) - OpenStack offerings (Tiers of Service).
 
 !!! tip "Pro Tip"
-
-    Choose a flavor for your instance from the available Tier that suits your requirements, use-cases, and budget when launching a VM.
+    Choose a flavor for your instance from the available Tier that suits your
+    requirements, use-cases, and budget when launching a VM.
 
 ### 1. Standard Compute Tier
 
@@ -53,13 +57,12 @@ memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
 ### 3. GPU Tier
 
 !!! info "Information"
-
     NERC also supports the most demanding workloads including Artificial Intelligence
-    (AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
-    analytics, data visualization, distributed databases, and more. For such demanding
-    workloads, the NERC’s GPU-based distributed computing flavor is recommended, which
-    is integrated into a specialized hardware such as GPUs that produce unprecedented
-    performance boosts for technical computing workloads.
+    (AI), Machine Learning (ML) training and Deep Learning modeling, simulation,
+    data analytics, data visualization, distributed databases, and more. For such
+    demanding workloads, the NERC's GPU-based distributed computing flavor is
+    recommended, which is integrated into a specialized hardware such as GPUs
+    that produce unprecedented performance boosts for technical computing workloads.
 
 There are three flavors within the GPU tier, one featuring the newer
 **NVidia A100s** along with **NVidia V100s** and **NVidia K80s**.
@@ -160,7 +163,7 @@ hr of wall time.
 
 ## How to Change Flavor of an instance
 
-!!! warn "Important Note"
+!!! warning "Important Note"
     This is only possible using the openstack client at this time!
 
 **Prerequisites**:

@@ -12,7 +12,7 @@ these details during the creation of virtual machine.
 Get the flavor list using below openstack command:
 
 ```sh
-  [user@laptop ~]$ openstack flavor list
+  openstack flavor list
   +--------------------------------------+-------------+--------+------+-----------+-------+-----------+
   | ID                                   | Name        |    RAM | Disk | Ephemeral | VCPUs | Is Public |
   +--------------------------------------+-------------+--------+------+-----------+-------+-----------+
@@ -34,14 +34,14 @@ Get the flavor list using below openstack command:
 Get the image name and its ID,
 
 ```sh
-  [user@laptop ~]$ openstack image list  | grep centos
+  openstack image list  | grep centos
   | 41eafa05-c264-4840-8c17-746e6a388c2d | centos-7-x86_64     | active |
 ```
 
 Get Private Virtual network details, which will be attached to the VM:
 
 ```sh
-  [user@laptop ~]$ openstack network list
+  openstack network list
   +--------------------------------------+-----------------+--------------------------------------+
   | ID                                   | Name            | Subnets                              |
   +--------------------------------------+-----------------+--------------------------------------+
@@ -53,7 +53,7 @@ Get Private Virtual network details, which will be attached to the VM:
 Find the Security Group:
 
 ```sh
-  [user@laptop ~]$ openstack security group list
+  openstack security group list
   +--------------------------------------+----------------------------------+------------------------+----------------------------------+------+
   | ID                                   | Name                             | Description            | Project                          | Tags |
   +--------------------------------------+----------------------------------+------------------------+----------------------------------+------+
@@ -65,7 +65,7 @@ Find the Security Group:
 Find the Key pair, in my case you can choose your own,
 
 ```sh
-  [user@laptop ~]$ openstack keypair list | grep -i cloud_key
+  openstack keypair list | grep -i cloud_key
   | cloud_key | d5:ab:dc:1f:e5:08:44:7f:a6:21:47:23:85:32:cc:04 | ssh  |
 ```
 
@@ -124,7 +124,7 @@ To create a VM in Specific "**Availability Zone and compute Host**" specify
 Example:
 
 ```sh
-  [user@laptop ~]$ openstack server create --flavor cpu-su.2 \
+  openstack server create --flavor cpu-su.2 \
       --image centos-7-x86_64 \
       --nic net-id=8ee63932-464b-4999-af7e-949190d8fe93 \
       --security-group default \
@@ -136,7 +136,7 @@ Example:
 **NOTE:** To get more help on "openstack server create" command , use:
 
 ```sh
-  [user@laptop ~]$ openstack -h server create
+  openstack -h server create
 ```
 
 Detailed syntax:
@@ -169,13 +169,13 @@ Detailed syntax:
 Now verify the test vm "my-vm" is "Running" using the following commands:
 
 ```sh
-  [user@laptop ~]$ openstack server list | grep my-vm
+  openstack server list | grep my-vm
 ```
 
 **OR,**
 
 ```sh
-  [user@laptop ~]$ openstack server show my-vm
+  openstack server show my-vm
 ```
 
 ### Check console of virtual machine
@@ -183,7 +183,7 @@ Now verify the test vm "my-vm" is "Running" using the following commands:
 The console for a Linux VM can be displayed using console log.
 
 ```sh
-  [user@laptop ~]$ openstack console log show --line 20 my-vm
+  openstack console log show --line 20 my-vm
 ```
 
 ## Associating a Floating IP to VM
@@ -192,7 +192,7 @@ To Associate a floating IP to VM, first get the unused floating IP using the
 following command:
 
 ```sh
-  [user@laptop ~]$ openstack floating ip list | grep None | head -2
+  openstack floating ip list | grep None | head -2
   | 071f08ac-cd10-4b89-aee4-856ead8e3ead | 169.144.107.154 | None |
   None                                 |
   | 1baf4232-9cb7-4a44-8684-c604fa50ff60 | 169.144.107.184 | None |
@@ -202,14 +202,14 @@ following command:
 Now Associate the first IP to the server using following command:
 
 ```sh
-  [user@laptop ~]$ openstack server add floating ip my-vm 169.144.107.154
+  openstack server add floating ip my-vm 169.144.107.154
 ```
 
 Use the following command to verify whether floating IP is assigned to the VM
 or not:
 
 ```sh
-  [user@laptop ~]$ openstack server list | grep my-vm
+  openstack server list | grep my-vm
   | 056c0937-6222-4f49-8405-235b20d173dd | my-vm | ACTIVE  | ...
   nternal=192.168.15.62, 169.144.107.154 |
 ```
@@ -287,7 +287,7 @@ openstack server reboot my-vm
 ## Deleting Virtual Machine from Command Line
 
 ```sh
-  [user@laptop ~]$ openstack server delete my-vm
+  openstack server delete my-vm
 ```
 
 ---

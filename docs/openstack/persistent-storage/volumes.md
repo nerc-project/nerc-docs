@@ -296,6 +296,10 @@ This will popup the following interface to proceed:
 
 ![Detach a volume](images/detach-volume-from-an-instance.png)
 
+!!! danger "Unable to Detach Volume!"
+    If your bootable volume that is attached to a VM then that volume cannot be
+    detached as this is a root device volume.
+
 #### Using openstack client
 
 Then use the openstack command line interface to detach the volume from the VM:

@@ -136,7 +136,7 @@ provide a reason and this is displayed for the NERC admins as part of the review
 process.
 
 Once the project review page if completed, the PI is redirected to the project
-detail page and they see the status change to "project review pending."
+detail page and they see the status change to "project review pending".
 
 ![Project Review Pending Status](images/coldfront-project-review-pending-status.png)
 

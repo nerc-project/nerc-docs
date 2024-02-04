@@ -10,7 +10,7 @@ following list:
 
 In its default configuration, when the instance is launched from an **Image** or
 an **Instance Snapshot**, the choice for utilizing persistent storage is configured
-by selecting the **Yes** option for "Create New Volume." Additionally, the "Delete
+by selecting the **Yes** option for "Create New Volume". Additionally, the "Delete
 Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
@@ -22,7 +22,7 @@ Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
     create persistent block storage in the form of a Volume, which can pose risks.
     Consequently, the disk of the instance won't appear in the "Volumes" list. To
     mitigate potential data loss, we strongly recommend regularly taking a snapshot
-    of such a running ephemeral instance, referred to as an "instance snapshot,"
+    of such a running ephemeral instance, referred to as an "instance snapshot",
     especially if you want to safeguard or recover important states of your instance.
 
     - By default, the setting for **"Delete Volume on Instance Delete"** is configured

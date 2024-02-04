@@ -160,6 +160,17 @@ hr of wall time.
 
 ## How to Change Flavor of an instance
 
+!!! warn "Important Note"
+    This is only possible using the openstack client at this time!
+
+**Prerequisites**:
+
+To run the OpenStack CLI commands, you need to have:
+
+- OpenStack CLI setup, see
+[OpenStack Command Line setup](../advanced-openstack-topics/openstack-cli/openstack-CLI.md#command-line-setup)
+for more information.
+
 If you want to change the **flavor** that is bound to a VM, then you can run the
 following openstack client commands, here we are changing flavor of an existing
 VM i.e. named "test-vm" from `mem-su.2` to `mem-su.4`:

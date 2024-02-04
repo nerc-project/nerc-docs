@@ -49,7 +49,7 @@ the list below.
 
 - [Data Transfer To/ From NERC VM](data-transfer/data-transfer-from-to-vm.md)
 
-## Backup your instance and volume
+## Backup your instance and data
 
 - [Backup with snapshots](backup/backup-with-snapshots.md)
 

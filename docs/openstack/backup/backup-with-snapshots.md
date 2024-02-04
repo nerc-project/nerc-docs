@@ -268,7 +268,7 @@ Any snapshots made into volumes can be found under Volumes:
     corresponding to the added or removed storage quantity.
 
 Please send your questions or concerns regarding Storage and Cost by emailing us
-at[help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
 or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

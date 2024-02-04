@@ -80,7 +80,7 @@ safeguarding or recovering critical states and data from your instance.
     [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 
 Please send your questions or concerns regarding Storage and Cost by emailing us
-at[help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
 or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

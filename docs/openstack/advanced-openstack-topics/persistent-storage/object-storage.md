@@ -136,7 +136,7 @@ for more information.
 In order to create a container in the Object Storage service, you can use the
 OpenStack client with the following command.
 
-    [user@laptop ~]$ openstack container create mycontainer
+    openstack container create mycontainer
     +---------------------------------------+-------------+------------------------------------+
     | account                               | container   | x-trans-id                         |
     +---------------------------------------+-------------+------------------------------------+

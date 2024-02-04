@@ -194,6 +194,17 @@ should work with the Floating IP associated with the instance:
 
 ![Successfully Remote Connected Instance](images/remote_connected_instance.png)
 
+!!! info "Storage and Volume"
+    - System disks are the first disk based on the flavor disk space and are
+    generally used to store the operating system created from an image when the
+    virtual machine is booted.
+    - [Volumes](../advanced-openstack-topics/persistent-storage/volumes.md) are
+    persistent virtualized block devices independent of any particular instance.
+    Volumes may be attached to a single instance at a time, but may be detached
+    or reattached to a different instance while retaining all data, much like a
+    USB drive. The size of the volume can be selected when it is created within
+    the storage quota limits for the particular resource allocation.
+
 ### Connect additional disk using volume
 
 To attach additional disk to a running Windows machine you can follow

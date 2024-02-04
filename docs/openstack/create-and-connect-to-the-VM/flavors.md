@@ -4,6 +4,15 @@ In NERC OpenStack, flavors define the compute, memory, and storage capacity of
 nova computing instances. In other words, a flavor is an available hardware
 configuration for a server.
 
+The important fields are
+
+| Field      | Description                                      |
+|------------|--------------------------------------------------|
+| RAM        | Memory size in MB                                |
+| Disk       | Size of disk in GB                               |
+| Ephemeral  | Size of a second disk. 0 means no second disk is defined and mounted.   |
+| VCPUs      | Number of virtual cores                          |
+
 ## Currently, our setup supports and offers the following flavors
 
 NERC offers the following flavors based on our Infrastructure-as-a-Service

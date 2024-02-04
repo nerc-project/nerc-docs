@@ -130,7 +130,7 @@ Example:
       --security-group default \
       --key-name cloud_key \
       --property description="My Server" \
-      test_vm_using_cli
+      my-vm
 ```
 
 **NOTE:** To get more help on "openstack server create" command , use:
@@ -164,18 +164,26 @@ Detailed syntax:
 ```
 
 !!! note "Note"
-    Similarly, we can lauch a VM using "Volume".
+    Similarly, we can lauch a VM using bootable "Volume" as described [here](../../create-and-connect-to-the-VM/create-a-Windows-VM.md#2-using-the-openstack-cli-from-the-terminal).
 
-Now Verify the test vm status using below commands:
+Now verify the test vm "my-vm" is "Running" using the following commands:
 
 ```sh
-  [user@laptop ~]$ openstack server list | grep test_vm_using_cli
+  [user@laptop ~]$ openstack server list | grep my-vm
 ```
 
 **OR,**
 
 ```sh
-  [user@laptop ~]$ openstack server show test_vm_using_cli
+  [user@laptop ~]$ openstack server show my-vm
+```
+
+### Check console of virtual machine
+
+The console for a Linux VM can be displayed using console log.
+
+```sh
+  [user@laptop ~]$ openstack console log show --line 20 my-vm
 ```
 
 ## Associating a Floating IP to VM
@@ -194,15 +202,15 @@ following command:
 Now Associate the first IP to the server using following command:
 
 ```sh
-  [user@laptop ~]$ openstack server add floating ip test_vm_using_cli 169.144.107.154
+  [user@laptop ~]$ openstack server add floating ip my-vm 169.144.107.154
 ```
 
 Use the following command to verify whether floating IP is assigned to the VM
 or not:
 
 ```sh
-  [user@laptop ~]$ openstack server list | grep test_vm_using_cli
-  | 056c0937-6222-4f49-8405-235b20d173dd | test_vm_using_cli | ACTIVE  | ...
+  [user@laptop ~]$ openstack server list | grep my-vm
+  | 056c0937-6222-4f49-8405-235b20d173dd | my-vm | ACTIVE  | ...
   nternal=192.168.15.62, 169.144.107.154 |
 ```
 
@@ -233,7 +241,7 @@ or not:
 Example:
 
 ```sh
-  openstack server add security group test_vm_using_cli ssh_only
+  openstack server add security group my-vm ssh_only
 ```
 
 ## Remove existing security group from the VM
@@ -245,7 +253,7 @@ Example:
 Example:
 
 ```sh
-  openstack server remove security group test_vm_using_cli ssh_only
+  openstack server remove security group my-vm ssh_only
 ```
 
 **Alternatively**, you can use the openstack port unset command to remove the
@@ -270,10 +278,16 @@ group from a port:
   openstack server remove volume <INSTANCE_NAME_OR_ID> <volume>
 ```
 
+## Reboot a virtual machine
+
+```sh
+openstack server reboot my-vm
+```
+
 ## Deleting Virtual Machine from Command Line
 
 ```sh
-  [user@laptop ~]$ openstack server delete test_vm_using_cli
+  [user@laptop ~]$ openstack server delete my-vm
 ```
 
 ---

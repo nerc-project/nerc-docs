@@ -385,4 +385,8 @@ Remote Desktop login should work with the Floating IP associated with the instan
 
 ![Successfully Remote Connected Instance](images/remote_connected_instance.png)
 
+For more detailed information about OpenStack's image management, the
+[OpenStack image creation guide](https://docs.openstack.org/image-guide/create-images-manually.html)
+provides further references and details.
+
 ---

@@ -123,6 +123,17 @@ After choosing `cpu-su.4`, you should see it moved up to "Allocated".
 
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 
+!!! info "Storage and Volume"
+    - System disks are the first disk based on the flavor disk space and are
+    generally used to store the operating system created from an image when the
+    virtual machine is booted.
+    - [Volumes](../advanced-openstack-topics/persistent-storage/volumes.md) are
+    persistent virtualized block devices independent of any particular instance.
+    Volumes may be attached to a single instance at a time, but may be detached
+    or reattached to a different instance while retaining all data, much like a
+    USB drive. The size of the volume can be selected when it is created within
+    the storage quota limits for the particular resource allocation.
+
 - **Networks:** tab: Make sure the Default Network that is created by default is
 moved up to "Allocated". If not, you can click on the "+" icon in "Available".
 

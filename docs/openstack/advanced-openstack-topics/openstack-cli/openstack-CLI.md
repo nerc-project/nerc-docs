@@ -62,7 +62,7 @@ OpenStack project).
 Source your downloaded **OpenStack RC File**:
 
 ```sh
-  [user@laptop ~]$ source app-cred-<Credential_Name>-openrc.sh
+  source app-cred-<Credential_Name>-openrc.sh
 ```
 
 !!! note "Important Note"
@@ -95,7 +95,7 @@ To test that you have everything configured, try out some commands. The
 following command lists all the images available to your project:
 
 ```sh
-  [user@laptop ~]$ openstack image list
+  openstack image list
   +--------------------------------------+---------------------+--------+
   | ID                                   | Name                | Status |
   +--------------------------------------+---------------------+--------+
@@ -114,7 +114,7 @@ If you have launched some instances already, the following command shows a list
 of your project's instances:
 
 ```sh
-  [user@laptop ~]$ openstack server list
+  openstack server list
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
   | ID                                   | Name             | Status | Networks                                     | Image                    |  Flavor      |
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
@@ -127,14 +127,14 @@ If you don't have any instances, you will get the error `list index out of
 range`, which is why we didn't suggest this command for your first test:
 
 ```sh
-  [user@laptop ~]$ openstack server list
+  openstack server list
   list index out of range
 ```
 
 If you see this error:
 
 ```sh
-  [user@laptop ~]$ openstack server list
+  openstack server list
   The request you have made requires authentication. (HTTP 401) (Request-ID: req-6a827bf3-d5e8-47f2-984c-b6edeeb2f7fb)
 ```
 
@@ -151,7 +151,7 @@ You can type `openstack -h` to see a list of available commands.
 If you try one of these by mistake, you might see this output:
 
 ```sh
-  [user@laptop ~]$ openstack user list
+  openstack user list
   You are not authorized to perform the requested action: identity:list_users.
   (HTTP 403) (Request-ID: req-cafe1e5c-8a71-44ab-bd21-0e0f25414062)
 ```

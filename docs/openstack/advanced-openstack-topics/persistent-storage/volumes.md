@@ -46,8 +46,14 @@ will be able to manage volume types.
 
 Click "Create Volume" button.
 
+Checking the status of created volume will show:
+
+"downloading" means that the volume contents is being transferred from the image
+service to the volume service
+
 In a few moments, the newly created volume will appear in the Volumes list with
-the Status "Available".
+the Status "available". "available" means the volume can now be used for booting.
+A set of volume_image meta data is also copied from the image service.
 
 ![Volumes List](images/volumes_list.png)
 

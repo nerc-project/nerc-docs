@@ -126,7 +126,7 @@ Attach to Instance, and click "Attach Volume".
 
 ![Attach Volume](images/volume_attach.png)
 
-The volume now has a status of "in-use" and "Attached To" column shows which
+The volume now has a status of "In-use" and "Attached To" column shows which
 instance it is attached to, and what device name it has.
 
 This will be something like `/dev/vdb` but it can vary depending on the state
@@ -296,9 +296,15 @@ This will popup the following interface to proceed:
 
 ![Detach a volume](images/detach-volume-from-an-instance.png)
 
-!!! danger "Unable to Detach Volume!"
+!!! danger "Unable to Detach Volume"
     If your bootable volume that is attached to a VM then that volume cannot be
-    detached as this is a root device volume.
+    detached as this is a root device volume. This bootable volume is created when
+    you launch an instance from an **Image** or an **Instance Snapshot**, and the
+    choice for utilizing persistent storage is configured by selecting the **Yes**
+    option for "Create New Volume". If you explicitly chosen as "No" for this option
+    then there will be no attach volume created for the instance instead an **Ephemeral**
+    disk storage is used.
+    ![Launch Instance Set Create New Volume](images/instance-create-new-volume.png)
 
 #### Using openstack client
 
@@ -352,10 +358,15 @@ Click "Delete Volumes" button.
 In the Confirm Delete Volumes window, click the Delete Volumes button to
 confirm the action.
 
-!!! warn "Unable to delete volume"
-    You cannot delete a bootable volume that is actively in use by a running VM.
-    If you really want to delete such volume then first delete the insance and
-    then you are allowed to delete the detached volume.
+!!! danger "Unable to Delete Volume"
+    You cannot delete a **bootable** volume that is actively in use by a running
+    VM. If you really want to delete such volume then first delete the insance and
+    then you are allowed to delete the detached volume. Before deleting
+    **Please make sure** during the launch of this insance is using the default
+    selected **No** for "Delete Volume on Instance Delete" configuration option.
+    If you had set this configuration "Yes" for "Delete Volume on Instance Delete",
+    then deleting the instance will automatically remove the associated volume.
+    ![Launch Instance With Persistent Volume](images/instance-delete-volume-delete.png)
 
 **Alternatively,** Using openstack client terminal:
 

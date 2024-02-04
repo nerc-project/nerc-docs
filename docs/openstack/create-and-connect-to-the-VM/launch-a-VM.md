@@ -127,7 +127,7 @@ After choosing `cpu-su.4`, you should see it moved up to "Allocated".
     - System disks are the first disk based on the flavor disk space and are
     generally used to store the operating system created from an image when the
     virtual machine is booted.
-    - [Volumes](../advanced-openstack-topics/persistent-storage/volumes.md) are
+    - [Volumes](../persistent-storage/volumes.md) are
     persistent virtualized block devices independent of any particular instance.
     Volumes may be attached to a single instance at a time, but may be detached
     or reattached to a different instance while retaining all data, much like a
@@ -187,7 +187,7 @@ from "No State" to "running".
     Here we explained about launching an instance using Image but you can also
     launch an instance from the "instance snapshot" or "volume" or "volume snapshot"
     option similar to the steps above. If you want to use **OpenStack CLI** to launch
-    a VM you can [read this](../advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
+    a VM you can [read this](../openstack-cli/launch-a-VM-using-openstack-CLI.md)
     or if you want to provision the NERC resources using **Terraform** you can
     [read this](../advanced-openstack-topics/terraform/terraform-on-NERC.md).
 

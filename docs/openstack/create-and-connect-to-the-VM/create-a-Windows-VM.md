@@ -45,7 +45,7 @@ for the size of the volume as shown below:
 To run the OpenStack CLI commands, you need to have:
 
 - OpenStack CLI setup, see
-[OpenStack Command Line setup](../advanced-openstack-topics/openstack-cli/openstack-CLI.md#command-line-setup)
+[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
 for more information.
 
 To create a volume from image using the CLI, do this:
@@ -139,7 +139,7 @@ Add other information and setup a Security Group that allows RDP as shown below:
 To run the OpenStack CLI commands, you need to have:
 
 - OpenStack CLI setup, see
-[OpenStack Command Line setup](../advanced-openstack-topics/openstack-cli/openstack-CLI.md#command-line-setup)
+[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
 for more information.
 
 To launch an instance from existing bootable volume using the CLI, do this:
@@ -198,7 +198,7 @@ should work with the Floating IP associated with the instance:
     - System disks are the first disk based on the flavor disk space and are
     generally used to store the operating system created from an image when the
     virtual machine is booted.
-    - [Volumes](../advanced-openstack-topics/persistent-storage/volumes.md) are
+    - [Volumes](../persistent-storage/volumes.md) are
     persistent virtualized block devices independent of any particular instance.
     Volumes may be attached to a single instance at a time, but may be detached
     or reattached to a different instance while retaining all data, much like a
@@ -208,8 +208,8 @@ should work with the Floating IP associated with the instance:
 ### Connect additional disk using volume
 
 To attach additional disk to a running Windows machine you can follow
-[this documentation](../advanced-openstack-topics/persistent-storage/volumes.md).
-[**This guide**](../advanced-openstack-topics/persistent-storage/volumes.md#for-windows-virtual-machine)
+[this documentation](../persistent-storage/volumes.md).
+[**This guide**](../persistent-storage/volumes.md#for-windows-virtual-machine)
 provides instructions on formatting and mounting a volume as an attached disk
 within a Windows virtual machine.
 

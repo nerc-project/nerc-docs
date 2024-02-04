@@ -85,7 +85,7 @@ Navigate: Project->Orchestration
 Navigate: Project->Object Store
 
 - Containers: Create and manage containers and objects. In future you would use
-this tab to [create Swift object storage](../advanced-openstack-topics/persistent-storage/object-storage.md)
+this tab to [create Swift object storage](../persistent-storage/object-storage.md)
 for your projects on a need basis.
 
 ![Swift Object Containers](images/object_containers.png)

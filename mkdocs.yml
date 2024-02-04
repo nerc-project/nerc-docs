@@ -50,22 +50,22 @@ nav:
                   - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
               - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
               - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
+      - OpenStack CLI:
+          - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
+          - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
+      - Persistent Storage:
+          - Block Storage/ Volumes/ Cinder: openstack/persistent-storage/volumes.md
+          - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
+      - Data Transfer:
+          - Data Transfer To/ From NERC VM: openstack/data-transfer/data-transfer-from-to-vm.md
+      - Backup your instance and volume:
+          - Backup with snapshots: openstack/backup/backup-with-snapshots.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
               - Create a Router: openstack/advanced-openstack-topics/setting-up-a-network/create-a-router.md
           - Domain Name System:
               - Set up Domain names for your VMs: openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md
-          - OpenStack CLI:
-              - OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/openstack-CLI.md
-              - Launch a VM using OpenStack CLI: openstack/advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md
-          - Persistent Storage:
-              - Block Storage/ Volumes/ Cinder: openstack/advanced-openstack-topics/persistent-storage/volumes.md
-              - Object Storage/ Swift: openstack/advanced-openstack-topics/persistent-storage/object-storage.md
-          - Data Transfer:
-              - Data Transfer To/ From NERC VM: openstack/advanced-openstack-topics/data-transfer/data-transfer-from-to-vm.md
-          - Backup your instance and volume:
-              - Backup with snapshots: openstack/advanced-openstack-topics/backup/backup-with-snapshots.md
           - Terraform:
               - Terraform on NERC: openstack/advanced-openstack-topics/terraform/terraform-on-NERC.md
           - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md

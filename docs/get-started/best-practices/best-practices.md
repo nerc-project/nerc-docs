@@ -55,7 +55,7 @@ and implemented security policies and guidance for each category. If your projec
 includes sensitive data and information then you might need to contact NERC’s
 admin as soon as possible to discuss other potential options.
 
-- [Backups and/or snapshots](../../openstack/advanced-openstack-topics/backup/backup-with-snapshots.md)
+- [Backups and/or snapshots](../../openstack/backup/backup-with-snapshots.md)
 are the user's responsibility for volumes/data, configurations, objects, and
 their state, which are useful in the case when users accidentally delete/lose
 their data. NERC admins cannot recover lost data. In addition, while NERC stores

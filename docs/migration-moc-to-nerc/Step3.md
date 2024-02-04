@@ -66,7 +66,7 @@ Credentials.
 1. Follow the instructions under the header *Command Line setup*
 [here][CLI] to create your Application Credentials.
 
-[CLI]: https://nerc-project.github.io/nerc-docs/openstack/advanced-openstack-topics/openstack-cli/openstack-CLI/
+[CLI]: https://nerc-project.github.io/nerc-docs/openstack/openstack-cli/openstack-CLI/
 
     1. Make sure to save the `clouds.yaml` as `clouds_NERC.yaml`.
 

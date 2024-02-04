@@ -168,7 +168,7 @@ hr of wall time.
 To run the OpenStack CLI commands, you need to have:
 
 - OpenStack CLI setup, see
-[OpenStack Command Line setup](../advanced-openstack-topics/openstack-cli/openstack-CLI.md#command-line-setup)
+[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
 for more information.
 
 If you want to change the **flavor** that is bound to a VM, then you can run the

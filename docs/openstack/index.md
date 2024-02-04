@@ -22,11 +22,29 @@ the list below.
 ## Create &amp; Connect to the VM
 
 - [Launch a VM](create-and-connect-to-the-VM/launch-a-VM.md)
-- [Create a Windows VM](openstack/create-and-connect-to-the-VM/create-a-Windows-VM.md)
+- [Create a Windows VM](create-and-connect-to-the-VM/create-a-Windows-VM.md)
 - [Available Images](create-and-connect-to-the-VM/images.md)
 - [Available NOVA Flavors](create-and-connect-to-the-VM/flavors.md)
 - [Assign a Floating IP](create-and-connect-to-the-VM/assign-a-floating-IP.md)
 - [SSH to Cloud VM](create-and-connect-to-the-VM/ssh-to-cloud-VM.md)
+
+## OpenStack CLI
+
+- [OpenStack CLI](openstack-cli/openstack-CLI.md)
+- [Launch a VM using OpenStack CLI](openstack-cli/launch-a-VM-using-openstack-CLI.md)
+
+## Persistent Storage
+
+- [Block Storage/ Volumes/ Cinder](persistent-storage/volumes.md)
+- [Object Storage/ Swift](persistent-storage/object-storage.md)
+
+## Data Transfer
+
+- [Data Transfer To/ From NERC VM](data-transfer/data-transfer-from-to-vm.md)
+
+## Backup your instance and volume
+
+- [Backup with snapshots](backup/backup-with-snapshots.md)
 
 ---
 
@@ -42,24 +60,6 @@ the list below.
 ## Domain or Host Name for your VM
 
 - [Domain Name System (DNS)](advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md)
-
-## OpenStack CLI
-
-- [OpenStack CLI](advanced-openstack-topics/openstack-cli/openstack-CLI.md)
-- [Launch a VM using OpenStack CLI](advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
-
-## Persistent Storage
-
-- [Block Storage/ Volumes/ Cinder](advanced-openstack-topics/persistent-storage/volumes.md)
-- [Object Storage/ Swift](advanced-openstack-topics/persistent-storage/object-storage.md)
-
-## Data Transfer
-
-- [Data Transfer To/ From NERC VM](advanced-openstack-topics/data-transfer/data-transfer-from-to-vm.md)
-
-## Backup your instance and volume
-
-- [Backup with snapshots](advanced-openstack-topics/backup/backup-with-snapshots.md)
 
 ## Using Terraform to provision NERC resources
 

@@ -57,34 +57,23 @@ Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
 
-!!! danger "Very Important: How do you make your VM setup and data persistent?”"
-    - If you set the **"Create New Volume"** option to **No**, the instance will
-    boot from either an image or a snapshot, with the instance only being attached
-    to an ephemeral disk. It's crucial to note that this configuration does **NOT**
-    create persistent block storage in the form of a Volume, which can pose risks.
-    Consequently, the disk of the instance won't appear in the "Volumes" list. To
-    mitigate potential data loss, we strongly recommend regularly taking a snapshot
-    of such a running ephemeral instance, referred to as an "instance snapshot",
-    especially if you want to safeguard or recover important states of your instance.
+If you set the **"Create New Volume"** option to **No**, the instance will boot
+from either an image or a snapshot, with the instance only being attached to an
+ephemeral disk as [described here](../persistent-storage/volumes.md#ephemeral-disk).
+To mitigate potential data loss, we strongly recommend regularly taking a snapshot
+of such a running ephemeral instance, referred to as an "instance snapshot",
+especially if you want to safeguard or recover important states of your instance.
 
-    - By default, the setting for **"Delete Volume on Instance Delete"** is configured
-    to use **No**. This setting ensures that the volume created during the launch
-    of a virtual machine remains persistent and won't be deleted alongside the
-    instance unless explicitly chosen as "Yes". When you delete virtual machines
-    backed by persistent volumes, the disk data is retained, continuing to consume
-    resources for which you will still be billed. When deploying a non-ephemeral
-    instance, which involves creating a new volume and selecting "Yes" for "Delete
-    Volume on Instance Delete", deleting the instance will also remove the
-    associated volume. Consequently, all data on that disk is permanently lost,
-    which is undesirable when the data on attached volumes needs to persist even
-    after the instance is deleted. Instances configured with "No" in "Delete
-    Volume on Instance Delete" boot from a **bootable volume**, utilizing an
-    existing volume listed in the "Volumes" menu. This configuration allows for
-    launching the instance later or creating a backup by generating a snapshot
-    through the "Create Snapshot" option. It's important to note that such usage
-    will impact your **Storage quotas**, specifically the "OpenStack Volume Quota"
-    and "OpenStack Volume GB Quota". Ideally, selecting "Yes" for this setting
-    should be reserved for instances where persistent data storage is not required.
+When deploying a non-ephemeral instance, which involves creating a new volume and
+selecting **Yes** for **"Delete Volume on Instance Delete"**, deleting the instance
+will also remove the associated volume. Consequently, all data on that disk is
+permanently lost, which is undesirable when the data on attached volumes needs
+to persist even after the instance is deleted. Ideally, selecting "Yes" for this
+setting should be reserved for instances where persistent data storage is not required.
+
+!!! danger "Very Important: How do you make your VM setup and data persistent?"
+    For more in-depth information on making your VM setup and data persistent,
+    you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
 
 To start a VM, for the first time we will need a base image so, please make sure
 "Image" dropdown option is selected. In the example, we chose **ubuntu-22.04-x86_64**,

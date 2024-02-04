@@ -78,15 +78,18 @@ To run the OpenStack CLI commands, you need to have:
 
 - Identifying volume to transfer in your source project
 
+    ```sh
     openstack volume list
     +--------------------------------------+---------------------+-----------+------+----------------------------------+
     | ID                                   | Name                | Status    | Size | Attached to                      |
     +--------------------------------------+---------------------+-----------+------+----------------------------------+
     | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 | my-volume           | available |  100 |                                  |
     +--------------------------------------+---------------------+-----------+------+----------------------------------+
+    ```
 
 - Create the transfer request
 
+    ```sh
     openstack volume transfer request create my-volume
     +------------+--------------------------------------+
     | Field      | Value                                |
@@ -97,18 +100,22 @@ To run the OpenStack CLI commands, you need to have:
     | name       | None                                 |
     | volume_id  | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 |
     +------------+--------------------------------------+
+    ```
 
 - The volume can be checked as in the transfer status using
 `openstack volume transfer request list` as follows and the volume is in status
 `awaiting-transfer` while running `openstack volume show <your_volume_name>`
 
+    ```sh
     openstack volume transfer request list
     +--------------------------------------+------+--------------------------------------+
     | ID                                   | Name | Volume                               |
     +--------------------------------------+------+--------------------------------------+
     | a16494cf-cfa0-47f6-b606-62573357922a | None | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 |
     +--------------------------------------+------+--------------------------------------+
+    ```
 
+    ```sh
     openstack volume show my-volume
     +------------------------------+--------------------------------------+
     | Field                        | Value                                |
@@ -118,10 +125,12 @@ To run the OpenStack CLI commands, you need to have:
     ...
     | status                       | awaiting-transfer                    |
     +------------------------------+--------------------------------------+
+    ```
 
 - The user of the destination project can authenticate and receive the authentication
 key reported above. The transfer can then be initiated.
 
+    ```sh
     openstack volume transfer request accept --auth-key b92d98fec2766582 a16494cf-cfa0-47f6-b606-62573357922a
     +-----------+--------------------------------------+
     | Field     | Value                                |
@@ -130,14 +139,17 @@ key reported above. The transfer can then be initiated.
     | name      | None                                 |
     | volume_id | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 |
     +-----------+--------------------------------------+
+    ```
 
 - And the results confirmed in the volume list for the destination project.
 
+    ```sh
     openstack volume list
     +--------------------------------------+----------------------------------------+-----------+------+-------------+
     | ID                                   | Name                                   | Status    | Size | Attached to |
     +--------------------------------------+----------------------------------------+-----------+------+-------------+
     | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 | my-volume                              | available |  100 |             |
     +--------------------------------------+----------------------------------------+-----------+------+-------------+
+    ```
 
 ---

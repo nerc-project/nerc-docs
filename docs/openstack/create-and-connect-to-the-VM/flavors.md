@@ -154,6 +154,49 @@ hr of wall time.
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and
     **Cinder (block storage/ volumes)** are charged separately at a rate of
-    $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr.
+    $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr. More about cost
+    can be [found here](../../get-started/cost-billing/how-pricing-works.md) and
+    some of the common billing related FAQs are [listed here](../../get-started/cost-billing/billing-faqs.md).
+
+## How to Change Flavor of an instance
+
+If you want to change the **flavor** that is bound to a VM, then you can run the
+following openstack client commands, here we are changing flavor of an existing
+VM i.e. named "test-vm" from `mem-su.2` to `mem-su.4`:
+
+First, stop the running VM using:
+
+    openstack server stop test-vm
+
+Then, verify the status is "SHUTOFF" and also the used flavor is `mem-su.2` as
+shown below:
+
+    openstack server list
+    +--------------------------------------+------+---------+--------------------------------------------+--------------------------+---------+
+    | ID | Name | Status | Networks | Image | Flavor |
+    +--------------------------------------+------+---------+--------------------------------------------+--------------------------+---------+
+    | cd51dbba-fe95-413c-9afc-71370be4d4fd | test-vm | SHUTOFF | default_network=192.168.0.58, 199.94.60.10 | N/A (booted from volume) | mem-su.2 |
+    +--------------------------------------+------+---------+--------------------------------------------+--------------------------+---------+
+
+Then, resize the flavor from `mem-su.2` to `mem-su.4` by running:
+
+    openstack server resize --flavor mem-su.4 cd51dbba-fe95-413c-9afc-71370be4d4fd
+
+Confirm the resize:
+
+    openstack server resize confirm cd51dbba-fe95-413c-9afc-71370be4d4fd
+
+Then, start the VM:
+
+    openstack server start cd51dbba-fe95-413c-9afc-71370be4d4fd
+
+Verify the VM is using the new flavor of `mem-su.4` as shown below:
+
+    openstack server list
+    +--------------------------------------+------+--------+--------------------------------------------+--------------------------+---------+
+    | ID | Name | Status | Networks | Image | Flavor |
+    +--------------------------------------+------+--------+--------------------------------------------+--------------------------+---------+
+    | cd51dbba-fe95-413c-9afc-71370be4d4fd | test-vm | ACTIVE | default_network=192.168.0.58, 199.94.60.10 | N/A (booted from volume) | mem-su.4 |
+    +--------------------------------------+------+--------+--------------------------------------------+--------------------------+---------+
 
 ---

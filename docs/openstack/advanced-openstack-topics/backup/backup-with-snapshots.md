@@ -135,8 +135,8 @@ available volumes or volumes that are not attached to an instance does not affec
 the data on the volume. Snapshot of a volume serves as a backup for the persistent
 data on the volume at a given point in time. Snapshots are of the size of the
 actual data existing on the volume at the time at which the snapshot is taken.
-The creation of a snapshot takes a few seconds and it can be done while the volume
-is in-use.
+Volume snapshots are pointers in the RW history of a volume. The creation of a
+snapshot takes a few seconds and it can be done while the volume is in-use.
 
 !!! warning "Warning"
     Taking snapshots of volumes that are in use or attached to active instances

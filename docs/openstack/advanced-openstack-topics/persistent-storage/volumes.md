@@ -287,12 +287,30 @@ Complete Formatting:
 
 ### Detach a volume
 
+#### Using NERC's Horizon dashboard
+
 To detach a mounted volume by going back to "Manage Attachments" and choosing
 Detach Volume.
 
 This will popup the following interface to proceed:
 
 ![Detach a volume](images/detach-volume-from-an-instance.png)
+
+#### Using openstack client
+
+Then use the openstack command line interface to detach the volume from the VM:
+
+    openstack server remove volume test-vm my-volume
+
+where "test-vm" is the virtual machine and the second parameter, "my-volume" is
+the volume created before and attached to the VM and can be shown in
+`openstack volume list`.
+
+Check that the volume is in state 'available' again.
+
+If that's the case, the volume is now ready to either be attached to another
+virtual machine or, if it is not needed any longer, to be [completely deleted](#delete-volumes)
+(please note that this step cannot be reverted!).
 
 ### Attach an existing volume to an instance
 
@@ -335,7 +353,46 @@ confirm the action.
     If you really want to delete such volume then first delete the insance and
     then you are allowed to delete the detached volume.
 
-## Transfer a Volume
+**Alternatively,** Using openstack client terminal:
+
+    openstack volume delete my-volume
+
+Your volume will now go into state 'deleting' and completely disappear from the
+`openstack volume list` output.
+
+### Extending volumes
+
+A volume can be made larger while maintaining the existing contents, assuming the
+file system supports resizing. We can extend a volume that is not attached to any
+VM and in **"Available"** status.
+
+The steps are as follows:
+
+- Extend the volume to its new size
+
+- Extend the filesystem to its new size
+
+![Extending Volume](images/extending_volumes.png)
+
+Specify, the new extened size in GB:
+
+![Volume New Extended Size](images/volume_new_extended_size.png)
+
+**Alternatively,** Using openstack client terminal:
+
+The existing volume "my-volume" can be extended to a new size of 100 GB for
+the previous 80 GB by running the following command:
+
+    openstack volume set --size 100 my-volume
+
+For windows systems, please follow the [provider documentation](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume).
+
+!!! info "Please note"
+    - Volumes can be made larger, but not smaller. There is no support for
+    shrinking existing volumes.
+    - The procedure given above has been tested with ext4 and XFS filesystems only.
+
+### Transfer a Volume
 
 You may wish to transfer a volume to a different project.
 

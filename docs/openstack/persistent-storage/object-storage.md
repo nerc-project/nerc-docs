@@ -376,7 +376,7 @@ Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
         Default region name [None]:
         Default output format [None]:
 
-This will create the configuration file for AWS cli in your home directory 
+This will create the configuration file for AWS cli in your home directory
 `~/.aws/config` with the EC2 profile based on your `${OS_PROJECT_NAME}` and
 `~/.aws/credentials` credentials with Access and Secret keys that you provided above.
 
@@ -405,9 +405,9 @@ Where as Credentials is store here:
 
 Then you can manually create the configuration file for AWS cli in your home
 directory `~/.aws/config`` with the ec2 profile and credentials as shown below:
-    
+
     $ cat ~/.aws/config
-    
+
     ['${OS_PROJECT_NAME}']
     aws_access_key_id = <EC2_ACCESS_KEY>
     aws_secret_access_key = <EC2_SECRET_KEY>

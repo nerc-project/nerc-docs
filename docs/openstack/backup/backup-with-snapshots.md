@@ -225,12 +225,15 @@ Navigate to Project -> Volumes -> Snapshots.
 You have the option to directly launch this volume as an instance by clicking on
 the arrow next to "Create Volume" and selecting "Launch as Instance".
 
-![Create Volume from Volume Snapshot](images/create-volume-from-volume-snapshot.png)
+![Launch an Instance from Volume Snapshot](images/launch-instance-from-volume-snapshot.png)
 
 Also it has other options i.e. to create a volume from the snapshot, edit details
 about the snapshot, delete it, or Update the snapshot metadata.
 
-Here, we will first Create Volume from Snapshot by clicking "Create Volume" button.
+Here, we will first Create Volume from Snapshot by clicking "Create Volume" button
+as shown below:
+
+![Create Volume from Volume Snapshot](images/create-volume-from-volume-snapshot.png)
 
 In the dialog box that opens, enter a volume name and a brief description.
 

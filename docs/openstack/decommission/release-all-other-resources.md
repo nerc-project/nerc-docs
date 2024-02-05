@@ -1,3 +1,0 @@
-# Release all other resources
-
----

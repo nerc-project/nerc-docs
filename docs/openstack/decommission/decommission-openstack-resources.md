@@ -1,4 +1,4 @@
-# Decommission a VM
+# Decommission OpenStack Resources
 
 Make sure you backup your critical data or configuration from the virtual machines.
 You can follow [this guide](../data-transfer/data-transfer-from-to-vm.md) to
@@ -89,12 +89,34 @@ Navigate to Project -> Network -> Floating IPs.
 
 ![Release all Floating IPs](images/release_floating_ips.png)
 
-## Clean up all Security Groups except `default`
+## Clean up all added Security Groups
+
+First, delete all other security groups except `default` also make sure the `default`
+security group does not have any extra rules. To view all Security Groups:
+
+Navigate to Project -> Network -> Security Groups.
+
+!!! warn "Unable to Delete Security Groups"
+    First delete all instances and then only you will be able to delete the
+    security groups. If a security group is attached to a VM, that security group
+    will not be allowed to delete.
 
 ## Delete all of your stored Key Pairs
 
-## Review your OpenStack Dashboard
+Navigate to Project -> Compute -> Key Pairs.
+
+!!! warn "Unable to Delete Key Pairs"
+    First delete all instances that are using the selected Key Pairs then only you
+    will be to delete them.
 
 ## ColdFront to reduce the Storage Quota to Zero
+
+## Review your OpenStack Dashboard
+
+After all resources has been removed and also the Storage Quotas has been updated
+to set them Zero (0). You can review and verify that is reflected in your Horizon
+Dashboard Overview:
+
+Navigate to Project -> Compute -> Overview.
 
 ---

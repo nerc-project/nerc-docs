@@ -133,10 +133,10 @@ Instances will now accept all incoming ICMP packets.
     associated with the modified group. Ensure that new rules align with your
     network security requirements.
 
-## Attach Newly Created Security Group(s) to a running VM
+## Update Security Group(s) to a running VM
 
-If you want to attach any new Security Group(s) to a running VM after it was
-launched. First create all new Security Group(s) with all rules required as
+If you want to attach/deattach any new Security Group(s) to a running VM after it
+was launched. First create all new Security Group(s) with all rules required as
 described here. Note that same Security Groups can be used by multiple VMs
 so don't create same or redundant Security Rules based Security Groups as
 there are Quota per project. Once have created all Security Groups, you can

@@ -33,4 +33,8 @@ the list below.
 
 - [Deleting your applications](applications/deleting-applications.md)
 
+## Decommission OpenShift Resources
+
+- [Decommission OpenShift Resources](decommission/decommission-openshift-resources.md)
+
 ---

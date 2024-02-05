@@ -55,8 +55,7 @@ the list below.
 
 ## Decommission OpenStack Resources
 
-- [Decommission a VM](decommission/decommission-a-VM.md)
-- [Release all other resources](decommission/release-all-other-resources.md)
+- [Decommission OpenStack Resources](decommission/decommission-openstack-resources.md)
 
 ---
 

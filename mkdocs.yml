@@ -69,8 +69,7 @@ nav:
       - Backup your instance and data:
           - Backup with snapshots: openstack/backup/backup-with-snapshots.md
       - Decommission OpenStack Resources:
-          - Decommission a VM: openstack/decommission/decommission-a-VM.md
-          - Release all other resources: openstack/decommission/release-all-other-resources.md
+          - Decommission OpenStack Resources: openstack/decommission/decommission-openstack-resources.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
@@ -97,6 +96,8 @@ nav:
           - Editing your applications: openshift/applications/editing-applications.md
       - Deleting Applications:
           - Deleting your applications: openshift/applications/deleting-applications.md
+      - Decommission OpenShift Resources:
+          - Decommission OpenShift Resources: openstack/decommission/decommission-openshift-resources.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
       - Kubernetes:

@@ -53,6 +53,10 @@ the list below.
 
 - [Backup with snapshots](backup/backup-with-snapshots.md)
 
+## VM Management
+
+- [VM Management](management/vm-management.md)
+
 ## Decommission OpenStack Resources
 
 - [Decommission OpenStack Resources](decommission/decommission-openstack-resources.md)

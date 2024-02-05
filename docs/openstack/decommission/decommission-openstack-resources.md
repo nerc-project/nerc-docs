@@ -64,13 +64,15 @@ To review all Network and its connectivities, you need to:
 Navigate to Project -> Network -> Network Topology.
 
 This will shows all view of current Network in your project in Graph or Topology
-view. Make sure non instances are connected to your private network. If there are
-any instances then [follow this](#vm-deletion) to delete those VMs.
+view. Make sure non instances are connected to your private network, which is
+setup by following [this documentation](../advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md).
+If there are any instances then [follow this](#vm-deletion) to delete those VMs.
 
 ![Network Topology](images/network-topology.png)
 
-First, delete all other Routers used to create private networks except `default_router`
-from:
+First, delete all other Routers used to create private networks, which is
+setup by following [this documentation](../advanced-openstack-topics/setting-up-a-network/create-a-router.md)
+except `default_router` from:
 
 Navigate to Project -> Network -> Routers.
 

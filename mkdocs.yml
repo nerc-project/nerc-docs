@@ -64,12 +64,10 @@ nav:
             - Extending Volume: openstack/persistent-storage/extending-volume.md
             - Transfer a Volume: openstack/persistent-storage/transfer-a-volume.md
           - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
-      - Data Transfer:
-          - Data Transfer To/ From NERC VM: openstack/data-transfer/data-transfer-from-to-vm.md
-      - Backup your instance and data:
-          - Backup with snapshots: openstack/backup/backup-with-snapshots.md
-      - Decommission OpenStack Resources:
-          - Decommission OpenStack Resources: openstack/decommission/decommission-openstack-resources.md
+      - Data Transfer: openstack/data-transfer/data-transfer-from-to-vm.md
+      - Backup your instance & data: openstack/backup/backup-with-snapshots.md
+      - VM Management: openstack/management/vm-management.md
+      - Decommission OpenStack Resources: openstack/decommission/decommission-openstack-resources.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
@@ -96,8 +94,7 @@ nav:
           - Editing your applications: openshift/applications/editing-applications.md
       - Deleting Applications:
           - Deleting your applications: openshift/applications/deleting-applications.md
-      - Decommission OpenShift Resources:
-          - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
+      - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
       - Kubernetes:

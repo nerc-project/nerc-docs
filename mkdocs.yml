@@ -97,7 +97,7 @@ nav:
       - Deleting Applications:
           - Deleting your applications: openshift/applications/deleting-applications.md
       - Decommission OpenShift Resources:
-          - Decommission OpenShift Resources: openstack/decommission/decommission-openshift-resources.md
+          - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
       - Kubernetes:

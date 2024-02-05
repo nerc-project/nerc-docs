@@ -1,4 +1,4 @@
-# Backup with snapshots and volumes
+# Backup with snapshots
 
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
@@ -87,11 +87,20 @@ Once you're logged in to NERC's Horizon dashboard, you can create a snapshot via
 the "Compute -> Instances" page by clicking on the "Create snapshot" action button
 on desired instance as shown below:
 
-![Ceate Instance Snapshot](images/create-instance-snapshot.png)
+![Create Instance Snapshot](images/create-instance-snapshot.png)
 
 ![Instance Snapshot Information](images/instance-snapshot-info.png)
 
-Once created, you can find the image listed under Images in the Horizon dashboard:
+!!! warning "Live snapshots and data consistency"
+    We call a snapshot taken against a running instance with no downtime a
+    "live snapshot". These snapshots are simply disk-only snapshots, and may be
+    inconsistent if the instance's OS is not aware of the snapshot being taken.
+
+### How to restore from Instance snapshot
+
+Once created, you can find the image listed under Images in the Horizon dashboard.
+
+Navigate to Project -> Compute -> Images.
 
 ![Snapshot Instance Created](images/instance-image-snapshot.png)
 
@@ -103,13 +112,6 @@ image, update the image metadata, or delete it:
 
 You can then select the snapshot when creating a new instance or directly click
 "Launch" button to use the snapshot image to launch a new instance.
-
-!!! warning "Live snapshots and data consistency"
-    We call a snapshot taken against a running instance with no downtime a
-    "live snapshot". These snapshots are simply disk-only snapshots, and may be
-    inconsistent if the instance's OS is not aware of the snapshot being taken.
-
----
 
 ## Take and use Volume Snapshots
 
@@ -211,14 +213,24 @@ In the dialog box that opens, enter a snapshot name and a brief description.
 
 ![Volume Snapshot Information](images/volume-snapshot-info.png)
 
+### How to restore from Volume snapshot
+
 Once a snapshot is created, you can manage them under the Volumes menu in the
-Horizon dashboard under Volume Snapshots:
+Horizon dashboard under Volume Snapshots.
+
+Navigate to Project -> Volumes -> Snapshots.
 
 ![Volume Snapshots List](images/volume-snapshots-list.png)
 
-Create Volume from Snapshot:
+You have the option to directly launch this volume as an instance by clicking on
+the arrow next to "Create Volume" and selecting "Launch as Instance".
 
 ![Create Volume from Volume Snapshot](images/create-volume-from-volume-snapshot.png)
+
+Also it has other options i.e. to create a volume from the snapshot, edit details
+about the snapshot, delete it, or Update the snapshot metadata.
+
+Here, we will first Create Volume from Snapshot by clicking "Create Volume" button.
 
 In the dialog box that opens, enter a volume name and a brief description.
 
@@ -226,7 +238,15 @@ In the dialog box that opens, enter a volume name and a brief description.
 
 Any snapshots made into volumes can be found under Volumes:
 
+Navigate to Project -> Volumes -> Volumes.
+
 ![New Volume from Volume Snapshot](images/new-volume-from-snapshot.png)
+
+Then using this newly created volume, you can launch it as an instance by clicking
+on the arrow next to "Edit Volume" and selecting "Launch as Instance" as shown
+below:
+
+![Launch an Instance from Volume](images/launch_instance_from_volume.png)
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
     Keep in mind that any volumes and snapshots stored take up storage space in

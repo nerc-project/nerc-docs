@@ -32,11 +32,15 @@ The quota associated with this virtual machine will be returned to the project
 and you can review and verify that looking at your
 [OpenStack dashboard overview](../logging-in/dashboard-overview.md#compute-panel).
 
-Navigate Project > Compute > Overview
+Navigate to Project -> Compute -> Overview.
 
 If the quota does not return, please raise a ticket.
 
 ## Delete volumes and snapshots
+
+To delete volume(s), please read [this documentation](../persistent-storage/delete-volumes.md).
+
+To delete snapshot(s),
 
 ## Delete all containers and objects
 

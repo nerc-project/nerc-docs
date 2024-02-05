@@ -114,7 +114,7 @@ If you have launched some instances already, the following command shows a list
 of your project's instances:
 
 ```sh
-  openstack server list
+  openstack server list --fit-width
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
   | ID                                   | Name             | Status | Networks                                     | Image                    |  Flavor      |
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
@@ -122,6 +122,10 @@ of your project's instances:
   | dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a |    gpu-test      | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  gpu-su-a100.1  |
   +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
 ```
+
+!!! info "How to fit the CLI output to your terminal?"
+    you can use `--fit-width` at the end of the command to fit the output to your
+    terminal.
 
 If you don't have any instances, you will get the error `list index out of
 range`, which is why we didn't suggest this command for your first test:

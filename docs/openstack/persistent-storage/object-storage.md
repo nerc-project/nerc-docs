@@ -363,7 +363,8 @@ keep them noted.
     alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
     alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
 
-- Source the downloaded OpenStack RC File by using: `source *-openrc.sh` command.
+- Source the downloaded OpenStack RC File from *Projects > API Access* by using:
+`source *-openrc.sh` command.
 
 - Sourcing the RC File will set the required `${OS_PROJECT_NAME}` envrionment variable.
 Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
@@ -375,6 +376,42 @@ Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
         Default region name [None]:
         Default output format [None]:
 
+This will create the configuration file for AWS cli in your home directory 
+`~/.aws/config` with the EC2 profile based on your `${OS_PROJECT_NAME}` and
+`~/.aws/credentials` credentials with Access and Secret keys that you provided above.
+
+The EC2 profile is stored here:
+
+        $ cat ~/.aws/config
+
+        [profile ''"'"'${OS_PROJECT_NAME}'"'"'']
+
+Where as Credentials is store here:
+
+        $ cat ~/.aws/credentials
+
+        ['${OS_PROJECT_NAME}']
+        aws_access_key_id = <EC2_ACCESS_KEY>
+        aws_secret_access_key = <EC2_SECRET_KEY>
+
+**Alternatively,** you can obtain your EC2 access keys using the openstack client:
+
+    openstack ec2 credentials list
+    +------------------+------------------+--------------+-----------+
+    | Access           | Secret           | Project ID   | User ID   |
+    +------------------+------------------+--------------+-----------+
+    | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
+    +------------------+------------------+--------------+-----------+
+
+Then you can manually create the configuration file for AWS cli in your home
+directory `~/.aws/config`` with the ec2 profile and credentials as shown below:
+    
+    $ cat ~/.aws/config
+    
+    ['${OS_PROJECT_NAME}']
+    aws_access_key_id = <EC2_ACCESS_KEY>
+    aws_secret_access_key = <EC2_SECRET_KEY>
+
 !!! note "Information"
     We need to have a profile that you use must have permissions to allow
     the AWS operations can be performed.
@@ -383,7 +420,7 @@ Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
 
 i. Using `s3api`:
 
-    $ aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
+    aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
         s3api list-buckets
 
     {
@@ -424,7 +461,7 @@ Output:
 
     The aws tool provides a `cp` command to move files to your `s3` bucket:
 
-        $ aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
+        aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
             s3 cp <Your-file> s3://<your-bucket>/
 
     Output:
@@ -433,7 +470,7 @@ Output:
 
 2. Whole directory copy using the `--recursive` flag
 
-        $ aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
+        aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
             s3 cp <Your-directory> s3://<your-bucket>/ --recursive
 
     Output:

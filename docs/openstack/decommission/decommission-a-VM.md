@@ -38,30 +38,63 @@ If the quota does not return, please raise a ticket.
 
 ## Delete volumes and snapshots
 
-To delete volume(s), please read [this documentation](../persistent-storage/delete-volumes.md).
+For instructions on deleting volume(s), please refer to [this documentation](../persistent-storage/delete-volumes.md).
 
-To delete snapshot(s),
+To delete snapshot(s), if that snapshot is not used for any running instance.
 
-## Delete all containers and objects
+Navigate to Project -> Volumes -> Snapshots.
 
-## Release any Floating IPs
+![Delete Snapshots](images/delete-snapshots.png)
 
-## Delete all custom Networks and Routers
+!!! warn "Unable to Delete Snapshots"
+    First delete all volumes and instances (and its attached volumes) that are
+    created using the snapshot first, you will not be able to delete the volume
+    snapshots.
+
+## Delete all custom built Images and Instance Snapshot built Images
+
+Navigate to Project -> Compute -> Images.
+
+Select all of the custom built that have Visibility set as "Private" images to delete.
+
+## Delete your all private Networks, Routers and Internal Interfaces on the Routers
+
+To review all Network and its connectivities, you need to:
+
+Navigate to Project -> Network -> Network Topology.
+
+This will shows all view of current Network in your project in Graph or Topology
+view. Make sure non instances are connected to your private network. If there are
+any instances then [follow this](#vm-deletion) to delete those VMs.
+
+![Network Topology](images/network-topology.png)
+
+First, delete all other Routers used to create private networks except `default_router`
+from:
+
+Navigate to Project -> Network -> Routers.
+
+First, delete all other Routers used to create private networks except `default_network`
+and `provider` then only you will be able to delete the Networks from:
+
+Navigate to Project -> Network -> Networks.
+
+!!! warn "Unable to Delete Networks"
+    First delete all instances and then delete all routers then only you will be
+    able to delete the associated private networks.
+
+## Release all Floating IPs
+
+Navigate to Project -> Network -> Floating IPs.
+
+![Release all Floating IPs](images/release_floating_ips.png)
 
 ## Clean up all Security Groups except `default`
-
-## Delete all custom built Images
 
 ## Delete all of your stored Key Pairs
 
 ## Review your OpenStack Dashboard
 
 ## ColdFront to reduce the Storage Quota to Zero
-
-- Flavor
-- Image
-- Network
-- Security Group
-- Key Name
 
 ---

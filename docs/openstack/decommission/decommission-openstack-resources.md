@@ -1,8 +1,8 @@
 # Decommission OpenStack Resources
 
-Make sure you backup your critical data or configuration from the virtual machines.
-You can follow [this guide](../data-transfer/data-transfer-from-to-vm.md) to
-initiate and perform data transfer from/to the VM.
+Ensure to back up your critical data or configurations from the virtual machines.
+You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md) to
+initiate and carry out data transfer to and from the virtual machine.
 
 ## VM deletion
 

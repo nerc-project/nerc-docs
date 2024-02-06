@@ -77,7 +77,7 @@ nav:
       - Data Transfer: openstack/data-transfer/data-transfer-from-to-vm.md
       - Backup your instance & data: openstack/backup/backup-with-snapshots.md
       - VM Management: openstack/management/vm-management.md
-      - Decommission OpenStack Resources: openstack/decommission/decommission-openstack-resources.md
+      - Decommission your OpenStack Resources: openstack/decommission/decommission-openstack-resources.md
       - Advanced Topics:
           - Setting Up Own Network:
               - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md

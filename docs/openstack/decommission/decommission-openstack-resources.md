@@ -1,10 +1,22 @@
-# Decommission OpenStack Resources
+# Decommission Your NERC OpenStack Resources
 
-Ensure to back up your critical data or configurations from the virtual machines.
-You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md) to
-initiate and carry out data transfer to and from the virtual machine.
+You can decommission all of your NERC OpenStack resources sequentially as outlined
+here.
 
-## VM deletion
+## Prerequisite
+
+- **Backup**: Back up any critical data or configurations stored on the resources
+that going to be decommissioned. This ensures that important information is not
+lost during the process. You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md)
+to initiate and carry out data transfer to and from the virtual machine.
+
+- **Shutdown Instances**: If applicable, [Shut Off any running instances](../management/vm-management.md#stopping-and-starting)
+to ensure they are not actively processing data during decommissioning.
+
+- Setup **OpenStack CLI**, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+for more information.
+
+## Delete all VMs
 
 For instructions on deleting instance(s), please refer to [this documentation](../management/vm-management.md#delete-instance).
 
@@ -38,7 +50,7 @@ Navigate to Project -> Network -> Network Topology.
 This will shows all view of current Network in your project in Graph or Topology
 view. Make sure non instances are connected to your private network, which is
 setup by following [this documentation](../advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md).
-If there are any instances then [follow this](#vm-deletion) to delete those VMs.
+If there are any instances then [refer this](#delete-all-vms) to delete those VMs.
 
 ![Network Topology](images/network-topology.png)
 
@@ -62,6 +74,9 @@ Navigate to Project -> Network -> Networks.
 Navigate to Project -> Network -> Floating IPs.
 
 ![Release all Floating IPs](images/release_floating_ips.png)
+
+For instructions on releasing your allocated floating IP back into the NERC floating
+IP pool, please refer to [this documentation](../create-and-connect-to-the-VM/assign-a-floating-IP.md#release-a-floating-ip).
 
 ## Clean up all added Security Groups
 

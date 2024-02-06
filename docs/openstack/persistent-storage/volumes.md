@@ -75,7 +75,7 @@ Utilizing snapshots for backups is of utmost importance, particularly when
 safeguarding or recovering critical states and data from your instance.
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
-    When you [delete virtual machines](../decommission/decommission-openstack-resources.md#vm-deletion)
+    When you [delete virtual machines](../decommission/decommission-openstack-resources.md#delete-all-vms)
     backed by persistent volumes, the disk data is retained, continuing to consume
     approved storage resources for which you will still be billed. It's important
     to note that the **Storage quotas**, specifically the "OpenStack Volume GB Quota"

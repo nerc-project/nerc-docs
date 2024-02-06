@@ -65,7 +65,7 @@ project.
     If the allocation renewal isn't processed prior to the original allocation
     expiration date by the PI or Manager, the allocation will expire and the
     allocation users will get a notification email letting them know the allocation
-    has expired!    
+    has expired!
     ![Allocation Renewal Prior Expiration](images/renew_expiring_allocation.png)
 
 Allocation renewals may not require any additions or changes to the allocation

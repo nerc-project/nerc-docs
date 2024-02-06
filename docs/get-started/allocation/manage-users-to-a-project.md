@@ -43,7 +43,7 @@ Removing Users from the Project is straightforward by just clicking on the
 PI or project managers can select the user(s) and then click on the "Remove Selected
 Users From Project" button.
 
-### User Roles
+## User Roles
 
 Access to ColdFront is role based so users see a read-only view of the allocation
 details for any allocations they are on. PIs see the same allocation details as general
@@ -73,7 +73,7 @@ level. PIs also have the 'manager' status on a project. Managers can't turn off 
 notifications. This ensures they continue to get allocation expiration notification
 emails.
 
-#### Delegating User to Manager Role
+### Delegating User to Manager Role
 
 You can also modify a [users role](#user-roles) of existing project users at any
 time by clicking on the Edit button next to the user's name.
@@ -94,7 +94,7 @@ Then toggle the "Role" from User to Manager:
     You can optionally designate them as a "Manager" by selecting their role using
     the drop down next to their email as described [here](#adding-and-removing-user-from-the-project).
 
-### Notifications
+## Notifications
 
 All users on a project will receive notifications about allocations including
 reminders of upcoming expiration dates and status changes. Users may uncheck

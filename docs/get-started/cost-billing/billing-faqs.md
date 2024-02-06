@@ -31,8 +31,9 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
 ??? question "3. How do I control costs?"
 
     Upon creating a project, you will set these resource limits (quotas) for
-    OpenStack (VMs), OpenShift (containers), and storage through [ColdFront](../get-an-allocation.md).
-    This is the maximum amount of resources you can consume at one time.
+    OpenStack (VMs), OpenShift (containers), and storage through
+    [ColdFront](../allocation/requesting-an-allocation.md). This is the maximum
+    amount of resources you can consume at one time.
 
 ??? question "4. Are we invoicing for CPUs/GPUs only when the VM or Pod is active?"
 
@@ -64,11 +65,12 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
 
 ??? question "9. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
-    a. Storage is invoiced based on [Coldfront Requests](../get-an-allocation.md#how-to-request-a-new-resource-allocation).
+    a. Storage is invoiced based on [Coldfront Requests](../allocation/requesting-an-allocation.md).
 
     b. When you request additional storage through Coldfront, invoicing on that
     additional storage will occur when your request is fulfilled. When you request
-    a decrease in storage through [Request change using ColdFront](../get-an-allocation.md#request-change-to-resource-allocation-to-an-existing-project),
+    a decrease in storage through
+    [Request change using ColdFront](../allocation/allocation-change-request.md),
     your invoicing will adjust accordingly when your request is made. In both cases
     'invoicing' means 'accumulate hours for whatever storage quantity was added
     or removed'.

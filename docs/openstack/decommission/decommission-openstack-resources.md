@@ -124,7 +124,7 @@ Gigabytes" to zero(0) for your **NERC (OpenStack)** resource type. You can revie
 and manage these resource allocations by visiting the
 [resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here, you
 can filter the allocation of your interest and then proceed to request a
-[change request](../../get-started/get-an-allocation.md#request-change-resource-allocation-attributes-for-openstack-project).
+[change request](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project).
 
 Please make sure your change request looks like this:
 
@@ -139,10 +139,11 @@ approved quota values are accurately displayed.
 
 ### Review your Block Storage(Volume/Cinder) Quota
 
-Please confirm and verify that the `gigabytes` resource value is set to a limit
-of zero(0) in correspondence with the approved "OpenStack Volume GB Quota" of your
-allocation when running `openstack quota show` openstack client command as shown
-below:
+Please confirm and verify that the `gigabytes` resource value that specifies total
+space in [external volumes](../persistent-storage/volumes.md#volumes) is set to
+a limit of zero(0) in correspondence with the approved "OpenStack Volume GB Quota"
+of your allocation when running `openstack quota show` openstack client command
+as shown below:
 
     openstack quota show
     +-----------------------+--------+
@@ -155,10 +156,13 @@ below:
 
 ### Review your Object Storage(Swift) Quota
 
+To check the overall space used, you can use the following command
+
 Also, please confirm and verify that the `Quota-Bytes` property value is set to
 a limit of zero(0) in correspondence with the approved "OpenStack Swift Quota
-in Gigabytes" of your allocation when running `openstack object store account show`
-openstack client command as shown below:
+in Gigabytes" of your allocation and also check the overall space used in `Bytes`
+is zero(0) alsong with no Containers and Objects, when running
+`openstack object store account show` openstack client command as shown below:
 
     openstack object store account show
     +------------+---------------------------------------+
@@ -173,9 +177,17 @@ openstack client command as shown below:
 
 ### Review your Project Usage
 
-Several commands are available to retrieve project resource usage details. The
-`openstack limits show --absolute` command provides an overview of the most
-crucial resources:
+Several commands are available to access project-level resource utilization details.
+The `openstack limits show --absolute` command offers a comprehensive view of the
+most crucial resources and also allows you to view your current resource consumption.
+
+Multiple commands are at your disposal to access project resource utilization
+details. The openstack limits show --absolute command offers a comprehensive
+view of critical resources and allows you to assess your current resource consumption.
+
+!!! danger "Very Important: Ensure No Resources that will be Billed are Used"
+    Most importantly, ensure that there is no active usage for any of your
+    currently allocated project resources.
 
     openstack limits show --absolute
     +--------------------------+-------+
@@ -208,11 +220,11 @@ crucial resources:
     | totalVolumesUsed         |     0 |
     | totalGigabytesUsed       |     0 |
     | totalSnapshotsUsed       |     0 |
-    | totalBackupsUsed         |     1 |
-    | totalBackupGigabytesUsed |    25 |
+    | totalBackupsUsed         |     0 |
+    | totalBackupGigabytesUsed |     0 |
     +--------------------------+-------+
 
-## Finally, Review your OpenStack Dashboard
+## Review your OpenStack Dashboard
 
 After removing all OpenStack resources and updating the Storage Quotas to set them
 to zero(0), you can review and verify that these changes are reflected in your
@@ -221,5 +233,12 @@ Horizon Dashboard Overview.
 Navigate to Project -> Compute -> Overview.
 
 ![Horizon Dashboard](images/horizon_dashboard.png)
+
+## Finally, Archive your ColdFront Project
+
+As a **PI**, you will be now able to **Archive** your ColdFront Project via
+accessing [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
+Please refer to [these intructions](../../get-started/allocation/archiving-a-project.md)
+on how to archive your project that needs to be decommissioned.
 
 ---

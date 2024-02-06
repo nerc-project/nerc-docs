@@ -16,7 +16,7 @@ from an external volume:
     from volume
     - To ensure smooth upgrade and maintenance of the system, select at least
     100GB for the size of the volume
-    - Make sure your project has sufficient [storage quotas](../../get-started/get-an-allocation.md#general-user-view-of-openstack-resource-allocation).
+    - Make sure your project has sufficient [storage quotas](../../get-started/allocation/allocation-details.md#general-user-view).
 
 ### Create a volume from image
 

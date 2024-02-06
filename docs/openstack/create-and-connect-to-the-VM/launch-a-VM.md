@@ -114,7 +114,8 @@ tab by clicking on the "+" icon.
     ![Flavor Not Avaliable due to Your Quota](images/flavor-not-available-due-to-quota.png)
 
     More details about available flavors can be found [**here**](flavors.md) and
-    how to change request the current allocation quota attributes can be found [**here**](../../get-started/get-an-allocation.md#request-change-resource-allocation-attributes-for-openstack-project).
+    how to change request the current allocation quota attributes can be found
+    [**here**](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project).
 
 After choosing `cpu-su.4`, you should see it moved up to "Allocated".
 

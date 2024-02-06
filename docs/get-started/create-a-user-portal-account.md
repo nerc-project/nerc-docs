@@ -21,10 +21,11 @@ from the same institutions or elsewhere as managers using
 ## Getting Started
 
 Any faculty, staff, student, and external collaborator must request a user account
-through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/).
-This is a web-based, single point-of-entry to the NERC system that displays a user
-welcome page. The welcome page of the account registration site displays instructions
-on how to register a General User account on NERC, which are shown in the image below:
+through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/)
+also know as **"RegApp"**. This is a web-based, single point-of-entry to the NERC
+system that displays a user welcome page. The welcome page of the account registration
+site displays instructions on how to register a General User account on NERC, which
+are shown in the image below:
 
 ![MGHPCC Shared Services (MGHPCC-SS) Account Portal Welcome Page](images/regapp-welcome-page.png)
 

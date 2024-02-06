@@ -48,10 +48,10 @@ which may differ from the default GL code previously associated with the
     !!! info "How to view the Allocated Project Name and Allocated Project ID?"
         By clicking on the Allocation detail page through ColdFront, you can access
         information about the allocation of each resource, including OpenStack and
-        OpenShift as described [here](../get-an-allocation.md#general-user-view).
+        OpenShift as [described here](../allocation/allocation-details.md#general-user-view).
         You will need to provide us **Allocated Project Name** and **Allocated Project
         ID** attributes, which are located under the “Allocation Attributes”
-        section on the detail page as described [here](../get-an-allocation.md#pi-and-manager-allocation-view).
+        section on the detail page as [described here](../allocation/allocation-details.md#pi-and-manager-view).
 
     Once we confirm the six-digit HUIT Customer Code for the PI and correct resource
     allocation, the NERC admin team will create a new ServiceNow ticket by contacting

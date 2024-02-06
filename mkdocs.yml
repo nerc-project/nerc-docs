@@ -21,7 +21,17 @@ nav:
           - Billing FAQs: get-started/cost-billing/billing-faqs.md
       - User Onboarding Process: get-started/user-onboarding-on-NERC.md
       - How to Create a User Account: get-started/create-a-user-portal-account.md
-      - How to Get An Allocation: get-started/get-an-allocation.md
+      - How to Get An Allocation:
+          - get-started/allocation/coldfront.md
+          - get-started/allocation/adding-a-project.md
+          - get-started/allocation/manage-users-to-a-project.md
+          - get-started/allocation/requesting-an-allocation.md
+          - get-started/allocation/allocation-change-request.md
+          - get-started/allocation/adding-a-new-allocation.md
+          - get-started/allocation/managing-users-to-an-allocation.md
+          - get-started/allocation/project-and-allocation-review.md
+          - get-started/allocation/archiving-a-project.md
+          - get-started/allocation/allocation-details.md
       - Security Best Practices for the NERC Users:
           - Quick Guide and Best Practices: get-started/best-practices/best-practices.md
           - Best Practices for My Institution: get-started/best-practices/best-practices-for-my-institution.md
@@ -93,7 +103,8 @@ nav:
       - Editing Applications:
           - Editing your applications: openshift/applications/editing-applications.md
       - Deleting Applications:
-          - Deleting your applications: openshift/applications/deleting-applications.md      
+          - Deleting your applications: openshift/applications/deleting-applications.md
+      - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
       - Kubernetes:

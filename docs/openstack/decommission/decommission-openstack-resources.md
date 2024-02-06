@@ -189,6 +189,8 @@ view of critical resources and allows you to assess your current resource consum
     Most importantly, ensure that there is no active usage for any of your
     currently allocated project resources.
 
+The output may appear as follows:
+
     openstack limits show --absolute
     +--------------------------+-------+
     | Name                     | Value |

@@ -20,7 +20,7 @@ available for this project.
     You need ssh installed in your system
 
 You can create a key pair on your local machine, then upload the public key to
-the cloud.  This is the **recommended method**.
+the cloud. This is the **recommended method**.
 
 Open a terminal and type the following commands (in this example, we have named
 the key cloud.key, but you can name it anything you want):

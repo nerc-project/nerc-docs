@@ -152,11 +152,11 @@ detail page and they see the status change to "project review pending".
     will be billed for the associated costs based on the **pay-as-you-go** model.
     The exception is the **Storage quotas**, specifically the "OpenStack Volume
     GB Quota" where the cost is determined by the requested and approved allocation
-    values to reserve storage from the total pool. If you have common questions
-    or need more information, refer to our [Billing FAQs](../get-started/cost-billing/billing-faqs.md)
-    for comprehensive answers. Keep in mind that you can easily scale and expand
-    your current resource allocations within your project by following this
-    [this documentation](#request-change-resource-allocation-attributes-for-openstack-project)
+    values to reserve storage from the total NESE storage pool. If you have common
+    questions or need more information, refer to our
+    [Billing FAQs](../get-started/cost-billing/billing-faqs.md) for comprehensive
+    answers. Keep in mind that you can easily scale and expand your current resource
+    allocations within your project by following this [this documentation](#request-change-resource-allocation-attributes-for-openstack-project)
     later on.
 
 #### Resource Allocation Quotas for OpenStack Project
@@ -212,8 +212,8 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
     will be billed for the associated costs based on the **pay-as-you-go** model.
     The exception is the **Storage quotas**, specifically the "OpenShift Request
     on Storage Quota (GB)" where the cost is determined by the requested and
-    approved allocation values to reserve storage from the total pool. If you
-    have common questions or need more information, refer to our
+    approved allocation values to reserve storage from the total NESE storage pool.
+    If you have common questions or need more information, refer to our
     [Billing FAQs](../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current
     resource allocations within your project by following this [this documentation](#request-change-resource-allocation-attributes-for-openshift-project)

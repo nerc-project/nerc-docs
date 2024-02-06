@@ -36,7 +36,7 @@ already, the dropdown list will be empty.
 
 ![Floating IP Not Available](images/floating_ip_none.png)
 
-Click the + symbol to allocate an IP.  You will see the following screen.
+Click the + symbol to allocate an IP. You will see the following screen.
 
 Make sure 'provider' appears in the dropdown menu, and that you have not
 already met your quota of allocated IPs.
@@ -69,7 +69,7 @@ needs it, so you can assign it to one that does.
 
 Navigate to Project -> Compute -> Instances.
 
-Find the instance you want to remove the IP from in the list.  Click the red
+Find the instance you want to remove the IP from in the list. Click the red
 "Disassociate Floating IP" to the right.
 
 This IP will be disassociated from the instance, but it will still remain

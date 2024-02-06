@@ -101,13 +101,13 @@ You were able to log into using your own SSH key.
 Right now Openstack only permits one key to be added at launch, so you need to
 add your teammates keys manually.
 
-Get your teammates' public keys.  If they used ssh-keygen to create their key,
+Get your teammates' public keys. If they used ssh-keygen to create their key,
 this will be in a file called <key_name>.pub on their machine.
 
 If they created a key via the dashboard, or imported the key created with
 ssh-keygen, their public key is viewable from the Key Pairs tab.
 
-Click on the key pair name.  The public key starts with 'ssh-rsa' and looks
+Click on the key pair name. The public key starts with 'ssh-rsa' and looks
 something like this:
 
     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL6O5qNZHfgFwf4vnnib2XBub7ZU6khy6z6JQl3XRJg6I6gZ

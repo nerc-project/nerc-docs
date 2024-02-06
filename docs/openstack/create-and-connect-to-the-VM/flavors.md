@@ -14,7 +14,7 @@ The important fields are
 |------------|--------------------------------------------------|
 | RAM        | Memory size in MB                                |
 | Disk       | Size of disk in GB                               |
-| Ephemeral  | Size of a second disk. 0 means no second disk is defined and mounted.   |
+| Ephemeral  | Size of a second disk. 0 means no second disk is defined and mounted. |
 | VCPUs      | Number of virtual cores                          |
 
 ## Currently, our setup supports and offers the following flavors

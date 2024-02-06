@@ -4,7 +4,7 @@
 tool for managing containerized cloud-native workloads and services in computing,
 networking, and storage infrastructure. K8s can help to deploy and manage
 containerized applications like platforms as a service(PaaS), batch processing
-workers, and microservices in the cloud at scale.  It reduces cloud computing
+workers, and microservices in the cloud at scale. It reduces cloud computing
 costs while simplifying the operation of resilient and scalable applications.
 While it is possible to install and manage Kubernetes on infrastructure that you
 manage, it is a time-consuming and complicated process. To make provisioning and

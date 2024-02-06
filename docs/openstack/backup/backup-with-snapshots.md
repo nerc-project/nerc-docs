@@ -257,11 +257,13 @@ below:
     in the event of deleting volumes and snapshots, you will still be billed
     based on your approved and reserved [storage allocation](../../get-started/get-an-allocation/#how-to-request-a-new-resource-allocation).
     When you request additional storage by specifing changed quota value for the
-    "OpenStack Volume GB Quota" attribute through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" attribute
+    through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
     invoicing for the extra storage will take place upon fulfillment/approval of
     your request as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
     Conversely, if you request a reduction in the **Storage quotas**, specifically
-    the "OpenStack Volume GB Quota" through a [change request using ColdFront](../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project),
+    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" through
+    a [change request using ColdFront](../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project),
     your invoicing will be adjusted accordingly when the request is processed.
     In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.

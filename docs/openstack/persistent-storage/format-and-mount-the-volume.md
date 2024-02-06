@@ -2,7 +2,7 @@
 
 ## For Linux based virtual machine
 
-SSH to your instance.  You should now see the volume as an additional disk in
+SSH to your instance. You should now see the volume as an additional disk in
 the output of `sudo fdisk -l` or `lsblk` or `cat /proc/partitions`.
 
     # lsblk

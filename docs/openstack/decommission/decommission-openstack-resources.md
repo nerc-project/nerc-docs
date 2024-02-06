@@ -6,35 +6,7 @@ initiate and perform data transfer from/to the VM.
 
 ## VM deletion
 
-VMs can be deleted using either the OpenStack dashboard or via the openstack client
-`openstack server delete` command.
-
-!!! danger "Important Note"
-    This will immediately terminate the instance, delete all content of the
-    virtual machine and erase the disk. This operation is not recoverable.
-
-There are other options available if you wish to keep the virtual machine for
-future usage. These do, however, continue to use quota for the project even though
-the VM is not running.
-
-- **Suspend the VM** which saves the state of the VM to disk so it could be restarted
-later
-
-- **Snapshot the VM** to keep an offline copy of the virtual machine
-
-If however, the virtual machine is no longer required and no data on the
-associated system or ephemeral disk needs to be preserved, the following command
-can be run:
-
-    openstack server delete <INSTANCE_NAME_OR_ID>
-
-The quota associated with this virtual machine will be returned to the project
-and you can review and verify that looking at your
-[OpenStack dashboard overview](../logging-in/dashboard-overview.md#compute-panel).
-
-Navigate to Project -> Compute -> Overview.
-
-If the quota does not return, please raise a ticket.
+For instructions on deleting instance(s), please refer to [this documentation](../management/vm-management.md#delete-instance).
 
 ## Delete volumes and snapshots
 
@@ -111,14 +83,143 @@ Navigate to Project -> Compute -> Key Pairs.
     First delete all instances that are using the selected Key Pairs then only you
     will be to delete them.
 
+## Delete all buckets and objects
+
+For instructions on deleting bucket(s) along with all objects, please refer to
+[this documentation](../persistent-storage/delete-volumes.md).
+
+To delete snapshot(s), if that snapshot is not used for any running instance.
+
+Navigate to Project -> Object Store -> Containers.
+
+![Delete Containers](images/delete-containers.png)
+
+!!! warn "Unable to Delete Container with Objects inside"
+    First delete all objects inside a Container first, then only you will be able
+    to delete the container. Please make sure any critical objects data are already
+    been remotely backed up before deleting them. You can also use openstack client
+    to recursively delete the containers which has multi-level objects inside as
+    [described here](../persistent-storage/object-storage.md#delete-the-container).
+    So, you don't need to manually delete all objects inside a container prior
+    deleting the container. This will save a lot of your time and effort.
+
 ## ColdFront to reduce the Storage Quota to Zero
 
-## Review your OpenStack Dashboard
+The costs for each allocation, whether requested or approved, will be billed
+according to the **pay-as-you-go** model. However, there's an exception for
+**Storage quotas** under the **NERC (OpenStack)** resource type. Specifically,
+for "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" the
+cost is determined by the requested and approved allocation values as once approved
+this storage will need to be reserved from the total NESE storage pool.
 
-After all resources has been removed and also the Storage Quotas has been updated
-to set them Zero (0). You can review and verify that is reflected in your Horizon
-Dashboard Overview:
+Even if you have deleted all volumes, snapshots, and object storage buckets and
+objects in your OpenStack project. It is very essential to adjust the approved
+values for your NERC (OpenStack) resource allocations to zero(0) otherwise you
+still be incurring charge for the approved storage as explained in
+[Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
+
+To achieve this, you must submit a final change request to reduce the
+**Storage Quotas** for "OpenStack Volume GB Quota" and "OpenStack Swift Quota in
+Gigabytes" to zero(0) for your **NERC (OpenStack)** resource type. You can review
+and manage these resource allocations by visiting the
+[resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here, you
+can filter the allocation of your interest and then proceed to request a
+[change request](../../get-started/get-an-allocation.md#request-change-resource-allocation-attributes-for-openstack-project).
+
+Please make sure your change request looks like this:
+
+![Change Request to Set Storage Quotas Zero](images/change_request_zero_storage.png)
+
+Wait until the requested resource allocation gets approved by the NERC's admin.
+
+After approval, kindly review and verify that the quotas are accurately
+reflected in your [resource allocation](https://coldfront.mss.mghpcc.org/allocation/)
+and [OpenStack project](https://stack.nerc.mghpcc.org/). Please ensure that the
+approved quota values are accurately displayed.
+
+### Review your Block Storage(Volume/Cinder) Quota
+
+Please confirm and verify that the `gigabytes` resource value is set to a limit
+of zero(0) in correspondence with the approved "OpenStack Volume GB Quota" of your
+allocation when running `openstack quota show` openstack client command as shown
+below:
+
+    openstack quota show
+    +-----------------------+--------+
+    | Resource              |  Limit |
+    +-----------------------+--------+
+    ...
+    | gigabytes             |      0 |
+    ...
+    +-----------------------+--------+
+
+### Review your Object Storage(Swift) Quota
+
+Also, please confirm and verify that the `Quota-Bytes` property value is set to
+a limit of zero(0) in correspondence with the approved "OpenStack Swift Quota
+in Gigabytes" of your allocation when running `openstack object store account show`
+openstack client command as shown below:
+
+    openstack object store account show
+    +------------+---------------------------------------+
+    | Field      | Value                                 |
+    +------------+---------------------------------------+
+    | Account    | AUTH_5e1cbcfe729a4c7e8fb2fd5328456eea |
+    | Bytes      | 0                                     |
+    | Containers | 0                                     |
+    | Objects    | 0                                     |
+    | properties | Quota-Bytes='0000000000'              |
+    +------------+---------------------------------------+
+
+### Review your Project Usage
+
+Several commands are available to retrieve project resource usage details. The
+`openstack limits show --absolute` command provides an overview of the most
+crucial resources:
+
+    openstack limits show --absolute
+    +--------------------------+-------+
+    | Name                     | Value |
+    +--------------------------+-------+
+    | maxTotalInstances        |     1 |
+    | maxTotalCores            |     1 |
+    | maxTotalRAMSize          |     1 |
+    | maxSecurityGroups        |    10 |
+    | maxTotalFloatingIps      |    10 |
+    | maxServerMeta            |   128 |
+    | maxImageMeta             |   128 |
+    | maxPersonality           |     5 |
+    | maxPersonalitySize       | 10240 |
+    | maxSecurityGroupRules    |    20 |
+    | maxTotalKeypairs         |   100 |
+    | maxServerGroups          |    10 |
+    | maxServerGroupMembers    |    10 |
+    | totalRAMUsed             |     0 |
+    | totalCoresUsed           |     0 |
+    | totalInstancesUsed       |     0 |
+    | totalFloatingIpsUsed     |     0 |
+    | totalSecurityGroupsUsed  |     1 |
+    | totalServerGroupsUsed    |     0 |
+    | maxTotalVolumes          |     1 |
+    | maxTotalSnapshots        |    10 |
+    | maxTotalVolumeGigabytes  |     1 |
+    | maxTotalBackups          |    10 |
+    | maxTotalBackupGigabytes  |  1000 |
+    | totalVolumesUsed         |     0 |
+    | totalGigabytesUsed       |     0 |
+    | totalSnapshotsUsed       |     0 |
+    | totalBackupsUsed         |     1 |
+    | totalBackupGigabytesUsed |    25 |
+    +--------------------------+-------+
+
+## Finally, Review your OpenStack Dashboard
+
+After removing all OpenStack resources and updating the Storage Quotas to set them
+to zero(0), you can review and verify that these changes are reflected in your
+Horizon Dashboard Overview.
 
 Navigate to Project -> Compute -> Overview.
+
+![Horizon Dashboard](images/horizon_dashboard.png)
 
 ---

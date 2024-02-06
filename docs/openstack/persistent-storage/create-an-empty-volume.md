@@ -1,6 +1,6 @@
 # Create An Empty Volume
 
-An empty volume is like an unformatted USB stick.  We'll attach it to an
+An empty volume is like an unformatted USB stick. We'll attach it to an
 instance, create a filesystem on it, and mount it to the instance.
 
 ## Using Horizon dashboard
@@ -14,13 +14,13 @@ Navigate to Project -> Volumes -> Volumes.
 
 Click "Create Volume".
 
-In the Create Volume dialog box, give your volume a name.  The description
+In the Create Volume dialog box, give your volume a name. The description
 field is optional.
 
 ![Create Volume](images/create_volume.png)
 
-Choose "empty volume" from the Source dropdown.  This will create a volume that
-is like an unformatted hard disk.  Choose a size (In GiB) for your volume.
+Choose "empty volume" from the Source dropdown. This will create a volume that
+is like an unformatted hard disk. Choose a size (In GiB) for your volume.
 Leave Type and Availibility Zone as it as. Only admin to the NERC OpenStack
 will be able to manage volume types.
 

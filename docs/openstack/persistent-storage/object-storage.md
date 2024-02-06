@@ -74,6 +74,11 @@ To add a folder, click on the "+ folder" icon as shown below:
 Making a container public allows you to send your collaborators a URL that gives
 access to the container's contents.
 
+!!! tip "Hosting a static website using public Container"
+    You can use public Container to host a static website. On a static website,
+    individual webpages include static website content (HTML, CSS etc.). They
+    might also contain client-side scripts (e.g. JavaScript).
+
 Click on your container's name, then check the "Public Access" checkbox. Note that
 "Public Access" changes from "Disabled" to "Link".
 
@@ -404,7 +409,7 @@ Where as Credentials is store here:
     +------------------+------------------+--------------+-----------+
 
 Then you can manually create the configuration file for AWS cli in your home
-directory `~/.aws/config`` with the ec2 profile and credentials as shown below:
+directory `~/.aws/config` with the ec2 profile and credentials as shown below:
 
     $ cat ~/.aws/config
 

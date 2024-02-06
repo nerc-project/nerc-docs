@@ -69,8 +69,8 @@ data. However, if your VM involves extended running processes and vital
 in-memory data, preserving the precise VM state is essential. In such cases,
 we recommend regularly taking a snapshot of the entire instance, known as an
 **"instance snapshot"**, provided you have sufficient **Storage quotas**,
-specifically the "OpenStack Volume Quota" and "OpenStack Volume GB Quota"
-allocated for [your resource allocation](../../get-started/get-an-allocation.md#general-user-view-of-openstack-resource-allocation).
+specifically the "OpenStack Volume Quota", "OpenStack Swift Quota in Gigabytes"
+and "OpenStack Volume GB Quota" allocated for [your resource allocation](../../get-started/get-an-allocation.md#general-user-view-of-openstack-resource-allocation).
 Utilizing snapshots for backups is of utmost importance, particularly when
 safeguarding or recovering critical states and data from your instance.
 
@@ -79,9 +79,10 @@ safeguarding or recovering critical states and data from your instance.
     backed by persistent volumes, the disk data is retained, continuing to consume
     approved storage resources for which you will still be billed. It's important
     to note that the **Storage quotas**, specifically the "OpenStack Volume GB Quota"
-    where the cost is determined by [your requested and approved allocation](../../get-started/get-an-allocation.md#general-user-view-of-openstack-resource-allocation)
-    to reserve storage from the total pool. When you request additional storage
-    through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    and "OpenStack Swift Quota in Gigabytes" where the cost is determined by
+    [your requested and approved allocation](../../get-started/get-an-allocation.md#general-user-view-of-openstack-resource-allocation)
+    to reserve storage from the total NESE storage pool. When you request additional
+    storage through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
     invoicing for the extra storage will take place upon fulfillment/approval of
     your request as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
     Conversely, if you request a reduction in storage through a

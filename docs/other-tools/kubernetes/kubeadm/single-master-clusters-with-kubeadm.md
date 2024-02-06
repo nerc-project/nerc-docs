@@ -64,7 +64,7 @@ hostnamectl set-hostname master
 
 `kubeadm` will not install or manage `kubelet` or `kubectl` for you, so you will
 need to ensure they match the version of the Kubernetes control plane you want kubeadm
-to install for you.  You will install these packages on all of your machines:
+to install for you. You will install these packages on all of your machines:
 
 • **kubeadm**: the command to bootstrap the cluster.
 

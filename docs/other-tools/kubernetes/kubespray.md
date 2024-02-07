@@ -45,8 +45,10 @@ The key's randomart image is:
 ```
 
 Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
-other nodes's `~/.ssh/authorized_keys` file.
-This will allow `ssh <other_nodes_internal_ip>` from the Ansible master node's terminal.
+other nodes's `~/.ssh/authorized_keys` file. Please make sure you are logged in
+as `root` user by doing `sudo su` before you copy this public key to the end of
+`~/.ssh/authorized_keys` file of the other master and worker nodes. This will
+allow `ssh <other_nodes_internal_ip>` from the Ansible master node's terminal.
 
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 

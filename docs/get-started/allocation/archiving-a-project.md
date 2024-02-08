@@ -10,7 +10,8 @@ by accessing [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
     ![Alert Archiving a Project](images/archiving_project_alert.png)
 
 Once archived it is no longer visible on [your projects list](https://coldfront.mss.mghpcc.org/project/).
-All archived projects will be listed under [your archived projects](https://coldfront.mss.mghpcc.org/project/archived/), which can be viewed by clicking the "View archived projects" button as shown below:
+All archived projects will be listed under [your archived projects](https://coldfront.mss.mghpcc.org/project/archived/),
+which can be viewed by clicking the "View archived projects" button as shown below:
 
 ![View Archived Projects](images/view_archived_projects.png)
 

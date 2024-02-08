@@ -15,24 +15,24 @@ for PI.
 
 Any users who had registerd their user accounts through the
 [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/)
-also know as **"RegApp"** can get access to [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
+also known as **"RegApp"** can get access to [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 
 General Users who are not PIs or Managers on a project see a read-only view of
-the NERC's ColdFront as [described here](#general-user-view).
+the NERC's ColdFront as [described here](allocation-details.md#general-user-view).
 
 Whereas, once a [PI Account request](https://nerc.mghpcc.org/pi-account-request/)
 is granted, the PI will receive an email confirming the request approval and
 how to connect NERC's ColdFront.
 
-PI or project managers can use NERC's ColdFront as a self-service web-portal who
-can see administrative view of it as [described here](#pi-and-manager-view) and
+PI or project managers can use NERC's ColdFront as a self-service web-portal that
+can see an administrative view of it as [described here](#pi-and-manager-view) and
 can do the following tasks:
 
 - **Only PI** can add a new project and archive any existing project(s)
 
 - Manage existing projects
 
-- Request allocations that fall under projects to NERC's resources such as clusters,
+- Request allocations that fall under projects in NERC's resources such as clusters,
 cloud resources, servers, storage, and software licenses
 
 - Add/remove user access to/from allocated resources who is a member of the project
@@ -52,7 +52,7 @@ periodic review by center director to demonstrate need for the resources
 
 ## How to login to NERC's ColdFront?
 
-[NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/) provides user with
+[NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/) provides users with
 login page as shown here:
 
 ![ColdFront Login Page](images/coldfront-login-page.png)
@@ -63,8 +63,8 @@ shown below:
 ![ColdFront Login Interface](images/coldfront-login-interface.png)
 
 You need to click on "**Log in via OpenID Connect**" button. This will redirect you
-to CILogon welcome pagewhere you can select your appropriate Identity Provider as
-shown below:
+to CILogon welcome page where you can select your appropriate Identity Provider
+as shown below:
 
 ![CILogon Welcome Page](images/CILogon.png)
 

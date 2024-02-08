@@ -5,7 +5,7 @@ from their respective projects by navigating to the Users section of the project
 
 ![Add/Remove Users from Project](images/coldfront-add-remove-users.png)
 
-Once we click on the "Add Users" button, it will shows the following search interface:
+Once we click on the "Add Users" button, it will show us the following search interface:
 
 ![User Search Interface](images/coldfront-user-search.png)
 

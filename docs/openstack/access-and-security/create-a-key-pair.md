@@ -70,7 +70,7 @@ On your terminal:
 ## Import the generated Key Pair
 
 Now that you have created your keypair in `~/.ssh/cloud.key.pub`, you can upload
-it to OpenStack as either using Horizon dashboard or
+it to OpenStack by either using Horizon dashboard or
 [OpenStack CLI](../openstack-cli/openstack-CLI.md) as
 described below:
 

@@ -5,7 +5,7 @@ by clicking the "Request Resource Allocation" button as shown below:
 
 ![Requesting an Allocation](images/new_resource_allocation.png)
 
-## Request A New OpenStack Resource Allocation for OpenStack Project
+## Request A New OpenStack Resource Allocation for an OpenStack Project
 
 ![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)
 
@@ -43,10 +43,10 @@ integer value that corresponds to multiple OpenStack resource quotas. For exampl
 
 !!! info "Information"
     By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security
-    Groups** are provided to each approved projects regardless of units of requested
+    Groups** are provided to each approved project regardless of units of requested
     quota units.
 
-## Request A New OpenShift Resource Allocation for OpenShift project
+## Request A New OpenShift Resource Allocation for an OpenShift project
 
 ![Request A New OpenShift Resource Allocation](images/coldfront-request-new-openshift-allocation.png)
 

@@ -9,7 +9,7 @@ the Project menu.
 
 ![Project](images/coldfront-project.png)
 
-On clicking the "Add a project" button will show interface like below:
+Clicking on the "Add a project" button will show the interface below:
 
 ![Add A Project](images/coldfront-add-a-project.png)
 

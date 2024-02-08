@@ -9,7 +9,7 @@ by clicking the "Request Resource Allocation" button as shown below:
 
 ![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)
 
-!!! warning "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+!!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
     Ensure to choose **NERC (OpenStack)** in the Resource option and specify your
     anticipated computing units. Each allocation, whether requested or approved,
     will be billed for the associated costs based on the **pay-as-you-go** model.
@@ -68,8 +68,8 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
 | `Storage(GB)`  | 20                                  |
 | `Ephemeral Storage(GB)`  | 5                                     |
 
-!!! warning "Very Important: Requested/Approved Allocated Storage Quota and Cost"
-    Ensure to choose **NERC-OCP (OpenShift)** in the Resource option (**Remember:**
+!!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
+    Ensure to choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
     the first option i.e. **NERC (OpenStack)** is selected by default!) and specify
     your anticipated computing units. Each allocation, whether requested or approved,
     will be billed for the associated costs based on the **pay-as-you-go** model.
@@ -79,7 +79,7 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
     If you have common questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current
-    resource allocations within your project by following this [this documentation](#request-change-resource-allocation-attributes-for-openshift-project)
+    resource allocations within your project by following this [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)
     later on.
 
 ---

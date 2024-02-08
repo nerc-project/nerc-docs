@@ -129,13 +129,13 @@ this storage will need to be reserved from the total NESE storage pool.
 
 Even if you have deleted all volumes, snapshots, and object storage buckets and
 objects in your OpenStack project. It is very essential to adjust the approved
-values for your NERC (OpenStack) resource allocations to zero(0) otherwise you
+values for your NERC (OpenStack) resource allocations to zero (0) otherwise you
 still be incurring charge for the approved storage as explained in
 [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 To achieve this, you must submit a final change request to reduce the
 **Storage Quotas** for "OpenStack Volume GB Quota" and "OpenStack Swift Quota in
-Gigabytes" to zero(0) for your **NERC (OpenStack)** resource type. You can review
+Gigabytes" to zero (0) for your **NERC (OpenStack)** resource type. You can review
 and manage these resource allocations by visiting the
 [resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here, you
 can filter the allocation of your interest and then proceed to request a
@@ -156,7 +156,7 @@ approved quota values are accurately displayed.
 
 Please confirm and verify that the `gigabytes` resource value that specifies total
 space in [external volumes](../persistent-storage/volumes.md#volumes) is set to
-a limit of zero(0) in correspondence with the approved "OpenStack Volume GB Quota"
+a limit of zero (0) in correspondence with the approved "OpenStack Volume GB Quota"
 of your allocation when running `openstack quota show` openstack client command
 as shown below:
 
@@ -174,9 +174,9 @@ as shown below:
 To check the overall space used, you can use the following command
 
 Also, please confirm and verify that the `Quota-Bytes` property value is set to
-a limit of zero(0) in correspondence with the approved "OpenStack Swift Quota
+a limit of zero (0) in correspondence with the approved "OpenStack Swift Quota
 in Gigabytes" of your allocation and also check the overall space used in `Bytes`
-is zero(0) alsong with no Containers and Objects, when running
+is zero (0) alsong with no Containers and Objects, when running
 `openstack object store account show` openstack client command as shown below:
 
     openstack object store account show
@@ -204,36 +204,21 @@ view of critical resources and allows you to assess your current resource consum
     Most importantly, ensure that there is no active usage for any of your
     currently allocated project resources.
 
-The output may appear as follows:
+The output may appear as follows, with all used resources having a value of zero
+(0), except for `totalSecurityGroupsUsed`.
 
     openstack limits show --absolute
     +--------------------------+-------+
     | Name                     | Value |
     +--------------------------+-------+
-    | maxTotalInstances        |     1 |
-    | maxTotalCores            |     1 |
-    | maxTotalRAMSize          |     1 |
-    | maxSecurityGroups        |    10 |
-    | maxTotalFloatingIps      |    10 |
-    | maxServerMeta            |   128 |
-    | maxImageMeta             |   128 |
-    | maxPersonality           |     5 |
-    | maxPersonalitySize       | 10240 |
-    | maxSecurityGroupRules    |    20 |
-    | maxTotalKeypairs         |   100 |
-    | maxServerGroups          |    10 |
-    | maxServerGroupMembers    |    10 |
+    ...
     | totalRAMUsed             |     0 |
     | totalCoresUsed           |     0 |
     | totalInstancesUsed       |     0 |
     | totalFloatingIpsUsed     |     0 |
     | totalSecurityGroupsUsed  |     1 |
     | totalServerGroupsUsed    |     0 |
-    | maxTotalVolumes          |     1 |
-    | maxTotalSnapshots        |    10 |
-    | maxTotalVolumeGigabytes  |     1 |
-    | maxTotalBackups          |    10 |
-    | maxTotalBackupGigabytes  |  1000 |
+    ...
     | totalVolumesUsed         |     0 |
     | totalGigabytesUsed       |     0 |
     | totalSnapshotsUsed       |     0 |
@@ -244,7 +229,7 @@ The output may appear as follows:
 ## Review your OpenStack Dashboard
 
 After removing all OpenStack resources and updating the Storage Quotas to set them
-to zero(0), you can review and verify that these changes are reflected in your
+to zero (0), you can review and verify that these changes are reflected in your
 Horizon Dashboard Overview.
 
 Navigate to Project -> Compute -> Overview.

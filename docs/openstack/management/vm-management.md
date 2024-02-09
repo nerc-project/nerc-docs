@@ -122,8 +122,8 @@ such as,
     openstack server restart my-vm
 
 !!! tip "Pro Tip"
-    If your instance name `<INSTANCE_NAME_OR_ID>` includes spaces you need to
-    enclose the name of your instance in quotes i.e. `"<INSTANCE_NAME_OR_ID>"`
+    If your instance name `<INSTANCE_NAME_OR_ID>` includes spaces, you need to
+    enclose the name of your instance in quotes, i.e. `"<INSTANCE_NAME_OR_ID>"`
 
     For example: `openstack server restart "My Test Instance"`
 

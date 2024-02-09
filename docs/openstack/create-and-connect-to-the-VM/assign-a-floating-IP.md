@@ -31,36 +31,55 @@ If you have some floating IPs already allocated to your project which are not
 yet associated with a VM, they will be available in the dropdown list on this
 screen.
 
+![Floating IP Successfully Allocated](images/floating_ip_allocate_success.png)
+
 If you have no floating IPs allocated, or all your allocated IPs are in use
 already, the dropdown list will be empty.
 
 ![Floating IP Not Available](images/floating_ip_none.png)
 
-Click the + symbol to allocate an IP. You will see the following screen.
+Click the "+" icon to allocate an IP. You will see the following screen.
+
+![Floating IP Allocated](images/floating_ip_allocate.png)
 
 Make sure 'provider' appears in the dropdown menu, and that you have not
 already met your quota of allocated IPs.
 
 In this example, the project has a quota of 50 floating IPs, but we have
-allocated 5 so far, so we can still allocate up to 45 IPs.
+allocated 5 so far, so we can still allocate up to next 45 Floating IPs.
 
 Click "Allocate IP".
 
-![Floating IP Allocated](images/floating_ip_allocate.png)
+You will get a green "success" popup in the top right corner that shows your
+public IP address and that is listed as option to choose from "IP Address" dropdown
+list.
 
-You will get a green "success" popup in the top left that shows your public IP address.
+![Floating IP Successfully Allocated](images/floating_ip_created_successfully.png)
 
-You will get a red error message instead if you attempt to exceed your
-project's Floating IP quota.
-*If you have not tried to exceed your quota, but you get a red error message
-anyway, please contact [TODO:contact_mail] for help.*
+You will be able to select between multiple Floating IPs under "IP Address"
+dropdown and any unassociated VMs from "Port to be associated" dropdown options:
 
 ![Floating IP Successfully Allocated](images/floating_ip_allocate_success.png)
 
-Now click on "Associate" button. Then, a green "success" popup in the top left
+Now click on "Associate" button.
+
+Then, a green "success" popup in the top left
 and you can see the Floating IP is attached to your VM on the Instances page:
 
 ![Floating IP Successfully Associated](images/floating_ip_is_associated.png)
+
+!!! warn "Floating IP Quota Exceed"
+    If you have already exceed your quota, you will get a red error message
+    saying "You are already using all of your available floating IPs" as shown below:
+
+    ![Floating IP Quota Exceed](images/floating_ip_quota_exceed.png)
+
+    **NOTE:** By default, each approved project is provided with only 2 OpenStack
+    Floating IPs, regardless of the units requested in the quota, as
+    [described here](../../get-started/allocation/requesting-an-allocation.md#resource-allocation-quotas-for-openstack-project).
+    Your PI or Project Manager(s) can adjust the quota and request additional
+    Floating IPs as needed, following [this documentation](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project).
+    This is controlled by the **"OpenStack Floating IP Quota"** attribute.
 
 ## Disassociate a Floating IP
 
@@ -95,5 +114,8 @@ To release the Floating IP address back into the Floating IP pool, click the
 Release Floating IP option in the Actions column.
 
 ![Release Floating IP](images/floating_ip_release.png)
+
+!!! tip "Pro Tip"
+    You can also choose multiple Floating IPs and release them all at once.
 
 ---

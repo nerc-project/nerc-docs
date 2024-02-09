@@ -57,7 +57,7 @@ anyway, please contact [TODO:contact_mail] for help.*
 
 ![Floating IP Successfully Allocated](images/floating_ip_allocate_success.png)
 
-NOw click on "Associate" button. Then, a green "success" popup in the top left
+Now click on "Associate" button. Then, a green "success" popup in the top left
 and you can see the floating IP is attached to your VM on the Instances page:
 
 ![Floating IP Successfully Associated](images/floating_ip_is_associated.png)

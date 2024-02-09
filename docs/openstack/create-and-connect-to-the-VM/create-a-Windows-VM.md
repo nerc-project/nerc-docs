@@ -3,7 +3,7 @@
 ## Launch an Instance using a boot volume
 
 In this example, we will illustrate how to utilize a boot volume to launch a
-Windows virtual machine, similar steps can be used to other types of virtual
+Windows virtual machine, similar steps can be used on other types of virtual
 machines. The following steps show how to create a virtual machine which boots
 from an external volume:
 
@@ -59,22 +59,15 @@ Identify the image for the initial volume contents from `openstack image list`.
     | ID                                   | Name                | Status |
     +--------------------------------------+---------------------+--------+
     | a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
-    | 41eafa05-c264-4840-8c17-746e6a388c2d | centos-7-x86_64     | active |
-    | 14475f0f-3663-4ce7-a2dd-3cc206105bdf | centos-8-x86_64     | active |
-    | 41fa5991-89d5-45ae-8268-b22224c772b2 | debian-10-x86_64    | active |
-    | 99194159-fcd1-4281-b3e1-15956c275692 | fedora-36-x86_64    | active |
-    | 74a33f77-fc42-4dd1-a5a2-55fb18fc50cc | rocky-8-x86_64      | active |
-    | 75a40234-702b-4ab7-9d83-f436b05827c9 | ubuntu-18.04-x86_64 | active |
-    | 8c87cf6f-32f9-4a4b-91a5-0d734b7c9770 | ubuntu-20.04-x86_64 | active |
-    | da314c41-19bf-486a-b8da-39ca51fd17de | ubuntu-22.04-x86_64 | active |
+    ...
     +--------------------------------------+---------------------+--------+
 
-In the example below, this is image id `da314c41-19bf-486a-b8da-39ca51fd17de` for
-`ubuntu-22.04-x86_64`.
+In the example above, this is image id `a9b48e65-0cf9-413a-8215-81439cd63966` for
+`MS-Windows-2022`.
 
-Creating a disk from this image with a size of **80GB** is as follows.
+Creating a disk from this image with a size of **100GB** is as follows.
 
-    openstack volume create --image da314c41-19bf-486a-b8da-39ca51fd17de --size 80 --description "Using Ubuntu Image" my-volume
+    openstack volume create --image a9b48e65-0cf9-413a-8215-81439cd63966 --size 100 --description "Using MS Windows Image" my-volume
     +---------------------+--------------------------------------+
     | Field               | Value                                |
     +---------------------+--------------------------------------+
@@ -83,14 +76,14 @@ Creating a disk from this image with a size of **80GB** is as follows.
     | bootable            | false                                |
     | consistencygroup_id | None                                 |
     | created_at          | 2024-02-03T23:38:50.000000           |
-    | description         | Using Ubuntu Image                   |
+    | description         | Using MS Windows Image               |
     | encrypted           | False                                |
     | id                  | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 |
     | multiattach         | False                                |
     | name                | my-volume                            |
     | properties          |                                      |
     | replication_status  | None                                 |
-    | size                | 80                                   |
+    | size                | 100                                  |
     | snapshot_id         | None                                 |
     | source_volid        | None                                 |
     | status              | creating                             |
@@ -119,16 +112,27 @@ as shown below:
 
 ![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
-!!! note "Note"
+!!! warn "How do you make your VM setup and data persistent?"
     Only one instance at a time can be booted from a given volume. Make sure
-    'Delete Volume on Instance Delete' is selected "No" if you want the volume
-    to persist even after the instance is terminated.
+    **"Delete Volume on Instance Delete"** is selected as **No** if you want the
+    volume to persist even after the instance is terminated, which is the
+    default setting, as shown below:
 
-Add other information and setup a Security Group that allows RDP as shown below:
+    ![Instance Persistent Storage Option](images/instance-persistent-storage-option.png)
+
+    **NOTE:** For more in-depth information on making your VM setup and data persistent,
+    you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
+
+Add other information and setup a Security Group that allows RDP (port: 3389) as
+shown below:
 
 ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
 
+After some time the instance will be Active in Running state as shown below:
+
 ![Running Windows Instance](images/win2k22_instance_running.png)
+
+Attach a Floating IP to your instance:
 
 ![Associate Floating IP](images/win_instance_add_floating_ip.png)
 
@@ -156,7 +160,30 @@ volume created before with id "d8a5da4c-41c8-4c2d-b57a-8b6678ce4936" by running:
 
     openstack server create --flavor cpu-su.4 --key-name my-key --volume d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 my-vm
 
-### Accessing the graphical console in Horizon dashboard
+To list all floating IP addresses that are allocated to the current project, run:
+
+    openstack floating ip list
+
+    +--------------------------------------+---------------------+------------------+------+
+    | ID                                   | Floating IP Address | Fixed IP Address | Port |
+    +--------------------------------------+---------------------+------------------+------+
+    | 760963b2-779c-4a49-a50d-f073c1ca5b9e | 199.94.60.220       | 192.168.0.195    | None |
+    +--------------------------------------+---------------------+------------------+------+
+
+!!! note "More About Floating IP"
+    If the above command returns an empty list, meaning you don't have any
+    available floating IPs, please refer to [this documentation](assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
+    on how to allocate a new floating IP to your project.
+
+Attach a Floating IP to your instance:
+
+    openstack server add floating ip INSTANCE_NAME_OR_ID FLOATING_IP_ADDRESS
+
+For example:
+
+    openstack server add floating ip my-vm 199.94.60.220
+
+### Accessing the graphical console in the Horizon dashboard
 
 You can access the graphical console using the browser once the VM is in status
 ACTIVE. It can take up to 15 minutes to reach this state.
@@ -173,7 +200,7 @@ The console is accessed by selecting the Instance Details for the machine and th
     [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Windows%20Server%20Login%20Info)
     or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
 
-### How to have Remote Desktop login to your Windows instance
+### How to add Remote Desktop login to your Windows instance
 
 When the build and the Windows installation steps have completed, you can access
 the console using the Windows Remote Desktop application. Remote Desktop login

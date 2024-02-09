@@ -1,7 +1,7 @@
 # Decommission Your NERC OpenStack Resources
 
 You can decommission all of your NERC OpenStack resources sequentially as outlined
-here.
+below.
 
 ## Prerequisite
 

@@ -96,7 +96,7 @@ and the VM resumes from where it was suspended, avoiding a new boot cycle.
 
     - Status will change to `Shelved Offloaded`.
 
-    - To Unshelve opetation, click *Action -> Unshelve Instance*.
+    - To unshelve the instance, click *Action -> Unshelve Instance*.
 
 5. `Shut Off` & `Start Instance`
 
@@ -120,6 +120,12 @@ such as,
     openstack server shutoff my-vm
 
     openstack server restart my-vm
+
+!!! tip "Pro Tip"
+    If your instance name `<INSTANCE_NAME_OR_ID>` includes spaces you need to
+    enclose the name of your instance in quotes i.e. `"<INSTANCE_NAME_OR_ID>"`
+
+    For example: `openstack server restart "My Test Instance"`
 
 ## Create Snapshot
 
@@ -285,7 +291,7 @@ It stops and removes the instance along with the ephemeral disk.
 It stops and removes the instance. If **"Delete Volume on Instance Delete"** was
 explicitely set to **Yes**, **All data will be permanently lost!**. If set to
 **No** (which is default selected while launching an instance), the volume may be
-used to back a new instance, though any data stored in memory will be permanently
+used to boot a new instance, though any data stored in memory will be permanently
 lost. For more in-depth information on making your VM setup and data persistent,
 you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
 

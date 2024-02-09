@@ -17,10 +17,10 @@ access it from outside world.
 [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
 allow **ssh** using Port 22 is opened to the instance.
 
-!!! info "How to update New Security Group(s) to any running VM?"
-    If you want to attach/deattach any new Security Group(s) to a running VM after
-    it has launched. First create all new Security Group(s) with all the rules required.
-    Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
+!!! info "How to update New Security Group(s) on any running VM?"
+    If you want to attach/deattach any new Security Group(s) to/from a running VM
+    after it has launched. First create all new Security Group(s) with all the rules
+    required. Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
     you'll be able to attach any newly created security group(s) with all the
     required rules to a running VM.
 

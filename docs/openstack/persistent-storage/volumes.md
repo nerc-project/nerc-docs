@@ -51,7 +51,7 @@ Some uses for volumes:
 by selecting the **Yes** option for **"Create New Volume"**. It's crucial to
 note that this configuration automatically creates persistent block storage
 in the form of a Volume instead of using Ephemeral disk, which appears in
-the "Volumes" list in Horizon dashboard: *Project -> Volumes -> Volumes*.
+the "Volumes" list in the Horizon dashboard: *Project -> Volumes -> Volumes*.
 
     ![Instance Persistent Storage Option](images/instance-persistent-storage-option.png)
 

@@ -113,8 +113,8 @@ tab by clicking on the "+" icon.
 
     ![Flavor Not Avaliable due to Your Quota](images/flavor-not-available-due-to-quota.png)
 
-    More details about available flavors can be found [**here**](flavors.md) and
-    how to change request the current allocation quota attributes can be found
+    **NOTE:** More details about available flavors can be found [**here**](flavors.md)
+    and how to change request the current allocation quota attributes can be found
     [**here**](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project).
 
 After choosing `cpu-su.4`, you should see it moved up to "Allocated".
@@ -146,10 +146,10 @@ security group first, see [here](../access-and-security/security-groups.md).
 
 ![VM Launch Instance Security Groups](images/launch_security_groups.png)
 
-!!! info "How to update New Security Group(s) to any running VM?"
-    If you want to attach/deattach any new Security Group(s) to a running VM after
-    it has launched. First create all new Security Group(s) with all the rules required.
-    Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
+!!! info "How to update New Security Group(s) on any running VM?"
+    If you want to attach/deattach any new Security Group(s) to/from a running VM
+    after it has launched. First create all new Security Group(s) with all the rules
+    required. Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
     you'll be able to attach any newly created security group(s) with all the
     required rules to a running VM. You can modify the Rules setup for any Security
     Group(s) but that will affect all VMs using that security groups.

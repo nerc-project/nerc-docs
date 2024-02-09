@@ -63,7 +63,7 @@ install WireGuard server on this ubuntu server.
 
     ![Setup Client completed](images/setup_client_completed.png)
 
-    **Note:** For each peers the client configuration files comply with the
+    **NOTE:** For each peers the client configuration files comply with the
     following template:
 
     ![Client Config Template](images/client_config_template.png)

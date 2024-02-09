@@ -8,8 +8,8 @@ running VM, as [described here](attach-the-volume-to-an-instance.md).
 
 ## For Linux based virtual machine
 
-To verify that the newly created volume i.e. "my-volume" exists and is attached
-to a VM i.e. "test-vm", run this openstack client command:
+To verify that the newly created volume, "my-volume", exists and is attached to
+a VM, "test-vm", run this openstack client command:
 
     openstack volume list
     +--------------------------------------+-----------------+--------+------+----------------------------------+

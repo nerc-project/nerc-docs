@@ -157,7 +157,7 @@ security group first, see [here](../access-and-security/security-groups.md).
 ### **Key Pair** Tab
 
 Add the key pair you created for your local machine/laptop to use with this VM.
-To add a Key Pair first create and add them to your Project as described [here](../access-and-security/create-a-key-pair.md).
+To add a Key Pair first create and add them to your Project as [described here](../access-and-security/create-a-key-pair.md).
 
 ![VM Launch Instance Key Pairs](images/launch_security_key_pairs.png)
 

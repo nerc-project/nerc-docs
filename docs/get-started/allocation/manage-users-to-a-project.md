@@ -1,5 +1,7 @@
 # Managing Users in the Project
 
+## Add/Remove User(s) to/from a Project
+
 A user can only view projects they are on. PIs or managers can add or remove users
 from their respective projects by navigating to the Users section of the project.
 
@@ -90,9 +92,9 @@ Then toggle the "Role" from User to Manager:
 !!! warning "Very Important"
     Make sure to click the "Update" button to save the change.
 
-    This delegation of "Manager" role can be done when adding a user to your project.
-    You can optionally designate them as a "Manager" by selecting their role using
-    the drop down next to their email as described [here](#adding-and-removing-user-from-the-project).
+    This delegation of "Manager" role can also be done when adding a user to your
+    project. You can optionally designate them as a "Manager" by selecting their
+    role using the drop down next to their email as [described here](#addremove-users-tofrom-a-project).
 
 ## Notifications
 

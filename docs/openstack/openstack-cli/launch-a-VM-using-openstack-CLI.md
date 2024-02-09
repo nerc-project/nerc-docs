@@ -164,7 +164,7 @@ Detailed syntax:
 ```
 
 !!! note "Note"
-    Similarly, we can lauch a VM using bootable "Volume" as described [here](../create-and-connect-to-the-VM/create-a-Windows-VM.md#2-using-the-openstack-cli-from-the-terminal).
+    Similarly, we can lauch a VM using bootable "Volume" as [described here](../create-and-connect-to-the-VM/create-a-Windows-VM.md#2-using-the-openstack-cli-from-the-terminal).
 
 Now verify the test vm "my-vm" is "Running" using the following commands:
 

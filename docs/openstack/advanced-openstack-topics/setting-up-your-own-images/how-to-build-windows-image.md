@@ -312,7 +312,7 @@ The Sysprep will generate **QCOW2** image i.e. `win2k22.qcow2` on `/home/<YourUs
 ### 12. Create OpenStack image and push to NERC's image list
 
 You can copy/download this windows image to the folder where you configured your
-OpenStack CLI as described [Here](../../openstack-cli/openstack-CLI.md) and upload
+OpenStack CLI as [described Here](../../openstack-cli/openstack-CLI.md) and upload
 to the NERC's OpenStack running the following OpenStack Image API command:
 
     openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022

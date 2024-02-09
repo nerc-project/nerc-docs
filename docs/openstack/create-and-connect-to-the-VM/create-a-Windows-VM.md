@@ -13,7 +13,8 @@ from an external volume:
 
 !!! note "Recommendations"
     - The recommended method to create a Windows desktop virtual machine is boot
-    from volume
+    from volume eventhough we can also launch a Windows based instance following
+    normal process using `boot from image` as [described here](launch-a-VM.md).
     - To ensure smooth upgrade and maintenance of the system, select at least
     100GB for the size of the volume
     - Make sure your project has sufficient [storage quotas](../../get-started/allocation/allocation-details.md#general-user-view).

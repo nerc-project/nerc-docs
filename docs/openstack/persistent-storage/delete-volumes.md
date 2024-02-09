@@ -36,9 +36,19 @@ To delete a volume using the CLI, do this:
 
 ### Using the openstack client
 
-Then use the openstack command line interface to delete a volume:
+The following openstack client command syntax can be used to delete a volume:
+
+    openstack volume delete <VOLUME_NAME_OR_ID>
+
+For example:
 
     openstack volume delete my-volume
+
+!!! tip "Pro Tip"
+    If your volume name `<VOLUME_NAME_OR_ID>` include spaces, you need to enclose
+    them in quotes, i.e. `"<VOLUME_NAME_OR_ID>"`.
+
+    For example: `openstack volume delete "My Volume"`
 
 Your volume will now go into state 'deleting' and completely disappear from the
 `openstack volume list` output.

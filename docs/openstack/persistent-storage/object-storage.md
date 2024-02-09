@@ -139,7 +139,7 @@ for more information.
 ##### Create a container
 
 In order to create a container in the Object Storage service, you can use the
-OpenStack client with the following command.
+openstack client with the following command.
 
     openstack container create mycontainer
     +---------------------------------------+-------------+------------------------------------+
@@ -391,7 +391,7 @@ The EC2 profile is stored here:
 
         [profile ''"'"'${OS_PROJECT_NAME}'"'"'']
 
-Where as Credentials is store here:
+Where as Credentials are store here:
 
         $ cat ~/.aws/credentials
 

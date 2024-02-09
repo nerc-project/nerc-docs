@@ -33,10 +33,23 @@ To run the OpenStack CLI commands, you need to have:
 
 ### Using the openstack client
 
-The existing volume "my-volume" can be extended to a new size of 100 GB for
-the previous 80 GB by running the following command:
+The following openstack client command syntax can be used to extend any existing
+volume from its previous size to a new size of <NEW_SIZE_IN_GB>:
+
+    openstack volume set --size <NEW_SIZE_IN_GB> <VOLUME_NAME_OR_ID>
+
+For example:
 
     openstack volume set --size 100 my-volume
+
+where "my-volume" is the existing volume with a size of **80 GB** and is going to
+be extended to a new size of **100 GB**."
+
+!!! tip "Pro Tip"
+    If your volume name `<VOLUME_NAME_OR_ID>` includes spaces, you need to enclose
+    them in quotes, i.e. `"<VOLUME_NAME_OR_ID>"`.
+
+    For example: `openstack volume set --size 100 "My Volume"`
 
 For windows systems, please follow the [provider documentation](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume).
 

@@ -110,7 +110,7 @@ and the VM resumes from where it was suspended, avoiding a new boot cycle.
 
 ### Using openstack client commands
 
-These above mentioned actions can all be performed running the openstack client
+The above mentioned actions can all be performed running the openstack client
 commands with the following syntax:
 
     openstack server <operation> <INSTANCE_NAME_OR_ID>

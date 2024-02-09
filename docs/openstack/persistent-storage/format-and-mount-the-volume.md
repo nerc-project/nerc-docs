@@ -1,8 +1,33 @@
 # Format And Mount The Volume
 
+**Prerequisites**:
+
+Before formatting and mounting the volume, you need to have already created a
+new volume as [referred here](create-an-empty-volume.md) and attached it to any
+running VM, as [described here](attach-the-volume-to-an-instance.md).
+
 ## For Linux based virtual machine
 
-SSH to your instance. You should now see the volume as an additional disk in
+To verify that the newly created volume exists and is attached to a VM, run this
+openstack client command:
+
+    openstack volume list
+    +--------------------------------------+-----------------+--------+------+----------------------------------+
+    | ID                                   | Name            | Status | Size | Attached to                      |
+    +--------------------------------------+-----------------+--------+------+----------------------------------+
+    | 563048c5-d27b-4397-bb4e-034e0f4d9fa7 |                 | in-use |   20 | Attached to test-vm on /dev/vda  |
+    | 5b5380bd-a15b-408b-8352-9d4219cf30f3 | my-volume       | in-use |   20 | Attached to test-vm on /dev/vdb  |
+    +--------------------------------------+-----------------+--------+------+----------------------------------+
+
+The volume has a status of "in-use" and "Attached To" column shows which instance
+it is attached to, and what device name it has.
+
+This will be something like `/dev/vdb` but it can vary depending on the state
+of your instance, and whether you have attached volumes before.
+
+Make note of the device name of your volume.
+
+SSH into your instance. You should now see the volume as an additional disk in
 the output of `sudo fdisk -l` or `lsblk` or `cat /proc/partitions`.
 
     # lsblk
@@ -14,11 +39,11 @@ the output of `sudo fdisk -l` or `lsblk` or `cat /proc/partitions`.
     └─vda15 254:15   0  106M  0 part /boot/efi
     vdb     254:16   0    1G  0 disk
 
-We see the volume here as the disk 'vdb', which matches the `/dev/vdb/` we
-noted in "Attached To" column.
+Here, we see the volume as the disk `vdb`, which matches the `/dev/vdb/` we previously
+noted in the "Attached To" column.
 
-Create a filesystem on the volume and mount it - in the example we create an
-`ext4` filesystem:
+Create a filesystem on the volume and mount it. In this example, we will create
+an `ext4` filesystem:
 
 Run the following commands as `root` user:
 
@@ -48,13 +73,17 @@ mount it to another instance, the second instance will have access to the data.
 
 ## For Windows virtual machine
 
-Here we create an empty volume of 100 GB as described above:
+Here, we create an empty volume following the steps outlined in [this documentation](create-an-empty-volume.md).
+
+Please make sure you are creating volume of the size 100 GB:
 
 ![Create Volume for Windows VM](images/create_volume_win.png)
 
+Then attach the newly created volume to a running Windows VM:
+
 ![Attach Volume to a running Windows VM](images/attach-volume-to-an-win-instance.png)
 
-Login using the Floating IP attached to the Windows VM:
+Login remote desktop using the Floating IP attached to the Windows VM:
 
 ![Connect to Remote Instance using Floating IP](images/remote_connection_floating_ip.png)
 
@@ -72,19 +101,23 @@ show all attached disk as **Unknown** and **Offline** as shown here:
 
 ![Windows Disk Management](images/win_disk_management.png)
 
-![Windows Set Disk Online](images/win_set_disk_online.png)
+In Disk Management, select and hold (or right-click) the disk you want to
+initialize, and then select "Initialize Disk". If the disk is listed as **Offline**,
+first select and hold (or right-click) the disk, and then select "Online".
 
-In Disk Management, you may be prompted to initialize the new disk.
+![Windows Set Disk Online](images/win_set_disk_online.png)
 
 ![Windows Initialize Disk](images/win_initialize_disk.png)
 
-Choose the appropriate partition style (usually MBR or GPT) and proceed.
+In the Initialize Disk dialog box, make sure the correct disk is selected, and
+then choose OK to accept the default partition style. If you need to change the
+partition style (GPT or MBR), see [Compare partition styles - GPT and MBR](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/initialize-new-disks#compare-partition-styles---gpt-and-mbr).
 
 ![Windows Disk Partition Style](images/win_disk_partition_style.png)
 
 Format the New Volume:
 
-- Right-click on the unallocated space of the new disk.
+- Select and hold (or right-click) the unallocated space of the new disk.
 - Select "New Simple Volume" and follow the wizard to create a new partition.
 
 ![Windows Simple Volume Wizard Start](images/win_disk_simple_volume.png)

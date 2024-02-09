@@ -67,7 +67,7 @@ Source your downloaded **OpenStack RC File**:
 
 !!! note "Important Note"
     When you source the file, environment variables are set for your current
-    shell. The variables enable the OpenStack client commands to communicate with
+    shell. The variables enable the openstack client commands to communicate with
     the OpenStack services that run in the cloud. This just stores your entry into
     the environment variable - there's no validation at this stage. You can inspect
     the downloaded file to retrieve the ID and Secret if necessary and see what

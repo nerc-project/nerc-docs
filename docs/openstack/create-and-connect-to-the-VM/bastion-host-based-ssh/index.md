@@ -12,14 +12,14 @@ provide access to Linux instances running inside OpenStack cloud network.
 
 In OpenStack, users can deploy instances in a private tenant network. In order
 to make these instances to be accessible externally via internet, the tenant
-must assign each instance a floating IP address i.e., an external public IP.
+must assign each instance a Floating IP address i.e., an external public IP.
 Nevertheless, users may still want a way to deploy instances without having to
-assign a floating IP address for every instance.
+assign a Floating IP address for every instance.
 
 This is useful in the context of an OpenStack project as you don't necessarily
-want to reserve a floating IP for all your instances. This way you can isolate
+want to reserve a Floating IP for all your instances. This way you can isolate
 certain resources so that there is only a single point of access to them and
-conserve floating IP addresses so that you don't need as big of a quota.
+conserve Floating IP addresses so that you don't need as big of a quota.
 
 Leveraging an SSH bastion host allows this sort of configuration while still
 enabling SSH access to the private instances.
@@ -83,7 +83,7 @@ Group option as shown below:
 - [Assign a Floating IP](../assign-a-floating-IP.md)
 to the Bastion host instance in order to access it from outside world.
 
-Make a note of the floating IP you have associated to your instance.
+Make a note of the Floating IP you have associated to your instance.
 
 ![Floating IP](images/floating_ip.png)
 

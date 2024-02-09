@@ -102,9 +102,15 @@ To run the OpenStack CLI commands, you need to have:
     +------------+--------------------------------------+
     ```
 
+    !!! tip "Pro Tip"
+        If your volume name includes spaces, you need to enclose them in quotes,
+        i.e. `"<VOLUME_NAME_OR_ID>"`.
+        For example: `openstack volume transfer request create "My Volume"`
+
 - The volume can be checked as in the transfer status using
 `openstack volume transfer request list` as follows and the volume is in status
-`awaiting-transfer` while running `openstack volume show <your_volume_name>`
+`awaiting-transfer` while running `openstack volume show <VOLUME_NAME_OR_ID>` as
+shown below:
 
     ```sh
     openstack volume transfer request list

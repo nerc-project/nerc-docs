@@ -4,13 +4,13 @@ When an instance is created in OpenStack, it is automatically assigned a fixed
 IP address in the network to which the instance is assigned. This IP address is
 permanently associated with the instance until the instance is terminated.
 
-However, in addition to the fixed IP address, a floating IP address can also be
-attached to an instance. Unlike fixed IP addresses, floating IP addresses can
+However, in addition to the fixed IP address, a Floating IP address can also be
+attached to an instance. Unlike fixed IP addresses, Floating IP addresses can
 have their associations modified at any time, regardless of the state of the
 instances involved. Floating IPs are a limited resource, so your project will
 have a quota based on its needs.
 You should only assign public IPs to VMs that need them. This procedure details
-the reservation of a floating IP address from an existing pool of addresses and
+the reservation of a Floating IP address from an existing pool of addresses and
 the association of that address with a specific instance.
 
 By attaching a Floating IP to your instance, you can ssh into your vm from your
@@ -51,14 +51,14 @@ Click "Allocate IP".
 You will get a green "success" popup in the top left that shows your public IP address.
 
 You will get a red error message instead if you attempt to exceed your
-project's floating IP quota.
+project's Floating IP quota.
 *If you have not tried to exceed your quota, but you get a red error message
 anyway, please contact [TODO:contact_mail] for help.*
 
 ![Floating IP Successfully Allocated](images/floating_ip_allocate_success.png)
 
 Now click on "Associate" button. Then, a green "success" popup in the top left
-and you can see the floating IP is attached to your VM on the Instances page:
+and you can see the Floating IP is attached to your VM on the Instances page:
 
 ![Floating IP Successfully Associated](images/floating_ip_is_associated.png)
 
@@ -91,7 +91,7 @@ We can release a Floating IP while disassociating it just we need to check the
 
 Navigate to Project -> Network -> Floating IPs.
 
-To release the floating IP address back into the floating IP pool, click the
+To release the Floating IP address back into the Floating IP pool, click the
 Release Floating IP option in the Actions column.
 
 ![Release Floating IP](images/floating_ip_release.png)

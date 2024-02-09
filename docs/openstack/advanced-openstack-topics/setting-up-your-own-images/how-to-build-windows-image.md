@@ -347,13 +347,23 @@ as shown below:
 
 ![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
-Add other information and setup a Security Group that allows RDP as shown below:
+Add other information and setup a Security Group that allows RDP (port: 3389) as
+shown below:
 
 ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
 
+After some time the instance will be Active in Running state as shown below:
+
 ![Running Windows Instance](images/win2k22_instance_running.png)
 
+Attach a Floating IP to your instance:
+
 ![Associate Floating IP](images/win_instance_add_floating_ip.png)
+
+!!! note "More About Floating IP"
+    If you don't have any available floating IPs, please refer to
+    [this documentation](assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
+    on how to allocate a new Floating IP to your project.
 
 Click on detail view of the Instance and then click on Console tab menu
 and click on **"Send CtrlAltDel"** button located on the top right side of

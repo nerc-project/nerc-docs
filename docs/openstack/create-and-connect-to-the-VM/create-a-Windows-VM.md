@@ -163,7 +163,7 @@ volume created before with id "d8a5da4c-41c8-4c2d-b57a-8b6678ce4936" by running:
 
     openstack server create --flavor cpu-su.4 --key-name my-key --volume d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 my-vm
 
-To list all floating IP addresses that are allocated to the current project, run:
+To list all Floating IP addresses that are allocated to the current project, run:
 
     openstack floating ip list
 
@@ -176,7 +176,7 @@ To list all floating IP addresses that are allocated to the current project, run
 !!! note "More About Floating IP"
     If the above command returns an empty list, meaning you don't have any
     available floating IPs, please refer to [this documentation](assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
-    on how to allocate a new floating IP to your project.
+    on how to allocate a new Floating IP to your project.
 
 Attach a Floating IP to your instance:
 

@@ -38,8 +38,12 @@ To attach the volume to an instance using the CLI, do this:
 
 ### Using the openstack client
 
-Once the status is "available", it can be attached to a virtual machine. The
-following command attaches the volume "my-volume" to the virtual machine "test-vm":
+When the status is 'available', the volume can be attached to a virtual machine
+using the following openstack client command syntax:
+
+    openstack server add volume <INSTANCE_NAME_OR_ID> <VOLUME_NAME_OR_ID>
+
+For example:
 
     openstack server add volume test-vm my-volume
     +-----------------------+--------------------------------------+
@@ -52,6 +56,16 @@ following command attaches the volume "my-volume" to the virtual machine "test-v
     | Tag                   | None                                 |
     | Delete On Termination | False                                |
     +-----------------------+--------------------------------------+
+
+where "test-vm" is the virtual machine and the second parameter, "my-volume" is
+the volume created before.
+
+!!! tip "Pro Tip"
+    If your instance name `<INSTANCE_NAME_OR_ID>` and volume name `<VOLUME_NAME_OR_ID>`
+    include spaces, you need to enclose them in quotes, i.e. `"<INSTANCE_NAME_OR_ID>"`
+    and `"<VOLUME_NAME_OR_ID>"`.
+
+    For example: `openstack server remove volume "My Test Instance" "My Volume"`
 
 ### To verify the volume is attached to the VM
 
@@ -68,7 +82,5 @@ instance it is attached to, and what device name it has.
 
 This will be something like `/dev/vdb` but it can vary depending on the state
 of your instance, and whether you have attached volumes before.
-
-Make note of the device name of your volume.
 
 ---

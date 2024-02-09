@@ -713,7 +713,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 ```
 
 !!! info "Don't Forget to Update the older kube config file"
-    Update where ever you are using the older kube config to connect with the cluster.
+    Update wherever you are using the older kube config to connect with the cluster.
 
 ## Clean Up
 

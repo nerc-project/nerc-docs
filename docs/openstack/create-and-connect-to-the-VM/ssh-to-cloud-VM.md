@@ -24,7 +24,7 @@ allow **ssh** using Port 22 is opened to the instance.
     you'll be able to attach any newly created security group(s) with all the
     required rules to a running VM.
 
-Make a note of the floating IP you have associated to your instance.
+Make a note of the Floating IP you have associated to your instance.
 
 ![Associated Instance Floating IP](images/floating_ip_is_associated.png)
 

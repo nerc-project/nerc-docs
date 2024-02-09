@@ -188,7 +188,7 @@ The console for a Linux VM can be displayed using console log.
 
 ## Associating a Floating IP to VM
 
-To Associate a floating IP to VM, first get the unused floating IP using the
+To Associate a Floating IP to VM, first get the unused Floating IP using the
 following command:
 
 ```sh
@@ -205,7 +205,7 @@ Now Associate the first IP to the server using following command:
   openstack server add floating ip my-vm 169.144.107.154
 ```
 
-Use the following command to verify whether floating IP is assigned to the VM
+Use the following command to verify whether Floating IP is assigned to the VM
 or not:
 
 ```sh

@@ -75,7 +75,7 @@ Navigate to Project -> Network -> Floating IPs.
 
 ![Release all Floating IPs](images/release_floating_ips.png)
 
-For instructions on releasing your allocated floating IP back into the NERC floating
+For instructions on releasing your allocated Floating IP back into the NERC floating
 IP pool, please refer to [this documentation](../create-and-connect-to-the-VM/assign-a-floating-IP.md#release-a-floating-ip).
 
 ## Clean up all added Security Groups

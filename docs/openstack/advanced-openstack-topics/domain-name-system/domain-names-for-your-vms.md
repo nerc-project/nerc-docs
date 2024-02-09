@@ -45,7 +45,7 @@ domain name or you can choose to create your hostname later on.
 
 **Step 4: Add Floating IP of your instance to the Hostname.**
 
-Click on "Modify" to add your own floating IP attached to your NERC virtual instance.
+Click on "Modify" to add your own Floating IP attached to your NERC virtual instance.
 
 ![Update Floating IP on Hostname](images/floating-ip-to-hostname.png)
 
@@ -182,7 +182,7 @@ https and domain name you defined i.e. `https://<Your-Domain-Name>`.
 
 You need to contact and work with your Research Computing department or
 academic institution's Central IT services to create **A record** for your hostname
-that maps to the address of a floating IP of your NERC virtual instance.
+that maps to the address of a Floating IP of your NERC virtual instance.
 
 **A record:** The primary DNS record used to connect your domain to an IP address
 that directs visitors to your website.

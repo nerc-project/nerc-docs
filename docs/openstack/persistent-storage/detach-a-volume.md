@@ -36,13 +36,25 @@ To run the OpenStack CLI commands, you need to have:
 
 #### Using the openstack client
 
-Then use the openstack command line interface to detach the volume from the VM:
+The following openstack client command syntax can be used to detach a volume
+from a VM:
+
+    openstack server remove volume <INSTANCE_NAME_OR_ID> <VOLUME_NAME_OR_ID>
+
+For example:
 
     openstack server remove volume test-vm my-volume
 
 where "test-vm" is the virtual machine and the second parameter, "my-volume" is
 the volume created before and attached to the VM and can be shown in
 `openstack volume list`.
+
+!!! tip "Pro Tip"
+    If your instance name `<INSTANCE_NAME_OR_ID>` and volume name `<VOLUME_NAME_OR_ID>`
+    include spaces, you need to enclose them in quotes, i.e. `"<INSTANCE_NAME_OR_ID>"`
+    and `"<VOLUME_NAME_OR_ID>"`.
+
+    For example: `openstack server remove volume "My Test Instance" "My Volume"`
 
 Check that the volume is in state 'available' again.
 

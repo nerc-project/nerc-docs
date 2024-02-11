@@ -50,7 +50,7 @@ host's `/home/jenkins_home` so you can just browse to
 copy the same content from `/var/jenkins_home/secrets/initialAdminPassword`.
 
 **OR**, you can run `docker ps` on worker node where you run the Jenkins server.
-Note the **Name** of the docker container and then run: `docker logs -f <enkins_docker_container_name>`.
+Note the **Name** of the docker container and then run: `docker logs -f <jenkins_docker_container_name>`.
 This will show the initial Administrator password on the terminal which you can
 copy and paste on the web GUI on the browser.
 
@@ -64,9 +64,12 @@ terminal, click on the "Install suggested plugins" button as shown below:
 
 ![Customize Jenkins Installing Plugins](images/installed-jenkins-plugins.png)
 
-Continue by selecting 'Continue as admin' and then click the 'Save and Finish' button.
+Continue by selecting 'Skip and continue as admin' first as shown below:
 
-And then, Jenkins is ready to use as showing below:
+![Skip and continue as admin](images/jenkins-continue-as-admin.png)
+
+Then click the 'Save and Finish' button as shown below and then, Jenkins is ready
+to use.
 
 ![Jenkins Get Started](images/jenkins-get-started.png)
 

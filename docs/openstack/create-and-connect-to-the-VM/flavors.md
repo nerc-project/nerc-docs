@@ -4,14 +4,27 @@ In NERC OpenStack, flavors define the compute, memory, and storage capacity of
 nova computing instances. In other words, a flavor is an available hardware
 configuration for a server.
 
+!!! info "Note"
+    Flavors are visible only while you are launching an instance and under "Flavor"
+    tab as [explained here](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab).
+
+The important fields are
+
+| Field      | Description                                      |
+|------------|--------------------------------------------------|
+| RAM        | Memory size in MB                                |
+| Disk       | Size of disk in GB                               |
+| Ephemeral  | Size of a second disk. 0 means no second disk is defined and mounted. |
+| VCPUs      | Number of virtual cores                          |
+
 ## Currently, our setup supports and offers the following flavors
 
 NERC offers the following flavors based on our Infrastructure-as-a-Service
 (IaaS) - OpenStack offerings (Tiers of Service).
 
 !!! tip "Pro Tip"
-
-    Choose a flavor for your instance from the available Tier that suits your requirements, use-cases, and budget when launching a VM.
+    Choose a flavor for your instance from the available Tier that suits your
+    requirements, use-cases, and budget when launching a VM.
 
 ### 1. Standard Compute Tier
 
@@ -44,13 +57,12 @@ memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
 ### 3. GPU Tier
 
 !!! info "Information"
-
     NERC also supports the most demanding workloads including Artificial Intelligence
-    (AI), Machine Learning (ML) training and Deep Learning modeling, simulation, data
-    analytics, data visualization, distributed databases, and more. For such demanding
-    workloads, the NERC’s GPU-based distributed computing flavor is recommended, which
-    is integrated into a specialized hardware such as GPUs that produce unprecedented
-    performance boosts for technical computing workloads.
+    (AI), Machine Learning (ML) training and Deep Learning modeling, simulation,
+    data analytics, data visualization, distributed databases, and more. For such
+    demanding workloads, the NERC's GPU-based distributed computing flavor is
+    recommended, which is integrated into a specialized hardware such as GPUs
+    that produce unprecedented performance boosts for technical computing workloads.
 
 There are three flavors within the GPU tier, one featuring the newer
 **NVidia A100s** along with **NVidia V100s** and **NVidia K80s**.
@@ -71,7 +83,7 @@ wall time.
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **Note:** These commands are **ONLY** applicable for the VM based on
+    **NOTE:** These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 
@@ -98,7 +110,7 @@ memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **Note:** These commands are **ONLY** applicable for the VM based on
+    **NOTE:** These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 
@@ -128,7 +140,7 @@ hr of wall time.
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **Note:** These commands are **ONLY** applicable for the VM based on
+    **NOTE:** These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 
@@ -145,6 +157,60 @@ hr of wall time.
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and
     **Cinder (block storage/ volumes)** are charged separately at a rate of
-    $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr.
+    $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr. More about cost
+    can be [found here](../../get-started/cost-billing/how-pricing-works.md) and
+    some of the common billing related FAQs are [listed here](../../get-started/cost-billing/billing-faqs.md).
+
+## How to Change Flavor of an instance
+
+!!! warning "Important Note"
+    This is only possible using the openstack client at this time!
+
+**Prerequisites**:
+
+To run the OpenStack CLI commands, you need to have:
+
+- OpenStack CLI setup, see
+[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+for more information.
+
+If you want to change the **flavor** that is bound to a VM, then you can run the
+following openstack client commands, here we are changing flavor of an existing
+VM i.e. named "test-vm" from `mem-su.2` to `mem-su.4`:
+
+First, stop the running VM using:
+
+    openstack server stop test-vm
+
+Then, verify the status is "SHUTOFF" and also the used flavor is `mem-su.2` as
+shown below:
+
+    openstack server list
+    +--------------------------------------+------+---------+--------------------------------------------+--------------------------+---------+
+    | ID | Name | Status | Networks | Image | Flavor |
+    +--------------------------------------+------+---------+--------------------------------------------+--------------------------+---------+
+    | cd51dbba-fe95-413c-9afc-71370be4d4fd | test-vm | SHUTOFF | default_network=192.168.0.58, 199.94.60.10 | N/A (booted from volume) | mem-su.2 |
+    +--------------------------------------+------+---------+--------------------------------------------+--------------------------+---------+
+
+Then, resize the flavor from `mem-su.2` to `mem-su.4` by running:
+
+    openstack server resize --flavor mem-su.4 cd51dbba-fe95-413c-9afc-71370be4d4fd
+
+Confirm the resize:
+
+    openstack server resize confirm cd51dbba-fe95-413c-9afc-71370be4d4fd
+
+Then, start the VM:
+
+    openstack server start cd51dbba-fe95-413c-9afc-71370be4d4fd
+
+Verify the VM is using the new flavor of `mem-su.4` as shown below:
+
+    openstack server list
+    +--------------------------------------+------+--------+--------------------------------------------+--------------------------+---------+
+    | ID | Name | Status | Networks | Image | Flavor |
+    +--------------------------------------+------+--------+--------------------------------------------+--------------------------+---------+
+    | cd51dbba-fe95-413c-9afc-71370be4d4fd | test-vm | ACTIVE | default_network=192.168.0.58, 199.94.60.10 | N/A (booted from volume) | mem-su.4 |
+    +--------------------------------------+------+--------+--------------------------------------------+--------------------------+---------+
 
 ---

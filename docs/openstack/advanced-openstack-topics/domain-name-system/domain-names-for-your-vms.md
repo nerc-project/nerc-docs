@@ -45,7 +45,7 @@ domain name or you can choose to create your hostname later on.
 
 **Step 4: Add Floating IP of your instance to the Hostname.**
 
-Click on "Modify" to add your own floating IP attached to your NERC virtual instance.
+Click on "Modify" to add your own Floating IP attached to your NERC virtual instance.
 
 ![Update Floating IP on Hostname](images/floating-ip-to-hostname.png)
 
@@ -67,13 +67,13 @@ to your other web based services.
 
 #### Quick Setup
 
-i. [Launch a VM](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/launch-a-VM/)
+i. [Launch a VM](../../create-and-connect-to-the-VM/launch-a-VM.md)
 with a security group that has opened rule for port **80**, **443** and **22** to
 enable [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
 i.e. **Local Port Forwarding** into the VM.
 
-ii. [SSH into your VM](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/)
-using your private key after [attaching a Floating IP](https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/assign-a-floating-IP/).
+ii. [SSH into your VM](../../create-and-connect-to-the-VM/ssh-to-cloud-VM.md)
+using your private key after [attaching a Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md).
 
 iii. Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/install/)
 based on your OS choice for your VM.
@@ -182,7 +182,7 @@ https and domain name you defined i.e. `https://<Your-Domain-Name>`.
 
 You need to contact and work with your Research Computing department or
 academic institution's Central IT services to create **A record** for your hostname
-that maps to the address of a floating IP of your NERC virtual instance.
+that maps to the address of a Floating IP of your NERC virtual instance.
 
 **A record:** The primary DNS record used to connect your domain to an IP address
 that directs visitors to your website.

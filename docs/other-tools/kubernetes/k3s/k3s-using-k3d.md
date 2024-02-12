@@ -195,7 +195,7 @@ specified using the `KUBECONFIG` environment variable or the default path
     ![k3d all](../images/k3d_all.png)
 
     We can see that, in addition of the Kubernetes service, K3s deploys DNS,
-    metrics and ingress (traefik) services when we use the defaults.
+    metrics and ingress (traefik) services when you use the defaults.
 
     iii. List the active k3d clusters:
 

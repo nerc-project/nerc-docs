@@ -14,13 +14,13 @@ available for this project.
 
 ![Key Pairs](images/key-pairs.png)
 
-## Import a Key Pair
+## Generate a Key Pair
 
 !!! note "Prerequisite"
     You need ssh installed in your system
 
 You can create a key pair on your local machine, then upload the public key to
-the cloud.  This is the **recommended method**.
+the cloud. This is the **recommended method**.
 
 Open a terminal and type the following commands (in this example, we have named
 the key cloud.key, but you can name it anything you want):
@@ -67,7 +67,15 @@ On your terminal:
     If `pbcopy` isn't working, you can locate the hidden `.ssh` folder, open the
     file in your favorite text editor, and copy it to your clipboard.
 
----
+## Import the generated Key Pair
+
+Now that you have created your keypair in `~/.ssh/cloud.key.pub`, you can upload
+it to OpenStack by either using Horizon dashboard or
+[OpenStack CLI](../openstack-cli/openstack-CLI.md) as
+described below:
+
+### 1. Using NERC's Horizon dashboard
+
 Go back to the Openstack Dashboard, where you should still be on the Key Pairs tab
 
 (If not, find it under Project -> Compute -> Key Pairs)
@@ -84,10 +92,43 @@ Click "Import Public Key". You will see your key pair appear in the list.
 
 You can now skip ahead to [Adding the key to an ssh-agent](#adding-your-ssh-key-to-the-ssh-agent).
 
-## Create a Key Pair
+### 2. Using the OpenStack CLI
 
-If you are having trouble creating a key pair with the instructions above, the
-Openstack dashboard can make one for you.
+**Prerequisites**:
+
+To run the OpenStack CLI commands, you need to have:
+
+- OpenStack CLI setup, see
+[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+for more information.
+
+To create OpenStack keypair using the CLI, do this:
+
+#### Using the openstack client commands
+
+Now that you have created your keypair in `~/.ssh/cloud.key.pub`, you can upload
+it to OpenStack with name "my-key" as follows:
+
+```sh
+
+  openstack keypair create --public-key ~/.ssh/cloud.key.pub my-key
+  +-------------+-------------------------------------------------+
+  | Field       | Value                                           |
+  +-------------+-------------------------------------------------+
+  | created_at  | None                                            |
+  | fingerprint | 1c:40:db:ea:82:c2:c3:05:58:81:84:4b:e3:4f:c2:a1 |
+  | id          | my-key                                          |
+  | is_deleted  | None                                            |
+  | name        | my-key                                          |
+  | type        | ssh                                             |
+  | user_id     | 938eb8bfc72e4ca3ad2c94e2eb4059f7                |
+  +-------------+-------------------------------------------------+
+```
+
+## Create a Key Pair using Horizon dashboard
+
+Alternatively, if you are having trouble creating and importing a key pair with
+the instructions above, the Openstack Horizon dashboard can make one for you.
 
 Click "Create a Key Pair", and enter a name for the key pair.
 
@@ -130,7 +171,8 @@ so you don't always need to log into the website to see it.
 Call the file something like `cloud_key.pub` to distinguish it from your
 private key.
 
-*Important: Never share your private key with anyone, or upload it to a server!*
+!!! danger "Very Important: Security Best Practice"
+    Never share your private key with anyone, or upload it to a server!
 
 ## Adding your SSH key to the ssh-agent
 
@@ -197,6 +239,7 @@ You have 2 options for generating keys that will work with PuTTY:
 
  1. Generate an OpenSSH key with ssh-keygen or from the Horizon GUI using the
  instructions above, then use PuTTYgen to convert the private key to .ppk
+
  2. Generate a .ppk key with PuTTYgen, and import the provided OpenSSH public
  key to OpenStack using the 'Import a Key Pair' instructions [above](#import-a-key-pair).
 

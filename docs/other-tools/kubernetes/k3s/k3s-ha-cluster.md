@@ -192,7 +192,7 @@ subjects:
 - Deploy the `admin-user` configuration:
 
 !!! note "Important Note"
-    If you’re doing this from your local development machine, remove `sudo k3s` and
+    If you're doing this from your local development machine, remove `sudo k3s` and
     just use `kubectl`)
 
 ```sh

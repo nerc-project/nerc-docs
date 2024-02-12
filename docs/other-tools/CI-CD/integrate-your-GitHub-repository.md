@@ -23,7 +23,7 @@ Let's see how to configure and add a webhook in GitHub:
 
     ![GitHub Settings](images/github-settings.png)
 
-3. Click on "Webhooks" and then "Click "Add webhooks."
+3. Click on "Webhooks" and then "Click "Add webhooks".
 
     ![Github webhook](images/Github-webhook.png)
 
@@ -35,7 +35,7 @@ Select "Content type" as "application/json" and leave the "Secret" field empty.
     ![Github webhook fields](images/Github-webhook-fields.png)
 
 5. In the page "Which events would you like to trigger this webhook?" select the
-option "Let me select individual events." Then, check "Pull Requests" and "Pushes".
+option "Let me select individual events". Then, check "Pull Requests" and "Pushes".
 At the end of this option, make sure that the "Active" option is checked and then
 click on "Add webhook" button.
 

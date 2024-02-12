@@ -22,10 +22,44 @@ the list below.
 ## Create &amp; Connect to the VM
 
 - [Launch a VM](create-and-connect-to-the-VM/launch-a-VM.md)
+- [Create a Windows VM](create-and-connect-to-the-VM/create-a-Windows-VM.md)
 - [Available Images](create-and-connect-to-the-VM/images.md)
 - [Available NOVA Flavors](create-and-connect-to-the-VM/flavors.md)
 - [Assign a Floating IP](create-and-connect-to-the-VM/assign-a-floating-IP.md)
 - [SSH to Cloud VM](create-and-connect-to-the-VM/ssh-to-cloud-VM.md)
+
+## OpenStack CLI
+
+- [OpenStack CLI](openstack-cli/openstack-CLI.md)
+- [Launch a VM using OpenStack CLI](openstack-cli/launch-a-VM-using-openstack-CLI.md)
+
+## Persistent Storage
+
+- [Block Storage/ Volumes/ Cinder](persistent-storage/volumes.md)
+  - [Create an empty volume](persistent-storage/create-an-empty-volume.md)
+  - [Attach the volume to an instance](persistent-storage/attach-the-volume-to-an-instance.md)
+  - [Format and Mount the Volume](persistent-storage/format-and-mount-the-volume.md)
+  - [Detach a Volume](persistent-storage/detach-a-volume.md)
+  - [Delete Volumes](persistent-storage/delete-volumes.md)
+  - [Extending Volume](persistent-storage/extending-volume.md)
+  - [Transfer a Volume](persistent-storage/transfer-a-volume.md)
+- [Object Storage/ Swift](persistent-storage/object-storage.md)
+
+## Data Transfer
+
+- [Data Transfer To/ From NERC VM](data-transfer/data-transfer-from-to-vm.md)
+
+## Backup your instance and data
+
+- [Backup with snapshots](backup/backup-with-snapshots.md)
+
+## VM Management
+
+- [VM Management](management/vm-management.md)
+
+## Decommission OpenStack Resources
+
+- [Decommission OpenStack Resources](decommission/decommission-openstack-resources.md)
 
 ---
 
@@ -41,24 +75,6 @@ the list below.
 ## Domain or Host Name for your VM
 
 - [Domain Name System (DNS)](advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md)
-
-## OpenStack CLI
-
-- [OpenStack CLI](advanced-openstack-topics/openstack-cli/openstack-CLI.md)
-- [Launch a VM using OpenStack CLI](advanced-openstack-topics/openstack-cli/launch-a-VM-using-openstack-CLI.md)
-
-## Persistent Storage
-
-- [Block Storage/ Volumes/ Cinder](advanced-openstack-topics/persistent-storage/volumes.md)
-- [Object Storage/ Swift](advanced-openstack-topics/persistent-storage/object-storage.md)
-
-## Data Transfer
-
-- [Data Transfer To/ From NERC VM](advanced-openstack-topics/data-transfer/data-transfer-from-to-vm.md)
-
-## Backup your instance and volume
-
-- [Backup with snapshots](advanced-openstack-topics/backup/backup-with-snapshots.md)
 
 ## Using Terraform to provision NERC resources
 

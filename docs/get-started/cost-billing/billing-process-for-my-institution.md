@@ -37,6 +37,6 @@ for comprehensive answers.
 If your institution does not have an MOU with us, please have someone from your
 faculty or administration contact us to discuss it soon by emailing us at
 [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

@@ -16,15 +16,16 @@ PI accounts are able to request Resource Allocations. A PI account enables a use
 to log into NERC's computational project space; apply for allocations of NERC resources
 and grant access to other users; and delegate responsibilities to other collaborators
 from the same institutions or elsewhere as managers using
-[NERC’s ColdFront interface](https://coldfront.mss.mghpcc.org/).
+[NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 
 ## Getting Started
 
 Any faculty, staff, student, and external collaborator must request a user account
-through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/).
-This is a web-based, single point-of-entry to the NERC system that displays a user
-welcome page. The welcome page of the account registration site displays instructions
-on how to register a General User account on NERC, which are shown in the image below:
+through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/)
+also known as **"RegApp"**. This is a web-based, single point-of-entry to the NERC
+system that displays a user welcome page. The welcome page of the account registration
+site displays instructions on how to register a General User account on NERC, which
+are shown in the image below:
 
 ![MGHPCC Shared Services (MGHPCC-SS) Account Portal Welcome Page](images/regapp-welcome-page.png)
 
@@ -104,7 +105,7 @@ filling out [this NERC Principal Investigator (PI) Account Request form](https:/
 
 **Alternatively,** PI can request for a Principal Investigator (PI) user account
 by submitting a new ticket at
-[the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php)
+[the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
 under "NERC PI Account Request" option on **Help Topic** as shown in the image below:
 
 ![the NERC's Support Ticketing System PI Ticket](images/osticket-pi-request.png)

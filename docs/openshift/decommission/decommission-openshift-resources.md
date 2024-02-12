@@ -1,0 +1,3 @@
+# Decommission OpenShift Resources
+
+---

@@ -13,7 +13,7 @@ with us to be better aligned to a number of research regulations, policies and
 requirements but if your institution does not have an MOU with us, please have
 someone from your faculty or administration contact us to discuss it soon by emailing
 us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ## Questions & Answers
 
@@ -25,14 +25,15 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 ??? question "2. If I have an issue with my bill, who do I contact?"
 
     Please send your requests by emailing us at
-    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket)](https://mghpcc.supportsystem.com/open.php).
+    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ??? question "3. How do I control costs?"
 
     Upon creating a project, you will set these resource limits (quotas) for
-    OpenStack (VMs), OpenShift (containers), and storage through [ColdFront](../get-an-allocation.md).
-    This is the maximum amount of resources you can consume at one time.
+    OpenStack (VMs), OpenShift (containers), and storage through
+    [ColdFront](../allocation/requesting-an-allocation.md). This is the maximum
+    amount of resources you can consume at one time.
 
 ??? question "4. Are we invoicing for CPUs/GPUs only when the VM or Pod is active?"
 
@@ -64,11 +65,12 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System (osTicket
 
 ??? question "9. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
-    a. Storage is invoiced based on [Coldfront Requests](../get-an-allocation.md#how-to-request-a-new-resource-allocation).
+    a. Storage is invoiced based on [Coldfront Requests](../allocation/requesting-an-allocation.md).
 
     b. When you request additional storage through Coldfront, invoicing on that
     additional storage will occur when your request is fulfilled. When you request
-    a decrease in storage through [Request change using ColdFront](../get-an-allocation.md#request-change-to-resource-allocation-to-an-existing-project),
+    a decrease in storage through
+    [Request change using ColdFront](../allocation/allocation-change-request.md),
     your invoicing will adjust accordingly when your request is made. In both cases
     'invoicing' means 'accumulate hours for whatever storage quantity was added
     or removed'.

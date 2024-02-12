@@ -312,7 +312,7 @@ The Sysprep will generate **QCOW2** image i.e. `win2k22.qcow2` on `/home/<YourUs
 ### 12. Create OpenStack image and push to NERC's image list
 
 You can copy/download this windows image to the folder where you configured your
-OpenStack CLI as described [Here](../openstack-cli/openstack-CLI.md) and upload
+OpenStack CLI as [described Here](../../openstack-cli/openstack-CLI.md) and upload
 to the NERC's OpenStack running the following OpenStack Image API command:
 
     openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022
@@ -324,7 +324,7 @@ You can verify the uploaded image is available by running:
     +--------------------------------------+---------------------+--------+
     | ID                                   | Name                | Status |
     +--------------------------------------+---------------------+--------+
-    | 7da9f5d4-4836-4bv8-bc5e-xc07ac6d8171 | MS-Windows-2022     | active |
+    | a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
     | ...                                  | ...                 | ...    |
     +--------------------------------------+---------------------+--------+
 
@@ -347,13 +347,23 @@ as shown below:
 
 ![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
-Add other information and setup a Security Group that allows RDP as shown below:
+Add other information and setup a Security Group that allows RDP (port: 3389) as
+shown below:
 
 ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
 
+After some time the instance will be Active in Running state as shown below:
+
 ![Running Windows Instance](images/win2k22_instance_running.png)
 
+Attach a Floating IP to your instance:
+
 ![Associate Floating IP](images/win_instance_add_floating_ip.png)
+
+!!! note "More About Floating IP"
+    If you don't have any available floating IPs, please refer to
+    [this documentation](assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
+    on how to allocate a new Floating IP to your project.
 
 Click on detail view of the Instance and then click on Console tab menu
 and click on **"Send CtrlAltDel"** button located on the top right side of
@@ -384,5 +394,9 @@ Remote Desktop login should work with the Floating IP associated with the instan
 ![Prompted RDP connection](images/prompted_rdp_connection.png)
 
 ![Successfully Remote Connected Instance](images/remote_connected_instance.png)
+
+For more detailed information about OpenStack's image management, the
+[OpenStack image creation guide](https://docs.openstack.org/image-guide/create-images-manually.html)
+provides further references and details.
 
 ---

@@ -45,4 +45,14 @@ see usage summary for provided date range.
 
 ![OpenStack Horizon dashboard](images/horizon_dashboard.png)
 
+!!! info "I can't find my virtual machine"
+    If you are a member of several projects i.e. ColdFront NERC (OpenStack)
+    allocations, you may need to switch the project before you can see and use the
+    OpenStack resources you or your team has created. Clicking on the project dropdown
+    which is displayed near the top right side will popup the list of projects you
+    are in. You can select the new project by hovering and clicking on the project
+    name in that list as shown below:
+
+    ![OpenStack Project List](images/openstack_project_list.png)
+
 ---

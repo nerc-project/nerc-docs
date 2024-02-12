@@ -300,7 +300,7 @@ For example:
 
 ##### Upload files
 
-Upload a file to your container: 
+Upload a file to your container:
 
     swift upload <container_name> <file_or_folder>
 
@@ -319,11 +319,11 @@ This will output your existing container on your project, for e.g.
 `unique-container-test`
 
 Show objects inside your container:
-    
+
     swift list <container_name>.
 
   For example:
-  
+
     swift list unique-container-test
     README.md
 
@@ -334,17 +334,17 @@ the following command to se statistics of the specific container.
 
     swift stat <container_name>
 
-You can also type swift stat <container_name> <filename> to check stats of
+You can also use `swift stat <container_name> <filename>` to check stats of
 individual files.
 
 If you want to see stats from your whole account, you can type:
-    
+
     swift stat
 
 ##### Download objects
 
 You can download single objects by using the following command:
-    
+
     swift download <container_name> <your_object> -o /path/to/local/<your_object>
 
 For example:
@@ -354,7 +354,7 @@ For example:
 
 It's possible to test downloading an object/container without actually downloading,
 for testing purposes:
-    
+
     swift download <container-name> --no-download
 
 ##### Download all objects from specific container
@@ -368,7 +368,7 @@ for testing purposes:
 ##### Delete objects
 
 Delete specific object by issuing the following command:
-    
+
     swift delete <container_name> <object_name>
 
 For example:
@@ -377,7 +377,7 @@ For example:
     README.md
 
 And finally delete specific container by typing the following:
-    
+
     swift delete <container_name>
 
 For example:

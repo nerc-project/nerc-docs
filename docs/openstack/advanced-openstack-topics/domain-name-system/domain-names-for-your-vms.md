@@ -72,7 +72,7 @@ with a security group that has opened rule for port **80**, **443** and **22** t
 enable [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
 i.e. **Local Port Forwarding** into the VM.
 
-ii. [SSH into your VM](../../create-and-connect-to-the-VM/ssh-to-cloud-VM.md)
+ii. [SSH into your VM](../../create-and-connect-to-the-VM/ssh-to-the-VM.md)
 using your private key after [attaching a Floating IP](../../create-and-connect-to-the-VM/assign-a-floating-IP.md).
 
 iii. Install [Docker](https://docs.docker.com/install/) and [Docker-Compose](https://docs.docker.com/compose/install/)

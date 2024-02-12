@@ -224,7 +224,7 @@ like this:
 ```
 
 Connecting via SSH is discussed in more detail later in the tutorial ([SSH to
-Cloud VM](../create-and-connect-to-the-VM/ssh-to-cloud-VM.md)); for now, just
+Cloud VM](../create-and-connect-to-the-VM/ssh-to-the-VM.md)); for now, just
 proceed to the next step below.
 
 ## SSH keys with PuTTY on Windows

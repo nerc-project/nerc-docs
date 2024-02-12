@@ -1,4 +1,4 @@
-# SSH to Cloud VM
+# SSH to the VM
 
 **Shell**, or **SSH**, is used to administering and managing Linux workloads.
 Before trying to access instances from the outside world, you need to make sure
@@ -67,6 +67,18 @@ need to log in via the console in the web dashboard.
 
 For example, if your network connections aren't working right.
 
+!!! info "Setting a password is necessary to use Remote Desktop Protocol (RDP)"
+    [Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)(RDP) is widely used for Windows
+    remote connections, but you can also access and interact with the graphical
+    user interface of a remote Linux server by using a tool like [xrdp](http://xrdp.org/),
+    an open-source implementation of the RDP server. You can use `xrdp` to remotely
+    access the Linux desktop. To do so, you need to utilize the RDP client. Moreover,
+    xrdp delivers a login to the remote machines employing Microsoft RDP. This is
+    why a user with password is necessary to setup on such VM. You can refer to
+    [this guide](#how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu) on
+    how to install and configure an RDP server using xrdp on a Ubuntu server and
+    access it using an RDP client from your local machine.
+
 Since you are not using it to log in over SSH or to sudo, it doesn't really
 matter how hard it is to type, and we recommend using a randomly-generated
 password.
@@ -130,7 +142,7 @@ Copy the file to the vm:
 
 If the copy works, you will see the output:
 
-  teammates.txt                  100%    0     0KB/s   00:00
+    teammates.txt                  100%    0     0KB/s   00:00
 
 Append the file's contents to authorized_keys:
 
@@ -168,5 +180,135 @@ Once you log into the VM, you can create another user like this.
       $ vi authorized_keys   <-- paste the public key for that user in this file
       $ chmod 600 authorized_keys
     ```
+
+## How To Enable Remote Desktop Protocol Using xrdp on Ubuntu
+
+### Log in to the server with Sudo access
+
+In order to install the `xrdp`, you need to login to the server with `sudo` access
+to it.
+
+    ssh username@your_server_ip
+
+For example:
+
+    ssh ubuntu@199.94.60.66
+    
+### Installing a Desktop Environment
+
+After connecting to your server using SSH and update the list of available packages
+using the following command:
+
+    sudo apt update
+
+Next, install the `xfce` and `xfce-goodies` packages on your server:
+
+    sudo apt install xfce4 xfce4-goodies -y
+
+You will be prompted to choose a display manager, which is a program that manages
+graphical login mechanisms and user sessions. You can select any option from the
+list of available display managers, for example here we are using `gdm3`.
+
+### Installing xrdp
+
+To install xrdp, run the following command in the terminal:
+
+    sudo apt install xrdp -y
+
+After installing xrdp, verify the status of xrdp using systemctl:
+
+    sudo systemctl status xrdp
+
+This command will show the status as **active (running)**:
+
+Output:
+
+    ● xrdp.service - xrdp daemon
+        Loaded: loaded (/lib/systemd/system/xrdp.service; enabled; vendor preset: enab>
+        Active: active (running) since Mon 2024-02-12 21:33:01 UTC; 9s ago
+        ...
+        CGroup: /system.slice/xrdp.service
+                └─8839 /usr/sbin/xrdp
+
+!!! info "What if xrdp is not Running?"
+    If the status of xrdp is not running, you may have to start the service manually
+    with this command: `sudo systemctl start xrdp`. After executing the above command,
+    verify the status again to ensure xrdp is in a running state.
+
+Make xrdp to use the desktop environment we previously created:
+
+    sudo sed -i.bak '/fi/a #xrdp multiple users configuration \n xfce-session \n' /etc/xrdp/startwm.sh
+
+### Configuring xrdp and Updating Security Groups
+
+If you want to customize the default xrdp configuration (optional), you will need
+to review the default configuration of xrdp, which is stored under `/etc/xrdp/xrdp.ini`.
+`xrdp.ini` is the default configuration file to set up RDP connections to the
+xrdp server. The configuration file can be modified and customized to meet the
+RDP connection requirements.
+
+Add a new security group with an RDP (port 3389) rule open to the public for an
+RDP connection and attach that security group to your instance.
+
+!!! info "How to Update Security Group(s) to a Running VM?"
+    Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm), you'll be able to attach any
+    newly created security group(s) with all the required rules to a running VM.
+
+Restart once the xrdp server to make sure all the above changes are reflected:
+
+    sudo systemctl restart xrdp
+
+### Testing the RDP Connection
+
+Now, you should now be able to connect to the Ubuntu VM via xrdp.
+
+#### Testing the RDP Connection on Windows
+
+If you are using Windows as a local desktop, Windows users have an RDP connection
+application by default on their machines.
+
+Enter your VM's Floating IP and username into the fillable text boxes for Computer
+and User name. You may need to press the down arrow for Show Options to input the
+username i.e. `ubuntu`:
+
+![RDP Windows](images/rdp_windows_for_xrdp.png)
+
+Press the Connect button. If you receive an alert that the Remote Desktop can't connect to the remote computer, check that you have properly attached the RDP secuitry group to your VM.
+
+Press **Yes** if you receive the identity verification popup:
+
+![RDP Windows Popup](images/rdp_popup_for_xrdp.png)
+
+Then, enter your VM's username (ubuntu) and the password you created
+for user ubuntu following [this steps](#setting-a-password.md).
+
+Press **Ok**.
+
+![xrdp Login Popup](images/xrdp_login.png)
+
+Once you have logged in, you should be able to access your Ubuntu Desktop environment:
+
+![xrdp Desktop](images/xrdp_desktop.png)
+
+#### Testing the RDP Connection on macOS
+
+To test the connection using the Remote Desktop Connection client on macOS, first
+launch the Microsoft Remote Desktop Connection app.
+
+Press **Add PC**, then enter your remote server’s Floating IP in the fillable box:
+
+![xrdp Add PC](images/xrdp_macos_add_pc.png)
+
+You can **Add a user account** when setting up the connection:
+
+![xrdp Add User Account](images/xrdp_macos_add_user_account.png)
+
+Once you have logged in, you can access your Ubuntu remote desktop. You can close
+it with the exit button.
+
+#### Testing the RDP Connection on Linux
+
+If you are using Linux as your Local desktop you can connect to the server via
+[Remmina](https://remmina.org/).
 
 ---

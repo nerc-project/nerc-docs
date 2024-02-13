@@ -250,7 +250,7 @@ RDP connection requirements.
 Add a new security group with a RDP (port 3389) rule open to the public for an
 RDP connection and attach that security group to your instance.
 
-!!! info "How to Update Security Group(s) to a Running VM?"
+!!! info "How to Update Security Group(s) on a Running VM?"
     Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
     you'll be able to attach any newly created security group(s) with all the
     required rules to a running VM.

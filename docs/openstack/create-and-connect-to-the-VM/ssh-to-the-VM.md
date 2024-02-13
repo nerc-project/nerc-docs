@@ -196,7 +196,7 @@ For example:
 
 ### Installing a Desktop Environment
 
-After connecting to your server using SSH and update the list of available packages
+After connecting to your server using SSH update the list of available packages
 using the following command:
 
     sudo apt update
@@ -205,9 +205,12 @@ Next, install the `xfce` and `xfce-goodies` packages on your server:
 
     sudo apt install xfce4 xfce4-goodies -y
 
-You will be prompted to choose a display manager, which is a program that manages
-graphical login mechanisms and user sessions. You can select any option from the
-list of available display managers, for example here we are using `gdm3`.
+!!! info "Select Display Manager"
+    If prompted to choose a display manager, which manages graphical login mechanisms
+    and user sessions, you can select any option from the list of available display
+    managers. For instance, here we have `gdm3` as the default selection.
+
+    ![xrdp Display Manager](images/xrdp_display_manager.png)
 
 ### Installing xrdp
 

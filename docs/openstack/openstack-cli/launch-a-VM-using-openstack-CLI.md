@@ -199,7 +199,7 @@ following command:
   None                                 |
 ```
 
-Now Associate the first IP to the server using following command:
+Now Associate the first IP to the server using the following command:
 
 ```sh
   openstack server add floating ip my-vm 169.144.107.154

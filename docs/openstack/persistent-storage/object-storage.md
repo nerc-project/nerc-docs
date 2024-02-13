@@ -280,18 +280,109 @@ Then you need to source that RC file using: `source *-openrc.sh`. You can
 on how to do this.
 
 By sourcing the "NERC's OpenStack RC File", you will set the all required
-environmental variablesand then type the following command to get a lits of
-your containers:
+environmental variables.
+
+##### Check your authentication variables
+
+Check what the swift client will use as authentication variables:
+
+    swift auth
+
+##### Create your first container
+
+Lets create your first container by using the following command:
+
+    swift post <container_name>
+
+For example:
+
+    swift post unique-container-test
+
+##### Upload files
+
+Upload a file to your container:
+
+    swift upload <container_name> <file_or_folder>
+
+To upload a file to the above listed i.e. `unique-container-test`, you can run
+the following command:
+
+    swift upload unique-container-test ./README.md
+
+##### Show containers
+
+Then type the following command to get list of your containers:
 
     swift list
 
 This will output your existing container on your project, for e.g.
 `unique-container-test`
 
-To upload a file to the above listed i.e. `unique-container-test`, you can run
-the following command:
+Show objects inside your container:
 
-    swift upload unique-container-test ./README.md
+    swift list <container_name>.
+
+  For example:
+
+    swift list unique-container-test
+    README.md
+
+##### Show statistics of your containers and objects
+
+You can see statistics, ranging from specific objects to the entire account. Use
+the following command to se statistics of the specific container.
+
+    swift stat <container_name>
+
+You can also use `swift stat <container_name> <filename>` to check stats of
+individual files.
+
+If you want to see stats from your whole account, you can type:
+
+    swift stat
+
+##### Download objects
+
+You can download single objects by using the following command:
+
+    swift download <container_name> <your_object> -o /path/to/local/<your_object>
+
+For example:
+
+    swift download unique-container-test README.md -o ./README.md
+    README.md [auth 2.763s, headers 2.907s, total 2.907s, 0.000 MB/s]
+
+It's possible to test downloading an object/container without actually downloading,
+for testing purposes:
+
+    swift download <container-name> --no-download
+
+##### Download all objects from specific container
+
+    swift download <container_name> -D </path/to/folder/>
+
+##### Download all objects from your account
+
+    swift download --all -D </path/to/folder/>
+
+##### Delete objects
+
+Delete specific object by issuing the following command:
+
+    swift delete <container_name> <object_name>
+
+For example:
+
+    swift delete unique-container-test README.md
+    README.md
+
+And finally delete specific container by typing the following:
+
+    swift delete <container_name>
+
+For example:
+
+    swift delete unique-container-test
 
 Other helpful Swift commands:
 
@@ -810,7 +901,7 @@ in it.
 
 To unmount, simply press `CTRL-C` and the mount will be interrupted.
 
-### vi. Using client libraries
+### vi. Using client (Python) libraries
 
 a. The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
 file can then be plugged into your application. See below example using the

@@ -15,13 +15,13 @@ access it from outside world.
 
 - Make sure you have added rules in the
 [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
-allow **ssh** using Port 22 is opened to the instance.
+allow **ssh** using Port 22 access to the instance.
 
 !!! info "How to update New Security Group(s) on any running VM?"
     If you want to attach/deattach any new Security Group(s) to/from a running VM
     after it has launched. First create all new Security Group(s) with all the rules
     required. Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
-    you'll be able to attach any newly created security group(s) with all the
+    you'll be able to attach created security group(s) with all the
     required rules to a running VM.
 
 Make a note of the Floating IP you have associated to your instance.
@@ -65,7 +65,7 @@ the default user, and then discarded.
 Once you connect to your VM, you will want to set a password in case you ever
 need to log in via the console in the web dashboard.
 
-For example, if your network connections aren't working right.
+For example, if your network connections aren't working correctly.
 
 !!! info "Setting a password is necessary to use Remote Desktop Protocol (RDP)"
     [Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)
@@ -75,7 +75,7 @@ For example, if your network connections aren't working right.
     the RDP server. You can use `xrdp` to remotely access the Linux desktop. To
     do so, you need to utilize the RDP client. Moreover, xrdp delivers a login
     to the remote machines employing Microsoft RDP. This is why a user with
-    password is necessary to setup on such VM. You can refer to [this guide](#how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu)
+    the password is necessary to access the VM. You can refer to [this guide](#how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu)
     on how to install and configure an RDP server using xrdp on a Ubuntu server
     and access it using an RDP client from your local machine.
 
@@ -108,7 +108,7 @@ wall on a sticky note, etc.
 
 ## Adding other people's SSH keys to the instance
 
-You were able to log into using your own SSH key.
+You were able to log in using your own SSH key.
 
 Right now Openstack only permits one key to be added at launch, so you need to
 add your teammates keys manually.
@@ -238,7 +238,7 @@ Output:
     with this command: `sudo systemctl start xrdp`. After executing the above command,
     verify the status again to ensure xrdp is in a running state.
 
-Make xrdp to use the desktop environment we previously created:
+Make xrdp use the desktop environment we previously created:
 
     sudo sed -i.bak '/fi/a #xrdp multiple users configuration \n xfce-session \n' /etc/xrdp/startwm.sh
 
@@ -255,16 +255,16 @@ RDP connection and attach that security group to your instance.
 
 !!! info "How to Update Security Group(s) on a Running VM?"
     Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
-    you'll be able to attach any newly created security group(s) with all the
+    you'll be able to attach created security group(s) with all the
     required rules to a running VM.
 
-Restart once the xrdp server to make sure all the above changes are reflected:
+Restart the xrdp server to make sure all the above changes are reflected:
 
     sudo systemctl restart xrdp
 
 ### Testing the RDP Connection
 
-Now, you should now be able to connect to the Ubuntu VM via xrdp.
+You should now be able to connect to the Ubuntu VM via xrdp.
 
 #### Testing the RDP Connection on Windows
 
@@ -272,14 +272,18 @@ If you are using Windows as a local desktop, Windows users have an RDP connectio
 application by default on their machines.
 
 Enter your VM's Floating IP and username into the fillable text boxes for Computer
-and User name. You may need to press the down arrow for Show Options to input the
-username i.e. `ubuntu`:
+and User name.
 
 ![RDP Windows](images/rdp_windows_for_xrdp.png)
 
-Press the Connect button. If you receive an alert that the Remote Desktop can't
-connect to the remote computer, check that you have properly attached the security
-group with a RDP (port 3389) rule open to the public to your VM.
+You may need to press the down arrow for "Show Options" to input the username i.e.
+`ubuntu`:
+
+![Show Options To Enter Username](images/show_options_rdp_windows.png)
+
+Press the Connect button. If you receive an alert that the "Remote Desktop can't
+connect to the remote computer", check that you have properly attached the security
+group with a RDP (port 3389) rule open to the public to your VM as [described here](../access-and-security/security-groups.md#allowing-rdp).
 
 Press **Yes** if you receive the identity verification popup:
 
@@ -301,7 +305,8 @@ Once you have logged in, you should be able to access your Ubuntu Desktop enviro
 To test the connection using the Remote Desktop Connection client on macOS, first
 launch the Microsoft Remote Desktop Connection app.
 
-Press **Add PC**, then enter your remote server’s Floating IP in the fillable box:
+Press **Add PC**, then enter your remote server's Floating IP in the `PC name`
+fillable box:
 
 ![xrdp Add PC](images/xrdp_macos_add_pc.png)
 

@@ -103,6 +103,44 @@ In the Add Rule dialog box, enter the following values:
 
 Instances will now accept all incoming ICMP packets.
 
+### Allowing RDP
+
+To allow access to your VM for things like Remote Desktop Protocol (RDP), you will
+need to create a security group and add rules to it.
+
+Click on "Create Security Group"  Give your new group a name, and a brief description.
+
+![Create a RDP Security Group](images/create_rdp_security_group.png)
+
+You will see some existing rules:
+
+![Existing Security Group Rules](images/default_security_group_rules.png)
+
+Let's create the new rule to allow SSH. Click on "Add Rule".
+
+You will see there are a lot of options you can configure on the Add Rule
+dialog box.
+
+Choose "RDP" from the Rule dropdown option as shown below:
+
+![Adding RDP in Security Group Rules](images/rdp_security_group_rules_options.png)
+
+Enter the following values:
+
+- Rule: RDP
+- Remote: CIDR
+- CIDR: 0.0.0.0/0
+
+!!! note "Note"
+    To accept requests from a particular range of IP addresses, specify the IP
+    address block in the CIDR box.
+
+The new rule now appears in the list. This signifies that any instances using
+this newly added Security Group will now have RDP port 3389 open for requests
+from any IP address.
+
+![Adding RDP in Security Group Rules](images/added_rdp_security_rule.png)
+
 ## Editing Existing Security Group and Adding New Security Rules
 
 - Navigate to Security Groups:

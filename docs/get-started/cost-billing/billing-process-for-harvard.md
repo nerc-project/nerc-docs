@@ -20,15 +20,15 @@ customers. This is an automated process.
 
 Please follow these two steps to ensure proper billing setup:
 
-1. Each Harvard PI must have a HUIT billing account linked to their NetID (abc123).
-NERC must have HUIT “Customer Code” for billing purposes. To create a HUIT billing
-account, sign up [here](https://billing.huit.harvard.edu/portal/allusers/newcustomer)
-with your HarvardKey. This is already now part of PI user account role submission
-process that means PI can provide corresponding HUIT “**Customer Code**” while
-submitting [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/)
-or by submitting a new ticket at
-[the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
-under "**NERC PI Account Request**" option on **Help Topic** dropdown list.
+1. Each Harvard PI must have a HUIT billing account linked to their NetID (abc123),
+and NERC requires a HUIT "**Customer Code**" for billing purposes. To create a
+HUIT billing account, [sign up here](https://billing.huit.harvard.edu/portal/allusers/newcustomer)
+with your HarvardKey. The PI's submission of the corresponding HUIT
+"**Customer Code**" is now seamlessly integrated into the PI user account role
+submission process. This means that PIs can provide the corresponding HUIT
+"**Customer Code**" either while submitting [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/)
+or by creating a new ticket in [NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
+under the "NERC PI Account Request" option in the Help Topic dropdown list.
 
     !!! abstract "What if you already have an existing Customer Code?"
         *Please note that if you already have an existing active NERC account, you
@@ -37,36 +37,49 @@ under "**NERC PI Account Request**" option on **Help Topic** dropdown list.
         Code then you can [contact HUIT Billing](https://billing.huit.harvard.edu/portal/allusers/contactus)
         to get the required Customer Code.*
 
-2. During Resource Allocation review and approval process, we will use the HUIT
-"Customer Code" provided by the PI during step #1 to map to each approved allocations.
-Before mapping this Customer Code to Resource Allocation, we will send out an email
-to confirm with the PI or Manager(s). Additionally, there is an option for you to
-provide a new **33-digit GL Code** if you wish to override your **default GL code**,
-which may differ from the default GL code previously associated with the
-**Customer Code**.
+2. During the Resource Allocation review and approval process, we will utilize the
+HUIT "Customer Code" provided by the PI in step #1 to align it with the approved
+allocation. Before confirming the mapping of the Customer Code to the Resource
+Allocation, we will send an email to the PI to confirm its accuracy and then approve
+the requested allocation. Subsequently, after the allocation is approved, we will
+request the PI to initiate a [change request](../allocation/allocation-change-request.md)
+to input the correct "Customer Code" into the allocation's "Institution-Specific
+Code" attribute's value.
 
-    !!! info "How to view the Allocated Project Name and Allocated Project ID?"
-        By clicking on the Allocation detail page through ColdFront, you can access
-        information about the allocation of each resource, including OpenStack and
-        OpenShift as [described here](../allocation/allocation-details.md#general-user-view).
-        You will need to provide us **Allocated Project Name** and **Allocated Project
-        ID** attributes, which are located under the “Allocation Attributes”
-        section on the detail page as [described here](../allocation/allocation-details.md#pi-and-manager-view).
+    !!! danger "Very Important Note"
+        We recommend keeping your "**Institution-Specific Code**" updated at all
+        times, ensuring it accurately reflects your current and valid **Customer
+        Code**. The PI or project manager(s) have the authority to request changes
+        for updating the "Institution-Specific Code" attribute for each resource
+        allocation. They can do so by submitting a Change Request as [outlined here](../allocation/allocation-change-request.md).
 
-    Once we confirm the six-digit HUIT Customer Code for the PI and correct resource
-    allocation, the NERC admin team will create a new ServiceNow ticket by contacting
+        !!! info "How to view Project Name, Project ID & Institution-Specific Code?"
+            By clicking on the Allocation detail page through ColdFront, you can access
+            information about the allocation of each resource, including OpenStack and
+            OpenShift as [described here](../allocation/allocation-details.md#general-user-view).
+            You can review and verify **Allocated Project Name**, **Allocated Project
+            ID** and **Institution-Specific Code** attributes, which are located under
+            the "Allocation Attributes" section on the detail page as
+            [described here](../allocation/allocation-details.md#pi-and-manager-view).
+
+    Once we confirm the six-digit HUIT Customer Code for the PI and the correct
+    resource allocation, the NERC admin team will initiate the creation of a new
+    ServiceNow ticket. This will be done by reaching out to
     [HUIT Billing](https://billing.huit.harvard.edu/portal/allusers/contactus)
-    or by emailing HUIT Billing directly at
-    [huit-billing@harvard.edu](mailto:huit-billing@harvard.edu?subject=HUIT%20Customer%20Code%For%20NERC)
-    for all approved and active allocation requests. In this email, NERC admin
-    needs to specify the Customer Code and Unique Project Allocation Name. This
-    will be mapped to a unique Asset ID in the HUIT billing portal.
+    or directly emailing HUIT Billing at [huit-billing@harvard.edu](mailto:huit-billing@harvard.edu?subject=HUIT%20Customer%20Code%For%20NERC)
+    for the approved and active allocation request.
+
+    In this email, the NERC admin needs to specify the **Allocated Project ID**,
+    **Allocated Project Name**, **Customer Code**, and **PI's Email address**.
+    Then, the HUIT billing team will generate a unique **Asset ID** to be utilized
+    by the Customer's HUIT billing portal.
 
     !!! info "Important Information regarding HUIT Billing SLA"
-        Please Note, we will need PI or Manger(s) to repeat step #2 for any new
-        resource allocation(s) as well as renewed allocation(s). Also, HUIT Billing
-        SLA for new Cloud Billing asset is **2 business days**- although most requests
-        are typically completed within 8 hours.
+        Please note that we will require the PI or Manager(s) to repeat step #2
+        for any new resource allocation(s) as well as renewed allocation(s).
+        Additionally, the HUIT Billing SLA for new Cloud Billing assets is **2
+        business days**, although most requests are typically completed within
+        8 hours.
 
     !!! danger "Harvard University Security Policy Information"
         *Please note that all assets deployed to your NERC project must be compliant

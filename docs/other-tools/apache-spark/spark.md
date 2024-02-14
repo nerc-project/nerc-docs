@@ -44,7 +44,9 @@ this machine:
 
     For example:
 
-        ssh ubuntu@199.94.61.4 -A -i cloud.key
+    ```sh
+    ssh ubuntu@199.94.61.4 -A -i cloud.key
+    ```
 
 - Upon successfully accessing the machine, execute the following dependencies:
 
@@ -62,8 +64,8 @@ this machine:
     ```
 
     !!! note "Note"
-        Installing Scala means installing various command-line tools such as the Scala
-        compiler and build tools.
+        Installing Scala means installing various command-line tools such as the
+        Scala compiler and build tools.
 
 - Download and unpack Apache Spark:
 
@@ -108,11 +110,16 @@ on the arrow next to "Create Volume" and selecting "Launch as Instance".
 
     ![Launch 2 Workers From Volume Snapshot](images/launch-multiple-worker-instances.png)
 
-    !!! note "Naming and Flavor for Worker Nodes"        
+    !!! note "Naming, Security Group and Flavor for Worker Nodes"
         You can specify the "Instance Name" as "spark-worker", and for each instance,
-        it will automatically append incremental values at the end, such as `spark-worker-1` and `spark-worker-2`. Additionally, during launch, you will have the option
-        to choose your preferred flavor for the worker nodes, which can differ
-        from the master VM based on your computational requirements.
+        it will automatically append incremental values at the end, such as
+        `spark-worker-1` and `spark-worker-2`. Also, make sure you have attached
+        the [Security Groups](../../openstack/access-and-security/security-groups.md#allowing-ssh)
+        to allow **ssh** using Port 22 access to the worker instances.
+
+Additionally, during launch, you
+        will have the option to choose your preferred flavor for the worker nodes,
+        which can differ from the master VM based on your computational requirements.
 
 - Navigate to *Project -> Compute -> Instances*.
 
@@ -129,8 +136,8 @@ on the arrow next to "Create Volume" and selecting "Launch as Instance".
 
 - Switch to root user: `sudo su`
 
-- To allow SSH from **Spark master** to all other 2 **worker nodes**: [Read more here](../../openstack/create-and-connect-to-the-VM/ssh-to-the-VM/#adding-other-peoples-ssh-keys-to-the-instance)
-generate SSH key for Spark master node using:
+- To allow SSH from **Spark master** to all other 2 **worker nodes**, generate
+SSH key for Spark master node running `ssh-keygen -t rsa`:
 
     ```sh
     ssh-keygen -t rsa
@@ -157,20 +164,19 @@ generate SSH key for Spark master node using:
     +----[SHA256]-----+
     ```
 
-    !!! warning "Very Important Note"
-        Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub`
-        to other nodes's `~/.ssh/authorized_keys` file. Please make sure you are
-        logged in as `root` user by doing `sudo su` before you copy this public
-        key to the end of `~/.ssh/authorized_keys` file of the other worker nodes.
-        This will allow `ssh <other_nodes_internal_ip>` from the Spark master node's
-        terminal.
+- Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+other worker nodes's `~/.ssh/authorized_keys` file. Please make sure you are logged
+in as `root` user by doing `sudo su` before you copy this public key to the end of
+`~/.ssh/authorized_keys` file of the other worker nodes. This will allow SSH
+connections to the worker nodes from the Spark master node's terminal by using
+`ssh <other_nodes_internal_ip>`.
 
 - Update the `/etc/hosts` file to specify all three hostnames with their corresponding
 internal IP addresses.
 
     ```sh
     sudo nano /etc/hosts
-    ```   
+    ```
 
     Ensure all hosts are resolvable by adding them to `/etc/hosts`. You can modify
     the following content specifying each VM's internal IP addresses and paste
@@ -178,16 +184,18 @@ internal IP addresses.
     can use `sudo cat >> /etc/hosts` to append the content directly to the end of
     the `/etc/hosts` file.
 
-        <Master-Internal-IP> master
-        <Worker1-Internal-IP> worker1
-        <Worker2-Internal-IP> worker2
-    
+    ```sh
+    <Master-Internal-IP> master
+    <Worker1-Internal-IP> worker1
+    <Worker2-Internal-IP> worker2
+    ```
+
     !!! danger "Very Important Note"
         Make sure to use `>>` instead of `>` to avoid overwriting the existing content
         and append the new content at the end of the file.
 
     For example, the end of the `/etc/hosts` file looks like this:
-        
+
     ```sh
     cat /etc/hosts
     ...
@@ -214,11 +222,12 @@ information:
     export JAVA_HOME=<Path_of_JAVA_installation>
     ```
 
-    !!! tip "Environment Variables"        
+    !!! tip "Environment Variables"
         Executing this command: `readlink -f $(which java)` will display the path
-        to the current Java setup in your VM. For example: `/usr/lib/jvm/java-11-openjdk-amd64/bin/java`, you need to remove the last `bin/java` part, i.e. `/usr/lib/jvm/java-11-openjdk-amd64`,
-        to set it as the `JAVA_HOME` environment variable.
-        
+        to the current Java setup in your VM. For example:
+        `/usr/lib/jvm/java-11-openjdk-amd64/bin/java`, you need to remove the
+        last `bin/java` part, i.e. `/usr/lib/jvm/java-11-openjdk-amd64`, to set
+        it as the `JAVA_HOME` environment variable.
         Learn more about other Spark settings that can be configured through environment
         variables [here](https://spark.apache.org/docs/3.3.4/configuration.html#environment-variables).
 
@@ -229,7 +238,11 @@ information:
     echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> spark-env.sh
     ```
 
-- source spark-env.sh
+- Source the changed environment variables file i.e. `spark-env.sh`:
+
+```sh
+  source spark-env.sh
+```
 
 - Create a file named `slaves` in the Spark configuration directory (i.e.,
 `/usr/local/spark/conf/`) that specifies all 3 hostnames (nodes) as specified in
@@ -252,15 +265,12 @@ information:
     cd /usr/local/spark
 
     # Start all hosts (nodes) including master and workers
-    sudo ./sbin/start-all.sh
+    ./sbin/start-all.sh
     ```
 
     !!! info "How to Stop All Spark Cluster"
-        To stop all of the Spark cluster nodes, execute the following command from
-        `/usr/local/spark`:
-        ```sh
-        sudo ./sbin/stop-all.sh
-        ```
+        To stop all of the Spark cluster nodes, execute `./sbin/stop-all.sh`
+        command from `/usr/local/spark`.
 
 ## Connect to the Spark WebUI
 
@@ -268,14 +278,7 @@ Apache Spark provides a suite of
 [web user interfaces (WebUIs)](https://spark.apache.org/docs/latest/web-ui.html)
 that you can use to monitor the status and resource consumption of your Spark cluster.
 
-!!! info "Different types of Spark Web UI"
-    Apache Spark provides the following UIs:
-
-    - Master web UI
-    - Worker web UI
-    - Application web UI
-
-- You can connect to the **Master web UI** using
+- You can connect to the **Spark web UI** using
 [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
 i.e. **Local Port Forwarding** from your local machine's terminal by running:
 
@@ -289,28 +292,20 @@ i.e. **Local Port Forwarding** from your local machine's terminal by running:
 
     For example:
 
-        ssh -N -L 8080:localhost:8080 ubuntu@199.94.61.4 -i ~/.ssh/cloud.key
+    ```sh
+    ssh -N -L 8080:localhost:8080 ubuntu@199.94.61.4 -i ~/.ssh/cloud.key
+    ```
 
 - Once the SSH Tunneling is successful, please do not close or stop the terminal
-where you are running the SSH Tunneling. Instead, log in to the Master web UI
-using your web browser: `http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8080`
+where you are running the SSH Tunneling. Instead, log in to the Spark web UI
+using your web browser: `http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8080`.
 
-The Master web UI offers an overview of the Spark cluster, showcasing the following
-details:
+The Spark web UI appears as shown below:
 
-- Master URL and REST URL
-- Available CPUs and memory for the Spark cluster
-- Status and allocated resources for each worker
-- Details on active and completed applications, including their status, resources,
-and duration
-- Details on active and completed drivers, including their status and resources
+![The Spark web UI](images/spark-web-ui.png)
 
-The Master web UI appears as shown below:
-
-![The Master web UI](images/spark-master-web-ui.png)
-
-The Master web UI also provides an overview of the applications. Through the
-Master web UI, you can easily identify the allocated CPU and memory resources
+The Spark web UI also provides an overview of the applications. Through the
+Spark web UI, you can easily identify the allocated vCPU (Core) and memory resources
 for both the Spark cluster and individual applications.
 
 ## Preparing a Job for Execution and Examination
@@ -332,7 +327,8 @@ for both the Spark cluster and individual applications.
 
 - **Cluster Mode Job:**
 
-    Let's submit a longer and more complex job with many tasks that will be distributed among the multi-node cluster, and then view the Spark web UI:
+    Let's submit a longer and more complex job with many tasks that will be
+    distributed among the multi-node cluster, and then view the Spark web UI:
 
     ```sh
     ./bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://master:7077 examples/jars/spark-examples_2.13-$SPARK_VERSION.jar 1000

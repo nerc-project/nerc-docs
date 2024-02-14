@@ -33,7 +33,7 @@ cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB storage - also [assign Floating IP](..
 - 2 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
 cpu-su.1 flavor with 1vCPU, 4GB RAM, 20GB storage.
 - ssh access to all machines: [Read more here](../../../openstack/../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-on how to setup SSH to your remote VMs.
+on how to set up SSH to your remote VMs.
 
 ## Networking
 

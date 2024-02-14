@@ -148,7 +148,7 @@ from are set to *Shut Down* (highlighted in yellow in image above).
 1. SSH into the VM created at the top of this page. For steps on how to do
 this please see instructions [here][VMCon].
 
-[VMCon]: https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/
+[VMCon]: https://nerc-project.github.io/nerc-docs/openstack/create-and-connect-to-the-VM/ssh-to-the-VM/
 
 ### Create EC2 credentials in MOC & NERC
 

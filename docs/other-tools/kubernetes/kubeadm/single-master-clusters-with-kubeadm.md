@@ -25,7 +25,7 @@ for this purpose:
  4GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to both of the worker nodes.
 - ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-on how to setup SSH to your remote VMs.
+on how to set up SSH to your remote VMs.
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
     i. To be used by the master nodes:

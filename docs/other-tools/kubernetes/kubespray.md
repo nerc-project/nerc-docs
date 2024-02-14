@@ -15,8 +15,8 @@ to the master node.
 - 1 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu
 OS image, cpu-su.1 flavor with 1vCPU, 4GB RAM, 20GB storage.
 - ssh access to all machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-on how to setup SSH to your remote VMs.
-- To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM/#adding-other-peoples-ssh-keys-to-the-instance)
+on how to set up SSH to your remote VMs.
+- To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../openstack/create-and-connect-to-the-VM/ssh-to-the-VM.md#adding-other-peoples-ssh-keys-to-the-instance)
     Generate SSH key for Ansible master node using:
 
 ```sh

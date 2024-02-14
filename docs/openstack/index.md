@@ -26,7 +26,7 @@ the list below.
 - [Available Images](create-and-connect-to-the-VM/images.md)
 - [Available NOVA Flavors](create-and-connect-to-the-VM/flavors.md)
 - [Assign a Floating IP](create-and-connect-to-the-VM/assign-a-floating-IP.md)
-- [SSH to Cloud VM](create-and-connect-to-the-VM/ssh-to-cloud-VM.md)
+- [SSH to the VM](create-and-connect-to-the-VM/ssh-to-the-VM.md)
 
 ## OpenStack CLI
 

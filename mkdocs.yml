@@ -52,14 +52,15 @@ nav:
           - Available NOVA Flavors: openstack/create-and-connect-to-the-VM/flavors.md
           - Assign a Floating IP: openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md
           - Connect to the VM:
-              - SSH to Cloud VM: openstack/create-and-connect-to-the-VM/ssh-to-cloud-VM.md
+              - SSH to the VM: openstack/create-and-connect-to-the-VM/ssh-to-the-VM.md
               - Bastion Host based SSH: openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md
-              - OpenVPN:
-                  - About OpenVPN: openstack/create-and-connect-to-the-VM/openvpn/index.md
-                  - OpenVPN GUI for Windows: openstack/create-and-connect-to-the-VM/openvpn/openvpn_gui_for_windows.md
-                  - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/openvpn/tunnelblick_for_macos.md
-              - WireGuard: openstack/create-and-connect-to-the-VM/wireguard/index.md
-              - sshuttle: openstack/create-and-connect-to-the-VM/sshuttle/index.md
+              - Using VPN:
+                - OpenVPN:
+                  - About OpenVPN: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/index.md
+                  - OpenVPN GUI for Windows: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/openvpn_gui_for_windows.md
+                  - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/tunnelblick_for_macos.md
+                - WireGuard: openstack/create-and-connect-to-the-VM/using-vpn/wireguard/index.md
+                - sshuttle: openstack/create-and-connect-to-the-VM/using-vpn/sshuttle/index.md
       - OpenStack CLI:
           - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
           - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md

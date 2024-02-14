@@ -95,6 +95,8 @@ on desired instance as shown below:
     We call a snapshot taken against a running instance with no downtime a
     "live snapshot". These snapshots are simply disk-only snapshots, and may be
     inconsistent if the instance's OS is not aware of the snapshot being taken.
+    This is why we highly recommend, if possible, to **Shut Off** the instance
+    before creating snapshots.
 
 ### How to restore from Instance snapshot
 
@@ -129,7 +131,8 @@ snapshot takes a few seconds and it can be done while the volume is in-use.
 
 !!! warning "Warning"
     Taking snapshots of volumes that are in use or attached to active instances
-    can result in data inconsistency on the volume.
+    can result in data inconsistency on the volume. This is why we highly recommend,
+    if possible, to **Shut Off** the instance before creating snapshots.
 
 Once you have the snapshot, you can use it to create other volumes based on
 this snapshot. Creation time for these volumes may depend on the type of the
@@ -215,8 +218,8 @@ In the dialog box that opens, enter a snapshot name and a brief description.
 
 ### How to restore from Volume snapshot
 
-Once a snapshot is created, you can manage them under the Volumes menu in the
-Horizon dashboard under Volume Snapshots.
+Once a snapshot is created and is in "Available" status, you can view and manage
+it under the Volumes menu in the Horizon dashboard under Volume Snapshots.
 
 Navigate to Project -> Volumes -> Snapshots.
 

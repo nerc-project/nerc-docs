@@ -68,16 +68,16 @@ need to log in via the console in the web dashboard.
 For example, if your network connections aren't working correctly.
 
 !!! info "Setting a password is necessary to use Remote Desktop Protocol (RDP)"
-    [Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)
-    (RDP) is widely used for Windows remote connections, but you can also access
+    [Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)(RDP)
+    is widely used for Windows remote connections, but you can also access
     and interact with the graphical user interface of a remote Linux server by
     using a tool like [xrdp](http://xrdp.org/), an open-source implementation of
     the RDP server. You can use `xrdp` to remotely access the Linux desktop. To
     do so, you need to utilize the RDP client. Moreover, xrdp delivers a login
     to the remote machines employing Microsoft RDP. This is why a user with
     the password is necessary to access the VM. You can refer to [this guide](#how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu)
-    on how to install and configure an RDP server using xrdp on a Ubuntu server
-    and access it using an RDP client from your local machine.
+    on how to install and configure a RDP server using xrdp on a Ubuntu server
+    and access it using a RDP client from your local machine.
 
 Since you are not using it to log in over SSH or to sudo, it doesn't really
 matter how hard it is to type, and we recommend using a randomly-generated
@@ -250,8 +250,8 @@ to review the default configuration of xrdp, which is stored under `/etc/xrdp/xr
 xrdp server. The configuration file can be modified and customized to meet the
 RDP connection requirements.
 
-Add a new security group with a RDP (port 3389) rule open to the public for an
-RDP connection and attach that security group to your instance.
+Add a new security group with a RDP (port 3389) rule open to the public for a
+RDP connection and attach that security group to your instance as [described here](../access-and-security/security-groups.md#allowing-rdp).
 
 !!! info "How to Update Security Group(s) on a Running VM?"
     Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
@@ -268,7 +268,7 @@ You should now be able to connect to the Ubuntu VM via xrdp.
 
 #### Testing the RDP Connection on Windows
 
-If you are using Windows as a local desktop, Windows users have an RDP connection
+If you are using Windows as a local desktop, Windows users have a RDP connection
 application by default on their machines.
 
 Enter your VM's Floating IP and username into the fillable text boxes for Computer

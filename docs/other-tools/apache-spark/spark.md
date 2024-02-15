@@ -70,7 +70,7 @@ this machine:
 - Download and unpack Apache Spark:
 
     ```sh
-    SPARK_VERSION="3.3.4"
+    SPARK_VERSION="3.4.2"
     APACHE_MIRROR="dlcdn.apache.org"
 
     wget https://$APACHE_MIRROR/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop3-scala2.13.tgz
@@ -82,6 +82,36 @@ this machine:
         Please ensure you are using the latest Spark version by modifying the
         `SPARK_VERSION` in the above script. Additionally, verify that the version
         exists on the `APACHE_MIRROR` website.
+
+- Create an SSH/RSA Key by running `ssh-keygen -t rsa` without using any passphrase:
+
+    ```sh
+    ssh-keygen -t rsa
+
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/ubuntu/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /home/ubuntu/.ssh/id_rsa
+    Your public key has been saved in /home/ubuntu/.ssh/id_rsa.pub
+    The key fingerprint is:
+    SHA256:8i/TVSCfrkdV4+Jyqc00RoZZFSHNj8C0QugmBa7RX7U ubuntu@spark-master
+    The key's randomart image is:
+    +---[RSA 3072]----+
+    |      .. ..o..++o|
+    |     o  o.. +o.+.|
+    |    . +o  .o=+.oo|
+    |     +.oo  +o++..|
+    |    o EoS  .+oo  |
+    |     . o   .+B   |
+    |        .. +O .  |
+    |        o.o..o   |
+    |         o..     |
+    +----[SHA256]-----+
+    ```
+
+- Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+the `~/.ssh/authorized_keys` file.
 
 ### Create a Volume Snapshot of the master VM
 
@@ -134,43 +164,6 @@ Additionally, during launch, you
 
 - SSH login into the master VM again.
 
-- Switch to root user: `sudo su`
-
-- To allow SSH from **Spark master** to all other 2 **worker nodes**, generate
-SSH key for Spark master node running `ssh-keygen -t rsa`:
-
-    ```sh
-    ssh-keygen -t rsa
-
-    Generating public/private rsa key pair.
-    Enter file in which to save the key (/root/.ssh/id_rsa):
-    Enter passphrase (empty for no passphrase):
-    Enter same passphrase again:
-    Your identification has been saved in /root/.ssh/id_rsa
-    Your public key has been saved in /root/.ssh/id_rsa.pub
-    The key fingerprint is:
-    SHA256:OMsKP7EmhT400AJA/KN1smKt6eTaa3QFQUiepmj8dxroot@ansible-master
-    The key's randomart image is:
-    +---[RSA 3072]----+
-    |=o.oo.           |
-    |.o...            |
-    |..=  .           |
-    |=o.= ...         |
-    |o=+.=.o SE       |
-    |.+*o+. o. .      |
-    |.=== +o. .       |
-    |o+=o=..          |
-    |++o=o.           |
-    +----[SHA256]-----+
-    ```
-
-- Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
-other worker nodes's `~/.ssh/authorized_keys` file. Please make sure you are logged
-in as `root` user by doing `sudo su` before you copy this public key to the end of
-`~/.ssh/authorized_keys` file of the other worker nodes. This will allow SSH
-connections to the worker nodes from the Spark master node's terminal by using
-`ssh <other_nodes_internal_ip>`.
-
 - Update the `/etc/hosts` file to specify all three hostnames with their corresponding
 internal IP addresses.
 
@@ -197,11 +190,11 @@ internal IP addresses.
     For example, the end of the `/etc/hosts` file looks like this:
 
     ```sh
-    cat /etc/hosts
+    sudo cat /etc/hosts
     ...
-    192.168.0.72 master
-    192.168.0.215 worker1
-    192.168.0.222 worker2
+    192.168.0.46 master
+    192.168.0.26 worker1
+    192.168.0.136 worker2
     ```
 
 - Verify that you can SSH into both worker nodes by using `ssh worker1` and
@@ -229,27 +222,27 @@ information:
         last `bin/java` part, i.e. `/usr/lib/jvm/java-11-openjdk-amd64`, to set
         it as the `JAVA_HOME` environment variable.
         Learn more about other Spark settings that can be configured through environment
-        variables [here](https://spark.apache.org/docs/3.3.4/configuration.html#environment-variables).
+        variables [here](https://spark.apache.org/docs/3.4.2/configuration.html#environment-variables).
 
     For example:
 
     ```sh
-    echo "export SPARK_MASTER_HOST='192.168.0.72'" >> spark-env.sh
+    echo "export SPARK_MASTER_HOST='192.168.0.46'" >> spark-env.sh
     echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> spark-env.sh
     ```
 
 - Source the changed environment variables file i.e. `spark-env.sh`:
 
-```sh
-  source spark-env.sh
-```
+    ```sh
+    source spark-env.sh
+    ```
 
 - Create a file named `slaves` in the Spark configuration directory (i.e.,
 `/usr/local/spark/conf/`) that specifies all 3 hostnames (nodes) as specified in
 `/etc/hosts`:
 
     ```sh
-    sudo cat > slaves
+    sudo cat slaves
     master
     worker1
     worker2
@@ -278,7 +271,11 @@ Apache Spark provides a suite of
 [web user interfaces (WebUIs)](https://spark.apache.org/docs/latest/web-ui.html)
 that you can use to monitor the status and resource consumption of your Spark cluster.
 
-- You can connect to the **Spark web UI** using
+!!! info "Different types of Spark Web UI"
+    Apache Spark provides different web UIs: **Master web UI**, **Worker web UI**,
+    and **Application web UI**.
+
+- You can connect to the **Master web UI** using
 [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
 i.e. **Local Port Forwarding** from your local machine's terminal by running:
 
@@ -297,24 +294,35 @@ i.e. **Local Port Forwarding** from your local machine's terminal by running:
     ```
 
 - Once the SSH Tunneling is successful, please do not close or stop the terminal
-where you are running the SSH Tunneling. Instead, log in to the Spark web UI
+where you are running the SSH Tunneling. Instead, log in to the Master web UI
 using your web browser: `http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8080`.
 
-The Spark web UI appears as shown below:
+The Master web UI offers an overview of the Spark cluster, showcasing the following
+details:
 
-![The Spark web UI](images/spark-web-ui.png)
+- Master URL and REST URL
+- Available CPUs and memory for the Spark cluster
+- Status and allocated resources for each worker
+- Details on active and completed applications, including their status, resources,
+and duration
+- Details on active and completed drivers, including their status and resources
 
-The Spark web UI also provides an overview of the applications. Through the
-Spark web UI, you can easily identify the allocated vCPU (Core) and memory resources
-for both the Spark cluster and individual applications.
+The Master web UI appears as shown below when you navigate to `http://localhost:<Your_Preferred_Port>`
+i.e. `http://localhost:8080` from your web browser:
 
-## Preparing a Job for Execution and Examination
+![The Master web UI](images/spark-web-ui.png)
+
+The Master web UI also provides an overview of the applications. Through the
+Master web UI, you can easily identify the allocated vCPU (Core) and memory
+resources for both the Spark cluster and individual applications.
+
+## Preparing Jobs for Execution and Examination
 
 - To run jobs from `/usr/local/spark`, execute the following commands:
 
     ```sh
     cd /usr/local/spark
-    SPARK_VERSION="3.3.4"
+    SPARK_VERSION="3.4.2"
     ```
 
 - **Single Node Job:**
@@ -328,18 +336,20 @@ for both the Spark cluster and individual applications.
 - **Cluster Mode Job:**
 
     Let's submit a longer and more complex job with many tasks that will be
-    distributed among the multi-node cluster, and then view the Spark web UI:
+    distributed among the multi-node cluster, and then view the Master web UI:
 
     ```sh
     ./bin/spark-submit --class org.apache.spark.examples.SparkPi --master spark://master:7077 examples/jars/spark-examples_2.13-$SPARK_VERSION.jar 1000
     ```
 
-    While the job is running, you will see a similar view on the Spark web UI under
+    While the job is running, you will see a similar view on the Master web UI under
     the "Running Applications" section:
 
     ![Spark Running Application](images/spark-running-applications.png)
 
     Once the job is completed, it will show up under the "Completed Applications"
-    section on the Spark web UI.
+    section on the Master web UI as shown below:
+
+    ![Spark Completed Application](images/spark-completed-applications.png)
 
 ---

@@ -82,7 +82,7 @@ this machine:
         Please ensure you are using the latest Spark version by modifying the
         `SPARK_VERSION` in the above script. Additionally, verify that the version
         exists on the `APACHE_MIRROR` website. Please note the value of `SPARK_VERSION`
-        as we will need it during [Preparing Jobs for Execution and Examination](#preparing-jobs-for-execution-and-examination).
+        as you will need it during [Preparing Jobs for Execution and Examination](#preparing-jobs-for-execution-and-examination).
 
 - Create an SSH/RSA Key by running `ssh-keygen -t rsa` without using any passphrase:
 

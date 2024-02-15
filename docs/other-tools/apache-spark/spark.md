@@ -81,7 +81,8 @@ this machine:
     !!! warning "Very Important Note"
         Please ensure you are using the latest Spark version by modifying the
         `SPARK_VERSION` in the above script. Additionally, verify that the version
-        exists on the `APACHE_MIRROR` website.
+        exists on the `APACHE_MIRROR` website. Please note the value of `SPARK_VERSION`
+        as we will need it during [Preparing Jobs for Execution and Examination](#preparing-jobs-for-execution-and-examination).
 
 - Create an SSH/RSA Key by running `ssh-keygen -t rsa` without using any passphrase:
 
@@ -153,9 +154,9 @@ Additionally, during launch, you
 
 - Navigate to *Project -> Compute -> Instances*.
 
-- Start the shut down master VM, click *Action -> Start Instance*.
+- Restart the shutdown master VM, click *Action -> Start Instance*.
 
-- The final sets up for our Spark cluster looks like this, with 1 master node and
+- The final set up for our Spark cluster looks like this, with 1 master node and
 2 worker nodes:
 
     ![Spark Cluster VMs](images/spark-nodes.png)
@@ -325,9 +326,14 @@ resources for both the Spark cluster and individual applications.
     SPARK_VERSION="3.4.2"
     ```
 
+    !!! warning "Very Important Note"
+        Please ensure you are using the same Spark version that you have
+        [downloaded and installed previously](#setup-a-master-vm) as the value
+        of `SPARK_VERSION` in the above script.
+
 - **Single Node Job:**
 
-    Let's quickly start run a simple job:
+    Let's quickly start to run a simple job:
 
     ```sh
     ./bin/spark-submit --driver-memory 2g --class org.apache.spark.examples.SparkPi examples/jars/spark-examples_2.13-$SPARK_VERSION.jar 50

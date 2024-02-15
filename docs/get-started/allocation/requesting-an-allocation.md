@@ -5,9 +5,27 @@ by clicking the "Request Resource Allocation" button as shown below:
 
 ![Requesting an Allocation](images/new_resource_allocation.png)
 
+On the shown page, you will be able to choose either *OpenStack Resource Allocation*
+or *OpenShift Resource Allocation* by specifying either **NERC (OpenStack)** or
+**NERC-OCP (OpenShift)** in the **Resource** dropdown option. **Note:** The
+first option i.e. **NERC (OpenStack)**, is selected by default.
+
 ## Request A New OpenStack Resource Allocation for an OpenStack Project
 
 ![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)
+
+If users have already been added to the project as
+[described here](manage-users-to-a-project.md), the **Users** selection section
+will be displayed as shown below:
+
+![Request A New OpenStack Resource Allocation Selecting Users](images/coldfront-request-new-openstack-allocation-with-users.png)
+
+In this section, the project PI/manager(s) can choose user(s) from the project
+to be included in this allocation before clicking the "Submit" button.
+
+!!! tip "Read the End User License Agreement Before Submission"
+    You should read the shown End User License Agreement (the "Agreement").
+    By clicking the "Submit" button, you agree to the Terms and Conditions.
 
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
     Ensure to choose **NERC (OpenStack)** in the Resource option and specify your
@@ -49,6 +67,19 @@ integer value that corresponds to multiple OpenStack resource quotas. For exampl
 ## Request A New OpenShift Resource Allocation for an OpenShift project
 
 ![Request A New OpenShift Resource Allocation](images/coldfront-request-new-openshift-allocation.png)
+
+If users have already been added to the project as
+[described here](manage-users-to-a-project.md), the **Users** selection section
+will be displayed as shown below:
+
+![Request A New OpenShift Resource Allocation Selecting Users](images/coldfront-request-new-openshift-allocation-with-users.png)
+
+In this section, the project PI/manager(s) can choose user(s) from the project
+to be included in this allocation before clicking the "Submit" button.
+
+!!! tip "Read the End User License Agreement Before Submission"
+    You should read the shown End User License Agreement (the "Agreement").
+    By clicking the "Submit" button, you agree to the Terms and Conditions.
 
 ### Resource Allocation Quotas for OpenShift Project
 

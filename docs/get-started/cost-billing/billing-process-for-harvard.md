@@ -27,8 +27,8 @@ with your HarvardKey. The PI's submission of the corresponding HUIT
 "**Customer Code**" is now seamlessly integrated into the PI user account role
 submission process. This means that PIs can provide the corresponding HUIT
 "**Customer Code**" either while submitting [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/)
-or by creating a new ticket in [NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
-under the "NERC PI Account Request" option in the Help Topic dropdown list.
+or by submitting a new ticket at [NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
+under the "NERC PI Account Request" option in the **Help Topic** dropdown menu.
 
     !!! abstract "What if you already have an existing Customer Code?"
         *Please note that if you already have an existing active NERC account, you

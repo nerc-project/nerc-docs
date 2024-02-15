@@ -114,7 +114,7 @@ Here, you can choose any port that is available on your machine as `<Your_Prefer
 and then VM's assigned Floating IP as `<Floating-IP>` and associated Private
 Key pair attached to the VM as `<Path_To_Your_Private_Key>`.
 
-For e.g. `ssh -N -L 8081:localhost:81 ubuntu@199.94.60.24 -i ~/.ssh/my_private.key`
+For e.g. `ssh -N -L 8081:localhost:81 ubuntu@199.94.60.24 -i ~/.ssh/cloud.key`
 
 vii. Once the SSH Tunneling is successful, log in to the Nginx Proxy Manager
 Admin UI on your web browser:

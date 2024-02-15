@@ -46,7 +46,7 @@ IP addresses or security groups to define the allowed sources.
 To allow access to your VM for things like SSH, you will need to create a
 security group and add rules to it.
 
-Click on "Create Security Group"  Give your new group a name, and a brief description.
+Click on "Create Security Group". Give your new group a name, and a brief description.
 
 ![Create a Security Group](images/create_security_group.png)
 
@@ -108,7 +108,7 @@ Instances will now accept all incoming ICMP packets.
 To allow access to your VM for things like Remote Desktop Protocol (RDP), you will
 need to create a security group and add rules to it.
 
-Click on "Create Security Group"  Give your new group a name, and a brief description.
+Click on "Create Security Group". Give your new group a name, and a brief description.
 
 ![Create a RDP Security Group](images/create_rdp_security_group.png)
 

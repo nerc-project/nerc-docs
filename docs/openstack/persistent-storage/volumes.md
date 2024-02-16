@@ -92,7 +92,7 @@ safeguarding or recovering critical states and data from your instance.
 
     Conversely, if you request a reduction in the **Storage quotas**, specifically
     the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes", through
-    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#allocation-change-requests-for-openstack-project),
+    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
     your invoicing will be adjusted accordingly when the request is approved or
     processed. In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.

@@ -31,7 +31,7 @@ you want to delete and click **Delete Application** to delete it as shown below:
 
 Alternatively, you can delete the resource objects by using the
 **oc delete** command from the command line terminal. Make sure you have the `oc`
-CLI tool installed and configured on your local machine following [these steps](../logging-in/install-the-openshift-cli/#first-time-usage).
+CLI tool installed and configured on your local machine following [these steps](../logging-in/setup-the-openshift-cli.md#first-time-usage).
 
 !!! info "How to select resource object?"
     You can delete a single resource object by name, or delete a set of resource

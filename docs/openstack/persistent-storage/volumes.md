@@ -86,7 +86,7 @@ safeguarding or recovering critical states and data from your instance.
     invoicing for the extra storage will take place upon fulfillment/approval of
     your request as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
     Conversely, if you request a reduction in storage through a
-    [change request using ColdFront](../../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project),
+    [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
     your invoicing will be adjusted accordingly when the request is processed.
     In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.

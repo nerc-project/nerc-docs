@@ -19,7 +19,7 @@ Once a VM is created, its name is set based on [user specified Instance Name](..
 while launching an instance using Horizon dashboard or <Instance_Name> specified
 in `openstack server create ...` command [using openstack client](../openstack-cli/launch-a-VM-using-openstack-CLI.md#launch-an-instance-from-an-image).
 
-To rename a VM, Navigate to Project -> Compute -> Instances.
+To rename a VM, navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -178,7 +178,7 @@ can be run:
 
 or, using Horizon dashboard:
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -239,7 +239,7 @@ Then the secondary disk is removed as shown below:
 
 Alternatively, using Horizon dashboard:
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -280,7 +280,7 @@ can be run:
 
 or, using Horizon dashboard:
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -309,6 +309,6 @@ The quota associated with this virtual machine will be returned to the project
 and you can review and verify that looking at your
 [OpenStack dashboard overview](../logging-in/dashboard-overview.md#compute-panel).
 
-Navigate to Project -> Compute -> Overview.
+- Navigate to *Project -> Compute -> Overview*.
 
 ---

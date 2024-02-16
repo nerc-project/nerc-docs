@@ -14,7 +14,7 @@ The steps are as follows:
 
 Once you're logged in to NERC's Horizon dashboard.
 
-Navigate to Project -> Volumes -> Volumes.
+Navigate to *Project -> Volumes -> Volumes*.
 
 ![Extending Volume](images/extending_volumes.png)
 

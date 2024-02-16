@@ -13,7 +13,7 @@ to a project and can only be attached to one virtual machine at a time.
 
 Once you're logged in to NERC's Horizon dashboard.
 
-Navigate to Project -> Volumes -> Volumes.
+Navigate to *Project -> Volumes -> Volumes*.
 
 Select the volume that you want to transfer and then click the dropdown next to
 the "Edit volume" and choose "Create Transfer".

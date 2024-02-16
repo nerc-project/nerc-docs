@@ -26,7 +26,7 @@ For instructions on deleting volume(s), please refer to [this documentation](../
 
 To delete snapshot(s), if that snapshot is not used for any running instance.
 
-Navigate to Project -> Volumes -> Snapshots.
+Navigate to *Project -> Volumes -> Snapshots*.
 
 ![Delete Snapshots](images/delete-snapshots.png)
 
@@ -37,7 +37,7 @@ Navigate to Project -> Volumes -> Snapshots.
 
 ## Delete all custom built Images and Instance Snapshot built Images
 
-Navigate to Project -> Compute -> Images.
+Navigate to *Project -> Compute -> Images*.
 
 Select all of the custom built that have Visibility set as "Private" images to delete.
 
@@ -45,7 +45,7 @@ Select all of the custom built that have Visibility set as "Private" images to d
 
 To review all Network and its connectivities, you need to:
 
-Navigate to Project -> Network -> Network Topology.
+Navigate to *Project -> Network -> Network Topology*.
 
 This will shows all view of current Network in your project in Graph or Topology
 view. Make sure non instances are connected to your private network, which is
@@ -58,12 +58,12 @@ First, delete all other Routers used to create private networks, which is
 setup by following [this documentation](../advanced-openstack-topics/setting-up-a-network/create-a-router.md)
 except `default_router` from:
 
-Navigate to Project -> Network -> Routers.
+Navigate to *Project -> Network -> Routers*.
 
 First, delete all other Routers used to create private networks except `default_network`
 and `provider` then only you will be able to delete the Networks from:
 
-Navigate to Project -> Network -> Networks.
+Navigate to *Project -> Network -> Networks*.
 
 !!! warn "Unable to Delete Networks"
     First delete all instances and then delete all routers then only you will be
@@ -71,7 +71,7 @@ Navigate to Project -> Network -> Networks.
 
 ## Release all Floating IPs
 
-Navigate to Project -> Network -> Floating IPs.
+Navigate to *Project -> Network -> Floating IPs*.
 
 ![Release all Floating IPs](images/release_floating_ips.png)
 
@@ -83,7 +83,7 @@ IP pool, please refer to [this documentation](../create-and-connect-to-the-VM/as
 First, delete all other security groups except `default` also make sure the `default`
 security group does not have any extra rules. To view all Security Groups:
 
-Navigate to Project -> Network -> Security Groups.
+Navigate to *Project -> Network -> Security Groups*.
 
 !!! warn "Unable to Delete Security Groups"
     First delete all instances and then only you will be able to delete the
@@ -92,7 +92,7 @@ Navigate to Project -> Network -> Security Groups.
 
 ## Delete all of your stored Key Pairs
 
-Navigate to Project -> Compute -> Key Pairs.
+Navigate to *Project -> Compute -> Key Pairs*.
 
 !!! warn "Unable to Delete Key Pairs"
     First delete all instances that are using the selected Key Pairs then only you
@@ -105,7 +105,7 @@ For instructions on deleting bucket(s) along with all objects, please refer to
 
 To delete snapshot(s), if that snapshot is not used for any running instance.
 
-Navigate to Project -> Object Store -> Containers.
+Navigate to *Project -> Object Store -> Containers*.
 
 ![Delete Containers](images/delete-containers.png)
 
@@ -232,7 +232,7 @@ After removing all OpenStack resources and updating the Storage Quotas to set th
 to zero (0), you can review and verify that these changes are reflected in your
 Horizon Dashboard Overview.
 
-Navigate to Project -> Compute -> Overview.
+Navigate to *Project -> Compute -> Overview*.
 
 ![Horizon Dashboard](images/horizon_dashboard.png)
 

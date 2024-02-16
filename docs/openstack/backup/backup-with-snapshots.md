@@ -102,7 +102,7 @@ on desired instance as shown below:
 
 Once created, you can find the image listed under Images in the Horizon dashboard.
 
-Navigate to Project -> Compute -> Images.
+Navigate to *Project -> Compute -> Images*.
 
 ![Snapshot Instance Created](images/instance-image-snapshot.png)
 
@@ -221,7 +221,7 @@ In the dialog box that opens, enter a snapshot name and a brief description.
 Once a snapshot is created and is in "Available" status, you can view and manage
 it under the Volumes menu in the Horizon dashboard under Volume Snapshots.
 
-Navigate to Project -> Volumes -> Snapshots.
+Navigate to *Project -> Volumes -> Snapshots*.
 
 ![Volume Snapshots List](images/volume-snapshots-list.png)
 
@@ -244,7 +244,7 @@ In the dialog box that opens, enter a volume name and a brief description.
 
 Any snapshots made into volumes can be found under Volumes:
 
-Navigate to Project -> Volumes -> Volumes.
+Navigate to *Project -> Volumes -> Volumes*.
 
 ![New Volume from Volume Snapshot](images/new-volume-from-snapshot.png)
 

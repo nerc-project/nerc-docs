@@ -5,21 +5,39 @@ by clicking the "Request Resource Allocation" button as shown below:
 
 ![Requesting an Allocation](images/new_resource_allocation.png)
 
+On the shown page, you will be able to choose either *OpenStack Resource Allocation*
+or *OpenShift Resource Allocation* by specifying either **NERC (OpenStack)** or
+**NERC-OCP (OpenShift)** in the **Resource** dropdown option. **Note:** The
+first option i.e. **NERC (OpenStack)**, is selected by default.
+
 ## Request A New OpenStack Resource Allocation for an OpenStack Project
 
 ![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)
 
+If users have already been added to the project as
+[described here](manage-users-to-a-project.md), the **Users** selection section
+will be displayed as shown below:
+
+![Request A New OpenStack Resource Allocation Selecting Users](images/coldfront-request-new-openstack-allocation-with-users.png)
+
+In this section, the project PI/manager(s) can choose user(s) from the project
+to be included in this allocation before clicking the "Submit" button.
+
+!!! tip "Read the End User License Agreement Before Submission"
+    You should read the shown End User License Agreement (the "Agreement").
+    By clicking the "Submit" button, you agree to the Terms and Conditions.
+
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
-    Ensure to choose **NERC (OpenStack)** in the Resource option and specify your
+    Ensure you choose **NERC (OpenStack)** in the Resource option and specify your
     anticipated computing units. Each allocation, whether requested or approved,
-    will be billed for the associated costs based on the **pay-as-you-go** model.
-    The exception is the **Storage quotas**, specifically the "OpenStack Volume
-    GB Quota" where the cost is determined by the requested and approved allocation
-    values to reserve storage from the total NESE storage pool. If you have common
-    questions or need more information, refer to our
+    will be billed based on the **pay-as-you-go** model. The exception is for
+    **Storage quotas**, specifically the "OpenStack Volume GB Quota", where the
+    cost is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
+    to reserve storage from the total NESE storage pool. If you have common questions
+    or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current resource
-    allocations within your project by following this [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
+    allocations within your project by following [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
     later on.
 
 ### Resource Allocation Quotas for OpenStack Project
@@ -50,6 +68,19 @@ integer value that corresponds to multiple OpenStack resource quotas. For exampl
 
 ![Request A New OpenShift Resource Allocation](images/coldfront-request-new-openshift-allocation.png)
 
+If users have already been added to the project as
+[described here](manage-users-to-a-project.md), the **Users** selection section
+will be displayed as shown below:
+
+![Request A New OpenShift Resource Allocation Selecting Users](images/coldfront-request-new-openshift-allocation-with-users.png)
+
+In this section, the project PI/manager(s) can choose user(s) from the project
+to be included in this allocation before clicking the "Submit" button.
+
+!!! tip "Read the End User License Agreement Before Submission"
+    You should read the shown End User License Agreement (the "Agreement").
+    By clicking the "Submit" button, you agree to the Terms and Conditions.
+
 ### Resource Allocation Quotas for OpenShift Project
 
 The amount of quota to start out a resource allocation after approval, can be
@@ -69,17 +100,17 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
 | `Ephemeral Storage(GB)`  | 5                                     |
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
-    Ensure to choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
-    the first option i.e. **NERC (OpenStack)** is selected by default!) and specify
+    Ensure you choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
+    the first option, i.e. **NERC (OpenStack)** is selected by default!) and specify
     your anticipated computing units. Each allocation, whether requested or approved,
-    will be billed for the associated costs based on the **pay-as-you-go** model.
-    The exception is the **Storage quotas**, specifically the "OpenShift Request
-    on Storage Quota (GB)" where the cost is determined by the requested and
-    approved allocation values to reserve storage from the total NESE storage pool.
-    If you have common questions or need more information, refer to our
+    will be billed based on the **pay-as-you-go** model. The exception is for
+    **Storage quotas**, specifically the "OpenShift Request on Storage Quota (GB)",
+    where the cost is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
+    to reserve storage from the total NESE storage pool. If you have common
+    questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
-    answers. Keep in mind that you can easily scale and expand your current
-    resource allocations within your project by following this [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)
+    answers. Keep in mind that you can easily scale and expand your current resource
+    allocations within your project by following [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)
     later on.
 
 ---

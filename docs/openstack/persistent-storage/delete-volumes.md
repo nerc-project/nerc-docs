@@ -4,7 +4,7 @@
 
 Once you're logged in to NERC's Horizon dashboard.
 
-Navigate to Project -> Volumes -> Volumes.
+Navigate to *Project -> Volumes -> Volumes*.
 
 Select the volume or volumes that you want to delete.
 

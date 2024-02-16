@@ -49,7 +49,7 @@ Alternatively, you can create an application on the NERC's OpenShift cluster by
 using the **oc new-app** command from the command line terminal.
 
 i. Make sure you have the `oc` CLI tool installed and configured on your local
-machine following [these steps](../logging-in/install-the-openshift-cli/#first-time-usage).
+machine following [these steps](../logging-in/setup-the-openshift-cli.md#first-time-usage).
 
 !!! info "Information"
     Some users may have access to multiple projects. Run the following command to

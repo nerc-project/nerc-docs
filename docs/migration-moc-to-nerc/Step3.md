@@ -361,7 +361,7 @@ the next steps.
 
         1. If for some reason the earlier approved resource quota is not
         sufficient you can request further quota by following
-        [these steps](https://nerc-project.github.io/nerc-docs/get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project).
+        [these steps](https://nerc-project.github.io/nerc-docs/get-started/allocation/allocation-change-request/).
 
 1. Repeat [this section](#create-nerc-instances-using-moc-volumes)
 for each instance you need to create.

@@ -20,7 +20,7 @@ Make sure you are using key forwarding as described in [Create a Key Pair](../ac
 
 ## Allocate a Floating IP
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Next to Instance Name -> Click Actions dropdown arrow (far right) -> Choose
 Associate Floating IP
@@ -86,7 +86,7 @@ and you can see the Floating IP is attached to your VM on the Instances page:
 You may need to disassociate a Floating IP from an instance which no longer
 needs it, so you can assign it to one that does.
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Find the instance you want to remove the IP from in the list. Click the red
 "Disassociate Floating IP" to the right.
@@ -108,7 +108,7 @@ We can release a Floating IP while disassociating it just we need to check the
 
 **OR,**
 
-Navigate to Project -> Network -> Floating IPs.
+Navigate to *Project -> Network -> Floating IPs*.
 
 To release the Floating IP address back into the Floating IP pool, click the
 Release Floating IP option in the Actions column.

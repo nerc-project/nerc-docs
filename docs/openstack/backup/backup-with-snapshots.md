@@ -102,7 +102,7 @@ on desired instance as shown below:
 
 Once created, you can find the image listed under Images in the Horizon dashboard.
 
-Navigate to Project -> Compute -> Images.
+Navigate to *Project -> Compute -> Images*.
 
 ![Snapshot Instance Created](images/instance-image-snapshot.png)
 
@@ -221,7 +221,7 @@ In the dialog box that opens, enter a snapshot name and a brief description.
 Once a snapshot is created and is in "Available" status, you can view and manage
 it under the Volumes menu in the Horizon dashboard under Volume Snapshots.
 
-Navigate to Project -> Volumes -> Snapshots.
+Navigate to *Project -> Volumes -> Snapshots*.
 
 ![Volume Snapshots List](images/volume-snapshots-list.png)
 
@@ -244,7 +244,7 @@ In the dialog box that opens, enter a volume name and a brief description.
 
 Any snapshots made into volumes can be found under Volumes:
 
-Navigate to Project -> Volumes -> Volumes.
+Navigate to *Project -> Volumes -> Volumes*.
 
 ![New Volume from Volume Snapshot](images/new-volume-from-snapshot.png)
 
@@ -255,24 +255,30 @@ below:
 ![Launch an Instance from Volume](images/launch_instance_from_volume.png)
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
-    Keep in mind that any volumes and snapshots stored take up storage space in
-    your project. You can delete any that no longer need to conserve space. Even
-    in the event of deleting volumes and snapshots, you will still be billed
-    based on your approved and reserved [storage allocation](../../get-started/get-an-allocation/#how-to-request-a-new-resource-allocation).
-    When you request additional storage by specifing changed quota value for the
-    "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" attribute
-    through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
-    invoicing for the extra storage will take place upon fulfillment/approval of
-    your request as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
+    Please remember that any volumes and snapshots stored will consume your
+    **Storage quotas**, which represent the storage space allocated to your project.
+    You can delete any volumes and snapshots that are no longer needed to free up
+    space. However, even if you delete volumes and snapshots, you will still be
+    billed based on [your approved and reserved storage allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation),
+    which reserves storage from the total NESE storage pool.
+
+    If you request additional storage by specifying a changed quota value for
+    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes"
+    attribute through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    invoicing for the extra storage will take place upon fulfillment or approval
+    of your request, as explained in our
+    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
+
     Conversely, if you request a reduction in the **Storage quotas**, specifically
-    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" through
-    a [change request using ColdFront](../../get-started/get-an-allocation/#request-change-to-resource-allocation-to-an-existing-project),
-    your invoicing will be adjusted accordingly when the request is processed.
-    In both scenarios, 'invoicing' refers to the accumulation of hours
+    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes", through
+    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
+    your invoicing will be adjusted accordingly when the request is approved or
+    processed. In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.
 
-Please send your questions or concerns regarding Storage and Cost by emailing us
-at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
-or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
+!!! question "Help Regarding Billing"
+    Please send your questions or concerns regarding Storage and Cost by emailing
+    us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

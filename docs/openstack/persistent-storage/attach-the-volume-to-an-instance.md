@@ -4,7 +4,7 @@
 
 Once you're logged in to NERC's Horizon dashboard.
 
-Navigate to Project -> Volumes -> Volumes.
+Navigate to *Project -> Volumes -> Volumes*.
 
 In the Actions column, click the dropdown and select "Manage Attachments".
 

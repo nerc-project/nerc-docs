@@ -13,7 +13,7 @@ group with rules.
 You can view security groups by clicking Project, then click Network panel and
 choose Security Groups from the tabs that appears.
 
-Navigate to Project -> Network -> Security Groups.
+Navigate to *Project -> Network -> Security Groups*.
 
 You should see a ‘default’ security group. The default security group allows
 traffic only between members of the security group, so by default you can
@@ -145,7 +145,7 @@ from any IP address.
 
 - Navigate to Security Groups:
 
-    Navigate to Project -> Network -> Security Groups.
+    Navigate to *Project -> Network -> Security Groups*.
 
 - Select the Security Group:
 

@@ -19,7 +19,7 @@ Once a VM is created, its name is set based on [user specified Instance Name](..
 while launching an instance using Horizon dashboard or <Instance_Name> specified
 in `openstack server create ...` command [using openstack client](../openstack-cli/launch-a-VM-using-openstack-CLI.md#launch-an-instance-from-an-image).
 
-To rename a VM, Navigate to Project -> Compute -> Instances.
+To rename a VM, navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -178,7 +178,7 @@ can be run:
 
 or, using Horizon dashboard:
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -239,7 +239,7 @@ Then the secondary disk is removed as shown below:
 
 Alternatively, using Horizon dashboard:
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -252,6 +252,14 @@ And then *Action -> Soft Reboot Instance*.
 VMs can be deleted using either the OpenStack dashboard by clicking
 *Action -> Delete Instance* or via the openstack client `openstack server delete`
 command.
+
+!!! note "How can I delete multiple instances at once?"
+    Using the Horizon dashboard, navigate to *Project -> Compute -> Instances*.
+    In the Instances panel, you should see a list of all instances running in
+    your project. Select the instances you want to delete by ticking the checkboxes
+    next to their names. Then, click on "Delete Instances" button located on the
+    top right side, as shown below:
+    ![Delete Multiple Instances At Once](images/delete_multiple_instances.png)
 
 !!! danger "Important Note"
     This will immediately terminate the instance, delete all content of the
@@ -272,7 +280,7 @@ can be run:
 
 or, using Horizon dashboard:
 
-Navigate to Project -> Compute -> Instances.
+Navigate to *Project -> Compute -> Instances*.
 
 Select an instance.
 
@@ -301,6 +309,6 @@ The quota associated with this virtual machine will be returned to the project
 and you can review and verify that looking at your
 [OpenStack dashboard overview](../logging-in/dashboard-overview.md#compute-panel).
 
-Navigate to Project -> Compute -> Overview.
+- Navigate to *Project -> Compute -> Overview*.
 
 ---

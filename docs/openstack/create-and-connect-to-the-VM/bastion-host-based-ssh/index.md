@@ -31,7 +31,7 @@ via Bastion Host, you need to make sure you have followed these steps:
 to set up a public ssh key. You can use the same key for both the bastion
 host and the remote instances, or different keys; you'll just need to ensure
 that the keys are loaded by ssh-agent appropriately so they can be used as
-needed. Please read [this instruction](../../access-and-security/create-a-key-pair/#adding-your-ssh-key-to-the-ssh-agent)
+needed. Please read [this instruction](../../access-and-security/create-a-key-pair.md#adding-your-ssh-key-to-the-ssh-agent)
 on how to add ssh-agent and load your private key using ssh-add command to
 access the bastion host.
 

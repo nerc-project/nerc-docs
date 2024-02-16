@@ -255,24 +255,30 @@ below:
 ![Launch an Instance from Volume](images/launch_instance_from_volume.png)
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
-    Keep in mind that any volumes and snapshots stored take up storage space in
-    your project. You can delete any that no longer need to conserve space. Even
-    in the event of deleting volumes and snapshots, you will still be billed
-    based on your approved and reserved [storage allocation](../../get-started/allocation/requesting-an-allocation.md).
-    When you request additional storage by specifing changed quota value for the
-    "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" attribute
-    through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
-    invoicing for the extra storage will take place upon fulfillment/approval of
-    your request as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
+    Please remember that any volumes and snapshots stored will consume your
+    **Storage quotas**, which represent the storage space allocated to your project.
+    You can delete any volumes and snapshots that are no longer needed to free up
+    space. However, even if you delete volumes and snapshots, you will still be
+    billed based on [your approved and reserved storage allocation](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation),
+    which reserves storage from the total NESE storage pool.
+
+    If you request additional storage by specifying a changed quota value for
+    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes"
+    attribute through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    invoicing for the extra storage will take place upon fulfillment or approval
+    of your request, as explained in our
+    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
+
     Conversely, if you request a reduction in the **Storage quotas**, specifically
-    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" through
-    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md),
-    your invoicing will be adjusted accordingly when the request is processed.
-    In both scenarios, 'invoicing' refers to the accumulation of hours
+    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes", through
+    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#allocation-change-requests-for-openstack-project),
+    your invoicing will be adjusted accordingly when the request is approved or
+    processed. In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.
 
-Please send your questions or concerns regarding Storage and Cost by emailing us
-at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
-or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
+!!! question "Help Regarding Billing"
+    Please send your questions or concerns regarding Storage and Cost by emailing
+    us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
 
 ---

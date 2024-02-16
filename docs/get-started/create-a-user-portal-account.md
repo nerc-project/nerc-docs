@@ -98,7 +98,9 @@ by viewing the following page:
 
 1. Log in to the [RegApp](https://regapp.mss.mghpcc.org/) using your MGHPCC-SS account.
 
-2. Click on "Manage Your MGHPCC-SS Account" button.
+2. Click on "Manage Your MGHPCC-SS Account" button as shown below:
+
+    ![MGHPCC-SS Account Update](images/account_update.png)
 
 3. Review your currently saved account information, make any necessary corrections
 or updates to fields, and then click on the "Update MGHPCC-SS Account" button.
@@ -107,7 +109,10 @@ or updates to fields, and then click on the "Update MGHPCC-SS Account" button.
 check your email address.
 
 5. Confirm and validate the new account details by clicking the provided validation
-web link and entering the unique **Confirmation Code** provided in the email.
+web link and entering the unique **Confirmation Code** provided in the email as
+shown below:
+
+    ![MGHPCC-SS Account Update Validation](images/account_update_confirmation.png)
 
 ## How to request a Principal Investigator (PI) Account?
 

@@ -253,6 +253,14 @@ VMs can be deleted using either the OpenStack dashboard by clicking
 *Action -> Delete Instance* or via the openstack client `openstack server delete`
 command.
 
+!!! note "How can I delete multiple instances at once?"
+    Using the Horizon dashboard, navigate to *Project -> Compute -> Instances*.
+    In the Instances panel, you should see a list of all instances running in
+    your project. Select the instances you want to delete by ticking the checkboxes
+    next to their names. Then, click on "Delete Instances" button located on the
+    top right side, as shown below:
+    ![Delete Multiple Instances At Once](images/delete_multiple_instances.png)
+
 !!! danger "Important Note"
     This will immediately terminate the instance, delete all content of the
     virtual machine and erase the disk. This operation is not recoverable.

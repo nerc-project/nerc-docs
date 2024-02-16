@@ -53,7 +53,7 @@ provider, where you will log in, as shown here:
 
 ![Institutional IdP Login Page](images/institutional_idp.png)
 
-After a successful logon, your browser will be redirected back to the MGHPCC-SS
+After a successful log on, your browser will be redirected back to the MGHPCC-SS
 Registration Page and ask for a review and confirmation of creating your account
 with fetched information to complete the account creation process.
 

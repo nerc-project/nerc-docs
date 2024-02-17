@@ -23,15 +23,16 @@ workflow.
 
 ## Deploy an Application to your NERC OpenShift Project
 
-**Prerequisites**
+- **Prerequisites**
 
-You must have at least one active **NERC-OCP (OpenShift)** type resource allocation.
-You can refer [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project) on how
-to get allocation and request "NERC-OCP (OpenShift)" type resource allocations.
+    You must have at least one active **NERC-OCP (OpenShift)** type resource allocation.
+    You can refer [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
+    on how to get allocation and request "NERC-OCP (OpenShift)" type resource allocations.
 
 ### Steps
 
-1. Get an access to the NERC's OpenShift Container Platform at https://console.apps.shift.nerc.mghpcc.org as [described here](../../../openshift/logging-in/access-the-openshift-web-console.md).
+1. Get an access to the NERC's OpenShift Container Platform at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
+as [described here](../../../openshift/logging-in/access-the-openshift-web-console.md).
 To get access NERC's OCP web console you need to be part of ColdFront's active
 allocation.
 
@@ -45,14 +46,14 @@ and verify you are able to run `gh` commands as shown below:
 
 4. Fork the `simple-node-app` App in your own Github:
 
-    This application runs a simple node.js server and serves up some static routes with
-    some static responses. This demo shows a simple container based app can easily be
-    bootstrapped onto your NERC OpenShift project space. 
+    This application runs a simple node.js server and serves up some static routes
+    with some static responses. This demo shows a simple container based app can
+    easily be bootstrapped onto your NERC OpenShift project space.
 
     !!! warning "Very Important Information"
         As you won't have full access to [this repository](https://github.com/nerc-project/simple-node-app/),
-        we recommend first forking the repository on your own GitHub account. So, you'll
-        need to update all references to `https://github.com/nerc-project/simple-node-app.git`
+        we recommend first forking the repository on your own GitHub account. So,
+        you'll need to update all references to `https://github.com/nerc-project/simple-node-app.git`
         to point to your own forked repository.
 
     To create a fork of the example `simple-node-app` repository:
@@ -69,10 +70,10 @@ and verify you are able to run `gh` commands as shown below:
     ```
 
 6. Run either `setsecret.cmd` file if you are using **Windows** or `setsecret.sh`
-file if you are using **Linux** based machine. Once executed, verify Github Secrets are
-set Properly under your github repo's *settings >> secrets and variables >> Actions*
+file if you are using **Linux** based machine. Once executed, verify Github Secrets
+are set Properly under your github repo's *settings >> secrets and variables >> Actions*
 as shown here:
-    
+
     ![GitHub Secrets](images/github-secrets.png)
 
 7. Enable and Update GitHub Actions Pipeline on your own forked repo:
@@ -82,19 +83,14 @@ as shown here:
     - Update the provided sample OpenShift workflow YAML file i.e. `openshift.yml`,
     which is located at "`https://github.com/<github_username>/simple-node-app/actions/workflows/openshift.yml`".
 
-    !!! info "Very Important Information"
-        Workflow execution on OpenShift pipelines follows these steps:
-
-        1. Checkout your repository
-
-        2. Perform a container image build
-
-        3. Push the built image to the GitHub Container Registry (GHCR) or your
-        preferred Registry
-
-        4. Log in to your OpenShift cluster
-
-        5. Create an OpenShift app from the image and expose it to the internet
+        !!! info "Very Important Information"
+            Workflow execution on OpenShift pipelines follows these steps:
+            1. Checkout your repository
+            2. Perform a container image build
+            3. Push the built image to the GitHub Container Registry (GHCR) or
+            your preferred Registry
+            4. Log in to your NERC OpenShift cluster's project space
+            5. Create an OpenShift app from the image and expose it to the internet
 
 8. Edit the top-level 'env' section as marked with '🖊️' if the defaults are not
 suitable for your project.
@@ -109,8 +105,6 @@ suitable for your project.
 run as shown below:
 
     ![GitHub Actions Successfully Complete](images/github-actions-successful.png)
-
-    !!! note "Important Note"
 
 11. Verify that you can see the newly deployed application on the NERC's OpenShift
 Container Platform at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)

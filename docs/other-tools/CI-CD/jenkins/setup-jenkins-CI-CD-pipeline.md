@@ -50,7 +50,7 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
     ```sh
     sudo apt-get update && sudo apt-get upgrade -y
     ```
-  
+
 - Turn off `swap`
 
     ```sh
@@ -151,7 +151,6 @@ copy and paste on the web GUI on the browser.
     When you run `docker logs -f <jenkins_docker_container_name>`, the initial
     password for the "Admin" user can be found between the rows of asterisks
     as shown below:
-
     ![Initial Admin Password](images/jenkins_admin_password.png)
 
 - Once you login to the Jenkins Web UI by entering the admin password shown on CLI
@@ -177,8 +176,8 @@ to "Manage Jenkins > Manage Plugins" as shown below:
 
     ![Jenkins Plugin Installation](images/plugins-installation.png)
 
-    Select the "Available" tab and then locate **Docker pipeline** by searching and then
-    click "Install without restart" button as shown below:
+    Select the "Available" tab and then locate **Docker pipeline** by searching
+    and then click "Install without restart" button as shown below:
 
     ![Jenkins Required Plugin To Install](images/install-docker-pipeline-plugin.png)
 
@@ -194,7 +193,7 @@ and password that will be used by the Jenkins pipelines:
 
     1. Click on the "Manage Jenkins" menu and then click on the "Manage Credentials"
       link as shown below:
-    
+
         ![Manage Credentials](images/manage_credentials.png)
 
     2. Click on Jenkins Store as shown below:
@@ -203,7 +202,7 @@ and password that will be used by the Jenkins pipelines:
 
     3. The credentials can be added by clicking the 'Add Credentials' button in
     the left pane.
-      
+
         ![Adding Credentials](images/add-credentials.png)
 
 - First, add the **'DockerHub'** credentials as 'Username with password' with the
@@ -216,7 +215,7 @@ ID `dockerhublogin`.
     c. Give its ID and short description. ID is very important is that will need
     to be specify as used on your Jenkinsfile i.e. `dockerhublogin`.
 
-      ![Docker Hub Credentials](images/docker-hub-credentials.png)
+    ![Docker Hub Credentials](images/docker-hub-credentials.png)
 
 - Config the **'Kubeconfig'** credentials as 'Secret file' that holds Kubeconfig
 file from K8s master i.e. located at `/etc/kubernetes/admin.conf` with the ID 'kubernetes'
@@ -231,11 +230,12 @@ file from K8s master i.e. located at `/etc/kubernetes/admin.conf` with the ID 'k
     d. Give a ID and description that you will need to use on your Jenkinsfile
     i.e. `kubernetes`.
 
-      ![Kubernetes Configuration Credentials](images/kubernetes-config-secret-file.png)
+    ![Kubernetes Configuration Credentials](images/kubernetes-config-secret-file.png)
 
-    e. Once both credentials are successfully added the following credentials are shown:
+    e. Once both credentials are successfully added the following credentials are
+    shown:
 
-      ![Jenkins All Credentials](images/all-credentials.png)
+    ![Jenkins All Credentials](images/all-credentials.png)
 
 ## Fork the `nodeapp` App in your own Github
 
@@ -350,24 +350,24 @@ you can now create a pipeline to trigger it on your newly setup Jenkins server:
 
     c. Give name to your Pipeline i.e. “*jenkins-k8s-pipeline*”
 
-      ![Adding Jenkins Credentials](images/adding-Jenkins-pipeline.png)
+    ![Adding Jenkins Credentials](images/adding-Jenkins-pipeline.png)
 
     d. Select "Build Triggers" tab and then select
     **Github hook tirgger for GITScm polling** as shown below:
 
-      ![Adding Github Build Trigger](images/adding-github-build-trigger.png)
+    ![Adding Github Build Trigger](images/adding-github-build-trigger.png)
 
     e. Select "Pipeline" tab and then select the "Pipeline script from SCM" from
     the dropdown options. Then you need to specify the **Git** as SCM and also "Repository
     URL" for your public git repo and also specify your branch and Jenkinsfile's
     name as shown below:
 
-      ![Add Jenkins Pipeline Script From Git](images/jenkins-pipeline-from-git.png)
+    ![Add Jenkins Pipeline Script From Git](images/jenkins-pipeline-from-git.png)
 
     **OR**, You can copy/paste the content of your Jenkinsfile on the given textbox.
     Please make sure you are selecting the "Pipeline script" from the dropdown options.
 
-      ![Add Jenkins Pipeline Script Content](images/Jenkins-pipeline-script.png)
+    ![Add Jenkins Pipeline Script Content](images/Jenkins-pipeline-script.png)
 
     f. Click on "Save" button.
 
@@ -385,8 +385,8 @@ and then Deploy to K8s Cluster as shown below:
 
     ![K8s Deployed Node App](images/deployed-app-on-k8s-node.png)
 
-    You can see the Console Output logs of this pipeline process by clicking the icon
-    before the id of the started Pipeline on the right bottom corner.
+    You can see the Console Output logs of this pipeline process by clicking the
+    icon before the id of the started Pipeline on the right bottom corner.
 
     ![Jenkins console](images/console-output-build-now.png)
 

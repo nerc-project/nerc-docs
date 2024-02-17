@@ -14,7 +14,7 @@ In OpenStack, users can deploy instances in a private tenant network. In order
 to make these instances to be accessible externally via internet, the tenant
 must assign each instance a Floating IP address i.e., an external public IP.
 Nevertheless, users may still want a way to deploy instances without having to
-assign a Floating IP address for every instance.
+[assign a Floating IP](../assign-a-floating-IP.md) address for every instance.
 
 This is useful in the context of an OpenStack project as you don't necessarily
 want to reserve a Floating IP for all your instances. This way you can isolate
@@ -31,7 +31,7 @@ via Bastion Host, you need to make sure you have followed these steps:
 to set up a public ssh key. You can use the same key for both the bastion
 host and the remote instances, or different keys; you'll just need to ensure
 that the keys are loaded by ssh-agent appropriately so they can be used as
-needed. Please read [this instruction](../../access-and-security/create-a-key-pair.md#adding-your-ssh-key-to-the-ssh-agent)
+needed. Please read [this instruction](../../access-and-security/create-a-key-pair/#adding-your-ssh-key-to-the-ssh-agent)
 on how to add ssh-agent and load your private key using ssh-add command to
 access the bastion host.
 

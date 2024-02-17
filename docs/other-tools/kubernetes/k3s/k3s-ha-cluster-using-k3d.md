@@ -23,31 +23,31 @@ using `latest`
 
 - Switch context to the new cluster:
 
-```sh
-kubectl config use-context k3d-k3s-default
-```
+    ```sh
+    kubectl config use-context k3d-k3s-default
+    ```
 
-You can now check what has been created from the different points of view:
+    You can now check what has been created from the different points of view:
 
-```sh
-kubectl get nodes --output wide
-```
+    ```sh
+    kubectl get nodes --output wide
+    ```
 
-The output will looks like:
-![k3d HA nodes](../images/k3d_ha_nodes.png)
+    The output will looks like:
+    ![k3d HA nodes](../images/k3d_ha_nodes.png)
 
-```sh
-kubectl get pods --all-namespaces --output wide
-```
+    ```sh
+    kubectl get pods --all-namespaces --output wide
+    ```
 
-**OR,**
+    **OR,**
 
-```sh
-kubectl get pods -A -o wide
-```
+    ```sh
+    kubectl get pods -A -o wide
+    ```
 
-The output will looks like:
-![k3d HA pods](../images/k3d_ha_pods.png)
+    The output will looks like:
+    ![k3d HA pods](../images/k3d_ha_pods.png)
 
 ## Scale up the cluster
 

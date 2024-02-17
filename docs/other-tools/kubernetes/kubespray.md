@@ -8,47 +8,50 @@ for this purpose:
 
 - 1 Linux machine for Ansible master, ubuntu-22.04-x86_64 or your choice of Ubuntu
 OS image, cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB.
+
 - 1 Linux machine for master, ubuntu-22.04-x86_64 or your choice of Ubuntu
 OS image, cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB -
 also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
 to the master node.
+
 - 1 Linux machines for worker, ubuntu-22.04-x86_64 or your choice of Ubuntu
 OS image, cpu-su.1 flavor with 1vCPU, 4GB RAM, 20GB storage.
 - ssh access to all machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to set up SSH on your remote VMs.
+
 - To allow SSH from **Ansible master** to all **other nodes**: [Read more here](../../openstack/create-and-connect-to-the-VM/ssh-to-the-VM.md#adding-other-peoples-ssh-keys-to-the-instance)
     Generate SSH key for Ansible master node using:
 
-```sh
-ssh-keygen -t rsa
+    ```sh
+    ssh-keygen -t rsa
 
-Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa
-Your public key has been saved in /root/.ssh/id_rsa.pub
-The key fingerprint is:
-SHA256:OMsKP7EmhT400AJA/KN1smKt6eTaa3QFQUiepmj8dxroot@ansible-master
-The key's randomart image is:
-+---[RSA 3072]----+
-|=o.oo.           |
-|.o...            |
-|..=  .           |
-|=o.= ...         |
-|o=+.=.o SE       |
-|.+*o+. o. .      |
-|.=== +o. .       |
-|o+=o=..          |
-|++o=o.           |
-+----[SHA256]-----+
-```
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/root/.ssh/id_rsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in /root/.ssh/id_rsa
+    Your public key has been saved in /root/.ssh/id_rsa.pub
+    The key fingerprint is:
+    SHA256:OMsKP7EmhT400AJA/KN1smKt6eTaa3QFQUiepmj8dxroot@ansible-master
+    The key's randomart image is:
+    +---[RSA 3072]----+
+    |=o.oo.           |
+    |.o...            |
+    |..=  .           |
+    |=o.= ...         |
+    |o=+.=.o SE       |
+    |.+*o+. o. .      |
+    |.=== +o. .       |
+    |o+=o=..          |
+    |++o=o.           |
+    +----[SHA256]-----+
+    ```
 
-Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
-other nodes's `~/.ssh/authorized_keys` file. Please make sure you are logged in
-as `root` user by doing `sudo su` before you copy this public key to the end of
-`~/.ssh/authorized_keys` file of the other master and worker nodes. This will
-allow `ssh <other_nodes_internal_ip>` from the Ansible master node's terminal.
+    Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+    other nodes's `~/.ssh/authorized_keys` file. Please make sure you are logged
+    in as `root` user by doing `sudo su` before you copy this public key to the
+    end of `~/.ssh/authorized_keys` file of the other master and worker nodes. This
+    will allow `ssh <other_nodes_internal_ip>` from the Ansible master node's terminal.
 
 - Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
@@ -57,46 +60,47 @@ allow `ssh <other_nodes_internal_ip>` from the Ansible master node's terminal.
 
     ii. To be used by the worker nodes:
     ![Worker node ports and protocols](images/worker_nodes_ports_protocols.png)
+
 - setup Unique hostname to each machine using the following command:
 
-```sh
-echo "<node_internal_IP> <host_name>" >> /etc/hosts
-hostnamectl set-hostname <host_name>
-```
+    ```sh
+    echo "<node_internal_IP> <host_name>" >> /etc/hosts
+    hostnamectl set-hostname <host_name>
+    ```
 
-For example,
+    For example:
 
-```sh
-echo "192.168.0.224 ansible_master" >> /etc/hosts
-hostnamectl set-hostname ansible_master
-```
+    ```sh
+    echo "192.168.0.224 ansible_master" >> /etc/hosts
+    hostnamectl set-hostname ansible_master
+    ```
 
-In this step, you will update packages and disable `swap` on the all 3 nodes:
+  In this step, you will update packages and disable `swap` on the all 3 nodes:
 
-- 1 Ansible Master Node - ansible_master
+  - 1 Ansible Master Node - ansible_master
 
-- 1 Kubernetes Master Node - kubspray_master
+  - 1 Kubernetes Master Node - kubspray_master
 
-- 1 Kubernetes Worker Node - kubspray_worker1
+  - 1 Kubernetes Worker Node - kubspray_worker1
 
-The below steps will be performed on all the above mentioned nodes:
+  The below steps will be performed on all the above mentioned nodes:
 
-- SSH into all the 3 machines
+  - SSH into all the 3 machines
 
-- Switch as root: `sudo su`
+  - Switch as root: `sudo su`
 
-- Update the repositories and packages:
+  - Update the repositories and packages:
 
-```sh
-apt-get update && apt-get upgrade -y
-```
+      ```sh
+      apt-get update && apt-get upgrade -y
+      ```
 
-- Turn off `swap`
+  - Turn off `swap`
 
-```sh
-swapoff -a
-sed -i '/ swap / s/^/#/' /etc/fstab
-```
+      ```sh
+      swapoff -a
+      sed -i '/ swap / s/^/#/' /etc/fstab
+      ```
 
 ---
 
@@ -106,113 +110,116 @@ Run the below command on the master node i.e. `master` that you want to setup as
 control plane.
 
 - SSH into **ansible_master** machine
+
 - Switch to root user: `sudo su`
+
 - Execute the below command to initialize the cluster:
 
 - Install Python3 and upgrade pip to pip3:
 
-```sh
-apt install python3-pip -y
-pip3 install --upgrade pip
-python3 -V && pip3 -V
-pip -V
-```
+    ```sh
+    apt install python3-pip -y
+    pip3 install --upgrade pip
+    python3 -V && pip3 -V
+    pip -V
+    ```
 
 - Clone the *Kubespray* git repository:
 
-```sh
-git clone https://github.com/kubernetes-sigs/kubespray.git
-cd kubespray
-```
+    ```sh
+    git clone https://github.com/kubernetes-sigs/kubespray.git
+    cd kubespray
+    ```
 
 - Install dependencies from ``requirements.txt``:
 
-```sh
-pip install -r requirements.txt
-```
+    ```sh
+    pip install -r requirements.txt
+    ```
 
 - Copy ``inventory/sample`` as ``inventory/mycluster``
 
-```sh
-cp -rfp inventory/sample inventory/mycluster
-```
+    ```sh
+    cp -rfp inventory/sample inventory/mycluster
+    ```
 
-- Update Ansible inventory file with inventory builder
-This step is little trivial because we need to update `hosts.yml` with the nodes
-IP.
+- Update Ansible inventory file with inventory builder:
 
-Now we are going to declare a variable **"IPS"** for storing the IP address of
-other K8s nodes .i.e. kubspray_master(192.168.0.130), kubspray_worker1(192.168.0.32)
+    This step is little trivial because we need to update `hosts.yml` with the nodes
+    IP.
 
-```sh
-declare -a IPS=(192.168.0.130 192.168.0.32)
-CONFIG_FILE=inventory/mycluster/hosts.yml python3 \
-    contrib/inventory_builder/inventory.py ${IPS[@]}
-```
+    Now we are going to declare a variable **"IPS"** for storing the IP address of
+    other K8s nodes .i.e. kubspray_master(192.168.0.130), kubspray_worker1(192.168.0.32)
 
-This outputs:
+    ```sh
+    declare -a IPS=(192.168.0.130 192.168.0.32)
+    CONFIG_FILE=inventory/mycluster/hosts.yml python3 \
+        contrib/inventory_builder/inventory.py ${IPS[@]}
+    ```
 
-```sh
-DEBUG: Adding group all
-DEBUG: Adding group kube_control_plane
-DEBUG: Adding group kube_node
-DEBUG: Adding group etcd
-DEBUG: Adding group k8s_cluster
-DEBUG: Adding group calico_rr
-DEBUG: adding host node1 to group all
-DEBUG: adding host node2 to group all
-DEBUG: adding host node1 to group etcd
-DEBUG: adding host node1 to group kube_control_plane
-DEBUG: adding host node2 to group kube_control_plane
-DEBUG: adding host node1 to group kube_node
-DEBUG: adding host node2 to group kube_node
-```
+    This outputs:
+
+    ```sh
+    DEBUG: Adding group all
+    DEBUG: Adding group kube_control_plane
+    DEBUG: Adding group kube_node
+    DEBUG: Adding group etcd
+    DEBUG: Adding group k8s_cluster
+    DEBUG: Adding group calico_rr
+    DEBUG: adding host node1 to group all
+    DEBUG: adding host node2 to group all
+    DEBUG: adding host node1 to group etcd
+    DEBUG: adding host node1 to group kube_control_plane
+    DEBUG: adding host node2 to group kube_control_plane
+    DEBUG: adding host node1 to group kube_node
+    DEBUG: adding host node2 to group kube_node
+    ```
 
 - After running the above commands do verify the `hosts.yml` and its content:
 
-```sh
-cat inventory/mycluster/hosts.yml
-```
+    ```sh
+    cat inventory/mycluster/hosts.yml
+    ```
 
-The content of the `hosts.yml` file should looks like:
+    The content of the `hosts.yml` file should looks like:
 
-```yaml
-all:
-  hosts:
-    node1:
-      ansible_host: 192.168.0.130
-      ip: 192.168.0.130
-      access_ip: 192.168.0.130
-    node2:
-      ansible_host: 192.168.0.32
-      ip: 192.168.0.32
-      access_ip: 192.168.0.32
-  children:
-    kube_control_plane:
+    ```yaml
+    all:
       hosts:
         node1:
+          ansible_host: 192.168.0.130
+          ip: 192.168.0.130
+          access_ip: 192.168.0.130
         node2:
-    kube_node:
-      hosts:
-        node1:
-        node2:
-    etcd:
-      hosts:
-        node1:
-    k8s_cluster:
+          ansible_host: 192.168.0.32
+          ip: 192.168.0.32
+          access_ip: 192.168.0.32
       children:
         kube_control_plane:
+          hosts:
+            node1:
+            node2:
         kube_node:
-    calico_rr:
-      hosts: {}
-```
+          hosts:
+            node1:
+            node2:
+        etcd:
+          hosts:
+            node1:
+        k8s_cluster:
+          children:
+            kube_control_plane:
+            kube_node:
+        calico_rr:
+          hosts: {}
+    ```
 
 - Review and change parameters under ``inventory/mycluster/group_vars``
 
-```sh
-cat inventory/mycluster/group_vars/all/all.yml
-cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
-```
+    ```sh
+    cat inventory/mycluster/group_vars/all/all.yml
+    cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+    ```
 
 - It can be useful to set the following two variables to **true** in
 `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`: `kubeconfig_localhost`
@@ -220,24 +227,24 @@ cat inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
 `{ inventory_dir }/artifacts`) and `kubectl_localhost`
 (to download `kubectl` onto the host that runs Ansible in `{ bin_dir }`).
 
-!!! note "Very Important"
-    As **Ubuntu 20 kvm kernel** doesn't have **dummy module** we need to **modify**
-    the following two variables in `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`:
-    `enable_nodelocaldns: false` and `kube_proxy_mode: iptables` which will
-    *Disable nodelocal dns cache* and *Kube-proxy proxyMode to iptables* respectively.
+    !!! note "Very Important"
+        As **Ubuntu 20 kvm kernel** doesn't have **dummy module** we need to **modify**
+        the following two variables in `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`:
+        `enable_nodelocaldns: false` and `kube_proxy_mode: iptables` which will
+        *Disable nodelocal dns cache* and *Kube-proxy proxyMode to iptables* respectively.
 
 - Deploy Kubespray with Ansible Playbook - run the playbook as `root` user.
 The option `--become` is required, as for example writing SSL keys in `/etc/`,
 installing packages and interacting with various `systemd` daemons. Without
 `--become` the playbook will fail to run!
 
-```sh
-ansible-playbook -i inventory/mycluster/hosts.yml --become --become-user=root cluster.yml
-```
+    ```sh
+    ansible-playbook -i inventory/mycluster/hosts.yml --become --become-user=root cluster.yml
+    ```
 
-!!! note "Note"
-    Running ansible playbook takes little time because it depends on the network
-    bandwidth also.
+    !!! note "Note"
+        Running ansible playbook takes little time because it depends on the network
+        bandwidth also.
 
 ---
 
@@ -245,17 +252,17 @@ ansible-playbook -i inventory/mycluster/hosts.yml --become --become-user=root cl
 
 - Install kubectl binary
 
-```sh
-snap install kubectl --classic
-```
+    ```sh
+    snap install kubectl --classic
+    ```
 
-This outputs: `kubectl 1.26.1 from Canonical✓ installed`
+    This outputs: `kubectl 1.26.1 from Canonical✓ installed`
 
 - Now verify the kubectl version:
 
-```sh
-kubectl version -o yaml
-```
+    ```sh
+    kubectl version -o yaml
+    ```
 
 ---
 
@@ -263,14 +270,14 @@ kubectl version -o yaml
 
 - Verify the cluster
 
-```sh
-kubectl get nodes
+    ```sh
+    kubectl get nodes
 
-NAME    STATUS   ROLES                  AGE     VERSION
-node1   Ready    control-plane,master   6m7s    v1.26.1
-node2   Ready    control-plane,master   5m32s   v1.26.1
+    NAME    STATUS   ROLES                  AGE     VERSION
+    node1   Ready    control-plane,master   6m7s    v1.26.1
+    node2   Ready    control-plane,master   5m32s   v1.26.1
 
-```
+    ```
 
 ---
 
@@ -279,47 +286,47 @@ node2   Ready    control-plane,master   5m32s   v1.26.1
 - Use the kubectl create command to create a Deployment that manages a Pod. The Pod
 runs a Container based on the provided Docker image.
 
-```sh
-kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
-```
+    ```sh
+    kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+    ```
 
-```sh
-kubectl expose deployment hello-minikube --type=LoadBalancer --port=8080
+    ```sh
+    kubectl expose deployment hello-minikube --type=LoadBalancer --port=8080
 
-service/hello-minikube exposed
-```
+    service/hello-minikube exposed
+    ```
 
 - View the deployments information:
 
-```sh
-kubectl get deployments
+    ```sh
+    kubectl get deployments
 
-NAME             READY   UP-TO-DATE   AVAILABLE   AGE
-hello-minikube   1/1     1            1           50s
-```
+    NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+    hello-minikube   1/1     1            1           50s
+    ```
 
 - View the port information:
 
-```sh
-kubectl get svc hello-minikube
+    ```sh
+    kubectl get svc hello-minikube
 
-NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-hello-minikube   LoadBalancer   10.233.35.126   <pending>     8080:30723/TCP   40s
-```
+    NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+    hello-minikube   LoadBalancer   10.233.35.126   <pending>     8080:30723/TCP   40s
+    ```
 
 - Expose the service locally
 
-```sh
-kubectl port-forward svc/hello-minikube 30723:8080
+    ```sh
+    kubectl port-forward svc/hello-minikube 30723:8080
 
-Forwarding from [::1]:30723 -> 8080
-Forwarding from 127.0.0.1:30723 -> 8080
-Handling connection for 30723
-Handling connection for 30723
-```
+    Forwarding from [::1]:30723 -> 8080
+    Forwarding from 127.0.0.1:30723 -> 8080
+    Handling connection for 30723
+    Handling connection for 30723
+    ```
 
-Go to browser, visit `http://<Master-Floating-IP>:8080`
-i.e. <http://140.247.152.235:8080/> to check the hello minikube default page.
+    Go to browser, visit `http://<Master-Floating-IP>:8080`
+    i.e. <http://140.247.152.235:8080/> to check the hello minikube default page.
 
 ## Clean up
 

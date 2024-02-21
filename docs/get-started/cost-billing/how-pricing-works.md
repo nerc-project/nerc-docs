@@ -106,6 +106,25 @@ volumes, and you can also create extra volumes yourself. In OpenShift pods, stor
 is only provisioned while it is active, and in persistent volumes, storage remains
 provisioned until it is deleted.
 
+!!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+    The **Storage cost** is determined by
+    [your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view).
+    Once approved, these **Storage quotas** will need to be reserved from the
+    total NESE storage pool for both **NERC (OpenStack)** and **NERC-OCP (OpenShift)**
+    resources.
+
+    Even if you have deleted all volumes, snapshots, and object storage buckets and
+    objects in your OpenStack and OpenShift projects. It is very essential to
+    adjust the approved values for your NERC (OpenStack) and NERC-OCP (OpenShift)
+    resource allocations to zero (0) otherwise you still be incurring charge for
+    the approved storage as explained in [Billing FAQs](billing-faqs.md).
+
+    Keep in mind that you can easily scale and expand your current resource
+    allocations within your project. Follow [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
+    on how to use NERC's ColdFront to reduce your **Storage quotas** for NERC (OpenStack)
+    allocations and [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)
+    for NERC-OCP (OpenShift) allocations.
+
 **Storage Example 1:**
 
 - Volume or VM with:

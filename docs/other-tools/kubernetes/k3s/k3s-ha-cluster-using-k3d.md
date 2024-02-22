@@ -33,7 +33,7 @@ using `latest`
     kubectl get nodes --output wide
     ```
 
-    The output will looks like:
+    The output will look like:
     ![k3d HA nodes](../images/k3d_ha_nodes.png)
 
     ```sh
@@ -46,7 +46,7 @@ using `latest`
     kubectl get pods -A -o wide
     ```
 
-    The output will looks like:
+    The output will look like:
     ![k3d HA pods](../images/k3d_ha_pods.png)
 
 ## Scale up the cluster

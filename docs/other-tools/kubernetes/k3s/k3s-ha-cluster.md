@@ -78,14 +78,14 @@ curl -sfL https://get.k3s.io | sh -s - server \
     --tls-san <Loadbalancer-Internal-IP_or_Hostname>
 ```
 
-- Verify all master nodes are visible to eachothers:
+- Verify all master nodes are visible to one another:
 
     ```sh
     sudo k3s kubectl get node
     ```
 
 - Generate **token** from one of the K3s Master VMs:
-You need to extract a token form the master that will be used to join the nodes
+You need to extract a token from the master that will be used to join the nodes
 to the control plane by running following command on one of the K3s master node:
 
     ```sh
@@ -226,7 +226,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     vi nginx.yaml
     ```
 
-- Copy and paste the following conent on `nginx.yaml`:
+- Copy and paste the following content in `nginx.yaml`:
 
     ```sh
     apiVersion: apps/v1
@@ -256,7 +256,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     sudo k3s kubectl apply -f nginx.yaml
     ```
 
-- Verify the nginx pod is on **Running** state:
+- Verify the nginx pod is in **Running** state:
 
     ```sh
     sudo k3s kubectl get pods --all-namespaces

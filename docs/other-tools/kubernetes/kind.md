@@ -50,7 +50,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
 chmod +x /usr/bin/kubectl
 ```
 
-- Test to ensure the version you installed is up-to-date:
+- Test to ensure that the `kubectl` is installed:
 
     ```sh
     kubectl version --client

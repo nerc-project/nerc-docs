@@ -179,7 +179,7 @@ of the container’s cgroups
 
     4. Firing **Kubectl** commands that allows you to run commands against Kubernetes:
 
-        i. The below command will list down the nodes available in our cluster:
+        i. The below command will list the nodes available in our cluster:
 
         `kubectl get nodes -o wide`
 
@@ -187,7 +187,7 @@ of the container’s cgroups
 
         `kubectl get nodes --output wide`
 
-        The output will looks like:
+        The output will look like:
         ![k3d nodes list](../images/k3d_nodes.png)
 
         ii. To look at what’s inside the K3s cluster (pods, services, deployments,
@@ -195,10 +195,10 @@ of the container’s cgroups
 
         `kubectl get all --all-namespaces`
 
-        The output will looks like:
+        The output will look like:
         ![k3d all](../images/k3d_all.png)
 
-        We can see that, in addition of the Kubernetes service, K3s deploys DNS,
+        We can see that, in addition to the Kubernetes service, K3s deploys DNS,
         metrics and ingress (traefik) services when you use the defaults.
 
         iii. List the active k3d clusters:
@@ -223,7 +223,7 @@ of the container’s cgroups
         ```
 
     Now as you can observe, the cluster is up and running and we can play around
-    the cluster, you can create and deploy your applications over the cluster.
+    with the cluster, you can create and deploy your applications over the cluster.
 
 - Deleting Cluster:
 

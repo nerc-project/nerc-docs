@@ -83,7 +83,10 @@ UI:
     !!! note "Note"
         Another way to access the default token to be used for the dashboard access
         can be retrieved with:
-        ![How to retrive The kubernetes-dashboad Token](images/k8s-dasboard-retrive-token.png)
+        ```sh
+        token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d "" -f1) #<!-- markdownlint-disable -->
+        microk8s kubectl -n kube-system describe secret $token
+        ```
 
 - Keep running the kubernetes-dashboad on Proxy to access it via web browser:
 
@@ -98,7 +101,7 @@ UI:
 
     !!! note "Important"
         This tells us the IP address of the Dashboard and the port. The values assigned
-        to your Dashboard will differ. Please note the displayed **PORT** and also
+        to your Dashboard will differ. Please note the displayed **PORT** and
         the **TOKEN** that are required to access the kubernetes-dashboard. Make
         sure, the exposed **PORT** is opened in Security Groups for the instance
         following [this guide](../../openstack/access-and-security/security-groups.md).
@@ -114,8 +117,8 @@ UI:
 
     ![The K8s Dashboard service](images/k8s-dashboard.jpg)
 
-    Once entered correct **TOKEN** the kubernetes-dashboard is accessed and looks
-    like below:
+    Once you enter the correct **TOKEN** the kubernetes-dashboard is accessed and
+    looks like below:
 
     ![The K8s Dashboard service interface](images/the_k8s_dashboard.png)
 

@@ -249,7 +249,7 @@ metrics-server-86cbb8457f-cg2fs           1/1     Running   0          32m
 local-path-provisioner-5ff76fc89d-kdfcl   1/1     Running   0          32m
 ```
 
-You need to extract a token form the master that will be used to join the nodes
+You need to extract a token from the master that will be used to join the nodes
 to the master.
 
 On the master node:
@@ -376,7 +376,7 @@ to it.
     kubectl apply -f nginx.yaml
     ```
 
-- Verify the nginx pod is on **Running** state:
+- Verify the nginx pod is in **Running** state:
 
     ```sh
     sudo k3s kubectl get pods --all-namespaces

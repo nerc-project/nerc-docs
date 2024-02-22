@@ -26,17 +26,17 @@ workflow.
 - **Prerequisites**
 
     You must have at least one active **NERC-OCP (OpenShift)** type resource allocation.
-    You can refer [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
+    You can refer to [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
     on how to get allocation and request "NERC-OCP (OpenShift)" type resource allocations.
 
 ### Steps
 
-1. Get an access to the NERC's OpenShift Container Platform at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
+1. Access to the NERC's OpenShift Container Platform at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
 as [described here](../../../openshift/logging-in/access-the-openshift-web-console.md).
-To get access NERC's OCP web console you need to be part of ColdFront's active
+To get access to NERC's OCP web console you need to be part of ColdFront's active
 allocation.
 
-2. Setup the OpenShift CLI Tools locally and Configuring the OpenShift CLI to
+2. Setup the OpenShift CLI Tools locally and configure the OpenShift CLI to
 enable `oc` commands. Refer to [this user guide](../../../openshift/logging-in/setup-the-openshift-cli.md).
 
 3. Setup Github CLI on your local machine as [described here](https://docs.github.com/en/github-cli/github-cli/quickstart)
@@ -97,9 +97,9 @@ suitable for your project.
 
 9. (Optional) Edit the build-image step to build your project:
 
-    The default build type is by using a Dockerfile at the root of the repository,
+    The default build type uses a Dockerfile at the root of the repository,
     but can be replaced with a different file, a source-to-image build, or a step-by-step
-    buildah build.
+    [buildah](https://buildah.io/) build.
 
 10. Commit and push the workflow file to your default branch to trigger a workflow
 run as shown below:

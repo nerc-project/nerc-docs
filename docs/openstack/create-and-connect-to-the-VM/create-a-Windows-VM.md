@@ -68,7 +68,8 @@ Identify the image for the initial volume contents from `openstack image list`.
 In the example above, this is image id `a9b48e65-0cf9-413a-8215-81439cd63966` for
 `MS-Windows-2022`.
 
-Creating a disk from this image with a size of **100GB** is as follows.
+Creating a disk from this image with a size of **100GB** named as "my-volume"
+as follows.
 
     openstack volume create --image a9b48e65-0cf9-413a-8215-81439cd63966 --size 100 --description "Using MS Windows Image" my-volume
     +---------------------+--------------------------------------+
@@ -131,6 +132,22 @@ shown below:
 
 ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
 
+!!! danger "Very Important: Setting Administrator Credentials to Log into Your VM."
+    To access this Windows VM, you must log in using Remote Desktop, as
+    [described here](#how-to-add-remote-desktop-login-to-your-windows-instance).
+    To configure a password for the "Administrator" user account, proceed to the
+    "Configuration" section and enter the supplied PowerShell-based Customized Script.
+    Ensure to substitute `<Your_Own_Admin_Password>` with your preferred password,
+    which will enable Remote Desktop login to the Windows VM.
+
+        #ps1
+
+        net user Administrator <Your_Own_Admin_Password>
+
+    Please ensure that your script in the "Configuration" section resembles the
+    following syntax:
+    ![Setting Administrator Password Custom Script](images/set_windows_administrator_password.png)
+
 After some time the instance will be Active in Running state as shown below:
 
 ![Running Windows Instance](images/win2k22_instance_running.png)
@@ -158,10 +175,44 @@ Get the flavor name using `openstack flavor list`:
     openstack flavor list | grep cpu-su.4
     | b3f5dded-efe3-4630-a988-2959b73eba70 | cpu-su.4      |  16384 |   20 |         0 |     4 | True      |
 
-Create a VM named "my-vm" using the flavor name "cpu-su.4", key pair "my-key" and
-volume created before with id "d8a5da4c-41c8-4c2d-b57a-8b6678ce4936" by running:
+To access this Windows VM, you must log in using Remote Desktop, as
+[described here](#how-to-add-remote-desktop-login-to-your-windows-instance). Before
+launching the VM using the OpenStack CLI, we'll prepare a PowerShell-based Customized
+Script as "user-data".
 
-    openstack server create --flavor cpu-su.4 --key-name my-key --volume d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 my-vm
+!!! info "What is a user data file?"
+    A user data file is a text file that you can include when running the
+    `openstack server create` command. This file is used to customize your
+    instance during boot.
+
+You can place user data in a local file and pass it through the
+`--user-data <user-data-file>` parameter at instance creation. You'll create a
+local file named `admin_password.ps1` with the following content. Please remember
+to replace `<Your_Own_Admin_Password>` with your chosen password, which will be
+used to log in to the Windows VM via Remote Desktop.
+
+    #ps1
+
+    net user Administrator <Your_Own_Admin_Password>
+
+Setup a Security Group named "rdp_test" that allows RDP (port: 3389) using the
+CLI, use the command `openstack security group create <group-name>`:
+
+    openstack security group create --description 'Allows RDP' rdp_test
+
+    openstack security group rule create --protocol tcp --dst-port 3389 rdp_test
+
+To create a Windows VM named "my-vm" using the specified parameters, including the
+flavor name "cpu-su.4", existing key pair "my-key", security group "rdp_test",
+user data from the file "admin_password.ps1" created above, and the volume with
+name "my-volume" created above, you can run the following command:
+
+    openstack server create --flavor cpu-su.4 \
+        --key-name my-key \
+        --security-group rdp_test \
+        --user-data admin_password.ps1 \
+        --volume my-volume \
+        my-vm
 
 To list all Floating IP addresses that are allocated to the current project, run:
 
@@ -198,11 +249,6 @@ The console is accessed by selecting the Instance Details for the machine and th
 
 ![Administrator Sign in Prompt](images/administrator_singin_prompt.png)
 
-!!! warning "What is the user login for Windows Server 2022?"
-    To connect with this Windows VM you need to contact us by emailing us at
-    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Windows%20Server%20Login%20Info)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
-
 ### How to add Remote Desktop login to your Windows instance
 
 When the build and the Windows installation steps have completed, you can access
@@ -216,9 +262,8 @@ should work with the Floating IP associated with the instance:
 ![Prompted Administrator Login](images/prompted_administrator_login.png)
 
 !!! warning "What is the user login for Windows Server 2022?"
-    To connect with this Windows VM you need to contact us by emailing us at
-    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Windows%20Server%20Login%20Info)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
+    The default username is "Administrator," and the password is the one you set
+    using the user data PowerShell script during the launch.
 
 ![Prompted RDP connection](images/prompted_rdp_connection.png)
 

@@ -90,9 +90,9 @@ Login remote desktop using the Floating IP attached to the Windows VM:
 ![Prompted Administrator Login](images/prompted_administrator_login.png)
 
 !!! warning "What is the user login for Windows Server 2022?"
-    To connect with this Windows VM you need to contact us by emailing us at
-    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Windows%20Server%20Login%20Info)
-    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
+    The default username is "Administrator," and the password is the one you set
+    using the user data PowerShell script during the launch as
+    [described here](../../openstack/create-and-connect-to-the-VM/create-a-Windows-VM.md#launch-instance-from-existing-bootable-volume).
 
 ![Successfully Remote Connected Instance](images/remote_connected_instance.png)
 

@@ -5,7 +5,7 @@ time and keeps your project updated all the time.
 
 !!! note "Prerequisite"
     You need to have setup CI/CD Pipelines on NERC's OpenStack by following
-    [this document](setup-CI-CD-pipeline.md).
+    [this document](setup-jenkins-CI-CD-pipeline.md).
 
 ## What is a webhook?
 
@@ -17,7 +17,7 @@ for such tasks.
 
 Let's see how to configure and add a webhook in GitHub:
 
-1. Go to your GitHub project repository.
+1. Go to your forked GitHub project repository.
 
 2. Click on **"Settings"**. in the right corner as shown below:
 
@@ -28,7 +28,7 @@ Let's see how to configure and add a webhook in GitHub:
     ![Github webhook](images/Github-webhook.png)
 
 4. In the "Payload URL" field paste your Jenkins environment URL. At the end of this
-URL add **/github-webhook/** using `http://<Worker_Node_Floating_IP>:8080/github-webhook/`
+URL add **/github-webhook/** using `http://<Floating-IP>:8080/github-webhook/`
 i.e. `http://199.94.60.4:8080/github-webhook/`.
 Select "Content type" as "application/json" and leave the "Secret" field empty.
 
@@ -46,7 +46,7 @@ to use this webhook.
 
 That's it! in this way we can add a webhook to our job and ensure that everytime
 you commits your changes to your Github repo, GitHub will trigger your new Jenkins
-job. As we already had setup "Github hook tirgger for GITScm polling" for our
-[Jenkins pipeline setup previously](setup-CI-CD-pipeline.md).
+job. As we already had setup **"Github hook tirgger for GITScm polling"** for our
+[Jenkins pipeline setup previously](setup-jenkins-CI-CD-pipeline.md#setup-a-pipeline).
 
 ---

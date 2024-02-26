@@ -129,8 +129,11 @@ nav:
               - Kubespray: other-tools/kubernetes/kubespray.md
       - CI/CD Pipeline:
           - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
-          - Setup CI/CD on NERC: other-tools/CI-CD/setup-CI-CD-pipeline.md
-          - GitHub to Jenkins Pipeline: other-tools/CI-CD/integrate-your-GitHub-repository.md
+          - Using Jenkins:
+            - Setup Jenkins CI/CD Pipeline: other-tools/CI-CD/jenkins/setup-jenkins-CI-CD-pipeline.md
+            - GitHub to Jenkins Pipeline: other-tools/CI-CD/jenkins/integrate-your-GitHub-repository.md
+          - Using Github Actions:
+            - GitHub Actions CI/CD Pipeline: other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md
       - Apache Spark: other-tools/apache-spark/spark.md
 theme:
   name: material

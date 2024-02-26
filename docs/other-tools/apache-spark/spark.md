@@ -35,8 +35,8 @@ flavor is being used.
 [Security Groups](../../openstack/access-and-security/security-groups.md#allowing-ssh)
 to allow **ssh** using Port 22 access to the instance.
 
-- Assign a Floating IP to your new instance so that you will be able to ssh into
-this machine:
+- [Assign a Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+to your new instance so that you will be able to ssh into this machine:
 
     ```sh
     ssh ubuntu@<Floating-IP> -A -i <Path_To_Your_Private_Key>

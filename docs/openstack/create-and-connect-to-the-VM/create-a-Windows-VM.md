@@ -68,7 +68,7 @@ Identify the image for the initial volume contents from `openstack image list`.
 In the example above, this is image id `a9b48e65-0cf9-413a-8215-81439cd63966` for
 `MS-Windows-2022`.
 
-Creating a disk from this image with a size of **100GB** named as "my-volume"
+Creating a disk from this image with a size of **100GB** named "my-volume"
 as follows.
 
     openstack volume create --image a9b48e65-0cf9-413a-8215-81439cd63966 --size 100 --description "Using MS Windows Image" my-volume
@@ -137,7 +137,7 @@ shown below:
     [described here](#how-to-add-remote-desktop-login-to-your-windows-instance).
     To configure a password for the "Administrator" user account, proceed to the
     "Configuration" section and enter the supplied PowerShell-based Customized Script.
-    Ensure to substitute `<Your_Own_Admin_Password>` with your preferred password,
+    Make sure to substitute `<Your_Own_Admin_Password>` with your preferred password,
     which will enable Remote Desktop login to the Windows VM.
 
         #ps1

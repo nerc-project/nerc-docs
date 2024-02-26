@@ -78,25 +78,25 @@ curl -sfL https://get.k3s.io | sh -s - server \
     --tls-san <Loadbalancer-Internal-IP_or_Hostname>
 ```
 
-- Verify all master nodes are visible to eachothers:
+- Verify all master nodes are visible to one another:
 
-```sh
-sudo k3s kubectl get node
-```
+    ```sh
+    sudo k3s kubectl get node
+    ```
 
 - Generate **token** from one of the K3s Master VMs:
-You need to extract a token form the master that will be used to join the nodes
+You need to extract a token from the master that will be used to join the nodes
 to the control plane by running following command on one of the K3s master node:
 
-```sh
-sudo cat /var/lib/rancher/k3s/server/node-token
-```
+    ```sh
+    sudo cat /var/lib/rancher/k3s/server/node-token
+    ```
 
-You will then obtain a token that looks like:
+    You will then obtain a token that looks like:
 
-```sh
-K1097aace305b0c1077fc854547f34a598d23330ff047ddeed8beb3c428b38a1ca7::server:6cc9fbb6c5c9de96f37fb14b5535c778
-```
+    ```sh
+    K1097aace305b0c1077fc854547f34a598d23330ff047ddeed8beb3c428b38a1ca7::server:6cc9fbb6c5c9de96f37fb14b5535c778
+    ```
 
 ## Two VMs to run as K3s agents
 
@@ -112,7 +112,7 @@ Once both Agents are running, if you run the following command on Master Server,
 you can see all nodes:
 
 ```sh
-`sudo k3s kubectl get node`
+sudo k3s kubectl get node
 ```
 
 ### Simulate a failure
@@ -128,9 +128,9 @@ sudo systemctl stop k3s
 
 - To restart servers manually:
 
-```sh
-sudo systemctl restart k3s
-```
+    ```sh
+    sudo systemctl restart k3s
+    ```
 
 ### On your local development machine to access Kubernetes Cluster Remotely (Optional)
 
@@ -143,9 +143,9 @@ to your local machine's `~/.kube/config` file. Before saving, please change the 
 server path from **127.0.0.1** to **`<Loadbalancer-Internal-IP>`**. This will allow
 your local machine to see the cluster nodes:
 
-```sh
-kubectl get nodes
-```
+    ```sh
+    kubectl get nodes
+    ```
 
 ## Kubernetes Dashboard
 
@@ -162,139 +162,143 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
 
 - Dashboard RBAC Configuration:
 
-`dashboard.admin-user.yml`
+    `dashboard.admin-user.yml`
 
-```sh
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin-user
-  namespace: kubernetes-dashboard
-```
+    ```sh
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: admin-user
+      namespace: kubernetes-dashboard
+    ```
 
-`dashboard.admin-user-role.yml`
+    `dashboard.admin-user-role.yml`
 
-```sh
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: admin-user
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: admin-user
-  namespace: kubernetes-dashboard
-```
+    ```sh
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: admin-user
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: cluster-admin
+    subjects:
+    - kind: ServiceAccount
+      name: admin-user
+      namespace: kubernetes-dashboard
+    ```
 
 - Deploy the `admin-user` configuration:
 
-!!! note "Important Note"
-    If you're doing this from your local development machine, remove `sudo k3s` and
-    just use `kubectl`)
+    !!! note "Important Note"
+        If you're doing this from your local development machine, remove `sudo k3s`
+        and just use `kubectl`)
 
-```sh
-sudo k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
-```
+    ```sh
+    sudo k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
+    ```
 
 - Get bearer **token**
 
-sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token
-    | grep ^token
+    ```sh
+    sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token
+        | grep ^token
+    ```
 
 - Start *dashboard* locally:
 
-```sh
-sudo k3s kubectl proxy
-```
+    ```sh
+    sudo k3s kubectl proxy
+    ```
 
-Then you can sign in at this URL using your *token* we got in the previous step:
+    Then you can sign in at this URL using your *token* we got in the previous step:
 
-`http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/`
+    ```sh
+    http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+    ```
 
 ## Deploying Nginx using deployment
 
 - Create a deployment `nginx.yaml`:
 
-```sh
-vi nginx.yaml
-```
+    ```sh
+    vi nginx.yaml
+    ```
 
-- Copy and paste the following conent on `nginx.yaml`:
+- Copy and paste the following content in `nginx.yaml`:
 
-```sh
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mysite
-  labels:
-    app: mysite
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mysite
-  template:
+    ```sh
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: mysite
       labels:
-        app : mysite
+        app: mysite
     spec:
-      containers:
-        - name : mysite
-          image: nginx
-          ports:
-            - containerPort: 80
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: mysite
+      template:
+        metadata:
+          labels:
+            app : mysite
+        spec:
+          containers:
+            - name : mysite
+              image: nginx
+              ports:
+                - containerPort: 80
+    ```
 
-```sh
-sudo k3s kubectl apply -f nginx.yaml
-```
+    ```sh
+    sudo k3s kubectl apply -f nginx.yaml
+    ```
 
-- Verify the nginx pod is on **Running** state:
+- Verify the nginx pod is in **Running** state:
 
-```sh
-sudo k3s kubectl get pods --all-namespaces
-```
+    ```sh
+    sudo k3s kubectl get pods --all-namespaces
+    ```
 
-**OR,**
+    **OR,**
 
-```sh
-kubectl get pods --all-namespaces --output wide
-```
+    ```sh
+    kubectl get pods --all-namespaces --output wide
+    ```
 
-**OR,**
+    **OR,**
 
-```sh
-kubectl get pods -A -o wide
-```
+    ```sh
+    kubectl get pods -A -o wide
+    ```
 
 - Scale the pods to available agents:
 
-```sh
-sudo k3s kubectl scale --replicas=2 deploy/mysite
-```
+    ```sh
+    sudo k3s kubectl scale --replicas=2 deploy/mysite
+    ```
 
 - View all deployment status:
 
-```sh
-sudo k3s kubectl get deploy mysite
+    ```sh
+    sudo k3s kubectl get deploy mysite
 
-NAME     READY   UP-TO-DATE   AVAILABLE   AGE
-mysite   2/2     2            2           85s
-```
+    NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+    mysite   2/2     2            2           85s
+    ```
 
 - Delete the nginx deployment and pod:
 
-```sh
-sudo k3s kubectl delete -f nginx.yaml
-```
+    ```sh
+    sudo k3s kubectl delete -f nginx.yaml
+    ```
 
-**OR,**
+    **OR,**
 
-```sh
-sudo k3s kubectl delete deploy mysite
-```
+    ```sh
+    sudo k3s kubectl delete deploy mysite
+    ```
 
 ---

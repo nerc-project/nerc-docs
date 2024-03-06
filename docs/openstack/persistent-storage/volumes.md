@@ -69,8 +69,8 @@ data. However, if your VM involves extended running processes and vital
 in-memory data, preserving the precise VM state is essential. In such cases,
 we recommend regularly taking a snapshot of the entire instance, known as an
 **"instance snapshot"**, provided you have sufficient **Storage quotas**,
-specifically the "OpenStack Volume Quota", "OpenStack Swift Quota in Gigabytes"
-and "OpenStack Volume GB Quota" allocated for [your resource allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation).
+specifically the "OpenStack Volume Quota", "OpenStack Volume GB Quota", and
+"OpenStack Swift Quota in Gigabytes" allocated for [your resource allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation).
 Utilizing snapshots for backups is of utmost importance, particularly when
 safeguarding or recovering critical states and data from your instance.
 

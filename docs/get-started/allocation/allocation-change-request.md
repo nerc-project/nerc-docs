@@ -12,6 +12,13 @@ This will bring up the detailed Quota attributes for that project as shown below
 
 ![Request Change Resource Allocation Attributes for OpenStack Project](images/coldfront-openstack-allocation-attributes.png)
 
+!!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
+    For **NERC (OpenStack)** resource types, the **Storage quotas** are controlled
+    by the values of the "OpenStack Swift Quota in Gigabytes" and "OpenStack Volume
+    GB Quota" quota attributes. The **Storage cost** is determined by [your requested
+    and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
+    for these quota attributes.
+
 PI or project managers can provide a new value for the individual quota attributes,
 and give justification for the requested changes so that the NERC admin can review
 the change request and approve or deny based on justification and quota change request.
@@ -40,6 +47,13 @@ This will show more details about the change request as shown below:
 ## Request Change Resource Allocation Attributes for OpenShift Project
 
 ![Request Change Resource Allocation Attributes for OpenShift Project](images/coldfront-openshift-allocation-attributes.png)
+
+!!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
+    For **NERC-OCP (OpenShift)** resource types, the **Storage quotas** are controlled
+    by the values of the "OpenShift Request on Storage Quota (GB)" and "OpenShift
+    Limit on Ephemeral Storage Quota (GB)" quota attributes. The **Storage cost**
+    is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
+    for these quota attributes.
 
 PI or project managers can provide a new value for the individual quota attributes,
 and give justification for the requested changes so that the NERC admin can review

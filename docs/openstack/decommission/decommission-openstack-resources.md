@@ -120,17 +120,17 @@ Navigate to *Project -> Object Store -> Containers*.
 
 ## ColdFront to reduce the Storage Quota to Zero
 
-The costs for each allocation, whether requested or approved, will be billed
-according to the **pay-as-you-go** model. However, there's an exception for
-**Storage quotas** under the **NERC (OpenStack)** resource type. Specifically,
-for "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" the
-cost is determined by the requested and approved allocation values as once approved
-this storage will need to be reserved from the total NESE storage pool.
+Each allocation, whether requested or approved, will be billed based on the
+**pay-as-you-go** model. The exception is for **Storage quotas**, where the cost
+is determined by [your requested and approved allocation values](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
+to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
+Resource Allocations, storage quotas are specified by the "OpenStack Volume GB
+Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes.
 
 Even if you have deleted all volumes, snapshots, and object storage buckets and
 objects in your OpenStack project. It is very essential to adjust the approved
 values for your NERC (OpenStack) resource allocations to zero (0) otherwise you
-still be incurring charge for the approved storage as explained in
+still be incurring a charge for the approved storage as explained in
 [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 To achieve this, you must submit a final change request to reduce the

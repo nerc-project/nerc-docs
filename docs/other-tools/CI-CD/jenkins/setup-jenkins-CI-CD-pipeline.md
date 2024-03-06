@@ -68,10 +68,12 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
 ## Download and install the latest version of **Docker CE**
 
-```sh
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-```
+- Download and install Docker CE:
+
+    ```sh
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sudo sh get-docker.sh
+    ```
 
 - Configure the Docker daemon:
 

@@ -3,19 +3,20 @@
 NERC offers you a **pay-as-you-go** approach for pricing for our cloud infrastructure
 offerings (Tiers of Service), including Infrastructure-as-a-Service (IaaS) – Red
 Hat OpenStack, Platform-as-a-Service (PaaS) – Red Hat OpenShift and NERC Storage
-Tiers. The exception is the **Storage quotas**, specifically the "OpenStack Volume
-GB Quota" and "OpenStack Swift Quota in Gigabytes" for **NERC (OpenStack)** resource
-type and "OpenShift Request on Storage Quota (GB)" and "OpenShift Limit on
-Ephemeral Storage Quota (GB)" for **NERC-OCP (OpenShift)** resource type where
-the cost is determined by the requested and approved allocation values to reserve
-storage from the total NESE storage pool. If you have common questions or need
-more information, refer to our [Billing FAQs](billing-faqs.md) for comprehensive
-answers. NERC offers a flexible cost model where an institution (with a
-per-project breakdown) is billed solely for the duration of the specific services
-required. Access is based on project-approved resource quotas, eliminating runaway
-usage and charges. There are no obligations of long-term contracts or complicated
-licensing agreements. Each institution will enter a lightweight MOU with MGHPCC
-that defines the services and billing model.
+Tiers. The exception is the **Storage quotas**, where the cost is determined by
+[your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view)
+to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
+Resource Allocations, storage quotas are specified by the "OpenStack Volume GB
+Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. Whereas for
+**NERC-OCP (OpenShift)** Resource Allocations, storage quotas are specified by
+the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" allocation
+attributes. If you have common questions or need more information, refer to our
+[Billing FAQs](billing-faqs.md) for comprehensive answers. NERC offers a flexible
+cost model where an institution (with a per-project breakdown) is billed solely
+for the duration of the specific services required. Access is based on project-approved
+resource quotas, eliminating runaway usage and charges. There are no obligations
+of long-term contracts or complicated licensing agreements. Each institution will
+enter a lightweight MOU with MGHPCC that defines the services and billing model.
 
 ## Calculations
 
@@ -105,6 +106,30 @@ in KB. OpenStack volumes remain provisioned until they are deleted. VM’s reser
 volumes, and you can also create extra volumes yourself. In OpenShift pods, storage
 is only provisioned while it is active, and in persistent volumes, storage remains
 provisioned until it is deleted.
+
+!!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+    The **Storage cost** is determined by
+    [your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view).
+    Once approved, these **Storage quotas** will need to be reserved from the
+    total NESE storage pool for both **NERC (OpenStack)** and **NERC-OCP (OpenShift)**
+    resources. For **NERC (OpenStack)** Resource Allocations, storage quotas are
+    specified by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in
+    Gigabytes" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
+    Allocations, storage quotas are specified by the "OpenShift Request on Storage
+    Quota (GB)" and "OpenShift Limit on Ephemeral Storage Quota (GB)" allocation
+    attributes.
+
+    Even if you have deleted all volumes, snapshots, and object storage buckets and
+    objects in your OpenStack and OpenShift projects. It is very essential to
+    adjust the approved values for your NERC (OpenStack) and NERC-OCP (OpenShift)
+    resource allocations to zero (0) otherwise you will still be incurring a charge
+    for the approved storage as explained in [Billing FAQs](billing-faqs.md).
+
+    Keep in mind that you can easily scale and expand your current resource
+    allocations within your project. Follow [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
+    on how to use NERC's ColdFront to reduce your **Storage quotas** for NERC (OpenStack)
+    allocations and [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)
+    for NERC-OCP (OpenShift) allocations.
 
 **Storage Example 1:**
 

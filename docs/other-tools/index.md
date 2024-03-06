@@ -37,9 +37,15 @@
 
 - [CI/CD Overview](CI-CD/CI-CD-pipeline.md)
 
-- [Setup CI/CD on NERC](CI-CD/setup-CI-CD-pipeline.md)
+1. Using Jenkins
 
-- [GitHub to Jenkins Pipeline](CI-CD/integrate-your-GitHub-repository.md)
+    - [Setup Jenkins CI/CD Pipeline](CI-CD/jenkins/setup-jenkins-CI-CD-pipeline.md)
+
+    - [GitHub to Jenkins Pipeline](CI-CD/jenkins/integrate-your-GitHub-repository.md)
+
+2. Using Github Actions
+
+    - [GitHub Actions CI/CD Pipeline](CI-CD/github-actions/setup-github-actions-pipeline.md)
 
 ## Apache Spark
 

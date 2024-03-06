@@ -257,21 +257,23 @@ below:
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
     Please remember that any volumes and snapshots stored will consume your
     **Storage quotas**, which represent the storage space allocated to your project.
-    You can delete any volumes and snapshots that are no longer needed to free up
-    space. However, even if you delete volumes and snapshots, you will still be
-    billed based on [your approved and reserved storage allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation),
+    For **NERC (OpenStack)** Resource Allocations, storage quotas are specified
+    by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes"
+    allocation attributes. You can delete any volumes and snapshots that are no
+    longer needed to free up space. However, even if you delete volumes and snapshots,
+    you will still be billed based on [your approved and reserved storage allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation),
     which reserves storage from the total NESE storage pool.
 
     If you request additional storage by specifying a changed quota value for
     the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes"
-    attribute through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    allocation attributes through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
     invoicing for the extra storage will take place upon fulfillment or approval
     of your request, as explained in our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
-    Conversely, if you request a reduction in the **Storage quotas**, specifically
-    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes", through
-    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
+    Conversely, if you request a reduction in the **Storage quotas**, specified
+    by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes",
+    through a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
     your invoicing will be adjusted accordingly when the request is approved or
     processed. In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.

@@ -17,11 +17,12 @@ available on their NERC's OpenStack or OpenShift projects.
     Ensure you choose **NERC (OpenStack)** in the Resource option and specify your
     anticipated computing units. Each allocation, whether requested or approved,
     will be billed based on the **pay-as-you-go** model. The exception is for
-    **Storage quotas**, specifically the "OpenStack Volume GB Quota" and
-    "OpenStack Swift Quota in Gigabytes", where the cost is determined by
-    [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
-    to reserve storage from the total NESE storage pool. If you have common questions
-    or need more information, refer to our
+    **Storage quotas**, where the cost is determined by [your requested and approved
+    allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
+    to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
+    Resource Allocations, storage quotas are specified by the "OpenStack Volume
+    GB Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. If
+    you have common questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current resource
     allocations within your project by following [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
@@ -36,10 +37,12 @@ available on their NERC's OpenStack or OpenShift projects.
     the first option, i.e. **NERC (OpenStack)** is selected by default!) and specify
     your anticipated computing units. Each allocation, whether requested or approved,
     will be billed based on the **pay-as-you-go** model. The exception is for
-    **Storage quotas**, specifically the "OpenShift Request on Storage Quota (GB)",
-    where the cost is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
-    to reserve storage from the total NESE storage pool. If you have common
-    questions or need more information, refer to our
+    **Storage quotas**, where the cost is determined by
+    [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
+    to reserve storage from the total NESE storage pool. For **NERC-OCP (OpenShift)**
+    Resource Allocations, storage quotas are specified by the "OpenStack Volume
+    GB Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. If
+    you have common questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current resource
     allocations within your project by following [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)

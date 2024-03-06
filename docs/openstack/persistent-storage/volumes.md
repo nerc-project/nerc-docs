@@ -78,21 +78,22 @@ safeguarding or recovering critical states and data from your instance.
     When you [delete virtual machines](../decommission/decommission-openstack-resources.md#delete-all-vms)
     backed by persistent volumes, the disk data is retained, continuing to consume
     approved storage resources for which you will still be billed. It's important
-    to note that the **Storage quotas**, specifically the "OpenStack Volume GB
-    Quota" and "OpenStack Swift Quota in Gigabytes", determine the cost based on
-    [your approved and reserved storage allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation),
-    which reserves storage from the total NESE storage pool.
+    to note that the **Storage quotas** for **NERC (OpenStack)** Resource Allocations,
+    are specified by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota
+    in Gigabytes" allocation attributes. Storage cost is determined by
+    [your requested and approved allocation values](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
+    to reserve storage from the total NESE storage pool.
 
     If you request additional storage by specifying a changed quota value for
     the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes"
-    attribute through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
+    allocation attributes through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
     invoicing for the extra storage will take place upon fulfillment or approval
     of your request, as explained in our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
-    Conversely, if you request a reduction in the **Storage quotas**, specifically
-    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes", through
-    a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
+    Conversely, if you request a reduction in the **Storage quotas** by specifying
+    a reduced quota value for the "OpenStack Volume GB Quota" and "OpenStack Swift
+    Quota in Gigabytes" allocation attributes through a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
     your invoicing will be adjusted accordingly when the request is approved or
     processed. In both scenarios, 'invoicing' refers to the accumulation of hours
     corresponding to the added or removed storage quantity.

@@ -115,8 +115,9 @@ provisioned until it is deleted.
     resources. For **NERC (OpenStack)** Resource Allocations, storage quotas are
     specified by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in
     Gigabytes" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
-    Allocations, storage quotas are specified by the "OpenStack Volume GB Quota"
-    and "OpenStack Swift Quota in Gigabytes" allocation attributes.
+    Allocations, storage quotas are specified by the "OpenShift Request on Storage
+    Quota (GB)" and "OpenShift Limit on Ephemeral Storage Quota (GB)" allocation
+    attributes.
 
     Even if you have deleted all volumes, snapshots, and object storage buckets and
     objects in your OpenStack and OpenShift projects. It is very essential to

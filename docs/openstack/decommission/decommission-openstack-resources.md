@@ -174,7 +174,7 @@ as shown below:
 To check the overall space used, you can use the following command
 
 Also, please confirm and verify that the `Quota-Bytes` property value is set to
-a limit of one (1) in correspondence with the approved "OpenStack Swift Quota
+a limit of zero (0) in correspondence with the approved "OpenStack Swift Quota
 in Gigabytes" of your allocation and also check the overall space used in `Bytes`
 is one (1) along with no Containers and Objects, when running
 `openstack object store account show` openstack client command as shown below:

@@ -8,15 +8,16 @@ Tiers. The exception is the **Storage quotas**, where the cost is determined by
 to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
 Resource Allocations, storage quotas are specified by the "OpenStack Volume GB
 Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. Whereas for
-**NERC-OCP (OpenShift)** Resource Allocations, storage quotas are specified by
-the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes" allocation
-attributes. If you have common questions or need more information, refer to our
-[Billing FAQs](billing-faqs.md) for comprehensive answers. NERC offers a flexible
-cost model where an institution (with a per-project breakdown) is billed solely
-for the duration of the specific services required. Access is based on project-approved
-resource quotas, eliminating runaway usage and charges. There are no obligations
-of long-term contracts or complicated licensing agreements. Each institution will
-enter a lightweight MOU with MGHPCC that defines the services and billing model.
+**NERC-OCP (OpenShift)** Resource Allocations, storage quotas are specified by the
+"OpenShift Request on Storage Quota (GB)" and "OpenShift Limit on Ephemeral Storage
+Quota (GB)" allocation attributes. If you have common questions or need more
+information, refer to our [Billing FAQs](billing-faqs.md) for comprehensive answers.
+NERC offers a flexible cost model where an institution (with a per-project breakdown)
+is billed solely for the duration of the specific services required. Access is based
+on project-approved resource quotas, eliminating runaway usage and charges. There
+are no obligations of long-term contracts or complicated licensing agreements.
+Each institution will enter a lightweight MOU with MGHPCC that defines the services
+and billing model.
 
 ## Calculations
 

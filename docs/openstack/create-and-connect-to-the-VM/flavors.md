@@ -64,11 +64,41 @@ memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
     recommended, which is integrated into a specialized hardware such as GPUs
     that produce unprecedented performance boosts for technical computing workloads.
 
-There are three flavors within the GPU tier, one featuring the newer
-**NVidia A100s** along with **NVidia V100s** and **NVidia K80s**.
+There are four flavors within the GPU tier, one featuring the newer
+**NVidia A100 SXM4**, **NVidia A100s**, **NVidia V100s**, and **NVidia K80s**.
+
+The **"gpu-su-a100sxm4"** flavor is provided from Lenovo SD650-N V2 (2x Intel Xeon
+Platinum 8358 32C 250W 2.6GHz, 128 cores, 1024 GB RAM 4x NVidia HGX A100 40GB) servers.
+The higher number of tensor cores available can significantly enhance the speed
+of machine learning applications. The base unit is 32 vCPU, 245 GB memory with
+default of 20 GB root disk at a rate of $2.078 / hr of wall time.
+
+| Flavor            | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+|-------------------|-----|-----|-------|---------|-------------|-----------|
+|gpu-su-a100sxm4.1  |1    |1    |32     |245      |20           |$2.078     |
+|gpu-su-a100sxm4.2  |2    |2    |64     |490      |20           |$4.156     |
+
+!!! note "How to setup NVIDIA driver for **"gpu-su-a100sxm4"** flavor based VM?"
+    After launching a VM with an **NVidia A100 SXM4** GPU flavor, you will need to
+    setup the NVIDIA driver in order to use GPU-based codes and libraries.
+    Please run the following commands to setup the NVIDIA driver and CUDA
+    version required for these flavors in order to execute GPU-based codes.
+    **NOTE:** These commands are **ONLY** applicable for the VM based on
+    "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
+    packages for your own OS of choice.
+
+        sudo apt update
+        sudo apt -y install nvidia-driver-495
+        # Just click *Enter* if any popups appear!
+        # Confirm and verify that you can see the NVIDIA device attached to your VM
+        lspci | grep -i nvidia
+        # 00:05.0 3D controller: NVIDIA Corporation GA100 [A100 SXM4 40GB] (rev a1)
+        sudo reboot
+        # SSH back to your VM and then you will be able to use nvidia-smi command
+        nvidia-smi
 
 The **"gpu-su-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz,
-48 cores, 384 GB memory, 4x NVidia A100) servers. These latest GPUs deliver
+48 cores, 384 GB memory, 4x NVidia A100 40GB) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base unit is 24
 vCPU, 95 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
 wall time.
@@ -98,8 +128,8 @@ wall time.
         nvidia-smi
 
 The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 6148,
-40 core, 768GB memory, 1x NVidia V100) servers. The base unit is 48 vCPU, 192 GB
-memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
+40 cores, 768GB memory, 1x NVidia V100 32GB) servers. The base unit is 48 vCPU,
+192 GB memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
@@ -125,7 +155,7 @@ memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
         nvidia-smi
 
 The **"gpu-su-k80"** flavor is provided from Supermicro X10DRG-H (2x Intel
-E5-2620 2.40GHz, 24 core, 128GB memory, 4x NVidia K80) servers. The base unit
+E5-2620 2.40GHz, 24 cores, 128GB memory, 4x NVidia K80 24GB) servers. The base unit
 is 6 vCPU, 31 GB memory with default of 20 GB root disk at a rate of $0.463 /
 hr of wall time.
 

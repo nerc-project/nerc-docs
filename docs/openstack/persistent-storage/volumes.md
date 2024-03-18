@@ -25,6 +25,10 @@ data loss, we strongly recommend regularly [taking a snapshot](../backup/backup-
 of such a running ephemeral instance, referred to as an **"instance snapshot"**,
 especially if you want to safeguard or recover important states of your instance.
 
+!!! danger "Very Important Note"
+    Never use **Ephemeral disk** if you're setting up a production-level environment.
+    When the instance is deleted, its associated ephemeral storage is also removed.
+
 ## Volumes
 
 A volume is a detachable block storage device, similar to a USB hard drive. You

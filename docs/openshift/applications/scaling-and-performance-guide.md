@@ -99,8 +99,8 @@ of pods or instances of the application manually as shown below:
     ![Scale the Pod Count](images/pod-scale-count-arrow.png)
 
     **Alternatively,** we can easily configure and modify the pod counts by right-click
-    the application to see the edit options available and selecting the *Edit Pod Count*
-    as shown below:
+    the application to see the edit options available and selecting the *Edit Pod
+    Count* as shown below:
 
     ![Edit the Pod Count](images/scale-pod-count.png)
 
@@ -123,7 +123,7 @@ Click the **Observe** tab to:
 
     !!! note "Detailed Monitoring your project and application metrics"
         On the left navigation panel of the **Developer** perspective, click
-        **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project. 
+        **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
         For more information about Monitoring project and application metrics
         using the Developer perspective, please
         [read this](https://docs.openshift.com/container-platform/4.10/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
@@ -184,14 +184,14 @@ of the *replication controller*. For *deployment configurations*, scaling corres
 directly to the replica count of the *deployment configuration*. Note that autoscaling
 applies only to the latest deployment in the `Complete` phase.
 
-For more information on how the HPA works, read [this documentation](https://docs.openshift.com/container-platform/4.14/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-workflow-hpa_nodes-pods-autoscaling). 
+For more information on how the HPA works, read [this documentation](https://docs.openshift.com/container-platform/4.14/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-workflow-hpa_nodes-pods-autoscaling).
 
 !!! warning "Very Important Note"
     To implement the HPA, all targeted pods must have a **Resource limits**
     set on their containers. The HPA will not have CPU and Memory metrics until
     Resource limits are set. CPU request and limit must be set before CPU utilization
     can be set. Memory request and limit must be set before Memory utilization
-    can be set.    
+    can be set.
 
 ### Resource Limit
 
@@ -225,7 +225,8 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
 - In the **Topology** view, click the node to reveal the side pane.
 
-- From the *Actions* drop-down list, select **Add HorizontalPodAutoscaler** as shown below:
+- From the *Actions* drop-down list, select **Add HorizontalPodAutoscaler** as
+shown below:
 
     ![Horizontal Pod Autoscaler Popup](images/add-hpa-popup.png)
 
@@ -233,7 +234,7 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
     ![Horizontal Pod Autoscaler Form](images/hpa-form.png)
 
-    !!! note "Configure via: Form or YAML View" 	
+    !!! note "Configure via: Form or YAML View"
         While creating or editing the horizontal pod autoscaler in the web console,
         you can switch from **Form view** to **YAML view**.
 
@@ -260,6 +261,7 @@ pod limits and the CPU and memory usage, and click **Save**.
 
 !!! tip "Best Practices"
     Read [this document](https://docs.openshift.com/container-platform/4.10/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
-    to learn more about best practices regarding Horizontal Pod Autoscaler (HPA) autoscaling.
+    to learn more about best practices regarding Horizontal Pod Autoscaler (HPA)
+    autoscaling.
 
 ---

@@ -8,7 +8,7 @@ This example template file is readily accessible from the
 [Git Repository](https://github.com/nerc-project/rstudio-testapp).
 
 !!! note "More about Writing Templates"
-    For more options and customization please [read this]( https://docs.openshift.com/container-platform/4.14/openshift_images/using-templates.html#templates-writing_using-templates).   
+    For more options and customization please [read this]( https://docs.openshift.com/container-platform/4.14/openshift_images/using-templates.html#templates-writing_using-templates).
 
 1. Find the **From Local Machine** section and click on **Import YAML** as shown
 below:

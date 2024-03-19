@@ -39,6 +39,10 @@ scroll to the **Routes** section on the Resources tab and click on the link to
 go to the sample application. This will open your application in a new browser
 window. The link will look similar to `http://<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
 
+!!! tip "Example: Deploying a Python application"
+    For a quick example on how to use the "Import from Git" option to deploy a
+    sample Python application, please refer to [this guide](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/getting_started/openshift-web-console#getting-started-web-console-deploying-python-app_openshift-web-console).
+
 ### Additional resources
 
 For more options and customization please [read this](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/odc-creating-applications-using-developer-perspective.html).
@@ -101,60 +105,57 @@ For more options and customization please [read this](https://docs.openshift.com
 
 ## Using the Developer Catalog on NERC's OpenShift Web Console
 
-Here, we walk through the process of creating a simple RStudio web server template
-that bundles all resources required to run the server i.e. ConfigMap, Pod, Route,
-Service, etc. and then initiate and deploy application from that template.
+The Developer Catalog offers a streamlined process for deploying applications
+and services supported by Operator-backed services like CI/CD, Databases, Builder
+Images, and Helm Charts. It comprises a diverse array of application components,
+services, event sources, and source-to-image builders ready for integration into
+your project.
 
-This example template file is readily accessible from the
-[Git Repository](https://github.com/nerc-project/rstudio-testapp).
+!!! note "About Quick Start Templates"
+    By default, the templates build using a public source repository on GitHub that
+    contains the necessary application code. For more options and customization
+    please [read this](https://docs.openshift.com/container-platform/4.10/openshift_images/using-templates.html#templates-quickstart_using-templates).
 
-1. Find the **From Local Machine** section and click on **Import YAML** as shown
-below:
+### Steps
 
-    ![Import YAML](images/import-yaml.png)
+1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. On opened YAML editor paste the content of template copied from the
-`rstudio-server-template.yaml` file located at the provided [Git Repo](https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml).
+2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
 
-    ![YAML Editor](images/import-yaml-content.png)
+3. In the **Navigation Menu**, click **+Add**.
 
-3. You need to find the Developer Catalog section and then select **All services**
+4. You need to find the Developer Catalog section and then select **All services**
 option as shown below:
 
     ![Select All Services](images/select-service-catalog.png)
 
-4. Then, you will be able to use the created Developer Catalog template by searching
-for it on catalog as shown below:
+5. Then, you will be able search any available services from the Developer Catalog
+templates by searching for it on catalog and choose the desired type of service
+or component that you wish to include in your project. For this example, select
+**Databases** to list all the database services and then click **MariaDB** to see
+the details for the service.
 
-    ![Search for RStudio Template](images/search-developer-catalog.png)
+    ![Search for MariaDB](images/search-mariadb-database.png)
 
-5. Once selected by clicking the template, you will see initiate template web interface
+    !!! info "To Create Your Own Developer Catalog Service"
+        You also have the option to create and integrate custom services into the
+        Developer Catalog using a template, as [described here](creating-your-own-developer-catalog-service.md).
+
+6. Once selected by clicking the template, you will see initiate template web interface
 as shown below:
 
-    ![Initiate Template](images/initiate-template.png)
+    ![Initiate MariaDB Template](images/initiate-mariadb-template.png)
 
-6. Based on our template definition, we request that users input a preferred password
-for the RStudio server so the following interface will prompt for your password that
-will be used during login the RStudio server.
+7. Clicking "Instantiate Template" will display an automatically populated
+template containing details for the MariaDB service. Click "Create" to begin the
+creation process and enter any custom information required.
 
-    ![Provide the RStudio Password](images/provide-password.png)
+8. View the **MariaDB** service in the Topology view as shown below:
 
-7. Once successfully initiated, you can either open the application URL using the
-**Open URL** icon as shown below or you can naviate to the Routes section and
-click on *Location* path as shown below:
+![MariaDB in Topology](images/mariadb-in-topology.png)
 
-    ![How to get the RStudio Application URL](images/rstudio-server-app-url.png)
+### For Additional resources
 
-8. To get the Username to be used for login on RStudio server, you need to click
-on running pod i.e. rstudio-server as shown below:
-
-    ![Detail Information for RStudio Pod](images/rstudio-pod-info.png)
-
-9. Then select the **YAML** section to find out the attribute value for **runAsUser**
-that is used as the Username while Sign in to RStudio server as shown below:
-
-    ![Username for RStudio Server from Pod runAsUser](images/rstudio-server-user-info.png)
-
-10. Finally, you will be able to see the RStudio web interface!
+For more options and customization please [read this](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/odc-creating-applications-using-developer-perspective.html#odc-using-the-developer-catalog-to-add-services-or-components_odc-creating-applications-using-developer-perspective).
 
 ---

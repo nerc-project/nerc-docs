@@ -56,30 +56,49 @@ memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
 
 ### 3. GPU Tier
 
-!!! info "Information"
-    NERC also supports the most demanding workloads including Artificial Intelligence
-    (AI), Machine Learning (ML) training and Deep Learning modeling, simulation,
-    data analytics, data visualization, distributed databases, and more. For such
-    demanding workloads, the NERC's GPU-based distributed computing flavor is
-    recommended, which is integrated into a specialized hardware such as GPUs
-    that produce unprecedented performance boosts for technical computing workloads.
+NERC also supports the most demanding workloads including Artificial Intelligence
+(AI), Machine Learning (ML) training and Deep Learning modeling, simulation,
+data analytics, data visualization, distributed databases, and more. For such
+demanding workloads, the NERC's GPU-based distributed computing flavor is
+recommended, which is integrated into a specialized hardware such as GPUs
+that produce unprecedented performance boosts for technical computing workloads.
 
-There are four flavors within the GPU tier, one featuring the newer
-**NVidia A100 SXM4**, **NVidia A100s**, **NVidia V100s**, and **NVidia K80s**.
+!!! info "Guidelines for Utilizing GPU-Based Flavors in Active Resource Allocation"
+
+    To effectively utilize GPU-based flavors on any NERC (OpenStack) resource allocation,
+    the Principal Investigator (PI) or project manager(s) must submit a
+    [change request](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
+    for their currently active NERC (OpenStack) resource allocation. This request
+    should specify the number of GPUs they intend to use by setting the "OpenStack
+    GPU Quota" attribute. We recommend ensuring that this count accurately reflects
+    the current GPU usage. Additionally, they need to adjust the quota values for
+    "OpenStack Compute RAM Quota" and "OpenStack Compute vCPU Quota" to sufficiently
+    accommodate the GPU flavor they wish to use when launching a VM in their
+    OpenStack Project.
+
+    Once the change request is reviewed and approved by the NERC's admin, users
+    will be able to select the appropriate GPU-based flavor [during the flavor
+    selection tab](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab)
+    when launching a new VM.
+
+There are four different options within the GPU tier, featuring the newer
+**NVIDIA A100 SXM4**, **NVIDIA A100s**, **NVIDIA V100s**, and **NVIDIA K80s**.
+
+#### i. NVIDIA A100 SXM4 40GB
 
 The **"gpu-su-a100sxm4"** flavor is provided from Lenovo SD650-N V2 (2x Intel Xeon
-Platinum 8358 32C 250W 2.6GHz, 128 cores, 1024 GB RAM 4x NVidia HGX A100 40GB) servers.
+Platinum 8358 32C 250W 2.6GHz, 128 cores, 1024 GB RAM 4x NVIDIA HGX A100 40GB) servers.
 The higher number of tensor cores available can significantly enhance the speed
-of machine learning applications. The base unit is 32 vCPU, 245 GB memory with
+of machine learning applications. The base unit is 32 vCPU, 240 GB memory with
 default of 20 GB root disk at a rate of $2.078 / hr of wall time.
 
 | Flavor            | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |-------------------|-----|-----|-------|---------|-------------|-----------|
-|gpu-su-a100sxm4.1  |1    |1    |32     |245      |20           |$2.078     |
-|gpu-su-a100sxm4.2  |2    |2    |64     |490      |20           |$4.156     |
+|gpu-su-a100sxm4.1  |1    |1    |32     |240      |20           |$2.078     |
+|gpu-su-a100sxm4.2  |2    |2    |64     |480      |20           |$4.156     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-a100sxm4"** flavor based VM?"
-    After launching a VM with an **NVidia A100 SXM4** GPU flavor, you will need to
+    After launching a VM with an **NVIDIA A100 SXM4** GPU flavor, you will need to
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
@@ -97,10 +116,12 @@ default of 20 GB root disk at a rate of $2.078 / hr of wall time.
         # SSH back to your VM and then you will be able to use nvidia-smi command
         nvidia-smi
 
+#### ii. NVIDIA A100 40GB
+
 The **"gpu-su-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz,
-48 cores, 384 GB memory, 4x NVidia A100 40GB) servers. These latest GPUs deliver
+48 cores, 384 GB memory, 4x NVIDIA A100 40GB) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base unit is 24
-vCPU, 95 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
+vCPU, 74 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
 wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
@@ -109,7 +130,7 @@ wall time.
 |gpu-su-a100.2  |2    |2    |48     |148      |20           |$3.606     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-a100"** flavor based VM?"
-    After launching a VM with an **NVidia A100** GPU flavor, you will need to
+    After launching a VM with an **NVIDIA A100** GPU flavor, you will need to
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
@@ -127,8 +148,10 @@ wall time.
         # SSH back to your VM and then you will be able to use nvidia-smi command
         nvidia-smi
 
+#### iii. NVIDIA V100 32GB
+
 The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 6148,
-40 cores, 768GB memory, 1x NVidia V100 32GB) servers. The base unit is 48 vCPU,
+40 cores, 768GB memory, 1x NVIDIA V100 32GB) servers. The base unit is 48 vCPU,
 192 GB memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
@@ -136,7 +159,7 @@ The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 61
 |gpu-su-v100.1  |1    |1    |48     |192      |20           |$1.214     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-v100"** flavor based VM?"
-    After launching a VM with an **NVidia V100** GPU flavor, you will need to
+    After launching a VM with an **NVIDIA V100** GPU flavor, you will need to
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
@@ -154,9 +177,11 @@ The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 61
         # SSH back to your VM and then you will be able to use nvidia-smi command
         nvidia-smi
 
+#### iv. NVIDIA K80 12GB
+
 The **"gpu-su-k80"** flavor is provided from Supermicro X10DRG-H (2x Intel
-E5-2620 2.40GHz, 24 cores, 128GB memory, 4x NVidia K80 24GB) servers. The base unit
-is 6 vCPU, 31 GB memory with default of 20 GB root disk at a rate of $0.463 /
+E5-2620 2.40GHz, 24 cores, 128GB memory, 4x NVIDIA K80 12GB) servers. The base unit
+is 6 vCPU, 28.5 GB memory with default of 20 GB root disk at a rate of $0.463 /
 hr of wall time.
 
 | Flavor       | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
@@ -166,7 +191,7 @@ hr of wall time.
 |gpu-su-k80.4  |4    |4    |24     |114      |20           |$1.852     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-k80"** flavor based VM?"
-    After launching a VM with an **NVidia K80** GPU flavor, you will need to
+    After launching a VM with an **NVIDIA K80** GPU flavor, you will need to
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.

@@ -67,16 +67,18 @@ memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
 There are four flavors within the GPU tier, one featuring the newer
 **NVidia A100 SXM4**, **NVidia A100s**, **NVidia V100s**, and **NVidia K80s**.
 
+#### i. NVidia A100 SXM4 40GB
+
 The **"gpu-su-a100sxm4"** flavor is provided from Lenovo SD650-N V2 (2x Intel Xeon
 Platinum 8358 32C 250W 2.6GHz, 128 cores, 1024 GB RAM 4x NVidia HGX A100 40GB) servers.
 The higher number of tensor cores available can significantly enhance the speed
-of machine learning applications. The base unit is 32 vCPU, 245 GB memory with
+of machine learning applications. The base unit is 32 vCPU, 240 GB memory with
 default of 20 GB root disk at a rate of $2.078 / hr of wall time.
 
 | Flavor            | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
 |-------------------|-----|-----|-------|---------|-------------|-----------|
-|gpu-su-a100sxm4.1  |1    |1    |32     |245      |20           |$2.078     |
-|gpu-su-a100sxm4.2  |2    |2    |64     |490      |20           |$4.156     |
+|gpu-su-a100sxm4.1  |1    |1    |32     |240      |20           |$2.078     |
+|gpu-su-a100sxm4.2  |2    |2    |64     |480      |20           |$4.156     |
 
 !!! note "How to setup NVIDIA driver for **"gpu-su-a100sxm4"** flavor based VM?"
     After launching a VM with an **NVidia A100 SXM4** GPU flavor, you will need to
@@ -97,10 +99,12 @@ default of 20 GB root disk at a rate of $2.078 / hr of wall time.
         # SSH back to your VM and then you will be able to use nvidia-smi command
         nvidia-smi
 
+#### ii. NVidia A100 40GB
+
 The **"gpu-su-a100"** flavor is provided from Lenovo SR670 (2x Intel 8268 2.9 GHz,
 48 cores, 384 GB memory, 4x NVidia A100 40GB) servers. These latest GPUs deliver
 industry-leading high throughput and low latency networking. The base unit is 24
-vCPU, 95 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
+vCPU, 74 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
 wall time.
 
 | Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
@@ -126,6 +130,8 @@ wall time.
         sudo reboot
         # SSH back to your VM and then you will be able to use nvidia-smi command
         nvidia-smi
+
+#### iii. NVidia V100 32GB
 
 The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 6148,
 40 cores, 768GB memory, 1x NVidia V100 32GB) servers. The base unit is 48 vCPU,
@@ -154,9 +160,11 @@ The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 61
         # SSH back to your VM and then you will be able to use nvidia-smi command
         nvidia-smi
 
+#### iv. NVidia K80 12GB
+
 The **"gpu-su-k80"** flavor is provided from Supermicro X10DRG-H (2x Intel
-E5-2620 2.40GHz, 24 cores, 128GB memory, 4x NVidia K80 24GB) servers. The base unit
-is 6 vCPU, 31 GB memory with default of 20 GB root disk at a rate of $0.463 /
+E5-2620 2.40GHz, 24 cores, 128GB memory, 4x NVidia K80 12GB) servers. The base unit
+is 6 vCPU, 28.5 GB memory with default of 20 GB root disk at a rate of $0.463 /
 hr of wall time.
 
 | Flavor       | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |

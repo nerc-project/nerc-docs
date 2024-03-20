@@ -79,7 +79,7 @@ that produce unprecedented performance boosts for technical computing workloads.
     Once the change request is reviewed and approved by the NERC's admin, users
     will be able to select the appropriate GPU-based flavor [during the flavor
     selection tab](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab)
-    while launching a new VM.
+    when launching a new VM.
 
 There are four different options within the GPU tier, featuring the newer
 **NVIDIA A100 SXM4**, **NVIDIA A100s**, **NVIDIA V100s**, and **NVIDIA K80s**.

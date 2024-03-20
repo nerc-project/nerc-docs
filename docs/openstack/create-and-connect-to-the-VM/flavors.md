@@ -63,21 +63,22 @@ demanding workloads, the NERC's GPU-based distributed computing flavor is
 recommended, which is integrated into a specialized hardware such as GPUs
 that produce unprecedented performance boosts for technical computing workloads.
 
-!!! info "How to use GPU based Flavors?"
+!!! info "Guidelines for Utilizing GPU-Based Flavors in Active Resource Allocation"
 
     To effectively utilize GPU-based flavors on any NERC (OpenStack) resource allocation,
     the Principal Investigator (PI) or project manager(s) must submit a
     [change request](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
     for their currently active NERC (OpenStack) resource allocation. This request
-    should specify the number of GPUs they intend to use by setting the
-    "OpenStack GPU Quota" attribute. Additionally, they need to adjust the quota
-    values for "OpenStack Compute RAM Quota" and "OpenStack Compute vCPU Quota"
-    to sufficiently accommodate the GPU flavor they wish to use when launching a
-    VM in their OpenStack Project.
+    should specify the number of GPUs they intend to use by setting the "OpenStack
+    GPU Quota" attribute. We recommend ensuring that this count accurately reflects
+    the current GPU usage. Additionally, they need to adjust the quota values for
+    "OpenStack Compute RAM Quota" and "OpenStack Compute vCPU Quota" to sufficiently
+    accommodate the GPU flavor they wish to use when launching a VM in their
+    OpenStack Project.
 
     Once the change request is reviewed and approved by the NERC's admin, users
     will be able to select the appropriate GPU-based flavor [during the flavor
-    selection](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab) section
+    selection tab](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab)
     while launching a new VM.
 
 There are four different options within the GPU tier, featuring the newer

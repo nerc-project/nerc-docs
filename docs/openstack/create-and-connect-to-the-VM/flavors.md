@@ -24,7 +24,7 @@ NERC offers the following flavors based on our Infrastructure-as-a-Service
 
 !!! tip "Pro Tip"
     Choose a flavor for your instance from the available Tier that suits your
-    requirements, use-cases, and budget when launching a VM.
+    requirements, use-cases, and budget when launching a VM as [shown here](../create-and-connect-to-the-VM/launch-a-VM.md#flavor-tab).
 
 ### 1. Standard Compute Tier
 

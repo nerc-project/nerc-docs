@@ -47,7 +47,7 @@ on how to set up SSH on your remote VMs.
     +----[SHA256]-----+
     ```
 
-    Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+    Copy and append the contents of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
     other nodes's `~/.ssh/authorized_keys` file. Please make sure you are logged
     in as `root` user by doing `sudo su` before you copy this public key to the
     end of `~/.ssh/authorized_keys` file of the other master and worker nodes. This
@@ -181,7 +181,7 @@ control plane.
     cat inventory/mycluster/hosts.yml
     ```
 
-    The content of the `hosts.yml` file should looks like:
+    The contents of the `hosts.yml` file should looks like:
 
     ```yaml
     all:

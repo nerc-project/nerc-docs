@@ -5,14 +5,15 @@ using the **Topology** view.
 
 ## Editing the source code of an application using the Developer perspective
 
-You can click the "Edit Source Code" ico, displayed at the bottom-right of the
+You can click the "Edit Source Code" icon, displayed at the bottom-right of the
 deployed application, to access your source code and modify it as shown below:
 
 ![Edit the source code of an application](images/edit-the-source-code-of-application.png)
 
 !!! info "Information"
     This feature is available only when you create applications using the
-    **From Git**, **From Catalog**, and the **From Dockerfile** options.
+    **From Git**, **Container Image**, **From Catalog**, and **From Dockerfile**
+    options.
 
 ## Editing the application configuration using the Developer perspective
 
@@ -20,6 +21,12 @@ deployed application, to access your source code and modify it as shown below:
 available as shown below:
 
     ![Edit an application](images/edit-an-application.png)
+
+    **Or,** In the **Topology** view, click the deployed application to reveal the
+    right-side **Overview** panel. From the *Actions* drop-down list, we can see
+    the similar edit options available as shown below:
+
+    ![Edit an application using Action](images/edit-an-application-using-action.png)
 
 2. Click on any of the options available to edit resource used by your application,
 the pop-up form will be pre-populated with the values you had added while creating

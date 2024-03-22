@@ -25,9 +25,17 @@ the list below.
 
 - [Creating A Sample Application](applications/creating-a-sample-application.md)
 
+- [Creating Your Own Developer Catalog Service](applications/creating-your-own-developer-catalog-service.md)
+
 ## Editing Applications
 
 - [Editing your applications](applications/editing-applications.md)
+
+- [Scaling and Performance Guide](applications/scaling-and-performance-guide.md)
+
+## Storage
+
+- [Storage Overview](storage/storage-overview.md)
 
 ## Deleting Applications
 

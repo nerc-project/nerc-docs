@@ -111,7 +111,7 @@ to your new instance so that you will be able to ssh into this machine:
     +----[SHA256]-----+
     ```
 
-- Copy and append the content of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+- Copy and append the contents of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
 the `~/.ssh/authorized_keys` file.
 
 ### Create a Volume Snapshot of the master VM

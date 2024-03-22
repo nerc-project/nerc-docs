@@ -101,8 +101,12 @@ nav:
           - How to Setup the OpenShift CLI Tools: openshift/logging-in/setup-the-openshift-cli.md
       - Creating Your First Application on OpenShift:
           - Creating A Sample Application: openshift/applications/creating-a-sample-application.md
+          - Creating Your Own Developer Catalog Service: openshift/applications/creating-your-own-developer-catalog-service.md
       - Editing Applications:
           - Editing your applications: openshift/applications/editing-applications.md
+          - Scaling and Performance Guide: openshift/applications/scaling-and-performance-guide.md
+      - Storage:
+          - Storage Overview: openshift/storage/storage-overview.md
       - Deleting Applications:
           - Deleting your applications: openshift/applications/deleting-applications.md
       - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md

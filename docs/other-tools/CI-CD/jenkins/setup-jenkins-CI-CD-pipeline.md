@@ -366,7 +366,7 @@ you can now create a pipeline to trigger it on your newly setup Jenkins server:
 
     ![Add Jenkins Pipeline Script From Git](images/jenkins-pipeline-from-git.png)
 
-    **OR**, You can copy/paste the content of your Jenkinsfile on the given textbox.
+    **OR**, You can copy/paste the contents of your Jenkinsfile on the given textbox.
     Please make sure you are selecting the "Pipeline script" from the dropdown options.
 
     ![Add Jenkins Pipeline Script Content](images/Jenkins-pipeline-script.png)

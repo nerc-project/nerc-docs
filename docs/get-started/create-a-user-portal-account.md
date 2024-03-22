@@ -128,8 +128,8 @@ as shown in the image below:
 ![the NERC's Support Ticketing System PI Ticket](images/osticket-pi-request.png)
 
 !!! info "Information"
-    Once your PI user request is reviewed and approved by NERC's admin, you will
-    receive an email confirmation from NERC's support system, i.e.,
+    Once your PI user request is reviewed and approved by the NERC's admin, you
+    will receive an email confirmation from NERC's support system, i.e.,
     **help@nerc.mghpcc.org**. Then, you can access [NERC's ColdFront resource
     allocation management portal](https://coldfront.mss.mghpcc.org/) using the
     PI user role, as [described here](allocation/coldfront.md).

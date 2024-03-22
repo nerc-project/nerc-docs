@@ -68,6 +68,159 @@ file counts to pods, those pods can fail or can take a long time to start.
     on how to view all pods, their usage statics (i.e. CPU, memory, and storage
     consumption) and logs in your project using the OpenShift CLI (`oc`) commands.
 
+## Compute Resources
+
+Each container running on a node consumes compute resources, which are measurable
+quantities that can be requested, allocated, and consumed.
+
+When authoring a pod configuration YAML file, you can optionally specify how much
+CPU, memory (RAM), and local ephemeral storage each container needs in order to
+better schedule pods in the cluster and ensure satisfactory performance as shown
+below:
+
+![Pod Compute Resources (YAML)](images/compute_resources_pod_yaml.png)
+
+CPU and memory can be specified in a couple of ways:
+
+- Resource **requests** and *limits* are optional parameters specified at the container
+level. OpenShift computes a Pod's request and limit as the sum of requests and limits
+across all of its containers. OpenShift then uses these parameters for scheduling
+and resource allocation decisions.
+
+    The **request** value specifies the min value you will be guaranteed. The request
+    value is also used by the scheduler to assign pods to nodes.
+
+    Pods will get the amount of **memory** they request. If they exceed their memory
+    request, they could be killed if another pod happens to need this memory. Pods
+    are only ever killed when using less memory than requested if critical system
+    or high priority workloads need the memory utilization.
+
+    Likewise, each container within a Pod is granted the **CPU** resources it requests,
+    subject to availability. Additional CPU cycles may be allocated if resources
+    are available and not required by other active Pods/Jobs.
+
+    !!! note "Important Information"
+        If a Pod's total requests are not available on a single node, then the Pod
+        will remain in a *Pending* state (i.e. not running) until these resources
+        become available.
+
+- The **limit** value specifies the max value you can consume. Limit is the value
+applications should be tuned to use. Pods will be memory, CPU throttled when they
+exceed their available memory and CPU limit.
+
+CPU is measured in units called millicores, where 1000 millicores ("m") = 1 vCPU
+or 1 Core. Each node in a cluster inspects the operating system to determine the
+amount of CPU cores on the node, then multiplies that value by 1000 to express its
+total capacity. For example, if a node has *2 cores*, the node's CPU capacity would
+be represented as *2000m*. If you wanted to use *1/10 of a single core*, it would
+be represented as *100m*.
+
+Memory and ephemeral storage are measured in bytes. In addition, it may be used
+with SI suffixes (E, P, T, G, M, K) or their power-of-two-equivalents (Ei, Pi, Ti,
+Gi, Mi, Ki).
+
+!!! warning "What happens if I did not specify the Compute Resources on Pod YAML?"
+    If you don't specify the compute resources for your objects i.e. containers,
+    to restrict them from running with unbounded compute resources from our cluster
+    the objects will use the limit ranges specified for your project namespace.
+    With limit ranges, we restrict resource consumption for specific objects in
+    a project. You can also be able to view the current limit range for your project
+    by going into the **Administrator** perspective and then navigating into the
+    "LimitRange details" as shown below:
+
+    ![Limit Ranges](images/limit_ranges.png)
+
+## How to specify pod to use GPU?
+
+So from a **Developer** perspective, the only thing you have to worry about is
+asking for GPU resources when defining your pods, with something like:
+
+    spec:
+      containers:
+      - name: app
+        image: ...
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+            nvidia.com/gpu: 1
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
+In the sample Pod Spec above, you can allocate GPUs to pods by specifying the GPU
+resource `nvidia.com/gpu` and indicating the desired number of GPUs. This number
+should not exceed the GPU quota specified by the value of the
+"**OpenShift Request on GPU Quota**" attribute that has been approved for your
+"**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront as
+[described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
+
+The "resources" section under "containers" with the `nvidia.com/gpu` specification
+indicates the number of GPUs you want in this container. Below is an example of
+a running pod YAML that requests the GPU device with a count of 2:
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: gpu-pod
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: cuda-container
+          image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda10.2
+          command: ["sleep"]
+          args: ["infinity"]
+          resources:
+            limits:
+              nvidia.com/gpu: 2
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
+
+On opened YAML editor paste the content of the above given pod YAML as shown below:
+
+![YAML Editor GPU Pod](images/import-pod-yaml-content.png)
+
+After the pod is running, navigate to the pod details and execute the following
+command in the **Terminal** to view the currently available NVIDIA GPU devices:
+
+![NVIDIA SMI A100 command](images/nvidia-A100-gpu.png)
+
+Additionally, you can execute the following command to narrow down and retrieve
+the name of the GPU device:
+
+    nvidia-smi --query-gpu=gpu_name --format=csv,noheader --id=0 | sed -e 's/ /-/g'
+
+    NVIDIA-A100-SXM4-40GB
+
+### How does select a different GPU card?
+
+We can specify information about the GPU product type, family, count, and so on,
+as shown in the Pod Spec above. Also, these node labels can be used in the Pod Spec
+to schedule workloads based on criteria such as the GPU device name, as shown under
+*nodeSelector* as shown below:
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: gpu-pod2
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: cuda-container
+          image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda10.2
+          command: ["sleep"]
+          args: ["infinity"]
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+      nodeSelector:
+        nvidia.com/gpu.product: Tesla-V100-PCIE-32GB
+
+When you run the `nvidia-smi` command in the terminal, you can observe the
+availability of the different V100 NVIDIA GPU device, as shown below:
+
+![NVIDIA SMI V100 command](images/nvidia-V100-gpu.png)
+
 ## Scaling
 
 Scaling defines the number of pods or instances of the application you want to
@@ -196,14 +349,19 @@ For more information on how the HPA works, read [this documentation](https://doc
 ### Resource Limit
 
 **Resource limits** control how much CPU and memory a container will consume on
-a node. we can easily configure and modify the *Resource Limit* by right-click the
+a node. You can specify a limit on how much memory and CPU an container can consume
+in both request and limit values. You can also specify the min request and max
+limit of a given container as well as the max ratio between request and limit.
+we can easily configure and modify the *Resource Limit* by right-click the
 application to see the edit options available as shown below:
 
 ![Resource Limits Popup](images/resource-limits-popup.png)
 
 Then selecting the *Edit resource limits* link to set the amount of CPU and Memory
-resources a container is guaranteed or allowed to use when running.In the pod
-specifications, you must specify the resource requests, such as CPU and memory.
+resources a container is guaranteed or allowed to use when running. In the pod
+specifications, you must specify the resource requests, such as CPU and memory as
+[described here](#compute-resources).
+
 The HPA uses this specification to determine the resource utilization and then
 scales the target up or down. Utilization values are calculated as a percentage
 of the resource requests of each pod. Missing resource request values can affect

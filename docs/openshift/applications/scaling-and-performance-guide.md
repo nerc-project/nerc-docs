@@ -192,7 +192,7 @@ the name of the GPU device:
 
     NVIDIA-A100-SXM4-40GB
 
-### How does select a different GPU card?
+### How to select a different GPU device for your container?
 
 We can specify information about the GPU product type, family, count, and so on,
 as shown in the Pod Spec above. Also, these node labels can be used in the Pod Spec

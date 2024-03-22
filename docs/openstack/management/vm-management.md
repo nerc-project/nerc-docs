@@ -262,7 +262,7 @@ command.
     ![Delete Multiple Instances At Once](images/delete_multiple_instances.png)
 
 !!! danger "Important Note"
-    This will immediately terminate the instance, delete all content of the
+    This will immediately terminate the instance, delete all contents of the
     virtual machine and erase the disk. This operation is not recoverable.
 
 There are other options available if you wish to keep the virtual machine for

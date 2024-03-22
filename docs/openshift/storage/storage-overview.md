@@ -24,7 +24,10 @@ and persistent storage.
 
 ### Ephemeral storage
 
-Pods and containers are ephemeral or transient in nature and designed for stateless applications. Ephemeral storage allows administrators and developers to better manage the local storage for some of their operations. For more information about ephemeral storage overview, types, and management, see Understanding ephemeral storage.
+Pods and containers are ephemeral or transient in nature and designed for stateless
+applications. Ephemeral storage allows administrators and developers to better manage
+the local storage for some of their operations. For more information about ephemeral
+storage overview, types, and management, see Understanding ephemeral storage.
 
 Pods and containers can require temporary or transient local storage for their
 operation. The lifetime of this ephemeral storage does not extend beyond the life
@@ -32,7 +35,13 @@ of the individual pod, and this ephemeral storage cannot be shared across pods.
 
 ### Persistent storage
 
-Stateful applications deployed in containers require persistent storage. OCP uses a pre-provisioned storage framework called persistent volumes (PV) to allow cluster administrators to provision persistent storage. The data inside these volumes can exist beyond the lifecycle of an individual pod. Developers can use persistent volume claims (PVCs) to request storage requirements. For more information about persistent storage overview, configuration, and lifecycle, see Understanding persistent storage.
+Stateful applications deployed in containers require persistent storage. OCP uses
+a pre-provisioned storage framework called persistent volumes (PV) to allow cluster
+administrators to provision persistent storage. The data inside these volumes can
+exist beyond the lifecycle of an individual pod. Developers can use persistent
+volume claims (PVCs) to request storage requirements. For more information about
+persistent storage overview, configuration, and lifecycle, see Understanding
+persistent storage.
 
 Pods and containers can require permanent storage for their operation. OpenShift
 Container Platform uses the Kubernetes persistent volume (PV) framework to allow
@@ -52,7 +61,7 @@ storage infrastructure.
 You can use a PVC to mount a PersistentVolume into a Pod. You can access the
 storage without knowing the details of the cloud environment.
 
-!!! note "Important Note"	
+!!! note "Important Note"
     A PVC is in active use by a pod when a Pod object exists that uses the PVC.
 
 ### Access modes

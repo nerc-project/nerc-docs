@@ -141,8 +141,8 @@ the details for the service.
         You also have the option to create and integrate custom services into the
         Developer Catalog using a template, as [described here](creating-your-own-developer-catalog-service.md).
 
-6. Once selected by clicking the template, you will see initiate template web interface
-as shown below:
+6. Once selected by clicking the template, you will see Instantiate Template web
+interface as shown below:
 
     ![Initiate MariaDB Template](images/initiate-mariadb-template.png)
 

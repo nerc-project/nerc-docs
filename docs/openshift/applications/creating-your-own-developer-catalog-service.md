@@ -15,7 +15,7 @@ below:
 
     ![Import YAML](images/import-yaml.png)
 
-2. On opened YAML editor paste the content of template copied from the
+2. On opened YAML editor paste the contents of the template copied from the
 `rstudio-server-template.yaml` file located at the provided [Git Repo](https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml).
 
     ![YAML Editor](images/import-yaml-content.png)
@@ -26,18 +26,18 @@ option as shown below:
     ![Select All Services](images/select-service-catalog.png)
 
 4. Then, you will be able to use the created Developer Catalog template by searching
-for it on catalog as shown below:
+for "RStudio" on catalog as shown below:
 
     ![Search for RStudio Template](images/search-developer-catalog.png)
 
-5. Once selected by clicking the template, you will see initiate template web interface
-as shown below:
+5. Once selected by clicking the template, you will see Instantiate Template web
+interface as shown below:
 
     ![Initiate Template](images/initiate-template.png)
 
 6. Based on our template definition, we request that users input a preferred password
 for the RStudio server so the following interface will prompt for your password that
-will be used during login the RStudio server.
+will be used during login to the RStudio server.
 
     ![Provide the RStudio Password](images/provide-password.png)
 

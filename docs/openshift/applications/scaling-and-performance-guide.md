@@ -64,7 +64,7 @@ default service account tokens. If you attach persistent volumes that have high
 file counts to pods, those pods can fail or can take a long time to start.
 
 !!! note "Viewing pods"
-    You can refer [this user guide](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html-single/nodes/index#nodes-pods-viewing)
+    You can refer to [this user guide](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html-single/nodes/index#nodes-pods-viewing)
     on how to view all pods, their usage statics (i.e. CPU, memory, and storage
     consumption) and logs in your project using the OpenShift CLI (`oc`) commands.
 
@@ -176,7 +176,7 @@ a running pod YAML that requests the GPU device with a count of 2:
       nodeSelector:
         nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
 
-On opened YAML editor paste the content of the above given pod YAML as shown below:
+On opened YAML editor paste the contents of the above given pod YAML as shown below:
 
 ![YAML Editor GPU Pod](images/import-pod-yaml-content.png)
 
@@ -232,7 +232,7 @@ that help reduce downtime during a change or an upgrade to the application. For
 more information about deployment, please [read this](https://docs.openshift.com/container-platform/4.10/applications/deployments/what-deployments-are.html#what-deployments-are-build-blocks).
 
 !!! note "Benefits of Scaling"
-    This will allow to respond quickly to peaks in demand, and reduce costs by
+    This will allow for a quicker response to peaks in demand, and reduce costs by
     automatically scaling down when resources are no longer needed.
 
 ## Scaling application pods, resources and observability

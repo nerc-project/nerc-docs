@@ -606,7 +606,7 @@ kubeconfig and `kubectl`.
 
     !!! note "Important Note"
         If you havent setup ssh connection between master node and loadbalancer, you
-        can manually copy content of the file `/etc/kubernetes/admin.conf` from
+        can manually copy the contents of the file `/etc/kubernetes/admin.conf` from
         `master1` node and then paste it to `$HOME/.kube/config` file on the
         loadbalancer node. Ensure that the kubeconfig file path is
         **`$HOME/.kube/config`** on the loadbalancer node.

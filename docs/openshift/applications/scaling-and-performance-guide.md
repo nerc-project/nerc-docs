@@ -155,6 +155,9 @@ should not exceed the GPU quota specified by the value of the
 "**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront as
 [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
 
+If you need to increase this quota value, you can request a change as
+[explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
+
 The "resources" section under "containers" with the `nvidia.com/gpu` specification
 indicates the number of GPUs you want in this container. Below is an example of
 a running pod YAML that requests the GPU device with a count of 2:
@@ -377,9 +380,7 @@ can also define the amount of CPU or memory usage that your pods should target.
 The HPA increases and decreases the number of replicas between the minimum and
 maximum numbers to maintain the specified CPU utilization across all pods.
 
-#### Steps
-
-##### To create an HPA in the web console
+#### To create an HPA in the web console
 
 - In the **Topology** view, click the node to reveal the side pane.
 
@@ -399,7 +400,7 @@ shown below:
 - From the **Add HorizontalPodAutoscaler** form, define the name, minimum and maximum
 pod limits, the CPU and memory usage, and click **Save**.
 
-##### To edit an HPA in the web console
+#### To edit an HPA in the web console
 
 - In the **Topology** view, click the node to reveal the side pane.
 
@@ -409,7 +410,7 @@ open the **Edit Horizontal Pod Autoscaler** form.
 - From the **Edit Horizontal Pod Autoscaler** form, edit the minimum and maximum
 pod limits and the CPU and memory usage, and click **Save**.
 
-##### To remove an HPA in the web console
+#### To remove an HPA in the web console
 
 - In the **Topology** view, click the node to reveal the side panel.
 

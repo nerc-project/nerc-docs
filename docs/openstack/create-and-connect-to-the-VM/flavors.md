@@ -64,7 +64,6 @@ recommended, which is integrated into a specialized hardware such as GPUs
 that produce unprecedented performance boosts for technical computing workloads.
 
 !!! info "Guidelines for Utilizing GPU-Based Flavors in Active Resource Allocation"
-
     To effectively utilize GPU-based flavors on any NERC (OpenStack) resource allocation,
     the Principal Investigator (PI) or project manager(s) must submit a
     [change request](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)

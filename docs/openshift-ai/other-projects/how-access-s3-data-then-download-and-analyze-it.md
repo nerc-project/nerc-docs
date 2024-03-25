@@ -4,7 +4,7 @@
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
-- Select the correct data science project and create workbench, see 
+- Select the correct data science project and create workbench, see
 [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project)
 for more information.
 
@@ -14,9 +14,9 @@ to select a notebook image and configure its options, including the number of GP
 
 ![Standard Data Science Workbech Information](images/standard-data-science-workbench.png)
 
-For our example project, let's name it "Standard Data Science Workbench". We'll select the
-**Standard Data Science** image, choose a **Deployment size** of **Small**, **Number of GPUs**
-as **0** and allocate a **Cluster storage** space of **1GB**.
+For our example project, let's name it "Standard Data Science Workbench". We'll
+select the **Standard Data Science** image, choose a **Deployment size** of **Small**,
+**Number of GPUs** as **0** and allocate a **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
 When your workbench is ready, the state will change to *Running* and you can select

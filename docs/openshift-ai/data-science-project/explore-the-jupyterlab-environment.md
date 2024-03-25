@@ -30,8 +30,8 @@ into this environment by using Git.
 
 ## Clone a Git repository
 
-You can clone a Git repository in JupyterLab through the left-hand **toolbar** or the
-**Git** menu option in the main menu as shown below:
+You can clone a Git repository in JupyterLab through the left-hand **toolbar** or
+the **Git** menu option in the main menu as shown below:
 
 ![JupyterLab Toolbar and Menu](images/jupyterlab-toolbar-main-menu.jpg)
 
@@ -53,7 +53,7 @@ Then click **Clone** button as shown below:
 
 !!! info "What is MLOps?"
     Machine learning operations (MLOps) are a set of practices that automate and
-    simplify machine learning (ML) workflows and deployments. 
+    simplify machine learning (ML) workflows and deployments.
 
 Cloning takes a few seconds, after which you can double-click and navigate to the
 newly-created folder that contains your cloned Git repository.
@@ -166,7 +166,7 @@ generate and save the model `my-model.keras` within the root folder path of
     [previous section](#training-a-model), this model has already been trained as
     it takes a few hours with the help of a GPU to do it. If you want to know
     more about this training process, you can have a look [here](https://github.com/rh-aiservices-bu/yolov5-transfer-learning).
-    
+
     The resulting model has been saved in the [**ONNX**](https://onnx.ai/) format,
     an open standard for machine learning interoperability, which is one we can
     use with OpenVINO and RHOAI model serving. The model has been stored and is

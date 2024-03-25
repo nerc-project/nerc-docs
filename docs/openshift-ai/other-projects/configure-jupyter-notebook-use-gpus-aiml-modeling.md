@@ -4,7 +4,7 @@
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
-- Select the correct data science project and create workbench, see 
+- Select the correct data science project and create workbench, see
 [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project)
 for more information.
 
@@ -315,7 +315,7 @@ torch.save(model.state_dict(), "mnist_fashion_SimpleNet.pt")
 
 ## Load and run a PyTorch model
 
-Let's now determine how our simple torch model performs using GPU resources. 
+Let's now determine how our simple torch model performs using GPU resources.
 
 In the `getting-started-with-gpus` directory, double click on the
 `torch-test-model.ipynb` file (highlighted as shown below) to open the notebook.
@@ -372,6 +372,6 @@ The sample run as shown below shows that the model predicted a "bag" with a
 confidence of about 0.9192. Despite the % in the output, 0.9192 is very good
 because a perfect confidence would be 1.0.
 
-![Model Performance Test Result](images/model-performance-result.png) 
+![Model Performance Test Result](images/model-performance-result.png)
 
 ---

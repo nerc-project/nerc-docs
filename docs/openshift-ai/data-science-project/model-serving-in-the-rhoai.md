@@ -4,7 +4,8 @@
 
 To run a **model server** and **deploy a model** on it, you need to have:
 
-- Select the correct data science project and create workbench, see [Populate the data science project](using-projects-the-rhoai.md#populate-the-data-science-project)
+- Select the correct data science project and create workbench, see [Populate
+the data science project](using-projects-the-rhoai.md#populate-the-data-science-project)
 for more information.
 
 ## Create a data connection
@@ -50,9 +51,9 @@ as "https://s3.amazonaws.com/".
     The model file(s) should have been saved into an S3-compatible object storage
     bucket (NERC OpenStack Container or AWS S3) for which you must have the connection
     information, such as location and credentials. You can create a bucket on your
-    active project at the NERC OpenStack Project by following the instructions in 
+    active project at the NERC OpenStack Project by following the instructions in
     [this guide](../../openstack/persistent-storage/object-storage.md).
-    
+
     The API Access EC2 credentials can be downloaded and accessed from the NERC
     OpenStack Project as [described here](../../openstack/persistent-storage/object-storage.md#configuring-the-aws-cli).
 
@@ -185,7 +186,8 @@ Example: `http://modelmesh-serving.model-serving:8008/v2/models/coolstore/infer`
 
 - The gRPC proto file for the Model Server is [available here](https://github.com/kserve/kserve/blob/master/docs/predict-api/v2/grpc_predict_v2.proto).
 
-- If you have exposed the model through an external route, the Inference endpoint displays the full URL that you can copy.
+- If you have exposed the model through an external route, the Inference endpoint
+displays the full URL that you can copy.
 
 !!! note "Important Note"
     Even when you expose the model through an external route, the internal ones

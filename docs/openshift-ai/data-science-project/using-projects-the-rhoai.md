@@ -70,7 +70,7 @@ On the Create workbench page, complete the following information.
     You have the option to select different container sizes to define compute
     resources, including CPUs and memory. Each container size comes with pre-configured
     CPU and memory resources.
-    
+
     Optionally, you can specify the desired **Number of GPUs** depending on the
     nature of your data analysis and machine learning code requirements. However,
     this number should not exceed the GPU quota specified by the value of the
@@ -79,7 +79,7 @@ On the Create workbench page, complete the following information.
     [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
 
     If you need to increase this quota value, you can request a change as
-    [explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).    
+    [explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
 
 Once you have entered the information for your workbench, click **Create**.
 

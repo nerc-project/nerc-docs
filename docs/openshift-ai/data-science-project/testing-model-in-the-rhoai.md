@@ -83,10 +83,11 @@ You can then click the **Create** button as shown below:
 
     ![Resources successfully created Importing More YAML](images/yaml-import-new-content.png)
 
-- Click on "Import more YAML" and Copy/Paste the content of the file `intelligent_application_deployment.yaml` inside the opened YAML editor. Nothing to change here, you can then click the **Create**
-button as shown below:
+- Click on "Import more YAML" and Copy/Paste the content of the file `intelligent_application_deployment.yaml`
+inside the opened YAML editor. Nothing to change here, you can then click the
+**Create** button as shown below:
 
-    ![YAML Editor Add Pre-Post Processing Service Content](images/intelligent_application_deployment-yaml-content.png)
+    ![YAML Editor Pre-Post Processing Service Content](images/intelligent_application_deployment-yaml-content.png)
 
 - If both deployments are successful, you will be able to see both of them grouped
 under "intelligent-application" on the **Topology View** menu, as shown below:

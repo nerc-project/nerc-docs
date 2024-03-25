@@ -2,13 +2,13 @@
 
 In the NERC's RHOAI dashboard, you can see multiple links on your left hand side.
 
-1. **Applications**: 
+1. **Applications**:
 
     - *Enabled*: Launch your enabled applications, view documentation, or get
     started with quick start instructions and tasks.
 
     - *Explore*: View optional applications for your RHOAI instance.
-    
+
         **NOTE**: Most of them are disabled by default on NERC RHOAI right now.
 
 2. **Data Science Projects**: View your existing projects. This will show different

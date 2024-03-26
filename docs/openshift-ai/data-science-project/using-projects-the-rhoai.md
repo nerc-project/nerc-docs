@@ -6,7 +6,7 @@ menu item on the left-hand side, as highlighted in the figure below:
 ![Data Science Projects](images/data-science-projects.png)
 
 If you have any existing projects, they will be displayed here. These projects
-corresponds to your [NERC-OCP (OpenShift) resource allocations](../../get-started/allocation/allocation-details.md#general-user-view-of-openshift-resource-allocation).
+correspond to your [NERC-OCP (OpenShift) resource allocations](../../get-started/allocation/allocation-details.md#general-user-view-of-openshift-resource-allocation).
 
 ## Selecting your data science project
 
@@ -33,7 +33,7 @@ uses.
 As you can see in the project's details figure, our selected data science project
 currently has no workbenches, storage, data connections, pipelines, or model servers.
 
-## Populate the data science project with Workbench
+## Populate the data science project with a Workbench
 
 Add a workbench by clicking the Create workbench button as shown below:
 
@@ -86,8 +86,8 @@ Once you have entered the information for your workbench, click **Create**.
 ![Fill Workbench Information](images/tensor-flow-workbench.png)
 
 For our example project, let's name it "TensorFlow Workbench". We'll select the
-**Tensorflow** image, choose a **Deployment size** of **Small**, and allocate a
-**Cluster storage** space of **1GB**.
+**TensorFlow** image, choose a **Deployment size** of **Small**, **Number of GPUs**
+as **1** and allocate a **Cluster storage** space of **1GB**.
 
 !!! info "More About Cluster Storage"
     Cluster storage consists of Persistent Volume Claims (PVCs), which are
@@ -106,12 +106,13 @@ are any issues i.e. an "insufficient memory" error then a red exclamation appear
 under the status indicator and you can hover over that icon. Looking closely at
 the error message, it shows the details about the issue and you can resolve accordingly.
 
-When your workbench is ready, the state will change to *Running* and you can select
+When your workbench is ready, the status will change to *Running* and you can select
 "Open" to go to your environment:
 
-![Open JupyterLab Environment](images/open-jupyter-lab.png)
+![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 
 !!! tip "How can I start or stop a Workbench?"
-    You can use this toggle to easily *start/stop* this environment later on.
+    You can use this "toggle switch" under the "Status" section to easily *start/stop*
+    this environment later on.
 
 ---

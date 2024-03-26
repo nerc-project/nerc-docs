@@ -1,12 +1,13 @@
 # Explore the JupyterLab Environment
 
-When your workbench is ready, the state will change to *Running* and you can select
+When your workbench is ready, the status will change to *Running* and you can select
 "Open" to go to your environment:
 
-![Open JupyterLab Environment](images/open-jupyter-lab.png)
+![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 
 !!! tip "How can I start or stop a Workbench?"
-    You can use this toggle to easily *start/stop* this environment later on.
+    You can use this "toggle switch" under the "Status" section to easily *start/stop*
+    this environment later on.
 
 Make sure you are selecting "**mss-keycloak**" once shown:
 
@@ -17,7 +18,7 @@ Authorize the requested permissions if needed:
 ![Authorize Access to the RHOAI](images/authorize-access-to-the-rhoai.png)
 
 This will initiate your [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)
-environment based on the Jupyter Image you have selected. JupyterLab offers an
+environment based on the Jupyter Image you have selected. JupyterLab offers a
 shared interactive integrated development environment.
 
 Once you successfully authenticate you should see the NERC RHOAI JupyterLab Web
@@ -25,7 +26,7 @@ Interface as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)
 
-It's pretty empty right now, though. So the first thing we will do is add content
+It's pretty empty right now, though. The first thing we will do is add content
 into this environment by using Git.
 
 ## Clone a Git repository
@@ -122,7 +123,7 @@ application: `01_sandbox.ipynb`, `02_model_training_basics.ipynb`, and `03_remot
 within the root folder path of `nerc_rhoai_mlops`.
 
 You can click and run `01_sandbox.ipynb` to verify the setup JupyterLab environment
-can run python codes properly.
+can run python code properly.
 
 Also, you can find the "samples" folder within the root folder path of `nerc_rhoai_mlops`.
 For learning purposes, double-click on the "samples" folder under the newly-created

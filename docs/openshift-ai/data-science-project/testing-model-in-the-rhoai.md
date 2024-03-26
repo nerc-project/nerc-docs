@@ -61,21 +61,22 @@ the inference.
 
 The deployment of the application is really easy, as we already created for you
 the necessary YAML files. They are included in the Git project we used for this
-example project. You can find them in the **deployment** folder inside you JupyterLab
+example project. You can find them in the **deployment** folder inside your JupyterLab
 environment, or directly [here](https://github.com/nerc-project/nerc_rhoai_mlops/tree/main/deployment).
 
 To deploy the Pre-Post Processing Service service and the Application:
 
 - From your [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org/),
 navigate to your project corresponding to the *NERC RHOAI Data Science Project*,
-and select the "Import YAML" button, the "plus" sign on the top right:
+and select the "Import YAML" button, the "plus" sign on the top right side as shown
+below:
 
     ![YAML Add Icon](images/yaml-upload-plus-icon.png)
 
 - Copy/Paste the content of the file `pre_post_processor_deployment.yaml` inside
 the opened YAML editor. If you have named your model **coolstore** as instructed,
-you're good to go. If not, modify the value on **line # 35** with the name you set.
-You can then click the **Create** button as shown below:
+you're good to go. If not, modify the value on **[line # 35](https://github.com/nerc-project/nerc_rhoai_mlops/blob/33b3b7fa7448756f3defb3d6ae793524d1c5ff14/deployment/pre_post_processor_deployment.yaml#L35C23-L35C32)**
+with the name you set. You can then click the **Create** button as shown below:
 
     ![YAML Editor Add Pre-Post Processing Service Content](images/pre_post_processor_deployment-yaml-content.png)
 

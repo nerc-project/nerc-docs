@@ -44,7 +44,7 @@ Project as [described here](../../openstack/persistent-storage/object-storage.md
 This credential file contains information regarding **AWS_ACCESS_KEY_ID**,
 **AWS_SECRET_ACCESS_KEY**, and **AWS_S3_ENDPOINT**.
 
-**NOTE**: If you are using AWS S3 bucket then **AWS_S3_ENDPOINT** need to be set
+**NOTE**: If you are using AWS S3 bucket then **AWS_S3_ENDPOINT** needs to be set
 as "https://s3.amazonaws.com/".
 
 !!! note "How to store & connect to the model file in the object storage bucket?"
@@ -73,8 +73,8 @@ now see the data connection displayed in the main project window as shown below:
 
 ## Create a model server
 
-After creating the data connection, you can configure your model server. Select
-**Configure server** as shown below:
+After creating the data connection, you can add your model server. Select
+**Add server** as shown below:
 
 ![Add A Model Server](images/add-a-model-server.png)
 
@@ -102,8 +102,8 @@ API) to be accessible outside of the OpenShift cluster through an external route
 - **Token authorization**: Check this box if you want to secure or restrict access
 to the model by forcing requests to provide an authorization token.
 
-After adding and selecting options within the **Configure model server** pop-up
-window, click **Configure** to configure the model server.
+After adding and selecting options within the **Add model server** pop-up
+window, click **Add** to create the model server.
 
 For our example project, let's name the **Model server** as "coolstore-modelserver".
 We'll select the **OpenVINO Model Server** in **Serving runtime**. Leave **replicas**
@@ -172,7 +172,7 @@ model server.
 
 If you did not expose the model externally through a route, click on the Internal
 Service link in the Inference endpoint section. A popup will display the address
-for the gRPC and the REST URLs fpr the inference endpoints as shown below:
+for the gRPC and the REST URLs for the inference endpoints as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/deployed-model-inference-endpoints.png)
 

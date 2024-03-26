@@ -19,10 +19,10 @@ select the **Standard Data Science** image, choose a **Deployment size** of **Sm
 **Number of GPUs** as **0** and allocate a **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
-When your workbench is ready, the state will change to *Running* and you can select
+When your workbench is ready, the status will change to *Running* and you can select
 "Open" to go to your environment:
 
-![Open JupyterLab Environment](images/open-jupyter-lab.png)
+![Open JupyterLab Environment](images/open-standard-ds-workbench-jupyter-lab.png)
 
 Once you successfully authenticate you should see the NERC RHOAI JupyterLab Web
 Interface as shown below:

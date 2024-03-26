@@ -85,7 +85,7 @@ Once you have entered the information for your workbench, click **Create**.
 
 ![Fill Workbench Information](images/tensor-flow-workbench.png)
 
-For our example project, let's name it "TensorFlow Workbench". We'll select the
+For our example project, let's name it "Tensorflow Workbench". We'll select the
 **TensorFlow** image, choose a **Deployment size** of **Small**, **Number of GPUs**
 as **1** and allocate a **Cluster storage** space of **1GB**.
 

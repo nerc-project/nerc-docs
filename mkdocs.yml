@@ -110,6 +110,21 @@ nav:
       - Deleting Applications:
           - Deleting your applications: openshift/applications/deleting-applications.md
       - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
+  - Red Hat OpenShift AI (RHOAI):
+      - NERC RHOAI: openshift-ai/index.md
+      - NERC OpenShift AI Getting Started:
+          - NERC RHOAI Overview: openshift-ai/get-started/rhoai-overview.md
+      - NERC OpenShift AI Dashboard:
+          - Access the NERC's OpenShift AI dashboard: openshift-ai/logging-in/access-the-rhoai-dashboard.md
+          - The NERC's OpenShift AI dashboard Overview: openshift-ai/logging-in/the-rhoai-dashboard-overview.md
+      - Using Data Science Project in the NERC RHOAI:
+          - Using Your Data Science Project (DSP): openshift-ai/data-science-project/using-projects-the-rhoai.md
+          - Explore the JupyterLab Environment: openshift-ai/data-science-project/explore-the-jupyterlab-environment.md
+          - Model Serving in the NERC RHOAI: openshift-ai/data-science-project/model-serving-in-the-rhoai.md
+          - Test the Model in the NERC RHOAI: openshift-ai/data-science-project/testing-model-in-the-rhoai.md
+      - Other Example Projects:
+          - How to access, download, and analyze data for S3 usage: openshift-ai/other-projects/how-access-s3-data-then-download-and-analyze-it.md
+          - Configure a Jupyter Notebook to use GPUs for AI/ML modeling: openshift-ai/other-projects/configure-jupyter-notebook-use-gpus-aiml-modeling.md
   - Other Tools On NERC:
       - Other Useful Tools: other-tools/index.md
       - Kubernetes:

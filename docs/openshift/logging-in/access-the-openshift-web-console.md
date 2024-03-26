@@ -3,7 +3,7 @@
 **The NERC's OpenShift Container Platform web console** is a user interface that
 can be accessed via the web.
 
-You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
+You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
 
 The NERC Authentication supports CILogon using Keycloak for gateway authentication
 and authorization that provides federated login via your institution accounts and

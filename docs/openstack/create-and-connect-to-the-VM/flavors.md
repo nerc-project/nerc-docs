@@ -88,7 +88,7 @@ There are four different options within the GPU tier, featuring the newer
     listed on our NVIDIA A100 SXM4 40GB GPU Tiers list. These options are exclusively
     available for demanding projects and are subject to availability.
 
-    To request access, please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSdUgsIf4UQgQmdI7OpDeC0ONKyI9xlE9EXi3ZukRGilEDWzRQ/viewform?usp=pp_url).
+    To request access, please fill out [this form](https://forms.gle/UNffz9LXNEoWESEaA).
     Our team will review your request and reach out to you to discuss further.
 
 #### i. NVIDIA A100 SXM4 40GB

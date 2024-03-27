@@ -22,37 +22,40 @@ Enter the following information:
 
 - **Name**: The name you want to give to the data connection.
 
-- **AWS_ACCESS_KEY_ID**: The access key to the bucket.
+- **Access Key**: The access key to the bucket.
 
-- **AWS_SECRET_ACCESS_KEY**: The secret for the access key.
+- **Secret Key**: The secret for the access key.
 
-- **AWS_S3_ENDPOINT**: The endpoint to connect to the storage.
+- **Endpoint**: The endpoint to connect to the storage.
 
-- **AWS_DEFAULT_REGION**: The region to connect to the storage.
+- **Region**: The region to connect to the storage.
 
-- **AWS_S3_BUCKET**: The name of the bucket.
+- **Bucket**: The name of the bucket.
 
-**NOTE**: However, you are not required to use the S3 service from Amazon Web
-Services (AWS). Any S3-compatible storage is supported.
+**NOTE**: However, you are not required to use the S3 service from **Amazon Web
+Services (AWS)**. Any S3-compatible storage i.e. NERC OpenStack Container (Ceph),
+Minio, AWS S3, etc. is supported.
 
 ![Configure and Add A New Data Connection](images/configure-a-new-data-connection.png)
 
 For our example project, let's name it "ocp-nerc-container-connect", we'll select
-the "us-east-1" as **AWS_DEFAULT_REGION**, choose "ocp-container" as **AWS_S3_BUCKET**.
+the "us-east-1" as **Region**, choose "ocp-container" as **S3_BUCKET**.
 The API Access EC2 credentials can be downloaded and accessed from the NERC OpenStack
 Project as [described here](../../openstack/persistent-storage/object-storage.md#configuring-the-aws-cli).
-This credential file contains information regarding **AWS_ACCESS_KEY_ID**,
-**AWS_SECRET_ACCESS_KEY**, and **AWS_S3_ENDPOINT**.
+This credential file contains information regarding **Access Key**,
+**Secret Key**, and **Endpoint**.
 
-**NOTE**: If you are using AWS S3 bucket then **AWS_S3_ENDPOINT** needs to be set
-as "https://s3.amazonaws.com/".
+**Very Important NOTE**: If you are using an *AWS S3 bucket*, the **Endpoint**
+needs to be set as `https://s3.amazonaws.com/`. However, for the *NERC Object Storage*
+container, which is based on the *Ceph* backend, the **Endpoint** needs to be set
+as `https://stack.nerc.mghpcc.org:13808`, and the **Region** should be set as `us-east-1`.
 
 !!! note "How to store & connect to the model file in the object storage bucket?"
     The model file(s) should have been saved into an S3-compatible object storage
-    bucket (NERC OpenStack Container or AWS S3) for which you must have the connection
-    information, such as location and credentials. You can create a bucket on your
-    active project at the NERC OpenStack Project by following the instructions in
-    [this guide](../../openstack/persistent-storage/object-storage.md).
+    bucket (NERC OpenStack Container [Ceph], Minio, or AWS S3) for which you must
+    have the connection information, such as location and credentials. You can
+    create a bucket on your active project at the NERC OpenStack Project by following
+    the instructions in [this guide](../../openstack/persistent-storage/object-storage.md).
 
     The API Access EC2 credentials can be downloaded and accessed from the NERC
     OpenStack Project as [described here](../../openstack/persistent-storage/object-storage.md#configuring-the-aws-cli).

@@ -8,6 +8,14 @@ menu item on the left-hand side, as highlighted in the figure below:
 If you have any existing projects, they will be displayed here. These projects
 correspond to your [NERC-OCP (OpenShift) resource allocations](../../get-started/allocation/allocation-details.md#general-user-view-of-openshift-resource-allocation).
 
+!!! note "Why we need Data Science Project (DSP)?"
+     To implement a data science workflow, you must use a data science project.
+     Projects allow you and your team to organize and collaborate on resources
+     within separated namespaces. From a project you can create multiple workbenches,
+     each with their own Jupyter notebook environment, and each with their own data
+     connections and cluster storage. In addition, the workbenches can share models
+     and data with pipelines and model servers.
+
 ## Selecting your data science project
 
 Here, you can click on specific projects corresponding to the appropriate allocation
@@ -101,13 +109,18 @@ status of the workbench as shown below:
 
 ![Workbench and Cluster Storage](images/workbench-cluster-storage.png)
 
-Notice that under the status indicator the workbench is *Running*. But if there
-are any issues i.e. an "insufficient memory" error then a red exclamation appears
-under the status indicator and you can hover over that icon. Looking closely at
-the error message, it shows the details about the issue and you can resolve accordingly.
+Notice that under the status indicator the workbench is *Running*. However, if any
+issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
+under the Status indicator, as shown in the example below:
 
-When your workbench is ready, the status will change to *Running* and you can select
-"Open" to go to your environment:
+![Workbench Error Status](images/workbench-error-status.png)
+
+You can hover over that icon to view details. Upon closer inspection of the error
+message and the "Event log", you will receive details about the issue, enabling
+you to resolve it accordingly.
+
+When your workbench is ready and the status changes to *Running*, you can select
+"Open" to access your environment:
 
 ![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 

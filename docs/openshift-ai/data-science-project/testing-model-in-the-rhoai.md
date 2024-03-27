@@ -68,10 +68,14 @@ To deploy the Pre-Post Processing Service service and the Application:
 
 - From your [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org/),
 navigate to your project corresponding to the *NERC RHOAI Data Science Project*,
-and select the "Import YAML" button, the "plus" sign on the top right side as shown
+and select the "Import YAML" button, the "+" icon the top navigation bar as shown
 below:
 
     ![YAML Add Icon](images/yaml-upload-plus-icon.png)
+
+- Verify that you selected the correct project.
+
+    ![Correct Project Selected for YAML Editor](images/project-verify-yaml-editor.png)
 
 - Copy/Paste the content of the file `pre_post_processor_deployment.yaml` inside
 the opened YAML editor. If you have named your model **coolstore** as instructed,

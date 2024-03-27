@@ -83,6 +83,14 @@ that produce unprecedented performance boosts for technical computing workloads.
 There are four different options within the GPU tier, featuring the newer
 **NVIDIA A100 SXM4**, **NVIDIA A100s**, **NVIDIA V100s**, and **NVIDIA K80s**.
 
+!!! question "How can I get customized A100 SXM4 GPUs not listed in the current flavors?"
+    We also provide customized A100 SXM4 GPU-based flavors, which are not publicly
+    listed on our NVIDIA A100 SXM4 40GB GPU Tiers list. These options are exclusively
+    available for demanding projects and are subject to availability.
+
+    To request access, please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSdUgsIf4UQgQmdI7OpDeC0ONKyI9xlE9EXi3ZukRGilEDWzRQ/viewform?usp=pp_url).
+    Our team will review your request and reach out to you to discuss further.
+
 #### i. NVIDIA A100 SXM4 40GB
 
 The **"gpu-su-a100sxm4"** flavor is provided from Lenovo SD650-N V2 (2x Intel Xeon
@@ -214,6 +222,15 @@ hr of wall time.
     $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr. More about cost
     can be [found here](../../get-started/cost-billing/how-pricing-works.md) and
     some of the common billing related FAQs are [listed here](../../get-started/cost-billing/billing-faqs.md).
+
+## How can I get customized A100 SXM4 GPUs not listed in the current flavors?
+
+We also provide customized A100 SXM4 GPU-based flavors, which are not publicly
+listed on our NVIDIA A100 SXM4 40GB GPU Tiers list. These options are exclusively
+available for demanding projects and are subject to availability.
+
+To request access, please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSdUgsIf4UQgQmdI7OpDeC0ONKyI9xlE9EXi3ZukRGilEDWzRQ/viewform?usp=pp_url).
+Our team will review your request and reach out to you to discuss further.
 
 ## How to Change Flavor of an instance
 

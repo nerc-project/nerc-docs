@@ -39,13 +39,14 @@ Minio, AWS S3, etc. is supported.
 ![Configure and Add A New Data Connection](images/configure-a-new-data-connection.png)
 
 For our example project, let's name it "ocp-nerc-container-connect", we'll select
-the "us-east-1" as **Region**, choose "ocp-container" as **S3_BUCKET**.
+the "us-east-1" as **Region**, choose "ocp-container" as **Bucket**.
+
 The API Access EC2 credentials can be downloaded and accessed from the NERC OpenStack
 Project as [described here](../../openstack/persistent-storage/object-storage.md#configuring-the-aws-cli).
 This credential file contains information regarding **Access Key**,
 **Secret Key**, and **Endpoint**.
 
-**Very Important NOTE**: If you are using an *AWS S3 bucket*, the **Endpoint**
+**Very Important Note**: If you are using an *AWS S3 bucket*, the **Endpoint**
 needs to be set as `https://s3.amazonaws.com/`. However, for the *NERC Object Storage*
 container, which is based on the *Ceph* backend, the **Endpoint** needs to be set
 as `https://stack.nerc.mghpcc.org:13808`, and the **Region** should be set as `us-east-1`.

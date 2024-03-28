@@ -67,9 +67,9 @@ environment, or directly [here](https://github.com/nerc-project/nerc_rhoai_mlops
 To deploy the Pre-Post Processing Service service and the Application:
 
 - From your [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org/),
-navigate to your project corresponding to the *NERC RHOAI Data Science Project*,
-and select the "Import YAML" button, the "+" icon the top navigation bar as shown
-below:
+navigate to your project corresponding to the *NERC RHOAI Data Science Project*
+and select the "Import YAML" button, represented by the "+" icon in the top
+navigation bar as shown below:
 
     ![YAML Add Icon](images/yaml-upload-plus-icon.png)
 

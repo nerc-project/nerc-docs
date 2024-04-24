@@ -65,7 +65,7 @@ with fetched information to complete the account creation process.
     carefully and then click on the "Create MGHPCC-SS Account" button to save
     your information. Please review the information, make any corrections that
     you need and fill in any blank/ missing fields such as "Research Domain". Please
-    read the End User Level Agreement (EULA) and accept the terms by checking
+    read the **End User Level Agreement (EULA)** and accept the terms by checking
     the checkbox in this form.
 
 Once you have reviewed and verified that all your user information in this form

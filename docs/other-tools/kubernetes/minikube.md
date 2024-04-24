@@ -14,8 +14,8 @@ machine managers.
 We will need 1 VM to create a single node kubernetes cluster using `minikube`.
 We are using following setting for this purpose:
 
-- 1 Linux machine for master, ubuntu-22.04-x86_64 or your choice of Ubuntu OS image,
-cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+- 1 Linux machine for master, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
+`cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to this VM.
 
 - setup Unique hostname to the machine using the following command:

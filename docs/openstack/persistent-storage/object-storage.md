@@ -434,14 +434,14 @@ for more information.
 #### Configuring the AWS CLI
 
 To access this interface, you must login through the OpenStack Dashboard and navigate
-to "Projects > API Access" where you can click on "Download OpenStack RC File" and
-select "EC2 Credentials".
+to "Projects > API Access" where you can download the "Download OpenStack
+RC File" as well as the "EC2 Credentials".
 
 ![EC2 Credentials](images/ec2_credentials.png)
 
-This will download a file **zip file** including `ec2rc.sh` file that has content
-similar to shown below. The important parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`,
-keep them noted.
+While clicking on "EC2 Credentials", this will download a file **zip file** including
+`ec2rc.sh` file that has content similar to shown below. The important parts are
+`EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 
     #!/bin/bash
 
@@ -459,12 +459,28 @@ keep them noted.
     alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
     alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
 
-- Source the downloaded OpenStack RC File from *Projects > API Access* by using:
-`source *-openrc.sh` command.
+**Alternatively,** you can obtain your EC2 access keys using the openstack client:
 
-- Sourcing the RC File will set the required `${OS_PROJECT_NAME}` envrionment variable.
+    sudo apt install python3-openstackclient
+
+    openstack ec2 credentials list
+    +------------------+------------------+--------------+-----------+
+    | Access           | Secret           | Project ID   | User ID   |
+    +------------------+------------------+--------------+-----------+
+    | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
+    +------------------+------------------+--------------+-----------+
+
+**OR,** you can even create a new one by running:
+
+    openstack ec2 credentials create
+
+- Source the downloaded OpenStack RC File from *Projects > API Access* by using:
+`source *-openrc.sh` command. Sourcing the RC File will set the required environment
+variables.
+
 Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
-`EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (above):
+`EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (during the **"Configuring
+the AWS CLI"** step):
 
         $> aws configure --profile "'${OS_PROJECT_NAME}'"
         AWS Access Key ID [None]: <EC2_ACCESS_KEY>
@@ -489,15 +505,6 @@ Where as Credentials are store here:
         ['${OS_PROJECT_NAME}']
         aws_access_key_id = <EC2_ACCESS_KEY>
         aws_secret_access_key = <EC2_SECRET_KEY>
-
-**Alternatively,** you can obtain your EC2 access keys using the openstack client:
-
-    openstack ec2 credentials list
-    +------------------+------------------+--------------+-----------+
-    | Access           | Secret           | Project ID   | User ID   |
-    +------------------+------------------+--------------+-----------+
-    | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
-    +------------------+------------------+--------------+-----------+
 
 Then you can manually create the configuration file for AWS cli in your home
 directory `~/.aws/config` with the ec2 profile and credentials as shown below:
@@ -645,9 +652,9 @@ Use the following command to list all s3 buckets
 
     s3cmd ls
 
-Or,
+**Or,**
 
-    $ s3cmd ls s3://
+    s3cmd ls s3://
 
     2009-02-03 16:45  s3://nerc-test-container
     2009-02-03 16:45  s3://second-mycontainer
@@ -756,7 +763,7 @@ You can delete files from the bucket with the following `s3cmd` command
     run the following command with `-r` or `--recursive` flag i.e.
     `s3cmd rb s3://mybucket -r` or `s3cmd rb s3://mybucket --recursive`.
 
-### v. Using [rclone](https://rclone.org/swift/)
+### v. Using [Rclone](https://rclone.org/swift/)
 
 `rclone` is a convenient and performant command-line tool for transferring files
 and synchronizing directories directly between your local file systems and the
@@ -766,10 +773,10 @@ NERC's containers.
 
 To run the `rclone` commands, you need to have:
 
-- `rclone` installed, see [Downloading and Installing the latest version of the rclone](https://rclone.org/downloads/)
+- `rclone` installed, see [Downloading and Installing the latest version of the Rclone](https://rclone.org/downloads/)
 for more information.
 
-#### Configuring rclone
+#### Configuring Rclone
 
 First, you’ll need to configure `rclone`. As the object storage systems
 have quite complicated authentication these are kept in a config file.
@@ -778,7 +785,7 @@ If you run `rclone config file` you will see where the default location is
 for you.
 
 !!! note "Note"
-    For **Windows** users, you many need to specify the full path to the rclone
+    For **Windows** users, you many need to specify the full path to the Rclone
     executable file, if its not included in your systems PATH variable.
 
 The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
@@ -811,34 +818,34 @@ flag to override the config location, e.g. `rclone --config=FILE`
     Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
     for more details.
 
-#### Using rclone
+#### Using Rclone
 
 `rclone` supports many subcommands (see
-[the complete list of rclone subcommands](https://rclone.org/docs/#subcommands)).
+[the complete list of Rclone subcommands](https://rclone.org/docs/#subcommands)).
 A few commonly used subcommands (assuming you configured the NERC Object Storage
 as `nerc`):
 
-##### Listing the Containers and Files and Folders within a Container
+##### Listing the Containers and Contains of a Container
 
-Once your Object Storage has been configured in rclone, you can then use the
-rclone interface to List all the Containers with the "lsd" command
+Once your Object Storage has been configured in Rclone, you can then use the
+Rclone interface to List all the Containers with the "lsd" command
 
     rclone lsd "nerc:"
 
-or,
+**Or,**
 
     rclone lsd "nerc:" --config=rclone.conf
 
 For e.g.,
 
-    $ rclone lsd "nerc:" --config=rclone.conf
+    rclone lsd "nerc:" --config=rclone.conf
             -1 2009-02-03 11:45:09        -1 second-mycontainer
             -1 2009-02-03 11:45:09        -1 unique-container-test
 
-To list the files and folders available within a container i.e.
-"unique-container-test" in this case, within a container we can use the "ls" command
+To list the files and folders available within a container i.e. "unique-container-test"
+in this case, within a container we can use the "ls" command:
 
-    $ rclone ls "nerc:unique-container-test/"
+    rclone ls "nerc:unique-container-test/"
       653 README.md
         0 image.png
        12 test-file
@@ -878,6 +885,9 @@ First, you need to create a directory on which you will mount your filesystem:
 Then you can simply mount your object storage with:
 
 `$ rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
+
+!!! note "More about using Rclone"
+    You can read more about Rclone Mounting [here](mount-the-object-storage.md#3-using-rclone).
 
 **Windows:**
 

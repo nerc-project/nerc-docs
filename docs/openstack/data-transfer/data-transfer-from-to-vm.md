@@ -236,7 +236,7 @@ is doing what you want.
 Skip files/directories in the `SOURCE` that match a given pattern (supports regular
 expressions)
 
-## Using rclone
+## Using Rclone
 
 `rclone` is a convenient and performant command-line tool for transferring files
 and synchronizing directories directly between your local file systems and a
@@ -247,10 +247,10 @@ given NERC VM.
 To run the `rclone` commands, you need to have:
 
 - To run the `rclone` commands you will need to have `rclone` installed.
-See [Downloading and Installing the latest version of rclone](https://rclone.org/downloads/)
+See [Downloading and Installing the latest version of Rclone](https://rclone.org/downloads/)
 for more information.
 
-### Configuring rclone
+### Configuring Rclone
 
 First you'll need to configure `rclone`. The filesystem protocols, especially,
 can have complicated authentication parameters so it's best to place these details
@@ -260,7 +260,7 @@ If you run `rclone config file` you will see where the default location is for
 your current user.
 
 !!! note "Note"
-    For **Windows** users, you may need to specify the full path to the rclone
+    For **Windows** users, you may need to specify the full path to the Rclone
     executable file if it's not included in your system's `%PATH%` variable.
 
 Edit the config file's content on the path location described by
@@ -281,20 +281,20 @@ More about the config for **SFTP** can be [found here](https://rclone.org/sftp/)
 flag to override the config location, e.g. `rclone --config=FILE`
 
 !!! note "Interactive Configuration"
-    Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
+    Run `rclone config` to setup. See [Rclone config docs](https://rclone.org/docs/)
     for more details.
 
-### How to use rclone
+### How to use Rclone
 
 `rclone` supports many subcommands (see
-[the complete list of rclone subcommands](https://rclone.org/docs/#subcommands)).
+[the complete list of Rclone subcommands](https://rclone.org/docs/#subcommands)).
 A few commonly used subcommands (assuming you configured the NERC VM filesystem
 as `nerc`):
 
 #### Listing Files and Folders
 
-Once your NERC VM filesystem has been configured in rclone, you can then use the
-rclone interface to List all the directories with the "lsd" command:
+Once your NERC VM filesystem has been configured in Rclone, you can then use the
+Rclone interface to List all the directories with the "lsd" command:
 
     rclone lsd "nerc:"
 

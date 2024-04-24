@@ -63,12 +63,15 @@ with fetched information to complete the account creation process.
     If you don't click the "Create MGHPCC-SS Account" button, your account will
     not be created! So, this is a very important step. Review your information
     carefully and then click on the "Create MGHPCC-SS Account" button to save
-    your information.
+    your information. Please review the information, make any corrections that
+    you need and fill in any blank/ missing fields such as "Research Domain". Please
+    read the End User Level Agreement (EULA) and accept the terms by checking
+    the checkbox in this form.
 
-You can make any corrections that you need and fill in any blank fields, such as
-"Research Domain", and then click the "Create MGHPCC-SS Account" button. This
-will automatically send an email to your email address with a link to validate
-and confirm your account information.
+Once you have reviewed and verified that all your user information in this form
+is correct, only then click the "Create MGHPCC-SS Account" button. This will
+automatically send an email to your email address with a link to validate and
+confirm your account information.
 
 ![User Account Email Verification Page](images/account-email-verification-page.png)
 

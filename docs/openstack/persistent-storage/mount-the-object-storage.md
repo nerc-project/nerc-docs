@@ -425,7 +425,7 @@ More about the config for **AWS S3 compatible API** can be [seen here](https://r
     Mind that if set `env_auth = true` then it  will take variables from environment,
     so you shouldn't insert it in this case.
 
-### Listing the Containers and Contains of a Container
+### Listing the Containers and Contents of a Container
 
 Once your Object Storage has been configured in Rclone, you can then use the
 Rclone interface to List all the Containers with the "lsd" command

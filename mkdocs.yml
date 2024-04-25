@@ -74,9 +74,7 @@ nav:
             - Delete Volumes: openstack/persistent-storage/delete-volumes.md
             - Extending Volume: openstack/persistent-storage/extending-volume.md
             - Transfer a Volume: openstack/persistent-storage/transfer-a-volume.md
-          - Object Storage/ Swift:
-            - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
-            - Mount The Object Storage: openstack/persistent-storage/mount-the-object-storage.md
+          - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
       - Data Transfer: openstack/data-transfer/data-transfer-from-to-vm.md
       - Backup your instance & data: openstack/backup/backup-with-snapshots.md
       - VM Management: openstack/management/vm-management.md

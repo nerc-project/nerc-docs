@@ -25,16 +25,15 @@ You will need 2 control-plane(master node) and 2 worker nodes to create a
 multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
-- 2 Linux machines for master, `ubuntu-20.04-x86_64` or your choice of Ubuntu OS
-image, `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage.
+- 2 Linux machines for master, ubuntu-20.04-x86_64 or your choice of Ubuntu OS image,
+cpu-su.2 flavor with 2vCPU, 8GB RAM, 40GB storage.
 
-- 2 Linux machines for worker, `ubuntu-20.04-x86_64` or your choice of Ubuntu OS
-image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage - also
-[assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-to both of the worker nodes.
+- 2 Linux machines for worker, ubuntu-20.04-x86_64 or your choice of Ubuntu OS image,
+cpu-su.1 flavor with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+ to both of the worker nodes.
 
-- 1 Linux machine for loadbalancer, `ubuntu-20.04-x86_64` or your choice of Ubuntu
-OS image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage.
+- 1 Linux machine for loadbalancer, ubuntu-20.04-x86_64 or your choice of Ubuntu
+OS image, cpu-su.1 flavor with 1vCPU, 4GB RAM, 20GB storage.
 
 - ssh access to all machines:  [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
 on how to setup SSH to your remote VMs.

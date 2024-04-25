@@ -80,7 +80,7 @@ server create" command
 Syntax :
 
 ```sh
-  $ openstack server create --flavor {Flavor-Name-Or-Flavor-ID } \
+  openstack server create --flavor {Flavor-Name-Or-Flavor-ID } \
       --image {Image-Name-Or-Image-ID} \
       --nic net-id={Network-ID} \
       --user-data USER-DATA-FILE \
@@ -223,7 +223,7 @@ or not:
 ### Get all available security group in your project
 
 ```sh
-  $ openstack security group list
+  openstack security group list
   +--------------------------------------+----------+------------------------+----------------------------------+------+
   | 3ca248ac-56ac-4e5f-a57c-777ed74bbd7c | default  | Default security group |
   f01df1439b3141f8b76e68a3b58ef74a | []   |
@@ -266,7 +266,7 @@ group from a port:
 ## Adding volume to the VM
 
 ```sh
-  $ openstack server add volume
+  openstack server add volume
     [--device <device>]
     <INSTANCE_NAME_OR_ID>
     <VOLUME_NAME_OR_ID>

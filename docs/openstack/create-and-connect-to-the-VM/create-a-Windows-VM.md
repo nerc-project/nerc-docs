@@ -57,7 +57,7 @@ To create a volume from image using the CLI, do this:
 
 Identify the image for the initial volume contents from `openstack image list`.
 
-    $ openstack image list
+    openstack image list
     +--------------------------------------+---------------------+--------+
     | ID                                   | Name                | Status |
     +--------------------------------------+---------------------+--------+

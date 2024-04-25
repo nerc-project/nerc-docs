@@ -118,7 +118,7 @@ Navigate to *Project -> Object Store -> Containers*.
     So, you don't need to manually delete all objects inside a container prior
     deleting the container. This will save a lot of your time and effort.
 
-## ColdFront to reduce the Storage Quota to Zero
+## Use ColdFront to reduce the Storage Quota to Zero
 
 Each allocation, whether requested or approved, will be billed based on the
 **pay-as-you-go** model. The exception is for **Storage quotas**, where the cost
@@ -150,7 +150,7 @@ Wait until the requested resource allocation gets approved by the NERC's admin.
 After approval, kindly review and verify that the quotas are accurately
 reflected in your [resource allocation](https://coldfront.mss.mghpcc.org/allocation/)
 and [OpenStack project](https://stack.nerc.mghpcc.org/). Please ensure that the
-approved quota values are accurately displayed.
+approved quota values are accurately displayed as [explained here](#review-your-openstack-dashboard).
 
 ### Review your Block Storage(Volume/Cinder) Quota
 
@@ -204,8 +204,8 @@ view of critical resources and allows you to assess your current resource consum
     Most importantly, ensure that there is no active usage for any of your
     currently allocated project resources.
 
-The output may appear as follows, with all used resources having a value of zero
-(0), except for `totalSecurityGroupsUsed`.
+Please ensure the output appears as follows, with all used resources having a value
+of zero (0), except for `totalSecurityGroupsUsed`.
 
     openstack limits show --absolute
     +--------------------------+-------+
@@ -226,7 +226,7 @@ The output may appear as follows, with all used resources having a value of zero
     | totalBackupGigabytesUsed |     0 |
     +--------------------------+-------+
 
-## Review your OpenStack Dashboard
+## Review your Project's Resource Quota from the OpenStack Dashboard
 
 After removing all OpenStack resources and updating the Storage Quotas to set them
 to zero (0), you can review and verify that these changes are reflected in your

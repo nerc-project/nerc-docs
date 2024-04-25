@@ -12,22 +12,22 @@ lost during the process.
 - **Kubernetes Objects (Resources)**: Please review all OpenShift Kubernetes Objects
 (Resources) to ensure they are not actively used and ready to be decommissioned.
 
-- Install and configure the **OpenShift CLI (oc)**, see [How to Setup the OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
+- Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
+OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
 for more information.
 
-## Delete all Data Science Project (DSP) resources from the NERC RHOAI
+## Delete all Data Science Project resources from the NERC's Red Hat OpenShift AI
 
-Navigate to the NERC's Red Hat OpenShift AI (RHOAI) dashboard from [the NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org)
+Navigate to the NERC's Red Hat OpenShift AI (RHOAI) dashboard from [the NERC's
+OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org)
 via the web browser as [described here](../../openshift-ai/logging-in/access-the-rhoai-dashboard.md).
-
-Once you get access to the NERC's RHOAI dashboard, you can click on specific projects corresponding to the appropriate allocation of which resources you want to clean
-up as [described here](../../openshift-ai/logging-in/access-the-rhoai-dashboard.md).
 
 Once you gain access to the NERC's RHOAI dashboard, you can click on specific Data
 Science Project (DSP) corresponding to the appropriate allocation of resources you
 want to clean up, as [described here](../../openshift-ai/data-science-project/using-projects-the-rhoai.md#selecting-your-data-science-project).
 
-The NERC RHOAI dashboard will look like the one shown below, displaying all consumed resources:
+The NERC RHOAI dashboard will look like the one shown below, displaying all consumed
+resources:
 
 ![RHOAI Dashboard Before](images/rhoai-dashboard-before.png)
 
@@ -62,7 +62,8 @@ individual data connection and selecting **Delete data connection**, as shown be
 
 ![Delete Data Connection](images/delete-data-connections-rhoai.png)
 
-When prompted please confirm your data connection name and then click "Delete data connection" button as shown below:
+When prompted please confirm your data connection name and then click "Delete data
+connection" button as shown below:
 
 ![Delete Data Connection Confirmation](images/delete-data-connections-rhoai-confirmation.png)
 
@@ -73,7 +74,8 @@ individual pipeline and selecting **Delete pipeline**, as shown below:
 
 ![Delete Pipeline](images/delete-pipelines-rhoai.png)
 
-When prompted please confirm your pipeline name and then click "Delete pipeline" button as shown below:
+When prompted please confirm your pipeline name and then click "Delete pipeline"
+button as shown below:
 
 ![Delete Pipeline Confirmation](images/delete-pipelines-rhoai-confirmation.png)
 
@@ -106,15 +108,11 @@ Console" as shown below:
 
 ## Delete all resources from the NERC OpenShift
 
-Set up the OpenShift CLI Tools by installing and configuring the OpenShift CLI
-(`oc`) client as [described here](../logging-in/setup-the-openshift-cli.md).
-
-Running `oc login` in your local machine's terminal with your own token will authenticate you to access all your projects on the NERC OpenShift. Please make sure you are
-already selected the correct project which need to be decommissioned as shown below:
-
-Run `oc login` in your local machine's terminal using your token to authenticate
-and access all your projects on the NERC OpenShift. Please ensure you have already
-selected the correct project that needs to be decommissioned, as shown below:
+Run `oc login` in your local machine's terminal using your own token to authenticate
+and access all your projects on the NERC OpenShift as
+[described here](../logging-in/setup-the-openshift-cli.md#first-time-usage).
+Please ensure you have already selected the correct project that needs to be
+decommissioned, as shown below:
 
     oc login --token=<your_token> --server=https://api.shift.nerc.mghpcc.org:6443
     Logged into "https://api.shift.nerc.mghpcc.org:6443" as "test1_user@fas.harvard.edu" using the token provided.
@@ -127,7 +125,8 @@ selected the correct project that needs to be decommissioned, as shown below:
 
     Using project "test-project-2".
 
-Switching to your project that need to be decommissioned by running `oc project <projectname>` command:
+Switching to your project that need to be decommissioned by running
+`oc project <projectname>` command:
 
     oc project <your_openshift_project_to_decommission>
     Using project "<your_openshift_project_to_decommission>" on server "https://api.shift.nerc.mghpcc.org:6443".
@@ -168,9 +167,8 @@ Please review all resources currently being used in your project by running
     route.route.openshift.io/ds-pipeline-pipelines-definition   ds-pipeline-pipelines-definition-test-project-gpu-dc1e23.apps.shift.nerc.mghpcc.org          ds-pipeline-pipelines-definition   oauth           reencrypt/Redirect   None
     ...
 
-
-Finally, run the `oc delete --all` command to delete all resources of the types
-specified as parameters within your selected project (namespace).
+Finally, run the `oc delete` command to delete all resource objects specified as
+parameters after `--all` within your selected project (namespace).
 
     oc delete --all pod,deployment,pvc,route,service,builds,buildconfigs,statefulsets,replicasets,cronjobs,imagestream --force --grace-period=0
 

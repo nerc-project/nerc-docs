@@ -11,15 +11,15 @@ to this VM.
 
 - Setup and enable your S3 API credentials:
 
-    To access the API credentials, you must login through the OpenStack Dashboard and
-    navigate to "Projects > API Access" where you can download the "Download OpenStack
-    RC File" as well as the "EC2 Credentials".
+    To access the API credentials, you must login through the OpenStack Dashboard
+    and navigate to "Projects > API Access" where you can download the "Download
+    OpenStack RC File" as well as the "EC2 Credentials".
 
     ![EC2 Credentials](images/ec2_credentials.png)
 
-    While clicking on "EC2 Credentials", this will download a file **zip file** including
-    `ec2rc.sh` file that has content similar to shown below. The important parts are
-    `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
+    While clicking on "EC2 Credentials", this will download a file **zip file**
+    including `ec2rc.sh` file that has content similar to shown below. The important
+    parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 
         #!/bin/bash
 
@@ -36,7 +36,7 @@ to this VM.
 
         alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
         alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
-    
+
     **Alternatively,** you can obtain your EC2 access keys using the openstack client:
 
         sudo apt install python3-openstackclient
@@ -61,9 +61,9 @@ and uncomment "user_allow_other" option.
 
         sudo nano /etc/fuse.conf
 
-The output going to look like this:
+    The output going to look like this:
 
-![Fuse Config to Allow Other User](images/fuse-config.png)
+    ![Fuse Config to Allow Other User](images/fuse-config.png)
 
 ## 1. Using Goofys
 
@@ -72,34 +72,24 @@ The output going to look like this:
 Access your virtual machine using SSH. Update the packages on your system and
 install `wget` to be able to download the `goofys` binary directly to your VM:
 
-```sh
-sudo apt update && sudo apt upgrade
-sudo apt install wget
-```
+    sudo apt update && sudo apt upgrade
+    sudo apt install wget
 
 Now, navigate to your home directory:
 
-```sh
-cd
-```
+    cd
 
 Use `wget` to download the `goofys` binary:
 
-```sh
-wget https://github.com/kahing/goofys/releases/latest/download/goofys
-```
+    wget https://github.com/kahing/goofys/releases/latest/download/goofys
 
 Make the `goofys` binary executable:
 
-```sh
-chmod +x goofys
-```
+    chmod +x goofys
 
 Copy the `goofys` binary to somewhere in your path
 
-```sh
-sudo cp goofys /usr/bin/
-```
+    sudo cp goofys /usr/bin/
 
 !!! note "To update goofys in the future"
     In order to update the newer version of `goofys` binary, you need to follow:
@@ -109,8 +99,8 @@ sudo cp goofys /usr/bin/
 
     - remove the `goofys` binary from ubuntu's home directory as well as from `/usr/bin/`.
 
-    - execute the above commands (those starting with wget and chmod) from your home
-    directory again and copy it to your path i.e. `/usr/bin/`.
+    - execute the above commands (those starting with wget and chmod) from your
+    home directory again and copy it to your path i.e. `/usr/bin/`.
 
     - reboot your VM.
 
@@ -118,20 +108,16 @@ sudo cp goofys /usr/bin/
 
 Make a folder to store your credentials:
 
-```sh
-mkdir ~/.aws/
-```
+    mkdir ~/.aws/
 
 Create file `~/.aws/credentials` using your favorite text editor (for example
-`nano` or `vim`). Add the following contents to it which requires the `EC2_ACCESS_KEY` and
-`EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (during the **"Setup and
-enable your S3 API credentials"** step):
+`nano` or `vim`). Add the following contents to it which requires the `EC2_ACCESS_KEY`
+and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (during the **"Setup
+and enable your S3 API credentials"** step):
 
-```sh
-[nerc]
-aws_access_key_id=<EC2_ACCESS_KEY>
-aws_secret_access_key=<EC2_SECRET_KEY>
-```
+    [nerc]
+    aws_access_key_id=<EC2_ACCESS_KEY>
+    aws_secret_access_key=<EC2_SECRET_KEY>
 
 Save the file and exit the text editor.
 
@@ -139,7 +125,7 @@ Save the file and exit the text editor.
 
     mkdir -p ~/bucket1
 
-### Mount the Container locally
+### Mount the Container locally using `goofys`
 
 The object storage container i.e. "bucket1" will be mounted in the directory `~/bucket1`
 
@@ -170,25 +156,25 @@ Storage filesystem.
 In order to test whether the mount was successful, navigate to the directory in
 which you mounted the NERC container repository, for example:
 
-```sh
-cd ~/bucket1
-```
+    cd ~/bucket1
 
 Use the `ls` command to list its content. You should see the output similar to this:
 
-```sh
-ls
+    ls
 
-README.md   image.png   test-file
-```
+    README.md   image.png   test-file
 
 The NERC Object Storage container repository has now been mounted using `goofys`.
 
 !!! danger "Very Important Information"
     Please note that this is not persistent if your VM is rebooted in the future.
-    After each reboot, you will need to execute the mounting command above again.
+    After each reboot, you will need to execute the mounting command as mentioned
+    [above](#mount-the-container-locally-using-goofys) again.
 
 ### Mounting on system startup
+
+Mounts can be set to occur automatically during system initialization so that mounted
+file systems will persist even after the VM reboot.
 
 Create directory in `/root` folder in which you will store the credentials:
 
@@ -199,7 +185,7 @@ in the `/root` folder:
 
     sudo cp ~/.aws/credentials /root/.aws/
 
-#### Configure mounting of the bucket1 repository
+#### Configure mounting of the `bucket1` container
 
 Open the file `/etc/fstab` using your favorite command line text editor for editing.
 You will need sudo privileges for that. For example, if you want to use nano, execute
@@ -228,11 +214,9 @@ of the option `noauto`.
 !!! note "Content of /etc/fstab"
     In the `/etc/fstab` content as added above:
 
-    ```sh
-    grep goofys /etc/fstab
+        grep goofys /etc/fstab
 
-    /usr/bin/goofys#bucket1 /home/ubuntu/bucket1 fuse _netdev,allow_other,--dir-mode=0777,--file-mode=0666,--region=RegionOne,--profile=nerc,--endpoint=https://stack.nerc.mghpcc.org:13808 0 0 
-    ```
+        /usr/bin/goofys#bucket1 /home/ubuntu/bucket1 fuse _netdev,allow_other,--dir-mode=0777,--file-mode=0666,--region=RegionOne,--profile=nerc,--endpoint=https://stack.nerc.mghpcc.org:13808 0 0
 
     - `/usr/bin/goofys` with the location of your `goofys` binary.
 
@@ -248,7 +232,7 @@ is mounted in the directory specified by you i.e. in `/home/ubuntu/bucket1`.
 
 !!! tip "Important Information"
     If you just want to test your mounting command written in `/etc/fstab` without
-    "Rebooting" the VM you can also do that by running `sudo mount -a`.    
+    "Rebooting" the VM you can also do that by running `sudo mount -a`.
     And if you want to stop automatic mounting of the container from the NERC
     Object Storage repository i.e. `bucket1`, remove the line you added in the
     `/etc/fstab` file. You can also comment it out by adding `#` character in front
@@ -260,82 +244,68 @@ is mounted in the directory specified by you i.e. in `/home/ubuntu/bucket1`.
 
 ### Install s3fs
 
-Access your virtual machine using SSH. Update the packages on your system and install `s3fs`:
+Access your virtual machine using SSH. Update the packages on your system and install
+`s3fs`:
 
-```sh
-sudo apt update && sudo apt upgrade
-sudo apt install s3fs
-```
+    sudo apt update && sudo apt upgrade
+    sudo apt install s3fs
 
 !!! tip "For CentOS"
-    The **CentOS** repositiories do not have `s3fs`. Therefore, you will need to compile it yourself.
+    The **CentOS** repositiories do not have `s3fs`. Therefore, you will need to
+    compile it yourself.
 
-    First, using your local computer, visit the following website (it contains the releases of `s3fs`): [https://github.com/s3fs-fuse/s3fs-fuse/releases/latest](https://github.com/s3fs-fuse/s3fs-fuse/releases/latest).
+    First, using your local computer, visit the following website (it contains
+    the releases of `s3fs`): [https://github.com/s3fs-fuse/s3fs-fuse/releases/latest](https://github.com/s3fs-fuse/s3fs-fuse/releases/latest).
 
-    Then, in the section with the most recent release find the part **Assets**. From there, find the link to the zip version of the **Source code**.
+    Then, in the section with the most recent release find the part **Assets**.
+    From there, find the link to the zip version of the **Source code**.
 
     ![S3fs Latest Assets Download](images/s3fs_assets_download.png)
 
-    Right click on one of the Source Code i.e. "v1.94.zip" and select the "Copy link address".
-    You will need this link to use later as a parameter for the `wget` command to download
-    it to your virtual machine.
+    Right click on one of the Source Code i.e. "v1.94.zip" and select the "Copy
+    link address". You will need this link to use later as a parameter for the
+    `wget` command to download it to your virtual machine.
 
     Access your VM on the NERC OpenStack using the web console or SSH.
 
     Update your packages:
 
-    ```sh
-    sudo yum update
-    ```
+        sudo yum update
 
     Install the prerequisites including fuse, the *C++ compiler* and make:
 
-    ```sh
-    sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel wget unzip
-    ```
+        sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel wget unzip
 
     Now, use `wget` to download the source code. Replace https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.94.zip with the link to the source code you found previously:
 
-    ```sh
-    wget https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.94.zip
-    ```
+        wget https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.94.zip
 
     Use the `ls` command to verify that the zip archive has been downloaded:
 
-    ```sh
-    ls
-    ```
+        ls
 
     Unzip the archive (replace v1.94.zip with the name of the archive you downloaded):
 
-    ```sh
-    unzip v1.94.zip
-    ```
+        unzip v1.94.zip
 
     Use the ls command to find the name of the folder you just extracted:
 
-    ```sh
-    ls
-    ```
+        ls
 
     Now, navigate to that folder (replace **s3fs-fuse-1.94** with the name of the folder you just extracted):
 
-    ```sh
-    cd s3fs-fuse-1.94
-    ```
+        cd s3fs-fuse-1.94
 
     Perform the compilation by executing the following commands in order:
 
-    ```sh
-    ./autogen.sh
-    ./configure
-    make
-    sudo make install
-    ```
+        ./autogen.sh
+        ./configure
+        make
+        sudo make install
 
     `s3fs` should now be installed in `/usr/local/bin/s3fs`.
 
-### Create a file which will store the S3 Credentials 
+### Create a file which will store the S3 Credentials
 
 Store your S3 credentials in a file `${HOME}/.passwd-s3fs` and set "owner-only"
 permissions. Run the following command to create a pair of `EC2_ACCESS_KEY` and
@@ -361,11 +331,11 @@ Let's call the Container "bucket1"
 !!! note "More about Swift Interface"
     You can read more about using Swift Interface for NERC Object Storage [here](object-storage.md#ii-swift-interface).
 
-### Create a local directory as a mount point
+### Create a local directory as a mount point in your VM
 
     mkdir -p ~/bucket1
 
-### Mount the Container locally
+### Mount the Container locally using `s3fs`
 
 The object storage container i.e. "bucket1" will be mounted in the directory `~/bucket1`
 
@@ -378,7 +348,7 @@ If you have the local mounted directory "bucket1" already mounted, unmount it
 
     sudo umount -l ~/bucket1
 
-### Configure mounting of the bucket1 repository
+### Configure mounting of the `bucket1` repository
 
 Open the file `/etc/fstab` using your favorite command line text editor for editing.
 You will need sudo privileges for that. For example, if you want to use nano, execute
@@ -389,13 +359,13 @@ this command:
 Proceed with one of the methods below depending on whether you wish to have the
 "bucket1" repository automatically mounted at system startup:
 
-#### Method 1: Mount the repository automatically on system startup
+#### Method 1: Mount the repository automatically on startup
 
 Add the following line to the `/etc/fstab` file:
 
     /usr/bin/s3fs#bucket1 /home/ubuntu/bucket1 fuse passwd_file=/home/ubuntu/.passwd-s3fs,_netdev,allow_other,use_path_request_style,uid=0,umask=0222,mp_umask=0222,gid=0,url=https://stack.nerc.mghpcc.org:13808 0 0
 
-#### Method 2: Do NOT mount the repository automatically on system startup
+#### Method 2: Do NOT mount the repository automatically on startup
 
 Add the following line to the `/etc/fstab` file:
 
@@ -509,7 +479,8 @@ reboot. There are few ways to do it:
 
 #### Create systemd unit file
 
-Create a **systemd service** unit file that is going to execute the above script and dynamically mount or unmount the container:
+Create a **systemd service** unit file that is going to execute the above script
+and dynamically mount or unmount the container:
 
     sudo nano /etc/systemd/system/rclone-mount.service
 
@@ -538,7 +509,9 @@ Edit the file to look like the below:
     [Install]
     WantedBy=default.target
 
-The service is launched as soon as the network is up and running, it mounts the bucket and remains active. Stopping the service causes the container to unmount from the mount point.
+The service is launched as soon as the network is up and running, it mounts the
+bucket and remains active. Stopping the service causes the container to unmount
+from the mount point.
 
 #### Launch the service
 
@@ -554,11 +527,14 @@ Finally, enable and start the service by running the following `systemctl` comma
     sudo systemctl status rclone-mount.service
 
 !!! note "Information"
-    The service name is based on the file name i.e. `/etc/systemd/system/rclone-mount.service` so you can just use
-    `rclone-mount` instead of `rclone-mount.service` on all above `systemctl` commands.
+    The service name is based on the file name i.e. `/etc/systemd/system/rclone-mount.service`
+    so you can just use `rclone-mount` instead of `rclone-mount.service` on all
+    above `systemctl` commands.
 
     To debug you can use:
-    `sudo systemctl status rclone-mount.service -l --no-pager` or, `journalctl -u rclone-mount --no-pager | tail -50`
+
+    `sudo systemctl status rclone-mount.service -l --no-pager` or,
+    `journalctl -u rclone-mount --no-pager | tail -50`
 
 Verify, if the container is mounted successfully:
 
@@ -582,11 +558,9 @@ provides extremely fast performance.
 Access your virtual machine using SSH. Update the packages on your system and install
 the JuiceFS client:
 
-```sh
-sudo apt update && sudo apt upgrade
-# default installation path is /usr/local/bin
-curl -sSL https://d.juicefs.com/install | sh -
-```
+    sudo apt update && sudo apt upgrade
+    # default installation path is /usr/local/bin
+    curl -sSL https://d.juicefs.com/install | sh -
 
 Verify the JuiceFS client is running in background:
 
@@ -629,9 +603,9 @@ init system, change this to `systemd` as shown here:
 
 By default, Redis is only accessible from `localhost`. We need to verify that by
 locating this line by running:
-    
+
     sudo cat /etc/redis/redis.conf -n | grep bind
-    
+
     ...
     68  bind 127.0.0.1 ::1
     ...
@@ -691,9 +665,9 @@ The password is configured directly in Redis's configuration file,
 `/etc/redis/redis.conf`.
 
 First, we need to locate the line where the `requirepass` directive is mentioned:
-    
+
     sudo cat /etc/redis/redis.conf -n | grep requirepass
-    
+
     ...
     790  # requirepass foobared
     ...
@@ -706,10 +680,11 @@ preferred editor:
 Uncomment it by removing the `#`, and change `foobared` to a secure password.
 
 !!! tip "How to generate random password?"
-    You can use `openssl` to generate random password by running the following command locally:
+    You can use `openssl` to generate random password by running the following
+    command locally:
 
     `openssl rand 12 | openssl base64 -A`
-    
+
     `<your_redis_password>`
 
 After saving and closing it when you are finished. You need to restart the Redis
@@ -724,11 +699,11 @@ To test that the password works, open up the Redis client:
 The following shows a sequence of commands used to test whether the Redis password
 works. The first command tries to set a key to a value before authentication:
 
-    127.0.0.1:6379> set key1 10    
+    127.0.0.1:6379> set key1 10
 
 That won’t work because you didn't authenticate, so Redis returns an error:
 
-Output
+Output:
 
 (error) NOAUTH Authentication required.
 
@@ -739,7 +714,7 @@ file:
 
 Redis acknowledges:
 
-Output
+Output:
 
     OK
 
@@ -747,7 +722,7 @@ After that, running the previous command again will succeed:
 
     127.0.0.1:6379> set key1 10
 
-Output
+Output:
 
     OK
 
@@ -755,7 +730,7 @@ Output
 
     127.0.0.1:6379> get key1
 
-Output
+Output:
 
     "10"
 
@@ -780,11 +755,11 @@ You can store the S3 credentials using `juicefs config` that allows us to add th
 
 #### Mounting file system manually
 
-##### Create a local directory as a mount point
+##### Create a local directory as a mount point folder
 
     mkdir -p ~/bucket1
 
-##### Mount the Container locally
+##### Mount the Container locally using `juicefs`
 
 The formatted file system "myjfs" will be mounted in the directory `~/bucket1` by
 running the following command:
@@ -807,7 +782,7 @@ help you set up mount at boot:
     ls -l /sbin/mount.juicefs
     lrwxrwxrwx 1 root root 22 Apr 24 20:25 /sbin/mount.juicefs -> /usr/local/bin/juicefs
 
-For example, 
+For example,
 
     sudo juicefs mount --update-fstab --max-uploads=50 --writeback --cache-size 204800 redis://default:<your_redis_password>@127.0.0.1:6379/1 ~/bucket1
 
@@ -875,14 +850,14 @@ Edit the file to look like the below:
 
 !!! note "Important Information"
     Feel free to modify the options and environments according to your needs. Please
-    make sure you change `<your_redis_password>` to your own Redis password setup
-    following [this step](#configuring-a-redis-password).
+    make sure you change `<your_redis_password>` to your own Redis password that
+    was setup by following [this step](#configuring-a-redis-password).
 
 The service is launched as soon as the network is up and running, it mounts the
 bucket and remains active. Stopping the service causes the container to unmount
 from the mount point.
 
-##### Launch the service
+##### Launch the service as daemon
 
 Now reload systemd deamon:
 
@@ -896,11 +871,14 @@ Finally, enable and start the service by running the following `systemctl` comma
     sudo systemctl status juicefs-mount.service
 
 !!! note "Information"
-    The service name is based on the file name i.e. `/etc/systemd/system/juicefs-mount.service` so you can just use
-    `juicefs-mount` instead of `juicefs-mount.service` on all above `systemctl` commands.
+    The service name is based on the file name i.e. `/etc/systemd/system/juicefs-mount.service`
+    so you can just use `juicefs-mount` instead of `juicefs-mount.service` on all
+    above `systemctl` commands.
 
     To debug you can use:
-    `sudo systemctl status juicefs-mount.service -l --no-pager` or, `journalctl -u juicefs-mount --no-pager | tail -50`
+
+    `sudo systemctl status juicefs-mount.service -l --no-pager` or,
+    `journalctl -u juicefs-mount --no-pager | tail -50`
 
 Verify, if the container is mounted successfully:
 
@@ -931,7 +909,7 @@ Address format:
     # MinIO only supports path style
     minio://[ACCESS_KEY:SECRET_KEY[:TOKEN]@]ENDPOINT/BUCKET[/PREFIX]
 
-#### Synchronize between Object Storage and JuiceFS:
+#### Synchronize between Object Storage and JuiceFS
 
 The following command synchronizes `movies` container on **Object Storage Container**
 to your local **JuiceFS File System** i.e `~/jfs`:
@@ -983,14 +961,12 @@ or `juicefs status redis://default:<your_redis_password>@127.0.0.1:6379/1` to ge
 detailed information about mounted file system i.e. **"myjfs"** that is setup by
 following [this step](##formatting-file-system). The output looks like shown here:
 
-```sh
-{
-  ...
-  "Name": "myjfs",
-  "UUID": "<UUID>",
-  ...
-}
-```
+    {
+    ...
+    "Name": "myjfs",
+    "UUID": "<UUID>",
+    ...
+    }
 
 #### Destroy a file system
 

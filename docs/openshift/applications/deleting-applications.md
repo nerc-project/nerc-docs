@@ -45,11 +45,11 @@ resource objects for an application.
 To test what resource objects would be deleted when using a label selector, use
 the `oc get` command to query the set of objects which would be matched.
 
-`$ oc get all --selector app=<application-name> -o name`
+`oc get all --selector app=<application-name> -o name`
 
 For example:
 
-    $ oc get all --selector app=rstudio-server -o name
+    oc get all --selector app=rstudio-server -o name
     pod/rstudio-server
     service/rstudio-server
     route.route.openshift.io/rstudio-server
@@ -57,7 +57,7 @@ For example:
 If you are satisfied that what is shown are the resource objects for your
 application, then run `oc delete`.
 
-`$ oc delete all --selector app=<application-name>`
+`oc delete all --selector app=<application-name>`
 
 !!! note "Important Note"
     Selector all matches on a subset of all resource object types that exist.
@@ -68,13 +68,13 @@ application, then run `oc delete`.
 You will either need to delete these resource objects separately, or if they also
 have been labelled with the app tag, list the resource object types along with all.
 
-`$ oc delete all,configmap,pvc,serviceaccount,rolebinding --selector app=<application-name>`
+`oc delete all,configmap,pvc,serviceaccount,rolebinding --selector app=<application-name>`
 
 If you are not sure what labels have been applied to resource objects for your
 application, you can run oc describe on the resource object to see the labels
 applied to it. For example:
 
-    $ oc describe pod/rstudio-server
+    oc describe pod/rstudio-server
     Name:         rstudio-server
     Namespace:    64b664c37f2a47c39c3cf3942ff4d0be
     Priority:     0

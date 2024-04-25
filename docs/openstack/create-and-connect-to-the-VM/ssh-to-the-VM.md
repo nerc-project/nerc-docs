@@ -167,18 +167,18 @@ Once you log into the VM, you can create another user like this.
     group is called 'wheel', while in Ubuntu, the group is called 'sudo'.
 
     ```
-      $ sudo su
+      sudo su
       # useradd -m <username>
       # passwd <username>
       # usermod -aG <sudo_group> <username>    <-- skip this step for users who
       # should not have root access
       # su username
-      $ cd ~
-      $ mkdir .ssh
-      $ chmod 700 .ssh
-      $ cd .ssh
-      $ vi authorized_keys   <-- paste the public key for that user in this file
-      $ chmod 600 authorized_keys
+      cd ~
+      mkdir .ssh
+      chmod 700 .ssh
+      cd .ssh
+      vi authorized_keys   <-- paste the public key for that user in this file
+      chmod 600 authorized_keys
     ```
 
 ## How To Enable Remote Desktop Protocol Using xrdp on Ubuntu

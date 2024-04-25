@@ -240,9 +240,9 @@ is mounted in the directory specified by you i.e. in `/home/ubuntu/bucket1`.
     `goofys` binary and the credentials file located at `~/.aws/credentials` if
     you no longer want to use `goofys`.
 
-## 2. Using S3fs
+## 2. Using S3Fs
 
-### Install s3fs
+### Install S3Fs
 
 Access your virtual machine using SSH. Update the packages on your system and install
 `s3fs`:
@@ -260,7 +260,7 @@ Access your virtual machine using SSH. Update the packages on your system and in
     Then, in the section with the most recent release find the part **Assets**.
     From there, find the link to the zip version of the **Source code**.
 
-    ![S3fs Latest Assets Download](images/s3fs_assets_download.png)
+    ![S3Fs  Latest Assets Download](images/s3fs_assets_download.png)
 
     Right click on one of the Source Code i.e. "v1.94.zip" and select the "Copy
     link address". You will need this link to use later as a parameter for the

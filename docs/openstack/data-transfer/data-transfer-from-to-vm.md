@@ -304,14 +304,14 @@ or,
 
 For e.g.
 
-    $ rclone lsd "nerc:" --config=rclone.conf
+    rclone lsd "nerc:" --config=rclone.conf
             -1 2023-07-06 12:18:24        -1 .ssh
             -1 2023-07-06 19:27:19        -1 destination_directory
 
 To list the files and folders available within the directory (i.e.
 "destination_directory") we can use the "ls" command:
 
-    $ rclone ls "nerc:destination_directory/"
+    rclone ls "nerc:destination_directory/"
       653 README.md
         0 image.png
        12 test-file
@@ -347,11 +347,11 @@ Then sync for real
 
 First, you need to create a directory on which you will mount your filesystem:
 
-`$ mkdir ~/mnt-rclone`
+`mkdir ~/mnt-rclone`
 
 Then you can simply mount your filesystem with:
 
-`$ rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
+`rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
 
 **Windows:**
 

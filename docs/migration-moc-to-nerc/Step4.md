@@ -29,7 +29,7 @@ Overview.
 
 1. Gather a list of current MOC Volume Backups with the command below.
 
-        $ openstack --os-cloud moc volume backup list
+        openstack --os-cloud moc volume backup list
         +---------------------+------+-------------+-----------+------+
         | ID                  | Name | Description | Status    | Size |
         +---------------------+------+-------------+-----------+------+
@@ -70,7 +70,7 @@ Overview.
 
 1. Gather a list of current NERC Volume Backups with the command below.
 
-        $ openstack --os-cloud nerc volume backup list
+        openstack --os-cloud nerc volume backup list
         +---------------------+------+-------------+-----------+------+
         | ID                  | Name | Description | Status    | Size |
         +---------------------+------+-------------+-----------+------+
@@ -83,7 +83,7 @@ have in NERC with the following command.
 
 [Step 2]: ../Step2/#moc-volume-information-table
 
-        $ openstack --os-cloud nerc volume list
+        openstack --os-cloud nerc volume list
         +----------------+------------------+--------+------+----------------------------------+
         | ID             | Name             | Status | Size | Attached to                      |
         +----------------+------------------+--------+------+----------------------------------+

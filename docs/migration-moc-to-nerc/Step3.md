@@ -223,7 +223,7 @@ interface of the object-store service `<NERCEndPoint>` and the EC2 access key (e
 `<ContainerName>` field. Container Name should be easy to remember as well
 as unique so include your name. Maybe something like `thomasa-backups`.
 
-        $ openstack --os-cloud moc volume backup create --force --container <ContainerName> <MOCVolumeID>
+        openstack --os-cloud moc volume backup create --force --container <ContainerName> <MOCVolumeID>
         +-------+---------------------+
         | Field | Value               |
         +-------+---------------------+
@@ -236,13 +236,13 @@ as unique so include your name. Maybe something like `thomasa-backups`.
 check on the status. If your volume is 25 or larger this might be a good time
 to go get a warm beverage or lunch.
 
-        $ openstack --os-cloud moc volume backup list
+        openstack --os-cloud moc volume backup list
         +---------------------+------+-------------+-----------+------+
         | ID                  | Name | Description | Status    | Size |
         +---------------------+------+-------------+-----------+------+
         | <MOCVolumeBackupID> | None | None        | creating  |   10 |
         ...
-        $ openstack --os-cloud moc volume backup list
+        openstack --os-cloud moc volume backup list
         +---------------------+------+-------------+-----------+------+
         | ID                  | Name | Description | Status    | Size |
         +---------------------+------+-------------+-----------+------+
@@ -285,7 +285,7 @@ create the original Backup.
 
 1. Next we will import the record into NERC.
 
-        $ openstack --os-cloud nerc volume backup record import -f value $(cat record.txt)
+        openstack --os-cloud nerc volume backup record import -f value $(cat record.txt)
         <NERCVolumeBackupID>
         None
 
@@ -303,7 +303,7 @@ with the `<NERCVolumeName>` value in the `NERC Volume Name` column.
 
 [Step 2]: ../Step2/#moc-volume-information-table
 
-        $ openstack --os-cloud nerc volume create --bootable --size <size> <NERCVolumeName>
+        openstack --os-cloud nerc volume create --bootable --size <size> <NERCVolumeName>
         +---------------------+----------------+
         | Field               | Value          |
         +---------------------+----------------+
@@ -323,12 +323,12 @@ with the `<NERCVolumeName>` value in the `NERC Volume Name` column.
 
 1. Wait for the volume to shift from `restoring-backup` to `available`.
 
-        $ openstack --os-cloud nerc volume list
+        openstack --os-cloud nerc volume list
         +----------------+------------+------------------+------+-------------+
         | ID             | Name       | Status           | Size | Attached to |
         +----------------+------------+------------------+------+-------------+
         | <NERCVolumeID> | MOC Volume | restoring-backup |    3 | Migration   |
-        $ openstack --os-cloud nerc volume list
+        openstack --os-cloud nerc volume list
         +----------------+------------+-----------+------+-------------+
         | ID             | Name       | Status    | Size | Attached to |
         +----------------+------------+-----------+------+-------------+

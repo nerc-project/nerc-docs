@@ -155,11 +155,11 @@ To snapshot an instance to an image using the CLI, do this:
 
 ##### Using the openstack client commands
 
-`$ openstack volume snapshot create --volume <volume name or uuid> <name of my snapshot>`
+`openstack volume snapshot create --volume <volume name or uuid> <name of my snapshot>`
 
 For e.g.
 
-    $ openstack volume snapshot create --volume test_volume my-volume-snapshot
+    openstack volume snapshot create --volume test_volume my-volume-snapshot
     +-------------+--------------------------------------+
     | Field       | Value                                |
     +-------------+--------------------------------------+
@@ -179,11 +179,11 @@ For e.g.
 
 You can list the volume snapshots with the following command.
 
-    $ openstack volume snapshot list
+    openstack volume snapshot list
 
     For e.g.
 
-    $ openstack volume snapshot list
+    openstack volume snapshot list
     +--------------------------------------+--------------------+-------------+-----------+------+
     | ID                                   | Name               | Description | Status    | Size |
     +--------------------------------------+--------------------+-------------+-----------+------+
@@ -198,11 +198,11 @@ use the size of the snapshot.
 
 You can delete the snapshots just by issuing the following command
 
-    $ openstack volume snapshot delete <name of my snapshot>
+    openstack volume snapshot delete <name of my snapshot>
 
     For e.g.
 
-    $ openstack volume snapshot delete my-volume-snapshot
+    openstack volume snapshot delete my-volume-snapshot
 
 #### Using NERC's Horizon dashboard
 

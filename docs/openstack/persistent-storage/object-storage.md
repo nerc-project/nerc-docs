@@ -154,7 +154,7 @@ Once created you can start adding objects.
 
 To upload files to a container you can use the following command
 
-    $ openstack object create --name my_test_file mycontainer test_file.txt
+    openstack object create --name my_test_file mycontainer test_file.txt
     +--------------+-------------+----------------------------------+
     | object       | container   | etag                             |
     +--------------+-------------+----------------------------------+
@@ -163,7 +163,7 @@ To upload files to a container you can use the following command
 
 Once uploaded you can see the metadata through:
 
-    $ openstack object show mycontainer my_test_file
+    openstack object show mycontainer my_test_file
     +----------------+---------------------------------------+
     | Field          | Value                                 |
     +----------------+---------------------------------------+
@@ -179,36 +179,36 @@ Once uploaded you can see the metadata through:
 You can save the contents of the object from your container to your local machine
 by using:
 
-`$ openstack object save mycontainer my_test_file --file test_file.txt`
+`openstack object save mycontainer my_test_file --file test_file.txt`
 
 !!! danger "Very Important"
     Please note that this will overwrite the file in the local directory.
 
 Finally you can delete the object with the following command
 
-`$ openstack object delete mycontainer my_test_file`
+`openstack object delete mycontainer my_test_file`
 
 ##### Delete the container
 
 If you want to delete the container, you can use the following command
 
-`$ openstack container delete mycontainer`
+`openstack container delete mycontainer`
 
 If the container **has some data**, you can trigger the recursive option to delete
 the objects internally.
 
-    $ openstack container delete mycontainer
+    openstack container delete mycontainer
     Conflict (HTTP 409) (Request-ID: tx6b53c2b3e52d453e973b4-00624b400f)
 
 So, try to delete the container recursively using command
 
-`$ openstack container delete --recursive mycontainer`
+`openstack container delete --recursive mycontainer`
 
 ##### List existing containers
 
 You can check the existing containers with
 
-    $ openstack container list
+    openstack container list
     +---------------+
     | Name          |
     +---------------+
@@ -219,7 +219,7 @@ You can check the existing containers with
 
 To check the overall space used, you can use the following command
 
-    $ openstack object store account show
+    openstack object store account show
     +------------+---------------------------------------+
     | Field      | Value                                 |
     +------------+---------------------------------------+
@@ -231,7 +231,7 @@ To check the overall space used, you can use the following command
 
 To check the space used by a specific container
 
-    $ openstack container show mycontainer
+    openstack container show mycontainer
     +----------------+---------------------------------------+
     | Field          | Value                                 |
     +----------------+---------------------------------------+
@@ -494,13 +494,13 @@ This will create the configuration file for AWS cli in your home directory
 
 The EC2 profile is stored here:
 
-        $ cat ~/.aws/config
+        cat ~/.aws/config
 
         [profile ''"'"'${OS_PROJECT_NAME}'"'"'']
 
 Where as Credentials are store here:
 
-        $ cat ~/.aws/credentials
+        cat ~/.aws/credentials
 
         ['${OS_PROJECT_NAME}']
         aws_access_key_id = <EC2_ACCESS_KEY>
@@ -509,7 +509,7 @@ Where as Credentials are store here:
 Then you can manually create the configuration file for AWS cli in your home
 directory `~/.aws/config` with the ec2 profile and credentials as shown below:
 
-    $ cat ~/.aws/config
+    cat ~/.aws/config
 
     ['${OS_PROJECT_NAME}']
     aws_access_key_id = <EC2_ACCESS_KEY>
@@ -664,11 +664,11 @@ Use the following command to list all s3 buckets
 
 In order to create a bucket, you can use `s3cmd` with the following command
 
-    $ s3cmd mb s3://mybucket
+    s3cmd mb s3://mybucket
 
     Bucket 's3://mybucket/' created
 
-    $ s3cmd ls
+    s3cmd ls
     2009-02-03 16:45  s3://mybucket
 
     2009-02-03 16:45  s3://nerc-test-container
@@ -679,7 +679,7 @@ In order to create a bucket, you can use `s3cmd` with the following command
 
 Below command will upload file `file.txt` to the bucket using `s3cmd` command.
 
-    $ s3cmd put ~/file.txt s3://mybucket/
+    s3cmd put ~/file.txt s3://mybucket/
 
     upload: 'file.txt' -> 's3://mybucket/file.txt'  [1 of 1]
     0 of 0     0% in    0s     0.00 B/s  done
@@ -694,7 +694,7 @@ cache-control parameter to 1 hour with `--add-header`.
 
 If we need to upload entire directory use `-r` to upload it recursively as below.
 
-    $ s3cmd put -r <your-directory> s3://mybucket/
+    s3cmd put -r <your-directory> s3://mybucket/
 
     upload: 'backup/hello.txt' -> 's3://mybucket/backup/hello.txt'  [1 of 1]
     0 of 0     0% in    0s     0.00 B/s  done
@@ -703,7 +703,7 @@ If we need to upload entire directory use `-r` to upload it recursively as below
 
 List the objects of the bucket using `ls` switch with s3cmd.
 
-    $ s3cmd ls s3://mybucket/
+    s3cmd ls s3://mybucket/
 
                            DIR   s3://mybucket/backup/
     2022-04-05 03:10         0   s3://mybucket/file.txt
@@ -713,21 +713,21 @@ List the objects of the bucket using `ls` switch with s3cmd.
 
 Use the following command to download files from the bucket:
 
-    $ s3cmd get s3://mybucket/file.txt
+    s3cmd get s3://mybucket/file.txt
 
     download: 's3://mybucket/file.txt' -> './file.txt'  [1 of 1]
     0 of 0     0% in    0s     0.00 B/s  done
 
 ##### To sync local file/directory to a bucket
 
-    $ s3cmd sync newdemo s3://mybucket
+    s3cmd sync newdemo s3://mybucket
 
     upload: 'newdemo/newdemo_file.txt' -> 's3://mybucket/newdemo/newdemo_file.txt'  [1 of 1]
     0 of 0     0% in    0s     0.00 B/s  done
 
 #### To sync bucket or object with local filesystem
 
-    $ s3cmd sync  s3://unique-container-test otherlocalbucket
+    s3cmd sync  s3://unique-container-test otherlocalbucket
 
     download: 's3://unique-container-test/README.md' -> 'otherlocalbucket/README.md'  [1 of 3]
     653 of 653   100% in    0s     4.54 kB/s  done
@@ -741,19 +741,19 @@ Use the following command to download files from the bucket:
 
 You can delete files from the bucket with the following `s3cmd` command
 
-    $ s3cmd del s3://unique-container-test/README.md
+    s3cmd del s3://unique-container-test/README.md
 
     delete: 's3://unique-container-test/README.md'
 
 ##### To delete directory from bucket
 
-    $ s3cmd del s3://mybucket/newdemo
+    s3cmd del s3://mybucket/newdemo
 
     delete: 's3://mybucket/newdemo'
 
 ##### To delete a bucket
 
-    $ s3cmd rb s3://mybucket
+    s3cmd rb s3://mybucket
 
     ERROR: S3 error: 409 (BucketNotEmpty): The bucket you tried to delete is not empty
 
@@ -880,11 +880,11 @@ Then sync for real
 
 First, you need to create a directory on which you will mount your filesystem:
 
-`$ mkdir ~/mnt-rclone`
+`mkdir ~/mnt-rclone`
 
 Then you can simply mount your object storage with:
 
-`$ rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
+`rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
 
 !!! note "More about using Rclone"
     You can read more about Rclone Mounting [here](mount-the-object-storage.md#3-using-rclone).

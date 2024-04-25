@@ -388,7 +388,7 @@ control plane.
     We can use this new token to join:
 
     ```sh
-    $ kubeadm join <master-ip>:<master-port> --token <token> \
+    kubeadm join <master-ip>:<master-port> --token <token> \
         --discovery-token-ca-cert-hash sha256:<hash>
     ```
 

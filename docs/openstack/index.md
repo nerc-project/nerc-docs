@@ -35,6 +35,8 @@ the list below.
 
 ## Persistent Storage
 
+### Block Storage/ Volumes/ Cinder
+
 - [Block Storage/ Volumes/ Cinder](persistent-storage/volumes.md)
   - [Create an empty volume](persistent-storage/create-an-empty-volume.md)
   - [Attach the volume to an instance](persistent-storage/attach-the-volume-to-an-instance.md)
@@ -43,7 +45,11 @@ the list below.
   - [Delete Volumes](persistent-storage/delete-volumes.md)
   - [Extending Volume](persistent-storage/extending-volume.md)
   - [Transfer a Volume](persistent-storage/transfer-a-volume.md)
+
+### Object Storage/ Swift
+
 - [Object Storage/ Swift](persistent-storage/object-storage.md)
+  - [Mount The Object Storage](persistent-storage/mount-the-object-storage.md)
 
 ## Data Transfer
 

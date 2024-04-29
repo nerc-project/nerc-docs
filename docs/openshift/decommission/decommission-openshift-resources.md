@@ -214,7 +214,7 @@ allocation attributes.
 
 Even if you have deleted all Persistent Volume Claims (PVC) in your OpenShift project.
 It is very essential to adjust the approved values for your NERC-OCP (OpenShift)
-resource allocations to zero (0) otherwise you still be incurring a charge for
+resource allocations to zero (0) otherwise you will be incurring a charge for
 the approved storage as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 To achieve this, you must submit a final change request to reduce the

@@ -238,9 +238,9 @@ Navigate to *Project -> Compute -> Overview*.
 
 ## Finally, Archive your ColdFront Project
 
-As a **PI**, you will be now able to **Archive** your ColdFront Project via
+As a **PI**, you will now be able to **Archive** your ColdFront Project via
 accessing [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 Please refer to [these intructions](../../get-started/allocation/archiving-a-project.md)
-on how to archive your project that needs to be decommissioned.
+on how to archive your projects that need to be decommissioned.
 
 ---

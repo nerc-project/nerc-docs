@@ -138,7 +138,7 @@ shown below:
     Using project "<your_openshift_project_to_decommission>" on server "https://api.shift.nerc.mghpcc.org:6443".
 
 Please review all resources currently being used by your project by running
-`oc get all`, the output looks like shown below:
+`oc get all`, as shown below:
 
     oc get all
 
@@ -167,6 +167,13 @@ Please review all resources currently being used by your project by running
     route.route.openshift.io/ds-pipeline-pipelines-definition   ds-pipeline-pipelines-definition-test-project-gpu-dc1e23.apps.shift.nerc.mghpcc.org          ds-pipeline-pipelines-definition   oauth           reencrypt/Redirect   None
     ...
 
+!!! tip "To list all Resources with their Names only."
+    To list all resources with their names only, you can run this command:
+    `oc get all -oname`.
+
+    Here, `-oname` flag specifies the output format. In this case, it instructs
+    the command to output only the names of the resources.
+
 Run the `oc delete` command to delete all resource objects specified as
 parameters after `--all` within your selected project (namespace).
 
@@ -183,14 +190,14 @@ parameters after `--all` within your selected project (namespace).
     Make sure to backup any important data or configurations before executing this
     command to prevent accidental data loss.
 
-Please check that all resources currently being used by your project by running
+Please check all the resources currently being used by your project by running
 `oc get all`, as shown below:
 
     oc get all
     NAME                        TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                               AGE
     service/modelmesh-serving   ClusterIP   None         <none>        8033/TCP,8008/TCP,8443/TCP,2112/TCP   7m4s
 
-!!! note "Important Note"
+!!! warning "Important Note"
     The last remaining service, i.e., `service/modelmesh-serving`, shown when running
     the `oc get all` command, is a **REQUIRED** resource, and so you don't need
     to clean it up.
@@ -272,8 +279,8 @@ After removing all OpenShift resources and updating the Storage Quotas to set th
 to zero (0), you can review and verify that these changes are reflected in your
 OpenShift Web Console.
 
-When you logged-in to the NERC's OpenShift Web Console, you will be redirected to
-the **Developer** perspective which is shown selected on the perspective switcher
+When you are logged-in to the NERC's OpenShift Web Console, you will be redirected
+to the **Developer** perspective which is shown selected on the perspective switcher
 located at the Left side. You need to switch to the **Administrator** perspective
 to view your Project's Resource Quota as shown below:
 
@@ -294,9 +301,9 @@ to view the Resource Quota details.
 
 ## Finally, Archive your ColdFront Project
 
-As a **PI**, you will be now able to **Archive** your ColdFront Project via
+As a **PI**, you will now be able to **Archive** your ColdFront Project via
 accessing [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 Please refer to [these intructions](../../get-started/allocation/archiving-a-project.md)
-on how to archive your project that needs to be decommissioned.
+on how to archive your projects that need to be decommissioned.
 
 ---

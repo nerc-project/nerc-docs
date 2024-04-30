@@ -266,9 +266,9 @@ Edit the file to look like the below:
     #WantedBy=remote-fs.target
     WantedBy=default.target
 
-The service is launched as soon as the network is up and running, it mounts the
-bucket and remains active. Stopping the service causes the container to unmount
-from the mount point.
+The `network-online.target` lines ensure that mounting is not attempted until
+there's a network connection available. The service is launched as soon as the
+network is up and running, it mounts the bucket and remains active.
 
 ##### Launch the service
 
@@ -298,6 +298,32 @@ Verify, the service is running successfully in background as `root` user:
     ps aux | grep mount-s3
 
     root       13585  0.0  0.0 1060504 11672 ?       Sl   02:00   0:00 /usr/bin/mount-s3 bucket1 /home/ubuntu/bucket1 --profile nerc --endpoint-url https://stack.nerc.mghpcc.org:13808 --read-only --allow-other --force-path-style --debug
+
+##### Stopping the service
+
+Stopping the service causes the container to unmount from the mount point. To disable
+your service on every reboot:
+
+    sudo systemctl disable --now mountpoint-s3.service
+
+Confirm the Service is not in "Active" Status:
+
+    sudo systemctl status mountpoint-s3.service
+
+Unmount the local mount point:
+
+If you have the local mounted directory "bucket1" already mounted, unmount it
+(replace `~/bucket1` with the location in which you have it mounted):
+
+    fusermount -u ~/bucket1
+
+**Or,**
+
+    sudo umount -l ~/bucket1
+
+Now reboot your VM:
+
+    sudo reboot
 
 !!! note "Further Reading"
     For further details, including instructions for downloading and installing
@@ -719,7 +745,7 @@ When running in background mode the user will have to stop the mount manually:
 
 **Or,**
 
-    umount -l /path/to/local/mount
+    sudo umount -l /path/to/local/mount
 
 Now we have the mount running and we have background mode also enabled. Lets say
 there is a scenario where we want the mount to be persistent after a server/machine

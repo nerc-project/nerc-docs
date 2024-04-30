@@ -105,7 +105,7 @@ following command:
 
     You should see output similar to the following:
 
-            mount-s3 1.6.0
+        mount-s3 1.6.0
 
 ### Configuring and using Mountpoint
 
@@ -184,7 +184,7 @@ The NERC Object Storage container repository has now been mounted using Mountpoi
 !!! danger "Very Important Information"
     Please note that any of these Mountpoints is not persistent if your VM is
     stopped or rebooted in the future. After each reboot, you will need to execute
-    the mounting command as mentioned [above](#mount-the-container-locally-using-goofys)
+    the mounting command as mentioned [above](#mount-the-container-locally-using-mountpoint)
     again.
 
 ### Automatically mounting an S3 bucket at boot
@@ -192,9 +192,11 @@ The NERC Object Storage container repository has now been mounted using Mountpoi
 Mountpoint does not currently support automatically mounting a bucket at system
 boot time by configuring them in the `/etc/fstab`. If you would like your bucket/s
 to automatically mount when the machine is started you will need to either set up
-a cron job in `crontab` or using a service manager like `systemd`.
+a [Cron Job](https://ostechnix.com/a-beginners-guide-to-cron-jobs/) in `crontab`
+or using a [service manager](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/)
+like `systemd`.
 
-#### Using a [Cron Job](https://ostechnix.com/a-beginners-guide-to-cron-jobs/)
+#### Using a Cron Job
 
 You need to create a **Cron job** so that the script runs each time your VM reboots,
 remounting S3 Object Storage to your VM.
@@ -227,7 +229,16 @@ Reboot your VM:
 
     sudo reboot
 
-#### Using [a service manager](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) like `systemd` by creating systemd unit file
+#### Using a service manager like `systemd` by creating systemd unit file
+
+Create directory in `/root` folder in which you will store the credentials:
+
+    sudo mkdir /root/.aws
+
+Copy the credentials you created in your local directory to the `.aws` directory
+in the `/root` folder:
+
+    sudo cp ~/.aws/credentials /root/.aws/
 
 ##### Create systemd unit file i.e. `mountpoint-s3.service`
 
@@ -266,9 +277,10 @@ Edit the file to look like the below:
     #WantedBy=remote-fs.target
     WantedBy=default.target
 
-The `network-online.target` lines ensure that mounting is not attempted until
-there's a network connection available. The service is launched as soon as the
-network is up and running, it mounts the bucket and remains active.
+!!! note "Important Note"
+    The `network-online.target` lines ensure that mounting is not attempted until
+    there's a network connection available. The service is launched as soon as the
+    network is up and running, it mounts the bucket and remains active.
 
 ##### Launch the service
 
@@ -315,6 +327,10 @@ To disable your service on every reboot:
 Confirm the Service is not in "Active" Status:
 
     sudo systemctl status mountpoint-s3.service
+
+    ○ mountpoint-s3.service - Mountpoint for Amazon S3 mount
+        Loaded: loaded (/etc/systemd/system/mountpoint-s3.service; disabled; vendor p>
+        Active: inactive (dead)
 
 Unmount the local mount point:
 

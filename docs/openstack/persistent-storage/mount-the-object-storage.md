@@ -231,6 +231,15 @@ Reboot your VM:
 
 #### Using a service manager like `systemd` by creating systemd unit file
 
+Create directory in `/root` folder in which you will store the credentials:
+
+    sudo mkdir /root/.aws
+
+Copy the credentials you created in your local directory to the `.aws` directory
+in the `/root` folder:
+
+    sudo cp ~/.aws/credentials /root/.aws/
+
 ##### Create systemd unit file i.e. `mountpoint-s3.service`
 
 Create a **systemd service** unit file that is going to execute the above script
@@ -318,6 +327,10 @@ To disable your service on every reboot:
 Confirm the Service is not in "Active" Status:
 
     sudo systemctl status mountpoint-s3.service
+
+    ○ mountpoint-s3.service - Mountpoint for Amazon S3 mount
+        Loaded: loaded (/etc/systemd/system/mountpoint-s3.service; disabled; vendor p>
+        Active: inactive (dead)
 
 Unmount the local mount point:
 

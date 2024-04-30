@@ -65,7 +65,245 @@ and uncomment "user_allow_other" option.
 
     ![Fuse Config to Allow Other User](images/fuse-config.png)
 
-## 1. Using Goofys
+## 1. Using Mountpoint for Amazon S3
+
+[Mountpoint for Amazon S3](https://github.com/awslabs/mountpoint-s3) is a high-throughput
+open-source file client designed to mount an Amazon S3 bucket as a local file system.
+Mountpoint is optimized for workloads that need high-throughput read and write
+access to data stored in S3 Object Storage through a file system interface.
+
+!!! warning "Very Important Note"
+    Mountpoint for Amazon S3 intentionally does not implement the full [POSIX](https://en.wikipedia.org/wiki/POSIX)
+    standard specification for file systems. Mountpoint supports file-based workloads
+    that perform sequential and random reads, sequential (append only) writes,
+    and that don’t need full POSIX semantics.
+
+### Install Mountpoint
+
+Access your virtual machine using SSH. Update the packages on your system and
+install `wget` to be able to download the `mount-s3` binary directly to your VM:
+
+    sudo apt update && sudo apt upgrade
+    sudo apt install wget
+
+Now, navigate to your home directory:
+
+    cd
+
+1. Download the Mountpoint for Amazon S3 package using `wget` command:
+
+        wget https://s3.amazonaws.com/mountpoint-s3-release/latest/x86_64/mount-s3.deb
+
+2. Install the package by entering the following command:
+
+        sudo apt-get install ./mount-s3.deb
+
+3. Verify that Mountpoint for Amazon S3 is successfully installed by entering the
+following command:
+
+        mount-s3 --version
+
+    You should see output similar to the following:
+
+            mount-s3 1.6.0
+
+### Configuring and using Mountpoint
+
+Make a folder to store your credentials:
+
+    mkdir ~/.aws/
+
+Create file `~/.aws/credentials` using your favorite text editor (for example
+`nano` or `vim`). Add the following contents to it which requires the `EC2_ACCESS_KEY`
+and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (during the **"Setup
+and enable your S3 API credentials"** step):
+
+    [nerc]
+    aws_access_key_id=<EC2_ACCESS_KEY>
+    aws_secret_access_key=<EC2_SECRET_KEY>
+
+Save the file and exit the text editor.
+
+### Create a local directory as a mount point
+
+    mkdir -p ~/bucket1
+
+### Mount the Container locally using Mountpoint
+
+The object storage container i.e. "bucket1" will be mounted in the directory `~/bucket1`
+
+    mount-s3 --profile "nerc" --endpoint-url "https://stack.nerc.mghpcc.org:13808" --allow-other --force-path-style --debug bucket1 ~/bucket1/
+
+In this command,
+
+- `mount-s3` is the Mountpoint for Amazon S3 package as installed in `/usr/bin/`
+path we don't need to specify the full path.
+
+- `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
+`[nerc]`.
+
+- `--endpoint-url` corresponds to the Object Storage endpoint url for NERC Object
+Storage. You don't need to modify this url.
+
+- `--allow-other`: Allows other users to access the mounted filesystem. This is
+particularly useful when multiple users need to access the mounted S3 bucket. Only
+allowed if `user_allow_other` is set in `/etc/fuse.conf`.
+
+- `--force-path-style`: Forces the use of path-style URLs when accessing the S3
+bucket. This is necessary when working with certain S3-compatible storage services
+that do not support virtual-hosted-style URLs.
+
+- `--debug`: Enables debug mode, providing additional information about the mounting
+process.
+
+- `bucket1` is the name of the container which contains the NERC Object Storage
+resources.
+
+- `~/bucket1` is the location of the folder in which you want to mount the Object
+Storage filesystem.
+
+!!! tip "Important Note"
+    Mountpoint automatically configures reasonable defaults for file system settings
+    such as permissions and performance. However, if you require finer control over
+    how the Mountpoint file system behaves, you can adjust these settings accordingly.
+    For further details, please refer to [this resource](https://github.com/awslabs/mountpoint-s3/blob/main/doc/CONFIGURATION.md#file-system-configuration).
+
+In order to test whether the mount was successful, navigate to the directory in
+which you mounted the NERC container repository, for example:
+
+    cd ~/bucket1
+
+Use the `ls` command to list its content. You should see the output similar to this:
+
+    ls
+
+    README.md   image.png   test-file
+
+The NERC Object Storage container repository has now been mounted using Mountpoint.
+
+!!! danger "Very Important Information"
+    Please note that any of these Mountpoints is not persistent if your VM is
+    stopped or rebooted in the future. After each reboot, you will need to execute
+    the mounting command as mentioned [above](#mount-the-container-locally-using-goofys)
+    again.
+
+### Automatically mounting an S3 bucket at boot
+
+Mountpoint does not currently support automatically mounting a bucket at system
+boot time by configuring them in the `/etc/fstab`. If you would like your bucket/s
+to automatically mount when the machine is started you will need to either set up
+a cron job in `crontab` or using a service manager like `systemd`.
+
+#### Using a cron job
+
+You need to create a cron job so that the script runs each time your VM reboots,
+remounting S3 to your VM.
+
+    crontab -e
+
+Add this command to the end of the file
+
+    @reboot sh /<Path_To_Directory>/script.sh
+
+For example,
+
+    @reboot sh /home/ubuntu/script.sh
+
+Create `script.sh` file paste the below code to it.
+
+    #!/bin/bash
+    mount-s3 [OPTIONS] <BUCKET_NAME> <DIRECTORY>
+
+For example,
+
+    #!/bin/bash
+    mount-s3 --profile "nerc" --endpoint-url "https://stack.nerc.mghpcc.org:13808" --allow-other --force-path-style --debug bucket1 ~/bucket1/
+
+Make the file executable by running the below command
+
+    chmod +x script.sh
+
+Reboot your VM:
+
+    sudo reboot
+
+#### Using a service manager like `systemd` by creating systemd unit file
+
+##### Create systemd unit file i.e. `mountpoint-s3.service`
+
+Create a **systemd service** unit file that is going to execute the above script
+and dynamically mount or unmount the container:
+
+    sudo nano /etc/systemd/system/mountpoint-s3.service
+
+Edit the file to look like the below:
+
+    [Unit]
+    Description=Mountpoint for Amazon S3 mount
+    Documentation=https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint.html
+    #Wants=network.target
+    Wants=network-online.target
+    #Requires=network-online.target
+    AssertPathIsDirectory=/home/ubuntu/bucket1
+    After=network-online.target
+
+    [Service]
+    Type=forking
+    User=root
+    Group=root
+    ExecStart=/usr/bin/mount-s3 bucket1 /home/ubuntu/bucket1 \
+            --profile "nerc" \
+            --endpoint-url "https://stack.nerc.mghpcc.org:13808" \
+            --allow-other \
+            --force-path-style \
+            --debug
+
+    ExecStop=/bin/fusermount -u /home/ubuntu/bucket1
+    Restart=always
+    RestartSec=10
+
+    [Install]
+    #WantedBy=remote-fs.target
+    WantedBy=default.target
+
+The service is launched as soon as the network is up and running, it mounts the
+bucket and remains active. Stopping the service causes the container to unmount
+from the mount point.
+
+##### Launch the service
+
+Now reload systemd deamon:
+
+    sudo systemctl daemon-reload
+
+Finally, enable and start the service by running the following `systemctl` commands:
+
+    sudo systemctl restart mountpoint-s3.service
+    sudo systemctl start mountpoint-s3.service
+    sudo systemctl enable --now mountpoint-s3.service
+    sudo systemctl status mountpoint-s3.service
+
+!!! note "Information"
+    The service name is based on the file name i.e. `/etc/systemd/system/mountpoint-s3.service`
+    so you can just use `mountpoint-s3` instead of `mountpoint-s3.service` on all
+    above `systemctl` commands.
+
+    To debug you can use:
+
+    `sudo systemctl status mountpoint-s3.service -l --no-pager` or,
+    `journalctl -u mountpoint-s3 --no-pager | tail -50`
+
+Verify, the service is running successfully in background as `root` user:
+
+    ps aux | grep mount-s3
+
+    root       13585  0.0  0.0 1060504 11672 ?       Sl   02:00   0:00 /usr/bin/mount-s3 bucket1 /home/ubuntu/bucket1 --profile nerc --endpoint-url https://stack.nerc.mghpcc.org:13808 --read-only --allow-other --force-path-style --debug
+
+!!! note "Further Reading"
+    For further details, including instructions for downloading and installing
+    Mountpoint on various Linux operating systems, please refer to [this resource](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint-installation.html).
+
+## 2. Using Goofys
 
 ### Install goofys
 
@@ -121,7 +359,7 @@ and enable your S3 API credentials"** step):
 
 Save the file and exit the text editor.
 
-### Create a local directory as a mount point
+### Create a local directory as a mount folder
 
     mkdir -p ~/bucket1
 
@@ -129,7 +367,7 @@ Save the file and exit the text editor.
 
 The object storage container i.e. "bucket1" will be mounted in the directory `~/bucket1`
 
-    goofys -o allow_other --region RegionOne --profile "nerc" --endpoint https://stack.nerc.mghpcc.org:13808 bucket1 ~/bucket1
+    goofys -o allow_other --region RegionOne --profile "nerc" --endpoint "https://stack.nerc.mghpcc.org:13808" bucket1 ~/bucket1
 
 In this command,
 
@@ -167,9 +405,10 @@ Use the `ls` command to list its content. You should see the output similar to t
 The NERC Object Storage container repository has now been mounted using `goofys`.
 
 !!! danger "Very Important Information"
-    Please note that this is not persistent if your VM is rebooted in the future.
-    After each reboot, you will need to execute the mounting command as mentioned
-    [above](#mount-the-container-locally-using-goofys) again.
+    Please note that any of these Mountpoints is not persistent if your VM is
+    stopped or rebooted in the future. After each reboot, you will need to execute
+    the mounting command as mentioned [above](#mount-the-container-locally-using-goofys)
+    again.
 
 ### Mounting on system startup
 
@@ -240,9 +479,9 @@ is mounted in the directory specified by you i.e. in `/home/ubuntu/bucket1`.
     `goofys` binary and the credentials file located at `~/.aws/credentials` if
     you no longer want to use `goofys`.
 
-## 2. Using S3Fs
+## 3. Using S3FS
 
-### Install S3Fs
+### Install S3FS
 
 Access your virtual machine using SSH. Update the packages on your system and install
 `s3fs`:
@@ -260,7 +499,7 @@ Access your virtual machine using SSH. Update the packages on your system and in
     Then, in the section with the most recent release find the part **Assets**.
     From there, find the link to the zip version of the **Source code**.
 
-    ![S3Fs  Latest Assets Download](images/s3fs_assets_download.png)
+    ![S3FS  Latest Assets Download](images/s3fs_assets_download.png)
 
     Right click on one of the Source Code i.e. "v1.94.zip" and select the "Copy
     link address". You will need this link to use later as a parameter for the
@@ -386,7 +625,16 @@ of the option `noauto`.
     the key pair used for mounting the "bucket1" repository as we named it in previous
     step.
 
-## 3. Using [Rclone](https://rclone.org/swift/)
+!!! note "A comparative analysis of Mountpoint for S3, S3FS and Goofys."
+    When choosing between S3 clients that enable the utilization of an object store
+    with applications expecting files, it's essential to consider the specific use
+    case and whether the convenience and compatibility provided by FUSE clients
+    match the project's requirements.
+
+    To delve into a comparative analysis of Mountpoint for S3, S3FS, and Goofys,
+    please read [this blog post](https://medium.com/@maksym.lutskyi/a-comparative-analysis-of-mountpoint-for-s3-s3fs-and-goofys-9a097a25).
+
+## 4. Using [Rclone](https://rclone.org/swift/)
 
 ### Installing Rclone
 
@@ -477,7 +725,7 @@ Now we have the mount running and we have background mode also enabled. Lets say
 there is a scenario where we want the mount to be persistent after a server/machine
 reboot. There are few ways to do it:
 
-#### Create systemd unit file
+#### Create systemd unit file i.e. `rclone-mount.service`
 
 Create a **systemd service** unit file that is going to execute the above script
 and dynamically mount or unmount the container:
@@ -502,6 +750,7 @@ Edit the file to look like the below:
             nerc:bucket1 /home/ubuntu/bucket1 \
                     --allow-other \
                     --allow-non-empty
+
     ExecStop=/bin/fusermount -u /home/ubuntu/bucket1
     Restart=always
     RestartSec=10
@@ -513,7 +762,7 @@ The service is launched as soon as the network is up and running, it mounts the
 bucket and remains active. Stopping the service causes the container to unmount
 from the mount point.
 
-#### Launch the service
+#### Launch the service using a service manager
 
 Now reload systemd deamon:
 
@@ -541,7 +790,7 @@ Verify, if the container is mounted successfully:
     df -hT | grep rclone
     nerc:bucket1   fuse.rclone  1.0P     0  1.0P   0% /home/ubuntu/bucket1
 
-## 4. Using [JuiceFS](https://juicefs.com/docs/)
+## 5. Using [JuiceFS](https://juicefs.com/docs/)
 
 ### Preparation
 

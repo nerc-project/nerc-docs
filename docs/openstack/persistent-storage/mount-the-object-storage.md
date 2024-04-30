@@ -194,10 +194,10 @@ boot time by configuring them in the `/etc/fstab`. If you would like your bucket
 to automatically mount when the machine is started you will need to either set up
 a cron job in `crontab` or using a service manager like `systemd`.
 
-#### Using a cron job
+#### Using a [Cron Job](https://ostechnix.com/a-beginners-guide-to-cron-jobs/)
 
-You need to create a cron job so that the script runs each time your VM reboots,
-remounting S3 to your VM.
+You need to create a **Cron job** so that the script runs each time your VM reboots,
+remounting S3 Object Storage to your VM.
 
     crontab -e
 
@@ -227,7 +227,7 @@ Reboot your VM:
 
     sudo reboot
 
-#### Using a service manager like `systemd` by creating systemd unit file
+#### Using [a service manager](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) like `systemd` by creating systemd unit file
 
 ##### Create systemd unit file i.e. `mountpoint-s3.service`
 
@@ -276,12 +276,17 @@ Now reload systemd deamon:
 
     sudo systemctl daemon-reload
 
-Finally, enable and start the service by running the following `systemctl` commands:
+Start your service
 
-    sudo systemctl restart mountpoint-s3.service
     sudo systemctl start mountpoint-s3.service
-    sudo systemctl enable --now mountpoint-s3.service
+
+To check the status of your service
+
     sudo systemctl status mountpoint-s3.service
+
+To enable your service on every reboot
+
+    sudo systemctl enable --now mountpoint-s3.service
 
 !!! note "Information"
     The service name is based on the file name i.e. `/etc/systemd/system/mountpoint-s3.service`
@@ -301,8 +306,9 @@ Verify, the service is running successfully in background as `root` user:
 
 ##### Stopping the service
 
-Stopping the service causes the container to unmount from the mount point. To disable
-your service on every reboot:
+Stopping the service causes the container to unmount from the mount point.
+
+To disable your service on every reboot:
 
     sudo systemctl disable --now mountpoint-s3.service
 
@@ -794,12 +800,17 @@ Now reload systemd deamon:
 
     sudo systemctl daemon-reload
 
-Finally, enable and start the service by running the following `systemctl` commands:
+Start your service
 
-    sudo systemctl restart rclone-mount.service
     sudo systemctl start rclone-mount.service
-    sudo systemctl enable --now rclone-mount.service
+
+To check the status of your service
+
     sudo systemctl status rclone-mount.service
+
+To enable your service on every reboot
+
+    sudo systemctl enable --now rclone-mount.service
 
 !!! note "Information"
     The service name is based on the file name i.e. `/etc/systemd/system/rclone-mount.service`
@@ -1138,12 +1149,17 @@ Now reload systemd deamon:
 
     sudo systemctl daemon-reload
 
-Finally, enable and start the service by running the following `systemctl` commands:
+Start your service
 
-    sudo systemctl restart juicefs-mount.service
     sudo systemctl start juicefs-mount.service
-    sudo systemctl enable --now juicefs-mount.service
+
+To check the status of your service
+
     sudo systemctl status juicefs-mount.service
+
+To enable your service on every reboot
+
+    sudo systemctl enable --now juicefs-mount.service
 
 !!! note "Information"
     The service name is based on the file name i.e. `/etc/systemd/system/juicefs-mount.service`

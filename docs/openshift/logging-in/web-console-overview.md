@@ -40,10 +40,10 @@ the view to show additional information such as Details and Resources.
 
 ## Perspective Switcher
 
-When you logged-in, you will be redirected to the **Developer** perspective which
-is shown selected on the perspective switcher located at the Left side. You can switch
-between the **Administrator** perspective and the **Developer** perspective as per
-your roles and permissions in a project.
+When you are logged-in, you will be redirected to the **Developer** perspective
+which is shown selected on the perspective switcher located at the Left side. You
+can switch between the **Administrator** perspective and the **Developer** perspective
+as per your roles and permissions in a project.
 
 ![Perspective Switcher](images/perspective-switcher.png)
 

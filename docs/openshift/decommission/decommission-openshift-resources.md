@@ -229,6 +229,16 @@ Please make sure your change request looks like this:
 
 ![Change Request to Set Storage Quotas Zero](images/change_request_zero_storage.png)
 
+!!! danger "Very Important Note"
+    Although other allocated resources i.e. CPU, RAM, GPU, etc. operate on a
+    **pay-as-you-go** model, wherein charges are incurred solely based on usage,
+    **Expired** allocations will remain accessible to the users assigned under
+    the allocation. It is advisable to set all quota attributes to Zero (0) by
+    submitting a Change Request for those allocation quota attributes. Additionally,
+    PIs can control this by [removing users](../../get-started/allocation/manage-users-to-a-project.md#addremove-users-tofrom-a-project)
+    assigned to their **NERC-OCP (OpenShift)** allocation. This ensures that even
+    if the allocation expires, users will not have access to the unused resources.
+
 Wait until the requested resource allocation gets approved by the NERC's admin.
 
 After approval, kindly review and verify that the quotas are accurately

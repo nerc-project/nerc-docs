@@ -225,9 +225,21 @@ the [resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here,
 you can filter the allocation of your interest and then proceed to request a
 [change request](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
 
+!!! danger "Very Important Note"
+    Although other allocated resources i.e. CPU, RAM, GPU, etc. operate on a
+    **pay-as-you-go** model, wherein charges are incurred solely based on usage,
+    **Expired** allocations will remain accessible to the users assigned under the
+    allocation. It is advisable to set all other allocation quota attributes to
+    zero (0) during the change request. **This measure ensures that existing users
+    will not accidentally use the resources from the project.**
+
+    Alternatively, PIs can control access to the allocation by [removing users](../../get-started/allocation/manage-users-to-a-project.md#addremove-users-tofrom-a-project)
+    assigned to their NERC-OCP (OpenShift) allocation. This ensures that even if
+    the allocation expires, users will not have access to the unused resources.
+
 Please make sure your change request looks like this:
 
-![Change Request to Set Storage Quotas Zero](images/change_request_zero_storage.png)
+![Change Request to Set All Quotas Zero](images/change_request_zero.png)
 
 Wait until the requested resource allocation gets approved by the NERC's admin.
 
@@ -245,7 +257,7 @@ note the name of the resource quota in the output of this command, i.e., `<your_
     oc get quota
 
     NAME                              AGE   REQUEST                                                                               LIMIT
-    <your_openshift_project_resource_quota_name>   105s   persistentvolumeclaims: 0/5, requests.nvidia.com/gpu: 0/1, requests.storage: 0/0   limits.cpu: 0/10, limits.ephemeral-storage: 0/0, limits.memory: 0/25000Mi
+    <your_openshift_project_resource_quota_name>   105s   persistentvolumeclaims: 0/0, requests.nvidia.com/gpu: 0/0, requests.storage: 0/0   limits.cpu: 0/0, limits.ephemeral-storage: 0/0, limits.memory: 0/0
 
 !!! danger "Very Important: Ensure No Resources that will be Billed are Used"
     Most importantly, ensure that there is no active usage for any of your
@@ -254,19 +266,20 @@ note the name of the resource quota in the output of this command, i.e., `<your_
 To review the resource quota usage for your project, you can run
 `oc describe quota <your_openshift_project_resource_quota_name>`.
 
-Please ensure the output appears as follows, with all used resources having a value
-of zero (0).
+Please ensure the output appears as follows, with all **Used** and **Hard** resources
+having a value of zero (0) as shown below:
 
     oc describe quota <your_openshift_project_resource_quota_name>
+
     Name:                     <your_openshift_project_resource_quota_name>
     Namespace:                <your_openshift_project_to_decommission>
     Resource                  Used  Hard
     --------                  ----  ----
-    limits.cpu                0     10
+    limits.cpu                0     0
     limits.ephemeral-storage  0     0
-    limits.memory             0     25000Mi
-    persistentvolumeclaims    0     5
-    requests.nvidia.com/gpu   0     1
+    limits.memory             0     0
+    persistentvolumeclaims    0     0
+    requests.nvidia.com/gpu   0     0
     requests.storage          0     0
 
 !!! warning "Important Information"
@@ -275,9 +288,9 @@ of zero (0).
 
 ## Review your Project's Resource Quota from the OpenShift Web Console
 
-After removing all OpenShift resources and updating the Storage Quotas to set them
-to zero (0), you can review and verify that these changes are reflected in your
-OpenShift Web Console.
+After removing all OpenShift resources and updating all resource quotas to set
+them to zero (0), you can review and verify that these changes are reflected in
+your OpenShift Web Console as well.
 
 When you are logged-in to the NERC's OpenShift Web Console, you will be redirected
 to the **Developer** perspective which is shown selected on the perspective switcher
@@ -294,8 +307,8 @@ to view the Resource Quota details.
 ![Resource Quota Details](images/resource_quota_details.png)
 
 !!! tip "Very Important Note"
-    It should also show that all resources have **NO** usage, i.e., zero (0), as
-    shown below:
+    It should also indicate that all resources have **NO** usage, i.e., zero (0),
+    and also NO maximum set, i.e., zero (0), as shown below:
 
     ![Resource Quota Detail Info](images/resource_quota_detail_info.png)
 

@@ -65,6 +65,15 @@ and uncomment "user_allow_other" option.
 
     ![Fuse Config to Allow Other User](images/fuse-config.png)
 
+!!! warning "A comparative analysis of Mountpoint for S3, Goofys, and S3FS."
+    When choosing between S3 clients that enable the utilization of an object store
+    with applications expecting files, it's essential to consider the specific use
+    case and whether the convenience and compatibility provided by FUSE clients
+    match the project's requirements.
+
+    To delve into a comparative analysis of *Mountpoint for S3*, *Goofys*, and
+    *S3FS*, please read [this blog post](https://medium.com/@maksym.lutskyi/a-comparative-analysis-of-mountpoint-for-s3-s3fs-and-goofys-9a097a25).
+
 ## 1. Using Mountpoint for Amazon S3
 
 [Mountpoint for Amazon S3](https://github.com/awslabs/mountpoint-s3) is a high-throughput
@@ -672,15 +681,6 @@ of the option `noauto`.
     - `/home/ubuntu/.passwd-s3fs` is the location of the file which contains
     the key pair used for mounting the "bucket1" repository as we named it in previous
     step.
-
-!!! note "A comparative analysis of Mountpoint for S3, S3FS and Goofys."
-    When choosing between S3 clients that enable the utilization of an object store
-    with applications expecting files, it's essential to consider the specific use
-    case and whether the convenience and compatibility provided by FUSE clients
-    match the project's requirements.
-
-    To delve into a comparative analysis of Mountpoint for S3, S3FS, and Goofys,
-    please read [this blog post](https://medium.com/@maksym.lutskyi/a-comparative-analysis-of-mountpoint-for-s3-s3fs-and-goofys-9a097a25).
 
 ## 4. Using [Rclone](https://rclone.org/swift/)
 

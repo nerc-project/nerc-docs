@@ -177,11 +177,6 @@ provisioned until it is deleted.
 
 Storage includes all types of storage Object, Block, Ephemeral & Image.
 
-!!! note "Please note"
-    After issuing the *shutoff* command to an OpenStack VM, it will not use CPU
-    or GPU but will continue to use storage. Any extra *Images* you create will
-    also use storage.
-
 ### High-Level Function
 
 To provide a more practical way to calculate your usage, here is a function of

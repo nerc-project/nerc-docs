@@ -1,5 +1,11 @@
 # How does NERC pricing work?
 
+!!! tip "As a new PI using NERC for the first time, am I entitled to any credits?"
+    As a **new PI** using NERC for the first time, you might wonder if you get any
+    credits. Yes, you'll receive up to **$1000** for **the first month only**. But
+    remember, this credit **can not** be used in **the following months**. Also,
+    it **does not apply** to **GPU resource usage**.
+
 NERC offers you a **pay-as-you-go** approach for pricing for our cloud infrastructure
 offerings (Tiers of Service), including Infrastructure-as-a-Service (IaaS) – Red
 Hat OpenStack and Platform-as-a-Service (PaaS) – Red Hat OpenShift. The exception
@@ -63,6 +69,18 @@ of the base SU for the maximum resource they reserve.
     `5 CPU SUs due to the extra RAM (20GB vs. 12GB(3 x 4GB)) x 720hrs x $0.013`
 
     `$46.80`
+
+!!! warning "Are VMs invoiced even when shut down?"
+    Yes, VMs are invoiced as long as they are utilizing resources. In order not
+    to be billed for a VM, you **[must delete](../../openstack/management/vm-management.md#delete-instance)**
+    your Instance/VM. It is advisable to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
+    of your VM prior to deleting it, ensuring you have a backup of your data and
+    configurations. By proactively managing your VMs and resources, you can
+    optimize your usage and minimize unnecessary costs.
+
+    If you have common questions or need more information, refer to our
+    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
+    answers.
 
 **OpenShift CPU SU Example:**
 
@@ -158,11 +176,6 @@ provisioned until it is deleted.
     `$64.80`
 
 Storage includes all types of storage Object, Block, Ephemeral & Image.
-
-!!! note "Please note"
-    After issuing the *shutoff* command to an OpenStack VM, it will not use CPU
-    or GPU but will continue to use storage. Any extra *Images* you create will
-    also use storage.
 
 ### High-Level Function
 

@@ -1,6 +1,6 @@
 # How does NERC pricing work?
 
-!!! tip "As a new PI using NERC for the first time, am I entitled to any credits?"
+!!! question "As a new PI using NERC for the first time, am I entitled to any credits?"
     As a **new PI** using NERC for the first time, you might wonder if you get any
     credits. Yes, you'll receive up to **$1000** for **the first month only**. But
     remember, this credit **can not** be used in **the following months**. Also,

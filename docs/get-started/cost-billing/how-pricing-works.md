@@ -1,5 +1,11 @@
 # How does NERC pricing work?
 
+!!! tip "As a new PI using NERC for the first time, am I entitled to any credits?"
+    As a new PI using NERC for the first time, you might wonder if you get any credits.
+    Yes, you'll receive up to **$1000** for **the first month only**. But remember,
+    this credit **can't** be used in **the following months**. Also, it **doesn't**
+    apply to **GPU resource usage**.
+
 NERC offers you a **pay-as-you-go** approach for pricing for our cloud infrastructure
 offerings (Tiers of Service), including Infrastructure-as-a-Service (IaaS) – Red
 Hat OpenStack and Platform-as-a-Service (PaaS) – Red Hat OpenShift. The exception

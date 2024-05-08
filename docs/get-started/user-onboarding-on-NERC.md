@@ -39,6 +39,12 @@ once they are added to a project via: [https://coldfront.mss.mghpcc.org](https:/
 or **NERC-OCP (OpenShift)** for the newly added project and select which user(s)
 can use the requested allocation.
 
+    !!! question "As a new NERC PI for the first time, am I entitled to any credits?"
+        As a **new PI** using NERC for the first time, you might wonder if you get
+        any credits. Yes, you'll receive up to **$1000** for **the first month only**.
+        But remember, this credit **can not** be used in **the following months**.
+        Also, it **does not apply** to **GPU resource usage**.
+
 6. Wait until the requested resource allocation gets approved by the **NERC's admin**.
 
 7. Once **approved**, **PI and the corresponding project users** can go to either

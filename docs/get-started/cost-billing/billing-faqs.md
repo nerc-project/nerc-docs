@@ -52,34 +52,39 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
     **Persistent storage** related to an OpenStack VM or OpenShift Pod will continue
     to be billed even when the **VM is stopped** or the **Pod is not running**.
 
-??? question "6. Are VMs invoiced even when shut down?"
+??? question "6. Am I going to incur costs for expired allocations?"
+
+    Currently, a project will continue to be able to utilize **expired** allocations.
+    So this will continue to incur **costs** for you.
+
+??? question "7. Are VMs invoiced even when shut down?"
 
     Yes, as long as VMs are using resources they are invoiced. In order not to be
     billed for a VM you **[must delete](../../openstack/management/vm-management.md#delete-instance)**
     the Instance/VM. It is a good idea to [create a snapshot of your VM](../../openstack/management/vm-management.md#create-snapshot)
     prior to deleting it.
 
-??? question "7. Will OpenStack & OpenShift show on a single invoice?"
+??? question "8. Will OpenStack & OpenShift show on a single invoice?"
 
     Yes. In the near future customers of NERC will be able to view per project service
     utilization via the XDMoD tool.
 
-??? question "8. What happens when a Flavor is expanded during the month?"
+??? question "9. What happens when a Flavor is expanded during the month?"
 
     a. Flavors cannot be expanded.
 
     b. You can create a snapshot of an existing VM/Instance and, with that snapshot,
     deploy a new flavor of VM/Instance.
 
-??? question "9. Is storage charged separately?"
+??? question "10. Is storage charged separately?"
 
     Yes, but on the same invoice. To learn more, see [our page on Storage](how-pricing-works.md#storage).
 
-??? question "10. Will I be charged for storage attached to shut-off instances?"
+??? question "11. Will I be charged for storage attached to shut-off instances?"
 
     Yes.
 
-??? question "11. Are we Invoicing Storage using ColdFront Requests or resource usage?"
+??? question "12. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
     a. Storage is invoiced based on [Coldfront Requests](../allocation/requesting-an-allocation.md).
 
@@ -99,7 +104,7 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
     2. I request a decrease in storage.
         - The invoicing for that storage stops immediately.
 
-??? question "12. For OpenShift, what values are we using to track CPU & Memory?"
+??? question "13. For OpenShift, what values are we using to track CPU & Memory?"
 
     a. For invoicing we utilize `requests.cpu` for tracking CPU utilization &
     `requests.memory` for tracking memory utilization.
@@ -107,19 +112,19 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
     b. Utilization will be capped based on the limits you set in ColdFront for
     your resource allocations.
 
-??? question "13. If a single Pod exceeds the resources for a GPU SU, how is it invoiced?"
+??? question "14. If a single Pod exceeds the resources for a GPU SU, how is it invoiced?"
 
     It will be invoiced as 2 or more GPU SU's depending on how many multiples of
     the resources it exceeds.
 
-??? question "14. How often will we change the pricing?"
+??? question "15. How often will we change the pricing?"
 
     a. Our current plan is no more than once a year for existing offerings.
 
     b. Additional offerings may be added throughout the year (i.e. new types of
     hardware or storage).
 
-??? question "15. Is there any NERC Pricing Calculator?"
+??? question "16. Is there any NERC Pricing Calculator?"
 
     Yes. Start your estimate with no commitment based on your resource needs by
     using [this online tool](https://docs.google.com/spreadsheets/d/187bQgz3eB3W9OL7x9rrgaJ2pi7u85xMJvUJbnKzzBQM/edit#gid=0). For more information about how to use this tool, see

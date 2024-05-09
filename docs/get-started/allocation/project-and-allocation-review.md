@@ -68,6 +68,9 @@ project.
     has expired!
     ![Allocation Renewal Prior Expiration](images/renew_expiring_allocation.png)
 
+    Currently, a project will continue to be able to utilize **expired** allocations.
+    So this will continue to incur **costs** for you.
+
 Allocation renewals may not require any additions or changes to the allocation
 attributes from the PI or Manager. By default, if the PI or Manager clicks on
 the 'Activate' button as shown below:
@@ -94,5 +97,12 @@ below:
 
 Then an automated email notification will be sent to the PI and all users on the
 allocation that have enabled email notifications.
+
+## Cost Associated with Expired Allocations
+
+Currently, a project will continue to be able to utilize **expired** allocations.
+So this will continue to incur **costs** for you. In the future, we plan to change
+this behavior so expired allocations will result in its associated VMs/pods not
+to start and possibly having associated active VMs/pods to cease running.
 
 ---

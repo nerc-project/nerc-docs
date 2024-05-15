@@ -74,12 +74,10 @@ sure you want to connect. Type `yes`.
 your SSH configuration file (typically found in `~/.ssh/config`). The SSH configuration
 file might include entry for your newly launched VM like this:
 
-```ssh
-Host example
-  HostName 199.94.60.66
-  User ubuntu
-  IdentityFile ~/.ssh/cloud.key
-```
+    Host example
+        HostName 199.94.60.66
+        User ubuntu
+        IdentityFile ~/.ssh/cloud.key
 
 Here, the `Host` value can be any name you want; it is simply a label for the other
 settings. The `Hostname` value is the **Floating IP** you have associated to your
@@ -91,9 +89,7 @@ not have to type username, hostname, and private key each time.
 
 Then you can ssh into the your example VM running:
 
-```ssh
-ssh example
-```
+    ssh example
 
 ---
 

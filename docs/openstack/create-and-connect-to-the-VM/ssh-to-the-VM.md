@@ -51,9 +51,49 @@ sure you want to connect. Type `yes`.
 
 ![SSH To VM Successful](images/ssh_to_vm.png)
 
-!!! tip "Note"
+!!! tip "Important Note"
     If you haven't added your key to ssh-agent, you may need to specify the
     private key file, like this: `ssh -i ~/.ssh/cloud.key ubuntu@199.94.60.66`
+
+    To add your private key to the `ssh-agent` you can follow the following steps:
+
+    1. `eval "$(ssh-agent -s)"`
+
+        Output: `Agent pid 59566`
+
+    2. `ssh-add ~/.ssh/cloud.key`
+
+        If your private key is password protected, you'll be prompted to enter the
+        passphrase.
+
+    3. Verify that the key has been added by running `ssh-add -l`.
+
+## SSH to the VM using SSH Config
+
+**Alternatively,** You can also configure the setting for the remote instances in
+your SSH configuration file (typically found in `~/.ssh/config`). The SSH configuration
+file might include entry for your newly launched VM like this:
+
+```ssh
+Host example
+  HostName 199.94.60.66
+  User ubuntu
+  IdentityFile ~/.ssh/cloud.key
+```
+
+Here, the `Host` value can be any name you want; it is simply a label for the other
+settings. The `Hostname` value is the **Floating IP** you have associated to your
+instance that you want to access, the `User` value specifies the default account
+username based on your base OS image used for the VM and `IdentityFile` specify
+the path to your **Private Key** on your local machine. With this configuration
+defined, you can connect to the account by simply using the Host value. You do
+not have to type username, hostname, and private key each time.
+
+Then you can ssh into the your example VM running:
+
+```ssh
+ssh example
+```
 
 ---
 

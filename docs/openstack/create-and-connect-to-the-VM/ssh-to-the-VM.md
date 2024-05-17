@@ -74,22 +74,17 @@ sure you want to connect. Type `yes`.
 your SSH configuration file (typically found in `~/.ssh/config`). The SSH configuration
 file might include entry for your newly launched VM like this:
 
-    Host example
+    Host ExampleHostLabel
         HostName 199.94.60.66
         User ubuntu
         IdentityFile ~/.ssh/cloud.key
 
-Here, the `Host` value can be any name you want; it is simply a label for the other
-settings. The `Hostname` value is the **Floating IP** you have associated to your
-instance that you want to access, the `User` value specifies the default account
-username based on your base OS image used for the VM and `IdentityFile` specify
-the path to your **Private Key** on your local machine. With this configuration
-defined, you can connect to the account by simply using the Host value. You do
-not have to type username, hostname, and private key each time.
+Here, the `Host` value can be any label you want. The `HostName` value is the **Floating IP** you have associated to your instance that you want to access, the `User` value specifies the default account username based on your base OS image
+used for the VM and `IdentityFile` specify the path to your **Private Key** on your local machine. With this configuration defined, you can connect to the account by simply using the Host value set as "ExampleHostLabel". You do not have to type the username, hostname, and private key each time.
 
-Then you can ssh into the your example VM running:
+So, you can SSH into your host VM by running:
 
-    ssh example
+    ssh ExampleHostLabel
 
 ---
 

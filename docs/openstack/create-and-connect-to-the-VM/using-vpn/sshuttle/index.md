@@ -18,7 +18,7 @@ Also, attach a Floating IP to this instance so you can ssh into it from outside.
 
 Finally, you'll want to configure the setting for the remote instances in your
 SSH configuration file (typically found in `~/.ssh/config`). The SSH
-configuration file might include entry for your newly create sshuttle server
+configuration file might include entry for your newly created sshuttle server
 like this:
 
 ```sh

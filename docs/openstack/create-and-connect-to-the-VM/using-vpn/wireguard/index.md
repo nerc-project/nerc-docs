@@ -29,7 +29,7 @@ The Security Groups attached to the WireGuard server includes "**default**",
 
 Finally, you'll want to configure the setting for the remote instances in your
 SSH configuration file (typically found in `~/.ssh/config`). The SSH
-configuration file might include entry for your newly create WireGuard server
+configuration file might include entry for your newly created WireGuard server
 like this:
 
 ```ssh

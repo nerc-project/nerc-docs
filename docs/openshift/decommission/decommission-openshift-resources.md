@@ -177,7 +177,7 @@ Please review all resources currently being used by your project by running
 Run the `oc delete` command to delete all resource objects specified as
 parameters after `--all` within your selected project (namespace).
 
-    oc delete --all pod,deployment,pvc,route,service,builds,buildconfigs,statefulsets,replicasets,cronjobs,imagestream --force --grace-period=0
+    oc delete pod,deployment,pvc,route,service,build,buildconfig,statefulset,replicaset,cronjob,imagestream,revision,configuration,notebook --all
 
 !!! danger "Danger"
     The `oc delete` operation will cause all resources specfied will be deleted.

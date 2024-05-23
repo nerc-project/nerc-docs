@@ -124,7 +124,7 @@ Each allocation, whether requested or approved, will be billed based on the
 **pay-as-you-go** model. The exception is for **Storage quotas**, where the cost
 is determined by [your requested and approved allocation values](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
 to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
-Resource Allocations, storage quotas are specified by the "OpenStack Volume GB
+Resource Allocations, storage quotas are specified by the "OpenStack Volume GiB
 Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes.
 
 Even if you have deleted all volumes, snapshots, and object storage buckets and
@@ -134,8 +134,8 @@ still be incurring a charge for the approved storage as explained in
 [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 To achieve this, you must submit a final change request to reduce the
-**Storage Quotas** for "OpenStack Volume GB Quota" and "OpenStack Swift Quota in
-Gigabytes" to zero (0) for your **NERC (OpenStack)** resource type. You can review
+**Storage Quotas** for "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
+in Gigabytes" to zero (0) for your **NERC (OpenStack)** resource type. You can review
 and manage these resource allocations by visiting the
 [resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here, you
 can filter the allocation of your interest and then proceed to request a
@@ -156,7 +156,7 @@ approved quota values are accurately displayed as [explained here](#review-your-
 
 Please confirm and verify that the `gigabytes` resource value that specifies total
 space in [external volumes](../persistent-storage/volumes.md#volumes) is set to
-a limit of zero (0) in correspondence with the approved "OpenStack Volume GB Quota"
+a limit of zero (0) in correspondence with the approved "OpenStack Volume Quota (GiB)"
 of your allocation when running `openstack quota show` openstack client command
 as shown below:
 

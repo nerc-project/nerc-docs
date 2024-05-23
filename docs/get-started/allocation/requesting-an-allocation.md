@@ -35,7 +35,7 @@ to be included in this allocation before clicking the "Submit" button.
     allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
     Resource Allocations, storage quotas are specified by the "OpenStack Volume
-    GB Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. If
+    GiB Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. If
     you have common questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current resource
@@ -56,9 +56,9 @@ integer value that corresponds to multiple OpenStack resource quotas. For exampl
 | `Instances`           | 1                                     |
 | `vCPUs`               | 1                                     |
 | `GPU`                 | 0                                     |
-| `RAM(MB)`             | 4096                                  |
+| `RAM(MiB)`             | 4096                                  |
 | `Volumes`             | 2                                     |
-| `Volume Storage(GB)`  | 20                                    |
+| `Volume Storage(GiB)`  | 20                                    |
 | `Object Storage(GB)`  | 1                                     |
 
 !!! info "Information"
@@ -96,10 +96,10 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
 | :-------------------: | :-----------------------------------: |
 | `vCPUs`               | 1                                     |
 | `GPU`                 | 0                                     |
-| `RAM(MB)`                 | 4096                                  |
-| `Persistent Volume Claims (PVC)`             | 2                                     |
-| `Storage(GB)`  | 20                                  |
-| `Ephemeral Storage(GB)`  | 5                                     |
+| `RAM(MiB)`            | 4096                                  |
+| `Persistent Volume Claims (PVC)` | 2                          |
+| `Storage(GiB)`        | 20                                    |
+| `Ephemeral Storage(GiB)` | 5                                  |
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
     Ensure you choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
@@ -110,7 +110,7 @@ integer value that corresponds to multiple OpenShift resource quotas. For exampl
     [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC-OCP (OpenShift)**
     Resource Allocations, storage quotas are specified by the "OpenShift Request
-    on Storage Quota (GB)" and "OpenShift Limit on Ephemeral Storage Quota (GB)"
+    on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
     allocation attributes. If you have common questions or need more information,
     refer to our [Billing FAQs](../../get-started/cost-billing/billing-faqs.md)
     for comprehensive answers. Keep in mind that you can easily scale and expand

@@ -15,7 +15,7 @@ This will bring up the detailed Quota attributes for that project as shown below
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
     For **NERC (OpenStack)** resource types, the **Storage quotas** are controlled
     by the values of the "OpenStack Swift Quota in Gigabytes" and "OpenStack Volume
-    GB Quota" quota attributes. The **Storage cost** is determined by [your requested
+    GiB Quota" quota attributes. The **Storage cost** is determined by [your requested
     and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
     for these quota attributes.
 
@@ -50,8 +50,8 @@ This will show more details about the change request as shown below:
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
     For **NERC-OCP (OpenShift)** resource types, the **Storage quotas** are controlled
-    by the values of the "OpenShift Request on Storage Quota (GB)" and "OpenShift
-    Limit on Ephemeral Storage Quota (GB)" quota attributes. The **Storage cost**
+    by the values of the "OpenShift Request on Storage Quota (GiB)" and "OpenShift
+    Limit on Ephemeral Storage Quota (GiB)" quota attributes. The **Storage cost**
     is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
     for these quota attributes.
 

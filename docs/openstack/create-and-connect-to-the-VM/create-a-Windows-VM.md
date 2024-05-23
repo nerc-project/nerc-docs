@@ -17,7 +17,7 @@ from an external volume:
     the normal process using `boot from image` as [described here](launch-a-VM.md).
 
     - To ensure smooth upgrade and maintenance of the system, select at least
-    100GB for the size of the volume.
+    100 GiB for the size of the volume.
 
     - Make sure your project has sufficient [storage quotas](../../get-started/allocation/allocation-details.md#general-user-view).
 
@@ -36,7 +36,7 @@ Create a **Volume** using that *Windows Image*:
 
 ![MS-Winodws-2022 Image to Volume Create](images/stack_image_to_volume.png)
 
-To ensure smooth upgrade and maintenance of the system, select at least 100GB
+To ensure smooth upgrade and maintenance of the system, select at least 100 GiB
 for the size of the volume as shown below:
 
 ![Create Volume](images/create_volume.png)
@@ -68,7 +68,7 @@ Identify the image for the initial volume contents from `openstack image list`.
 In the example above, this is image id `a9b48e65-0cf9-413a-8215-81439cd63966` for
 `MS-Windows-2022`.
 
-Creating a disk from this image with a size of **100GB** named "my-volume"
+Creating a disk from this image with a size of **100 GiB** named "my-volume"
 as follows.
 
     openstack volume create --image a9b48e65-0cf9-413a-8215-81439cd63966 --size 100 --description "Using MS Windows Image" my-volume

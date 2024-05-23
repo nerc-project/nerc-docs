@@ -71,7 +71,7 @@ that produce unprecedented performance boosts for technical computing workloads.
     should specify the number of GPUs they intend to use by setting the "OpenStack
     GPU Quota" attribute. We recommend ensuring that this count accurately reflects
     the current GPU usage. Additionally, they need to adjust the quota values for
-    "OpenStack Compute RAM Quota" and "OpenStack Compute vCPU Quota" to sufficiently
+    "OpenStack Compute RAM Quota (MiB)" and "OpenStack Compute vCPU Quota" to sufficiently
     accommodate the GPU flavor they wish to use when launching a VM in their
     OpenStack Project.
 
@@ -219,7 +219,7 @@ hr of wall time.
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and
     **Cinder (block storage/ volumes)** are charged separately at a rate of
-    $0.009 TB/hr or $9.00E-12 KB/hr at a granularity of KB/hr. More about cost
+    $0.009 TiB/hr or $9.00E-12 KiB/hr at a granularity of KiB/hr. More about cost
     can be [found here](../../get-started/cost-billing/how-pricing-works.md) and
     some of the common billing related FAQs are [listed here](../../get-started/cost-billing/billing-faqs.md).
 

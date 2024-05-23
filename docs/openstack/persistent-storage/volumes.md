@@ -73,7 +73,7 @@ data. However, if your VM involves extended running processes and vital
 in-memory data, preserving the precise VM state is essential. In such cases,
 we recommend regularly taking a snapshot of the entire instance, known as an
 **"instance snapshot"**, provided you have sufficient **Storage quotas**,
-specifically the "OpenStack Volume Quota", "OpenStack Volume GB Quota", and
+specifically the "OpenStack Volume Quota", "OpenStack Volume Quota (GiB)", and
 "OpenStack Swift Quota in Gigabytes" allocated for [your resource allocation](../../get-started/allocation/allocation-details.md#general-user-view-of-openstack-resource-allocation).
 Utilizing snapshots for backups is of utmost importance, particularly when
 safeguarding or recovering critical states and data from your instance.
@@ -83,20 +83,20 @@ safeguarding or recovering critical states and data from your instance.
     backed by persistent volumes, the disk data is retained, continuing to consume
     approved storage resources for which you will still be billed. It's important
     to note that the **Storage quotas** for **NERC (OpenStack)** Resource Allocations,
-    are specified by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota
+    are specified by the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
     in Gigabytes" allocation attributes. Storage cost is determined by
     [your requested and approved allocation values](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
     to reserve storage from the total NESE storage pool.
 
     If you request additional storage by specifying a changed quota value for
-    the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in Gigabytes"
+    the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota in Gigabytes"
     allocation attributes through [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/),
     invoicing for the extra storage will take place upon fulfillment or approval
     of your request, as explained in our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
     Conversely, if you request a reduction in the **Storage quotas** by specifying
-    a reduced quota value for the "OpenStack Volume GB Quota" and "OpenStack Swift
+    a reduced quota value for the "OpenStack Volume Quota (GiB)" and "OpenStack Swift
     Quota in Gigabytes" allocation attributes through a [change request using ColdFront](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project),
     your invoicing will be adjusted accordingly when the request is submitted.
 

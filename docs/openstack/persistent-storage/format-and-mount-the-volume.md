@@ -75,7 +75,7 @@ mount it to another instance, the second instance will have access to the data.
 
 Here, we create an empty volume following the steps outlined in [this documentation](create-an-empty-volume.md).
 
-Please make sure you are creating volume of the size 100 GB:
+Please make sure you are creating volume of the size 100 GiB:
 
 ![Create Volume for Windows VM](images/create_volume_win.png)
 

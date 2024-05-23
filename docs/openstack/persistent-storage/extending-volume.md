@@ -18,7 +18,7 @@ Navigate to *Project -> Volumes -> Volumes*.
 
 ![Extending Volume](images/extending_volumes.png)
 
-Specify, the new extened size in GB:
+Specify, the new extened size in GiB:
 
 ![Volume New Extended Size](images/volume_new_extended_size.png)
 
@@ -34,16 +34,16 @@ To run the OpenStack CLI commands, you need to have:
 ### Using the openstack client
 
 The following openstack client command syntax can be used to extend any existing
-volume from its previous size to a new size of <NEW_SIZE_IN_GB>:
+volume from its previous size to a new size of <NEW_SIZE_IN_GiB>:
 
-    openstack volume set --size <NEW_SIZE_IN_GB> <VOLUME_NAME_OR_ID>
+    openstack volume set --size <NEW_SIZE_IN_GiB> <VOLUME_NAME_OR_ID>
 
 For example:
 
     openstack volume set --size 100 my-volume
 
-where "my-volume" is the existing volume with a size of **80 GB** and is going to
-be extended to a new size of **100 GB**."
+where "my-volume" is the existing volume with a size of **80 GiB** and is going
+to be extended to a new size of **100 GiB**."
 
 !!! tip "Pro Tip"
     If your volume name `<VOLUME_NAME_OR_ID>` includes spaces, you need to enclose

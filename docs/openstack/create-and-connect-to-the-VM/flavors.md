@@ -219,7 +219,7 @@ hr of wall time.
 !!! question "NERC IaaS Storage Tiers Cost"
     Storage both **OpenStack Swift (object storage)** and
     **Cinder (block storage/ volumes)** are charged separately at a rate of
-    $0.009 TiB/hr or $9.00E-12 KiB/hr at a granularity of KiB/hr. More about cost
+    **$0.009 TiB/hr** or **$9.00E-6 GiB/hr**. More about cost
     can be [found here](../../get-started/cost-billing/how-pricing-works.md) and
     some of the common billing related FAQs are [listed here](../../get-started/cost-billing/billing-faqs.md).
 

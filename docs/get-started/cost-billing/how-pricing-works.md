@@ -120,9 +120,8 @@ GPU pods, as GPU pods cannot currently share resources with CPU pods.
 
 ### Storage
 
-Storage is charged separately at a rate of $0.009 TiB/hr or $9.00E-12 KiB/hr at a
-granularity of KiB/hr. For ease of reporting, storage SUs are shown in GiB but calculated
-in KiB. OpenStack volumes remain provisioned until they are deleted. VM’s reserve
+Storage is charged separately at a rate of **$0.009 TiB/hr** or **$9.00E-6 GiB/hr**.
+OpenStack volumes remain provisioned until they are deleted. VM's reserve
 volumes, and you can also create extra volumes yourself. In OpenShift pods, storage
 is only provisioned while it is active, and in persistent volumes, storage remains
 provisioned until it is deleted.

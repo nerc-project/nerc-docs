@@ -56,9 +56,9 @@ integer value that corresponds to multiple OpenStack resource quotas. For exampl
 | `Instances`           | 1                                     |
 | `vCPUs`               | 1                                     |
 | `GPU`                 | 0                                     |
-| `RAM(MiB)`             | 4096                                  |
+| `RAM(MiB)`            | 4096                                  |
 | `Volumes`             | 2                                     |
-| `Volume Storage(GiB)`  | 20                                    |
+| `Volume Storage(GiB)` | 20                                    |
 | `Object Storage(GB)`  | 1                                     |
 
 !!! info "Information"

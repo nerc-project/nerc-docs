@@ -94,7 +94,7 @@ you may choose any available images.
     If you don't specify custom value for the "**Volume Size (GB)**", that will
     be set to the root disk size of your selected Flavor. For more about the
     default root disk size you can refer to [this documentation](flavors.md).
-    We can override this value by entering our own custom value (in GB) and that
+    We can override this value by entering our own custom value (in GiB) and that
     is available as a Volume that is attach to the instance to enable persistent
     storage.
 

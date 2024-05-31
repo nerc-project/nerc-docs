@@ -131,7 +131,7 @@ for `my home directory`)
 
 For e.g.
 
-    scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip centos@199.94.60.219:~/myfile.zip:~/
+    scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip centos@199.94.60.219:~/myfile.zip
 
 !!! info "Important Note"
     While it’s probably best to compress all the files you intend to transfer into

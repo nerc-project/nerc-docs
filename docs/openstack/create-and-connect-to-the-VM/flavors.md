@@ -12,8 +12,8 @@ The important fields are
 
 | Field      | Description                                      |
 |------------|--------------------------------------------------|
-| RAM        | Memory size in MB                                |
-| Disk       | Size of disk in GB                               |
+| RAM        | Memory size in MiB                                |
+| Disk       | Size of disk in GiB                               |
 | Ephemeral  | Size of a second disk. 0 means no second disk is defined and mounted. |
 | VCPUs      | Number of virtual cores                          |
 
@@ -234,8 +234,49 @@ Our team will review your request and reach out to you to discuss further.
 
 ## How to Change Flavor of an instance
 
-!!! warning "Important Note"
-    This is only possible using the openstack client at this time!
+### Using Horizon dashboard
+
+Once you're logged in to NERC's Horizon dashboard, you can navigate to
+*Project -> Compute -> Instances*.
+
+You can select the instance you wish to extend or change the flavor. Here, you
+will see several options available under the Actions menu located on the right-hand
+side of your instance, as shown here:
+
+![Resize VM's Instance](images/resize_instance_flavor.png)
+
+Click "Resize Instance".
+
+In the Resize Instance dialog box, select the new flavor of your choice under the
+"New Flavor" dropdown options. In this example, we are changing the current flavor
+"**cpu-su.1**" to the new flavor "**cpu-su.2**" for our VM, as shown below:
+
+![Resize Instance Dialog](images/resize_instance_dialog.png)
+
+Once reviwing the new flavor details and verified all details, press "Resize" button.
+
+!!! warning "Very Important Information"
+    You will only be able to choose flavors that are within your current available
+    resource quotas, i.e., vCPUs and RAM.
+
+You will see the status of the resize in the following page.
+
+When it says "Confirm or Revert Resize/Migrate", login to the instance and verify
+that it worked as intended (meaning the instance is working as before but with
+the new flavor).
+
+If you are happy with the result, press "Confirm Resize/Rigrate" in drop-down to
+the far right (it should be pre-selected) as shown below:
+
+![Confirm Resize/Migrate](images/resize_instance_confirm.png)
+
+This will finalise the process and make it permanent.
+
+If you are unhappy (for some reason the process failed), you are able to instead
+press "Revert resize/Migrate" (available in the drop-down). This will revert the
+process.
+
+### Using the CLI
 
 **Prerequisites**:
 

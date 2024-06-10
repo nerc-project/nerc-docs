@@ -91,6 +91,16 @@ For more information on configuring the OpenStackClient please see the
 
 ### OpenStack Hello World
 
+Generally, the OpenStack terminal client offers the following methods:
+
+- **list**: Lists information about objects currently in the cloud.
+
+- **show**: Displays information about a single object currently in the cloud.
+
+- **create**: Creates a new object in the cloud.
+
+- **set**: Edits an existing object in the cloud.
+
 To test that you have everything configured, try out some commands. The
 following command lists all the images available to your project:
 

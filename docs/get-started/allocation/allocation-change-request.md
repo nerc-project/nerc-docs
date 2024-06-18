@@ -14,10 +14,12 @@ This will bring up the detailed Quota attributes for that project as shown below
 
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
     For **NERC (OpenStack)** resource types, the **Storage quotas** are controlled
-    by the values of the "OpenStack Swift Quota in Gigabytes" and "OpenStack Volume
-    GiB Quota" quota attributes. The **Storage cost** is determined by [your requested
+    by the values of the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
+    (GiB)" quota attributes. The **Storage cost** is determined by [your requested
     and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
-    for these quota attributes.
+    for these quota attributes. If you have common questions or need more information,
+    refer to our [Billing FAQs](../../get-started/cost-billing/billing-faqs.md)
+    for comprehensive answers.
 
 PI or project managers can provide a new value for the individual quota attributes,
 and give justification for the requested changes so that the NERC admin can review

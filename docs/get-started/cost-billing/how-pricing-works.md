@@ -12,8 +12,8 @@ Hat OpenStack and Platform-as-a-Service (PaaS) – Red Hat OpenShift. The except
 is the **Storage quotas** in NERC Storage Tiers, where the cost is determined by
 [your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view)
 to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
-Resource Allocations, storage quotas are specified by the "OpenStack Volume GiB
-Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. Whereas for
+Resource Allocations, storage quotas are specified by the "OpenStack Volume Quota
+(GiB)" and "OpenStack Swift Quota (GiB)" allocation attributes. Whereas for
 **NERC-OCP (OpenShift)** Resource Allocations, storage quotas are specified by the
 "OpenShift Request on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage
 Quota (GiB)" allocation attributes. If you have common questions or need more
@@ -132,8 +132,8 @@ provisioned until it is deleted.
     Once approved, these **Storage quotas** will need to be reserved from the
     total NESE storage pool for both **NERC (OpenStack)** and **NERC-OCP (OpenShift)**
     resources. For **NERC (OpenStack)** Resource Allocations, storage quotas are
-    specified by the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota in
-    Gigabytes" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
+    specified by the "OpenStack Volume Quota (GiB)" and "OOpenStack Swift Quota
+    (GiB)" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
     Allocations, storage quotas are specified by the "OpenShift Request on Storage
     Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)" allocation
     attributes.

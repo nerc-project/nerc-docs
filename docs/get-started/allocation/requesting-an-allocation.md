@@ -34,9 +34,9 @@ to be included in this allocation before clicking the "Submit" button.
     **Storage quotas**, where the cost is determined by [your requested and approved
     allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
-    Resource Allocations, storage quotas are specified by the "OpenStack Volume
-    GiB Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. If
-    you have common questions or need more information, refer to our
+    Resource Allocations, the **Storage quotas** are specified by the "OpenStack
+    Volume Quota (GiB)" and "OpenStack Swift Quota (GiB)" allocation attributes.
+    If you have common questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current resource
     allocations within your project by following [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)

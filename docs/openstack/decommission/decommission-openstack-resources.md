@@ -124,8 +124,8 @@ Each allocation, whether requested or approved, will be billed based on the
 **pay-as-you-go** model. The exception is for **Storage quotas**, where the cost
 is determined by [your requested and approved allocation values](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
 to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
-Resource Allocations, storage quotas are specified by the "OpenStack Volume GiB
-Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes.
+Resource Allocations, storage quotas are specified by the "OpenStack Volume Quota
+(GiB)" and "OpenStack Swift Quota (GiB)" allocation attributes.
 
 Even if you have deleted all volumes, snapshots, and object storage buckets and
 objects in your OpenStack project. It is very essential to adjust the approved
@@ -134,8 +134,8 @@ still be incurring a charge for the approved storage as explained in
 [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 To achieve this, you must submit a final change request to reduce the
-**Storage Quotas** for "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
-in Gigabytes" to zero (0) for your **NERC (OpenStack)** resource type. You can review
+**Storage Quotas** for the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
+(GiB)" to zero (0) for your **NERC (OpenStack)** resource type. You can review
 and manage these resource allocations by visiting the
 [resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here, you
 can filter the allocation of your interest and then proceed to request a
@@ -175,7 +175,7 @@ To check the overall space used, you can use the following command
 
 Also, please confirm and verify that the `Quota-Bytes` property value is set to
 a limit of zero (0) in correspondence with the approved "OpenStack Swift Quota
-in Gigabytes" of your allocation and also check the overall space used in `Bytes`
+(GiB)" of your allocation and also check the overall space used in `Bytes`
 is one (1) along with no Containers and Objects, when running
 `openstack object store account show` openstack client command as shown below:
 

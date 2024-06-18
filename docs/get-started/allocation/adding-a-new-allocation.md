@@ -7,6 +7,10 @@ where all existing users for the project will be listed on the bottom of the req
 form. PIs can select desired user(s) to make the requested resource allocations
 available on their NERC's OpenStack or OpenShift projects.
 
+Here, you can view the Resource Type, information about your Allocated Project,
+status, End Date of the allocation, and actions button or any pending actions as
+shown below:
+
 ![Adding a new Resource Allocation](images/adding_new_resource_allocations.png)
 
 ## Adding a new Resource Allocation to your OpenStack project

@@ -59,7 +59,7 @@ integer value that corresponds to multiple OpenStack resource quotas. For exampl
 | `RAM(MiB)`            | 4096                                  |
 | `Volumes`             | 2                                     |
 | `Volume Storage(GiB)` | 20                                    |
-| `Object Storage(GB)`  | 1                                     |
+| `Object Storage(GiB)`  | 1                                     |
 
 !!! info "Information"
     By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security

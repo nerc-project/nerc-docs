@@ -51,7 +51,8 @@ To create a volume using the CLI, do this:
 ### Using the openstack client
 
 This allows an arbitrary sized disk to be attached to your virtual machine, like
-plugging in a USB stick. The steps below create a disk of 20GB with name "my-volume".
+plugging in a USB stick. The steps below create a disk of 20 gibibytes (GiB) with
+name "my-volume".
 
     openstack volume create --size 20 my-volume
 

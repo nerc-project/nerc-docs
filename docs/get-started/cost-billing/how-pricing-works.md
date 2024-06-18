@@ -12,11 +12,11 @@ Hat OpenStack and Platform-as-a-Service (PaaS) – Red Hat OpenShift. The except
 is the **Storage quotas** in NERC Storage Tiers, where the cost is determined by
 [your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view)
 to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
-Resource Allocations, storage quotas are specified by the "OpenStack Volume GB
-Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. Whereas for
+Resource Allocations, storage quotas are specified by the "OpenStack Volume Quota
+(GiB)" and "OpenStack Swift Quota (GiB)" allocation attributes. Whereas for
 **NERC-OCP (OpenShift)** Resource Allocations, storage quotas are specified by the
-"OpenShift Request on Storage Quota (GB)" and "OpenShift Limit on Ephemeral Storage
-Quota (GB)" allocation attributes. If you have common questions or need more
+"OpenShift Request on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage
+Quota (GiB)" allocation attributes. If you have common questions or need more
 information, refer to our [Billing FAQs](billing-faqs.md) for comprehensive answers.
 NERC offers a flexible cost model where an institution (with a per-project breakdown)
 is billed solely for the duration of the specific services required. Access is based
@@ -29,7 +29,7 @@ and billing model.
 
 ### Service Units (SUs)
 
-| Name | vGPU | vCPU | RAM (GB) | Current Price |
+| Name | vGPU | vCPU | RAM (GiB) | Current Price |
 | - | - | - | - | - |
 | CPU | 0 | 1 | 4 | $0.013 |
 | A100 GPU | 1 | 24 | 74 | $1.803 |
@@ -50,7 +50,7 @@ of the base SU for the maximum resource they reserve.
 
 - A Project or VM with:
 
-    `1 A100 GPU, 24 vCPUs, 95MB RAM, 199.2hrs`
+    `1 A100 GPU, 24 vCPUs, 95MiB RAM, 199.2hrs`
 
 - Will be charged:
 
@@ -62,11 +62,11 @@ of the base SU for the maximum resource they reserve.
 
 - A Project or VM with:
 
-    `3 vCPU, 20 GB RAM, 720hrs (24hr x 30days)`
+    `3 vCPU, 20 GiB RAM, 720hrs (24hr x 30days)`
 
 - Will be charged:
 
-    `5 CPU SUs due to the extra RAM (20GB vs. 12GB(3 x 4GB)) x 720hrs x $0.013`
+    `5 CPU SUs due to the extra RAM (20GiB vs. 12GiB(3 x 4GiB)) x 720hrs x $0.013`
 
     `$46.80`
 
@@ -86,11 +86,11 @@ of the base SU for the maximum resource they reserve.
 
 - Project with 3 Pods with:
 
-    i. `1 vCPU, 3 GB RAM, 720hrs (24hr*30days)`
+    i. `1 vCPU, 3 GiB RAM, 720hrs (24hr*30days)`
 
-    ii. `0.1 vCPU, 8 GB RAM, 720hrs (24hr*30days)`
+    ii. `0.1 vCPU, 8 GiB RAM, 720hrs (24hr*30days)`
 
-    iii. `2 vCPU, 4 GB RAM, 720hrs (24hr*30days)`
+    iii. `2 vCPU, 4 GiB RAM, 720hrs (24hr*30days)`
 
 - Project Will be charged:
 
@@ -98,9 +98,9 @@ of the base SU for the maximum resource they reserve.
 
     `1 CPU SUs due to first pod * 720hrs * $0.013`
 
-    `2 CPU SUs due to extra RAM (8GB vs 0.4GB(0.1*4GB)) * 720hrs * $0.013`
+    `2 CPU SUs due to extra RAM (8GiB vs 0.4GiB(0.1*4GiB)) * 720hrs * $0.013`
 
-    `2 CPU SUs due to more CPU (2vCPU vs 1vCPU(4GB/4)) * 720hrs * $0.013`
+    `2 CPU SUs due to more CPU (2vCPU vs 1vCPU(4GiB/4)) * 720hrs * $0.013`
 
     `))`
 
@@ -120,9 +120,8 @@ GPU pods, as GPU pods cannot currently share resources with CPU pods.
 
 ### Storage
 
-Storage is charged separately at a rate of $0.009 TB/hr or $9.00E-12 KB/hr at a
-granularity of KB/hr. For ease of reporting, storage SUs are shown in GB but calculated
-in KB. OpenStack volumes remain provisioned until they are deleted. VM’s reserve
+Storage is charged separately at a rate of **$0.009 TiB/hr** or **$9.00E-6 GiB/hr**.
+OpenStack volumes remain provisioned until they are deleted. VM's reserve
 volumes, and you can also create extra volumes yourself. In OpenShift pods, storage
 is only provisioned while it is active, and in persistent volumes, storage remains
 provisioned until it is deleted.
@@ -133,10 +132,10 @@ provisioned until it is deleted.
     Once approved, these **Storage quotas** will need to be reserved from the
     total NESE storage pool for both **NERC (OpenStack)** and **NERC-OCP (OpenShift)**
     resources. For **NERC (OpenStack)** Resource Allocations, storage quotas are
-    specified by the "OpenStack Volume GB Quota" and "OpenStack Swift Quota in
-    Gigabytes" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
+    specified by the "OpenStack Volume Quota (GiB)" and "OOpenStack Swift Quota
+    (GiB)" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
     Allocations, storage quotas are specified by the "OpenShift Request on Storage
-    Quota (GB)" and "OpenShift Limit on Ephemeral Storage Quota (GB)" allocation
+    Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)" allocation
     attributes.
 
     Even if you have deleted all volumes, snapshots, and object storage buckets and
@@ -155,11 +154,11 @@ provisioned until it is deleted.
 
 - Volume or VM with:
 
-    `500GB for 699.2hrs`
+    `500GiB for 699.2hrs`
 
 - Will be charged:
 
-    `.5 Storage TB SU (.5 TB x 700hrs) x $0.009 TB/hr`
+    `.5 Storage TiB SU (.5 TiB x 700hrs) x $0.009 TiB/hr`
 
     `$3.15`
 
@@ -167,11 +166,11 @@ provisioned until it is deleted.
 
 - Volume or VM with:
 
-    `10TB for 720hrs (24hr x 30days)`
+    `10TiB for 720hrs (24hr x 30days)`
 
 - Will be charged:
 
-    `10 Storage TB SU (10TB x 720 hrs) x $0.009 TB/hr`
+    `10 Storage TiB SU (10TiB x 720 hrs) x $0.009 TiB/hr`
 
     `$64.80`
 

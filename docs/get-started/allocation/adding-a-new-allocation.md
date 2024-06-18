@@ -7,6 +7,10 @@ where all existing users for the project will be listed on the bottom of the req
 form. PIs can select desired user(s) to make the requested resource allocations
 available on their NERC's OpenStack or OpenShift projects.
 
+Here, you can view the Resource Type, information about your Allocated Project,
+status, End Date of the allocation, and actions button or any pending actions as
+shown below:
+
 ![Adding a new Resource Allocation](images/adding_new_resource_allocations.png)
 
 ## Adding a new Resource Allocation to your OpenStack project
@@ -20,9 +24,9 @@ available on their NERC's OpenStack or OpenShift projects.
     **Storage quotas**, where the cost is determined by [your requested and approved
     allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openstack-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
-    Resource Allocations, storage quotas are specified by the "OpenStack Volume
-    GB Quota" and "OpenStack Swift Quota in Gigabytes" allocation attributes. If
-    you have common questions or need more information, refer to our
+    Resource Allocations, the **Storage quotas** are specified by the "OpenStack
+    Volume Quota (GiB)" and "OpenStack Swift Quota (GiB)" allocation attributes.
+    If you have common questions or need more information, refer to our
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers. Keep in mind that you can easily scale and expand your current resource
     allocations within your project by following [this documentation](allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
@@ -41,7 +45,7 @@ available on their NERC's OpenStack or OpenShift projects.
     [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC-OCP (OpenShift)**
     Resource Allocations, storage quotas are specified by the "OpenShift Request
-    on Storage Quota (GB)" and "OpenShift Limit on Ephemeral Storage Quota (GB)"
+    on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
     allocation attributes. If you have common questions or need more information,
     refer to our [Billing FAQs](../../get-started/cost-billing/billing-faqs.md)
     for comprehensive answers. Keep in mind that you can easily scale and expand

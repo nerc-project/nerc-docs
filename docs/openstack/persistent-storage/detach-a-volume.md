@@ -59,7 +59,7 @@ the volume created before and attached to the VM and can be shown in
 Check that the volume is in state 'available' again.
 
 If that's the case, the volume is now ready to either be attached to another
-virtual machine or, if it is not needed any longer, to be [completely deleted](#delete-volumes)
+virtual machine or, if it is not needed any longer, to be [completely deleted](./delete-volumes.md)
 (please note that this step cannot be reverted!).
 
 ## Attach the detached volume to an instance

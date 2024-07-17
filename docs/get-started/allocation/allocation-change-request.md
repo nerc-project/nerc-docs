@@ -46,6 +46,28 @@ This will show more details about the change request as shown below:
 
 ![Allocation Change Request Details for OpenStack Project](images/coldfront-openstack-change-requested-details.png)
 
+### How to Use GPU Resources in your OpenStack Project
+
+!!! tip "Comparison Between CPU and GPU"
+    To learn more about the key differences between CPUs and GPUs, please [read this](../../openstack/create-and-connect-to-the-VM/flavors.md#comparison-between-cpu-and-gpu).
+
+A GPU instance is launched in the [same way](../../openstack/create-and-connect-to-the-VM/launch-a-VM.md)
+as any other compute instance, with a few considerations to keep in mind:
+
+- When launching a GPU based instance, be sure to select one of the
+[GPU Tier](../../openstack/create-and-connect-to-the-VM/flavors.md#3-gpu-tier)
+based flavor.
+
+- You need to have sufficient resource quota to launch the desired flavor. Always
+ensure you know which GPU-based flavor you want to use, then submit an
+[allocation change request](#request-change-resource-allocation-attributes-for-openstack-project)
+to adjust your current allocation to fit the flavor's resource requirements.
+
+- We recommend using [ubuntu-22.04-x86_64](../../openstack/create-and-connect-to-the-VM/images.md#nerc-images-list)
+as the image for your GPU-based instance because we have tested the NVIDIA driver
+with this image and obtained good results. That said, it is possible to run a
+variety of other images as well.
+
 ## Request Change Resource Allocation Attributes for OpenShift Project
 
 ![Request Change Resource Allocation Attributes for OpenShift Project](images/coldfront-openshift-allocation-attributes.png)
@@ -81,5 +103,19 @@ Any user can click on Action button to view the details about the change request
 This will show more details about the change request as shown below:
 
 ![Allocation Change Request Details for OpenShift Project](images/coldfront-openshift-change-requested-details.png)
+
+### How to Use GPU Resources in your OpenShift Project
+
+!!! tip "Comparison Between CPU and GPU"
+    To learn more about the key differences between CPUs and GPUs, please [read this](../../openstack/create-and-connect-to-the-VM/flavors.md#comparison-between-cpu-and-gpu).
+
+For OpenShift pods, we can specify different types of GPUs. Since OpenShift is not
+based on flavors, we can customize the resources as needed at the pod level while
+still utilizing GPU resources.
+
+You can read about how to specify a pod to use a GPU [here](../../openshift/applications/scaling-and-performance-guide.md#how-to-specify-pod-to-use-gpu).
+
+Also, you will be able to select a different GPU device for your workload, as
+explained [here](../../openshift/applications/scaling-and-performance-guide.md#how-to-select-a-different-gpu-device).
 
 ---

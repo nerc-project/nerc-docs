@@ -875,9 +875,9 @@ following commands:
     apiVersion: v1
     kind: Secret
     metadata:
-    name: skooner-sa-token
-    annotations:
-        kubernetes.io/service-account.name: skooner-sa
+        name: skooner-sa-token
+        annotations:
+            kubernetes.io/service-account.name: skooner-sa
     type: kubernetes.io/service-account-token
     EOF
     ```
@@ -889,7 +889,8 @@ following commands:
         obtained from the *TokenRequest API* are more secure than ones stored in Secret
         objects, because they have a bounded lifetime and are not readable by other API
         clients. You can use the `kubectl create token` command to obtain a token from
-        the TokenRequest API. For example: `kubectl create token skooner-sa`.
+        the TokenRequest API. For example: `kubectl create token skooner-sa`, where
+        `skooner-sa` is service account name.
 
 - Find the secret that was created to hold the token for the SA
 

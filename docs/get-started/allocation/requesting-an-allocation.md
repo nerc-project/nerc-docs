@@ -10,6 +10,16 @@ or *OpenShift Resource Allocation* by specifying either **NERC (OpenStack)** or
 **NERC-OCP (OpenShift)** in the **Resource** dropdown option. **Note:** The
 first option i.e. **NERC (OpenStack)**, is selected by default.
 
+!!! info "Default GPU Resource Quota for Initial Allocation Requests"
+    By default, the GPU resource quota is set to 0 for the initial resource
+    allocation request for both OpenStack and OpenShift Resource Types. However,
+    you will be able to [change request](allocation-change-request.md) and adjust
+    the corresponding GPU quotas for both after they are approved for the first
+    time. For NERC's OpenStack, please follow [this guide](allocation-change-request.md#how-to-use-gpu-resources-in-your-openstack-project)
+    on how to utilize GPU resources in your OpenStack project. For NERC's OpenShift,
+    refer to [this reference](allocation-change-request.md#how-to-use-gpu-resources-in-your-openshift-project)
+    to learn about how to use GPU resources in pod level.
+
 ## Request A New OpenStack Resource Allocation for an OpenStack Project
 
 ![Request A New OpenStack Resource Allocation](images/coldfront-request-new-openstack-allocation.png)

@@ -233,7 +233,7 @@ PuTTY requires SSH keys to be in its own `ppk` format. To convert between
 OpenSSH keys used by OpenStack and PuTTY's format, you need a utility called PuTTYgen.
 
 If it was not installed when you originally installed PuTTY, you can get it
-here: [Download PuTTY](#http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
+here: [Download PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
 
 You have 2 options for generating keys that will work with PuTTY:
 
@@ -241,7 +241,8 @@ You have 2 options for generating keys that will work with PuTTY:
  instructions above, then use PuTTYgen to convert the private key to .ppk
 
  2. Generate a .ppk key with PuTTYgen, and import the provided OpenSSH public
- key to OpenStack using the 'Import a Key Pair' instructions [above](#import-a-key-pair).
+ key to OpenStack using the 'Import the generated Key Pair' instructions
+ [above](create-a-key-pair.md#import-the-generated-key-pair).
 
 There is a detailed walkthrough of how to use PuTTYgen here: [Use SSH Keys with
 PuTTY on Windows](https://devops.profitbricks.com/tutorials/use-ssh-keys-with-putty-on-windows/).

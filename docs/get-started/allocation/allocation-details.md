@@ -1,6 +1,6 @@
 # Allocation details
 
-Access to ColdFront's allocations details is based on [user roles](#user-roles).
+Access to ColdFront's allocations details is based on [user roles](manage-users-to-a-project.md#user-roles).
 PIs and managers see the same allocation details as users, and can also add
 project users to the allocation, if they're not already on it, and remove users
 from an allocation.

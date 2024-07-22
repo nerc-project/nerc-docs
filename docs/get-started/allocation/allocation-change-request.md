@@ -28,16 +28,16 @@ Then submitting the change request, this will notify the NERC admin about it. Pl
 wait untill the NERC admin approves/ deny the change request to see the change on
 your resource allocation for the selected project.
 
-!!! info "Information"
+!!! tip "Important Information"
     PI or project managers can put the new values on the textboxes for **ONLY**
     quota attributes they want to change others they can be left **blank** so those
-    quotas will not get changed! To use GPU resources on your VM, you need to
-    specify the number of GPUs in the "OpenStack GPU Quota" attribute. Additionally,
-    ensure that your other quota attributes, namely "OpenStack Compute vCPU Quota"
-    and "OpenStack Compute RAM Quota (MiB)" have sufficient resources to meet the
-    **vCPU** and **RAM** requirements for one of the GPU tier-based flavors.
+    quotas will not get changed!
 
-    Refer to the [GPU Tier documentation](../../openstack/create-and-connect-to-the-VM/flavors.md#3-gpu-tier)
+    To use GPU resources on your VM, you need to specify the number of GPUs in the
+    "OpenStack GPU Quota" attribute. Additionally, ensure that your other quota
+    attributes, namely "OpenStack Compute vCPU Quota" and "OpenStack Compute RAM
+    Quota (MiB)" have sufficient resources to meet the **vCPU** and **RAM** requirements
+    for one of the GPU tier-based flavors. Refer to the [GPU Tier documentation](../../openstack/create-and-connect-to-the-VM/flavors.md#3-gpu-tier)
     for specific requirements and further details on the flavors available for GPU
     usage.
 

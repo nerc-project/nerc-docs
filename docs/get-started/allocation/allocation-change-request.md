@@ -127,9 +127,10 @@ your resource allocation for the selected project.
 !!! tip "Important Information"
     PI or project managers can put the new values on the textboxes for **ONLY**
     quota attributes they want to change others they can be left **blank** so those
-    quotas will not get changed! In order to use GPU resources on your pod, you
-    must specify the number of GPUs you want to use in the "OpenShift Request on
-    GPU Quota" attribute.
+    quotas will not get changed!
+
+    In order to use GPU resources on your pod, you must specify the number of GPUs
+    you want to use in the "OpenShift Request on GPU Quota" attribute.
 
 ### Allocation Change Requests for OpenShift Project
 

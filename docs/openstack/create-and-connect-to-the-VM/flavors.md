@@ -17,6 +17,24 @@ The important fields are
 | Ephemeral  | Size of a second disk. 0 means no second disk is defined and mounted. |
 | VCPUs      | Number of virtual cores                          |
 
+## Comparison Between CPU and GPU
+
+Here are the key differences between CPUs and GPUs:
+
+| CPUs                                          | GPUs                         |
+| --------------------------------------------- | ---------------------------- |
+| Work mostly in sequence. While several cores and excellent task switching give the impression of parallelism, a CPU is fundamentally designed to run one task at a time. | Are designed to work in parallel. A vast number of cores and threading managed in hardware enable GPUs to perform many simple calculations simultaneously. |
+| Are designed for task parallelism. | Are designed for data parallelism. |
+| Have a small number of cores that can complete single complex tasks at very high speeds. | Have a large number of cores that work in tandem to compute many simple tasks. |
+| Have access to a large amount of relatively slow RAM with low latency, optimizing them for latency (operation). | Have access to a relatively small amount of very fast RAM with higher latency, optimizing them for throughput. |
+| Have a very versatile instruction set, allowing the execution of complex tasks in fewer cycles but creating overhead in others. | Have a limited (but highly optimized) instruction set, allowing them to execute their designed tasks very efficiently. |
+| Task switching (as a result of running the OS) creates overhead. | Task switching is not used; instead, numerous serial data streams are processed in parallel from point A to point B. |
+| Will always work for any given use case but may not provide adequate performance for some tasks. | Would only be a valid choice for some use cases but would provide excellent performance in those cases. |
+
+In summary, for applications such as Machine Learning (ML), Artificial
+Intelligence (AI), or image processing, a GPU can provide a performance increase
+of 50x to 200x compared to a typical CPU performing the same tasks.
+
 ## Currently, our setup supports and offers the following flavors
 
 NERC offers the following flavors based on our Infrastructure-as-a-Service
@@ -32,7 +50,7 @@ The standard compute flavor **"cpu-su"** is provided from Lenovo SD530 (2x Intel
 8268 2.9 GHz, 48 cores, 384 GB memory) server. The base unit is 1 vCPU, 4 GB
 memory with default of 20 GB root disk at a rate of $0.013 / hr of wall time.
 
-| Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+| Flavor        | SUs | GPU | vCPU  | RAM(GiB) | Storage(GiB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |cpu-su.1       |1    |0    |1      |4        |20           |$0.013     |
 |cpu-su.2       |2    |0    |2      |8        |20           |$0.026     |
@@ -46,7 +64,7 @@ The memory optimized flavor **"mem-su"** is provided from the same servers at
 **"cpu-su"** but with 8 GB of memory per core. The base unit is 1 vCPU, 8 GB
 memory with default of 20 GB root disk at a rate of $0.026 / hr of wall time.
 
-| Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+| Flavor        | SUs | GPU | vCPU  | RAM(GiB) | Storage(GiB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |mem-su.1       |1    |0    |1      |8        |20           |$0.026     |
 |mem-su.2       |2    |0    |2      |16       |20           |$0.052     |
@@ -99,7 +117,7 @@ The higher number of tensor cores available can significantly enhance the speed
 of machine learning applications. The base unit is 32 vCPU, 240 GB memory with
 default of 20 GB root disk at a rate of $2.078 / hr of wall time.
 
-| Flavor            | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+| Flavor            | SUs | GPU | vCPU  | RAM(GiB) | Storage(GiB) | Cost / hr |
 |-------------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-a100sxm4.1  |1    |1    |32     |240      |20           |$2.078     |
 |gpu-su-a100sxm4.2  |2    |2    |64     |480      |20           |$4.156     |
@@ -131,7 +149,7 @@ industry-leading high throughput and low latency networking. The base unit is 24
 vCPU, 74 GB memory with default of 20 GB root disk at a rate of $1.803 / hr of
 wall time.
 
-| Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+| Flavor        | SUs | GPU | vCPU  | RAM(GiB) | Storage(GiB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-a100.1  |1    |1    |24     |74       |20           |$1.803     |
 |gpu-su-a100.2  |2    |2    |48     |148      |20           |$3.606     |
@@ -161,7 +179,7 @@ The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 61
 40 cores, 768GB memory, 1x NVIDIA V100 32GB) servers. The base unit is 48 vCPU,
 192 GB memory with default of 20 GB root disk at a rate of $1.214 / hr of wall time.
 
-| Flavor        | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+| Flavor        | SUs | GPU | vCPU  | RAM(GiB) | Storage(GiB) | Cost / hr |
 |---------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-v100.1  |1    |1    |48     |192      |20           |$1.214     |
 
@@ -191,7 +209,7 @@ E5-2620 2.40GHz, 24 cores, 128GB memory, 4x NVIDIA K80 12GB) servers. The base u
 is 6 vCPU, 28.5 GB memory with default of 20 GB root disk at a rate of $0.463 /
 hr of wall time.
 
-| Flavor       | SUs | GPU | vCPU  | RAM(GB) | Storage(GB) | Cost / hr |
+| Flavor       | SUs | GPU | vCPU  | RAM(GiB) | Storage(GiB) | Cost / hr |
 |--------------|-----|-----|-------|---------|-------------|-----------|
 |gpu-su-k80.1  |1    |1    |6      |28.5     |20           |$0.463     |
 |gpu-su-k80.2  |2    |2    |12     |57       |20           |$0.926     |

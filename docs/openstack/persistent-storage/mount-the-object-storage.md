@@ -1266,7 +1266,8 @@ Here,
 You can run either `juicefs config redis://default:<your_redis_password>@127.0.0.1:6379/1`
 or `juicefs status redis://default:<your_redis_password>@127.0.0.1:6379/1` to get
 detailed information about mounted file system i.e. **"myjfs"** that is setup by
-following [this step](##formatting-file-system). The output looks like shown here:
+following [this step](mount-the-object-storage.md#formatting-file-system). The
+output looks like shown here:
 
     {
     ...

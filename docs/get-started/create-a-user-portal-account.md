@@ -133,8 +133,8 @@ as shown in the image below:
 !!! info "Information"
     Once your PI user request is reviewed and approved by the NERC's admin, you
     will receive an email confirmation from NERC's support system, i.e.,
-    **help@nerc.mghpcc.org**. Then, you can access [NERC's ColdFront resource
-    allocation management portal](https://coldfront.mss.mghpcc.org/) using the
-    PI user role, as [described here](allocation/coldfront.md).
+    [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question).
+    Then, you can access [NERC's ColdFront resource allocation management portal](https://coldfront.mss.mghpcc.org/)
+    using the PI user role, as [described here](allocation/coldfront.md#how-to-get-access-to-nercs-coldfront).
 
 ---

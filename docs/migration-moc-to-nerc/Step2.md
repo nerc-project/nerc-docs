@@ -97,10 +97,10 @@ samples below your lists might look like this:
 
 | MOC Volume Name | MOC Disk | MOC Attached To | Bootable | MOC UUID | NERC Volume Name |
 | --------------- | -------- | --------------- | -------- | -------- | ---------------- |
-| Fedora | 10GiB | Fedora_test | Yes | ea45c20b-434a-4c41-8bc6-f48256fc76a8 | |
-| 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | 10GiB | Ubuntu_Test | Yes | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | |
-| Snapshot of Fed_Test | 10GiB | Fedora_test | No | ea45c20b-434a-4c41-8bc6-f48256fc76a8 | |
-| total | 30GiB | | | |
+| Fedora | 10GiB | Fedora_test | Yes | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |   |
+| 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | 10GiB | Ubuntu_Test | Yes | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 |   |
+| Snapshot of Fed_Test | 10GiB | Fedora_test | No | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |   |
+| total | 30GiB |   |   |   |   |
 
 #### MOC Security Group Information Table
 

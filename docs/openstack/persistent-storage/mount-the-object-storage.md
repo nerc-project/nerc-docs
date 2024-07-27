@@ -546,9 +546,9 @@ Access your virtual machine using SSH. Update the packages on your system and in
     sudo apt update && sudo apt upgrade
     sudo apt install s3fs
 
-!!! tip "For CentOS"
-    The **CentOS** repositiories do not have `s3fs`. Therefore, you will need to
-    compile it yourself.
+!!! tip "For RedHat/Rocky/AlmaLinux"
+    The **RedHat/Rocky/AlmaLinux** repositiories do not have `s3fs`. Therefore,
+    you will need to compile it yourself.
 
     First, using your local computer, visit the following website (it contains
     the releases of `s3fs`): [https://github.com/s3fs-fuse/s3fs-fuse/releases/latest](https://github.com/s3fs-fuse/s3fs-fuse/releases/latest).
@@ -566,11 +566,15 @@ Access your virtual machine using SSH. Update the packages on your system and in
 
     Update your packages:
 
-        sudo yum update
+        sudo dnf update -y
 
     Install the prerequisites including fuse, the *C++ compiler* and make:
 
-        sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel wget unzip
+        sudo dnf config-manager --set-enabled crb        
+
+        sudo dnf install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel wget unzip
+
+        # OR, sudo dnf --enablerepo=crb install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel wget unzip
 
     Now, use `wget` to download the source code. Replace https://github.com/s3fs-fuse/s3fs-fuse/archive/refs/tags/v1.94.zip with the link to the source code you found previously:
 
@@ -675,8 +679,8 @@ of the option `noauto`.
 
     - `/usr/bin/s3fs` is the location of your `s3fs` binary. If you installed
     it using `apt` on Debian or Ubuntu, you do not have to change anything here.
-    If you are using a self-compiled version of `s3fs` created on CentOS as explained
-    above, that location is `/usr/local/bin/s3fs`.
+    If you are using a self-compiled version of `s3fs` created on RedHat/Rocky/AlmaLinux
+    as explained above, that location is `/usr/local/bin/s3fs`.
 
     - `/home/ubuntu/.passwd-s3fs` is the location of the file which contains
     the key pair used for mounting the "bucket1" repository as we named it in previous

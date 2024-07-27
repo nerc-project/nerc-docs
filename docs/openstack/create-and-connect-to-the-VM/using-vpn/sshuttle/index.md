@@ -74,10 +74,10 @@ sshuttle is available through the package management system on most Linux distri
 sudo apt-get install sshuttle
 ```
 
-**On RedHat/CentOS:**
+**On RedHat/Rocky/AlmaLinux:**
 
 ```sh
-sudo yum install sshuttle
+sudo dnf install sshuttle
 ```
 
 It is also possible to install into a **virtualenv** as *a non-root user*.

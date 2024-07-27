@@ -106,18 +106,20 @@ following command lists all the images available to your project:
 
 ```sh
   openstack image list
-  +--------------------------------------+---------------------+--------+
-  | ID                                   | Name                | Status |
-  +--------------------------------------+---------------------+--------+
-  | a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
-  | 41eafa05-c264-4840-8c17-746e6a388c2d | centos-7-x86_64     | active |
-  | 41fa5991-89d5-45ae-8268-b22224c772b2 | debian-10-x86_64    | active |
-  | 99194159-fcd1-4281-b3e1-15956c275692 | fedora-36-x86_64    | active |
-  | cf1be3e5-b6f6-466e-bac4-abe7587921a8 | rocky-8-x86_64      | active |
-  | 75a40234-702b-4ab7-9d83-f436b05827c9 | ubuntu-18.04-x86_64 | active |
-  | 126a1c8a-1802-434f-bee3-c3b6c8def513 | ubuntu-20.04-x86_64 | active |
-  | 8183fe83-1403-412c-8ef8-5608a5e09166 | ubuntu-22.04-x86_64 | active |
-  +--------------------------------------+---------------------+--------+
++--------------------------------------+---------------------+--------+
+| ID                                   | Name                | Status |
++--------------------------------------+---------------------+--------+
+| a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
+| cfecb5d4-599c-4ffd-9baf-9cbe35424f97 | almalinux-8-x86_64  | active |
+| 263f045e-86c6-4344-b2de-aa475dbfa910 | almalinux-9-x86_64  | active |
+| 41fa5991-89d5-45ae-8268-b22224c772b2 | debian-10-x86_64    | active |
+| 99194159-fcd1-4281-b3e1-15956c275692 | fedora-36-x86_64    | active |
+| 74a33f77-fc42-4dd1-a5a2-55fb18fc50cc | rocky-8-x86_64      | active |
+| d7d41e5f-58f4-4ba6-9280-7fef9ac49060 | rocky-9-x86_64      | active |
+| 75a40234-702b-4ab7-9d83-f436b05827c9 | ubuntu-18.04-x86_64 | active |
+| 8c87cf6f-32f9-4a4b-91a5-0d734b7c9770 | ubuntu-20.04-x86_64 | active |
+| da314c41-19bf-486a-b8da-39ca51fd17de | ubuntu-22.04-x86_64 | active |
++--------------------------------------+---------------------+--------+
 ```
 
 If you have launched some instances already, the following command shows a list

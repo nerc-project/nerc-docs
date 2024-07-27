@@ -135,10 +135,10 @@ OpenVPN is available through the package management system on most Linux distrib
 sudo apt-get install openvpn
 ```
 
-**On RedHat/CentOS:**
+**On RedHat/Rocky/AlmaLinux:**
 
 ```sh
-sudo yum install openvpn
+sudo dnf install openvpn
 ```
 
 Then, to run OpenVPN using the client profile:

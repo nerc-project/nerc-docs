@@ -19,17 +19,22 @@ Navigate to *Project -> Compute -> Images*.
 NERC provides a set of default images that can be used as source while launching
 an instance:
 
-| Name                                  |
-|---------------------------------------|
-| centos-7-x86_64                       |
-| centos-8-x86_64                       |
-| debian-10-x86_64                      |
-| fedora-36-x86_64                      |
-| rocky-8-x86_64                        |
-| ubuntu-18.04-x86_64                   |
-| ubuntu-20.04-x86_64                   |
-| ubuntu-22.04-x86_64                   |
-| MS-Windows-2022                       |
+    +--------------------------------------+---------------------+
+    | ID                                   | Name                |
+    +--------------------------------------+---------------------+
+    | a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     |
+    | cfecb5d4-599c-4ffd-9baf-9cbe35424f97 | almalinux-8-x86_64  |
+    | 263f045e-86c6-4344-b2de-aa475dbfa910 | almalinux-9-x86_64  |
+    | 41fa5991-89d5-45ae-8268-b22224c772b2 | debian-10-x86_64    |
+    | 99194159-fcd1-4281-b3e1-15956c275692 | fedora-36-x86_64    |
+    | 74a33f77-fc42-4dd1-a5a2-55fb18fc50cc | rocky-8-x86_64      |
+    | d7d41e5f-58f4-4ba6-9280-7fef9ac49060 | rocky-9-x86_64      |
+    | 75a40234-702b-4ab7-9d83-f436b05827c9 | ubuntu-18.04-x86_64 |
+    | 8c87cf6f-32f9-4a4b-91a5-0d734b7c9770 | ubuntu-20.04-x86_64 |
+    | da314c41-19bf-486a-b8da-39ca51fd17de | ubuntu-22.04-x86_64 |
+    +--------------------------------------+---------------------+
+
+
 
 ## How to create and upload own custom images?
 

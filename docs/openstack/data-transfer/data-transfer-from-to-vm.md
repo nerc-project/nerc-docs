@@ -93,10 +93,10 @@ various sources.
 
 !!! tip "Helpful Tip"
     We use '~' in the examples. The tilde '~' is a Unix short-hand that means
-    "my home directory". So if user `centos` uses `~/` this is the same as typing
-    out the full path to centos user's home directory (easier to remember than
-    `/home/centos/`). You can, of course, specify other paths (ex. –
-    `/user/centos/output/files.zip`) Also, we use `.` in the examples to specify
+    "my home directory". So if user `almalinux` uses `~/` this is the same as typing
+    out the full path to almalinux user's home directory (easier to remember than
+    `/home/almalinux/`). You can, of course, specify other paths (ex. –
+    `/user/almalinux/output/files.zip`) Also, we use `.` in the examples to specify
     the current directory path from where the command is issued. This can be
     replaced with the actual path.
 
@@ -115,7 +115,7 @@ is issued or you can specify the actual path instead of `.`.
 
 For e.g.
 
-    scp -i ~/.ssh/your_pem_key_file.pem centos@199.94.60.219:~/myfile.zip /my_local_directory/
+    scp -i ~/.ssh/your_pem_key_file.pem almalinux@199.94.60.219:~/myfile.zip /my_local_directory/
 
 **ii. Copying Files From Another Computer to the NERC VM:**
 
@@ -131,7 +131,7 @@ for `my home directory`)
 
 For e.g.
 
-    scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip centos@199.94.60.219:~/myfile.zip
+    scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip almalinux@199.94.60.219:~/myfile.zip
 
 !!! info "Important Note"
     While it’s probably best to compress all the files you intend to transfer into
@@ -140,7 +140,7 @@ For e.g.
 
     For e.g.
 
-        scp -i ~/.ssh/your_pem_key_file.pem -r centos@<Floating_IP>:~/mydata/ ./destination_directory/
+        scp -i ~/.ssh/your_pem_key_file.pem -r almalinux@<Floating_IP>:~/mydata/ ./destination_directory/
 
     This copies all the files from `~/mydata/` on the cluster to the current
     directory (i.e. `.`) on the computer you issued the command from. Here we can
@@ -269,7 +269,7 @@ Edit the config file's content on the path location described by
     [nerc]
     type = sftp
     host = 199.94.60.219
-    user = centos
+    user = almalinux
     port =
     pass =
     key_file = C:\Users\YourName\.ssh\rshiny_bentley
@@ -424,11 +424,14 @@ as shown below:
 
     !!! info "Default User name based on OS"
         - **all Ubuntu images**: ubuntu
-        - **all CentOS images**: centos
+        - **all AlmaLinux images**: almalinux
         - **all Rocky Linux images**: rocky
         - **all Fedora images**: fedora
         - **all Debian images**: debian
         - **all RHEL images**: cloud-user
+
+        If you still have VMs running with deleted **CentOS** images, you need to
+        use the following default username for your CentOS images: `centos`.
 
     **"Password"**: "`<Leave blank as you using SSH key>`"
 
@@ -495,7 +498,7 @@ for more information.
 
     !!! info "Default User name based on OS"
         - **all Ubuntu images**: ubuntu
-        - **all CentOS images**: centos
+        - **all AlmaLinux images**: almalinux
         - **all Rocky Linux images**: rocky
         - **all Fedora images**: fedora
         - **all Debian images**: debian
@@ -558,11 +561,14 @@ for more information.
 
     !!! info "Default User name based on OS"
         - **all Ubuntu images**: ubuntu
-        - **all CentOS images**: centos
+        - **all AlmaLinux images**: almalinux
         - **all Rocky Linux images**: rocky
         - **all Fedora images**: fedora
         - **all Debian images**: debian
         - **all RHEL images**: cloud-user
+
+        If you still have VMs running with deleted **CentOS** images, you need to
+        use the following default username for your CentOS images: `centos`.
 
     **"Key file"**: "Browse and choose the appropriate SSH Private Key from you
     local machine that has corresponding Public Key attached to your VM"

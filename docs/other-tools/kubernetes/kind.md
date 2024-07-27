@@ -94,12 +94,12 @@ kind v0.11.1 go1.16.4 linux/amd64
     kind create cluster --name k8s-kind-cluster1
 
     Creating cluster "k8s-kind-cluster1" ...
-    ✓ Ensuring node image (kindest/node:v1.21.1) 🖼 
-    ✓ Preparing nodes 📦  
-    ✓ Writing configuration 📜 
-    ✓ Starting control-plane 🕹️ 
-    ✓ Installing CNI 🔌 
-    ✓ Installing StorageClass 💾 
+    ✓ Ensuring node image (kindest/node:v1.21.1) 🖼
+    ✓ Preparing nodes 📦
+    ✓ Writing configuration 📜
+    ✓ Starting control-plane 🕹️
+    ✓ Installing CNI 🔌
+    ✓ Installing StorageClass 💾
     Set kubectl context to "kind-k8s-kind-cluster1"
     You can now use your cluster with:
 
@@ -115,7 +115,7 @@ kind v0.11.1 go1.16.4 linux/amd64
 
     Kubernetes control plane is running at https://127.0.0.1:38646
     CoreDNS is running at https://127.0.0.1:38646/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-    
+
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 

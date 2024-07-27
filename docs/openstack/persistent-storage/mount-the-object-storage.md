@@ -570,7 +570,7 @@ Access your virtual machine using SSH. Update the packages on your system and in
 
     Install the prerequisites including fuse, the *C++ compiler* and make:
 
-        sudo dnf config-manager --set-enabled crb        
+        sudo dnf config-manager --set-enabled crb
 
         sudo dnf install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel wget unzip
 

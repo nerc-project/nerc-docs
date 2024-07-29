@@ -272,7 +272,7 @@ Edit the config file's content on the path location described by
     user = almalinux
     port =
     pass =
-    key_file = C:\Users\YourName\.ssh\rshiny_bentley
+    key_file = C:\Users\YourName\.ssh\cloud.key
     shell_type = unix
 
 More about the config for **SFTP** can be [found here](https://rclone.org/sftp/).

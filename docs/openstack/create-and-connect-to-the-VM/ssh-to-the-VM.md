@@ -33,11 +33,17 @@ In our example, the IP is `199.94.60.66`.
 Default usernames for all the base images are:
 
 - **all Ubuntu images**: ubuntu
-- **all CentOS images**: centos
+- **all AlmaLinux images**: almalinux
 - **all Rocky Linux images**: rocky
 - **all Fedora images**: fedora
 - **all Debian images**: debian
 - **all RHEL images**: cloud-user
+
+!!! warning "Removed Centos Images"
+    If you still have VMs running with deleted **CentOS** images, you need to use
+    the following default username for your CentOS images: `centos`.
+
+    - **all CentOS images**: centos
 
 Our example VM was launched with the **ubuntu-22.04-x86_64** base image, the
 user we need is 'ubuntu'.

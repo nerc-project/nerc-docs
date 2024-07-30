@@ -292,10 +292,10 @@ sudo apt update
 sudo apt-get install wireguard resolvconf -y
 ```
 
-**On RedHat/CentOS:**
+**On RedHat/Rocky/AlmaLinux:**
 
 ```sh
-sudo yum install wireguard
+sudo dnf install wireguard
 ```
 
 Then, to run WireGuard using the client profile:

@@ -5,7 +5,7 @@
 We will need 1 VM to create a single node kubernetes cluster using `kind`.
 We are using following setting for this purpose:
 
-- 1 Linux machine, `centos-7-x86_64`, `cpu-su.2` flavor with 2vCPU, 8GB RAM,
+- 1 Linux machine, `almalinux-9-x86_64`, `cpu-su.2` flavor with 2vCPU, 8GB RAM,
 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
  to this VM.
 
@@ -23,9 +23,9 @@ We are using following setting for this purpose:
     hostnamectl set-hostname kind
     ```
 
-## Install docker on CentOS7
+## Install docker on AlmaLinux
 
-Run the below command on the CentOS7 VM:
+Run the below command on the AlmaLinux VM:
 
 - SSH into **kind** machine
 
@@ -33,16 +33,28 @@ Run the below command on the CentOS7 VM:
 
 - Execute the below command to initialize the cluster:
 
+    Please remove `container-tools` module that includes stable versions of podman,
+    buildah, skopeo, runc, conmon, etc as well as dependencies and will be removed
+    with the module. If this module is not removed then it will conflict with Docker.
+    Red Hat does recommend Podman on RHEL 8.
+
     ```sh
-    yum -y install epel-release; yum -y install docker; systemctl enable --now docker;
+    dnf module remove container-tools
+
+    dnf update -y
+
+    dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+    dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+    systemctl start docker
+    systemctl enable --now docker
     systemctl status docker
+
+    docker -v
     ```
 
-    ```sh
-    docker version
-    ```
-
-## Install kubectl on CentOS7
+## Install kubectl on AlmaLinux
 
 ```sh
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -67,7 +79,7 @@ mv ./kind /usr/bin
 ```sh
 which kind
 
-/usr/bin/kind
+/bin/kind
 ```
 
 ```sh
@@ -92,7 +104,8 @@ kind v0.11.1 go1.16.4 linux/amd64
     You can now use your cluster with:
 
     kubectl cluster-info --context kind-k8s-kind-cluster1
-    Thanks for using kind! 😊
+
+    Have a nice day! 👋
     ```
 
 - Get the cluster details:
@@ -102,6 +115,7 @@ kind v0.11.1 go1.16.4 linux/amd64
 
     Kubernetes control plane is running at https://127.0.0.1:38646
     CoreDNS is running at https://127.0.0.1:38646/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
@@ -116,7 +130,7 @@ kind v0.11.1 go1.16.4 linux/amd64
     kubectl get nodes
 
     NAME                             STATUS  ROLES                AGE    VERSION
-    k8s-kind-cluster1-control-plane  Ready  control-plane,master  5m26s  v1.26.1
+    k8s-kind-cluster1-control-plane  Ready  control-plane,master  5m26s  v1.21.1
     ```
 
 ## Deleting a Cluster

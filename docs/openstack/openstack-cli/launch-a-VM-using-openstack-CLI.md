@@ -34,8 +34,8 @@ Get the flavor list using below openstack command:
 Get the image name and its ID,
 
 ```sh
-  openstack image list  | grep centos
-  | 41eafa05-c264-4840-8c17-746e6a388c2d | centos-7-x86_64     | active |
+  openstack image list  | grep almalinux-9
+  | 263f045e-86c6-4344-b2de-aa475dbfa910 | almalinux-9-x86_64  | active |
 ```
 
 Get Private Virtual network details, which will be attached to the VM:
@@ -125,7 +125,7 @@ Example:
 
 ```sh
   openstack server create --flavor cpu-su.2 \
-      --image centos-7-x86_64 \
+      --image almalinux-8-x86_64 \
       --nic net-id=8ee63932-464b-4999-af7e-949190d8fe93 \
       --security-group default \
       --key-name cloud_key \

@@ -1,7 +1,8 @@
-/.vscode
-.idea/
+# JetBrains IDEs
+/.idea/
 
-.DS_Store
+# Python
+*.pyc
 **/__pycache__/
 
 # Environments
@@ -11,5 +12,18 @@ env/
 venv/
 ENV/
 
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+*.vsix
+
+# Vim
+*.swp
+*.swo
+
 # mkdocs documentation
 /site
+
+# Others
+.DS_Store

@@ -150,7 +150,7 @@ Wait until the requested resource allocation gets approved by the NERC's admin.
 After approval, kindly review and verify that the quotas are accurately
 reflected in your [resource allocation](https://coldfront.mss.mghpcc.org/allocation/)
 and [OpenStack project](https://stack.nerc.mghpcc.org/). Please ensure that the
-approved quota values are accurately displayed as [explained here](decommission-openstack-resources.md#review-your-openstack-dashboard).
+approved quota values are accurately displayed as [explained here](#review-your-projects-resource-quota-from-the-openstack-dashboard).
 
 ### Review your Block Storage(Volume/Cinder) Quota
 

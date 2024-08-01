@@ -31,7 +31,7 @@ via Bastion Host, you need to make sure you have followed these steps:
 to set up a public ssh key. You can use the same key for both the bastion
 host and the remote instances, or different keys; you'll just need to ensure
 that the keys are loaded by ssh-agent appropriately so they can be used as
-needed. Please read [this instruction](../../access-and-security/create-a-key-pair/#adding-your-ssh-key-to-the-ssh-agent)
+needed. Please read [this instruction](../../access-and-security/create-a-key-pair.md#adding-your-ssh-key-to-the-ssh-agent)
 on how to add ssh-agent and load your private key using ssh-add command to
 access the bastion host.
 
@@ -65,8 +65,8 @@ will be used by any private instances.
 **i. Bastion Host Security Group:**
 
 Allow inbound SSH (optional ICMP) for this security group. Make sure you have
-added rules in the [Security Groups](../../access-and-security/security-groups/
-) to allow ssh to the bastion host.
+added rules in the [Security Groups](../../access-and-security/security-groups.md)
+to allow ssh to the bastion host.
 
 ![Bastion Host Security Group](images/bastion_host_security_group.png)
 

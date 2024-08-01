@@ -226,7 +226,7 @@ To list all Floating IP addresses that are allocated to the current project, run
 
 !!! note "More About Floating IP"
     If the above command returns an empty list, meaning you don't have any
-    available floating IPs, please refer to [this documentation](assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
+    available floating IPs, please refer to [this documentation](assign-a-floating-IP.md#allocate-a-floating-ip)
     on how to allocate a new Floating IP to your project.
 
 Attach a Floating IP to your instance:
@@ -284,7 +284,7 @@ should work with the Floating IP associated with the instance:
 
 To attach additional disk to a running Windows machine you can follow
 [this documentation](../persistent-storage/volumes.md).
-[**This guide**](../persistent-storage/volumes.md#for-windows-virtual-machine)
+[**This guide**](../persistent-storage/format-and-mount-the-volume.md#for-windows-virtual-machine)
 provides instructions on formatting and mounting a volume as an attached disk
 within a Windows virtual machine.
 

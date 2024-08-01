@@ -5,7 +5,7 @@
 To run a **model server** and **deploy a model** on it, you need to have:
 
 - Select the correct data science project and create workbench, see [Populate
-the data science project](using-projects-the-rhoai.md#populate-the-data-science-project)
+the data science project](using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
 for more information.
 
 ## Create a data connection

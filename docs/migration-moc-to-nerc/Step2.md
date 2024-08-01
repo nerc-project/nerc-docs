@@ -87,27 +87,27 @@ samples below your lists might look like this:
 
 #### MOC Instance Information Table
 
-| Instance Name | MOC VCPUs | MOC Disk | MOC RAM | MOC UUID |
-| ------------- | --------- | -------- | ------- | -------- |
-| Fedora_test | 1 | 10GB | 1GB | 16a1bfc2-8c90-4361-8c13-64ab40bb6207 |
-| Ubuntu_Test | 1 | 10GB | 2GB | 6a40079a-59f7-407c-9e66-23bc5b749a95 |
-| total | 2 | 20GB | 3GB | |
+| Instance Name | MOC VCPUs | MOC Disk | MOC RAM | MOC UUID                             |
+| ------------- | --------- | -------- | ------- | ------------------------------------ |
+| Fedora_test   | 1         | 10GB     | 1GB     | 16a1bfc2-8c90-4361-8c13-64ab40bb6207 |
+| Ubuntu_Test   | 1         | 10GB     | 2GB     | 6a40079a-59f7-407c-9e66-23bc5b749a95 |
+| total         | 2         | 20GB     | 3GB     |                                      |
 
 #### MOC Volume Information Table
 
-| MOC Volume Name | MOC Disk | MOC Attached To | Bootable | MOC UUID | NERC Volume Name |
-| --------------- | -------- | --------------- | -------- | -------- | ---------------- |
-| Fedora | 10GiB | Fedora_test | Yes | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |   |
-| 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | 10GiB | Ubuntu_Test | Yes | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 |   |
-| Snapshot of Fed_Test | 10GiB | Fedora_test | No | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |   |
-| total | 30GiB |   |   |   |   |
+| MOC Volume Name                      | MOC Disk | MOC Attached To | Bootable | MOC UUID                             | NERC Volume Name |
+| ------------------------------------ | -------- | --------------- | -------- | ------------------------------------ | ---------------- |
+| Fedora                               | 10GiB    | Fedora_test     | Yes      | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |                  |
+| 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 | 10GiB    | Ubuntu_Test     | Yes      | 9c73295d-fdfa-4544-b8b8-a876cc0a1e86 |                  |
+| Snapshot of Fed_Test                 | 10GiB    | Fedora_test     | No       | ea45c20b-434a-4c41-8bc6-f48256fc76a8 |                  |
+| total                                | 30GiB    |                 |          |                                      |                  |
 
 #### MOC Security Group Information Table
 
 | Security Group Name | Direction | Ether Type | IP Protocol | Port Range | Remote IP Prefix |
 | ------------------- | --------- | ---------- | ----------- | ---------- | ---------------- |
-| ssh_only_test | Ingress | IPv4 | TCP | 22 | 0.0.0.0/0 |
-| ping_only_test | Ingress | IPv4 | ICMP | Any | 0.0.0.0/0 |
+| ssh_only_test       | Ingress   | IPv4       | TCP         | 22         | 0.0.0.0/0        |
+| ping_only_test      | Ingress   | IPv4       | ICMP        | Any        | 0.0.0.0/0        |
 
 ### Gather the Instance Information
 

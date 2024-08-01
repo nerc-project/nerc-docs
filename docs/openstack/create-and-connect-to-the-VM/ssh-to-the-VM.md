@@ -332,7 +332,7 @@ Press **Yes** if you receive the identity verification popup:
 ![RDP Windows Popup](images/rdp_popup_for_xrdp.png)
 
 Then, enter your VM's username (ubuntu) and the password you created
-for user ubuntu following [this steps](ssh-to-the-VM.md#setting-a-password.md).
+for user ubuntu following [this steps](#setting-a-password).
 
 Press **Ok**.
 

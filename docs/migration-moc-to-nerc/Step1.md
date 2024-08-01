@@ -1,8 +1,7 @@
 # Creating NERC Project and Networks
 
 This process includes some waiting for emails and approvals. It is advised to
-start this process and then move to [step
-2](../Step2/)
+start this process and then move to [Step 2](./Step2.md)
 and continue with these steps once you recieve approval.
 
 ## Account Creation & Quota Request

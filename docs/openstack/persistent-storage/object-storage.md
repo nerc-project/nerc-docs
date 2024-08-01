@@ -887,7 +887,7 @@ Then you can simply mount your object storage with:
 `rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
 
 !!! note "More about using Rclone"
-    You can read more about Rclone Mounting [here](mount-the-object-storage.md#3-using-rclone).
+    You can read more about Rclone Mounting [here](mount-the-object-storage.md#4-using-rclone).
 
 **Windows:**
 

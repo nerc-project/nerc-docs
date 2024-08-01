@@ -246,7 +246,7 @@ Wait until the requested resource allocation gets approved by the NERC's admin.
 After approval, kindly review and verify that the quotas are accurately
 reflected in your [resource allocation](https://coldfront.mss.mghpcc.org/allocation/)
 and [OpenShift project](https://console.apps.shift.nerc.mghpcc.org). Please ensure
-that the approved quota values are accurately displayed as [explained here](decommission-openshift-resources.md#review-your-projects-resource-quota-from-openshift-web-dashboard).
+that the approved quota values are accurately displayed as [explained here](#review-your-projects-resource-quota-from-the-openshift-web-console).
 
 ### Review your Project Usage
 

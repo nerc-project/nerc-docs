@@ -25,8 +25,9 @@ is granted, the PI will receive an email confirming the request approval and
 how to connect NERC's ColdFront.
 
 PI or project managers can use NERC's ColdFront as a self-service web-portal that
-can see an administrative view of it as [described here](coldfront.md#pi-and-manager-view)
-and can do the following tasks:
+can see an administrative view of it as
+[described here](../allocation/allocation-details.md#pi-and-manager-view) and can
+do the following tasks:
 
 - **Only PI** can add a new project and archive any existing project(s)
 

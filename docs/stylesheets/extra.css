@@ -9,8 +9,8 @@
   padding: 25px 0px 25px 0px;
 }
 
-footer [class ^= 'footer-'] {
-  width: 25%;
+footer [class^="footer-"] {
+  width: 24%;
   display: inline-block;
   text-align: center;
 }
@@ -32,7 +32,7 @@ footer .footer-center {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  border: 5px solid #FFFF00;
+  border: 5px solid #ffff00;
   padding: 10px;
 }
 
@@ -42,21 +42,21 @@ footer .footer-center {
   height: 55px;
   /* width: 200px; */
   position: relative;
-  }
+}
 
-  .maintain{
-    position: absolute;
-    top: 5%;
-    /* left: 50%; */
-    /* margin: -25px 0 0 -35px; */
-  }
+.maintain {
+  position: absolute;
+  top: 5%;
+  /* left: 50%; */
+  /* margin: -25px 0 0 -35px; */
+}
 
-  .child {
-    /* background: #FFFF00;
+.child {
+  /* background: #ffff00;
     width: 70px;
     height: 70px; */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -25px 0 0 -35px;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -35px;
+}

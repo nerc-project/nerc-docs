@@ -362,7 +362,7 @@ Attach a Floating IP to your instance:
 
 !!! note "More About Floating IP"
     If you don't have any available floating IPs, please refer to
-    [this documentation](../../create-and-connect-to-the-VM/assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
+    [this documentation](../../create-and-connect-to-the-VM/assign-a-floating-IP.md#allocate-a-floating-ip)
     on how to allocate a new Floating IP to your project.
 
 Click on detail view of the Instance and then click on Console tab menu

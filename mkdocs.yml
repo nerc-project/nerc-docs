@@ -3,7 +3,7 @@ site_name: NERC Documentation
 site_description: NERC Documentation
 site_author: NERC
 # site_dir: public
-site_url: "https://nerc-project.github.io/nerc-docs/"
+site_url: https://nerc-project.github.io/nerc-docs/
 repo_name: nerc-project/nerc-docs
 repo_url: https://github.com/nerc-project/nerc-docs
 
@@ -15,9 +15,9 @@ nav:
           - How does NERC pricing work?: get-started/cost-billing/how-pricing-works.md
           - NERC Pricing Calculator: get-started/cost-billing/nerc-pricing-calculator.md
           - Billing Process:
-            - Billing Process for My Institution: get-started/cost-billing/billing-process-for-my-institution.md
-            - Billing Process for Harvard University: get-started/cost-billing/billing-process-for-harvard.md
-            - Billing Process for Boston University: get-started/cost-billing/billing-process-for-bu.md
+              - Billing Process for My Institution: get-started/cost-billing/billing-process-for-my-institution.md
+              - Billing Process for Harvard University: get-started/cost-billing/billing-process-for-harvard.md
+              - Billing Process for Boston University: get-started/cost-billing/billing-process-for-bu.md
           - Billing FAQs: get-started/cost-billing/billing-faqs.md
       - User Onboarding Process: get-started/user-onboarding-on-NERC.md
       - How to Create a User Account: get-started/create-a-user-portal-account.md
@@ -55,28 +55,28 @@ nav:
               - SSH to the VM: openstack/create-and-connect-to-the-VM/ssh-to-the-VM.md
               - Bastion Host based SSH: openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md
               - Using VPN:
-                - OpenVPN:
-                  - About OpenVPN: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/index.md
-                  - OpenVPN GUI for Windows: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/openvpn_gui_for_windows.md
-                  - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/tunnelblick_for_macos.md
-                - WireGuard: openstack/create-and-connect-to-the-VM/using-vpn/wireguard/index.md
-                - sshuttle: openstack/create-and-connect-to-the-VM/using-vpn/sshuttle/index.md
+                  - OpenVPN:
+                      - About OpenVPN: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/index.md
+                      - OpenVPN GUI for Windows: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/openvpn_gui_for_windows.md
+                      - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/tunnelblick_for_macos.md
+                  - WireGuard: openstack/create-and-connect-to-the-VM/using-vpn/wireguard/index.md
+                  - sshuttle: openstack/create-and-connect-to-the-VM/using-vpn/sshuttle/index.md
       - OpenStack CLI:
           - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
           - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
       - Persistent Storage:
           - Block Storage/ Volumes/ Cinder:
-            - Block Storage/ Volumes/ Cinder: openstack/persistent-storage/volumes.md
-            - Create An Empty Volume: openstack/persistent-storage/create-an-empty-volume.md
-            - Attach The Volume To An Instance: openstack/persistent-storage/attach-the-volume-to-an-instance.md
-            - Format And Mount The Volume: openstack/persistent-storage/format-and-mount-the-volume.md
-            - Detach a Volume: openstack/persistent-storage/detach-a-volume.md
-            - Delete Volumes: openstack/persistent-storage/delete-volumes.md
-            - Extending Volume: openstack/persistent-storage/extending-volume.md
-            - Transfer a Volume: openstack/persistent-storage/transfer-a-volume.md
+              - Block Storage/ Volumes/ Cinder: openstack/persistent-storage/volumes.md
+              - Create An Empty Volume: openstack/persistent-storage/create-an-empty-volume.md
+              - Attach The Volume To An Instance: openstack/persistent-storage/attach-the-volume-to-an-instance.md
+              - Format And Mount The Volume: openstack/persistent-storage/format-and-mount-the-volume.md
+              - Detach a Volume: openstack/persistent-storage/detach-a-volume.md
+              - Delete Volumes: openstack/persistent-storage/delete-volumes.md
+              - Extending Volume: openstack/persistent-storage/extending-volume.md
+              - Transfer a Volume: openstack/persistent-storage/transfer-a-volume.md
           - Object Storage/ Swift:
-            - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
-            - Mount The Object Storage: openstack/persistent-storage/mount-the-object-storage.md
+              - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
+              - Mount The Object Storage: openstack/persistent-storage/mount-the-object-storage.md
       - Data Transfer: openstack/data-transfer/data-transfer-from-to-vm.md
       - Backup your instance & data: openstack/backup/backup-with-snapshots.md
       - VM Management: openstack/management/vm-management.md
@@ -145,16 +145,16 @@ nav:
               - k0s: other-tools/kubernetes/k0s.md
           - Production environment:
               - Kubeadm:
-                - Bootstrapping cluster with kubeadm: other-tools/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
-                - Creating a HA cluster with kubeadm: other-tools/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
+                  - Bootstrapping cluster with kubeadm: other-tools/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
+                  - Creating a HA cluster with kubeadm: other-tools/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
               - Kubespray: other-tools/kubernetes/kubespray.md
       - CI/CD Pipeline:
           - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
           - Using Jenkins:
-            - Setup Jenkins CI/CD Pipeline: other-tools/CI-CD/jenkins/setup-jenkins-CI-CD-pipeline.md
-            - GitHub to Jenkins Pipeline: other-tools/CI-CD/jenkins/integrate-your-GitHub-repository.md
+              - Setup Jenkins CI/CD Pipeline: other-tools/CI-CD/jenkins/setup-jenkins-CI-CD-pipeline.md
+              - GitHub to Jenkins Pipeline: other-tools/CI-CD/jenkins/integrate-your-GitHub-repository.md
           - Using Github Actions:
-            - GitHub Actions CI/CD Pipeline: other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md
+              - GitHub Actions CI/CD Pipeline: other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md
       - Apache Spark: other-tools/apache-spark/spark.md
 theme:
   name: material
@@ -177,6 +177,11 @@ extra_css:
 extra_javascript:
   - javascripts/extra.js
 extra:
+  font:
+    text: Roboto
+    code: Roboto Mono
+  version:
+    provider: mike
   # generator: false
   social:
     - icon: fontawesome/brands/github

@@ -34,7 +34,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          git config user.name 'github-actions[bot]' && git config user.email 'help@nerc.mghpcc.org'
+          git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
       - name: Clean Build
         run: |
           mkdocs build --clean
@@ -63,7 +63,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          git config user.name 'github-actions[bot]' && git config user.email 'help@nerc.mghpcc.org'
+          git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
       - name: Deploy
         run: |
           mkdocs gh-deploy --force

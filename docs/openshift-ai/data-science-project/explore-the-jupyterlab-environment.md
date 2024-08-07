@@ -1,12 +1,13 @@
 # Explore the JupyterLab Environment
 
-When your workbench is ready, the status will change to *Running* and you can select
+When your workbench is ready, the status will change to _Running_ and you can select
 "Open" to go to your environment:
 
 ![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 
 !!! tip "How can I start or stop a Workbench?"
-    You can use this "toggle switch" under the "Status" section to easily *start/stop*
+
+    You can use this "toggle switch" under the "Status" section to easily _start/stop_
     this environment later on.
 
 Make sure you are selecting "**mss-keycloak**" once shown:
@@ -53,6 +54,7 @@ Then click **Clone** button as shown below:
 ![NERC RHOAI MLOps Example Project](images/nerc-mlops-git-repo.png)
 
 !!! info "What is MLOps?"
+
     Machine learning operations (MLOps) are a set of practices that automate and
     simplify machine learning (ML) workflows and deployments.
 
@@ -81,15 +83,15 @@ And a cell where we have entered some Python code:
 
 ![Jupyter Cell With Python Code](images/jupyter-cell-with-code.png)
 
-- Code cells contain Python code that can be run interactively. It means that you
-can modify the code, then run it, but only for this cell, not for the whole
-content of the notebook! The code will not run on your computer or in the browser,
-but directly in the environment you are connected to NERC RHOAI.
+-   Code cells contain Python code that can be run interactively. It means that you
+    can modify the code, then run it, but only for this cell, not for the whole
+    content of the notebook! The code will not run on your computer or in the browser,
+    but directly in the environment you are connected to NERC RHOAI.
 
-- To run a code cell, you simply select it (select the cell, or on the left side
-of it), and select the Run/Play button from the toolbar (you can also press
-`CTRL+Enter` to run a cell, or `Shift+Enter` to run the cell and automatically
-select the following one).
+-   To run a code cell, you simply select it (select the cell, or on the left side
+    of it), and select the Run/Play button from the toolbar (you can also press
+    `CTRL+Enter` to run a cell, or `Shift+Enter` to run the cell and automatically
+    select the following one).
 
 The Run button on the toolbar:
 
@@ -104,6 +106,7 @@ can always reopen it to look at the results without having to run all the progra
 again, while still having access to the code that produced this content.
 
 !!! note "More about Notebook"
+
     Notebooks are so named because they are just like a physical Notebook. It is
     exactly like if you were taking notes about your experiments (which you will
     do), along with the code itself, including any parameters you set. You see
@@ -136,8 +139,9 @@ environment, and there is no risk of breaking anything or impacting other users.
 This environment isolation is also a great advantage brought by NERC RHOAI.
 
 !!! tip "How to get access to the NERC RHOAI Dashboard from JupyterLab Environment?"
+
     If you had closed the NERC RHOAI dashboard, you can access it from your currently
-    opened JupyterLab IDE by clicking on *File -> Hub Control Panel* as shown below:
+    opened JupyterLab IDE by clicking on _File -> Hub Control Panel_ as shown below:
 
     ![Jupyter Hub Control Panel Menu](images/juyter-hub-control-panel-menu.png)
 
@@ -161,6 +165,7 @@ generate and save the model `my-model.keras` within the root folder path of
 `nerc_rhoai_mlops`.
 
 !!! info "The Machine Learning Model File Hosted on NERC OpenStack Object Bucket."
+
     The model we are going to use is an object detection model that is able to
     isolate and recognize T-shirts, bottles, and hats in pictures. Although the
     process is globally the same one as what we have seen in the

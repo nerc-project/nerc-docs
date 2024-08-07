@@ -2,26 +2,26 @@
 
 ## Key Features
 
-- Available as a single static binary
-- Offers a self-hosted, isolated control plane
-- Supports a variety of storage backends, including etcd, SQLite, MySQL (or any
-compatible), and PostgreSQL.
-- Offers an Elastic control plane
-- Vanilla upstream Kubernetes
-- Supports custom container runtimes (containerd is the default)
-- Supports custom Container Network Interface (CNI) plugins (calico is the default)
-- Supports x86_64 and arm64
+-   Available as a single static binary
+-   Offers a self-hosted, isolated control plane
+-   Supports a variety of storage backends, including etcd, SQLite, MySQL (or any
+    compatible), and PostgreSQL.
+-   Offers an Elastic control plane
+-   Vanilla upstream Kubernetes
+-   Supports custom container runtimes (containerd is the default)
+-   Supports custom Container Network Interface (CNI) plugins (calico is the default)
+-   Supports x86_64 and arm64
 
 ## Pre-requisite
 
 We will need 1 VM to create a single node kubernetes cluster using `k0s`.
 We are using following setting for this purpose:
 
-- 1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
-`cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-to this VM.
+-   1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
+    `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+    to this VM.
 
-- setup Unique hostname to the machine using the following command:
+-   setup Unique hostname to the machine using the following command:
 
     ```sh
     echo "<node_internal_IP> <host_name>" >> /etc/hosts
@@ -39,23 +39,23 @@ to this VM.
 
 Run the below command on the Ubuntu VM:
 
-- SSH into **k0s** machine
+-   SSH into **k0s** machine
 
-- Switch to root user: `sudo su`
+-   Switch to root user: `sudo su`
 
-- Update the repositories and packages:
+-   Update the repositories and packages:
 
     ```sh
     apt-get update && apt-get upgrade -y
     ```
 
-- Download k0s:
+-   Download k0s:
 
     ```sh
     curl -sSLf https://get.k0s.sh | sudo sh
     ```
 
-- Install k0s as a service:
+-   Install k0s as a service:
 
     ```sh
     k0s install controller --single
@@ -68,13 +68,13 @@ Run the below command on the Ubuntu VM:
     INFO[2021-10-12 01:46:01] Installing k0s service
     ```
 
-- Start `k0s` as a service:
+-   Start `k0s` as a service:
 
     ```sh
     k0s start
     ```
 
-- Check service, logs and `k0s` status:
+-   Check service, logs and `k0s` status:
 
     ```sh
     k0s status
@@ -85,7 +85,7 @@ Run the below command on the Ubuntu VM:
     Workloads: true
     ```
 
-- Access your cluster using `kubectl`:
+-   Access your cluster using `kubectl`:
 
     ```sh
     k0s kubectl get nodes
@@ -107,19 +107,19 @@ Run the below command on the Ubuntu VM:
 
 ## Uninstall k0s
 
-- Stop the service:
+-   Stop the service:
 
     ```sh
     sudo k0s stop
     ```
 
-- Execute the `k0s reset` command - cleans up the installed system service, data
-directories, containers, mounts and network namespaces.
+-   Execute the `k0s reset` command - cleans up the installed system service, data
+    directories, containers, mounts and network namespaces.
 
     ```sh
     sudo k0s reset
     ```
 
-- Reboot the system
+-   Reboot the system
 
 ---

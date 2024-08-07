@@ -1,4 +1,3 @@
-
 # DNS services in NERC OpenStack
 
 ## What is DNS?
@@ -81,18 +80,18 @@ based on your OS choice for your VM.
 iv. Create a `docker-compose.yml` file similar to this:
 
 ```yaml
-version: '3'
+version: "3"
 services:
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+    app:
+        image: "jc21/nginx-proxy-manager:latest"
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "81:81"
+            - "443:443"
+        volumes:
+            - ./data:/data
+            - ./letsencrypt:/etc/letsencrypt
 ```
 
 v. Bring up your stack by running:
@@ -121,6 +120,7 @@ Admin UI on your web browser:
 `http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8081`
 
 !!! info "Information"
+
     It may take some time to spin up the Admin UI. Your terminal running the SSH
     Tunneling i.e. Local Port Forwarding will not show any logs or output when
     successfully done. Also your should not close or terminate the terminal while
@@ -148,24 +148,25 @@ research institution or purchased on other third party vendor services and your 
 its administrative access)
 
 !!! note "Important Note"
+
     The Domain Name need to have an **A Record** pointing to the public floating
     IP of your NERC VM where you are hosting the Nginx Proxy Manager!
 
 Please fill out the following information on this popup box:
 
-- Scheme: *http*
+-   Scheme: _http_
 
-- Forward Hostname/IP: *`<The Private-IP of your NERC VM where you are hosting the
-web services>`*
+-   Forward Hostname/IP:
+    _`<The Private-IP of your NERC VM where you are hosting the web services>`_
 
-- Forward Port: *`<Port exposed on your VM to the public>`*
+-   Forward Port: _`<Port exposed on your VM to the public>`_
 
-- Enable all toggles i.e. Cache Assets, Block Common Exploits, Websockets Support
+-   Enable all toggles i.e. Cache Assets, Block Common Exploits, Websockets Support
 
-- Access List: *Publicly Accessible*
+-   Access List: _Publicly Accessible_
 
 For your reference, you can review your selection should looks like below with your
-own Domain Name and  other settings:
+own Domain Name and other settings:
 
 ![Add Proxy Hosts Settings](images/nginx-proxy-manager-add-proxy-host.png)
 

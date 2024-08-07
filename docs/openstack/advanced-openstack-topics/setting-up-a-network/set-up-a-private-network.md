@@ -1,7 +1,7 @@
-
 # Set up a Private Network
 
 !!! note "Default Network for your Project"
+
     During your project setup, NERC will setup a default network, router and interface
     for your project that is ready-to-use.
 
@@ -20,67 +20,68 @@ side of the screen.
 
 In the Create Network dialog box, specify the following values.
 
-- Network tab:
+-   Network tab:
 
-Network Name: Specify a name to identify the network.
+    Network Name: Specify a name to identify the network.
 
-Admin State: The state to start the network in.
+    Admin State: The state to start the network in.
 
-Create Subnet: Select this check box to create a subnet
+    Create Subnet: Select this check box to create a subnet
 
-Give your network a name, and leave the two checkboxes for "Admin State" and
-"Create Subnet" with the default settings.
+    Give your network a name, and leave the two checkboxes for "Admin State" and
+    "Create Subnet" with the default settings.
 
-![Create a Network](images/create_network.png)
+    ![Create a Network](images/create_network.png)
 
-- Subnet tab:
-You do not have to specify a subnet when you create a network, but if you do
-not specify a subnet, the network can not be attached to an instance.
+-   Subnet tab:
 
-Subnet Name: Specify a name for the subnet.
+    You do not have to specify a subnet when you create a network, but if you do
+    not specify a subnet, the network can not be attached to an instance.
 
-Network Address: Specify the IP address for the subnet. For your private
-networks, you should use IP addresses which fall within the ranges that are
-specifically reserved for private networks:
+    Subnet Name: Specify a name for the subnet.
 
-    10.0.0.0/8
-    172.16.0.0/12
-    192.168.0.0/16
+    Network Address: Specify the IP address for the subnet. For your private
+    networks, you should use IP addresses which fall within the ranges that are
+    specifically reserved for private networks:
 
-In the example below, we configure a network containing addresses 192.168.0.1
-to 192.168.0.255 using CIDR 192.168.0.0/24
-*Technically, your private network will still work if you choose any IP outside
-these ranges, but this causes problems with connecting to IPs in the outside
-world - so don't do it!*
+        10.0.0.0/8
+        172.16.0.0/12
+        192.168.0.0/16
 
-![Network Topology](images/network_subnet.png)
+    In the example below, we configure a network containing addresses 192.168.0.1
+    to 192.168.0.255 using CIDR 192.168.0.0/24
+    _Technically, your private network will still work if you choose any IP outside
+    these ranges, but this causes problems with connecting to IPs in the outside
+    world - so don't do it!_
 
-IP Version: Select IPv4 or IPv6.
+    ![Network Topology](images/network_subnet.png)
 
-Gateway IP: Specify an IP address for a specific gateway. This parameter is optional.
+    IP Version: Select IPv4 or IPv6.
 
-Disable Gateway: Select this check box to disable a gateway IP address.
+    Gateway IP: Specify an IP address for a specific gateway. This parameter is optional.
 
-- Subnet Details tab
+    Disable Gateway: Select this check box to disable a gateway IP address.
 
-Enable DHCP: Select this check box to enable DHCP so that your VM instances
-will automatically be assigned an IP on the subnet.
+-   Subnet Details tab
 
-Allocation Pools: Specify IP address pools.
+    Enable DHCP: Select this check box to enable DHCP so that your VM instances
+    will automatically be assigned an IP on the subnet.
 
-DNS Name Servers: Specify a name for the DNS server. If you use '8.8.8.8' (you
-may recognize this as one of Google's public name servers).
+    Allocation Pools: Specify IP address pools.
 
-Host Routes: Specify the IP address of host routes.
+    DNS Name Servers: Specify a name for the DNS server. If you use '8.8.8.8' (you
+    may recognize this as one of Google's public name servers).
 
-For now, you can leave the Allocation Pools and Host Routes boxes empty and
-click on "Create" button. But here we specify Allocation Pools of `192.168.0.2,192.168.0.254`.
+    Host Routes: Specify the IP address of host routes.
 
-![Network Topology](images/network_subnet_details.png)
+    For now, you can leave the Allocation Pools and Host Routes boxes empty and
+    click on "Create" button. But here we specify Allocation Pools of `192.168.0.2,192.168.0.254`.
 
-The Network Topology should now show your virtual private network next to the
-public network.
+    ![Network Topology](images/network_subnet_details.png)
 
-![Newly Created Network Topology](images/network_new.png)
+    The Network Topology should now show your virtual private network next to the
+    public network.
+
+    ![Newly Created Network Topology](images/network_new.png)
 
 ---

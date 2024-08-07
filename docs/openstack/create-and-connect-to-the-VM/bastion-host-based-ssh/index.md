@@ -27,13 +27,13 @@ enabling SSH access to the private instances.
 Before trying to access instances from the outside world using SSH tunneling
 via Bastion Host, you need to make sure you have followed these steps:
 
-- You followed the instruction in [Create a Key Pair](../../access-and-security/create-a-key-pair.md)
-to set up a public ssh key. You can use the same key for both the bastion
-host and the remote instances, or different keys; you'll just need to ensure
-that the keys are loaded by ssh-agent appropriately so they can be used as
-needed. Please read [this instruction](../../access-and-security/create-a-key-pair/#adding-your-ssh-key-to-the-ssh-agent)
-on how to add ssh-agent and load your private key using ssh-add command to
-access the bastion host.
+-   You followed the instruction in [Create a Key Pair](../../access-and-security/create-a-key-pair.md)
+    to set up a public ssh key. You can use the same key for both the bastion
+    host and the remote instances, or different keys; you'll just need to ensure
+    that the keys are loaded by ssh-agent appropriately so they can be used as
+    needed. Please read [this instruction](../../access-and-security/create-a-key-pair.md#adding-your-ssh-key-to-the-ssh-agent)
+    on how to add ssh-agent and load your private key using ssh-add command to
+    access the bastion host.
 
 **Verify you have an SSH agent running. This should match whatever you built
 your cluster with.**
@@ -54,19 +54,19 @@ ssh-add path/to/private/key
 ssh -A <user>@<bastion-floating-IP>
 ```
 
-- Your public ssh-key was selected (in the Access and Security tab) while
-[launching the instance](../launch-a-VM.md).
+-   Your public ssh-key was selected (in the Access and Security tab) while
+    [launching the instance](../launch-a-VM.md).
 
-- Add two Security Groups, one will be used by the Bastion host and another one
-will be used by any private instances.
+-   Add two Security Groups, one will be used by the Bastion host and another one
+    will be used by any private instances.
 
 ![Security Groups](images/security_groups.png)
 
 **i. Bastion Host Security Group:**
 
 Allow inbound SSH (optional ICMP) for this security group. Make sure you have
-added rules in the [Security Groups](../../access-and-security/security-groups/
-) to allow ssh to the bastion host.
+added rules in the [Security Groups](../../access-and-security/security-groups.md)
+to allow ssh to the bastion host.
 
 ![Bastion Host Security Group](images/bastion_host_security_group.png)
 
@@ -80,8 +80,8 @@ Group option as shown below:
 
 ![Private Instances Security Group](images/private_instances_sg.png)
 
-- [Assign a Floating IP](../assign-a-floating-IP.md)
-to the Bastion host instance in order to access it from outside world.
+-   [Assign a Floating IP](../assign-a-floating-IP.md) to the Bastion host instance
+    in order to access it from outside world.
 
 Make a note of the Floating IP you have associated to your instance.
 

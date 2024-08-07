@@ -1,52 +1,72 @@
-{% extends "base.html" %}
-
-{% block announce %}
+{% extends "base.html" %} {% block announce %}
 <div class="parent">
-  <!-- <div class="maintain">
-    <div>
-      Upcoming NERC OpenShift Container Platform (OCP) & ColdFront service
+    <!-- <div class="maintain">
+        <div>
+            Upcoming NERC OpenShift Container Platform (OCP) & ColdFront service
+        </div>
+        <div>
+            maintenance and upgrade [August 5, 2024 9:00 AM - 5:00 PM ET])
+            <a
+                style="color: #00efff"
+                href="https://nerc.mghpcc.org/event/openshift-coldfront-upgrade-maintenance-20240805/"
+                target="_blank"
+                >[Timeline and info]</a
+            >
+        </div>
+    </div> -->
+    <div class="child">
+        <iframe
+            src="https://nerc.instatus.com/embed-status/light-sm"
+            width="230"
+            height="52"
+            frameborder="0"
+            scrolling="no"
+            style="border: none"
+        ></iframe>
     </div>
-    <div>maintenance and upgrade [August 5, 2024 9:00 AM - 5:00 PM ET])
-      <a style="color: #00efff;"
-        href="https://nerc.mghpcc.org/event/openshift-coldfront-upgrade-maintenance-20240805/"
-        target="_blank">[Timeline and info]</a>
-    </div>
-  </div> -->
-  <div class="child">
-    <iframe src="https://nerc.instatus.com/embed-status/light-sm" width="230" height="52" frameBorder="0" scrolling="no" style="border: none;" ></iframe>
-  </div>
 </div>
-{% endblock %}
-
-{% block htmltitle %}
-  <title>New England Research Cloud(NERC)</title>
-{% endblock %}
-
-{% block footer %}
+{% endblock %} {% block htmltitle %}
+<title>New England Research Cloud(NERC)</title>
+{% endblock %} {% block footer %}
 <footer class="md-footer">
-  <aside class="footer-left">
-      <a href="http://www.bu.edu/tech/services/research/" title="Boston University" target="_blank">
-        <img alt="Boston University Logo" src="https://nerc-project.github.io/nerc-docs/assets/images/boston-university-logo.png">
-      </a>
+    <aside class="footer-left">
+        <a
+            href="http://www.bu.edu/tech/services/research/"
+            title="Boston University"
+            target="_blank"
+        >
+            <img
+                alt="Boston University Logo"
+                src="https://nerc-project.github.io/nerc-docs/assets/images/boston-university-logo.png"
+            />
+        </a>
+    </aside>
 
-  </aside>
+    <aside class="footer-center">
+        <a href="http://rc.fas.harvard.edu" title="Harvard University" target="_blank">
+            <img
+                alt="Harvard University Logo"
+                src="https://nerc-project.github.io/nerc-docs/assets/images/harvard-university_logo.png"
+            />
+        </a>
+    </aside>
+    <aside class="footer-center">
+        <a href="https://www.mghpcc.org/" title="MGHPCC" target="_blank">
+            <img
+                alt="MGHPCC Logo"
+                src="https://nerc-project.github.io/nerc-docs/assets/images/MGHPCC_logo.png"
+            />
+        </a>
+    </aside>
 
-  <aside class="footer-center">
-      <a href="http://rc.fas.harvard.edu" title="Harvard University" target="_blank">
-        <img alt="Harvard University Logo" src="https://nerc-project.github.io/nerc-docs/assets/images/harvard-university_logo.png">
-      </a>
-  </aside><aside class="footer-center">
-      <a href="https://www.mghpcc.org/" title="MGHPCC" target="_blank">
-        <img alt="MGHPCC Logo" src="https://nerc-project.github.io/nerc-docs/assets/images/MGHPCC_logo.png">
-      </a>
-  </aside>
-
-  <aside class="footer-right">
-    <a href="https://massopen.cloud/" title="MOC Alliance" target="_blank">
-      <img alt="MOC Alliance" src="https://massopen.cloud/wp-content/uploads/2022/07/MOCwordmark_RGB_small.png" style="width: 80%;">
-    </a>
-  </aside>
-
-
+    <aside class="footer-right">
+        <a href="https://massopen.cloud/" title="MOC Alliance" target="_blank">
+            <img
+                alt="MOC Alliance"
+                src="https://massopen.cloud/wp-content/uploads/2022/07/MOCwordmark_RGB_small.png"
+                style="width: 80%"
+            />
+        </a>
+    </aside>
 </footer>
 {% endblock %}

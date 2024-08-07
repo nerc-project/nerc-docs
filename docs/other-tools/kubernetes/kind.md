@@ -5,11 +5,11 @@
 We will need 1 VM to create a single node kubernetes cluster using `kind`.
 We are using following setting for this purpose:
 
-- 1 Linux machine, `almalinux-9-x86_64`, `cpu-su.2` flavor with 2vCPU, 8GB RAM,
-20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
- to this VM.
+-   1 Linux machine, `almalinux-9-x86_64`, `cpu-su.2` flavor with 2vCPU, 8GB RAM,
+    20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+    to this VM.
 
-- setup Unique hostname to the machine using the following command:
+-   setup Unique hostname to the machine using the following command:
 
     ```sh
     echo "<node_internal_IP> <host_name>" >> /etc/hosts
@@ -27,11 +27,11 @@ We are using following setting for this purpose:
 
 Run the below command on the AlmaLinux VM:
 
-- SSH into **kind** machine
+-   SSH into **kind** machine
 
-- Switch to root user: `sudo su`
+-   Switch to root user: `sudo su`
 
-- Execute the below command to initialize the cluster:
+-   Execute the below command to initialize the cluster:
 
     Please remove `container-tools` module that includes stable versions of podman,
     buildah, skopeo, runc, conmon, etc as well as dependencies and will be removed
@@ -62,7 +62,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
 chmod +x /usr/bin/kubectl
 ```
 
-- Test to ensure that the `kubectl` is installed:
+-   Test to ensure that the `kubectl` is installed:
 
     ```sh
     kubectl version --client
@@ -88,7 +88,7 @@ kind version
 kind v0.11.1 go1.16.4 linux/amd64
 ```
 
-- To communicate with cluster, just give the cluster name as a context in kubectl:
+-   To communicate with cluster, just give the cluster name as a context in kubectl:
 
     ```sh
     kind create cluster --name k8s-kind-cluster1
@@ -108,7 +108,7 @@ kind v0.11.1 go1.16.4 linux/amd64
     Have a nice day! 👋
     ```
 
-- Get the cluster details:
+-   Get the cluster details:
 
     ```sh
     kubectl cluster-info --context kind-k8s-kind-cluster1

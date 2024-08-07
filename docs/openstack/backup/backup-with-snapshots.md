@@ -3,10 +3,13 @@
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
 
-- boot from image
-- boot from instance snapshot
-- boot from volume
-- boot from volume snapshot
+-   boot from image
+
+-   boot from instance snapshot
+
+-   boot from volume
+
+-   boot from volume snapshot
 
 In its default configuration, when the instance is launched from an **Image** or
 an **Instance Snapshot**, the choice for utilizing persistent storage is configured
@@ -16,6 +19,7 @@ Volume on Instance Delete" setting is pre-set to **No**, as indicated here:
 ![Launching an Instance Boot Source](images/instance-boot-source-options.png)
 
 !!! danger "Very Important: How do you make your VM setup and data persistent?"
+
     For more in-depth information on making your VM setup and data persistent,
     you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
 
@@ -30,14 +34,15 @@ data.
 
 This mainly serves two purposes:
 
-- *As a backup mechanism:* save the main disk of your instance to an image in
-Horizon dashboard under *Project -> Compute -> Images* and later boot a new instance
-from this image with the saved data.
+-   _As a backup mechanism:_ save the main disk of your instance to an image in
+    Horizon dashboard under _Project -> Compute -> Images_ and later boot a new instance
+    from this image with the saved data.
 
-- *As a templating mechanism:* customise and upgrade a base image and save it to
-use as a template for new instances.
+-   _As a templating mechanism:_ customise and upgrade a base image and save it to
+    use as a template for new instances.
 
 !!! info "Considerations: using Instance snapshots"
+
     It consumes more storage space due to including memory state. So, make sure
     your resource allocations for Storage is sufficient to hold all. They are
     suitable for scenarios where maintaining the exact VM state is crucial. The
@@ -52,33 +57,42 @@ use as a template for new instances.
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To snapshot an instance to an image using the CLI, do this:
 
 ##### Using the openstack client
 
-    openstack server image create --name <name of my snapshot> --wait <instance name or uuid>
+```sh
+openstack server image create --name <name of my snapshot> --wait <instance name or uuid>
+```
 
 ##### To view newly created snapshot image
 
-    openstack image show --fit-width <name of my snapshot>
+```sh
+openstack image show --fit-width <name of my snapshot>
+```
 
 Using this snapshot, the VM can be rolled back to the previous state with a
 server rebuild.
 
-    openstack server rebuild --image <name of my snapshot> <existing instance name or uuid>
+```sh
+openstack server rebuild --image <name of my snapshot> <existing instance name or uuid>
+```
 
 For e.g.
 
-    openstack server image create --name my-snapshot --wait test-nerc-0
+```sh
+openstack server image create --name my-snapshot --wait test-nerc-0
 
-    openstack image show --fit-width my-snapshot
+openstack image show --fit-width my-snapshot
 
-    openstack server rebuild --image my-snapshot test-nerc-0
+openstack server rebuild --image my-snapshot test-nerc-0
+```
 
 !!! info "Important Information"
+
     During the time it takes to do the snapshot, the machine can become unresponsive.
 
 #### Using Horizon dashboard
@@ -92,6 +106,7 @@ on desired instance as shown below:
 ![Instance Snapshot Information](images/instance-snapshot-info.png)
 
 !!! warning "Live snapshots and data consistency"
+
     We call a snapshot taken against a running instance with no downtime a
     "live snapshot". These snapshots are simply disk-only snapshots, and may be
     inconsistent if the instance's OS is not aware of the snapshot being taken.
@@ -102,7 +117,7 @@ on desired instance as shown below:
 
 Once created, you can find the image listed under Images in the Horizon dashboard.
 
-Navigate to *Project -> Compute -> Images*.
+Navigate to _Project -> Compute -> Images_.
 
 ![Snapshot Instance Created](images/instance-image-snapshot.png)
 
@@ -130,6 +145,7 @@ Volume snapshots are pointers in the RW history of a volume. The creation of a
 snapshot takes a few seconds and it can be done while the volume is in-use.
 
 !!! warning "Warning"
+
     Taking snapshots of volumes that are in use or attached to active instances
     can result in data inconsistency on the volume. This is why we highly recommend,
     if possible, to **Shut Off** the instance before creating snapshots.
@@ -148,61 +164,76 @@ Also, it consumes **less storage space** compared to instance snapshots.
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To snapshot an instance to an image using the CLI, do this:
 
 ##### Using the openstack client commands
 
-`openstack volume snapshot create --volume <volume name or uuid> <name of my snapshot>`
+```sh
+openstack volume snapshot create --volume <volume name or uuid> <name of my snapshot>
+```
 
 For e.g.
 
-    openstack volume snapshot create --volume test_volume my-volume-snapshot
-    +-------------+--------------------------------------+
-    | Field       | Value                                |
-    +-------------+--------------------------------------+
-    | created_at  | 2022-04-12T19:48:42.707250           |
-    | description | None                                 |
-    | id          | f1cf6846-4aba-4eb8-b3e4-2ff309f8f599 |
-    | name        | my-volume-snapshot                   |
-    | properties  |                                      |
-    | size        | 25                                   |
-    | status      | creating                             |
-    | updated_at  | None                                 |
-    | volume_id   | f2630d21-f8f5-4f02-adc7-14a3aa72cc9d |
-    +-------------+--------------------------------------+
+```sh
+openstack volume snapshot create --volume test_volume my-volume-snapshot
++-------------+--------------------------------------+
+| Field       | Value                                |
++-------------+--------------------------------------+
+| created_at  | 2022-04-12T19:48:42.707250           |
+| description | None                                 |
+| id          | f1cf6846-4aba-4eb8-b3e4-2ff309f8f599 |
+| name        | my-volume-snapshot                   |
+| properties  |                                      |
+| size        | 25                                   |
+| status      | creating                             |
+| updated_at  | None                                 |
+| volume_id   | f2630d21-f8f5-4f02-adc7-14a3aa72cc9d |
++-------------+--------------------------------------+
+```
 
 !!! note "Important Information"
+
     if the volume is in-use, you may need to specify `--force`
 
 You can list the volume snapshots with the following command.
 
-    openstack volume snapshot list
+```sh
+openstack volume snapshot list
+```
 
-    For e.g.
+For e.g.
 
-    openstack volume snapshot list
-    +--------------------------------------+--------------------+-------------+-----------+------+
-    | ID                                   | Name               | Description | Status    | Size |
-    +--------------------------------------+--------------------+-------------+-----------+------+
-    | f1cf6846-4aba-4eb8-b3e4-2ff309f8f599 | my-volume-snapshot | None        | available |   25 |
-    +--------------------------------------+--------------------+-------------+-----------+------+
+```sh
+openstack volume snapshot list
++--------------------------------------+--------------------+-------------+-----------+------+
+| ID                                   | Name               | Description | Status    | Size |
++--------------------------------------+--------------------+-------------+-----------+------+
+| f1cf6846-4aba-4eb8-b3e4-2ff309f8f599 | my-volume-snapshot | None        | available |   25 |
++--------------------------------------+--------------------+-------------+-----------+------+
+```
 
 Once the volume snapshot is in available state, then you can create other volumes
 based on that snapshot. You don't need to specify the size of the volume, it will
 use the size of the snapshot.
 
-    openstack volume create --description --source <name of my snapshot> "Volume from an snapshot" <volume name or uuid>
+```sh
+openstack volume create --description --source <name of my snapshot> "Volume from an snapshot" <volume name or uuid>
+```
 
 You can delete the snapshots just by issuing the following command
 
-    openstack volume snapshot delete <name of my snapshot>
+```sh
+openstack volume snapshot delete <name of my snapshot>
+```
 
-    For e.g.
+For e.g.
 
-    openstack volume snapshot delete my-volume-snapshot
+```sh
+openstack volume snapshot delete my-volume-snapshot
+```
 
 #### Using NERC's Horizon dashboard
 
@@ -221,7 +252,7 @@ In the dialog box that opens, enter a snapshot name and a brief description.
 Once a snapshot is created and is in "Available" status, you can view and manage
 it under the Volumes menu in the Horizon dashboard under Volume Snapshots.
 
-Navigate to *Project -> Volumes -> Snapshots*.
+Navigate to _Project -> Volumes -> Snapshots_.
 
 ![Volume Snapshots List](images/volume-snapshots-list.png)
 
@@ -244,7 +275,7 @@ In the dialog box that opens, enter a volume name and a brief description.
 
 Any snapshots made into volumes can be found under Volumes:
 
-Navigate to *Project -> Volumes -> Volumes*.
+Navigate to _Project -> Volumes -> Volumes_.
 
 ![New Volume from Volume Snapshot](images/new-volume-from-snapshot.png)
 
@@ -255,6 +286,7 @@ below:
 ![Launch an Instance from Volume](images/launch_instance_from_volume.png)
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+
     Please remember that any volumes and snapshots stored will consume your
     **Storage quotas**, which represent the storage space allocated to your project.
     For **NERC (OpenStack)** Resource Allocations, storage quotas are specified
@@ -280,6 +312,7 @@ below:
     corresponding to the added or removed storage quantity.
 
 !!! question "Help Regarding Billing"
+
     Please send your questions or concerns regarding Storage and Cost by emailing
     us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
     or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).

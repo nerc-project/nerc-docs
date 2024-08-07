@@ -5,67 +5,68 @@
 We are using following setting for this purpose to mount the object storage to an
 NERC OpenStack VM:
 
-- 1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
-`cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-to this VM.
+-   1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
+    `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+    to this VM.
 
-- Setup and enable your S3 API credentials:
+-   Setup and enable your S3 API credentials:
 
-    To access the API credentials, you must login through the OpenStack Dashboard
-    and navigate to "Projects > API Access" where you can download the "Download
-    OpenStack RC File" as well as the "EC2 Credentials".
+To access the API credentials, you must login through the OpenStack Dashboard
+and navigate to "Projects > API Access" where you can download the "Download
+OpenStack RC File" as well as the "EC2 Credentials".
 
-    ![EC2 Credentials](images/ec2_credentials.png)
+![EC2 Credentials](images/ec2_credentials.png)
 
-    While clicking on "EC2 Credentials", this will download a file **zip file**
-    including `ec2rc.sh` file that has content similar to shown below. The important
-    parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
+While clicking on "EC2 Credentials", this will download a file **zip file**
+including `ec2rc.sh` file that has content similar to shown below. The important
+parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 
-        #!/bin/bash
+      #!/bin/bash
 
-        NOVARC=$(readlink -f "${BASH_SOURCE:-${0}}" 2>/dev/null) || NOVARC=$(python -c 'import os,sys; print os.path.abspath(os.path.realpath(sys.argv[1]))' "${BASH_SOURCE:-${0}}")
-        NOVA_KEY_DIR=${NOVARC%/*}
-        export EC2_ACCESS_KEY=...
-        export EC2_SECRET_KEY=...
-        export EC2_URL=https://localhost/notimplemented
-        export EC2_USER_ID=42 # nova does not use user id, but bundling requires it
-        export EC2_PRIVATE_KEY=${NOVA_KEY_DIR}/pk.pem
-        export EC2_CERT=${NOVA_KEY_DIR}/cert.pem
-        export NOVA_CERT=${NOVA_KEY_DIR}/cacert.pem
-        export EUCALYPTUS_CERT=${NOVA_CERT} # euca-bundle-image seems to require this set
+      NOVARC=$(readlink -f "${BASH_SOURCE:-${0}}" 2>/dev/null) || NOVARC=$(python -c 'import os,sys; print os.path.abspath(os.path.realpath(sys.argv[1]))' "${BASH_SOURCE:-${0}}")
+      NOVA_KEY_DIR=${NOVARC%/*}
+      export EC2_ACCESS_KEY=...
+      export EC2_SECRET_KEY=...
+      export EC2_URL=https://localhost/notimplemented
+      export EC2_USER_ID=42 # nova does not use user id, but bundling requires it
+      export EC2_PRIVATE_KEY=${NOVA_KEY_DIR}/pk.pem
+      export EC2_CERT=${NOVA_KEY_DIR}/cert.pem
+      export NOVA_CERT=${NOVA_KEY_DIR}/cacert.pem
+      export EUCALYPTUS_CERT=${NOVA_CERT} # euca-bundle-image seems to require this set
 
-        alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
-        alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
+      alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
+      alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
 
-    **Alternatively,** you can obtain your EC2 access keys using the openstack client:
+**Alternatively,** you can obtain your EC2 access keys using the openstack client:
 
-        sudo apt install python3-openstackclient
+      sudo apt install python3-openstackclient
 
-        openstack ec2 credentials list
-        +------------------+------------------+--------------+-----------+
-        | Access           | Secret           | Project ID   | User ID   |
-        +------------------+------------------+--------------+-----------+
-        | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
-        +------------------+------------------+--------------+-----------+
+      openstack ec2 credentials list
+      +------------------+------------------+--------------+-----------+
+      | Access           | Secret           | Project ID   | User ID   |
+      +------------------+------------------+--------------+-----------+
+      | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
+      +------------------+------------------+--------------+-----------+
 
-    **OR,** you can even create a new one by running:
+**OR,** you can even create a new one by running:
 
-        openstack ec2 credentials create
+      openstack ec2 credentials create
 
-- Source the downloaded OpenStack RC File from *Projects > API Access* by using:
-`source *-openrc.sh` command. Sourcing the RC File will set the required environment
-variables.
+-   Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
+    `source *-openrc.sh` command. Sourcing the RC File will set the required environment
+    variables.
 
-- Allow Other User option by editing fuse config by editing `/etc/fuse.conf` file
-and uncomment "user_allow_other" option.
+-   Allow Other User option by editing fuse config by editing `/etc/fuse.conf` file
+    and uncomment "user_allow_other" option.
 
         sudo nano /etc/fuse.conf
 
-    The output going to look like this:
+The output going to look like this:
 
-    ![Fuse Config to Allow Other User](images/fuse-config.png)
+![Fuse Config to Allow Other User](images/fuse-config.png)
 
 !!! warning "A comparative analysis of Mountpoint for S3, Goofys, and S3FS."
+
     When choosing between S3 clients that enable the utilization of an object store
     with applications expecting files, it's essential to consider the specific use
     case and whether the convenience and compatibility provided by FUSE clients
@@ -82,6 +83,7 @@ Mountpoint is optimized for workloads that need high-throughput read and write
 access to data stored in S3 Object Storage through a file system interface.
 
 !!! warning "Very Important Note"
+
     Mountpoint for Amazon S3 intentionally does not implement the full [POSIX](https://en.wikipedia.org/wiki/POSIX)
     standard specification for file systems. Mountpoint supports file-based workloads
     that perform sequential and random reads, sequential (append only) writes,
@@ -99,16 +101,16 @@ Now, navigate to your home directory:
 
     cd
 
-1. Download the Mountpoint for Amazon S3 package using `wget` command:
+1.  Download the Mountpoint for Amazon S3 package using `wget` command:
 
         wget https://s3.amazonaws.com/mountpoint-s3-release/latest/x86_64/mount-s3.deb
 
-2. Install the package by entering the following command:
+2.  Install the package by entering the following command:
 
         sudo apt-get install ./mount-s3.deb
 
-3. Verify that Mountpoint for Amazon S3 is successfully installed by entering the
-following command:
+3.  Verify that Mountpoint for Amazon S3 is successfully installed by entering the
+    following command:
 
         mount-s3 --version
 
@@ -145,33 +147,34 @@ The object storage container i.e. "bucket1" will be mounted in the directory `~/
 
 In this command,
 
-- `mount-s3` is the Mountpoint for Amazon S3 package as installed in `/usr/bin/`
-path we don't need to specify the full path.
+-   `mount-s3` is the Mountpoint for Amazon S3 package as installed in `/usr/bin/`
+    path we don't need to specify the full path.
 
-- `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
-`[nerc]`.
+-   `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
+    `[nerc]`.
 
-- `--endpoint-url` corresponds to the Object Storage endpoint url for NERC Object
-Storage. You don't need to modify this url.
+-   `--endpoint-url` corresponds to the Object Storage endpoint url for NERC Object
+    Storage. You don't need to modify this url.
 
-- `--allow-other`: Allows other users to access the mounted filesystem. This is
-particularly useful when multiple users need to access the mounted S3 bucket. Only
-allowed if `user_allow_other` is set in `/etc/fuse.conf`.
+-   `--allow-other`: Allows other users to access the mounted filesystem. This is
+    particularly useful when multiple users need to access the mounted S3 bucket.
+    Only allowed if `user_allow_other` is set in `/etc/fuse.conf`.
 
-- `--force-path-style`: Forces the use of path-style URLs when accessing the S3
-bucket. This is necessary when working with certain S3-compatible storage services
-that do not support virtual-hosted-style URLs.
+-   `--force-path-style`: Forces the use of path-style URLs when accessing the S3
+    bucket. This is necessary when working with certain S3-compatible storage services
+    that do not support virtual-hosted-style URLs.
 
-- `--debug`: Enables debug mode, providing additional information about the mounting
-process.
+-   `--debug`: Enables debug mode, providing additional information about the mounting
+    process.
 
-- `bucket1` is the name of the container which contains the NERC Object Storage
-resources.
+-   `bucket1` is the name of the container which contains the NERC Object Storage
+    resources.
 
-- `~/bucket1` is the location of the folder in which you want to mount the Object
-Storage filesystem.
+-   `~/bucket1` is the location of the folder in which you want to mount the Object
+    Storage filesystem.
 
 !!! tip "Important Note"
+
     Mountpoint automatically configures reasonable defaults for file system settings
     such as permissions and performance. However, if you require finer control over
     how the Mountpoint file system behaves, you can adjust these settings accordingly.
@@ -191,6 +194,7 @@ Use the `ls` command to list its content. You should see the output similar to t
 The NERC Object Storage container repository has now been mounted using Mountpoint.
 
 !!! danger "Very Important Information"
+
     Please note that any of these Mountpoints is not persistent if your VM is
     stopped or rebooted in the future. After each reboot, you will need to execute
     the mounting command as mentioned [above](#mount-the-container-locally-using-mountpoint)
@@ -272,11 +276,11 @@ Edit the file to look like the below:
     User=root
     Group=root
     ExecStart=/usr/bin/mount-s3 bucket1 /home/ubuntu/bucket1 \
-            --profile "nerc" \
-            --endpoint-url "https://stack.nerc.mghpcc.org:13808" \
-            --allow-other \
-            --force-path-style \
-            --debug
+          --profile "nerc" \
+          --endpoint-url "https://stack.nerc.mghpcc.org:13808" \
+          --allow-other \
+          --force-path-style \
+          --debug
 
     ExecStop=/bin/fusermount -u /home/ubuntu/bucket1
     Restart=always
@@ -287,6 +291,7 @@ Edit the file to look like the below:
     WantedBy=default.target
 
 !!! note "Important Note"
+
     The `network-online.target` lines ensure that mounting is not attempted until
     there's a network connection available. The service is launched as soon as the
     network is up and running, it mounts the bucket and remains active.
@@ -310,6 +315,7 @@ To enable your service on every reboot
     sudo systemctl enable --now mountpoint-s3.service
 
 !!! note "Information"
+
     The service name is based on the file name i.e. `/etc/systemd/system/mountpoint-s3.service`
     so you can just use `mountpoint-s3` instead of `mountpoint-s3.service` on all
     above `systemctl` commands.
@@ -357,6 +363,7 @@ Now reboot your VM:
     sudo reboot
 
 !!! note "Further Reading"
+
     For further details, including instructions for downloading and installing
     Mountpoint on various Linux operating systems, please refer to [this resource](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint-installation.html).
 
@@ -387,6 +394,7 @@ Copy the `goofys` binary to somewhere in your path
     sudo cp goofys /usr/bin/
 
 !!! note "To update goofys in the future"
+
     In order to update the newer version of `goofys` binary, you need to follow:
 
     - make sure that the data in the NERC Object Storage container is not actively
@@ -428,25 +436,25 @@ The object storage container i.e. "bucket1" will be mounted in the directory `~/
 
 In this command,
 
-- `goofys` is the goofys binary as we already copied this in `/usr/bin/` path we
-don't need to specify the full path.
+-   `goofys` is the goofys binary as we already copied this in `/usr/bin/` path we
+    don't need to specify the full path.
 
-- `-o` stands for goofys options, and is handled differently.
+-   `-o` stands for goofys options, and is handled differently.
 
-- `allow_other` Allows goofys with option `allow_other` only allowed if `user_allow_other`
-is set in `/etc/fuse.conf`.
+-   `allow_other` Allows goofys with option `allow_other` only allowed if `user_allow_other`
+    is set in `/etc/fuse.conf`.
 
-- `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
-`[nerc]`.
+-   `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
+    `[nerc]`.
 
-- `--endpoint` corresponds to the Object Storage endpoint url for NERC Object Storage.
-You don't need to modify this url.
+-   `--endpoint` corresponds to the Object Storage endpoint url for NERC Object Storage.
+    You don't need to modify this url.
 
-- `bucket1` is the name of the container which contains the NERC Object Storage
-resources.
+-   `bucket1` is the name of the container which contains the NERC Object Storage
+    resources.
 
-- `~/bucket1` is the location of the folder in which you want to mount the Object
-Storage filesystem.
+-   `~/bucket1` is the location of the folder in which you want to mount the Object
+    Storage filesystem.
 
 In order to test whether the mount was successful, navigate to the directory in
 which you mounted the NERC container repository, for example:
@@ -462,6 +470,7 @@ Use the `ls` command to list its content. You should see the output similar to t
 The NERC Object Storage container repository has now been mounted using `goofys`.
 
 !!! danger "Very Important Information"
+
     Please note that any of these Mountpoints is not persistent if your VM is
     stopped or rebooted in the future. After each reboot, you will need to execute
     the mounting command as mentioned [above](#mount-the-container-locally-using-goofys)
@@ -508,6 +517,7 @@ The difference between this code and the code mentioned in Method 1 is the addit
 of the option `noauto`.
 
 !!! note "Content of /etc/fstab"
+
     In the `/etc/fstab` content as added above:
 
         grep goofys /etc/fstab
@@ -527,6 +537,7 @@ system has restarted, check whether the NERC Object Storage repository i.e. `buc
 is mounted in the directory specified by you i.e. in `/home/ubuntu/bucket1`.
 
 !!! tip "Important Information"
+
     If you just want to test your mounting command written in `/etc/fstab` without
     "Rebooting" the VM you can also do that by running `sudo mount -a`.
     And if you want to stop automatic mounting of the container from the NERC
@@ -547,6 +558,7 @@ Access your virtual machine using SSH. Update the packages on your system and in
     sudo apt install s3fs
 
 !!! tip "For RedHat/Rocky/AlmaLinux"
+
     The **RedHat/Rocky/AlmaLinux** repositiories do not have `s3fs`. Therefore,
     you will need to compile it yourself.
 
@@ -629,6 +641,7 @@ Let's call the Container "bucket1"
     swift post bucket1
 
 !!! note "More about Swift Interface"
+
     You can read more about using Swift Interface for NERC Object Storage [here](object-storage.md#ii-swift-interface).
 
 ### Create a local directory as a mount point in your VM
@@ -675,6 +688,7 @@ The difference between this code and the code mentioned in Method 1 is the addit
 of the option `noauto`.
 
 !!! note "Content of /etc/fstab"
+
     In the `/etc/fstab` content as added above:
 
     - `/usr/bin/s3fs` is the location of your `s3fs` binary. If you installed
@@ -722,7 +736,8 @@ and add the following entry with the name **[nerc]**:
 More about the config for **AWS S3 compatible API** can be [seen here](https://rclone.org/s3/).
 
 !!! note "Important Information"
-    Mind that if set `env_auth = true` then it  will take variables from environment,
+
+    Mind that if set `env_auth = true` then it will take variables from environment,
     so you shouldn't insert it in this case.
 
 ### Listing the Containers and Contents of a Container
@@ -739,7 +754,7 @@ Rclone interface to List all the Containers with the "lsd" command
 For e.g.,
 
     rclone lsd "nerc:" --config=rclone.conf
-            -1 2024-04-23 20:21:43        -1 bucket1
+          -1 2024-04-23 20:21:43        -1 bucket1
 
 To list the files and folders available within a container i.e. "bucket1" in this
 case, within a container we can use the "ls" command:
@@ -797,11 +812,11 @@ Edit the file to look like the below:
     User=root
     Group=root
     ExecStart=/usr/bin/rclone mount \
-            --config=home/ubuntu/.config/rclone/rclone.conf \
-            --vfs-cache-mode full \
-            nerc:bucket1 /home/ubuntu/bucket1 \
-                    --allow-other \
-                    --allow-non-empty
+          --config=home/ubuntu/.config/rclone/rclone.conf \
+          --vfs-cache-mode full \
+          nerc:bucket1 /home/ubuntu/bucket1 \
+                  --allow-other \
+                  --allow-non-empty
 
     ExecStop=/bin/fusermount -u /home/ubuntu/bucket1
     Restart=always
@@ -833,6 +848,7 @@ To enable your service on every reboot
     sudo systemctl enable --now rclone-mount.service
 
 !!! note "Information"
+
     The service name is based on the file name i.e. `/etc/systemd/system/rclone-mount.service`
     so you can just use `rclone-mount` instead of `rclone-mount.service` on all
     above `systemctl` commands.
@@ -853,11 +869,11 @@ Verify, if the container is mounted successfully:
 
 A JuiceFS file system consists of two parts:
 
-- **Object Storage:** Used for data storage.
+-   **Object Storage:** Used for data storage.
 
-- **Metadata Engine:** A database used for storing metadata. In this case, we will
-use a durable [**Redis**](https://redis.io/) in-memory database service that
-provides extremely fast performance.
+-   **Metadata Engine:** A database used for storing metadata. In this case, we will
+    use a durable [**Redis**](https://redis.io/) in-memory database service that
+    provides extremely fast performance.
 
 #### Installation of the JuiceFS client
 
@@ -905,19 +921,19 @@ init system, change this to `systemd` as shown here:
 
 ![Redis Server Config](images/redis-server-config.png)
 
-- Binding to localhost:
+-   Binding to localhost:
 
-By default, Redis is only accessible from `localhost`. We need to verify that by
-locating this line by running:
+By default, Redis is only accessible from `localhost`. We need to verify that
+by locating this line by running:
 
-    sudo cat /etc/redis/redis.conf -n | grep bind
+      sudo cat /etc/redis/redis.conf -n | grep bind
 
-    ...
-    68  bind 127.0.0.1 ::1
-    ...
+      ...
+      68  bind 127.0.0.1 ::1
+      ...
 
-and make sure it is uncommented (remove the `#` if it exists) by editing this file
-with your preferred text editor.
+and make sure it is uncommented (remove the `#` if it exists) by editing this
+file with your preferred text editor.
 
 So save and close it when you are finished. If you used `nano` to edit the
 file, do so by pressing `CTRL + X`, `Y`, then `ENTER`.
@@ -925,7 +941,7 @@ file, do so by pressing `CTRL + X`, `Y`, then `ENTER`.
 Then, restart the Redis service to reflect the changes you made to the configuration
 file:
 
-    sudo systemctl restart redis.service
+      sudo systemctl restart redis.service
 
 With that, you've installed and configured Redis and it's running on your machine.
 Before you begin using it, you should first check whether Redis is functioning
@@ -933,35 +949,37 @@ correctly.
 
 Start by checking that the Redis service is running:
 
-    sudo systemctl status redis
+      sudo systemctl status redis
 
-If it is running without any errors, this command will show "active (running)" Status.
+If it is running without any errors, this command will show "active (running)"
+Status.
 
 To test that Redis is functioning correctly, connect to the server using `redis-cli`,
 Redis's command-line client:
 
-    redis-cli
+      redis-cli
 
 In the prompt that follows, test connectivity with the `ping` command:
 
-    ping
+      ping
 
 Output:
 
-    PONG
+      PONG
 
 Also, check that binding to `localhost` is working fine by running the following
 `netstat` command:
 
-    sudo netstat -lnp | grep redis
+      sudo netstat -lnp | grep redis
 
-    tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      16967/redis-server
-    tcp6       0      0 ::1:6379                :::*                    LISTEN      16967/redis-server
+      tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      16967/redis-server
+      tcp6       0      0 ::1:6379                :::*                    LISTEN      16967/redis-server
 
 !!! warning "Important Note"
-    The `netstat` command may not be available on your system by default. If this
-    is the case, you can install it (along with a number of other handy networking
-    tools) with the following command: `sudo apt install net-tools`.
+
+      The `netstat` command may not be available on your system by default. If
+      this is the case, you can install it (along with a number of other handy
+      networking tools) with the following command: `sudo apt install net-tools`.
 
 ##### Configuring a Redis Password
 
@@ -986,6 +1004,7 @@ preferred editor:
 Uncomment it by removing the `#`, and change `foobared` to a secure password.
 
 !!! tip "How to generate random password?"
+
     You can use `openssl` to generate random password by running the following
     command locally:
 
@@ -1011,7 +1030,7 @@ That won’t work because you didn't authenticate, so Redis returns an error:
 
 Output:
 
-(error) NOAUTH Authentication required.
+    (error) NOAUTH Authentication required.
 
 The next command authenticates with the password specified in the Redis configuration
 file:
@@ -1155,6 +1174,7 @@ Edit the file to look like the below:
     WantedBy=default.target
 
 !!! note "Important Information"
+
     Feel free to modify the options and environments according to your needs. Please
     make sure you change `<your_redis_password>` to your own Redis password that
     was setup by following [this step](#configuring-a-redis-password).
@@ -1182,6 +1202,7 @@ To enable your service on every reboot
     sudo systemctl enable --now juicefs-mount.service
 
 !!! note "Information"
+
     The service name is based on the file name i.e. `/etc/systemd/system/juicefs-mount.service`
     so you can just use `juicefs-mount` instead of `juicefs-mount.service` on all
     above `systemctl` commands.
@@ -1210,6 +1231,7 @@ the destination address or path;, capable for both directories and files.
     juicefs sync [command options] SRC DST
 
 !!! note "More Information"
+
     `[command options]` are synchronization options. See [command reference](https://juicefs.com/docs/community/command_reference#sync)
     for more details.
 
@@ -1251,9 +1273,9 @@ After JuiceFS has been successfully formatted, follow this guide to clean up.
 JuiceFS client provides the destroy command to completely destroy a file system,
 which will result in:
 
-- Deletion of all metadata entries of this file system
+-   Deletion of all metadata entries of this file system
 
-- Deletion of all data blocks of this file system
+-   Deletion of all data blocks of this file system
 
 Use this command in the following format:
 
@@ -1292,6 +1314,7 @@ make sure to check the file system information carefully and enter `y` after con
 it is correct.
 
 !!! danger "Danger"
+
     The destroy operation will cause all the data in the database and the object
     storage associated with the file system to be deleted. Please make sure to
     back up the important data before operating!

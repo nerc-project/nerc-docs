@@ -5,16 +5,16 @@ below.
 
 ## Prerequisite
 
-- **Backup**: Back up any critical data or configurations stored on the resources
-that going to be decommissioned. This ensures that important information is not
-lost during the process. You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md)
-to initiate and carry out data transfer to and from the virtual machine.
+-   **Backup**: Back up any critical data or configurations stored on the resources
+    that going to be decommissioned. This ensures that important information is not
+    lost during the process. You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md)
+    to initiate and carry out data transfer to and from the virtual machine.
 
-- **Shutdown Instances**: If applicable, [Shut Off any running instances](../management/vm-management.md#stopping-and-starting)
-to ensure they are not actively processing data during decommissioning.
+-   **Shutdown Instances**: If applicable, [Shut Off any running instances](../management/vm-management.md#stopping-and-starting)
+    to ensure they are not actively processing data during decommissioning.
 
-- Setup **OpenStack CLI**, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   Setup **OpenStack CLI**, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 ## Delete all VMs
 
@@ -26,18 +26,19 @@ For instructions on deleting volume(s), please refer to [this documentation](../
 
 To delete snapshot(s), if that snapshot is not used for any running instance.
 
-Navigate to *Project -> Volumes -> Snapshots*.
+Navigate to _Project -> Volumes -> Snapshots_.
 
 ![Delete Snapshots](images/delete-snapshots.png)
 
 !!! warn "Unable to Delete Snapshots"
+
     First delete all volumes and instances (and its attached volumes) that are
     created using the snapshot first, you will not be able to delete the volume
     snapshots.
 
 ## Delete all custom built Images and Instance Snapshot built Images
 
-Navigate to *Project -> Compute -> Images*.
+Navigate to _Project -> Compute -> Images_.
 
 Select all of the custom built that have Visibility set as "Private" images to delete.
 
@@ -45,7 +46,7 @@ Select all of the custom built that have Visibility set as "Private" images to d
 
 To review all Network and its connectivities, you need to:
 
-Navigate to *Project -> Network -> Network Topology*.
+Navigate to _Project -> Network -> Network Topology_.
 
 This will shows all view of current Network in your project in Graph or Topology
 view. Make sure non instances are connected to your private network, which is
@@ -58,20 +59,21 @@ First, delete all other Routers used to create private networks, which is
 setup by following [this documentation](../advanced-openstack-topics/setting-up-a-network/create-a-router.md)
 except `default_router` from:
 
-Navigate to *Project -> Network -> Routers*.
+Navigate to _Project -> Network -> Routers_.
 
 First, delete all other Routers used to create private networks except `default_network`
 and `provider` then only you will be able to delete the Networks from:
 
-Navigate to *Project -> Network -> Networks*.
+Navigate to _Project -> Network -> Networks_.
 
 !!! warn "Unable to Delete Networks"
+
     First delete all instances and then delete all routers then only you will be
     able to delete the associated private networks.
 
 ## Release all Floating IPs
 
-Navigate to *Project -> Network -> Floating IPs*.
+Navigate to _Project -> Network -> Floating IPs_.
 
 ![Release all Floating IPs](images/release_floating_ips.png)
 
@@ -83,18 +85,20 @@ IP pool, please refer to [this documentation](../create-and-connect-to-the-VM/as
 First, delete all other security groups except `default` also make sure the `default`
 security group does not have any extra rules. To view all Security Groups:
 
-Navigate to *Project -> Network -> Security Groups*.
+Navigate to _Project -> Network -> Security Groups_.
 
 !!! warn "Unable to Delete Security Groups"
+
     First delete all instances and then only you will be able to delete the
     security groups. If a security group is attached to a VM, that security group
     will not be allowed to delete.
 
 ## Delete all of your stored Key Pairs
 
-Navigate to *Project -> Compute -> Key Pairs*.
+Navigate to _Project -> Compute -> Key Pairs_.
 
 !!! warn "Unable to Delete Key Pairs"
+
     First delete all instances that are using the selected Key Pairs then only you
     will be to delete them.
 
@@ -105,11 +109,12 @@ For instructions on deleting bucket(s) along with all objects, please refer to
 
 To delete snapshot(s), if that snapshot is not used for any running instance.
 
-Navigate to *Project -> Object Store -> Containers*.
+Navigate to _Project -> Object Store -> Containers_.
 
 ![Delete Containers](images/delete-containers.png)
 
 !!! warn "Unable to Delete Container with Objects inside"
+
     First delete all objects inside a Container first, then only you will be able
     to delete the container. Please make sure any critical objects data are already
     been remotely backed up before deleting them. You can also use openstack client
@@ -150,7 +155,7 @@ Wait until the requested resource allocation gets approved by the NERC's admin.
 After approval, kindly review and verify that the quotas are accurately
 reflected in your [resource allocation](https://coldfront.mss.mghpcc.org/allocation/)
 and [OpenStack project](https://stack.nerc.mghpcc.org/). Please ensure that the
-approved quota values are accurately displayed as [explained here](decommission-openstack-resources.md#review-your-openstack-dashboard).
+approved quota values are accurately displayed as [explained here](#review-your-projects-resource-quota-from-the-openstack-dashboard).
 
 ### Review your Block Storage(Volume/Cinder) Quota
 
@@ -201,6 +206,7 @@ details. The openstack limits show --absolute command offers a comprehensive
 view of critical resources and allows you to assess your current resource consumption.
 
 !!! danger "Very Important: Ensure No Resources that will be Billed are Used"
+
     Most importantly, ensure that there is no active usage for any of your
     currently allocated project resources.
 
@@ -232,7 +238,7 @@ After removing all OpenStack resources and updating the Storage Quotas to set th
 to zero (0), you can review and verify that these changes are reflected in your
 Horizon Dashboard Overview.
 
-Navigate to *Project -> Compute -> Overview*.
+Navigate to _Project -> Compute -> Overview_.
 
 ![Horizon Dashboard](images/horizon_dashboard.png)
 

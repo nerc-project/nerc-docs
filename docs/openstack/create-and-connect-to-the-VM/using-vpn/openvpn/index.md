@@ -51,34 +51,36 @@ Host openvpn
     ![SSH OpenVPN server](images/ssh_server.png)
 
 2. Also note that OpenVPN must be installed and run by a user who has
-**administrative/root** privileges. So, we need to run the command: `sudo su`
+   **administrative/root** privileges. So, we need to run the command: `sudo su`
 
 3. We are using [this repo](https://github.com/Nyr/openvpn-install) to install
-OpenVPN server on this ubuntu server.
+   OpenVPN server on this ubuntu server.
 
     For that, run the script and follow the assistant:
 
-      `wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh`
+    ```sh
+    wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
+    ```
 
-      ![Generating first client](images/generate_client_nerc.png)
+    ![Generating first client](images/generate_client_nerc.png)
 
-      You can press **Enter** for all default values. And, while entering a name
-      for the first client you can give "**nerc**" as the client name, this will
-      generate a new configuration file (.ovpn file) named as "**nerc.ovpn**".
-      Based on your client's name it will name the config file as
-      "**<your_client_name>.ovpn**"
+    You can press **Enter** for all default values. And, while entering a name
+    for the first client you can give "**nerc**" as the client name, this will
+    generate a new configuration file (.ovpn file) named as "**nerc.ovpn**".
+    Based on your client's name it will name the config file as
+    "**<your_client_name>.ovpn**"
 
-      ![Setup Client completed](images/setup_client_completed.png)
+    ![Setup Client completed](images/setup_client_completed.png)
 
 4. Copy the generated config file from "**/root/nerc.ovpn**" to "**/home/ubuntu/
-nerc.ovpn**" by running: `cp /root/nerc.ovpn .`
+   nerc.ovpn**" by running: `cp /root/nerc.ovpn .`
 
 5. Update the ownership of the config file to ubuntu user and ubuntu group by
-running the following command: `chown ubuntu:ubuntu nerc.ovpn`
+   running the following command: `chown ubuntu:ubuntu nerc.ovpn`
 
 6. You can exit from the root and ssh session all together and then copy the
-configuration file to your local machine by running the following script on
-your local machine's terminal: `scp openvpn:nerc.ovpn .`
+   configuration file to your local machine by running the following script on
+   your local machine's terminal: `scp openvpn:nerc.ovpn .`
 
 ## To add a new client user
 
@@ -87,7 +89,9 @@ even completely uninstall OpenVPN.
 
 For this, run the script and follow the assistant:
 
-`wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh`
+```sh
+wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
+```
 
 ![Second Client Generate](images/second_client_generate.png)
 
@@ -99,6 +103,7 @@ the new client.
 ---
 
 !!! note "Important Note"
+
     You need to contact your project administrator to get your own OpenVPN
     configuration file (file with .ovpn extension). Download it and Keep it in
     your local machine so in next steps we can use this configuration client

@@ -26,6 +26,7 @@ billing processes with us:
 2. [Boston University](billing-process-for-bu.md)
 
 !!! info "Upcoming MOU with other institutions"
+
     We are in the process of establishing MOUs for institutions not listed above.
 
 PIs from other institutions not listed above can still utilize NERC services with

@@ -28,46 +28,46 @@ Here's the diagram of a Kubernetes cluster with all the components tied together
 ## Kubernetes Basics workflow
 
 1. Create a Kubernetes cluster
-![Create a Kubernetes cluster](images/module_01.svg)
+   ![Create a Kubernetes cluster](images/module_01.svg)
 
 2. Deploy an app
-![Deploy an app](images/module_02.svg)
+   ![Deploy an app](images/module_02.svg)
 
 3. Explore your app
-![Explore your app](images/module_03.svg)
+   ![Explore your app](images/module_03.svg)
 
 4. Expose your app publicly
-![Expose your app publicly](images/module_04.svg)
+   ![Expose your app publicly](images/module_04.svg)
 
 5. Scale up your app
-![Scale up your app](images/module_05.svg)
+   ![Scale up your app](images/module_05.svg)
 
 6. Update your app
-![Update your app](images/module_06.svg)
+   ![Update your app](images/module_06.svg)
 
 ## Development environment
 
 1. [Minikube](https://minikube.sigs.k8s.io/docs/start/) is a local Kubernetes
-cluster that focuses on making Kubernetes development and learning simple.
-Kubernetes may be started with just a single command if you have a Docker
-(or similarly comparable) container or a Virtual Machine environment.
-For more [read this](minikube.md).
+   cluster that focuses on making Kubernetes development and learning simple.
+   Kubernetes may be started with just a single command if you have a Docker
+   (or similarly comparable) container or a Virtual Machine environment.
+   For more [read this](minikube.md).
 
 2. [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) is a tool for running
-local Kubernetes clusters utilizing Docker container "nodes". It was built for
-Kubernetes testing, but it may also be used for local development and continuous
-integration. For more [read this](kind.md).
+   local Kubernetes clusters utilizing Docker container "nodes". It was built for
+   Kubernetes testing, but it may also be used for local development and continuous
+   integration. For more [read this](kind.md).
 
 3. [MicroK8s](https://microk8s.io/) is the smallest, fastest, and most conformant
-Kubernetes that tracks upstream releases and simplifies clustering. MicroK8s is
-ideal for prototyping, testing, and offline development.
-For more [read this](microk8s.md).
+   Kubernetes that tracks upstream releases and simplifies clustering. MicroK8s
+   is ideal for prototyping, testing, and offline development.
+   For more [read this](microk8s.md).
 
 4. [K3s](https://k3s.io/) is a single <40MB binary, certified Kubernetes distribution
-developed by Rancher Labs and now a CNCF sandbox project that fully implements the
-Kubernetes API and is less than  40MB in size. To do so, they got rid of a lot of
-additional drivers that didn't need to be in the core and could easily be replaced
-with add-ons. For more [read this](k3s/k3s.md).
+   developed by Rancher Labs and now a CNCF sandbox project that fully implements
+   the Kubernetes API and is less than 40MB in size. To do so, they got rid of
+   a lot of additional drivers that didn't need to be in the core and could
+   easily be replaced with add-ons. For more [read this](k3s/k3s.md).
 
     To setup a Multi-master HA K3s cluster using k3sup(pronounced **ketchup**)
     [read this](k3s/k3s-using-k3sup.md).
@@ -77,9 +77,9 @@ with add-ons. For more [read this](k3s/k3s.md).
     [read this](k3s/k3s-ha-cluster-using-k3d.md).
 
 5. [k0s](https://k0sproject.io/) is an all-inclusive Kubernetes distribution,
-configured with all of the features needed to build a Kubernetes cluster simply
-by copying and running an executable file on each target host.
-For more [read this](k0s.md).
+   configured with all of the features needed to build a Kubernetes cluster simply
+   by copying and running an executable file on each target host.
+   For more [read this](k0s.md).
 
 ## Production environment
 
@@ -88,16 +88,17 @@ to be resilient and higly available(HA) production-ready Kubernetes cluster. To
 setup production-quality cluster, you can use the following deployment tools.
 
 1. [Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
-performs the actions necessary to get a minimum viable, secure cluster up and
-running in a user friendly way.
-Bootstrapping cluster with kubeadm [read this](kubeadm/single-master-clusters-with-kubeadm.md)
-and if you would like to setup Multi-master cluster setup using Kubeadm [read this](kubeadm/HA-clusters-with-kubeadm.md).
+   performs the actions necessary to get a minimum viable, secure cluster up and
+   running in a user friendly way.
+   Bootstrapping cluster with kubeadm [read this](kubeadm/single-master-clusters-with-kubeadm.md)
+   and if you would like to setup Multi-master cluster setup using Kubeadm
+   [read this](kubeadm/HA-clusters-with-kubeadm.md).
 
 2. [Kubespray](https://kubernetes.io/docs/setup/production-environment/tools/kubespray/)
-helps to install a Kubernetes cluster on NERC OpenStack. Kubespray is a
-composition of Ansible playbooks, inventory, provisioning tools, and domain
-knowledge for generic OS/Kubernetes clusters configuration management tasks.
-Installing Kubernetes with Kubespray [read this](kubespray.md).
+   helps to install a Kubernetes cluster on NERC OpenStack. Kubespray is a
+   composition of Ansible playbooks, inventory, provisioning tools, and domain
+   knowledge for generic OS/Kubernetes clusters configuration management tasks.
+   Installing Kubernetes with Kubespray [read this](kubespray.md).
 
 To choose a tool which best fits your use case, read [this comparison](comparisons.md).
 

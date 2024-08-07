@@ -3,10 +3,12 @@
 Only a **PI** can archive [their ColdFront project(s)](https://coldfront.mss.mghpcc.org/project/)
 by accessing [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 
-!!! danger "Important Note: "
+!!! danger "Important Note"
+
     If you archive a project then this will expire all your allocations on that
     project, which will disable your group's access to the resources in those
     allocations. Also, you cannot make any changes to archived projects.
+
     ![Alert Archiving a Project](images/archiving_project_alert.png)
 
 Once archived it is no longer visible on [your projects list](https://coldfront.mss.mghpcc.org/project/).

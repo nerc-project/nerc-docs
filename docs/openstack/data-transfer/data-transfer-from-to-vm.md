@@ -7,6 +7,7 @@ which can be your own (with access in project dropdown list) or external collabo
 with in NERC. For this you can follow [this guide](../persistent-storage/transfer-a-volume.md).
 
 !!! danger "Very Important Note"
+
     If you transfer the volume then that will be removed from the source and will
     only be available on destination project.
 
@@ -25,6 +26,7 @@ flexible REST/API for creating scripted tasks and operations, please visit
 [Globus.org](https://globus.org/).
 
 !!! info "Important Information"
+
     For large data sets and/or for access by external users, consider using Globus.
     An institutional endpoint/collection is not required to use Globus - you can
     set up a personal endpoint on your NERC VM and also on your local machine if
@@ -41,6 +43,7 @@ You can find instructions for downloading and installing the Globus Connect Pers
 on the [Globus web site](https://docs.globus.org/how-to/).
 
 !!! tip "Helpful Tip"
+
     You may get a "Permission Denied" error for certain paths with Globus Connect
     Personal. If you do, you may need to add this path to your list of allowed
     paths for Globus Connect Personal. You can do this by editing the
@@ -70,6 +73,7 @@ i.e. you can setup your local machine as another personal endpoint.
 ## Using SCP
 
 !!! warning "Important Information"
+
     SCP is suggested for smaller files (<~10GB), otherwise use [Globus](#using-globus).
     When you want to transfer many small files in a directory, we recommend Globus.
 
@@ -92,6 +96,7 @@ Below are some examples of the two most common scenarios of SCP to copy to and f
 various sources.
 
 !!! tip "Helpful Tip"
+
     We use '~' in the examples. The tilde '~' is a Unix short-hand that means
     "my home directory". So if user `almalinux` uses `~/` this is the same as typing
     out the full path to almalinux user's home directory (easier to remember than
@@ -134,6 +139,7 @@ For e.g.
     scp -i ~/.ssh/your_pem_key_file.pem ./myfile.zip almalinux@199.94.60.219:~/myfile.zip
 
 !!! info "Important Note"
+
     While it’s probably best to compress all the files you intend to transfer into
     one file, this is not always an option. To copy the contents of an entire directory,
     you can use the `-r` (for recursive) flag.
@@ -191,6 +197,7 @@ to the local copy:**
     rsync -avz --delete foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
 !!! danger "Be careful with this option!"
+
     The `--delete` option has no effect when making a new copy, and therefore can
     be used in the previous example too (making the commands identical), but since
     it recursively deletes files, it’s best to use it sparingly. If you want to
@@ -204,6 +211,7 @@ else has already updated it from a different source:**
     rsync -aAvz --update foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
 !!! info "Information"
+
     The `--update` option has no effect when making a new copy and can also be
     specified in that case. If you're updating a master copy (i.e. the
     `DESTINATION` may have files that are newer than the version(s) in `SOURCE`)
@@ -246,9 +254,9 @@ given NERC VM.
 
 To run the `rclone` commands, you need to have:
 
-- To run the `rclone` commands you will need to have `rclone` installed.
-See [Downloading and Installing the latest version of Rclone](https://rclone.org/downloads/)
-for more information.
+-   To run the `rclone` commands you will need to have `rclone` installed.
+    See [Downloading and Installing the latest version of Rclone](https://rclone.org/downloads/)
+    for more information.
 
 ### Configuring Rclone
 
@@ -260,6 +268,7 @@ If you run `rclone config file` you will see where the default location is for
 your current user.
 
 !!! note "Note"
+
     For **Windows** users, you may need to specify the full path to the Rclone
     executable file if it's not included in your system's `%PATH%` variable.
 
@@ -281,6 +290,7 @@ More about the config for **SFTP** can be [found here](https://rclone.org/sftp/)
 flag to override the config location, e.g. `rclone --config=FILE`
 
 !!! note "Interactive Configuration"
+
     Run `rclone config` to setup. See [Rclone config docs](https://rclone.org/docs/)
     for more details.
 
@@ -368,7 +378,7 @@ in advance):
 The `vfs-cache-mode` flag enables file caching. You can use either the `writes`
 or `full` option. For further explanation you can see the [official documentation](https://rclone.org/commands/rclone_mount/#file-caching).
 
-Now that your VM's filesystem is mounted locally,  you can list, create, and delete
+Now that your VM's filesystem is mounted locally, you can list, create, and delete
 files in it.
 
 #### Unmount NERC VM filesystem
@@ -386,70 +396,78 @@ using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
 **Prerequisites**:
 
-- WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
-for more information.
+-   WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
+    for more information.
 
-- Go to WinSCP menu and open "View > Preferences".
+-   Go to WinSCP menu and open "View > Preferences".
 
-- When the "Preferences" dialog window appears, select "Transfer" in the options
-on the left pane.
+-   When the "Preferences" dialog window appears, select "Transfer" in the options
+    on the left pane.
 
-- Click on the "Edit" button.
+-   Click on the "Edit" button.
 
-- Then, in the popup dialog box, review the "Common options" group and uncheck the
-"Preserve timestamp" option as shown below:
+-   Then, in the popup dialog box, review the "Common options" group and uncheck
+    the "Preserve timestamp" option as shown below:
 
 ![Disable Preserve TimeStamp](images/winscp-preferences-perserve-timestamp-disable.png)
 
 #### Configuring WinSCP
 
-- Click on the "New Tab" button as shown below:
+-   Click on the "New Tab" button as shown below:
 
 ![Login](images/winscp-new-tab.png)
 
-- Select either **"SFTP"** or **"SCP"** from the "File protocol" dropdown options
-as shown below:
+-   Select either **"SFTP"** or **"SCP"** from the "File protocol" dropdown options
+    as shown below:
 
 ![Choose SFTP or SCP File Protocol](images/choose_SFTP_or_SCP_protocol.png)
 
-- Provide the following required information:
+-   Provide the following required information:
 
-    **"File protocol"**: Choose either "**"SFTP"** or **"SCP"**"
+**"File protocol"**: Choose either "**"SFTP"** or **"SCP"**"
 
-    **"Host name"**: "`<Your Floating IP of VM>`"
+**"Host name"**: "`<Your Floating IP of VM>`"
 
-    **"Port number"**: "22"
+**"Port number"**: "22"
 
-    **"User name"**: "`<Default User name based on OS>`"
+**"User name"**: "`<Default User name based on OS>`"
 
-    !!! info "Default User name based on OS"
-        - **all Ubuntu images**: ubuntu
-        - **all AlmaLinux images**: almalinux
-        - **all Rocky Linux images**: rocky
-        - **all Fedora images**: fedora
-        - **all Debian images**: debian
-        - **all RHEL images**: cloud-user
+!!! info "Default User name based on OS"
 
-        If you still have VMs running with deleted **CentOS** images, you need to
-        use the following default username for your CentOS images: `centos`.
+      - **all Ubuntu images**: ubuntu
 
-    **"Password"**: "`<Leave blank as you using SSH key>`"
+      - **all AlmaLinux images**: almalinux
 
-- Change Authentication Options
+      - **all Rocky Linux images**: rocky
+
+      - **all Fedora images**: fedora
+
+      - **all Debian images**: debian
+
+      - **all RHEL images**: cloud-user
+
+      If you still have VMs running with deleted **CentOS** images, you need to
+      use the following default username for your CentOS images: `centos`.
+
+**"Password"**: "`<Leave blank as you using SSH key>`"
+
+-   Change Authentication Options
 
 Before saving, click the "Advanced" button.
 In the "Advanced Site Settings", under "SSH >> Authentication" settings, check
-"Allow agent forwarding" and select the private key file with `.ppk` extension from
-the file picker.
+"Allow agent forwarding" and select the private key file with `.ppk` extension
+from the file picker.
 
 ![Advanced Site Settings for SSH Authentication](images/winscp-ssh-auth.png)
 
 !!! tip "Helpful Tip"
-    You can save your above configured site with some preferred name by
-    clicking the "Save" button and then giving a proper name to your site.
-    This prevents needing to manually enter all of your configuration again the
-    next time you need to use WinSCP.
-    ![Save Site WinSCP](images/winscp-save-site.png)
+
+      You can save your above configured site with some preferred name by
+      clicking the "Save" button and then giving a proper name to your site.
+      This prevents needing to manually enter all of your configuration again the
+      next time you need to use WinSCP.
+
+      ![Save Site WinSCP](images/winscp-save-site.png)
 
 #### Using WinSCP
 
@@ -475,39 +493,45 @@ connections to servers, enterprise file sharing, and various cloud storage platf
 
 **Prerequisites**:
 
-- Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
-for more information.
+-   Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
+    for more information.
 
 #### Configuring Cyberduck
 
-- Click on the "Open Connection" button as shown below:
+-   Click on the "Open Connection" button as shown below:
 
 ![Open Connection](images/cyberduck-open-connection-new.png)
 
-- Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
+-   Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
 
 ![Choose Amazon S3](images/cyberduck-select-sftp-or-ftp.png)
 
-- Provide the following required information:
+-   Provide the following required information:
 
-    **"Server"**: "`<Your Floating IP of VM>`"
+**"Server"**: "`<Your Floating IP of VM>`"
 
-    **"Port"**: "22"
+**"Port"**: "22"
 
-    **"User name"**: "`<Default User name based on OS>`"
+**"User name"**: "`<Default User name based on OS>`"
 
-    !!! info "Default User name based on OS"
-        - **all Ubuntu images**: ubuntu
-        - **all AlmaLinux images**: almalinux
-        - **all Rocky Linux images**: rocky
-        - **all Fedora images**: fedora
-        - **all Debian images**: debian
-        - **all RHEL images**: cloud-user
+!!! info "Default User name based on OS"
 
-    **"Password"**: "`<Leave blank as you using SSH key>`"
+      - **all Ubuntu images**: ubuntu
 
-    **"SSH Private Key"**: "Choose the appropriate SSH Private Key from your local
-    machine that has the corresponding public key attached to your VM"
+      - **all AlmaLinux images**: almalinux
+
+      - **all Rocky Linux images**: rocky
+
+      - **all Fedora images**: fedora
+
+      - **all Debian images**: debian
+
+      - **all RHEL images**: cloud-user
+
+**"Password"**: "`<Leave blank as you using SSH key>`"
+
+**"SSH Private Key"**: "Choose the appropriate SSH Private Key from your local
+machine that has the corresponding public key attached to your VM"
 
 ![Cyberduck SFTP or FTP Configuration](images/cyberduck-open-connection-sftp.png)
 
@@ -531,47 +555,53 @@ computer (shared drives, Dropbox, etc.)
 
 **Prerequisites**:
 
-- Filezilla installed, see
-[Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation)
-for more information.
+-   Filezilla installed, see
+    [Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation)
+    for more information.
 
 #### Configuring Filezilla
 
-- Click on "Site Manager" icon as shown below:
+-   Click on "Site Manager" icon as shown below:
 
 ![Site Manager](images/filezilla-new-site.png)
 
-- Click on "New Site" as shown below:
+-   Click on "New Site" as shown below:
 
 ![Click New Site](images/filezilla-click-new-site.png)
 
-- Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
+-   Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
 
 ![Select Protocol](images/filezilla-sftp-or-ftp.png)
 
-- Provide the following required information:
+-   Provide the following required information:
 
-    **"Server"**: "`<Your Floating IP of VM>`"
+**"Server"**: "`<Your Floating IP of VM>`"
 
-    **"Port"**: "22"
+**"Port"**: "22"
 
-    **"Logon Type"**: "Key file" from the dropdown option
+**"Logon Type"**: "Key file" from the dropdown option
 
-    **"User"**: "`<Default User name based on OS>`"
+**"User"**: "`<Default User name based on OS>`"
 
-    !!! info "Default User name based on OS"
-        - **all Ubuntu images**: ubuntu
-        - **all AlmaLinux images**: almalinux
-        - **all Rocky Linux images**: rocky
-        - **all Fedora images**: fedora
-        - **all Debian images**: debian
-        - **all RHEL images**: cloud-user
+!!! info "Default User name based on OS"
 
-        If you still have VMs running with deleted **CentOS** images, you need to
-        use the following default username for your CentOS images: `centos`.
+      - **all Ubuntu images**: ubuntu
 
-    **"Key file"**: "Browse and choose the appropriate SSH Private Key from you
-    local machine that has corresponding Public Key attached to your VM"
+      - **all AlmaLinux images**: almalinux
+
+      - **all Rocky Linux images**: rocky
+
+      - **all Fedora images**: fedora
+
+      - **all Debian images**: debian
+
+      - **all RHEL images**: cloud-user
+
+      If you still have VMs running with deleted **CentOS** images, you need to
+      use the following default username for your CentOS images: `centos`.
+
+**"Key file"**: "Browse and choose the appropriate SSH Private Key from you
+local machine that has corresponding Public Key attached to your VM"
 
 ![Filezilla SFTP or FTP Configuration](images/filezilla-connect-config.png)
 

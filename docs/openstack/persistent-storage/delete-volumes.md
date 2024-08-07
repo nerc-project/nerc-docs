@@ -4,7 +4,7 @@
 
 Once you're logged in to NERC's Horizon dashboard.
 
-Navigate to *Project -> Volumes -> Volumes*.
+Navigate to _Project -> Volumes -> Volumes_.
 
 Select the volume or volumes that you want to delete.
 
@@ -14,6 +14,7 @@ In the Confirm Delete Volumes window, click the Delete Volumes button to
 confirm the action.
 
 !!! danger "Unable to Delete Volume"
+
     You cannot delete a **bootable** volume that is actively in use by a running
     VM. If you really want to delete such volume then first delete the insance and
     then you are allowed to delete the detached volume. Before deleting
@@ -29,8 +30,8 @@ confirm the action.
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To delete a volume using the CLI, do this:
 
@@ -38,17 +39,22 @@ To delete a volume using the CLI, do this:
 
 The following openstack client command syntax can be used to delete a volume:
 
-    openstack volume delete <VOLUME_NAME_OR_ID>
+```sh
+openstack volume delete <VOLUME_NAME_OR_ID>
+```
 
 For example:
 
-    openstack volume delete my-volume
+```sh
+openstack volume delete my-volume
+```
 
 !!! tip "Pro Tip"
+
     If your volume name `<VOLUME_NAME_OR_ID>` include spaces, you need to enclose
     them in quotes, i.e. `"<VOLUME_NAME_OR_ID>"`.
 
-    For example: `openstack volume delete "My Volume"`
+    For example: `openstack volume delete "My Volume"`.
 
 Your volume will now go into state 'deleting' and completely disappear from the
 `openstack volume list` output.

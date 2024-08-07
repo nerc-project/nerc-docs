@@ -4,9 +4,9 @@
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
-- Select the correct data science project and create workbench, see
-[Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project)
-for more information.
+-   Select the correct data science project and create workbench, see
+    [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+    for more information.
 
 Please ensure that you start your Jupyter notebook server with options as depicted
 in the following configuration screen. This screen provides you with the opportunity
@@ -19,7 +19,7 @@ select the **Standard Data Science** image, choose a **Deployment size** of **Sm
 **Number of GPUs** as **0** and allocate a **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
-When your workbench is ready, the status will change to *Running* and you can select
+When your workbench is ready, the status will change to _Running_ and you can select
 "Open" to go to your environment:
 
 ![Open JupyterLab Environment](images/open-standard-ds-workbench-jupyter-lab.png)
@@ -70,14 +70,14 @@ In the **Name** menu, double-click the `downloadData.ipynb` notebook in the file
 explorer on the left side to launch it. This action will open another tab in the
 content section of the environment, on the right.
 
-Run each cell in the notebook, using the *Shift-Enter* key combination, and pay
+Run each cell in the notebook, using the _Shift-Enter_ key combination, and pay
 attention to the execution results. Using this notebook, we will:
 
-- Make a connection to an AWS S3 storage bucket
+-   Make a connection to an AWS S3 storage bucket
 
-- Download a CSV file into the "datasets" folder
+-   Download a CSV file into the "datasets" folder
 
-- Rename the downloaded CSV file to "newtruckdata.csv"
+-   Rename the downloaded CSV file to "newtruckdata.csv"
 
 ### View your new CSV file
 
@@ -93,11 +93,11 @@ The file contains the data you will analyze and perform some analytics.
 Since you now have data, you can open the next Jupyter notebook, `simpleCalc.ipynb`,
 and perform the following operations:
 
-- Create a dataframe.
+-   Create a dataframe.
 
-- Perform simple total and average calculations.
+-   Perform simple total and average calculations.
 
-- Print the calculation results.
+-   Print the calculation results.
 
 ## Analyzing your S3 data access run results
 

@@ -25,7 +25,7 @@ local machine so in next steps we can use this configuration client profile file
     ![Windows Installer](images/windows_installer.png)
 
 3. Clicking "**Customize**" button we can see settings and features of OpenVPN
-GUI client.
+   GUI client.
 
     ![Installation Customization](images/installation_path_customization.png)
 
@@ -36,7 +36,7 @@ GUI client.
 5. Click "Close"button.
 
 6. For the newly installed OpenVPN GUI there will be no configuration profile
-for the client so it will show a pop up that alerts:
+   for the client so it will show a pop up that alerts:
 
     ![No Config Alert](images/no_config_alert.png)
 
@@ -46,7 +46,7 @@ After you've run the Windows installer, OpenVPN is ready for use and will
 associate itself with files having the **.ovpn** extension.
 
 1. You can use the previously downloaded .ovpn file from your Downloads folder
-to setup the connection profiles.
+   to setup the connection profiles.
 
     a. Either you can Right click on the OpenVPN configuration file (.ovpn) and
     select "**Start OpenVPN on this config file**":
@@ -65,9 +65,11 @@ to setup the connection profiles.
     c. **OR,** you can manually copy the config file to one of OpenVPN's
     configuration directories:
 
-        C:\Program Files\OpenVPN\config (global configs)
-        C:\Program Files\OpenVPN\config-auto (autostarted global configs)
-        %USERPROFILE%\OpenVPN\config (per-user configs)
+    ```sh
+    C:\Program Files\OpenVPN\config (global configs)
+    C:\Program Files\OpenVPN\config-auto (autostarted global configs)
+    %USERPROFILE%\OpenVPN\config (per-user configs)
+    ```
 
 ## Connect to a VPN server location
 

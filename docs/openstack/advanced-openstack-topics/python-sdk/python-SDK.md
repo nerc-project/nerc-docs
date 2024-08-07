@@ -7,7 +7,8 @@
 From the Python SDK page at Pypi:
 
 !!! cite "Definition"
-    openstacksdk is a client library for building applications to work with
+
+    Python SDK is a client library for building applications to work with
     OpenStack clouds. The project aims to provide a consistent and complete set of
     interactions with OpenStack's many services, along with complete documentation,
     examples, and tools.

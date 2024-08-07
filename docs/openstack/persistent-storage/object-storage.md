@@ -32,6 +32,7 @@ Click Create Container. Give your container a name.
 ![Create a Container](images/create-container.png)
 
 !!! note "Important Note"
+
     The container name needs to be unique, not just within your project but
     across all of our OpenStack installation. If you get **an error message**
     after trying to create the container, try giving it a more unique name.
@@ -75,6 +76,7 @@ Making a container public allows you to send your collaborators a URL that gives
 access to the container's contents.
 
 !!! tip "Hosting a static website using public Container"
+
     You can use public Container to host a static website. On a static website,
     individual webpages include static website content (HTML, CSS etc.). They
     might also contain client-side scripts (e.g. JavaScript).
@@ -87,6 +89,7 @@ Click on your container's name, then check the "Public Access" checkbox. Note th
 Click "Link" to see a list of object in the container. This is the URL of your container.
 
 !!! note "Important Note"
+
     Anyone who obtains the URL will be able to access the container, so this
     is not recommended as a way to share sensitive data with collaborators.
 
@@ -96,6 +99,7 @@ a separate container specifically for files that should be made public.
 To download the file `test-file` we would use the [following url](https://stack.nerc.mghpcc.org:13808/v1/AUTH_4c5bccef73c144679d44cbc96b42df4e/unique-container-test/test-file).
 
 !!! note "Very Important Information"
+
     Here `4c5bccef73c144679d44cbc96b42df4e` is specific **Tenant Id** or
     **Project Id**. You can get this value when you click on the public container's
     **Link** on a new browser tab.
@@ -131,8 +135,8 @@ This will deactivate the public URL of the container and then it will show "Disa
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 #### Some Object Storage management examples
 
@@ -182,6 +186,7 @@ by using:
 `openstack object save mycontainer my_test_file --file test_file.txt`
 
 !!! danger "Very Important"
+
     Please note that this will overwrite the file in the local directory.
 
 Finally you can delete the object with the following command
@@ -248,30 +253,31 @@ To check the space used by a specific container
 This is a python client for the Swift API. There's a [Python API](https://github.com/openstack/python-swiftclient)
 (the `swiftclient` module), and a command-line script (`swift`).
 
-- This example uses a `Python3` virtual environment, but you are free to choose
-any other method to create a local virtual environment like `Conda`.
+-   This example uses a `Python3` virtual environment, but you are free to choose
+    any other method to create a local virtual environment like `Conda`.
 
         python3 -m venv venv
 
-    !!! note "Choosing Correct Python Interpreter"
-        Make sure you are able to use `python` or `python3` or **`py -3`** (For
-        Windows Only) to create a directory named `venv` (or whatever name you
-        specified) in your current working directory.
+!!! note "Choosing Correct Python Interpreter"
 
-- Activate the virtual environment by running:
+      Make sure you are able to use `python` or `python3` or **`py -3`** (For
+      Windows Only) to create a directory named `venv` (or whatever name you
+      specified) in your current working directory.
 
-    **on Linux/Mac:** `source venv/bin/activate`
+-   Activate the virtual environment by running:
 
-    **on Windows:** `venv\Scripts\activate`
+**on Linux/Mac:** `source venv/bin/activate`
+
+**on Windows:** `venv\Scripts\activate`
 
 #### Install [Python Swift Client page at PyPi](https://pypi.org/project/python-swiftclient/)
 
-- Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
+-   Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
 
-    pip install python-swiftclient python-keystoneclient
+pip install python-swiftclient python-keystoneclient
 
-- Swift authenticates using a user, tenant, and key, which map to your OpenStack
-username, project,and password.
+-   Swift authenticates using a user, tenant, and key, which map to your OpenStack
+    username, project,and password.
 
 For this, you need to download the **"NERC's OpenStack RC File"** with the
 credentials for your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
@@ -322,7 +328,7 @@ Show objects inside your container:
 
     swift list <container_name>.
 
-  For example:
+For example:
 
     swift list unique-container-test
     README.md
@@ -403,6 +409,7 @@ Other helpful Swift commands:
                         bash_completion.
 
 !!! note "Helpful Tip"
+
     Type `swift -h` to learn more about using the swift commands. The client
     has a `--debug`flag, which can be useful if you are facing any issues.
 
@@ -418,12 +425,13 @@ to access object storage on your NERC project.
 
 To run the `s3` or `s3api` commands, you need to have:
 
-- AWS CLI installed, see [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-for more information.
+-   AWS CLI installed, see
+    [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+    for more information.
 
-- The NERC's Swift End Point URL: `https://stack.nerc.mghpcc.org:13808`
+-   The NERC's Swift End Point URL: `https://stack.nerc.mghpcc.org:13808`
 
-- Understand these Amazon S3 terms:
+!!! note "Understand these Amazon S3 terms"
 
     i. **Bucket** – A top-level Amazon S3 folder.
 
@@ -474,50 +482,52 @@ While clicking on "EC2 Credentials", this will download a file **zip file** incl
 
     openstack ec2 credentials create
 
-- Source the downloaded OpenStack RC File from *Projects > API Access* by using:
-`source *-openrc.sh` command. Sourcing the RC File will set the required environment
-variables.
+-   Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
+    `source *-openrc.sh` command. Sourcing the RC File will set the required environment
+    variables.
 
 Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
 `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (during the **"Configuring
 the AWS CLI"** step):
 
-        $> aws configure --profile "'${OS_PROJECT_NAME}'"
-        AWS Access Key ID [None]: <EC2_ACCESS_KEY>
-        AWS Secret Access Key [None]: <EC2_SECRET_KEY>
-        Default region name [None]:
-        Default output format [None]:
+      $> aws configure --profile "'${OS_PROJECT_NAME}'"
+      AWS Access Key ID [None]: <EC2_ACCESS_KEY>
+      AWS Secret Access Key [None]: <EC2_SECRET_KEY>
+      Default region name [None]:
+      Default output format [None]:
 
 This will create the configuration file for AWS cli in your home directory
 `~/.aws/config` with the EC2 profile based on your `${OS_PROJECT_NAME}` and
-`~/.aws/credentials` credentials with Access and Secret keys that you provided above.
+`~/.aws/credentials` credentials with Access and Secret keys that you provided
+above.
 
 The EC2 profile is stored here:
 
-        cat ~/.aws/config
+      cat ~/.aws/config
 
-        [profile ''"'"'${OS_PROJECT_NAME}'"'"'']
+      [profile ''"'"'${OS_PROJECT_NAME}'"'"'']
 
 Where as Credentials are store here:
 
-        cat ~/.aws/credentials
+      cat ~/.aws/credentials
 
-        ['${OS_PROJECT_NAME}']
-        aws_access_key_id = <EC2_ACCESS_KEY>
-        aws_secret_access_key = <EC2_SECRET_KEY>
+      ['${OS_PROJECT_NAME}']
+      aws_access_key_id = <EC2_ACCESS_KEY>
+      aws_secret_access_key = <EC2_SECRET_KEY>
 
 Then you can manually create the configuration file for AWS cli in your home
 directory `~/.aws/config` with the ec2 profile and credentials as shown below:
 
-    cat ~/.aws/config
+      cat ~/.aws/config
 
-    ['${OS_PROJECT_NAME}']
-    aws_access_key_id = <EC2_ACCESS_KEY>
-    aws_secret_access_key = <EC2_SECRET_KEY>
+      ['${OS_PROJECT_NAME}']
+      aws_access_key_id = <EC2_ACCESS_KEY>
+      aws_secret_access_key = <EC2_SECRET_KEY>
 
 !!! note "Information"
-    We need to have a profile that you use must have permissions to allow
-    the AWS operations can be performed.
+
+      We need to have a profile that you use must have permissions to allow
+      the AWS operations can be performed.
 
 #### Listing buckets using **aws-cli**
 
@@ -560,7 +570,7 @@ Output:
 
 #### Adding/ Copying files from one container to another container
 
-1. Single file copy using `cp` command:
+1.  Single file copy using `cp` command:
 
     The aws tool provides a `cp` command to move files to your `s3` bucket:
 
@@ -571,7 +581,7 @@ Output:
 
         upload: .\<Your-file> to s3://<your-bucket>/<Your-file>
 
-2. Whole directory copy using the `--recursive` flag
+2.  Whole directory copy using the `--recursive` flag:
 
         aws --profile "'${OS_PROJECT_NAME}'" --endpoint-url=https://stack.nerc.mghpcc.org:13808 \
             s3 cp <Your-directory> s3://<your-bucket>/ --recursive
@@ -596,6 +606,7 @@ Output:
     2022-04-04 16:25:50          <size> <fileN>
 
 !!! note "Other Useful Flags"
+
     Additionally, `aws cp` provides an `--exclude` flag to filter files not to be
     transferred, the syntax is: `--exclude "<regex>"`
 
@@ -617,8 +628,8 @@ the S3 protocol.
 
 **Prerequisites**:
 
-- S3cmd installed, see [Download and Install the latest version of the S3cmd](https://s3tools.org/download)
-for more information.
+-   S3cmd installed, see [Download and Install the latest version of the S3cmd](https://s3tools.org/download)
+    for more information.
 
 #### Configuring s3cmd
 
@@ -758,6 +769,7 @@ You can delete files from the bucket with the following `s3cmd` command
     ERROR: S3 error: 409 (BucketNotEmpty): The bucket you tried to delete is not empty
 
 !!! note "Important Information"
+
     The above command failed because of the bucket was not empty! You can remove
     all objects inside the bucket and then use the command again. Or, you can
     run the following command with `-r` or `--recursive` flag i.e.
@@ -773,8 +785,9 @@ NERC's containers.
 
 To run the `rclone` commands, you need to have:
 
-- `rclone` installed, see [Downloading and Installing the latest version of the Rclone](https://rclone.org/downloads/)
-for more information.
+-   `rclone` installed, see
+    [Downloading and Installing the latest version of the Rclone](https://rclone.org/downloads/)
+    for more information.
 
 #### Configuring Rclone
 
@@ -785,6 +798,7 @@ If you run `rclone config file` you will see where the default location is
 for you.
 
 !!! note "Note"
+
     For **Windows** users, you many need to specify the full path to the Rclone
     executable file, if its not included in your systems PATH variable.
 
@@ -808,13 +822,15 @@ Edit the config file's content on the path location described by
 More about the config for **AWS S3 compatible API** can be [seen here](https://rclone.org/s3/).
 
 !!! note "Important Information"
-    Mind that if set `env_auth = true` then it  will take variables from environment,
+
+    Mind that if set `env_auth = true` then it will take variables from environment,
     so you shouldn't insert it in this case.
 
 **OR,** You can locally copy this content to a new config file and then use this
 flag to override the config location, e.g. `rclone --config=FILE`
 
 !!! note "Interactive Configuration"
+
     Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
     for more details.
 
@@ -865,7 +881,7 @@ Another example, to copy (Download) the file "upload.me" from the
 
     rclone -P copy "nerc:<your-bucket>/upload.me" "./"
 
-Also, to **Sync** files into  to the `<your-bucket>` container - try with
+Also, to **Sync** files into to the `<your-bucket>` container - try with
 `--dry-run` first
 
     rclone --dry-run sync /path/to/files nerc:<your-bucket>
@@ -887,7 +903,8 @@ Then you can simply mount your object storage with:
 `rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
 
 !!! note "More about using Rclone"
-    You can read more about Rclone Mounting [here](mount-the-object-storage.md#3-using-rclone).
+
+    You can read more about Rclone Mounting [here](mount-the-object-storage.md#4-using-rclone).
 
 **Windows:**
 
@@ -1006,47 +1023,48 @@ using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
 
 **Prerequisites**:
 
-- WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
-for more information.
+-   WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
+    for more information.
 
-- Go to WinSCP menu and open "Options > Preferences".
+-   Go to WinSCP menu and open "Options > Preferences".
 
-- When the "Preferences" dialog window appears, select "Transfer" in the options
-on the left pane.
+-   When the "Preferences" dialog window appears, select "Transfer" in the options
+    on the left pane.
 
-- Click on "Edit" button.
+-   Click on "Edit" button.
 
-- Then, on shown popup dialog box review the "Common options" group, uncheck the
-"Preserve timestamp" option as shown below:
+-   Then, on shown popup dialog box review the "Common options" group, uncheck the
+    "Preserve timestamp" option as shown below:
 
 ![Disable Preserve TimeStamp](images/winscp-perserve-timestamp-disable.png)
 
 #### Configuring WinSCP
 
-- Click on "New Session" tab button as shown below:
+-   Click on "New Session" tab button as shown below:
 
 ![Login](images/winscp-new-session.png)
 
-- Select **"Amazon S3"** from the "File protocol" dropdown options as shown below:
+-   Select **"Amazon S3"** from the "File protocol" dropdown options as shown below:
 
 ![Choose Amazon S3 File Protocol](images/choose_S3_protocol.png)
 
-- Provide the following required endpoint information:
+-   Provide the following required endpoint information:
 
-    **"Host name"**: "stack.nerc.mghpcc.org"
+**"Host name"**: "stack.nerc.mghpcc.org"
 
-    **"Port number"**: "13808"
+**"Port number"**: "13808"
 
-    The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
-    file can then be plugged into **"Access key ID"** and **"Secret access key"**
-    respectively.
+The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
+file can then be plugged into **"Access key ID"** and **"Secret access key"**
+respectively.
 
 ![Config WinSCP](images/config_winscp.png)
 
 !!! note "Helpful Tips"
-    You can save your above configured session with some preferred name by
-    clicking the "Save" button and then giving a proper name to your session.
-    So that next time you don't need to again manually enter all your configuration.
+
+      You can save your above configured session with some preferred name by
+      clicking the "Save" button and then giving a proper name to your session.
+      So that next time you don't need to again manually enter all your configuration.
 
 #### Using WinSCP
 
@@ -1070,28 +1088,28 @@ servers, enterprise file sharing, and cloud storage.
 
 **Prerequisites**:
 
-- Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
-for more information.
+-   Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
+    for more information.
 
 #### Configuring Cyberduck
 
-- Click on "Open Connection" tab button as shown below:
+-   Click on "Open Connection" tab button as shown below:
 
 ![Open Connection](images/cyberduck-open-connection.png)
 
-- Select **"Amazon S3"** from the dropdown options as shown below:
+-   Select **"Amazon S3"** from the dropdown options as shown below:
 
 ![Choose Amazon S3](images/cyberduck-select-Amazon-s3.png)
 
-- Provide the following required endpoint information:
+-   Provide the following required endpoint information:
 
-    **"Server"**: "stack.nerc.mghpcc.org"
+**"Server"**: "stack.nerc.mghpcc.org"
 
-    **"Port"**: "13808"
+**"Port"**: "13808"
 
-    The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
-    file can then be plugged into **"Access key ID"** and **"Secret Access Key"**
-    respectively
+The `EC2_ACCESS_KEY` and `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh`
+file can then be plugged into **"Access key ID"** and **"Secret Access Key"**
+respectively
 
 ![Cyberduck Amazon S3 Configuration](images/cyberduck-s3-configuration.png)
 

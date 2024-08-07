@@ -7,11 +7,12 @@ Windows virtual machine, similar steps can be used on other types of virtual
 machines. The following steps show how to create a virtual machine which boots
 from an external volume:
 
-- Create a volume with source data from the image
+-   Create a volume with source data from the image
 
-- Launch a VM with that volume as the system disk
+-   Launch a VM with that volume as the system disk
 
 !!! note "Recommendations"
+
     - The recommended method to create a Windows desktop virtual machine is `boot
     from volume`, although you can also launch a Windows-based instance following
     the normal process using `boot from image` as [described here](launch-a-VM.md).
@@ -32,7 +33,7 @@ your project as shown below:
 
 ![MS-Windows-2022 OpenStack Image](images/stack_images_windows.png)
 
-Create a **Volume** using that *Windows Image*:
+Create a **Volume** using that _Windows Image_:
 
 ![MS-Winodws-2022 Image to Volume Create](images/stack_image_to_volume.png)
 
@@ -47,9 +48,9 @@ for the size of the volume as shown below:
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see
-[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   OpenStack CLI setup, see
+    [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To create a volume from image using the CLI, do this:
 
@@ -117,6 +118,7 @@ as shown below:
 ![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
 !!! warn "How do you make your VM setup and data persistent?"
+
     Only one instance at a time can be booted from a given volume. Make sure
     **"Delete Volume on Instance Delete"** is selected as **No** if you want the
     volume to persist even after the instance is terminated, which is the
@@ -133,6 +135,7 @@ shown below:
 ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
 
 !!! danger "Very Important: Setting Administrator Credentials to Log into Your VM."
+
     To access this Windows VM, you must log in using Remote Desktop, as
     [described here](#how-to-add-remote-desktop-login-to-your-windows-instance).
     To configure a password for the "Administrator" user account, proceed to the
@@ -140,12 +143,15 @@ shown below:
     Make sure to substitute `<Your_Own_Admin_Password>` with your preferred password,
     which will enable Remote Desktop login to the Windows VM.
 
-        #ps1
+    ```sh
+    #ps1
 
-        net user Administrator <Your_Own_Admin_Password>
+    net user Administrator <Your_Own_Admin_Password>
+    ```
 
     Please ensure that your script in the "Configuration" section resembles the
     following syntax:
+
     ![Setting Administrator Password Custom Script](images/set_windows_administrator_password.png)
 
 After some time the instance will be Active in Running state as shown below:
@@ -162,9 +168,9 @@ Attach a Floating IP to your instance:
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see
-[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   OpenStack CLI setup, see
+    [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To launch an instance from existing bootable volume using the CLI, do this:
 
@@ -181,6 +187,7 @@ launching the VM using the OpenStack CLI, we'll prepare a PowerShell-based Custo
 Script as "user-data".
 
 !!! info "What is a user data file?"
+
     A user data file is a text file that you can include when running the
     `openstack server create` command. This file is used to customize your
     instance during boot.
@@ -225,8 +232,9 @@ To list all Floating IP addresses that are allocated to the current project, run
     +--------------------------------------+---------------------+------------------+------+
 
 !!! note "More About Floating IP"
+
     If the above command returns an empty list, meaning you don't have any
-    available floating IPs, please refer to [this documentation](assign-a-floating-IP.md#release-a-floating-ip#allocate-a-floating-ip)
+    available floating IPs, please refer to [this documentation](assign-a-floating-IP.md#allocate-a-floating-ip)
     on how to allocate a new Floating IP to your project.
 
 Attach a Floating IP to your instance:
@@ -262,6 +270,7 @@ should work with the Floating IP associated with the instance:
 ![Prompted Administrator Login](images/prompted_administrator_login.png)
 
 !!! warning "What is the user login for Windows Server 2022?"
+
     The default username is "Administrator," and the password is the one you set
     using the user data PowerShell script during the launch.
 
@@ -270,9 +279,11 @@ should work with the Floating IP associated with the instance:
 ![Successfully Remote Connected Instance](images/remote_connected_instance.png)
 
 !!! info "Storage and Volume"
+
     - System disks are the first disk based on the flavor disk space and are
     generally used to store the operating system created from an image when the
     virtual machine is booted.
+
     - [Volumes](../persistent-storage/volumes.md) are
     persistent virtualized block devices independent of any particular instance.
     Volumes may be attached to a single instance at a time, but may be detached
@@ -284,7 +295,7 @@ should work with the Floating IP associated with the instance:
 
 To attach additional disk to a running Windows machine you can follow
 [this documentation](../persistent-storage/volumes.md).
-[**This guide**](../persistent-storage/volumes.md#for-windows-virtual-machine)
+[**This guide**](../persistent-storage/format-and-mount-the-volume.md#for-windows-virtual-machine)
 provides instructions on formatting and mounting a volume as an attached disk
 within a Windows virtual machine.
 

@@ -13,10 +13,10 @@ To delete an application and all of its associated components using the
 2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
 
 3. Click the application you want to delete to see the side panel with
-the resource details of the application.
+   the resource details of the application.
 
 4. Click the **Actions** drop-down menu displayed on the upper right of the panel,
-and select **Delete Application** to see a confirmation dialog box as shown below:
+   and select **Delete Application** to see a confirmation dialog box as shown below:
 
     ![Delete an application using Actions](images/delete-application-using-actions.png)
 
@@ -34,6 +34,7 @@ Alternatively, you can delete the resource objects by using the
 CLI tool installed and configured on your local machine following [these steps](../logging-in/setup-the-openshift-cli.md#first-time-usage).
 
 !!! info "How to select resource object?"
+
     You can delete a single resource object by name, or delete a set of resource
     objects by specifying a label selector.
 
@@ -60,6 +61,7 @@ application, then run `oc delete`.
 `oc delete all --selector app=<application-name>`
 
 !!! note "Important Note"
+
     Selector all matches on a subset of all resource object types that exist.
     It targets the core resource objects that would be created for a build and deployment.
     It will not include resource objects such as **persistent volume claims (pvc)**,
@@ -85,6 +87,7 @@ applied to it. For example:
     ...
 
 !!! note "Important Note"
+
     It is important to check what labels have been used with your application if
     you have created it using a template, as templates may not follow the convention
     of using the `app` label.

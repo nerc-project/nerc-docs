@@ -14,6 +14,7 @@ Clicking on the "Add a project" button will show the interface below:
 ![Add A Project](images/coldfront-add-a-project.png)
 
 !!! danger "Very Important: Project Title Length Limitation"
+
     Please ensure that the project title is both concise and does not exceed a
     length of **63 characters**.
 

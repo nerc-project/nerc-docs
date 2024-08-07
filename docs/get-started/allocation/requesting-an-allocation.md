@@ -5,12 +5,13 @@ by clicking the "Request Resource Allocation" button as shown below:
 
 ![Requesting an Allocation](images/new_resource_allocation.png)
 
-On the shown page, you will be able to choose either *OpenStack Resource Allocation*
-or *OpenShift Resource Allocation* by specifying either **NERC (OpenStack)** or
+On the shown page, you will be able to choose either _OpenStack Resource Allocation_
+or _OpenShift Resource Allocation_ by specifying either **NERC (OpenStack)** or
 **NERC-OCP (OpenShift)** in the **Resource** dropdown option. **Note:** The
 first option i.e. **NERC (OpenStack)**, is selected by default.
 
 !!! info "Default GPU Resource Quota for Initial Allocation Requests"
+
     By default, the GPU resource quota is set to 0 for the initial resource
     allocation request for both OpenStack and OpenShift Resource Types. However,
     you will be able to [change request](allocation-change-request.md) and adjust
@@ -34,10 +35,12 @@ In this section, the project PI/manager(s) can choose user(s) from the project
 to be included in this allocation before clicking the "Submit" button.
 
 !!! tip "Read the End User License Agreement Before Submission"
+
     You should read the shown End User License Agreement (the "Agreement").
     By clicking the "Submit" button, you agree to the Terms and Conditions.
 
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
+
     Ensure you choose **NERC (OpenStack)** in the Resource option and specify your
     anticipated computing units. Each allocation, whether requested or approved,
     will be billed based on the **pay-as-you-go** model. The exception is for
@@ -61,17 +64,18 @@ resource quota. The basic unit of computational resources is defined in terms of
 integer value that corresponds to multiple OpenStack resource quotas. For example,
 1 Unit corresponds to:
 
-| Resource Name         | Quota Amount x Unit                   |
-| :-------------------: | :-----------------------------------: |
-| `Instances`           | 1                                     |
-| `vCPUs`               | 1                                     |
-| `GPU`                 | 0                                     |
-| `RAM(MiB)`            | 4096                                  |
-| `Volumes`             | 2                                     |
-| `Volume Storage(GiB)` | 20                                    |
-| `Object Storage(GiB)`  | 1                                     |
+|     Resource Name     | Quota Amount x Unit |
+| :-------------------: | :-----------------: |
+|      `Instances`      |          1          |
+|        `vCPUs`        |          1          |
+|         `GPU`         |          0          |
+|      `RAM(MiB)`       |        4096         |
+|       `Volumes`       |          2          |
+| `Volume Storage(GiB)` |         20          |
+| `Object Storage(GiB)` |          1          |
 
 !!! info "Information"
+
     By default, **2 OpenStack Floating IPs**, **10 Volume Snapshots** and **10 Security
     Groups** are provided to each approved project regardless of units of requested
     quota units.
@@ -90,6 +94,7 @@ In this section, the project PI/manager(s) can choose user(s) from the project
 to be included in this allocation before clicking the "Submit" button.
 
 !!! tip "Read the End User License Agreement Before Submission"
+
     You should read the shown End User License Agreement (the "Agreement").
     By clicking the "Submit" button, you agree to the Terms and Conditions.
 
@@ -102,16 +107,17 @@ resource quota. The basic unit of computational resources is defined in terms of
 integer value that corresponds to multiple OpenShift resource quotas. For example,
 1 Unit corresponds to:
 
-| Resource Name         | Quota Amount x Unit                   |
-| :-------------------: | :-----------------------------------: |
-| `vCPUs`               | 1                                     |
-| `GPU`                 | 0                                     |
-| `RAM(MiB)`            | 4096                                  |
-| `Persistent Volume Claims (PVC)` | 2                          |
-| `Storage(GiB)`        | 20                                    |
-| `Ephemeral Storage(GiB)` | 5                                  |
+|          Resource Name           | Quota Amount x Unit |
+| :------------------------------: | :-----------------: |
+|             `vCPUs`              |          1          |
+|              `GPU`               |          0          |
+|            `RAM(MiB)`            |        4096         |
+| `Persistent Volume Claims (PVC)` |          2          |
+|          `Storage(GiB)`          |         20          |
+|     `Ephemeral Storage(GiB)`     |          5          |
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
+
     Ensure you choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
     the first option, i.e. **NERC (OpenStack)** is selected by default!) and specify
     your anticipated computing units. Each allocation, whether requested or approved,

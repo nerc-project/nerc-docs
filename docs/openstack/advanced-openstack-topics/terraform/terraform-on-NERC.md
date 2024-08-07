@@ -4,7 +4,7 @@
 is an open-source Infrastructure as Code (IaC) software tool that works
 with NERC and allows you to orchestrate, provision, and manage infrastructure
 resources quickly and easily. Terraform codifies cloud application programming
-interfaces (APIs) into human-readable, declarative configuration (***.tf**) files.
+interfaces (APIs) into human-readable, declarative configuration (**\*.tf**) files.
 These files are used to manage underlying infrastructure rather than through
 [NERC's web-based graphical interface - Horizon](https://stack.nerc.mghpcc.org).
 Terraform allows you to build, change, and manage your infrastructure in a safe,
@@ -29,6 +29,7 @@ and run our base template for terraform to provision some basic NERC's OpenStack
 resources using this [terraform-nerc repo](https://github.com/nerc-project/terraform-nerc.git).
 
 !!! info "Note"
+
     The `main` branch of this git repo should be a good starting point in developing
     your own terraform code.
 
@@ -40,6 +41,7 @@ and can run this template locally using terraform to provision
 OpenStack resources using this [terraform-nerc-r-shiny repo](https://github.com/nerc-project/terraform-nerc-r-shiny.git).
 
 !!! tip "Important Note"
+
     Please make sure to review bash script file i.e. `install-R-Shiny.sh` located
     in this repo that is pointing as `user-data-path` variable in `example.tfvars`.
     This repo includes the script required to setup Shiny R server. You can use
@@ -64,10 +66,12 @@ declare the elements of your infrastructure that you want to create.
 
 The format of the **resource** definition is straightforward and looks like this:
 
-    resource type_of_resource "resource name" {
-        attribute = "attribue value"
-        ...
-    }
+```sh
+resource type_of_resource "resource name" {
+    attribute = "attribue value"
+    ...
+}
+```
 
 iii. Initialize - Install the plugins Terraform needs to manage the infrastructure.
 
@@ -84,13 +88,13 @@ The Terraform deployment workflow on the NERC looks like this:
 ### Prerequisite
 
 1. You can download the **"NERC's OpenStack RC File"** with the credentials for
-your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
-Then you need to source that RC file using: `source *-openrc.sh`. You can
-[read here](https://github.com/nerc-project/terraform-nerc#how-to-get-credential-to-connect-nercs-openstack)
-on how to do this.
+   your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
+   Then you need to source that RC file using: `source *-openrc.sh`. You can
+   [read here](https://github.com/nerc-project/terraform-nerc#how-to-get-credential-to-connect-nercs-openstack)
+   on how to do this.
 
 2. Setup SSH key pairs running `ssh-keygen -t rsa -f username-keypair` and then
-make sure the newly generated SSH key pairs exist on your `~/.ssh` folder.
+   make sure the newly generated SSH key pairs exist on your `~/.ssh` folder.
 
 ### Terraform Init
 
@@ -99,6 +103,7 @@ or cloning an existing one is `terraform init`. This command is used to initiali
 a working directory containing Terraform configuration files and install the plugins.
 
 !!! info "Information"
+
     You will need to run `terraform init` if you make any changes to providers.
 
 ### Terraform Plan
@@ -134,20 +139,22 @@ configuration changes at once.
 
 ## Some useful Terraform commands
 
-    terraform init
+```sh
+terraform init
 
-    terraform fmt
+terraform fmt
 
-    terraform validate
+terraform validate
 
-    terraform plan
+terraform plan
 
-    terraform apply
+terraform apply
 
-    terraform show
+terraform show
 
-    terraform destroy
+terraform destroy
 
-    terraform output
+terraform output
+```
 
 ---

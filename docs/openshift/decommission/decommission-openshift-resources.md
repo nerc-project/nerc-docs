@@ -5,16 +5,16 @@ below.
 
 ## Prerequisite
 
-- **Backup**: Back up any critical data or configurations stored on the resources
-that going to be decommissioned. This ensures that important information is not
-lost during the process.
+-   **Backup**: Back up any critical data or configurations stored on the resources
+    that going to be decommissioned. This ensures that important information is not
+    lost during the process.
 
-- **Kubernetes Objects (Resources)**: Please review all OpenShift Kubernetes Objects
-(Resources) to ensure they are not actively used and ready to be decommissioned.
+-   **Kubernetes Objects (Resources)**: Please review all OpenShift Kubernetes Objects
+    (Resources) to ensure they are not actively used and ready to be decommissioned.
 
-- Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
-OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
-for more information.
+-   Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
+    OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
+    for more information.
 
 ## Delete all Data Science Project resources from the NERC's Red Hat OpenShift AI
 
@@ -92,6 +92,7 @@ server" button as shown below:
 ![Delete Model Server Confirmation](images/delete-model-server-rhoai-confirmation.png)
 
 !!! note "Important Note"
+
     Deleting Model Server will automatically delete **ALL** Models deployed on the
     model server.
 
@@ -168,6 +169,7 @@ Please review all resources currently being used by your project by running
     ...
 
 !!! tip "To list all Resources with their Names only."
+
     To list all resources with their names only, you can run this command:
     `oc get all -oname`.
 
@@ -180,6 +182,7 @@ parameters after `--all` within your selected project (namespace).
     oc delete pod,deployment,pvc,route,service,build,buildconfig,statefulset,replicaset,cronjob,imagestream,revision,configuration,notebook --all
 
 !!! danger "Danger"
+
     The `oc delete` operation will cause all resources specfied will be deleted.
     This command can be very powerful and should be used with caution as it will
     delete all resources in the specified project.
@@ -198,6 +201,7 @@ Please check all the resources currently being used by your project by running
     service/modelmesh-serving   ClusterIP   None         <none>        8033/TCP,8008/TCP,8443/TCP,2112/TCP   7m4s
 
 !!! warning "Important Note"
+
     The last remaining service, i.e., `service/modelmesh-serving`, shown when running
     the `oc get all` command, is a **REQUIRED** resource, and so you don't need
     to clean it up.
@@ -226,6 +230,7 @@ you can filter the allocation of your interest and then proceed to request a
 [change request](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
 
 !!! danger "Very Important Note"
+
     Although other allocated resources i.e. CPU, RAM, GPU, etc. operate on a
     **pay-as-you-go** model, wherein charges are incurred solely based on usage,
     **Expired** allocations will remain accessible to the users assigned under the
@@ -246,7 +251,7 @@ Wait until the requested resource allocation gets approved by the NERC's admin.
 After approval, kindly review and verify that the quotas are accurately
 reflected in your [resource allocation](https://coldfront.mss.mghpcc.org/allocation/)
 and [OpenShift project](https://console.apps.shift.nerc.mghpcc.org). Please ensure
-that the approved quota values are accurately displayed as [explained here](decommission-openshift-resources.md#review-your-projects-resource-quota-from-openshift-web-dashboard).
+that the approved quota values are accurately displayed as [explained here](#review-your-projects-resource-quota-from-the-openshift-web-console).
 
 ### Review your Project Usage
 
@@ -260,6 +265,7 @@ note the name of the resource quota in the output of this command, i.e., `<your_
     <your_openshift_project_resource_quota_name>   105s   persistentvolumeclaims: 0/0, requests.nvidia.com/gpu: 0/0, requests.storage: 0/0   limits.cpu: 0/0, limits.ephemeral-storage: 0/0, limits.memory: 0/0
 
 !!! danger "Very Important: Ensure No Resources that will be Billed are Used"
+
     Most importantly, ensure that there is no active usage for any of your
     currently allocated project resources.
 
@@ -283,6 +289,7 @@ having a value of zero (0) as shown below:
     requests.storage          0     0
 
 !!! warning "Important Information"
+
     Make sure to replace `<your_openshift_project_resource_quota_name>` with the
     actual name you find in the output, which is typically in this format: `<your_openshift_project_to_decommission>-project`.
 
@@ -299,7 +306,7 @@ to view your Project's Resource Quota as shown below:
 
 ![Perspective Switcher](images/perspective-switcher.png)
 
-On the left sidebar, navigate to *Administration -> ResourceQuotas*.
+On the left sidebar, navigate to _Administration -> ResourceQuotas_.
 
 Click on your appropriate project name, i.e., `<your_openshift_project_to_decommission>`,
 to view the Resource Quota details.
@@ -307,6 +314,7 @@ to view the Resource Quota details.
 ![Resource Quota Details](images/resource_quota_details.png)
 
 !!! tip "Very Important Note"
+
     It should also indicate that all resources have **NO** usage, i.e., zero (0),
     and also NO maximum set, i.e., zero (0), as shown below:
 

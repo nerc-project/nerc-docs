@@ -8,6 +8,7 @@ users can be added to the resource allocation during a new allocation request or
 at a later time.
 
 !!! question "Principal Investigator Eligibility Information"
+
     - MGHPCC consortium members, whereby they enter into an service agreement with
     MGHPCC for the NERC services.
 
@@ -60,6 +61,7 @@ with fetched information to complete the account creation process.
 ![User Account Review Before Creation Page](images/user-account-review-page.png)
 
 !!! warning "Very Important"
+
     If you don't click the "Create MGHPCC-SS Account" button, your account will
     not be created! So, this is a very important step. Review your information
     carefully and then click on the "Create MGHPCC-SS Account" button to save
@@ -88,6 +90,7 @@ by viewing the following page:
 ![Successful Account Validation Page](images/successful-account-validation.png)
 
 !!! question "Important Note"
+
     If you have an institutional identity, it's preferable to use that identity
     to create your MGHPCC-SS account. Institutional identities are vetted by identity
     management teams and provide a higher level of confidence to resource owners
@@ -106,14 +109,14 @@ by viewing the following page:
     ![MGHPCC-SS Account Update](images/account_update.png)
 
 3. Review your currently saved account information, make any necessary corrections
-or updates to fields, and then click on the "Update MGHPCC-SS Account" button.
+   or updates to fields, and then click on the "Update MGHPCC-SS Account" button.
 
 4. This will send an email to verify your updated account information, so please
-check your email address.
+   check your email address.
 
 5. Confirm and validate the new account details by clicking the provided validation
-web link and entering the unique **Confirmation Code** provided in the email as
-shown below:
+   web link and entering the unique **Confirmation Code** provided in the email
+   as shown below:
 
     ![MGHPCC-SS Account Update Validation](images/account_update_confirmation.png)
 
@@ -131,6 +134,7 @@ as shown in the image below:
 ![the NERC's Support Ticketing System PI Ticket](images/osticket-pi-request.png)
 
 !!! info "Information"
+
     Once your PI user request is reviewed and approved by the NERC's admin, you
     will receive an email confirmation from NERC's support system, i.e.,
     [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20MOU%20Question).

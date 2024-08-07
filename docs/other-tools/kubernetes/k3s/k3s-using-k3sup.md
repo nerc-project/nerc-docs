@@ -3,8 +3,8 @@
 k3sup (pronounced **ketchup**) is a popular open source tool to install K3s over
 SSH.
 
-- Bootstrap the cluster
-![k3sup Setup](../images/k3sup.jpg)
+-   Bootstrap the cluster
+    ![k3sup Setup](../images/k3sup.jpg)
 
 The two most important commands in k3sup are:
 
@@ -22,7 +22,7 @@ sudo install k3sup /usr/bin/
 k3sup --help
 ```
 
-- **Other options** for `install`:
+-   **Other options** for `install`:
 
     `--cluster` - start this server in clustering mode using embedded etcd (embedded
     HA)
@@ -61,7 +61,7 @@ k3sup --help
 
     See even more install options by running `k3sup install --help`.
 
-- On *Master* Node:
+-   On _Master_ Node:
 
     ```sh
     export SERVER_IP=<Master-Internal-IP>
@@ -70,8 +70,9 @@ k3sup --help
     k3sup install --ip $SERVER_IP --user $USER
     ```
 
-- On *Agent* Node:
-Next join one or more `agents` to the cluster:
+-   On _Agent_ Node:
+
+    Next join one or more `agents` to the cluster:
 
     ```sh
     export AGENT_IP=<Agent-Internal-IP>
@@ -132,7 +133,7 @@ k3sup join --user root --server-ip $LB_IP --ip $AGENT2 \
 There will be a kubeconfig file created in the current working directory with the
 IP address of the LoadBalancer set for kubectl to use.
 
-- Check the nodes have joined:
+-   Check the nodes have joined:
 
     ```sh
     export KUBECONFIG=`pwd`/kubeconfig

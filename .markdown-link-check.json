@@ -1,19 +1,19 @@
 {
-  "aliveStatusCodes": [200, 206, 403],
-  "ignorePatterns": [
-    {
-      "pattern": "^https://www\\.autosar\\.org/*"
-    },
-    {
-      "pattern": "^http://localhost"
-    },
-    {
-      "pattern": "^http://127\\.0\\.0\\.1"
-    },
-    {
-      "pattern": "^https://github.com/.*/discussions/new"
-    }
-  ],
-  "retryOn429": true,
-  "retryCount": 10
+    "aliveStatusCodes": [200, 206, 403],
+    "ignorePatterns": [
+        {
+            "pattern": "^https://www\\.autosar\\.org/*"
+        },
+        {
+            "pattern": "^http://localhost"
+        },
+        {
+            "pattern": "^http://127\\.0\\.0\\.1"
+        },
+        {
+            "pattern": "^https://github.com/.*/discussions/new"
+        }
+    ],
+    "retryOn429": true,
+    "retryCount": 10
 }

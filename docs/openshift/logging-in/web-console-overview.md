@@ -3,7 +3,7 @@
 The NERC's OpenShift Container Platform (OCP) has a web-based console that can be
 used to perform common management tasks such as building and deploying applications.
 
- You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
+You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
 
 The web console provides tools to access and manage your application code and data.
 
@@ -13,28 +13,28 @@ sections of the NERC's OpenShift Web Console:
 ![NERC's OpenShift Web Console Screenshot](images/nerc_openshift_web_console.png)
 
 1. Perspective Switcher - Drop-down to select a different perspective. The available
-perspectives are a **Developer view** and an **Administrator view**.
+   perspectives are a **Developer view** and an **Administrator view**.
 
 2. Project List - Drop-down to select a different project. Based on user's active
-and approved resource allocations this projects list will be updated.
+   and approved resource allocations this projects list will be updated.
 
 3. Navigation Menu - Menu options to access different tools and settings for a project.
-The list will change depending on which Perspective view you are in.
+   The list will change depending on which Perspective view you are in.
 
 4. User Preferences - Shown the option to get and copy the OpenShift Command Line
-*oc login command* and set your individual console preferences including default
-views, language, import settings, and more.
+   _oc login command_ and set your individual console preferences including default
+   views, language, import settings, and more.
 
 5. View Switcher - This three dot menu is used to switch between **List View**
-and **Graph view** of all your applications.
+   and **Graph view** of all your applications.
 
 6. Main Panel - Displays basic application information. Clicking on the application
-names in the main panel expands the Details Panel (7).
+   names in the main panel expands the Details Panel (7).
 
 7. Details Panel - Displays additional information about the application selected
-from the Main Panel. This includes detailed information about the running application,
-applications builds, routes, and more. Tabs at the top of this panel will change
-the view to show additional information such as Details and Resources.
+   from the Main Panel. This includes detailed information about the running application,
+   applications builds, routes, and more. Tabs at the top of this panel will change
+   the view to show additional information such as Details and Resources.
 
 ---
 
@@ -55,9 +55,10 @@ all of which help you to simplify planning and troubleshooting tasks. Both proje
 administrators and cluster administrators can view the Administrator perspective.
 
 !!! note "Important Note"
-    The default web console perspective that is shown depends on the role of the
-    user. The **Administrator** perspective is displayed by default if the user is
-    recognized as an administrator.
+
+The default web console perspective that is shown depends on the role of the
+user. The **Administrator** perspective is displayed by default if the user is
+recognized as an administrator.
 
 ### About the Developer perspective in the web console
 
@@ -65,8 +66,9 @@ The **Developer** perspective offers several built-in ways to deploy application
 services, and databases.
 
 !!! info "Important Note"
-    The default view for the OpenShift Container Platform web console is the **Developer**
-    perspective.
+
+The default view for the OpenShift Container Platform web console is the **Developer**
+perspective.
 
 The web console provides a comprehensive set of tools for managing your projects
 and applications.
@@ -79,8 +81,9 @@ located on top navigation as shown below:
 ![Project List](images/project-list.png)
 
 !!! info "Important Note"
-    You can identify the currently selected project with **tick** mark and also
-    you can click on **star** icon to keep the project under your **Favorites** list.
+
+You can identify the currently selected project with **tick** mark and also
+you can click on **star** icon to keep the project under your **Favorites** list.
 
 ## Navigation Menu
 

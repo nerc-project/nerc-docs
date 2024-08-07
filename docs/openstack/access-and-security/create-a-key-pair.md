@@ -1,6 +1,7 @@
 # Create a Key-pair
 
 !!! note "NOTE"
+
     If you will be using PuTTY on Windows, please read [this first](#ssh-keys-with-putty-on-windows).
 
 ## Add a Key Pair
@@ -9,7 +10,7 @@ For security, the VM images have password authentication disabled by default,
 so you will need to use an SSH key pair to log in.
 
 You can view key pairs by clicking Project, then click Compute panel and choose
-Key Pairs from the tabs that appears. This  shows the key pairs that are
+Key Pairs from the tabs that appears. This shows the key pairs that are
 available for this project.
 
 ![Key Pairs](images/key-pairs.png)
@@ -17,7 +18,8 @@ available for this project.
 ## Generate a Key Pair
 
 !!! note "Prerequisite"
-    You need ssh installed in your system
+
+    You need ssh installed in your system.
 
 You can create a key pair on your local machine, then upload the public key to
 the cloud. This is the **recommended method**.
@@ -25,45 +27,41 @@ the cloud. This is the **recommended method**.
 Open a terminal and type the following commands (in this example, we have named
 the key cloud.key, but you can name it anything you want):
 
-```sh
-  cd ~/.ssh
-  ssh-keygen -t rsa -f ~/.ssh/cloud.key -C "label_your_key"
-```
+    cd ~/.ssh
+    ssh-keygen -t rsa -f ~/.ssh/cloud.key -C "label_your_key"
 
 Example:
 
 ![Generate Key Pair](images/generate_key.png)
 
 You will be prompted to create a passphrase for the key.
-*IMPORTANT: Do not forget the passphrase! If you do, you will be unable to use
-your key.*
+_IMPORTANT: Do not forget the passphrase! If you do, you will be unable to use
+your key._
 
 This process creates two files in your `.ssh` folder:
 
-```sh
-  cloud.key      # private key - don’t share this with anyone, and never upload
-  # it anywhere ever
-  cloud.key.pub  # this is your public key
-```
+    cloud.key      # private key - don’t share this with anyone, and never upload
+    # it anywhere ever
+    cloud.key.pub  # this is your public key
 
 !!! tip "Pro Tip"
+
     The `-C "label"` field is not required, but it is useful to quickly identify
     different public keys later.
 
-You could use your email address as the label, or a user@host tag that
-identifies the computer the key is for.
+    You could use your email address as the label, or a user@host tag that
+    identifies the computer the key is for.
 
-For example, if Bob has both a laptop and a desktop computer that he will,
-he might use -C "Bob@laptop" to label the key he generates on the laptop, and
--C "Bob@desktop" for the desktop.*
+    For example, if Bob has both a laptop and a desktop computer that he will,
+    he might use `-C "Bob@laptop"` to label the key he generates on the laptop,
+    and `-C "Bob@desktop"` for the desktop.
 
 On your terminal:
 
-```sh
-  pbcopy < ~/.ssh/cloud.key.pub  #copies the contents of public key to your clipboard
-```
+    pbcopy < ~/.ssh/cloud.key.pub  #copies the contents of public key to your clipboard
 
 !!! tip "Pro Tip"
+
     If `pbcopy` isn't working, you can locate the hidden `.ssh` folder, open the
     file in your favorite text editor, and copy it to your clipboard.
 
@@ -98,9 +96,9 @@ You can now skip ahead to [Adding the key to an ssh-agent](#adding-your-ssh-key-
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see
-[OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-for more information.
+-   OpenStack CLI setup, see
+    [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To create OpenStack keypair using the CLI, do this:
 
@@ -109,21 +107,18 @@ To create OpenStack keypair using the CLI, do this:
 Now that you have created your keypair in `~/.ssh/cloud.key.pub`, you can upload
 it to OpenStack with name "my-key" as follows:
 
-```sh
-
-  openstack keypair create --public-key ~/.ssh/cloud.key.pub my-key
-  +-------------+-------------------------------------------------+
-  | Field       | Value                                           |
-  +-------------+-------------------------------------------------+
-  | created_at  | None                                            |
-  | fingerprint | 1c:40:db:ea:82:c2:c3:05:58:81:84:4b:e3:4f:c2:a1 |
-  | id          | my-key                                          |
-  | is_deleted  | None                                            |
-  | name        | my-key                                          |
-  | type        | ssh                                             |
-  | user_id     | 938eb8bfc72e4ca3ad2c94e2eb4059f7                |
-  +-------------+-------------------------------------------------+
-```
+    openstack keypair create --public-key ~/.ssh/cloud.key.pub my-key
+    +-------------+-------------------------------------------------+
+    | Field       | Value                                           |
+    +-------------+-------------------------------------------------+
+    | created_at  | None                                            |
+    | fingerprint | 1c:40:db:ea:82:c2:c3:05:58:81:84:4b:e3:4f:c2:a1 |
+    | id          | my-key                                          |
+    | is_deleted  | None                                            |
+    | name        | my-key                                          |
+    | type        | ssh                                             |
+    | user_id     | 938eb8bfc72e4ca3ad2c94e2eb4059f7                |
+    +-------------+-------------------------------------------------+
 
 ## Create a Key Pair using Horizon dashboard
 
@@ -144,13 +139,11 @@ Save this file to your hard drive, for example in your Downloads folder.
 Copy this key inside the `.ssh` folder on your local machine/laptop, using the
 following steps:
 
-```sh
-  cd ~/Downloads          # Navigate to the folder where you saved the .pem file
-  mv cloud.pem ~/.ssh/    # This command will copy the key you downloaded to
-  # your .ssh folder.
-  cd ~/.ssh               # Navigate to your .ssh folder
-  chmod 400 cloud.pem     # Change the permissions of the file
-```
+    cd ~/Downloads          # Navigate to the folder where you saved the .pem file
+    mv cloud.pem ~/.ssh/    # This command will copy the key you downloaded to
+    # your .ssh folder.
+    cd ~/.ssh               # Navigate to your .ssh folder
+    chmod 400 cloud.pem     # Change the permissions of the file
 
 To see your public key, navigate to Project -> Compute -> Key Pairs
 
@@ -172,6 +165,7 @@ Call the file something like `cloud_key.pub` to distinguish it from your
 private key.
 
 !!! danger "Very Important: Security Best Practice"
+
     Never share your private key with anyone, or upload it to a server!
 
 ## Adding your SSH key to the ssh-agent
@@ -188,25 +182,19 @@ on your local machine and 'forwards' it over the SSH connection.
 If ssh-agent is not already running in background, you need to start the
 ssh-agent in the background.
 
-```sh
-  eval "$(ssh-agent -s)"
-  > Agent pid 59566
-```
+    eval "$(ssh-agent -s)"
+    > Agent pid 59566
 
 Then, add the key to your ssh agent:
 
-```sh
-  cd ~/.ssh
-  ssh-add cloud.key
-  Identity added: cloud.key (test_user@laptop)
-```
+    cd ~/.ssh
+    ssh-add cloud.key
+    Identity added: cloud.key (test_user@laptop)
 
 Check that it is added with the command
 
-```sh
-  ssh-add -l
-  2048 SHA256:D0DLuODzs15j2OaZnA8I52aEeY3exRT2PCsUyAXgI24 test_user@laptop (RSA)
-```
+    ssh-add -l
+    2048 SHA256:D0DLuODzs15j2OaZnA8I52aEeY3exRT2PCsUyAXgI24 test_user@laptop (RSA)
 
 Depending on your system, you might have to repeat these steps after you reboot
 or log out of your computer.
@@ -219,9 +207,7 @@ you will still need to unlock it with your passphrase the first time you use it.
 Once the key is added, you will be able to forward it over an SSH connection,
 like this:
 
-```sh
-  ssh -A -i cloud.key <username>@<remote-host-IP>
-```
+    ssh -A -i cloud.key <username>@<remote-host-IP>
 
 Connecting via SSH is discussed in more detail later in the tutorial ([SSH to
 Cloud VM](../create-and-connect-to-the-VM/ssh-to-the-VM.md)); for now, just
@@ -237,12 +223,12 @@ here: [Download PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.
 
 You have 2 options for generating keys that will work with PuTTY:
 
- 1. Generate an OpenSSH key with ssh-keygen or from the Horizon GUI using the
- instructions above, then use PuTTYgen to convert the private key to .ppk
+1. Generate an OpenSSH key with ssh-keygen or from the Horizon GUI using the
+   instructions above, then use PuTTYgen to convert the private key to .ppk
 
- 2. Generate a .ppk key with PuTTYgen, and import the provided OpenSSH public
- key to OpenStack using the 'Import the generated Key Pair' instructions
- [above](create-a-key-pair.md#import-the-generated-key-pair).
+2. Generate a .ppk key with PuTTYgen, and import the provided OpenSSH public
+   key to OpenStack using the 'Import the generated Key Pair' instructions
+   [above](create-a-key-pair.md#import-the-generated-key-pair).
 
 There is a detailed walkthrough of how to use PuTTYgen here: [Use SSH Keys with
 PuTTY on Windows](https://devops.profitbricks.com/tutorials/use-ssh-keys-with-putty-on-windows/).

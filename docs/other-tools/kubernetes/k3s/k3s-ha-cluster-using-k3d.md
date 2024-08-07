@@ -21,7 +21,7 @@ Here, `--server 3`: specifies requests three nodes to be created with the role s
 and `--image rancher/k3s:latest`: specifies the K3s image to be used here we are
 using `latest`
 
-- Switch context to the new cluster:
+-   Switch context to the new cluster:
 
     ```sh
     kubectl config use-context k3d-k3s-default
@@ -34,6 +34,7 @@ using `latest`
     ```
 
     The output will look like:
+
     ![k3d HA nodes](../images/k3d_ha_nodes.png)
 
     ```sh
@@ -85,6 +86,7 @@ kubectl get nodes --output wide
 ```
 
 The output looks like below:
+
 ![k3d added new node](../images/k3d_added_new_node.png)
 
 ## Heavy Armored against crashes
@@ -97,6 +99,7 @@ docker stop k3d-k3s-default-server-0
 ```
 
 !!! note "Note"
+
     The Docker and k3d commands will show the state change immediately. However,
     the Kubernetes (read: K8s or K3s) cluster needs a short time to see the state
     change to NotReady.
@@ -125,6 +128,7 @@ kubectl get all --all-namespaces
 ```
 
 The output looks like below:
+
 ![k3d HA all](../images/k3d_ha_all.png)
 
 Everything looks right. If we look at the pods more specifically, then we will
@@ -136,6 +140,7 @@ kubectl get pods --all-namespaces --output wide
 ```
 
 As the output can be seen:
+
 ![k3d self healing HA nodes](../images/k3d_self_healing_ha_nodes.png)
 
 Finally, to show the power of HA and how K3s manages it, let’s restart the node0

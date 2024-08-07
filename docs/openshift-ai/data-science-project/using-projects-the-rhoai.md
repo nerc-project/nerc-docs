@@ -9,12 +9,13 @@ If you have any existing projects, they will be displayed here. These projects
 correspond to your [NERC-OCP (OpenShift) resource allocations](../../get-started/allocation/allocation-details.md#general-user-view-of-openshift-resource-allocation).
 
 !!! note "Why we need Data Science Project (DSP)?"
-     To implement a data science workflow, you must use a data science project.
-     Projects allow you and your team to organize and collaborate on resources
-     within separated namespaces. From a project you can create multiple workbenches,
-     each with their own Jupyter notebook environment, and each with their own data
-     connections and cluster storage. In addition, the workbenches can share models
-     and data with pipelines and model servers.
+
+    To implement a data science workflow, you must use a data science project.
+    Projects allow you and your team to organize and collaborate on resources
+    within separated namespaces. From a project you can create multiple workbenches,
+    each with their own Jupyter notebook environment, and each with their own data
+    connections and cluster storage. In addition, the workbenches can share models
+    and data with pipelines and model servers.
 
 ## Selecting your data science project
 
@@ -26,17 +27,17 @@ details page, as shown below:
 
 Within the data science project, you can add the following configuration options:
 
-- **Workbenches**: Development environments within your project where you can access
-notebooks and generate models.
+-   **Workbenches**: Development environments within your project where you can access
+    notebooks and generate models.
 
-- **Cluster storage**: Storage for your project in your OpenShift cluster.
+-   **Cluster storage**: Storage for your project in your OpenShift cluster.
 
-- **Data connections**: A list of data sources that your project uses.
+-   **Data connections**: A list of data sources that your project uses.
 
-- **Pipelines**: A list of created and configured pipeline servers.
+-   **Pipelines**: A list of created and configured pipeline servers.
 
-- **Models and model servers**: A list of models and model servers that your project
-uses.
+-   **Models and model servers**: A list of models and model servers that your project
+    uses.
 
 As you can see in the project's details figure, our selected data science project
 currently has no workbenches, storage, data connections, pipelines, or model servers.
@@ -48,6 +49,7 @@ Add a workbench by clicking the Create workbench button as shown below:
 ![Create Workbench](images/create-workbench.png)
 
 !!! info "What are Workbenches?"
+
     Workbenches are development environments. They can be based on JupyterLab, but
     also on other types of IDEs, like VS Code or RStudio. You can create as many
     workbenches as you want, and they can run concurrently.
@@ -56,25 +58,26 @@ On the Create workbench page, complete the following information.
 
 **Note**: Not all fields are required.
 
-- Name
+-   Name
 
-- Description
+-   Description
 
-- Notebook image (Image selection)
+-   Notebook image (Image selection)
 
-- Deployment size (Container size and Number of GPUs)
+-   Deployment size (Container size and Number of GPUs)
 
-- Environment variables
+-   Environment variables
 
-- Cluster storage name
+-   Cluster storage name
 
-- Cluster storage description
+-   Cluster storage description
 
-- Persistent storage size
+-   Persistent storage size
 
-- Data connections
+-   Data connections
 
 !!! tip "How to specify CPUs, Memory, and GPUs for your JupyterLab workbench?"
+
     You have the option to select different container sizes to define compute
     resources, including CPUs and memory. Each container size comes with pre-configured
     CPU and memory resources.
@@ -98,6 +101,7 @@ For our example project, let's name it "Tensorflow Workbench". We'll select the
 as **1** and allocate a **Cluster storage** space of **1GB**.
 
 !!! info "More About Cluster Storage"
+
     Cluster storage consists of Persistent Volume Claims (PVCs), which are
     persistent storage spaces available for storing your notebooks and data. You
     can create PVCs directly from here and mount them in your workbenches as
@@ -109,7 +113,7 @@ status of the workbench as shown below:
 
 ![Workbench and Cluster Storage](images/workbench-cluster-storage.png)
 
-Notice that under the status indicator the workbench is *Running*. However, if any
+Notice that under the status indicator the workbench is _Running_. However, if any
 issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
 under the Status indicator, as shown in the example below:
 
@@ -119,13 +123,14 @@ You can hover over that icon to view details. Upon closer inspection of the erro
 message and the "Event log", you will receive details about the issue, enabling
 you to resolve it accordingly.
 
-When your workbench is ready and the status changes to *Running*, you can select
+When your workbench is ready and the status changes to _Running_, you can select
 "Open" to access your environment:
 
 ![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 
 !!! tip "How can I start or stop a Workbench?"
-    You can use this "toggle switch" under the "Status" section to easily *start/stop*
+
+    You can use this "toggle switch" under the "Status" section to easily _start/stop_
     this environment later on.
 
 ---

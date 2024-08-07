@@ -4,9 +4,9 @@
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
-- Select the correct data science project and create workbench, see
-[Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
-for more information.
+-   Select the correct data science project and create workbench, see
+    [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+    for more information.
 
 Please ensure that you start your Jupyter notebook server with options as depicted
 in the following configuration screen. This screen provides you with the opportunity
@@ -19,7 +19,7 @@ For our example project, let's name it "PyTorch Workbench". We'll select the
 as **1** and allocate a **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
-When your workbench is ready, the status will change to *Running* and you can select
+When your workbench is ready, the status will change to _Running_ and you can select
 "Open" to go to your environment:
 
 ![Open JupyterLab Environment](images/open-pytorch-jupyter-lab.png)
@@ -69,7 +69,7 @@ based on the Git repository name, as shown below:
 
 After you've cloned your repository, the `getting-started-with-gpus` repository
 contents appear in a directory under the **Name** pane. The directory contains
-several notebooks as `.ipnyb` files, along with a standard license and *README*
+several notebooks as `.ipnyb` files, along with a standard license and _README_
 file as shown below:
 
 ![Content of The Repository](images/git-repo-content.png)

@@ -12,9 +12,12 @@ Once we click on the "Add Users" button, it will show us the following search in
 ![User Search Interface](images/coldfront-user-search.png)
 
 !!! info "Searching multiple users at once!"
+
     If you want to simultaneously search for multiple users in the system, you
     can input multiple usernames **separated by space or newline**, as shown below:
+
     ![Searching Multiple User(s)](images/coldfront-search-multiple-users.png)
+
     **NOTE:** This will return a list of all users matching those provided usernames
     only if they exist.
 
@@ -26,10 +29,10 @@ first name, last name etc. as shown below:
 ![Add User(s) To Project](images/coldfront-add-user-to-project.png)
 
 !!! warning "Delegating user as 'Manager'"
+
     When adding a user to your project you can optionally designate them as a
     "Manager" by selecting their role using the drop down next to their email.
-    Read more about user roles
-    [here](#user-roles).
+    Read more about user roles [here](#user-roles).
 
 Thus, found user(s) can be selected and assigned directly to the available resource
 allocation(s) on the given project using this interface. While adding the users,
@@ -59,6 +62,7 @@ add/remove project info such as grants, publications, and research output.
 Managers may also complete the annual project review.
 
 !!! info "What can a PI do that a manager can't?"
+
     The only tasks a PI can do that a manager can't is create a new project or
     archive any existing project(s). All other project-related actions that a PI
     can perform can also be accomplished by any one of the managers assigned to
@@ -90,6 +94,7 @@ Then toggle the "Role" from User to Manager:
 ![User Details](images/coldfront-user-details.png)
 
 !!! warning "Very Important"
+
     Make sure to click the "Update" button to save the change.
 
     This delegation of "Manager" role can also be done when adding a user to your

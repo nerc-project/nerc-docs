@@ -7,6 +7,7 @@ for administration, reporting, and measuring scientific impact of NERC resources
 for PI.
 
 !!! tip "Learning ColdFront"
+
     A collection of [animated gifs](https://coldfront.readthedocs.io/en/latest/howto/demos/)
     showcasing common functions in ColdFront is available, providing helpful
     insights into how these features can be utilized.
@@ -29,27 +30,27 @@ can see an administrative view of it as
 [described here](../allocation/allocation-details.md#pi-and-manager-view) and can
 do the following tasks:
 
-- **Only PI** can add a new project and archive any existing project(s)
+-   **Only PI** can add a new project and archive any existing project(s)
 
-- Manage existing projects
+-   Manage existing projects
 
-- Request allocations that fall under projects in NERC's resources such as clusters,
-cloud resources, servers, storage, and software licenses
+-   Request allocations that fall under projects in NERC's resources such as clusters,
+    cloud resources, servers, storage, and software licenses
 
-- Add/remove user access to/from allocated resources who is a member of the project
-without requiring system administrator interaction
+-   Add/remove user access to/from allocated resources who is a member of the project
+    without requiring system administrator interaction
 
-- Elevate selected users to 'manager' status, allowing them to handle some of the
-PI asks such as request new resource allocations, add/remove users to/from resource
-allocations, add project data such as grants and publications
+-   Elevate selected users to 'manager' status, allowing them to handle some of the
+    PI asks such as request new resource allocations, add/remove users to/from resource
+    allocations, add project data such as grants and publications
 
-- Monitor resource utilization such as storage and cloud usage
+-   Monitor resource utilization such as storage and cloud usage
 
-- Receive email notifications for expiring/renewing access to resources as well as
-notifications when allocations change status - i.e. activated, expired, denied
+-   Receive email notifications for expiring/renewing access to resources as well
+    as notifications when allocations change status - i.e. activated, expired, denied
 
-- Provide information such as grants, publications, and other reportable data for
-periodic review by center director to demonstrate need for the resources
+-   Provide information such as grants, publications, and other reportable data for
+    periodic review by center director to demonstrate need for the resources
 
 ## How to login to NERC's ColdFront?
 

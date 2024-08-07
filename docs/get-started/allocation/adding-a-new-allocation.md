@@ -18,6 +18,7 @@ shown below:
 ![Adding a new Resource Allocation to your OpenStack project](images/coldfront-request-a-new-openstack-allocation.png)
 
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
+
     Ensure you choose **NERC (OpenStack)** in the Resource option and specify your
     anticipated computing units. Each allocation, whether requested or approved,
     will be billed based on the **pay-as-you-go** model. The exception is for
@@ -37,6 +38,7 @@ shown below:
 ![Adding a new Resource Allocation to your OpenShift project](images/coldfront-request-a-new-openshift-allocation.png)
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
+
     Ensure you choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
     the first option, i.e. **NERC (OpenStack)** is selected by default!) and specify
     your anticipated computing units. Each allocation, whether requested or approved,

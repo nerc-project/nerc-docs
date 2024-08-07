@@ -20,10 +20,13 @@ Next, you will be redirected to CILogon welcome page as shown below:
 MGHPCC Shared Services (MSS) Keycloak will request approval of access to the
 following information from the user:
 
-- Your CILogon user identifier
-- Your name
-- Your email address
-- Your username and affiliation from your identity provider
+-   Your CILogon user identifier
+
+-   Your name
+
+-   Your email address
+
+-   Your username and affiliation from your identity provider
 
 which are required in order to allow access your account on NERC's OpenStack
 web console.
@@ -36,6 +39,7 @@ identity provider(IdP). Click "Log On". This will redirect to your respective in
 login page where you need to enter your institutional credentials.
 
 !!! note "Important Note"
+
     The NERC does not see or have access to your institutional account credentials,
     it points to your selected insitution's identity provider and redirects back
     once authenticated.
@@ -47,6 +51,7 @@ tasks.
 ![OpenShift Web Console](images/openshift-web-console.png)
 
 !!! info "I can't find my project"
+
     If you are a member of several projects i.e. ColdFront NERC-OCP (OpenShift)
     allocations, you may need to switch the project before you can see and use
     OpenShift resources you or your team has created. Clicking on the project dropdown
@@ -57,6 +62,7 @@ tasks.
     ![OpenStack Project List](images/openshift_project_list.png)
 
 !!! note "Important Note"
+
     The default view for the OpenShift Container Platform web console is the **Developer**
     perspective.
 

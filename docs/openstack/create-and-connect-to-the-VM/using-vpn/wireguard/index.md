@@ -44,22 +44,23 @@ Host wireguard
     ![SSH sshuttle server](images/ssh_server.png)
 
 2. Also note that WireGuard must be installed and run by a user who has
-**administrative/root** privileges. So, we need to run the command: `sudo su`
+   **administrative/root** privileges. So, we need to run the command: `sudo su`
 
 3. We are using [this repo](https://github.com/Nyr/wireguard-install) to
-install WireGuard server on this ubuntu server.
+   install WireGuard server on this ubuntu server.
 
     For that, run the script and follow the assistant:
 
-    `wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh`
+    ```sh
+    wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
+    ```
 
     ![Generating first client](images/generate_client_nerc.png)
 
     You can press **Enter** for all default values. And, while entering a name
-    for the first client you can give "**nerc**" as the client name,
-    this will generate a new configuration file (.conf file) named as
-    "**nerc.conf**". Based on your client's name it will name the
-    config file as "**<your_client_name>.conf**"
+    for the first client you can give "**nerc**" as the client name, this will
+    generate a new configuration file (.conf file) named as "**nerc.conf**". Based
+    on your client's name it will name the config file as "**<your_client_name>.conf**"
 
     ![Setup Client completed](images/setup_client_completed.png)
 
@@ -69,14 +70,14 @@ install WireGuard server on this ubuntu server.
     ![Client Config Template](images/client_config_template.png)
 
 4. Copy the generated config file from "**/root/nerc.conf**" to
-"**/home/ubuntu/nerc.conf**" by running: `cp /root/nerc.conf .`
+   "**/home/ubuntu/nerc.conf**" by running: `cp /root/nerc.conf .`
 
 5. Update the ownership of the config file to ubuntu user and ubuntu group by
-running the following command: `chown ubuntu:ubuntu nerc.conf`
+   running the following command: `chown ubuntu:ubuntu nerc.conf`
 
 6. You can exit from the root and ssh session all together and then copy the
-configuration file to your local machine by running the following script on
-your local machine's terminal: `scp wireguard:nerc.conf .`
+   configuration file to your local machine by running the following script on
+   your local machine's terminal: `scp wireguard:nerc.conf .`
 
 ## To add a new client user
 
@@ -85,7 +86,9 @@ even completely uninstall WireGuard.
 
 For this, run the script and follow the assistant:
 
-`wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh`
+```sh
+wget https://git.io/wireguard -O wireguard-install.sh && bash wireguard-install.sh
+```
 
 ![Second Client Generate](images/second_client_generate.png)
 
@@ -99,10 +102,11 @@ file and share it to the new client.
 It would be kind of pointless to have our VPN server allow anyone to connect.
 This is where our public &amp; private keys come into play.
 
-- Each  **client's \*\*public\*\* key**  needs to be added to the
- **SERVER'S**  configuration file
-- The  **server's \*\*public\*\* key**  added to the  **CLIENT'S**
- configuration file
+-   Each **client's \*\*public\*\* key** needs to be added to the
+    **SERVER'S** configuration file
+
+-   The **server's \*\*public\*\* key** added to the **CLIENT'S**
+    configuration file
 
 ### Useful commands
 
@@ -121,16 +125,16 @@ To deactivate config: `wg-quick down /path/to/file_name.config`
 ---
 
 !!! note "Important Note"
-    You need to contact your project administrator to get your own WireGUard
-    configuration file (file with .conf extension). Download it and Keep it in
-    your local machine so in next steps we can use this configuration client
-    profile file.
+
+      You need to contact your project administrator to get your own WireGUard
+      configuration file (file with .conf extension). Download it and Keep it in
+      your local machine so in next steps we can use this configuration client
+      profile file.
 
 A WireGuard client or compatible software is needed to connect to the WireGuard
-VPN server. Please install
-[one of these clients](https://www.wireguard.com/install/) depending on your
-device. The client program must be configured with a client profile to connect
-to the WireGuard VPN server.
+VPN server. Please install[one of these clients](https://www.wireguard.com/install/)
+depending on your device. The client program must be configured with a client
+profile to connect to the WireGuard VPN server.
 
 ### Windows
 
@@ -171,7 +175,7 @@ your traffic is being routed through this new VPN server.
 
 #### Test your connection
 
-On your Windows machine, press the "**Activate"**  button. You should
+On your Windows machine, press the "**Activate"** button. You should
 see a successful connection be made:
 
 ![Tunnel Activated](images/tunnel_activated.png)
@@ -198,16 +202,16 @@ WireGuard GUI app.
 1. Install WireGuard CLI on macOS through brew: `brew install wireguard-tools`
 
 2. Copy the "**.conf**" file to
-"**/usr/local/etc/wireguard/**" (or "**/etc/wireguard/**").
-You'll need to create the " **wireguard**" directory first. For your
-example, you will have your config file located at: " **/usr/local/etc
-/wireguard/mac_client.conf**" or, "**/etc/wireguard/mac_client.conf**"
+   "**/usr/local/etc/wireguard/**" (or "**/etc/wireguard/**").
+   You'll need to create the " **wireguard**" directory first. For your
+   example, you will have your config file located at: " **/usr/local/etc
+   /wireguard/mac_client.conf**" or, "**/etc/wireguard/mac_client.conf**"
 
 3. To activate the VPN: "wg-quick up [*name of the conf file without
-including .conf extension*]". For example, in your case, running
-`wg-quick up mac_client` - If the peer system is already configured
-and its interface is up, then the VPN connection should establish
-automatically, and you should be able to start routing traffic through the peer.
+   including .conf extension*]". For example, in your case, running
+   `wg-quick up mac_client` - If the peer system is already configured
+   and its interface is up, then the VPN connection should establish
+   automatically, and you should be able to start routing traffic through the peer.
 
 Use `wg-quick down mac_client` to take the VPN connection down.
 
@@ -215,7 +219,7 @@ Use `wg-quick down mac_client` to take the VPN connection down.
 
 1. Download WireGuard Client from the macOS App Store
 
-    You can find the official WireGuard Client app on the App Store [here](https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&amp;mt=12).
+    You can find the official WireGuard Client app on the App Store [here](https://itunes.apple.com/us/app/wireguard/id1451685025?ls=1&mt=12).
 
     ![WireGuard Client App](images/app.png)
 
@@ -236,8 +240,8 @@ Use `wg-quick down mac_client` to take the VPN connection down.
 
     **OR,**
 
-    Find and click the WireGUard GUI from your Launchpad and then either click on
-    **Add Tunnel -> Import tunnel(s) from file…** or, just click on "**Import
+    Find and click the WireGUard GUI from your Launchpad and then either click
+    on **Add Tunnel -> Import tunnel(s) from file…** or, just click on "**Import
     tunnel(s) from file**" button located at the center.
 
     ![Import Config File in Mac](images/import_config_file_mac.png)
@@ -268,18 +272,18 @@ Use `wg-quick down mac_client` to take the VPN connection down.
 
 3. Test your connection
 
-    On your Windows machine, press the "**Activate**" button. You
-    should see a successful connection be made:
+    On your Windows machine, press the "**Activate**" button. You should see a
+    successful connection be made:
 
-  ![Tunnel Activated in Mac.png](images/tunnel_activated_mac.png)
+    ![Tunnel Activated in Mac.png](images/tunnel_activated_mac.png)
 
-  After a few seconds, the status should change to  **Active.**
+    After a few seconds, the status should change to **Active.**
 
-  Clicking "**Deactivate**" button from the GUI's interface or
-  directly clicking "**Deactivate**" menu from the WireGuard icon in
-  status bar at the top-right corner of your screen closes the VPN connection.
+    Clicking "**Deactivate**" button from the GUI's interface or
+    directly clicking "**Deactivate**" menu from the WireGuard icon in
+    status bar at the top-right corner of your screen closes the VPN connection.
 
-  ![Deactivate Connection](images/deactivate_connection.png)
+    ![Deactivate Connection](images/deactivate_connection.png)
 
 ### Linux
 

@@ -2,12 +2,12 @@
 
 **Prerequisites**:
 
-- You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
-to set up a public ssh key.
+-   You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+    to set up a public ssh key.
 
-- Make sure you have added rules in the
-[Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
-allow **ssh** using Port 22 access to the instance.
+-   Make sure you have added rules in the
+    [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
+    allow **ssh** using Port 22 access to the instance.
 
 ## Using Horizon dashboard
 
@@ -26,6 +26,7 @@ In the Launch Instance dialog box, specify the following values:
 Instance Name: Give your instance a name that assign a name to the virtual machine.
 
 !!! note "Important Note"
+
     The instance name you assign here becomes the initial host name of the server.
     If the name is longer than 63 characters, the Compute service truncates it
     automatically to ensure dnsmasq works correctly.
@@ -45,10 +46,13 @@ Double check that in the dropdown "Select Boot Source".
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
 
-- boot from image
-- boot from instance snapshot
-- boot from volume
-- boot from volume snapshot
+-   boot from image
+
+-   boot from instance snapshot
+
+-   boot from volume
+
+-   boot from volume snapshot
 
 In its default configuration, when the instance is launched from an **Image** or
 an **Instance Snapshot**, the choice for utilizing persistent storage is configured
@@ -72,6 +76,7 @@ to persist even after the instance is deleted. Ideally, selecting "Yes" for this
 setting should be reserved for instances where persistent data storage is not required.
 
 !!! danger "Very Important: How do you make your VM setup and data persistent?"
+
     For more in-depth information on making your VM setup and data persistent,
     you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
 
@@ -80,6 +85,7 @@ To start a VM, for the first time we will need a base image so, please make sure
 you may choose any available images.
 
 !!! note "Bootable Images"
+
     NERC has made several Public bootable images available to the users as
     listed [here](images.md). **Customers can also upload their own custom images,
     as documented in [this guide](../advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md).**
@@ -91,6 +97,7 @@ you may choose any available images.
 ![VM Launch Instance Source](images/launch_source.png)
 
 !!! info "How to override the flavor's Default root disk volume size"
+
     If you don't specify custom value for the "**Volume Size (GB)**", that will
     be set to the root disk size of your selected Flavor. For more about the
     default root disk size you can refer to [this documentation](flavors.md).
@@ -104,6 +111,7 @@ Specify the size of the instance to launch. Choose `cpu-su.4` from the 'Flavor'
 tab by clicking on the "+" icon.
 
 !!! question "Important Note"
+
     In NERC OpenStack, flavors define the compute, memory, and storage
     capacity of nova computing instances. In other words, a flavor is an
     available hardware configuration for a server.
@@ -122,9 +130,11 @@ After choosing `cpu-su.4`, you should see it moved up to "Allocated".
 ![VM Launch Instance Flavor](images/launch_flavor.png)
 
 !!! info "Storage and Volume"
+
     - System disks are the first disk based on the flavor disk space and are
     generally used to store the operating system created from an image when the
     virtual machine is booted.
+
     - [Volumes](../persistent-storage/volumes.md) are
     persistent virtualized block devices independent of any particular instance.
     Volumes may be attached to a single instance at a time, but may be detached
@@ -147,6 +157,7 @@ security group first, see [here](../access-and-security/security-groups.md).
 ![VM Launch Instance Security Groups](images/launch_security_groups.png)
 
 !!! info "How to update New Security Group(s) on any running VM?"
+
     If you want to attach/deattach any new Security Group(s) to/from a running VM
     after it has launched. First create all new Security Group(s) with all the rules
     required. Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
@@ -162,6 +173,7 @@ To add a Key Pair first create and add them to your Project as [described here](
 ![VM Launch Instance Key Pairs](images/launch_security_key_pairs.png)
 
 !!! danger "Important Note"
+
     If you did not provide a key pair, security groups, or rules, users can
     access the instance only from inside the cloud through VNC. Even pinging the
     instance is not possible without an ICMP rule configured. We recommend limiting
@@ -173,6 +185,7 @@ To add a Key Pair first create and add them to your Project as [described here](
 tab: Please ignore these tabs as these are not important and only for advance setup.
 
 !!! info "How to use 'Configuration' tab"
+
     If you want to specify a customization script that runs after your instance
     launches then you can write those custom script inside the
     "**Customization Script**" text area. For example:
@@ -190,6 +203,7 @@ from "No State" to "running".
 ![VM Launch Instance Successful](images/running_instance.png)
 
 !!! note "Note"
+
     Here we explained about launching an instance using Image but you can also
     launch an instance from the "instance snapshot" or "volume" or "volume snapshot"
     option similar to the steps above. If you want to use **OpenStack CLI** to launch

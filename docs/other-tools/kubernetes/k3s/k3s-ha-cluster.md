@@ -62,6 +62,7 @@ database password: `<YOUR_DB_USER_PASSWORD>`
 ## Three VMs to run as K3s servers
 
 Create 3 K3s Master VMs and perform the following steps on each of them:
+
 i. Export the datastore endpoint:
 
 ```sh
@@ -78,15 +79,15 @@ curl -sfL https://get.k3s.io | sh -s - server \
     --tls-san <Loadbalancer-Internal-IP_or_Hostname>
 ```
 
-- Verify all master nodes are visible to one another:
+-   Verify all master nodes are visible to one another:
 
     ```sh
     sudo k3s kubectl get node
     ```
 
-- Generate **token** from one of the K3s Master VMs:
-You need to extract a token from the master that will be used to join the nodes
-to the control plane by running following command on one of the K3s master node:
+-   Generate **token** from one of the K3s Master VMs:
+    You need to extract a token from the master that will be used to join the nodes
+    to the control plane by running following command on one of the K3s master node:
 
     ```sh
     sudo cat /var/lib/rancher/k3s/server/node-token
@@ -126,7 +127,7 @@ sudo systemctl stop k3s
 
 **The third server will take over at this point.**
 
-- To restart servers manually:
+-   To restart servers manually:
 
     ```sh
     sudo systemctl restart k3s
@@ -135,13 +136,14 @@ sudo systemctl stop k3s
 ### On your local development machine to access Kubernetes Cluster Remotely (Optional)
 
 !!! note "Important Requirement"
+
     Your local development machine must have installed `kubectl`.
 
-- Copy kubernetes config to your local machine:
-Copy the `kubeconfig` file's content located at the K3s master node at `/etc/rancher/k3s/k3s.yaml`
-to your local machine's `~/.kube/config` file. Before saving, please change the cluster
-server path from **127.0.0.1** to **`<Loadbalancer-Internal-IP>`**. This will allow
-your local machine to see the cluster nodes:
+-   Copy kubernetes config to your local machine:
+    Copy the `kubeconfig` file's content located at the K3s master node at `/etc/rancher/k3s/k3s.yaml`
+    to your local machine's `~/.kube/config` file. Before saving, please change the
+    cluster server path from **127.0.0.1** to **`<Loadbalancer-Internal-IP>`**. This
+    will allow your local machine to see the cluster nodes:
 
     ```sh
     kubectl get nodes
@@ -154,13 +156,13 @@ is a GUI tool to help you work more efficiently with K8s cluster. This is only
 accessible from within the cluster (at least not without some serious tweaking).
 
 check [releases](https://github.com/kubernetes/dashboard/releases) for the command
-to use for *Installation*:
+to use for _Installation_:
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml
 ```
 
-- Dashboard RBAC Configuration:
+-   Dashboard RBAC Configuration:
 
     `dashboard.admin-user.yml`
 
@@ -189,30 +191,31 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
       namespace: kubernetes-dashboard
     ```
 
-- Deploy the `admin-user` configuration:
-
-    !!! note "Important Note"
-        If you're doing this from your local development machine, remove `sudo k3s`
-        and just use `kubectl`)
+-   Deploy the `admin-user` configuration:
 
     ```sh
     sudo k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
     ```
 
-- Get bearer **token**
+    !!! note "Important Note"
+
+        If you're doing this from your local development machine, remove `sudo k3s`
+        and just use `kubectl`)
+
+-   Get bearer **token**
 
     ```sh
-    sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token
-        | grep ^token
+    sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token \
+      | grep ^token
     ```
 
-- Start *dashboard* locally:
+-   Start _dashboard_ locally:
 
     ```sh
     sudo k3s kubectl proxy
     ```
 
-    Then you can sign in at this URL using your *token* we got in the previous step:
+    Then you can sign in at this URL using your _token_ we got in the previous step:
 
     ```sh
     http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
@@ -220,13 +223,13 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
 
 ## Deploying Nginx using deployment
 
-- Create a deployment `nginx.yaml`:
+-   Create a deployment `nginx.yaml`:
 
     ```sh
     vi nginx.yaml
     ```
 
-- Copy and paste the following content in `nginx.yaml`:
+-   Copy and paste the following content in `nginx.yaml`:
 
     ```sh
     apiVersion: apps/v1
@@ -256,7 +259,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     sudo k3s kubectl apply -f nginx.yaml
     ```
 
-- Verify the nginx pod is in **Running** state:
+-   Verify the nginx pod is in **Running** state:
 
     ```sh
     sudo k3s kubectl get pods --all-namespaces
@@ -274,13 +277,13 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     kubectl get pods -A -o wide
     ```
 
-- Scale the pods to available agents:
+-   Scale the pods to available agents:
 
     ```sh
     sudo k3s kubectl scale --replicas=2 deploy/mysite
     ```
 
-- View all deployment status:
+-   View all deployment status:
 
     ```sh
     sudo k3s kubectl get deploy mysite
@@ -289,7 +292,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     mysite   2/2     2            2           85s
     ```
 
-- Delete the nginx deployment and pod:
+-   Delete the nginx deployment and pod:
 
     ```sh
     sudo k3s kubectl delete -f nginx.yaml

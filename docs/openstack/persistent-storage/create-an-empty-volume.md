@@ -8,7 +8,7 @@ instance, create a filesystem on it, and mount it to the instance.
 Once you're logged in to NERC's Horizon dashboard, you can create a volume via
 the "Volumes -> Volumes" page by clicking on the "Create Volume" button.
 
-Navigate to *Project -> Volumes -> Volumes*.
+Navigate to _Project -> Volumes -> Volumes_.
 
 ![Volumes](images/volumes.png)
 
@@ -43,8 +43,8 @@ A set of volume_image meta data is also copied from the image service.
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To create a volume using the CLI, do this:
 
@@ -54,40 +54,44 @@ This allows an arbitrary sized disk to be attached to your virtual machine, like
 plugging in a USB stick. The steps below create a disk of 20 gibibytes (GiB) with
 name "my-volume".
 
-    openstack volume create --size 20 my-volume
+```sh
+openstack volume create --size 20 my-volume
 
-    +---------------------+--------------------------------------+
-    | Field               | Value                                |
-    +---------------------+--------------------------------------+
-    | attachments         | []                                   |
-    | availability_zone   | nova                                 |
-    | bootable            | false                                |
-    | consistencygroup_id | None                                 |
-    | created_at          | 2024-02-03T17:06:05.000000           |
-    | description         | None                                 |
-    | encrypted           | False                                |
-    | id                  | 5b5380bd-a15b-408b-8352-9d4219cf30f3 |
-    | multiattach         | False                                |
-    | name                | my-volume                            |
-    | properties          |                                      |
-    | replication_status  | None                                 |
-    | size                | 20                                   |
-    | snapshot_id         | None                                 |
-    | source_volid        | None                                 |
-    | status              | creating                             |
-    | type                | tripleo                              |
-    | updated_at          | None                                 |
-    | user_id             | 938eb8bfc72e4ca3ad2b94e2eb4059f7     |
-    +---------------------+--------------------------------------+
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| attachments         | []                                   |
+| availability_zone   | nova                                 |
+| bootable            | false                                |
+| consistencygroup_id | None                                 |
+| created_at          | 2024-02-03T17:06:05.000000           |
+| description         | None                                 |
+| encrypted           | False                                |
+| id                  | 5b5380bd-a15b-408b-8352-9d4219cf30f3 |
+| multiattach         | False                                |
+| name                | my-volume                            |
+| properties          |                                      |
+| replication_status  | None                                 |
+| size                | 20                                   |
+| snapshot_id         | None                                 |
+| source_volid        | None                                 |
+| status              | creating                             |
+| type                | tripleo                              |
+| updated_at          | None                                 |
+| user_id             | 938eb8bfc72e4ca3ad2b94e2eb4059f7     |
++---------------------+--------------------------------------+
+```
 
 ### To view newly created volume
 
-    openstack volume list
-    +--------------------------------------+-----------------+-----------+------+----------------------------------+
-    | ID                                   | Name            | Status    | Size | Attached to                      |
-    +--------------------------------------+-----------------+-----------+------+----------------------------------+
-    | 563048c5-d27b-4397-bb4e-034e0f4d9fa7 |                 | in-use    |   20 | Attached to test-vm on /dev/vda  |
-    | 5b5380bd-a15b-408b-8352-9d4219cf30f3 | my-volume       | available |   20 |                                  |
-    +--------------------------------------+-----------------+-----------+------+----------------------------------+
+```sh
+openstack volume list
++--------------------------------------+-----------------+-----------+------+----------------------------------+
+| ID                                   | Name            | Status    | Size | Attached to                      |
++--------------------------------------+-----------------+-----------+------+----------------------------------+
+| 563048c5-d27b-4397-bb4e-034e0f4d9fa7 |                 | in-use    |   20 | Attached to test-vm on /dev/vda  |
+| 5b5380bd-a15b-408b-8352-9d4219cf30f3 | my-volume       | available |   20 |                                  |
++--------------------------------------+-----------------+-----------+------+----------------------------------+
+```
 
 ---

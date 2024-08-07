@@ -24,22 +24,23 @@ appropriate environment variables.
 
 You can download the environment file with the credentials from the [OpenStack dashboard](https://stack.nerc.mghpcc.org/dashboard/identity/application_credentials/).
 
-- Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
-the project for which you want to download the OpenStack RC file.
+-   Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
+    the project for which you want to download the OpenStack RC file.
 
-- Navigate to *Identity -> Application Credentials*.
+-   Navigate to _Identity -> Application Credentials_.
 
-- Click on "Create Application Credential" button and provide a **Name** and **Roles**
-for the application credential. All other fields are optional and leaving the
-"Secret" field empty will set it to autogenerate (recommended).
+-   Click on "Create Application Credential" button and provide a **Name** and **Roles**
+    for the application credential. All other fields are optional and leaving the
+    "Secret" field empty will set it to autogenerate (recommended).
 
 ![OpenStackClient Credentials Setup](images/openstack_cli_cred.png)
 
 !!! note "Important Note"
-    Please note that an application credential is only valid for a single
-    project, and to access multiple projects you need to create an application
-    credential for each. You can switch projects by clicking on the project name
-    at the top right corner and choosing from the dropdown under "Project".
+
+      Please note that an application credential is only valid for a single
+      project, and to access multiple projects you need to create an application
+      credential for each. You can switch projects by clicking on the project name
+      at the top right corner and choosing from the dropdown under "Project".
 
 After clicking "Create Application Credential" button, the **ID** and
 **Secret** will be displayed and you will be prompted to `Download openrc file`
@@ -55,17 +56,18 @@ listed in [Authentication](https://docs.openstack.org/python-openstackclient/lat
 
 #### OpenStack RC File
 
-Find the file (by default it will be named  the same as the application
+Find the file (by default it will be named the same as the application
 credential name with the suffix `-openrc.sh` where project is the name of your
 OpenStack project).
 
 Source your downloaded **OpenStack RC File**:
 
 ```sh
-  source app-cred-<Credential_Name>-openrc.sh
+source app-cred-<Credential_Name>-openrc.sh
 ```
 
 !!! note "Important Note"
+
     When you source the file, environment variables are set for your current
     shell. The variables enable the openstack client commands to communicate with
     the OpenStack services that run in the cloud. This just stores your entry into
@@ -93,19 +95,19 @@ For more information on configuring the OpenStackClient please see the
 
 Generally, the OpenStack terminal client offers the following methods:
 
-- **list**: Lists information about objects currently in the cloud.
+-   **list**: Lists information about objects currently in the cloud.
 
-- **show**: Displays information about a single object currently in the cloud.
+-   **show**: Displays information about a single object currently in the cloud.
 
-- **create**: Creates a new object in the cloud.
+-   **create**: Creates a new object in the cloud.
 
-- **set**: Edits an existing object in the cloud.
+-   **set**: Edits an existing object in the cloud.
 
 To test that you have everything configured, try out some commands. The
 following command lists all the images available to your project:
 
 ```sh
-  openstack image list
+openstack image list
 +--------------------------------------+---------------------+--------+
 | ID                                   | Name                | Status |
 +--------------------------------------+---------------------+--------+
@@ -126,32 +128,33 @@ If you have launched some instances already, the following command shows a list
 of your project's instances:
 
 ```sh
-  openstack server list --fit-width
-  +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
-  | ID                                   | Name             | Status | Networks                                     | Image                    |  Flavor      |
-  +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
-  | 1c96ba49-a20f-4c88-bbcf-93e2364365f5 |    vm-test       | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  cpu-su.4     |
-  | dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a |    gpu-test      | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  gpu-su-a100.1  |
-  +--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
+openstack server list --fit-width
++--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
+| ID                                   | Name             | Status | Networks                                     | Image                    |  Flavor      |
++--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
+| 1c96ba49-a20f-4c88-bbcf-93e2364365f5 |    vm-test       | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  cpu-su.4     |
+| dd0d8053-ab88-4d4f-b5bc-97e7e2fe035a |    gpu-test      | ACTIVE | default_network=192.168.0.146, 199.94.60.4   | N/A (booted from volume) |  gpu-su-a100.1  |
++--------------------------------------+------------------+--------+----------------------------------------------+--------------------------+--------------+
 ```
 
 !!! info "How to fit the CLI output to your terminal?"
-    you can use `--fit-width` at the end of the command to fit the output to your
+
+    You can use `--fit-width` at the end of the command to fit the output to your
     terminal.
 
 If you don't have any instances, you will get the error `list index out of
 range`, which is why we didn't suggest this command for your first test:
 
 ```sh
-  openstack server list
-  list index out of range
+openstack server list
+list index out of range
 ```
 
 If you see this error:
 
 ```sh
-  openstack server list
-  The request you have made requires authentication. (HTTP 401) (Request-ID: req-6a827bf3-d5e8-47f2-984c-b6edeeb2f7fb)
+openstack server list
+The request you have made requires authentication. (HTTP 401) (Request-ID: req-6a827bf3-d5e8-47f2-984c-b6edeeb2f7fb)
 ```
 
 Then your environment variables are likely not configured correctly.
@@ -162,27 +165,29 @@ Try sourcing the OpenStack RC file again and retyping it.
 You can type `openstack -h` to see a list of available commands.
 
 !!! warning "Note"
+
     This includes some admin-only commands.
 
 If you try one of these by mistake, you might see this output:
 
 ```sh
-  openstack user list
-  You are not authorized to perform the requested action: identity:list_users.
-  (HTTP 403) (Request-ID: req-cafe1e5c-8a71-44ab-bd21-0e0f25414062)
+openstack user list
+You are not authorized to perform the requested action: identity:list_users.
+(HTTP 403) (Request-ID: req-cafe1e5c-8a71-44ab-bd21-0e0f25414062)
 ```
 
-Depending on your needs for API interaction, this  might be sufficient.
+Depending on your needs for API interaction, this might be sufficient.
 
 If you just occasionally want to run 1 or 2 of these commands from your
 terminal, you can do it manually or write a quick bash script that makes use of
 this CLI.
 
-However, this isn't a very optimized  way to do complex interactions with
+However, this isn't a very optimized way to do complex interactions with
 OpenStack. For that, you want to write scripts that interact with the python
 SDK bindings directly.
 
 !!! tip "Pro Tip"
+
     If you find yourself fiddling extensively with awk and grep to extract things
     like project IDs from the CLI output, it's time to move on to using the client
     libraries or the RESTful API directly in your scripts.

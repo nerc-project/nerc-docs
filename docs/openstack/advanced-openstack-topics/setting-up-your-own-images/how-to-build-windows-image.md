@@ -4,13 +4,15 @@ An OpenStack Compute cloud needs to have virtual machine images in order to
 launch an instance. A virtual machine image is a single file which contains a
 virtual disk that has a bootable operating system installed on it.
 
-!!!warning "Very Important"
+!!! warning "Very Important"
+
     The provided Windows Server 2022 R2 image is for evaluation only. This evaluation
     edition expires in **180 days**. This is intended to evaluate if the product
-    is right for you. This is on *user discretion* to update, extend, and handle
+    is right for you. This is on _user discretion_ to update, extend, and handle
     licensing issues for future usages.
 
 !!! tip "How to extend activation grace period for another 180 days?"
+
     Remote desktop to your running Windows VM. Using the search function in your
     taskbar, look up **Command Prompt**. When you see it in the results, right-click
     on it and choose **Run as Administrator**. Your VM's current activation grace
@@ -29,7 +31,8 @@ updates, proper performance, and security configurations as well as the final Sy
 
 ## How to Build and Upload your custom Microsoft Windows Image
 
-!!!note "Overall Process"
+!!! note "Overall Process"
+
     To create a new image, you will need the installation CD or DVD ISO file for
     the guest operating system. You will also need access to a virtualization tool.
     You can use KVM hypervisor for this. Or, if you have a GUI desktop virtualization
@@ -55,7 +58,7 @@ b. Download the signed **VirtIO drivers** ISO file from the [Fedora website](htt
 c. Install [Virtual Machine Manager](https://virt-manager.org/download/) on your
 local Windows 10 machine using WSL:
 
-- **Enable WSL on your local Windows 10 subsystem for Linux:**
+-   **Enable WSL on your local Windows 10 subsystem for Linux:**
 
     The steps given here are straightforward, however, before following them
     make sure on Windows 10, you have WSL enabled and have at least Ubuntu
@@ -63,12 +66,12 @@ local Windows 10 machine using WSL:
     that then see our tutorial on [how to enable WSL and install Ubuntu over
     it](https://www.how2shout.com/how-to/enable-windows-subsystem-linux-feature.html).
 
-- **Download and install MobaXterm:**
+-   **Download and install MobaXterm:**
 
     **MobaXterm** is a free application that can be downloaded using [this link](https://mobaxterm.mobatek.net/download-home-edition.html).
     After downloading, install it like any other normal Windows software.
 
-- **Open MobaXterm and run WSL Linux:**
+-   **Open MobaXterm and run WSL Linux:**
 
     As you open this advanced terminal for Windows 10, WSL installed Ubuntu
     app will show on the left side panel of it. Double click on that to start
@@ -76,12 +79,14 @@ local Windows 10 machine using WSL:
 
     ![MobaXterm WSL Ubuntu-20.04 LTS](images/a.mobaxterm_ubuntu_WSL.png)
 
-- **Install Virt-Manager:**
+-   **Install Virt-Manager:**
 
-        sudo apt update
-        sudo apt install virt-manager
+    ```sh
+    sudo apt update
+    sudo apt install virt-manager
+    ```
 
-- **Run Virtual Machine Manager:**
+-   **Run Virtual Machine Manager:**
 
     Start the Virtual Machine Manager running this command on the opened
     terminal: `virt-manager` as shown below:
@@ -92,7 +97,7 @@ local Windows 10 machine using WSL:
 
     ![Virt-Manager interface](images/0.virtual-manager.png)
 
-- **Connect QEMU/KVM user session on Virt-Manager:**
+-   **Connect QEMU/KVM user session on Virt-Manager:**
 
     ![Virt-Manager Add Connection](images/0.0.add_virtual_connection.png)
 
@@ -102,7 +107,7 @@ local Windows 10 machine using WSL:
 
 ### 2. Create a virtual machine
 
-Create a virtual machine with the storage set to a **15 GB** *qcow2* disk image
+Create a virtual machine with the storage set to a **15 GB** _qcow2_ disk image
 using Virtual Machine Manager
 
 ![Virt-Manager New Virtual Machine](images/1.new_virtual_machine.png)
@@ -139,8 +144,8 @@ detect the disk.
 
 ![Virt-Manager Add Hardware](images/7.4.add_virtio_iso_hardware.png)
 
-Click **Add Hardware**  > select **CDROM device** and attach to downloaded
-**virtio-win-* ISO** file:
+Click **Add Hardware** > select **CDROM device** and attach to downloaded
+**virtio-win-\* ISO** file:
 
 ![Virt-Manager Add CDROM with virtio ISO](images/7.5.add_virtio_iso_cdrom.png)
 
@@ -259,12 +264,14 @@ Level Authentication to connect" option
 Delete the recovery parition which will allow expanding the Image as required
 running the following commands on **Command Prompt (Run as Adminstrator)**
 
-        diskpart
-        select disk 0
-        list partition
-        select partition 3
-        delete partition override
-        list partition
+```sh
+diskpart
+select disk 0
+list partition
+select partition 3
+delete partition override
+list partition
+```
 
 ![Disk Partition 3 Delete using CMD](images/disk_partition_manager_delete_partition_3.png)
 
@@ -289,11 +296,11 @@ shown below:
 
 ![Download Cloudbase-init](images/install_cloudbase-init.png)
 
-During Installation, set *Serial port for logging* to **COM1** as shown below:
+During Installation, set _Serial port for logging_ to **COM1** as shown below:
 
 ![Download Cloudbase-init setup for Admin](images/coludbase-init-serial-port-com1.png)
 
-When the installation is done, in the *Complete the Cloudbase-Init Setup Wizard*
+When the installation is done, in the _Complete the Cloudbase-Init Setup Wizard_
 window, select the **Run Sysprep** and **Shutdown** check boxes and click "Finish"
 as shown below:
 
@@ -315,18 +322,22 @@ You can copy/download this windows image to the folder where you configured your
 OpenStack CLI as [described Here](../../openstack-cli/openstack-CLI.md) and upload
 to the NERC's OpenStack running the following OpenStack Image API command:
 
-    openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022
+```sh
+openstack image create --disk-format qcow2 --file win2k22.qcow2 MS-Windows-2022
+```
 
 You can verify the uploaded image is available by running:
 
-    openstack image list
+```sh
+openstack image list
 
-    +--------------------------------------+---------------------+--------+
-    | ID                                   | Name                | Status |
-    +--------------------------------------+---------------------+--------+
-    | a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
-    | ...                                  | ...                 | ...    |
-    +--------------------------------------+---------------------+--------+
++--------------------------------------+---------------------+--------+
+| ID                                   | Name                | Status |
++--------------------------------------+---------------------+--------+
+| a9b48e65-0cf9-413a-8215-81439cd63966 | MS-Windows-2022     | active |
+| ...                                  | ...                 | ...    |
++--------------------------------------+---------------------+--------+
+```
 
 ### 13. Launch an instance using newly uploaded MS-Windows-2022 image
 
@@ -336,7 +347,7 @@ Images List for your project as shown below:
 
 ![MS-Windows-2022 OpenStack Image](images/stack_images_windows.png)
 
-Create a **Volume** using that *Windows Image*:
+Create a **Volume** using that _Windows Image_:
 
 ![MS-Winodws-2022 Image to Volume Create](images/stack_image_to_volume.png)
 
@@ -361,6 +372,7 @@ Attach a Floating IP to your instance:
 ![Associate Floating IP](images/win_instance_add_floating_ip.png)
 
 !!! note "More About Floating IP"
+
     If you don't have any available floating IPs, please refer to
     [this documentation](../../create-and-connect-to-the-VM/assign-a-floating-IP.md#allocate-a-floating-ip)
     on how to allocate a new Floating IP to your project.

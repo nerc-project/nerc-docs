@@ -13,6 +13,7 @@ This will bring up the detailed Quota attributes for that project as shown below
 ![Request Change Resource Allocation Attributes for OpenStack Project](images/coldfront-openstack-allocation-attributes.png)
 
 !!! warning "Important: Requested/Approved Allocated OpenStack Storage Quota & Cost"
+
     For **NERC (OpenStack)** resource types, the **Storage quotas** are controlled
     by the values of the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
     (GiB)" quota attributes. The **Storage cost** is determined by [your requested
@@ -29,6 +30,7 @@ wait untill the NERC admin approves/ deny the change request to see the change o
 your resource allocation for the selected project.
 
 !!! tip "Important Information"
+
     PI or project managers can put the new values on the textboxes for **ONLY**
     quota attributes they want to change others they can be left **blank** so those
     quotas will not get changed!
@@ -57,60 +59,63 @@ This will show more details about the change request as shown below:
 ### How to Use GPU Resources in your OpenStack Project
 
 !!! tip "Comparison Between CPU and GPU"
+
     To learn more about the key differences between CPUs and GPUs, please [read this](../../openstack/create-and-connect-to-the-VM/flavors.md#comparison-between-cpu-and-gpu).
 
 A GPU instance is launched in the [same way](../../openstack/create-and-connect-to-the-VM/launch-a-VM.md)
 as any other compute instance, with a few considerations to keep in mind:
 
-- When launching a GPU based instance, be sure to select one of the
-[GPU Tier](../../openstack/create-and-connect-to-the-VM/flavors.md#3-gpu-tier)
-based flavor.
+1.  When launching a GPU based instance, be sure to select one of the
+    [GPU Tier](../../openstack/create-and-connect-to-the-VM/flavors.md#3-gpu-tier)
+    based flavor.
 
-- You need to have sufficient resource quota to launch the desired flavor. Always
-ensure you know which GPU-based flavor you want to use, then submit an
-[allocation change request](#request-change-resource-allocation-attributes-for-openstack-project)
-to adjust your current allocation to fit the flavor's resource requirements.
+2.  You need to have sufficient resource quota to launch the desired flavor. Always
+    ensure you know which GPU-based flavor you want to use, then submit an
+    [allocation change request](#request-change-resource-allocation-attributes-for-openstack-project)
+    to adjust your current allocation to fit the flavor's resource requirements.
 
-!!! tip "Resource Requirements for Launching a VM with "NVIDIA A100 SXM4 40GB" Flavor."
-    Based on the [GPU Tier documentation](../../openstack/create-and-connect-to-the-VM/flavors.md#i-nvidia-a100-sxm4-40gb),
-    NERC provides two variations of NVIDIA A100 SXM4 40GB flavors:
+    !!! tip "Resource Required for Launching a VM with "NVIDIA A100 SXM4 40GB" Flavor."
 
-    1. **`gpu-su-a100sxm4.1`**: Includes 1 NVIDIA A100 GPU
-    2. **`gpu-su-a100sxm4.2`**: Includes 2 NVIDIA A100 GPUs
+        Based on the [GPU Tier documentation](../../openstack/create-and-connect-to-the-VM/flavors.md#i-nvidia-a100-sxm4-40gb),
+        NERC provides two variations of NVIDIA A100 SXM4 40GB flavors:
 
-    You should select the flavor that best fits your resource needs and ensure your
-    OpenStack quotas are appropriately configured for the chosen flavor. To use
-    a GPU-based VM flavor, choose the one that best fits your resource needs and
-    make sure your OpenStack quotas meet the required specifications:
+        1. **`gpu-su-a100sxm4.1`**: Includes 1 NVIDIA A100 GPU
+        2. **`gpu-su-a100sxm4.2`**: Includes 2 NVIDIA A100 GPUs
 
-    - For the **`gpu-su-a100sxm4.1`** flavor:
-        - **vCPU**: 32
-        - **RAM (GiB)**: 240
+        You should select the flavor that best fits your resource needs and ensure your
+        OpenStack quotas are appropriately configured for the chosen flavor. To use
+        a GPU-based VM flavor, choose the one that best fits your resource needs and
+        make sure your OpenStack quotas meet the required specifications:
 
-    - For the **`gpu-su-a100sxm4.2`** flavor:
-        - **vCPU**: 64
-        - **RAM (GiB)**: 480
+        - For the **`gpu-su-a100sxm4.1`** flavor:
+            - **vCPU**: 32
+            - **RAM (GiB)**: 240
 
-    Ensure that your OpenStack resource quotas are configured as follows:
+        - For the **`gpu-su-a100sxm4.2`** flavor:
+            - **vCPU**: 64
+            - **RAM (GiB)**: 480
 
-    - **OpenStack GPU Quota**: Meets or exceeds the number of GPUs required by the
-    chosen flavor.
-    - **OpenStack Compute vCPU Quota**: Meets or exceeds the vCPU requirement.
-    - **OpenStack Compute RAM Quota (MiB)**: Meets or exceeds the RAM requirement.
+        Ensure that your OpenStack resource quotas are configured as follows:
 
-    Properly configure these quotas to successfully launch a VM with the selected
-    "gpu-su-a100sxm4" flavor.
+        - **OpenStack GPU Quota**: Meets or exceeds the number of GPUs required by the
+          chosen flavor.
+        - **OpenStack Compute vCPU Quota**: Meets or exceeds the vCPU requirement.
+        - **OpenStack Compute RAM Quota (MiB)**: Meets or exceeds the RAM requirement.
 
-- We recommend using [ubuntu-22.04-x86_64](../../openstack/create-and-connect-to-the-VM/images.md#nerc-images-list)
-as the image for your GPU-based instance because we have tested the NVIDIA driver
-with this image and obtained good results. That said, it is possible to run a
-variety of other images as well.
+        Properly configure these quotas to successfully launch a VM with the selected
+        "gpu-su-a100sxm4" flavor.
+
+3.  We recommend using [ubuntu-22.04-x86_64](../../openstack/create-and-connect-to-the-VM/images.md#nerc-images-list)
+    as the image for your GPU-based instance because we have tested the NVIDIA driver
+    with this image and obtained good results. That said, it is possible to run a
+    variety of other images as well.
 
 ## Request Change Resource Allocation Attributes for OpenShift Project
 
 ![Request Change Resource Allocation Attributes for OpenShift Project](images/coldfront-openshift-allocation-attributes.png)
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
+
     For **NERC-OCP (OpenShift)** resource types, the **Storage quotas** are controlled
     by the values of the "OpenShift Request on Storage Quota (GiB)" and "OpenShift
     Limit on Ephemeral Storage Quota (GiB)" quota attributes. The **Storage cost**
@@ -125,6 +130,7 @@ wait untill the NERC admin approves/ deny the change request to see the change o
 your resource allocation for the selected project.
 
 !!! tip "Important Information"
+
     PI or project managers can put the new values on the textboxes for **ONLY**
     quota attributes they want to change others they can be left **blank** so those
     quotas will not get changed!
@@ -148,6 +154,7 @@ This will show more details about the change request as shown below:
 ### How to Use GPU Resources in your OpenShift Project
 
 !!! tip "Comparison Between CPU and GPU"
+
     To learn more about the key differences between CPUs and GPUs, please [read this](../../openstack/create-and-connect-to-the-VM/flavors.md#comparison-between-cpu-and-gpu).
 
 For OpenShift pods, we can specify different types of GPUs. Since OpenShift is not

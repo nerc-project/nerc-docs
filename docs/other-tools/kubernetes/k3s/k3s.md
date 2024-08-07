@@ -2,24 +2,24 @@
 
 ## Features
 
-- Lightweight certified K8s distro
+-   Lightweight certified K8s distro
 
-- Built for production operations
+-   Built for production operations
 
-- 40MB binary, 250MB memeory consumption
+-   40MB binary, 250MB memeory consumption
 
-- Single process w/ integrated K8s master, Kubelet, and containerd
+-   Single process w/ integrated K8s master, Kubelet, and containerd
 
-- Supports not only `etcd` to hold the cluster state, but also `SQLite`
-(for single-node, simpler setups) or external DBs like `MySQL` and `PostgreSQL`
+-   Supports not only `etcd` to hold the cluster state, but also `SQLite`
+    (for single-node, simpler setups) or external DBs like `MySQL` and `PostgreSQL`
 
-- Open source project
+-   Open source project
 
 ## Components and architecure
 
 ![K3s Components and architecure](../images/k3s_architecture.png)
 
-- High-Availability K3s Server with an External DB:
+-   High-Availability K3s Server with an External DB:
 
     ![K3s Components and architecure](../images/k3s_high_availability.png) or,
     ![K3s Components and architecure](../images/k3s_ha_architecture.jpg)
@@ -32,16 +32,16 @@ We will need 1 control-plane(master) and 2 worker nodes to create a single
 control-plane kubernetes cluster using `k3s`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for master, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS
-image, `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also
-[assign Floating IP](../../../openstack/../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-to the master node.
+-   1 Linux machine for master, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS
+    image, `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also
+    [assign Floating IP](../../../openstack/../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+    to the master node.
 
-- 2 Linux machines for worker, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS
-image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage.
+-   2 Linux machines for worker, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS
+    image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage.
 
-- ssh access to all machines: [Read more here](../../../openstack/../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-on how to set up SSH on your remote VMs.
+-   ssh access to all machines: [Read more here](../../../openstack/../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+    on how to set up SSH on your remote VMs.
 
 ## Networking
 
@@ -59,17 +59,18 @@ on each node.
 If you plan on achieving high availability with **embedded etcd**, server nodes
 must be accessible to each other on ports **2379** and **2380**.
 
-- Create 1 security group with appropriate [Inbound Rules for K3s Server Nodes](https://rancher.com/docs/k3s/latest/en/installation/installation-requirements/#networking)
-that will be used by all 3 nodes:
+-   Create 1 security group with appropriate [Inbound Rules for K3s Server Nodes](https://rancher.com/docs/k3s/latest/en/installation/installation-requirements/#networking)
+    that will be used by all 3 nodes:
 
     ![Inbound Rules for K3s Server Nodes](../images/k3s_security_group.png)
 
     !!! note "Important Note"
+
         The VXLAN overlay networking port on nodes should not be exposed to the world
         as it opens up your cluster network to be accessed by anyone. Run your nodes
         behind a firewall/security group that disables access to port **8472**.
 
-- setup Unique hostname to each machine using the following command:
+-   setup Unique hostname to each machine using the following command:
 
     ```sh
     echo "<node_internal_IP> <host_name>" >> /etc/hosts
@@ -85,25 +86,25 @@ that will be used by all 3 nodes:
 
 In this step, you will setup the following nodes:
 
-- k3s-master
+-   k3s-master
 
-- k3s-worker1
+-   k3s-worker1
 
-- k3s-worker2
+-   k3s-worker2
 
 The below steps will be performed on all the above mentioned nodes:
 
-- SSH into all the 3 machines
+-   SSH into all the 3 machines
 
-- Switch as root: `sudo su`
+-   Switch as root: `sudo su`
 
-- Update the repositories and packages:
+-   Update the repositories and packages:
 
     ```sh
     apt-get update && apt-get upgrade -y
     ```
 
-- Install `curl` and `apt-transport-https`
+-   Install `curl` and `apt-transport-https`
 
     ```sh
     apt-get update && apt-get install -y apt-transport-https curl
@@ -113,14 +114,14 @@ The below steps will be performed on all the above mentioned nodes:
 
 ## Install **Docker**
 
-- Install container runtime - **docker**
+-   Install container runtime - **docker**
 
     ```sh
     apt-get install docker.io -y
     ```
 
-- Configure the Docker daemon, in particular to use systemd for the management
-of the container’s cgroups
+-   Configure the Docker daemon, in particular to use systemd for the management
+    of the container’s cgroups
 
     ```sh
     cat <<EOF | sudo tee /etc/docker/daemon.json
@@ -142,11 +143,11 @@ of the container’s cgroups
 Run the below command on the master node i.e. `k3s-master` that you want to setup
 as control plane.
 
-- SSH into **k3s-master** machine
+-   SSH into **k3s-master** machine
 
-- Switch to root user: `sudo su`
+-   Switch to root user: `sudo su`
 
-- Execute the below command to initialize the cluster:
+-   Execute the below command to initialize the cluster:
 
     ```sh
     curl -sfL https://get.k3s.io | sh -s - --kubelet-arg 'cgroup-driver=systemd' \
@@ -154,7 +155,7 @@ as control plane.
     ```
 
     **OR,**
-    If you don't want to setup the K3s cluster without using  **docker** as the
+    If you don't want to setup the K3s cluster without using **docker** as the
     container runtime, then just run without supplying the `--docker` argument.
 
     ```sh
@@ -163,14 +164,14 @@ as control plane.
 
 After running this installation:
 
-- The K3s service will be configured to automatically restart after node reboots
-or if the process crashes or is killed
+-   The K3s service will be configured to automatically restart after node reboots
+    or if the process crashes or is killed
 
-- Additional utilities will be installed, including `kubectl`, `crictl`, `ctr`,
-`k3s-killall.sh`, and `k3s-uninstall.sh`
+-   Additional utilities will be installed, including `kubectl`, `crictl`, `ctr`,
+    `k3s-killall.sh`, and `k3s-uninstall.sh`
 
-- A kubeconfig file will be written to `/etc/rancher/k3s/k3s.yaml` and the `kubectl`
-installed by K3s will automatically use it.
+-   A kubeconfig file will be written to `/etc/rancher/k3s/k3s.yaml` and the `kubectl`
+    installed by K3s will automatically use it.
 
 To check if the service installed successfully, you can use:
 
@@ -190,6 +191,7 @@ kubectl version
 ```
 
 !!! note "Note"
+
     If you want to taint the node i.e. not to deploy pods on this node after
     installation then run: `kubectl taint nodes <master_node_name> k3s-controlplane=true:NoExecute`
     i.e. `kubectl taint nodes k3s-master k3s-controlplane=true:NoExecute`
@@ -272,41 +274,42 @@ K1097aace305b0c1077fc854547f34a598d2::server:6cc9fbb6c5c9de96f37fb14b8
 Run the below command on both of the worker nodes i.e. `k3s-worker1` and `k3s-worker2`
 that you want to join the cluster.
 
-- SSH into **k3s-worker1** and **k3s-worker1** machine
+-   SSH into **k3s-worker1** and **k3s-worker1** machine
 
-- Switch to root user: `sudo su`
+-   Switch to root user: `sudo su`
 
-- Execute the below command to join the cluster using the token obtained from
-the master node:
+-   Execute the below command to join the cluster using the token obtained from
+    the master node:
 
-  To install K3s on worker nodes and add them to the cluster, run the installation
-  script with the `K3S_URL` and `K3S_TOKEN` environment variables. Here is an example
-  showing how to join a worker node:
+    To install K3s on worker nodes and add them to the cluster, run the installation
+    script with the `K3S_URL` and `K3S_TOKEN` environment variables. Here is an example
+    showing how to join a worker node:
 
-  ```sh
-  curl -sfL https://get.k3s.io | K3S_URL=https://<Master-Internal-IP>:6443 \
-  K3S_TOKEN=<Join_Token> sh -
-  ```
+    ```sh
+    curl -sfL https://get.k3s.io | K3S_URL=https://<Master-Internal-IP>:6443 \
+    K3S_TOKEN=<Join_Token> sh -
+    ```
 
-  Where `<Master-Internal-IP>` is the Internal IP of the master node and `<Join_Token>`
-  is the token obtained from the master node.
+    Where `<Master-Internal-IP>` is the Internal IP of the master node and `<Join_Token>`
+    is the token obtained from the master node.
 
-  For example:
+    For example:
 
-  ```sh
-  curl -sfL https://get.k3s.io | K3S_URL=https://192.168.0.154:6443 \
-  K3S_TOKEN=K1019827f88b77cc5e1dce04d692d445c1015a578dafdc56aca829b2f
-  501df9359a::server:1bf0d61c85c6dac6d5a0081da55f44ba sh -
-  ```
+    ```sh
+    curl -sfL https://get.k3s.io | K3S_URL=https://192.168.0.154:6443 \
+    K3S_TOKEN=K1019827f88b77cc5e1dce04d692d445c1015a578dafdc56aca829b2f
+    501df9359a::server:1bf0d61c85c6dac6d5a0081da55f44ba sh -
+    ```
 
-  You can verify if the `k3s-agent` on both of the worker nodes is running by:
+    You can verify if the `k3s-agent` on both of the worker nodes is running by:
 
-  ```sh
-  systemctl status k3s-agent
-  ```
+    ```sh
+    systemctl status k3s-agent
+    ```
 
-  The output looks like:
-  ![K3s Active Agent Status](../images/k3s_active_agent_status.png)
+    The output looks like:
+
+    ![K3s Active Agent Status](../images/k3s_active_agent_status.png)
 
 ---
 
@@ -341,7 +344,7 @@ to it.
 
 ## Deploying Nginx using deployment
 
-- Create a deployment `nginx.yaml` on master node
+-   Create a deployment `nginx.yaml` on master node
 
     ```sh
     vi nginx.yaml
@@ -377,19 +380,19 @@ to it.
     kubectl apply -f nginx.yaml
     ```
 
-- Verify the nginx pod is in **Running** state:
+-   Verify the nginx pod is in **Running** state:
 
     ```sh
     sudo k3s kubectl get pods --all-namespaces
     ```
 
-- Scale the pods to available agents:
+-   Scale the pods to available agents:
 
     ```sh
     sudo k3s kubectl scale --replicas=2 deploy/mysite
     ```
 
-- View all deployment status:
+-   View all deployment status:
 
     ```sh
     sudo k3s kubectl get deploy mysite
@@ -398,7 +401,7 @@ to it.
     mysite   2/2     2            2           85s
     ```
 
-- Delete the nginx deployment and pod:
+-   Delete the nginx deployment and pod:
 
     ```sh
     sudo k3s kubectl delete -f nginx.yaml
@@ -411,17 +414,17 @@ to it.
     ```
 
     !!!node "Note"
-        Instead of apply manually any new deployment yaml, you can just copy the
-        *yaml* file to the **/var/lib/rancher/k3s/server/manifests/** folder
-        i.e. `sudo cp nginx.yaml /var/lib/rancher/k3s/server/manifests/.`. This
-        will automatically deploy the newly copied deployment on your cluster.
+    Instead of apply manually any new deployment yaml, you can just copy the
+    _yaml_ file to the **/var/lib/rancher/k3s/server/manifests/** folder
+    i.e. `sudo cp nginx.yaml /var/lib/rancher/k3s/server/manifests/.`. This
+    will automatically deploy the newly copied deployment on your cluster.
 
 ## Deploy Addons to K3s
 
 K3s is a lightweight kubernetes tool that doesn’t come packaged with all the tools
 but you can install them separately.
 
-- Install **Helm** Commandline tool on K3s:
+-   Install **Helm** Commandline tool on K3s:
 
     i. Download the latest version of Helm commandline tool using `wget` from
     [this page](https://github.com/helm/helm/releases).
@@ -464,7 +467,7 @@ but you can install them separately.
     sudo apt-get install helm
     ```
 
-- Verify the `Helm` installation:
+-   Verify the `Helm` installation:
 
     ```sh
     helm version
@@ -473,7 +476,7 @@ but you can install them separately.
     70374ce770b", GitTreeState:"clean", GoVersion:"go1.16.8"}
     ```
 
-- Add the helm chart repository to allow installation of applications using helm:
+-   Add the helm chart repository to allow installation of applications using helm:
 
     ```sh
     helm repo add stable https://charts.helm.sh/stable
@@ -487,7 +490,7 @@ but you can install them separately.
 **Nginx** can be used as a web proxy to expose [ingress](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx)
 web traffic routes in and out of the cluster.
 
-- You can install "nginx web-proxy" using Helm:
+-   You can install "nginx web-proxy" using Helm:
 
     ```sh
     export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
@@ -498,7 +501,7 @@ web traffic routes in and out of the cluster.
         --set defaultBackend.enabled=false --set controller.publishService.enabled=true
     ```
 
-- We can test if the application has been installed by:
+-   We can test if the application has been installed by:
 
     ```sh
     k3s kubectl get pods -n kube-system -l app=nginx-ingress -o wide
@@ -507,8 +510,8 @@ web traffic routes in and out of the cluster.
     nginx.. 1/1  Running 0        19m  10.42.1.5 k3s-worker1   <none>      <none>
     ```
 
-- We have successfully deployed nginx web-proxy on k3s. Go to browser, visit `http://<Master-Floating-IP>`
-i.e. <http://128.31.25.246> to check the nginx default page.
+-   We have successfully deployed nginx web-proxy on k3s. Go to browser, visit `http://<Master-Floating-IP>`
+    i.e. <http://128.31.25.246> to check the nginx default page.
 
 ## Upgrade K3s Using the Installation Script
 
@@ -543,6 +546,7 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" \
 ```
 
 !!! note "Note"
+
     For more about on **"How to use flags and environment variables"** [read this](https://rancher.com/docs/k3s/latest/en/installation/install-options/how-to-flags/).
 
 ## Restarting K3s

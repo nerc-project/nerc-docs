@@ -10,6 +10,7 @@ for best practices:
 2. [Boston University](best-practices-for-bu.md)
 
 !!! info "Upcoming Best Practices for other institutions"
+
     We are in the process of obtaining Best Practices for institutions not listed
     above.
 

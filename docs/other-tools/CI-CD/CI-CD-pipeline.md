@@ -9,17 +9,21 @@ pipelines are a practice focused on improving software delivery using automation
 The steps that form a CI/CD pipeline are distinct subsets of tasks that are
 grouped into a pipeline stage. Typical pipeline stages include:
 
-- **Build** - The stage where the application is compiled.
-- **Test** - The stage where code is tested. Automation here can save both time
-and effort.
-- **Release** - The stage where the application is delivered to the central repository.
-- **Deploy** - In this stage code is deployed to production environment.
-- **Validation and compliance** - The steps to validate a build are determined by
-the needs of your organization. Image security scanning, security scanning and
-code analysis of applications ensure the quality of images and written application's
-code.
+-   **Build** - The stage where the application is compiled.
+
+-   **Test** - The stage where code is tested. Automation here can save both time
+    and effort.
+
+-   **Release** - The stage where the application is delivered to the central repository.
+
+-   **Deploy** - In this stage code is deployed to production environment.
+
+-   **Validation and compliance** - The steps to validate a build are determined
+    by the needs of your organization. Image security scanning, security scanning
+    and code analysis of applications ensure the quality of images and written application's
+    code.
 
 ![CI/CD Pipeline Stages](images/ci-cd-flow.png)
-*Figure: CI/CD Pipeline Stages*
+_Figure: CI/CD Pipeline Stages_
 
 ---

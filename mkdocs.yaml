@@ -1,0 +1,195 @@
+# Project Information
+site_name: NERC Documentation
+site_description: NERC Documentation
+site_author: NERC
+# site_dir: public
+site_url: https://nerc-project.github.io/nerc-docs/
+repo_name: nerc-project/nerc-docs
+repo_url: https://github.com/nerc-project/nerc-docs
+
+nav:
+    - Home: index.md
+    - About: about.md
+    - Getting Started:
+          - Cost & Billing:
+                - How does NERC pricing work?: get-started/cost-billing/how-pricing-works.md
+                - NERC Pricing Calculator: get-started/cost-billing/nerc-pricing-calculator.md
+                - Billing Process:
+                      - Billing Process for My Institution: get-started/cost-billing/billing-process-for-my-institution.md
+                      - Billing Process for Harvard University: get-started/cost-billing/billing-process-for-harvard.md
+                      - Billing Process for Boston University: get-started/cost-billing/billing-process-for-bu.md
+                - Billing FAQs: get-started/cost-billing/billing-faqs.md
+          - User Onboarding Process: get-started/user-onboarding-on-NERC.md
+          - How to Create a User Account: get-started/create-a-user-portal-account.md
+          - How to Get An Allocation:
+                - get-started/allocation/coldfront.md
+                - get-started/allocation/adding-a-project.md
+                - get-started/allocation/manage-users-to-a-project.md
+                - get-started/allocation/requesting-an-allocation.md
+                - get-started/allocation/allocation-change-request.md
+                - get-started/allocation/adding-a-new-allocation.md
+                - get-started/allocation/managing-users-to-an-allocation.md
+                - get-started/allocation/project-and-allocation-review.md
+                - get-started/allocation/archiving-a-project.md
+                - get-started/allocation/allocation-details.md
+          - Security Best Practices for the NERC Users:
+                - Quick Guide and Best Practices: get-started/best-practices/best-practices.md
+                - Best Practices for My Institution: get-started/best-practices/best-practices-for-my-institution.md
+                - Best Practices for Harvard University: get-started/best-practices/best-practices-for-harvard.md
+                - Best Practices for Boston University: get-started/best-practices/best-practices-for-bu.md
+    - OpenStack:
+          - OpenStack: openstack/index.md
+          - Logging In:
+                - Access the OpenStack Dashboard: openstack/logging-in/access-the-openstack-dashboard.md
+                - Dashboard Overview: openstack/logging-in/dashboard-overview.md
+          - Access and Security:
+                - Security Groups: openstack/access-and-security/security-groups.md
+                - Create a Key Pair: openstack/access-and-security/create-a-key-pair.md
+          - Create &amp; Connect to the VM:
+                - Launch a VM: openstack/create-and-connect-to-the-VM/launch-a-VM.md
+                - Create a Windows VM: openstack/create-and-connect-to-the-VM/create-a-Windows-VM.md
+                - Available Images: openstack/create-and-connect-to-the-VM/images.md
+                - Available NOVA Flavors: openstack/create-and-connect-to-the-VM/flavors.md
+                - Assign a Floating IP: openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md
+                - Connect to the VM:
+                      - SSH to the VM: openstack/create-and-connect-to-the-VM/ssh-to-the-VM.md
+                      - Bastion Host based SSH: openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md
+                      - Using VPN:
+                            - OpenVPN:
+                                  - About OpenVPN: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/index.md
+                                  - OpenVPN GUI for Windows: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/openvpn_gui_for_windows.md
+                                  - Tunnelblick for MacOS: openstack/create-and-connect-to-the-VM/using-vpn/openvpn/tunnelblick_for_macos.md
+                            - WireGuard: openstack/create-and-connect-to-the-VM/using-vpn/wireguard/index.md
+                            - sshuttle: openstack/create-and-connect-to-the-VM/using-vpn/sshuttle/index.md
+          - OpenStack CLI:
+                - OpenStack CLI: openstack/openstack-cli/openstack-CLI.md
+                - Launch a VM using OpenStack CLI: openstack/openstack-cli/launch-a-VM-using-openstack-CLI.md
+          - Persistent Storage:
+                - Block Storage/ Volumes/ Cinder:
+                      - Block Storage/ Volumes/ Cinder: openstack/persistent-storage/volumes.md
+                      - Create An Empty Volume: openstack/persistent-storage/create-an-empty-volume.md
+                      - Attach The Volume To An Instance: openstack/persistent-storage/attach-the-volume-to-an-instance.md
+                      - Format And Mount The Volume: openstack/persistent-storage/format-and-mount-the-volume.md
+                      - Detach a Volume: openstack/persistent-storage/detach-a-volume.md
+                      - Delete Volumes: openstack/persistent-storage/delete-volumes.md
+                      - Extending Volume: openstack/persistent-storage/extending-volume.md
+                      - Transfer a Volume: openstack/persistent-storage/transfer-a-volume.md
+                - Object Storage/ Swift:
+                      - Object Storage/ Swift: openstack/persistent-storage/object-storage.md
+                      - Mount The Object Storage: openstack/persistent-storage/mount-the-object-storage.md
+          - Data Transfer: openstack/data-transfer/data-transfer-from-to-vm.md
+          - Backup your instance & data: openstack/backup/backup-with-snapshots.md
+          - VM Management: openstack/management/vm-management.md
+          - Decommission your OpenStack Resources: openstack/decommission/decommission-openstack-resources.md
+          - Advanced Topics:
+                - Setting Up Own Network:
+                      - Set up a Private Network: openstack/advanced-openstack-topics/setting-up-a-network/set-up-a-private-network.md
+                      - Create a Router: openstack/advanced-openstack-topics/setting-up-a-network/create-a-router.md
+                - Domain Name System:
+                      - Set up Domain names for your VMs: openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md
+                - Terraform:
+                      - Terraform on NERC: openstack/advanced-openstack-topics/terraform/terraform-on-NERC.md
+                - Python SDK: openstack/advanced-openstack-topics/python-sdk/python-SDK.md
+                - Setting up custom images: openstack/advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md
+    - OpenShift:
+          - OpenShift: openshift/index.md
+          - OpenShift Getting Started:
+                - OpenShift Overview: openshift/get-started/openshift-overview.md
+          - OpenShift Web Console:
+                - Access the NERC's OpenShift Web Console: openshift/logging-in/access-the-openshift-web-console.md
+                - Web Console Overview: openshift/logging-in/web-console-overview.md
+          - OpenShift command-line interface (CLI) Tools:
+                - OpenShift CLI Tools Overview: openshift/logging-in/the-openshift-cli.md
+                - How to Setup the OpenShift CLI Tools: openshift/logging-in/setup-the-openshift-cli.md
+          - Creating Your First Application on OpenShift:
+                - Creating A Sample Application: openshift/applications/creating-a-sample-application.md
+                - Creating Your Own Developer Catalog Service: openshift/applications/creating-your-own-developer-catalog-service.md
+          - Editing Applications:
+                - Editing your applications: openshift/applications/editing-applications.md
+                - Scaling and Performance Guide: openshift/applications/scaling-and-performance-guide.md
+          - Storage:
+                - Storage Overview: openshift/storage/storage-overview.md
+          - Deleting Applications:
+                - Deleting your applications: openshift/applications/deleting-applications.md
+          - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
+    - Red Hat OpenShift AI (RHOAI):
+          - NERC RHOAI: openshift-ai/index.md
+          - NERC OpenShift AI Getting Started:
+                - NERC RHOAI Overview: openshift-ai/get-started/rhoai-overview.md
+          - NERC OpenShift AI Dashboard:
+                - Access the NERC's OpenShift AI dashboard: openshift-ai/logging-in/access-the-rhoai-dashboard.md
+                - The NERC's OpenShift AI dashboard Overview: openshift-ai/logging-in/the-rhoai-dashboard-overview.md
+          - Using Data Science Project in the NERC RHOAI:
+                - Using Your Data Science Project (DSP): openshift-ai/data-science-project/using-projects-the-rhoai.md
+                - Explore the JupyterLab Environment: openshift-ai/data-science-project/explore-the-jupyterlab-environment.md
+                - Model Serving in the NERC RHOAI: openshift-ai/data-science-project/model-serving-in-the-rhoai.md
+                - Test the Model in the NERC RHOAI: openshift-ai/data-science-project/testing-model-in-the-rhoai.md
+          - Other Example Projects:
+                - How to access, download, and analyze data for S3 usage: openshift-ai/other-projects/how-access-s3-data-then-download-and-analyze-it.md
+                - Configure a Jupyter Notebook to use GPUs for AI/ML modeling: openshift-ai/other-projects/configure-jupyter-notebook-use-gpus-aiml-modeling.md
+    - Other Tools On NERC:
+          - Other Useful Tools: other-tools/index.md
+          - Kubernetes:
+                - Kubernetes Overview: other-tools/kubernetes/kubernetes.md
+                - K8s Flavors Comparision: other-tools/kubernetes/comparisons.md
+                - Development environment:
+                      - Minikube: other-tools/kubernetes/minikube.md
+                      - Kind: other-tools/kubernetes/kind.md
+                      - MicroK8s: other-tools/kubernetes/microk8s.md
+                      - K3s:
+                            - K3s: other-tools/kubernetes/k3s/k3s.md
+                            - K3s with High Availibility(HA) setup: other-tools/kubernetes/k3s/k3s-ha-cluster.md
+                            - Multi-master HA K3s cluster using k3sup: other-tools/kubernetes/k3s/k3s-using-k3sup.md
+                            - Single-Node K3s Cluster using k3d: other-tools/kubernetes/k3s/k3s-using-k3d.md
+                            - Multi-master K3s cluster setup using k3d: other-tools/kubernetes/k3s/k3s-ha-cluster-using-k3d.md
+                      - k0s: other-tools/kubernetes/k0s.md
+                - Production environment:
+                      - Kubeadm:
+                            - Bootstrapping cluster with kubeadm: other-tools/kubernetes/kubeadm/single-master-clusters-with-kubeadm.md
+                            - Creating a HA cluster with kubeadm: other-tools/kubernetes/kubeadm/HA-clusters-with-kubeadm.md
+                      - Kubespray: other-tools/kubernetes/kubespray.md
+          - CI/CD Pipeline:
+                - CI/CD Overview: other-tools/CI-CD/CI-CD-pipeline.md
+                - Using Jenkins:
+                      - Setup Jenkins CI/CD Pipeline: other-tools/CI-CD/jenkins/setup-jenkins-CI-CD-pipeline.md
+                      - GitHub to Jenkins Pipeline: other-tools/CI-CD/jenkins/integrate-your-GitHub-repository.md
+                - Using Github Actions:
+                      - GitHub Actions CI/CD Pipeline: other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md
+          - Apache Spark: other-tools/apache-spark/spark.md
+theme:
+    name: material
+    custom_dir: nerc-theme
+    favicon: assets/images/favicon.ico
+    logo: assets/images/logo.png
+    palette:
+        - scheme: default
+          toggle:
+              icon: material/toggle-switch-off-outline
+              name: Switch to dark mode
+        - scheme: slate
+          toggle:
+              icon: material/toggle-switch
+              name: Switch to light mode
+#  features:
+#    - navigation.tabs
+extra_css:
+    - stylesheets/extra.css
+extra_javascript:
+    - javascripts/extra.js
+extra:
+    font:
+        text: Roboto
+        code: Roboto Mono
+    version:
+        provider: mike
+    # generator: false
+    social:
+        - icon: fontawesome/brands/github
+          link: https://github.com/nerc-project/nerc-docs
+
+# Extensions
+markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - tables

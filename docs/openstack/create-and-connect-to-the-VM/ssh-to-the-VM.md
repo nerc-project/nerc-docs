@@ -4,20 +4,21 @@
 Before trying to access instances from the outside world, you need to make sure
 you have followed these steps:
 
-- You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
-to set up a public ssh key.
+-   You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+    to set up a public ssh key.
 
-- Your public ssh-key has selected (in "Key Pair" tab) while
-[launching the instance](launch-a-VM.md).
+-   Your public ssh-key has selected (in "Key Pair" tab) while
+    [launching the instance](launch-a-VM.md).
 
-- [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
-access it from outside world.
+-   [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
+    access it from outside world.
 
-- Make sure you have added rules in the
-[Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
-allow **ssh** using Port 22 access to the instance.
+-   Make sure you have added rules in the
+    [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
+    allow **ssh** using Port 22 access to the instance.
 
 !!! info "How to update New Security Group(s) on any running VM?"
+
     If you want to attach/deattach any new Security Group(s) to/from a running VM
     after it has launched. First create all new Security Group(s) with all the rules
     required. Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
@@ -32,14 +33,20 @@ In our example, the IP is `199.94.60.66`.
 
 Default usernames for all the base images are:
 
-- **all Ubuntu images**: ubuntu
-- **all AlmaLinux images**: almalinux
-- **all Rocky Linux images**: rocky
-- **all Fedora images**: fedora
-- **all Debian images**: debian
-- **all RHEL images**: cloud-user
+-   **all Ubuntu images**: ubuntu
+
+-   **all AlmaLinux images**: almalinux
+
+-   **all Rocky Linux images**: rocky
+
+-   **all Fedora images**: fedora
+
+-   **all Debian images**: debian
+
+-   **all RHEL images**: cloud-user
 
 !!! warning "Removed Centos Images"
+
     If you still have VMs running with deleted **CentOS** images, you need to use
     the following default username for your CentOS images: `centos`.
 
@@ -58,6 +65,7 @@ sure you want to connect. Type `yes`.
 ![SSH To VM Successful](images/ssh_to_vm.png)
 
 !!! tip "Important Note"
+
     If you haven't added your key to ssh-agent, you may need to specify the
     private key file, like this: `ssh -i ~/.ssh/cloud.key ubuntu@199.94.60.66`
 
@@ -110,6 +118,7 @@ need to log in via the console in the web dashboard.
 For example, if your network connections aren't working correctly.
 
 !!! info "Setting a password is necessary to use Remote Desktop Protocol (RDP)"
+
     [Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)(RDP)
     is widely used for Windows remote connections, but you can also access
     and interact with the graphical user interface of a remote Linux server by
@@ -193,6 +202,7 @@ Append the file's contents to authorized_keys:
 Now your teammates should also be able to log in.
 
 !!! warning "Important Note"
+
     Make sure to use `>>` instead of `>` to avoid overwriting your own key.
 
 ---
@@ -205,23 +215,22 @@ of everyone logging in to the default user.
 Once you log into the VM, you can create another user like this.
 
 !!! tip "Note"
+
     The 'sudo_group' is different for different OS - in CentOS and Red Hat, the
     group is called 'wheel', while in Ubuntu, the group is called 'sudo'.
 
-    ```
-      sudo su
-      # useradd -m <username>
-      # passwd <username>
-      # usermod -aG <sudo_group> <username>    <-- skip this step for users who
-      # should not have root access
-      # su username
-      cd ~
-      mkdir .ssh
-      chmod 700 .ssh
-      cd .ssh
-      vi authorized_keys   <-- paste the public key for that user in this file
-      chmod 600 authorized_keys
-    ```
+        sudo su
+        # useradd -m <username>
+        # passwd <username>
+        # usermod -aG <sudo_group> <username>    <-- skip this step for users who
+        # should not have root access
+        # su username
+        cd ~
+        mkdir .ssh
+        chmod 700 .ssh
+        cd .ssh
+        vi authorized_keys   <-- paste the public key for that user in this file
+        chmod 600 authorized_keys
 
 ## How To Enable Remote Desktop Protocol Using xrdp on Ubuntu
 
@@ -248,6 +257,7 @@ Next, install the `xfce` and `xfce-goodies` packages on your server:
     sudo apt install xfce4 xfce4-goodies -y
 
 !!! info "Select Display Manager"
+
     If prompted to choose a display manager, which manages graphical login mechanisms
     and user sessions, you can select any option from the list of available display
     managers. For instance, here we have `gdm3` as the default selection.
@@ -276,6 +286,7 @@ Output:
                 └─8839 /usr/sbin/xrdp
 
 !!! info "What if xrdp is not Running?"
+
     If the status of xrdp is not running, you may have to start the service manually
     with this command: `sudo systemctl start xrdp`. After executing the above command,
     verify the status again to ensure xrdp is in a running state.
@@ -296,6 +307,7 @@ Add a new security group with a RDP (port 3389) rule open to the public for a
 RDP connection and attach that security group to your instance as [described here](../access-and-security/security-groups.md#allowing-rdp).
 
 !!! info "How to Update Security Group(s) on a Running VM?"
+
     Following [this guide](../access-and-security/security-groups.md#update-security-groups-to-a-running-vm),
     you'll be able to attach created security group(s) with all the
     required rules to a running VM.

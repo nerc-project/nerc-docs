@@ -19,10 +19,13 @@ Next, you will be redirected to CILogon welcome page as shown below:
 MGHPCC Shared Services (MSS) Keycloak will request approval of access to the
 following information from the user:
 
-- Your CILogon user identifier
-- Your name
-- Your email address
-- Your username and affiliation from your identity provider
+-   Your CILogon user identifier
+
+-   Your name
+
+-   Your email address
+
+-   Your username and affiliation from your identity provider
 
 which are required in order to allow access your account on NERC's OpenStack
 dashboard.
@@ -35,6 +38,7 @@ identity provider(IdP). Click "Log On". This will redirect to your respective in
 login page where you need to enter your institutional credentials.
 
 !!! note "Important Note"
+
     The NERC does not see or have access to your institutional account credentials,
     it points to your selected insitution's identity provider and redirects back
     once authenticated.
@@ -46,6 +50,7 @@ see usage summary for provided date range.
 ![OpenStack Horizon dashboard](images/horizon_dashboard.png)
 
 !!! info "I can't find my virtual machine"
+
     If you are a member of several projects i.e. ColdFront NERC (OpenStack)
     allocations, you may need to switch the project before you can see and use the
     OpenStack resources you or your team has created. Clicking on the project dropdown

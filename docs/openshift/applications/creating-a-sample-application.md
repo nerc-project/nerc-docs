@@ -17,29 +17,30 @@ tasks using both the web console and the command-line tool.
 3. In the **Navigation Menu**, click **+Add**.
 
 4. **Creating applications using samples**: Use existing code samples to get started
-with creating applications on the OpenShift Container Platform. Find the
-**Create applications using samples** section and then click on "**View all samples**"
-and then select the type of application you want to create (e.g. Node.js, Python,
-Ruby, etc.), it will load application from **Git Repo URL** and then review or
-modify the application **Name** for your application.
-**Alternatively**, If you want to create an application from your own source code
-located in a git repository, select **Import from Git**. In the **Git Repo URL**
-text box, enter your git repo url. For example: `https://github.com/myuser/mypublicrepo.git`.
-You may see a *warning* stating "**URL is valid but cannot be reached**". *You can
-ignore this warning!*
+   with creating applications on the OpenShift Container Platform. Find the
+   **Create applications using samples** section and then click on "**View all samples**"
+   and then select the type of application you want to create (e.g. Node.js, Python,
+   Ruby, etc.), it will load application from **Git Repo URL** and then review or
+   modify the application **Name** for your application.
+   **Alternatively**, If you want to create an application from your own source code
+   located in a git repository, select **Import from Git**. In the **Git Repo URL**
+   text box, enter your git repo url. For example: `https://github.com/myuser/mypublicrepo.git`.
+   You may see a _warning_ stating "**URL is valid but cannot be reached**". _You
+   can ignore this warning!_
 
 5. Click "Create" to create your application.
 
 6. Once your application has been created, you can view the details by clicking
-on the application name in the **Project Overview** page.
+   on the application name in the **Project Overview** page.
 
 7. On the **Topology View** menu, click on your application, or the application
-circle if you are in graphical topology view. In the details panel that displays,
-scroll to the **Routes** section on the Resources tab and click on the link to
-go to the sample application. This will open your application in a new browser
-window. The link will look similar to `http://<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
+   circle if you are in graphical topology view. In the details panel that displays,
+   scroll to the **Routes** section on the Resources tab and click on the link to
+   go to the sample application. This will open your application in a new browser
+   window. The link will look similar to `http://<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
 
 !!! tip "Example: Deploying a Python application"
+
     For a quick example on how to use the "Import from Git" option to deploy a
     sample Python application, please refer to [this guide](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/getting_started/openshift-web-console#getting-started-web-console-deploying-python-app_openshift-web-console).
 
@@ -56,6 +57,7 @@ i. Make sure you have the `oc` CLI tool installed and configured on your local
 machine following [these steps](../logging-in/setup-the-openshift-cli.md#first-time-usage).
 
 !!! info "Information"
+
     Some users may have access to multiple projects. Run the following command to
     switch to a specific project space: `oc project <your-project-namespace>`.
 
@@ -69,7 +71,7 @@ iii. If you want to create an application from an existing Git repository, you c
 use the `--code` flag to specify the URL of the repository. For example:
 `oc new-app --code https://github.com/myuser/mypublicrepo`. If you want to use a
 different name, you can add the `--name=<newname>` argument to the `oc new-app` command.
-For example: `oc new-app –name=mytestapp https://github.com/myuser/mypublicrepo`.
+For example: `oc new-app --name=mytestapp https://github.com/myuser/mypublicrepo`.
 The platform will try to automatically [detect the programming language](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/creating-applications-using-cli.html#language-detection)
 of the application code and select the latest version of the base language image
 available. If `oc new-app` can't find any suitable Source-To-Image (S2I) builder
@@ -81,6 +83,7 @@ but add `nodejs~` before the URL of the Git repository.
 For example: `oc new-app nodejs~https://github.com/myuser/mypublicrepo`.
 
 !!! note "Important Note"
+
     If you are using a private remote Git repository, you can use the
     `--source-secret` flag to specify an existing source clone secret that
     will get injected into your **BuildConfig** to access the repository.
@@ -112,47 +115,49 @@ services, event sources, and source-to-image builders ready for integration into
 your project.
 
 !!! note "About Quick Start Templates"
+
     By default, the templates build using a public source repository on GitHub that
     contains the necessary application code. For more options and customization
     please [read this](https://docs.openshift.com/container-platform/4.10/openshift_images/using-templates.html#templates-quickstart_using-templates).
 
 ### Steps
 
-1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
+1.  Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
+2.  Click on the **Perspective Switcher** drop-down menu and select **Developer**.
 
-3. In the **Navigation Menu**, click **+Add**.
+3.  In the **Navigation Menu**, click **+Add**.
 
-4. You need to find the Developer Catalog section and then select **All services**
-option as shown below:
+4.  You need to find the Developer Catalog section and then select **All services**
+    option as shown below:
 
     ![Select All Services](images/select-service-catalog.png)
 
-5. Then, you will be able search any available services from the Developer Catalog
-templates by searching for it on catalog and choose the desired type of service
-or component that you wish to include in your project. For this example, select
-**Databases** to list all the database services and then click **MariaDB** to see
-the details for the service.
+5.  Then, you will be able search any available services from the Developer Catalog
+    templates by searching for it on catalog and choose the desired type of service
+    or component that you wish to include in your project. For this example, select
+    **Databases** to list all the database services and then click **MariaDB** to
+    see the details for the service.
 
     ![Search for MariaDB](images/search-mariadb-database.png)
 
     !!! info "To Create Your Own Developer Catalog Service"
+
         You also have the option to create and integrate custom services into the
         Developer Catalog using a template, as [described here](creating-your-own-developer-catalog-service.md).
 
-6. Once selected by clicking the template, you will see Instantiate Template web
-interface as shown below:
+6.  Once selected by clicking the template, you will see Instantiate Template web
+    interface as shown below:
 
     ![Initiate MariaDB Template](images/initiate-mariadb-template.png)
 
-7. Clicking "Instantiate Template" will display an automatically populated
-template containing details for the MariaDB service. Click "Create" to begin the
-creation process and enter any custom information required.
+7.  Clicking "Instantiate Template" will display an automatically populated
+    template containing details for the MariaDB service. Click "Create" to begin
+    the creation process and enter any custom information required.
 
-8. View the **MariaDB** service in the Topology view as shown below:
+8.  View the **MariaDB** service in the Topology view as shown below:
 
-![MariaDB in Topology](images/mariadb-in-topology.png)
+    ![MariaDB in Topology](images/mariadb-in-topology.png)
 
 ### For Additional resources
 

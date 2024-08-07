@@ -10,6 +10,7 @@ Start your estimate with no commitment, and explore NERC services and pricing fo
 your research needs by using [this online tool](https://docs.google.com/spreadsheets/d/187bQgz3eB3W9OL7x9rrgaJ2pi7u85xMJvUJbnKzzBQM/edit#gid=0).
 
 !!! info "How to use the NERC Pricing Calculator?"
+
     Please Note, you need to make a copy of this tool before estimating the
     cost and once copied you can easily update corresponding resource type columns'
     values on your own working sheet that will reflect your potential Service

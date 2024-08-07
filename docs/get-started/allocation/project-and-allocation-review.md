@@ -9,6 +9,7 @@ PIs update project details, confirm project members, and input publications,
 grants, and research outcomes from the preceding year.
 
 !!! danger "Required Project Review"
+
     The PI or any manager(s) of a project must complete the project review once
     every 365 days. ColdFront does not send notifications to PIs when project reviews
     are due. Instead, when the PI or Manager(s) of a project views their project
@@ -62,10 +63,12 @@ triggered to all users on an allocation when the expiration date is 60 days away
 project.
 
 !!! danger "Very Important: Urgent Allocation Renewal is Required Before Expiration"
+
     If the allocation renewal isn't processed prior to the original allocation
     expiration date by the PI or Manager, the allocation will expire and the
     allocation users will get a notification email letting them know the allocation
     has expired!
+
     ![Allocation Renewal Prior Expiration](images/renew_expiring_allocation.png)
 
     Currently, a project will continue to be able to utilize **expired** allocations.

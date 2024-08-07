@@ -11,6 +11,7 @@ user(s) on the checkboxes and click on the "Add Selected Users to Allocation" bu
 ![Add Selected User(s) to Allocation](images/coldfront-add-users-to-allocation.png)
 
 !!! warning "Very Important"
+
     The desired user must already be on the project to be added to the allocation.
 
 Removing Users from the Resource Allocation is straightforward by just clicking on

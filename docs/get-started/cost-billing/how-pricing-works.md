@@ -1,6 +1,7 @@
 # How does NERC pricing work?
 
 !!! question "As a new PI using NERC for the first time, am I entitled to any credits?"
+
     As a **new PI** using NERC for the first time, you might wonder if you get any
     credits. Yes, you'll receive up to **$1000** for **the first month only**. But
     remember, this credit **can not** be used in **the following months**. Also,
@@ -29,13 +30,13 @@ and billing model.
 
 ### Service Units (SUs)
 
-| Name | vGPU | vCPU | RAM (GiB) | Current Price |
-| - | - | - | - | - |
-| CPU | 0 | 1 | 4 | $0.013 |
-| A100 GPU | 1 | 24 | 74 | $1.803 |
-| A100sxm4 GPU | 1 | 32 | 240 | $2.078 |
-| V100 GPU | 1 | 48 | 192 | $1.214 |
-| K80 GPU | 1 | 6 | 28.5 | $0.463 |
+| Name         | vGPU | vCPU | RAM (GiB) | Current Price |
+| ------------ | ---- | ---- | --------- | ------------- |
+| CPU          | 0    | 1    | 4         | $0.013        |
+| A100 GPU     | 1    | 24   | 74        | $1.803        |
+| A100sxm4 GPU | 1    | 32   | 240       | $2.078        |
+| V100 GPU     | 1    | 48   | 192       | $1.214        |
+| K80 GPU      | 1    | 6    | 28.5      | $0.463        |
 
 ## Breakdown
 
@@ -48,11 +49,11 @@ of the base SU for the maximum resource they reserve.
 
 **GPU SU Example:**
 
-- A Project or VM with:
+-   A Project or VM with:
 
     `1 A100 GPU, 24 vCPUs, 95MiB RAM, 199.2hrs`
 
-- Will be charged:
+-   Will be charged:
 
     `1 A100 GPU SUs x 200hrs (199.2 rounded up) x $1.803`
 
@@ -60,17 +61,18 @@ of the base SU for the maximum resource they reserve.
 
 **OpenStack CPU SU Example:**
 
-- A Project or VM with:
+-   A Project or VM with:
 
     `3 vCPU, 20 GiB RAM, 720hrs (24hr x 30days)`
 
-- Will be charged:
+-   Will be charged:
 
     `5 CPU SUs due to the extra RAM (20GiB vs. 12GiB(3 x 4GiB)) x 720hrs x $0.013`
 
     `$46.80`
 
 !!! warning "Are VMs invoiced even when shut down?"
+
     Yes, VMs are invoiced as long as they are utilizing resources. In order not
     to be billed for a VM, you **[must delete](../../openstack/management/vm-management.md#delete-instance)**
     your Instance/VM. It is advisable to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
@@ -84,7 +86,7 @@ of the base SU for the maximum resource they reserve.
 
 **OpenShift CPU SU Example:**
 
-- Project with 3 Pods with:
+-   Project with 3 Pods with:
 
     i. `1 vCPU, 3 GiB RAM, 720hrs (24hr*30days)`
 
@@ -92,7 +94,7 @@ of the base SU for the maximum resource they reserve.
 
     iii. `2 vCPU, 4 GiB RAM, 720hrs (24hr*30days)`
 
-- Project Will be charged:
+-   Project Will be charged:
 
     `RoundUP(Sum(`
 
@@ -109,6 +111,7 @@ of the base SU for the maximum resource they reserve.
     `$46.80`
 
 !!! note "How to calculate cost for all running OpenShift pods?"
+
     If you prefer a function for the OpenShift pods here it is:
 
     `Project SU HR count = RoundUP(SUM(Pod1 SU hour count + Pod2 SU hr count +
@@ -127,6 +130,7 @@ is only provisioned while it is active, and in persistent volumes, storage remai
 provisioned until it is deleted.
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+
     The **Storage cost** is determined by
     [your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view).
     Once approved, these **Storage quotas** will need to be reserved from the
@@ -152,11 +156,11 @@ provisioned until it is deleted.
 
 **Storage Example 1:**
 
-- Volume or VM with:
+-   Volume or VM with:
 
     `500GiB for 699.2hrs`
 
-- Will be charged:
+-   Will be charged:
 
     `.5 Storage TiB SU (.5 TiB x 700hrs) x $0.009 TiB/hr`
 
@@ -164,11 +168,11 @@ provisioned until it is deleted.
 
 **Storage Example 2:**
 
-- Volume or VM with:
+-   Volume or VM with:
 
     `10TiB for 720hrs (24hr x 30days)`
 
-- Will be charged:
+-   Will be charged:
 
     `10 Storage TiB SU (10TiB x 720 hrs) x $0.009 TiB/hr`
 
@@ -181,17 +185,18 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
 To provide a more practical way to calculate your usage, here is a function of
 how the calculation works for OpenShift and OpenStack.
 
-1. **OpenStack** = (Resource (vCPU/RAM/vGPU) assigned to VM flavor converted to
-number of equivalent SUs) * (time VM has been running), rounded up to a whole
-hour + Extra storage.
+1.  **OpenStack** = (Resource (vCPU/RAM/vGPU) assigned to VM flavor converted to
+    number of equivalent SUs) \* (time VM has been running), rounded up to a whole
+    hour + Extra storage.
 
     !!! info "NERC's OpenStack Flavor List"
+
         You can find the most up-to-date information on the current NERC's OpenStack
         flavors with corresponding SUs by referring to [this page](../../openstack/create-and-connect-to-the-VM/flavors.md).
 
-2. **OpenShift** =  (Resource (vCPU/RAM) requested by Pod converted to the number
-of SU) * (time Pod was running), summed up to project level rounded up to the whole
-hour.
+2.  **OpenShift** = (Resource (vCPU/RAM) requested by Pod converted to the number
+    of SU) \* (time Pod was running), summed up to project level rounded up to the
+    whole hour.
 
 ## How to Pay?
 

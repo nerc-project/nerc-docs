@@ -26,6 +26,7 @@ of such a running ephemeral instance, referred to as an **"instance snapshot"**,
 especially if you want to safeguard or recover important states of your instance.
 
 !!! danger "Very Important Note"
+
     Never use **Ephemeral disk** if you're setting up a production-level environment.
     When the instance is deleted, its associated ephemeral storage is also removed.
 
@@ -43,28 +44,31 @@ another project as [described here](../persistent-storage/transfer-a-volume.md).
 
 Some uses for volumes:
 
-- Persistent data storage for ephemeral instances.
-- Transfer of data between projects
-- Bootable image where disk changes persist
-- Mounting the disk of one instance to another for troubleshooting
+-   Persistent data storage for ephemeral instances.
+
+-   Transfer of data between projects
+
+-   Bootable image where disk changes persist
+
+-   Mounting the disk of one instance to another for troubleshooting
 
 ## How do you make your VM setup and data persistent?
 
-- By default, when the instance is launched from an **Image** or an
-**Instance Snapshot**, the choice for utilizing persistent storage is configured
-by selecting the **Yes** option for **"Create New Volume"**. It's crucial to
-note that this configuration automatically creates persistent block storage
-in the form of a Volume instead of using Ephemeral disk, which appears in
-the "Volumes" list in the Horizon dashboard: *Project -> Volumes -> Volumes*.
+-   By default, when the instance is launched from an **Image** or an
+    **Instance Snapshot**, the choice for utilizing persistent storage is configured
+    by selecting the **Yes** option for **"Create New Volume"**. It's crucial to
+    note that this configuration automatically creates persistent block storage
+    in the form of a Volume instead of using Ephemeral disk, which appears in
+    the "Volumes" list in the Horizon dashboard: _Project -> Volumes -> Volumes_.
 
-    ![Instance Persistent Storage Option](images/instance-persistent-storage-option.png)
+![Instance Persistent Storage Option](images/instance-persistent-storage-option.png)
 
-- By default, the setting for **"Delete Volume on Instance Delete"** is configured
-to use **No**. This setting ensures that the volume created during the launch
-of a virtual machine remains persistent and won't be deleted alongside the
-instance unless explicitly chosen as "Yes". Such instances boot from a
-**bootable volume**, utilizing an existing volume listed in the
-*Project -> Volumes -> Volumes* menu.
+-   By default, the setting for **"Delete Volume on Instance Delete"** is configured
+    to use **No**. This setting ensures that the volume created during the launch
+    of a virtual machine remains persistent and won't be deleted alongside the
+    instance unless explicitly chosen as "Yes". Such instances boot from a
+    **bootable volume**, utilizing an existing volume listed in the
+    _Project -> Volumes -> Volumes_ menu.
 
 To minimize the risk of potential data loss, we highly recommend consistently
 [creating backups through snapshots](../backup/backup-with-snapshots.md).
@@ -81,6 +85,7 @@ particularly when safeguarding or recovering critical states and data from your
 instance.
 
 !!! danger "Very Important: Requested/Approved Allocated Storage Quota and Cost"
+
     When you [delete virtual machines](../decommission/decommission-openstack-resources.md#delete-all-vms)
     backed by persistent volumes, the disk data is retained, continuing to consume
     approved storage resources for which you will still be billed. It's important
@@ -106,6 +111,7 @@ instance.
     corresponding to the added or removed storage quantity.
 
 !!! question "Help Regarding Billing"
+
     Please send your questions or concerns regarding Storage and Cost by emailing
     us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Billing%20Question)
     or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).

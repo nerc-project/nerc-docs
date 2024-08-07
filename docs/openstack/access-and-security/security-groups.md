@@ -13,7 +13,7 @@ group with rules.
 You can view security groups by clicking Project, then click Network panel and
 choose Security Groups from the tabs that appears.
 
-Navigate to *Project -> Network -> Security Groups*.
+Navigate to _Project -> Network -> Security Groups_.
 
 You should see a ‘default’ security group. The default security group allows
 traffic only between members of the security group, so by default you can
@@ -26,6 +26,7 @@ hosts a web server, you need a security group which allows access to ports 80
 ![Security Groups](images/security_groups.png)
 
 !!! warning "Important Note"
+
     We strongly advise against altering the **default** security group and suggest
     refraining from adding extra security rules to it. This is because the
     **default** security group is automatically assigned to any newly created VMs.
@@ -60,6 +61,7 @@ You will see there are a lot of options you can configure on the Add Rule
 dialog box.
 
 !!! note "To check all available Rule"
+
     You can choose the desired rule template as shown under Rule dropdown options.
     This will automatically select the Port required for the selected custom rule.
 
@@ -69,13 +71,16 @@ dialog box.
 
 Enter the following values:
 
-- Rule: SSH
-- Remote: CIDR
-- CIDR: 0.0.0.0/0
+-   Rule: SSH
 
-!!! note "Note"
-    To accept requests from a particular range of IP addresses, specify the IP
-    address block in the CIDR box.
+-   Remote: CIDR
+
+-   CIDR: 0.0.0.0/0
+
+    !!! note "Note"
+
+        To accept requests from a particular range of IP addresses, specify the IP
+        address block in the CIDR box.
 
 The new rule now appears in the list. This signifies that any instances using
 this newly added Security Group will now have SSH port 22 open for requests
@@ -94,10 +99,13 @@ choose "ALL ICMP" from the dropdown.
 
 In the Add Rule dialog box, enter the following values:
 
-- Rule: All ICMP
-- Direction: Ingress
-- Remote: CIDR
-- CIDR: 0.0.0.0/0
+-   Rule: All ICMP
+
+-   Direction: Ingress
+
+-   Remote: CIDR
+
+-   CIDR: 0.0.0.0/0
 
 ![Adding ICMP - ping in Security Group Rules](images/ping_icmp_security_rule.png)
 
@@ -127,11 +135,14 @@ Choose "RDP" from the Rule dropdown option as shown below:
 
 Enter the following values:
 
-- Rule: RDP
-- Remote: CIDR
-- CIDR: 0.0.0.0/0
+-   Rule: RDP
+
+-   Remote: CIDR
+
+-   CIDR: 0.0.0.0/0
 
 !!! note "Note"
+
     To accept requests from a particular range of IP addresses, specify the IP
     address block in the CIDR box.
 
@@ -143,15 +154,15 @@ from any IP address.
 
 ## Editing Existing Security Group and Adding New Security Rules
 
-- Navigate to Security Groups:
+-   Navigate to Security Groups:
 
-    Navigate to *Project -> Network -> Security Groups*.
+    Navigate to _Project -> Network -> Security Groups_.
 
-- Select the Security Group:
+-   Select the Security Group:
 
     Choose the security group to which you want to add new rules.
 
-- Add New Rule:
+-   Add New Rule:
 
     Look for an option to add a new rule within the selected security group.
 
@@ -162,11 +173,12 @@ from any IP address.
 
     ![Add New Security Rules](images/sg_new_rule.png)
 
-- Save Changes:
+-   Save Changes:
 
     Save the changes to apply the new security rules to the selected security group.
 
 !!! warning "Important Note"
+
     Security group changes may take some time to propagate to the instances
     associated with the modified group. Ensure that new rules align with your
     network security requirements.

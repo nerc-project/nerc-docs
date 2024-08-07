@@ -62,6 +62,7 @@ You can use a PVC to mount a PersistentVolume into a Pod. You can access the
 storage without knowing the details of the cloud environment.
 
 !!! note "Important Note"
+
     A PVC is in active use by a pod when a Pod object exists that uses the PVC.
 
 ### Access modes
@@ -70,11 +71,11 @@ Volume access modes describe volume capabilities. You can use access modes to ma
 persistent volume claim (PVC) and persistent volume (PV). The following are the
 examples of access modes:
 
-| Storage Class    | Description                                                                                         |
-|------------------|-----------------------------------------------------------------------------------------------------|
-| ReadWriteOnce (RWO)| Allows read-write access to the volume by a single node at a time.                                   |
-| ReadOnlyMany (ROX) | Allows multiple nodes to read from the volume simultaneously, but only one node can write to it.      |
-| ReadWriteMany (RWX)| Allows multiple nodes to read from and write to the volume simultaneously.                           |
-| ReadWriteOncePod (RWOP)| Allows read-write access to the volume by multiple pods running on the same node simultaneously.     |
+| Storage Class           | Description                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------ |
+| ReadWriteOnce (RWO)     | Allows read-write access to the volume by a single node at a time.                               |
+| ReadOnlyMany (ROX)      | Allows multiple nodes to read from the volume simultaneously, but only one node can write to it. |
+| ReadWriteMany (RWX)     | Allows multiple nodes to read from and write to the volume simultaneously.                       |
+| ReadWriteOncePod (RWOP) | Allows read-write access to the volume by multiple pods running on the same node simultaneously. |
 
 ---

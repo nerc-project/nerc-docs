@@ -13,12 +13,13 @@ requirements, the current policy/requirements for servers at NERC can be
 found [here](https://policy.security.harvard.edu/all-servers).
 
 !!! danger "Harvard University Security Policy Information"
-    *Please note that all assets deployed to your NERC project must be compliant
+
+    Please note that all assets deployed to your NERC project must be compliant
     with University Security policies. Please familiarize yourself with the
     [Harvard University Information Security Policy](https://policy.security.harvard.edu/)
     and your role in securing data. If you have any questions about how Security
     should be implemented in the Cloud, please contact your school security
-    officer: ["Havard Security Officer"](https://security.harvard.edu/).*
+    officer: ["Havard Security Officer"](https://security.harvard.edu/).
 
 ## Know Your Data
 
@@ -55,6 +56,7 @@ for all devices owned by Harvard staff/faculty and available for all operating
 systems.
 
 !!! note "Please note"
+
     To acess this repository you need to be in **Harvard Campus Network**.
 
 ### Patch/Update Regularly
@@ -98,9 +100,9 @@ Attackers often review running code on the server to see if they can obtain any
 sensitive credentials that may have been included in each script. To better
 manage your credentials, we recommend either using:
 
-● [1password Credential Manager](https://1password.com/)
+-   [1password Credential Manager](https://1password.com/)
 
-● [AWS Secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+-   [AWS Secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
 
 #### Not Running the Application as the Root/Superuser
 
@@ -132,20 +134,20 @@ Where possible, and if needed, logins to a Harvard service should be placed behi
 Harvardkey. For researchers however, the preferred login method is usually SSH
 and we recommend the following ways to strengthen your SSH accounts
 
-● Disable password only logins
+1.  Disable password only logins
 
-- In file `/etc/ssh/sshd_config` change `PasswordAuthentication` to `no` to disable
-tunneled clear text passwords i.e. `PasswordAuthentication no`.
+    -   In file `/etc/ssh/sshd_config` change `PasswordAuthentication` to `no` to
+        disable tunneled clear text passwords i.e. `PasswordAuthentication no`.
 
-- Uncomment the permit empty passwords option in the second line, and, if needed,
-change `yes` to `no` i.e. `PermitEmptyPasswords no`
+    -   Uncomment the permit empty passwords option in the second line, and, if
+        needed, change `yes` to `no` i.e. `PermitEmptyPasswords no`.
 
-- Then run `service ssh restart`.
+    -   Then run `service ssh restart`.
 
-● Use SSH keys with passwords enabled on them
+2.  Use SSH keys with passwords enabled on them
 
-● If possible, enroll the SSH service with a Two-factor authentication provider
-such as DUO or YubiKey.
+3.  If possible, enroll the SSH service with a Two-factor authentication provider
+    such as DUO or YubiKey.
 
 ## Attack Detection
 
@@ -189,11 +191,11 @@ In the event you suspect a security issue has occurred or wanted someone to supp
 a security assessment, please feel free to reach out to the HUIT Internet Security
 and Data Privacy group, specifically the Operations & Engineering team.
 
-● [Email Harvard ITSEC-OPS](mailto:itsec-ops@harvard.edu)
+-   [Email Harvard ITSEC-OPS](mailto:itsec-ops@harvard.edu)
 
-● [Service Queue](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9)
+-   [Service Queue](https://harvard.service-now.com/ithelp?id=submit_ticket&sys_id=3f1dd0320a0a0b99000a53f7604a2ef9)
 
-● [Harvard HUIT Slack](https://harvard-huit.slack.com) Channel: **#isdp-public**
+-   [Harvard HUIT Slack](https://harvard-huit.slack.com) Channel: **#isdp-public**
 
 ## Further References
 

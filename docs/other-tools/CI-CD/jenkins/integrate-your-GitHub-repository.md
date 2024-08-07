@@ -4,6 +4,7 @@ This explains how to add a GitHub Webhook in your Jenkins Pipeline that saves yo
 time and keeps your project updated all the time.
 
 !!! note "Prerequisite"
+
     You need to have setup CI/CD Pipelines on NERC's OpenStack by following
     [this document](setup-jenkins-CI-CD-pipeline.md).
 
@@ -28,16 +29,16 @@ Let's see how to configure and add a webhook in GitHub:
     ![Github webhook](images/Github-webhook.png)
 
 4. In the "Payload URL" field paste your Jenkins environment URL. At the end of this
-URL add **/github-webhook/** using `http://<Floating-IP>:8080/github-webhook/`
-i.e. `http://199.94.60.4:8080/github-webhook/`.
-Select "Content type" as "application/json" and leave the "Secret" field empty.
+   URL add **/github-webhook/** using `http://<Floating-IP>:8080/github-webhook/`
+   i.e. `http://199.94.60.4:8080/github-webhook/`.
+   Select "Content type" as "application/json" and leave the "Secret" field empty.
 
     ![Github webhook fields](images/Github-webhook-fields.png)
 
 5. In the page "Which events would you like to trigger this webhook?" select the
-option "Let me select individual events". Then, check "Pull Requests" and "Pushes".
-At the end of this option, make sure that the "Active" option is checked and then
-click on "Add webhook" button.
+   option "Let me select individual events". Then, check "Pull Requests" and "Pushes".
+   At the end of this option, make sure that the "Active" option is checked and
+   then click on "Add webhook" button.
 
     ![Github webhook events](images/Github-webhook-events.png)
 

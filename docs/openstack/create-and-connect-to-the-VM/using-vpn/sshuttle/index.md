@@ -34,13 +34,12 @@ Host sshuttle
 ![SSH sshuttle server](images/ssh_server.png)
 
 !!! note "Note"
+
     Unlike other VPN servers, for sshuttle you don't need to install
     anything on the server side. **As long as you have an SSH server (with
     python3 installed) you're good to go.**
 
-## To connect from a new client
-
-## Install sshuttle
+## To connect from a new client Install sshuttle
 
 ### Windows
 
@@ -80,24 +79,24 @@ sudo apt-get install sshuttle
 sudo dnf install sshuttle
 ```
 
-It is also possible to install into a **virtualenv** as *a non-root user*.
+It is also possible to install into a **virtualenv** as _a non-root user_.
 
-- From PyPI:
+-   From PyPI:
 
 ```sh
 virtualenv -p python3 /tmp/sshuttle
- . /tmp/sshuttle/bin/activate
- pip install sshuttle
+. /tmp/sshuttle/bin/activate
+pip install sshuttle
 ```
 
-- Clone:
+-   Clone:
 
 ```sh
 virtualenv -p python3 /tmp/sshuttle
- . /tmp/sshuttle/bin/activate
- git clone [https://github.com/sshuttle/sshuttle.git](https://github.com/sshuttle/sshuttle.git)
- cd sshuttle
- ./setup.py install
+. /tmp/sshuttle/bin/activate
+git clone [https://github.com/sshuttle/sshuttle.git](https://github.com/sshuttle/sshuttle.git)
+cd sshuttle
+./setup.py install
 ```
 
 ## How to Connect

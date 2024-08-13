@@ -138,6 +138,16 @@ shown below:
     oc project
     Using project "<your_openshift_project_to_decommission>" on server "https://api.shift.nerc.mghpcc.org:6443".
 
+!!! tip "Important Note: Best Practice for Specifying Namespace in `oc` Commands."
+
+    The best practice is to specify the namespace in each `oc` command using the
+    `-n` option, e.g., `-n <your_openshift_project_to_decommission>`. This ensures
+    that your commands are always executed in the intended project, minimizing
+    the risk of affecting the wrong resources.
+
+    For example, the `oc get all` command can also be executed by specifying the
+    namespace using the `-n` option, like this: `oc get all -n <your_openshift_project_to_decommission>`.
+
 Please review all resources currently being used by your project by running
 `oc get all`, as shown below:
 
@@ -179,7 +189,9 @@ Please review all resources currently being used by your project by running
 Run the `oc delete` command to delete all resource objects specified as
 parameters after `--all` within your selected project (namespace).
 
-    oc delete pod,deployment,pvc,route,service,build,buildconfig,statefulset,replicaset,cronjob,imagestream,revision,configuration,notebook --all
+    oc delete pod,deployment,deploymentconfig,pvc,route,service,build,buildconfig,
+    statefulset,replicaset,replicationcontroller,job,cronjob,imagestream,revision,
+    configuration,notebook --all
 
 !!! danger "Danger"
 
@@ -188,7 +200,10 @@ parameters after `--all` within your selected project (namespace).
     delete all resources in the specified project.
 
     Always ensure that you are targeting the correct project (namespace) when using
-    this command to avoid unintentional deletion of resources.
+    this command to avoid unintentional deletion of resources. If you're unsure
+    which namespace you're currently in, run the oc project command to display
+    the current project. To be safe, you can also specify the namespace in all
+    `oc` commands by using the `-n` option, e.g., `-n <your_openshift_project_to_decommission>`.
 
     Make sure to backup any important data or configurations before executing this
     command to prevent accidental data loss.

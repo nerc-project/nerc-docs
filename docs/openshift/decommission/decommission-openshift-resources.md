@@ -248,14 +248,15 @@ you can filter the allocation of your interest and then proceed to request a
 
     Although other allocated resources i.e. CPU, RAM, GPU, etc. operate on a
     **pay-as-you-go** model, wherein charges are incurred solely based on usage,
-    **Expired** allocations will remain accessible to the users assigned under the
-    allocation. It is advisable to set all other allocation quota attributes to
-    zero (0) during the change request. **This measure ensures that existing users
-    will not accidentally use the resources from the project.**
+    **Active (Needs Renewal)** allocations after "End Date" will remain accessible
+    to the users assigned under the allocation. It is advisable to set all other
+    allocation quota attributes to zero (0) during the change request. **This
+    measure ensures that existing users will not accidentally use the resources
+    from the project.**
 
     Alternatively, PIs can control access to the allocation by [removing users](../../get-started/allocation/manage-users-to-a-project.md#addremove-users-tofrom-a-project)
     assigned to their NERC-OCP (OpenShift) allocation. This ensures that even if
-    the allocation expires, users will not have access to the unused resources.
+    the allocation ends, users will not have access to the unused resources.
 
 Please make sure your change request looks like this:
 

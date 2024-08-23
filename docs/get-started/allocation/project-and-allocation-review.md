@@ -56,23 +56,26 @@ detail page and they see the status change to "project review pending".
 
 ## Allocation Renewals
 
-When the requested allocation is approved, it must have an expiration date - which
-is normally 365 days or 1 year from the date it is approved. Automated emails are
-triggered to all users on an allocation when the expiration date is 60 days away,
-30 days, 7 days, and then expired, unless the user turns off notifications on the
-project.
+When the requested allocation is approved, it must have an "End Date" - which
+is normally 365 days or 1 year from the date it is approved i.e. "Start Date".
+Automated emails are triggered to all users on an allocation when the end date
+is 60 days away, 30 days, 7 days, and then set the allocation status to
+"Active (Needs Renewal)", unless the user turns off notifications on the project.
 
-!!! danger "Very Important: Urgent Allocation Renewal is Required Before Expiration"
+!!! danger "Very Important: Urgent Allocation Renewal is Required Before End Date"
 
     If the allocation renewal isn't processed prior to the original allocation
-    expiration date by the PI or Manager, the allocation will expire and the
-    allocation users will get a notification email letting them know the allocation
-    has expired!
+    end date by the PI or Manager, the allocation will set the allocation status
+    to "Active (Needs Renewal)" and the allocation users will get a notification
+    email letting them know the allocation needs renewal!
 
-    ![Allocation Renewal Prior Expiration](images/renew_expiring_allocation.png)
+    ![Allocation Renewal Prior End Date](images/renew_expiring_allocation.png)
 
-    Currently, a project will continue to be able to utilize **expired** allocations.
-    So this will continue to incur **costs** for you.
+    Currently, a project will continue to be able to utilize allocations even after
+    the allocation end date, which will result in ongoing **costs** for you. Such
+    allocation will be marked as "Active (Needs Renewal)" as shown below:
+
+    ![Allocation Needs Renewal After End Date](images/needs_renew_allocation.png)
 
 Allocation renewals may not require any additions or changes to the allocation
 attributes from the PI or Manager. By default, if the PI or Manager clicks on
@@ -101,11 +104,12 @@ below:
 Then an automated email notification will be sent to the PI and all users on the
 allocation that have enabled email notifications.
 
-## Cost Associated with Expired Allocations
+## Cost Associated with Allocations that Need Renewal after "End Date"
 
-Currently, a project will continue to be able to utilize **expired** allocations.
-So this will continue to incur **costs** for you. In the future, we plan to change
-this behavior so expired allocations will result in its associated VMs/pods not
-to start and possibly having associated active VMs/pods to cease running.
+Currently, a project will continue be able to utilize allocations even after their
+"End Date", resulting in ongoing **costs** for you. Such allocations will be
+marked as "Active (Needs Renewal)". In the future, we plan to change this behavior
+so that allocations after end date will prevent associated VMs/pods from starting
+and may cause active VMs/pods to cease running.
 
 ---

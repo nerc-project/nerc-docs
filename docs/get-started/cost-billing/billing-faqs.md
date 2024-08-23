@@ -52,10 +52,13 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
     **Persistent storage** related to an OpenStack VM or OpenShift Pod will continue
     to be billed even when the **VM is stopped** or the **Pod is not running**.
 
-??? question "6. Am I going to incur costs for expired allocations?"
+??? question "6. Am I going to incur costs for allocations after end date?"
 
-    Currently, a project will continue to be able to utilize **expired** allocations.
-    So this will continue to incur **costs** for you.
+    Currently, a project will continue be able to utilize allocations even after
+    their "End Date", resulting in ongoing **costs** for you. Such allocations
+    will be marked as "Active (Needs Renewal)". In the future, we plan to change
+    this behavior so that allocations after end date will prevent associated
+    VMs/pods from starting and may cause active VMs/pods to cease running.
 
 ??? question "7. Are VMs invoiced even when shut down?"
 

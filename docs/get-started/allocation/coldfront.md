@@ -47,7 +47,8 @@ do the following tasks:
 -   Monitor resource utilization such as storage and cloud usage
 
 -   Receive email notifications for expiring/renewing access to resources as well
-    as notifications when allocations change status - i.e. activated, expired, denied
+    as notifications when allocations change status - i.e. Active, Active (Needs
+    Renewal), Denied, Expired
 
 -   Provide information such as grants, publications, and other reportable data for
     periodic review by center director to demonstrate need for the resources

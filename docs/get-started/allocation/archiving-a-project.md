@@ -6,8 +6,8 @@ by accessing [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/).
 !!! danger "Important Note"
 
     If you archive a project then this will expire all your allocations on that
-    project, which will disable your group's access to the resources in those
-    allocations. Also, you cannot make any changes to archived projects.
+    project, which will clean up and also disable your group's access to the resources
+    in those allocations. Also, you cannot make any changes to archived projects.
 
     ![Alert Archiving a Project](images/archiving_project_alert.png)
 

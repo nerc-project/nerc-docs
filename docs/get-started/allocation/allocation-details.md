@@ -15,7 +15,8 @@ button or any pending actions as shown below:
 
 ![Veiwing Resource Allocation Details](images/viewing_resource_allocation_details.png)
 
-Clicking the Action icon for the corresponding allocation will open a page
+Clicking the Action icon (shown as a folder icon on the right side of each allocation,
+as seen in the image above) for the corresponding allocation will open a page
 displaying detailed information about that allocation. You can access either the
 [PI and Manager View](#pi-and-manager-view) or [General User View](#general-user-view)
 of the allocation detail page for _OpenStack_ or _OpenShift_ Resource Allocation,

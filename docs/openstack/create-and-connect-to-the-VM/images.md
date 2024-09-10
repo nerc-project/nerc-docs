@@ -31,6 +31,7 @@ an instance:
 | 75a40234-702b-4ab7-9d83-f436b05827c9 | ubuntu-18.04-x86_64 |
 | 8c87cf6f-32f9-4a4b-91a5-0d734b7c9770 | ubuntu-20.04-x86_64 |
 | da314c41-19bf-486a-b8da-39ca51fd17de | ubuntu-22.04-x86_64 |
+| 17912292-8861-489a-b37e-bb78e15b934a | ubuntu-24.04-x86_64 |
 
 ## How to create and upload own custom images?
 

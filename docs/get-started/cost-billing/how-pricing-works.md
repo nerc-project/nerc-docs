@@ -39,7 +39,9 @@ and billing model.
 | K80 GPU      | 1    | 6    | 28.5      | $0.463        |
 | CPU          | 0    | 1    | 4         | $0.013        |
 
-!!! info "H100s will be available in early 2024"
+!!! info "Expected Availability of H100 GPUs"
+
+    H100 GPUs will be available in early 2024.
 
 ## Breakdown
 

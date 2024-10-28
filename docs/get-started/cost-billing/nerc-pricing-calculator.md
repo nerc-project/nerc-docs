@@ -22,7 +22,7 @@ your research needs by using [this online tool](https://docs.google.com/spreadsh
     (which define the compute, memory, and storage capacity for your dedicated
     instances), you can select and use the second sheet titled "**OpenStack Flavor**".
     For cost estimating the NERC OpenShift resources, you can use the first sheet
-    titled "**Calculate SU**" and input pod specific resource requests in each row.
+    titled "**OpenShift SU**" and input pod specific resource requests in each row.
     If you are scaling the pods more than one then you need to enter a new row or
     entry for each scaled pods. For Storage cost, you need to use the third sheet
     titled "**Calculate Storage**". And then the total cost will be reflected at

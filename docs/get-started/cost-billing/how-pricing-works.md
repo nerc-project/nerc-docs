@@ -32,11 +32,14 @@ and billing model.
 
 | Name         | vGPU | vCPU | RAM (GiB) | Current Price |
 | ------------ | ---- | ---- | --------- | ------------- |
-| CPU          | 0    | 1    | 4         | $0.013        |
-| A100 GPU     | 1    | 24   | 74        | $1.803        |
+| H100 GPU     | 1    | 64   | 384       | $6.04         |
 | A100sxm4 GPU | 1    | 32   | 240       | $2.078        |
+| A100 GPU     | 1    | 24   | 74        | $1.803        |
 | V100 GPU     | 1    | 48   | 192       | $1.214        |
 | K80 GPU      | 1    | 6    | 28.5      | $0.463        |
+| CPU          | 0    | 1    | 4         | $0.013        |
+
+!!! info "H100s will be available in early 2024"
 
 ## Breakdown
 

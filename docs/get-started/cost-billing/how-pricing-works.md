@@ -41,7 +41,7 @@ and billing model.
 
 !!! info "Expected Availability of H100 GPUs"
 
-    H100 GPUs will be available in early 2024.
+    H100 GPUs will be available in early 2025.
 
 ## Breakdown
 

@@ -156,6 +156,7 @@ nav:
                 - Using Github Actions:
                       - GitHub Actions CI/CD Pipeline: other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md
           - Apache Spark: other-tools/apache-spark/spark.md
+          - Setup NFS Server and Client: other-tools/nfs/nfs-server-client-setup.md
 theme:
     name: material
     custom_dir: nerc-theme

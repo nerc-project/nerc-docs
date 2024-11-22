@@ -7,8 +7,8 @@ allowing them to access and work with the files it contains.
 
 ## Pre-requisite
 
-We are using following setting for this purpose to setup the NFS server and
-client on Ubuntu based NERC OpenStack VM:
+We are using the following configuration to set up the NFS server and client on
+Ubuntu-based NERC OpenStack VMs:
 
 -   1 Linux machine for the **NFS Server**, `ubuntu-22.04-x86_64`, `cpu-su.1` flavor
     with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
@@ -198,11 +198,12 @@ You should see the NFS share listed that is mounted and accessible.
 
 ## Make the Mount Persistent on the Client VM
 
-An alternate way to mount an NFS share from another machine is to add a line to
-the `/etc/fstab` file. The line must state the Floating IP of the **NFS Server**,
-the directory on the _NFS Server_ being exported, and the directory on the local
-Client VM where the NFS share is to be mounted. This will ensure the NFS share
-is mounted automatically even after the Client VM is rebooted at the boot time.
+An alternative method to mount an NFS share from another machine is by adding a
+line to the `/etc/fstab` file. This line should specify the floating IP of the
+**NFS Server**, the directory being exported on the NFS Server, and the directory
+on the local Client VM where the NFS share should be mounted. This setup ensures
+the NFS share is automatically mounted at boot time, even after the Client VM is
+rebooted.
 
 The general syntax for the line in `/etc/fstab` file is as follows:
 

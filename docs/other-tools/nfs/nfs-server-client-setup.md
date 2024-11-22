@@ -11,7 +11,8 @@ We are using following setting for this purpose to setup the NFS server and
 client on Ubuntu based NERC OpenStack VM:
 
 -   1 Linux machine for the **NFS Server**, `ubuntu-22.04-x86_64`, `cpu-su.1` flavor
-    with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md). Note the NFS Server's Internal IP i.e. `<NFS_SERVER_INTERNAL_IP>`
+    with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
+    Please note the NFS Server's Internal IP i.e. `<NFS_SERVER_INTERNAL_IP>`
     i.e. `192.168.0.73` in this example.
 
 -   1 Linux machine for the **NFS Client**, `ubuntu-22.04-x86_64`, `cpu-su.1` flavor
@@ -21,30 +22,30 @@ client on Ubuntu based NERC OpenStack VM:
     on how to set up SSH on your remote VMs.
 
 -   Create a security group with a rule that opens **Port 2049** (the default
-    *NFS* port) for file sharing. Update Security Group to the **NFS Server** VM
+    _NFS_ port) for file sharing. Update Security Group to the **NFS Server** VM
     only following [this reference](../../openstack/access-and-security/security-groups.md#update-security-groups-to-a-running-vm).
 
 ## Installing and configuring NFS Server
 
-1. Update System Packages:
+1.  Update System Packages:
 
     ```sh
     sudo apt-get update && sudo apt-get upgrade -y
     ```
 
-2. Install NFS Kernel Server:
+2.  Install NFS Kernel Server:
 
     ```sh
     sudo apt install nfs-kernel-server -y
     ```
 
-3. Create a directory you want to share over the network:
+3.  Create a directory you want to share over the network:
 
     ```sh
     sudo mkdir -p /mnt/nfs_share
     ```
 
-4. Set the ownership and permissions to allow access (adjust based on requirements):
+4.  Set the ownership and permissions to allow access (adjust based on requirements):
 
     Since we want all the client machines to access the shared directory, remove
     any restrictions in the directory permissions.
@@ -60,7 +61,7 @@ client on Ubuntu based NERC OpenStack VM:
     sudo chmod 777 /mnt/nfs_share/
     ```
 
-5. Configure NFS Exports:
+5.  Configure NFS Exports:
 
     Edit the `/etc/exports` file to define shared directories and permissions.
     Permissions for accessing the NFS server are defined in the `/etc/exports` file.
@@ -114,13 +115,13 @@ client on Ubuntu based NERC OpenStack VM:
 
         For more information [read here](https://ubuntu.com/server/docs/network-file-system-nfs#configuration).
 
-6. Apply Export Settings with the shared directories:
-    
+6.  Apply Export Settings with the shared directories:
+
     ```sh
     sudo exportfs -rav
     ```
 
-7. Retart NFS Service:
+7.  Retart NFS Service:
 
     ```sh
     sudo systemctl restart nfs-kernel-server
@@ -178,7 +179,7 @@ client on Ubuntu based NERC OpenStack VM:
     ```
 
 6. Verify the Mount:
-    
+
     Check if the directory is mounted successfully.
 
     ```sh
@@ -199,7 +200,7 @@ You should see the NFS share listed that is mounted and accessible.
 
 An alternate way to mount an NFS share from another machine is to add a line to
 the `/etc/fstab` file. The line must state the Floating IP of the **NFS Server**,
-the directory on the *NFS Server* being exported, and the directory on the local
+the directory on the _NFS Server_ being exported, and the directory on the local
 Client VM where the NFS share is to be mounted. This will ensure the NFS share
 is mounted automatically even after the Client VM is rebooted at the boot time.
 
@@ -235,7 +236,7 @@ example.hostname.com:/srv /opt/example nfs rsize=8192,wsize=8192,timeo=14,intr
     ```
 
 4. Verify the Mount:
-    
+
     Check if the directory is mounted successfully.
 
     ```sh
@@ -244,13 +245,13 @@ example.hostname.com:/srv /opt/example nfs rsize=8192,wsize=8192,timeo=14,intr
 
 ## Test the Setup
 
-- On the **NFS Server**, write a test file:
+-   On the **NFS Server**, write a test file:
 
     ```sh
     echo "Hello from NFS Server" | sudo tee /mnt/nfs_share/test.txt
     ```
 
-- On the **NFS Client**, verify the file is accessible:
+-   On the **NFS Client**, verify the file is accessible:
 
     ```sh
     cat /mnt/nfs_clientshare/test.txt

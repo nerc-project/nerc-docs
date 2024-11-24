@@ -10,12 +10,12 @@ allowing them to access and work with the files it contains.
 We are using the following configuration to set up the NFS server and client on
 Ubuntu-based NERC OpenStack VMs:
 
--   1 Linux machine for the **NFS Server**, `ubuntu-22.04-x86_64`, `cpu-su.1` flavor
+-   1 Linux machine for the **NFS Server**, `ubuntu-24.04-x86_64`, `cpu-su.1` flavor
     with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
     Please note the NFS Server's Internal IP i.e. `<NFS_SERVER_INTERNAL_IP>`
     i.e. `192.168.0.73` in this example.
 
--   1 Linux machine for the **NFS Client**, `ubuntu-22.04-x86_64`, `cpu-su.1` flavor
+-   1 Linux machine for the **NFS Client**, `ubuntu-24.04-x86_64`, `cpu-su.1` flavor
     with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
 
 -   ssh access to both machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
@@ -90,10 +90,10 @@ Ubuntu-based NERC OpenStack VMs:
         ```
 
     Add a line like this to share the directory with read/write permissions for a
-    subnet (e.g., 192.168.1.0/24):
+    subnet (e.g., 192.168.0.0/24):
 
     ```sh
-    /mnt/nfs_share 192.168.1.0/24(rw,sync,no_subtree_check)
+    /mnt/nfs_share 192.168.0.0/24(rw,sync,no_subtree_check)
     ```
 
     **Explanation:**

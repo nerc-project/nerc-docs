@@ -106,7 +106,7 @@ Ubuntu-based NERC OpenStack VMs:
     sudo chown -R nobody:nogroup /mnt/nfs_share/
     ```
 
-    You can also tweak the file permissions to your preference. Here's we have given
+    You can also tweak the file permissions to your preference. Here we have given
     the read, write and execute privileges to all the contents inside the directory.
 
     ```sh

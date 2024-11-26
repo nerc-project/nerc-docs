@@ -39,13 +39,65 @@ Ubuntu-based NERC OpenStack VMs:
     sudo apt install nfs-kernel-server -y
     ```
 
-3.  Create a directory you want to share over the network:
+3.  Create and Attach an Empty Volume to the NFS Server:
+
+    3.1. [Create an Empty Volume](../../openstack/persistent-storage/create-an-empty-volume.md#using-horizon-dashboard).
+
+    3.2. [Attach the Volume to the NFS Server](../../openstack/persistent-storage/attach-the-volume-to-an-instance.md#using-horizon-dashboard).
+
+    Verify the 100GiB (**adjust based on your Storage requirements**) attached
+    volume is available on the NFS server VM:
+
+    ```sh
+    lsblk
+    ...
+    NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+    vda     253:0    0   20G  0 disk
+    ├─vda1  253:1    0   19G  0 part /
+    ├─vda14 253:14   0    4M  0 part
+    ├─vda15 253:15   0  106M  0 part /boot/efi
+    └─vda16 259:0    0  913M  0 part /boot
+    vdb     253:16   0    100G  0 disk
+    ```
+
+    3.3. [Format And Mount The Volume](../../openstack/persistent-storage/format-and-mount-the-volume.md#for-linux-based-virtual-machine).
+
+    Create a filesystem on the volume. In this example, we will create an `ext4`
+    filesystem:
+
+    ```sh
+    sudo mkfs.ext4 /dev/vdb
+    ```
+
+    3.4. Create a directory you want to share over the network:
 
     ```sh
     sudo mkdir -p /mnt/nfs_share
     ```
 
-4.  Set the ownership and permissions to allow access (adjust based on requirements):
+    3.5. Mount it:
+
+    ```sh
+    sudo mount /dev/vdb /mnt/nfs_share
+    ```
+
+    Verify the mount path is set correctly:
+
+    ```sh
+    df -H
+    ...
+    Filesystem      Size  Used Avail Use% Mounted on
+    tmpfs           411M  1.1M  410M   1% /run
+    /dev/vda1        20G  2.0G   18G  10% /
+    tmpfs           2.1G     0  2.1G   0% /dev/shm
+    tmpfs           5.3M     0  5.3M   0% /run/lock
+    /dev/vda16      924M   65M  795M   8% /boot
+    /dev/vda15      110M  6.4M  104M   6% /boot/efi
+    tmpfs           411M   13k  411M   1% /run/user/1000
+    /dev/vdb        106G   29k  100G   0% /mnt/nfs_share
+    ```
+
+4.  Set the ownership and permissions to allow access (**adjust based on requirements**):
 
     Since we want all the client machines to access the shared directory, remove
     any restrictions in the directory permissions.
@@ -54,7 +106,7 @@ Ubuntu-based NERC OpenStack VMs:
     sudo chown -R nobody:nogroup /mnt/nfs_share/
     ```
 
-    You can also tweak the file permissions to your preference. Here's we have given
+    You can also tweak the file permissions to your preference. Here we have given
     the read, write and execute privileges to all the contents inside the directory.
 
     ```sh
@@ -159,7 +211,7 @@ Ubuntu-based NERC OpenStack VMs:
 
     ```sh
     showmount --exports 192.168.0.73
-
+    ...
     Export list for 192.168.0.73:
     /mnt/nfs_share 192.168.0.0/24
     ```
@@ -182,8 +234,20 @@ Ubuntu-based NERC OpenStack VMs:
 
     Check if the directory is mounted successfully.
 
+    Verify the mount path is set correctly:
+
     ```sh
-    df -h
+    df -H
+    ...
+    Filesystem                  Size  Used Avail Use% Mounted on
+    tmpfs                       411M  1.1M  410M   1% /run
+    /dev/vda1                    20G  2.0G   18G  10% /
+    tmpfs                       2.1G     0  2.1G   0% /dev/shm
+    tmpfs                       5.3M     0  5.3M   0% /run/lock
+    /dev/vda16                  924M   65M  795M   8% /boot
+    /dev/vda15                  110M  6.4M  104M   6% /boot/efi
+    tmpfs                       411M   13k  411M   1% /run/user/1000
+    192.168.0.73:/mnt/nfs_share 106G     0  100G   0% /mnt/nfs_clientshare
     ```
 
 You should see the NFS share listed that is mounted and accessible.
@@ -241,7 +305,7 @@ example.hostname.com:/srv /opt/example nfs rsize=8192,wsize=8192,timeo=14,intr
     Check if the directory is mounted successfully.
 
     ```sh
-    df -h
+    df -H
     ```
 
 ## Test the Setup

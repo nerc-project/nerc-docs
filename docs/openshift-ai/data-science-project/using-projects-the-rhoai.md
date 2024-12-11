@@ -64,7 +64,7 @@ On the Create workbench page, complete the following information.
 
 -   Notebook image (Image selection)
 
--   Deployment size (Container size and Number of GPUs)
+-   Deployment size (Container size, Type and Number of GPUs)
 
 -   Environment variables
 
@@ -82,7 +82,7 @@ On the Create workbench page, complete the following information.
     resources, including CPUs and memory. Each container size comes with pre-configured
     CPU and memory resources.
 
-    Optionally, you can specify the desired **Number of GPUs** depending on the
+    Optionally, you can specify the desired **Accelerator** and **Number of Accelerators** (GPUs), depending on the
     nature of your data analysis and machine learning code requirements. However,
     this number should not exceed the GPU quota specified by the value of the
     "**OpenShift Request on GPU Quota**" attribute that has been approved for
@@ -97,7 +97,7 @@ Once you have entered the information for your workbench, click **Create**.
 ![Fill Workbench Information](images/tensor-flow-workbench.png)
 
 For our example project, let's name it "Tensorflow Workbench". We'll select the
-**TensorFlow** image, choose a **Deployment size** of **Small**, **Number of GPUs**
+**TensorFlow** image, choose a **Deployment size** of **Small**, **Accelerator** of **NVIDIA A100 GPU**, **Number of Accelerators** 
 as **1** and allocate a **Cluster storage** space of **1GB**.
 
 !!! info "More About Cluster Storage"

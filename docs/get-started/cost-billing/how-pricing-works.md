@@ -54,11 +54,11 @@ of the base SU for the maximum resource they reserve.
 
 **GPU SU Example:**
 
-- A Project or VM with:
+-   A Project or VM with:
 
     `1 A100 GPU, 24 vCPUs, 95MiB RAM, 199.2hrs`
 
-- Will be charged:
+-   Will be charged:
 
     `1 A100 GPU SUs x 200hrs (199.2 rounded up) x $1.803`
 
@@ -66,11 +66,11 @@ of the base SU for the maximum resource they reserve.
 
 **OpenStack CPU SU Example:**
 
-- A Project or VM with:
+-   A Project or VM with:
 
     `3 vCPU, 20 GiB RAM, 720hrs (24hr x 30days)`
 
-- Will be charged:
+-   Will be charged:
 
     `5 CPU SUs due to the extra RAM (20GiB vs. 12GiB(3 x 4GiB)) x 720hrs x $0.013`
 
@@ -91,7 +91,7 @@ of the base SU for the maximum resource they reserve.
 
 **OpenShift CPU SU Example:**
 
-- Project with 3 Pods with:
+-   Project with 3 Pods with:
 
     i. `1 vCPU, 3 GiB RAM, 720hrs (24hr*30days)`
 
@@ -99,7 +99,7 @@ of the base SU for the maximum resource they reserve.
 
     iii. `2 vCPU, 4 GiB RAM, 720hrs (24hr*30days)`
 
-- Project Will be charged:
+-   Project Will be charged:
 
     `RoundUP(Sum(`
 
@@ -161,11 +161,11 @@ provisioned until it is deleted.
 
 **Storage Example 1:**
 
-- Volume or VM with:
+-   Volume or VM with:
 
     `500GiB for 699.2hrs`
 
-- Will be charged:
+-   Will be charged:
 
     `.5 Storage TiB SU (.5 TiB x 700hrs) x $0.009 TiB/hr`
 
@@ -173,11 +173,11 @@ provisioned until it is deleted.
 
 **Storage Example 2:**
 
-- Volume or VM with:
+-   Volume or VM with:
 
     `10TiB for 720hrs (24hr x 30days)`
 
-- Will be charged:
+-   Will be charged:
 
     `10 Storage TiB SU (10TiB x 720 hrs) x $0.009 TiB/hr`
 

@@ -10,20 +10,20 @@ allowing them to access and work with the files it contains.
 We are using the following configuration to set up the NFS server and client on
 Ubuntu-based NERC OpenStack VMs:
 
-- 1 Linux machine for the **NFS Server**, `ubuntu-24.04-x86_64`, `cpu-su.1` flavor
-  with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
-  Please note the NFS Server's Internal IP i.e. `<NFS_SERVER_INTERNAL_IP>`
-  i.e. `192.168.0.73` in this example.
+-   1 Linux machine for the **NFS Server**, `ubuntu-24.04-x86_64`, `cpu-su.1` flavor
+    with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
+    Please note the NFS Server's Internal IP i.e. `<NFS_SERVER_INTERNAL_IP>`
+    i.e. `192.168.0.73` in this example.
 
-- 1 Linux machine for the **NFS Client**, `ubuntu-24.04-x86_64`, `cpu-su.1` flavor
-  with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
+-   1 Linux machine for the **NFS Client**, `ubuntu-24.04-x86_64`, `cpu-su.1` flavor
+    with 1vCPU, 4GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md).
 
-- ssh access to both machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-  on how to set up SSH on your remote VMs.
+-   ssh access to both machines: [Read more here](../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+    on how to set up SSH on your remote VMs.
 
-- Create a security group with a rule that opens **Port 2049** (the default
-  _NFS_ port) for file sharing. Update Security Group to the **NFS Server** VM
-  only following [this reference](../../openstack/access-and-security/security-groups.md#update-security-groups-to-a-running-vm).
+-   Create a security group with a rule that opens **Port 2049** (the default
+    _NFS_ port) for file sharing. Update Security Group to the **NFS Server** VM
+    only following [this reference](../../openstack/access-and-security/security-groups.md#update-security-groups-to-a-running-vm).
 
 ## Installing and configuring NFS Server
 
@@ -150,9 +150,9 @@ Ubuntu-based NERC OpenStack VMs:
 
     **Explanation:**
 
-    - **rw**: Read and write access.
-    - **sync**: Changes are written to disk immediately.
-    - **no_subtree_check**: Avoid permission issues for subdirectories.
+    -   **rw**: Read and write access.
+    -   **sync**: Changes are written to disk immediately.
+    -   **no_subtree_check**: Avoid permission issues for subdirectories.
 
     !!! info "Other Options for Directory Permissions for the NFS share directory"
 
@@ -310,13 +310,13 @@ example.hostname.com:/srv /opt/example nfs rsize=8192,wsize=8192,timeo=14,intr
 
 ## Test the Setup
 
-- On the **NFS Server**, write a test file:
+-   On the **NFS Server**, write a test file:
 
     ```sh
     echo "Hello from NFS Server" | sudo tee /mnt/nfs_share/test.txt
     ```
 
-- On the **NFS Client**, verify the file is accessible:
+-   On the **NFS Client**, verify the file is accessible:
 
     ```sh
     cat /mnt/nfs_clientshare/test.txt

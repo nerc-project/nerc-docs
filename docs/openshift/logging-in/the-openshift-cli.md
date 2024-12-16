@@ -9,12 +9,12 @@ a command-line tool called _oc_.
 
 The OpenShift CLI is ideal in the following situations:
 
-- Working directly with project source code
+-   Working directly with project source code
 
-- Scripting OpenShift Container Platform operations
+-   Scripting OpenShift Container Platform operations
 
-- Managing projects while restricted by bandwidth resources and the web console
-  is unavailable
+-   Managing projects while restricted by bandwidth resources and the web console
+    is unavailable
 
 It is recommended that developers should be comfortable with simple command-line
 tasks and the the NERC's OpenShift command-line tool.

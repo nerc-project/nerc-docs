@@ -5,11 +5,11 @@
 We are using following setting for this purpose to mount the object storage to an
 NERC OpenStack VM:
 
-- 1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
-  `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-  to this VM.
+-   1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
+    `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+    to this VM.
 
-- Setup and enable your S3 API credentials:
+-   Setup and enable your S3 API credentials:
 
 To access the API credentials, you must login through the OpenStack Dashboard
 and navigate to "Projects > API Access" where you can download the "Download
@@ -52,14 +52,14 @@ parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 
       openstack ec2 credentials create
 
-- Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
-  `source *-openrc.sh` command. Sourcing the RC File will set the required environment
-  variables.
+-   Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
+    `source *-openrc.sh` command. Sourcing the RC File will set the required environment
+    variables.
 
-- Allow Other User option by editing fuse config by editing `/etc/fuse.conf` file
-  and uncomment "user_allow_other" option.
+-   Allow Other User option by editing fuse config by editing `/etc/fuse.conf` file
+    and uncomment "user_allow_other" option.
 
-          sudo nano /etc/fuse.conf
+        sudo nano /etc/fuse.conf
 
 The output going to look like this:
 
@@ -147,31 +147,31 @@ The object storage container i.e. "bucket1" will be mounted in the directory `~/
 
 In this command,
 
-- `mount-s3` is the Mountpoint for Amazon S3 package as installed in `/usr/bin/`
-  path we don't need to specify the full path.
+-   `mount-s3` is the Mountpoint for Amazon S3 package as installed in `/usr/bin/`
+    path we don't need to specify the full path.
 
-- `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
-  `[nerc]`.
+-   `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
+    `[nerc]`.
 
-- `--endpoint-url` corresponds to the Object Storage endpoint url for NERC Object
-  Storage. You don't need to modify this url.
+-   `--endpoint-url` corresponds to the Object Storage endpoint url for NERC Object
+    Storage. You don't need to modify this url.
 
-- `--allow-other`: Allows other users to access the mounted filesystem. This is
-  particularly useful when multiple users need to access the mounted S3 bucket.
-  Only allowed if `user_allow_other` is set in `/etc/fuse.conf`.
+-   `--allow-other`: Allows other users to access the mounted filesystem. This is
+    particularly useful when multiple users need to access the mounted S3 bucket.
+    Only allowed if `user_allow_other` is set in `/etc/fuse.conf`.
 
-- `--force-path-style`: Forces the use of path-style URLs when accessing the S3
-  bucket. This is necessary when working with certain S3-compatible storage services
-  that do not support virtual-hosted-style URLs.
+-   `--force-path-style`: Forces the use of path-style URLs when accessing the S3
+    bucket. This is necessary when working with certain S3-compatible storage services
+    that do not support virtual-hosted-style URLs.
 
-- `--debug`: Enables debug mode, providing additional information about the mounting
-  process.
+-   `--debug`: Enables debug mode, providing additional information about the mounting
+    process.
 
-- `bucket1` is the name of the container which contains the NERC Object Storage
-  resources.
+-   `bucket1` is the name of the container which contains the NERC Object Storage
+    resources.
 
-- `~/bucket1` is the location of the folder in which you want to mount the Object
-  Storage filesystem.
+-   `~/bucket1` is the location of the folder in which you want to mount the Object
+    Storage filesystem.
 
 !!! tip "Important Note"
 
@@ -436,25 +436,25 @@ The object storage container i.e. "bucket1" will be mounted in the directory `~/
 
 In this command,
 
-- `goofys` is the goofys binary as we already copied this in `/usr/bin/` path we
-  don't need to specify the full path.
+-   `goofys` is the goofys binary as we already copied this in `/usr/bin/` path we
+    don't need to specify the full path.
 
-- `-o` stands for goofys options, and is handled differently.
+-   `-o` stands for goofys options, and is handled differently.
 
-- `allow_other` Allows goofys with option `allow_other` only allowed if `user_allow_other`
-  is set in `/etc/fuse.conf`.
+-   `allow_other` Allows goofys with option `allow_other` only allowed if `user_allow_other`
+    is set in `/etc/fuse.conf`.
 
-- `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
-  `[nerc]`.
+-   `--profile` corresponds to the name given on the `~/.aws/credentials` file i.e.
+    `[nerc]`.
 
-- `--endpoint` corresponds to the Object Storage endpoint url for NERC Object Storage.
-  You don't need to modify this url.
+-   `--endpoint` corresponds to the Object Storage endpoint url for NERC Object Storage.
+    You don't need to modify this url.
 
-- `bucket1` is the name of the container which contains the NERC Object Storage
-  resources.
+-   `bucket1` is the name of the container which contains the NERC Object Storage
+    resources.
 
-- `~/bucket1` is the location of the folder in which you want to mount the Object
-  Storage filesystem.
+-   `~/bucket1` is the location of the folder in which you want to mount the Object
+    Storage filesystem.
 
 In order to test whether the mount was successful, navigate to the directory in
 which you mounted the NERC container repository, for example:
@@ -869,11 +869,11 @@ Verify, if the container is mounted successfully:
 
 A JuiceFS file system consists of two parts:
 
-- **Object Storage:** Used for data storage.
+-   **Object Storage:** Used for data storage.
 
-- **Metadata Engine:** A database used for storing metadata. In this case, we will
-  use a durable [**Redis**](https://redis.io/) in-memory database service that
-  provides extremely fast performance.
+-   **Metadata Engine:** A database used for storing metadata. In this case, we will
+    use a durable [**Redis**](https://redis.io/) in-memory database service that
+    provides extremely fast performance.
 
 #### Installation of the JuiceFS client
 
@@ -921,7 +921,7 @@ init system, change this to `systemd` as shown here:
 
 ![Redis Server Config](images/redis-server-config.png)
 
-- Binding to localhost:
+-   Binding to localhost:
 
 By default, Redis is only accessible from `localhost`. We need to verify that
 by locating this line by running:
@@ -1273,9 +1273,9 @@ After JuiceFS has been successfully formatted, follow this guide to clean up.
 JuiceFS client provides the destroy command to completely destroy a file system,
 which will result in:
 
-- Deletion of all metadata entries of this file system
+-   Deletion of all metadata entries of this file system
 
-- Deletion of all data blocks of this file system
+-   Deletion of all data blocks of this file system
 
 Use this command in the following format:
 

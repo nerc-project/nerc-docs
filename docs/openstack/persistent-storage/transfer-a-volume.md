@@ -75,12 +75,12 @@ below:
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 ### Using the openstack client
 
-- Identifying volume to transfer in your source project
+-   Identifying volume to transfer in your source project
 
 openstack volume list
 +---------------------------+-----------+-----------+------+-------------+
@@ -89,7 +89,7 @@ openstack volume list
 | d8a5da4c-...-8b6678ce4936 | my-volume | available | 100 | |
 +---------------------------+-----------+-----------+------+-------------+
 
-- Create the transfer request
+-   Create the transfer request
 
 openstack volume transfer request create my-volume
 +------------+--------------------------------------+
@@ -108,10 +108,10 @@ openstack volume transfer request create my-volume
       i.e. `"<VOLUME_NAME_OR_ID>"`.
       For example: `openstack volume transfer request create "My Volume"`
 
-- The volume can be checked as in the transfer status using
-  `openstack volume transfer request list` as follows and the volume is in status
-  `awaiting-transfer` while running `openstack volume show <VOLUME_NAME_OR_ID>`
-  as shown below:
+-   The volume can be checked as in the transfer status using
+    `openstack volume transfer request list` as follows and the volume is in status
+    `awaiting-transfer` while running `openstack volume show <VOLUME_NAME_OR_ID>`
+    as shown below:
 
 openstack volume transfer request list
 +---------------------------+------+--------------------------------------+
@@ -130,8 +130,8 @@ openstack volume show my-volume
 | status | awaiting-transfer |
 +------------------------------+--------------------------------------+
 
-- The user of the destination project can authenticate and receive the authentication
-  key reported above. The transfer can then be initiated.
+-   The user of the destination project can authenticate and receive the authentication
+    key reported above. The transfer can then be initiated.
 
 openstack volume transfer request accept --auth-key b92d98fec2766582 a16494cf-cfa0-47f6-b606-62573357922a
 +-----------+--------------------------------------+
@@ -142,7 +142,7 @@ openstack volume transfer request accept --auth-key b92d98fec2766582 a16494cf-cf
 | volume_id | d8a5da4c-41c8-4c2d-b57a-8b6678ce4936 |
 +-----------+--------------------------------------+
 
-- And the results confirmed in the volume list for the destination project.
+-   And the results confirmed in the volume list for the destination project.
 
 openstack volume list
 +---------------------------+-----------+-----------+------+-------------+

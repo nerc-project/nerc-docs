@@ -31,8 +31,8 @@ Make note of the device name of your volume.
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To attach the volume to an instance using the CLI, do this:
 

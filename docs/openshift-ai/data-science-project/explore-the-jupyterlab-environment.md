@@ -83,15 +83,15 @@ And a cell where we have entered some Python code:
 
 ![Jupyter Cell With Python Code](images/jupyter-cell-with-code.png)
 
-- Code cells contain Python code that can be run interactively. It means that you
-  can modify the code, then run it, but only for this cell, not for the whole
-  content of the notebook! The code will not run on your computer or in the browser,
-  but directly in the environment you are connected to NERC RHOAI.
+-   Code cells contain Python code that can be run interactively. It means that you
+    can modify the code, then run it, but only for this cell, not for the whole
+    content of the notebook! The code will not run on your computer or in the browser,
+    but directly in the environment you are connected to NERC RHOAI.
 
-- To run a code cell, you simply select it (select the cell, or on the left side
-  of it), and select the Run/Play button from the toolbar (you can also press
-  `CTRL+Enter` to run a cell, or `Shift+Enter` to run the cell and automatically
-  select the following one).
+-   To run a code cell, you simply select it (select the cell, or on the left side
+    of it), and select the Run/Play button from the toolbar (you can also press
+    `CTRL+Enter` to run a cell, or `Shift+Enter` to run the cell and automatically
+    select the following one).
 
 The Run button on the toolbar:
 

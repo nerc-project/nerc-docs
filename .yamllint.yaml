@@ -1,26 +1,30 @@
-extends: default
+.yamllint:
+    extends: default
 
-ignore: |
-    *.param.yaml
+    ignore: |
+        *.param.yaml
 
-rules:
-    braces:
-        level: error
-        max-spaces-inside: 1 # To format with Prettier
-    comments:
-        level: error
-        min-spaces-from-content: 1 # To be compatible with C++ and Python
-    document-start:
-        level: error
-        present: false # Don't need document start markers
-    line-length: disable # Delegate to Prettier
-    indentation:
-        indent-sequences: whatever
-    hyphens:
-        max-spaces-after: 4
-    truthy:
-        level: error
-        check-keys: false # To allow 'on' of GitHub Actions
-    quoted-strings:
-        level: error
-        required: only-when-needed # To keep consistent style
+    rules:
+        braces:
+            level: error
+            max-spaces-inside: 1 # Ensure consistent spacing inside braces
+        comments:
+            level: error
+            min-spaces-from-content: 1 # Keep compatibility with C++ and Python
+        document-start:
+            level: error
+            present: false # Document start markers not needed
+        line-length:
+            level: warning
+            max: 80 # Enforce a maximum line length
+        indentation:
+            spaces: 4 # Set tab width to 4 spaces
+            indent-sequences: whatever
+        hyphens:
+            max-spaces-after: 4
+        truthy:
+            level: error
+            check-keys: false # Allow 'on' for GitHub Actions
+        quoted-strings:
+            level: error
+            required: only-when-needed # Ensure consistent style for strings

@@ -10,17 +10,17 @@ we can test it.
 
     ![Jupyter Hub Control Panel Menu](images/juyter-hub-control-panel-menu.png)
 
-- In your project in JupyterLab, open the notebook `03_remote_inference.ipynb`
-  and follow the instructions to see how the model can be queried.
+-   In your project in JupyterLab, open the notebook `03_remote_inference.ipynb`
+    and follow the instructions to see how the model can be queried.
 
-- Update the `grpc_url` as [noted before](model-serving-in-the-rhoai.md#deploy-the-model)
-  for the **the grpc URL value** from the deployed model on the NERC RHOAI Model
-  server.
+-   Update the `grpc_url` as [noted before](model-serving-in-the-rhoai.md#deploy-the-model)
+    for the **the grpc URL value** from the deployed model on the NERC RHOAI Model
+    server.
 
     ![Change grpc URL Value](images/change-grpc-url-value.png)
 
-- Once you've completed the notebook's instructions, the object detection model
-  can isolate and recognize T-shirts, bottles, and hats in pictures, as shown below:
+-   Once you've completed the notebook's instructions, the object detection model
+    can isolate and recognize T-shirts, bottles, and hats in pictures, as shown below:
 
     ![Model Test to Detect Objects In An Image](images/model-test-object-detection.png)
 
@@ -68,36 +68,36 @@ environment, or directly [here](https://github.com/nerc-project/nerc_rhoai_mlops
 
 To deploy the Pre-Post Processing Service service and the Application:
 
-- From your [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org/),
-  navigate to your project corresponding to the _NERC RHOAI Data Science Project_
-  and select the "Import YAML" button, represented by the "+" icon in the top
-  navigation bar as shown below:
+-   From your [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org/),
+    navigate to your project corresponding to the _NERC RHOAI Data Science Project_
+    and select the "Import YAML" button, represented by the "+" icon in the top
+    navigation bar as shown below:
 
     ![YAML Add Icon](images/yaml-upload-plus-icon.png)
 
-- Verify that you selected the correct project.
+-   Verify that you selected the correct project.
 
     ![Correct Project Selected for YAML Editor](images/project-verify-yaml-editor.png)
 
-- Copy/Paste the content of the file `pre_post_processor_deployment.yaml` inside
-  the opened YAML editor. If you have named your model **coolstore** as instructed,
-  you're good to go. If not, modify the value on **[line # 35](https://github.com/nerc-project/nerc_rhoai_mlops/blob/33b3b7fa7448756f3defb3d6ae793524d1c5ff14/deployment/pre_post_processor_deployment.yaml#L35C23-L35C32)**
-  with the name you set. You can then click the **Create** button as shown below:
+-   Copy/Paste the content of the file `pre_post_processor_deployment.yaml` inside
+    the opened YAML editor. If you have named your model **coolstore** as instructed,
+    you're good to go. If not, modify the value on **[line # 35](https://github.com/nerc-project/nerc_rhoai_mlops/blob/33b3b7fa7448756f3defb3d6ae793524d1c5ff14/deployment/pre_post_processor_deployment.yaml#L35C23-L35C32)**
+    with the name you set. You can then click the **Create** button as shown below:
 
     ![YAML Editor Add Pre-Post Processing Service Content](images/pre_post_processor_deployment-yaml-content.png)
 
-- Once Resource is successfully created, you will see the following screen:
+-   Once Resource is successfully created, you will see the following screen:
 
     ![Resources successfully created Importing More YAML](images/yaml-import-new-content.png)
 
-- Click on "Import more YAML" and Copy/Paste the content of the file `intelligent_application_deployment.yaml`
-  inside the opened YAML editor. Nothing to change here, you can then click the
-  **Create** button as shown below:
+-   Click on "Import more YAML" and Copy/Paste the content of the file `intelligent_application_deployment.yaml`
+    inside the opened YAML editor. Nothing to change here, you can then click the
+    **Create** button as shown below:
 
     ![YAML Editor Pre-Post Processing Service Content](images/intelligent_application_deployment-yaml-content.png)
 
-- If both deployments are successful, you will be able to see both of them grouped
-  under "intelligent-application" on the **Topology View** menu, as shown below:
+-   If both deployments are successful, you will be able to see both of them grouped
+    under "intelligent-application" on the **Topology View** menu, as shown below:
 
     ![Intelligent Application Under Topology](images/intelligent_application-topology.png)
 
@@ -112,18 +112,18 @@ You have first to allow it to use your camera, this is the interface you get:
 
 You have:
 
-- The current view of your camera.
+-   The current view of your camera.
 
-- A button to take a picture as shown here:
+-   A button to take a picture as shown here:
 
     ![Capture Camera Image](images/capture-camera-image.png)
 
-- A button to switch from front to rear camera if you are using a phone:
+-   A button to switch from front to rear camera if you are using a phone:
 
     ![Switch Camera View](images/switch-camera-view.png)
 
-- A **QR code** that you can use to quickly open the application on a phone
-  (much easier than typing the URL!):
+-   A **QR code** that you can use to quickly open the application on a phone
+    (much easier than typing the URL!):
 
     ![QR code](images/QR-code.png)
 
@@ -137,14 +137,14 @@ below:
 
 There are two parameters you can change on this application:
 
-- On the `ia-frontend` Deployment, you can modify the `DISPLAY_BOX` environment
-  variable from `true` to `false`. It will hide the bounding box and the inference
-  score, so that you get only the coupon flying over the item.
+-   On the `ia-frontend` Deployment, you can modify the `DISPLAY_BOX` environment
+    variable from `true` to `false`. It will hide the bounding box and the inference
+    score, so that you get only the coupon flying over the item.
 
-- On the `ia-inference` Deployment, the one used for pre-post processing, you
-  can modify the `COUPON_VALUE` environment variable. The format is simply an
-  Array with the value of the coupon for the 3 classes: bottle, hat, shirt. As
-  you see, these values could be adjusted in real time, and this could even be
-  based on another ML model!
+-   On the `ia-inference` Deployment, the one used for pre-post processing, you
+    can modify the `COUPON_VALUE` environment variable. The format is simply an
+    Array with the value of the coupon for the 3 classes: bottle, hat, shirt. As
+    you see, these values could be adjusted in real time, and this could even be
+    based on another ML model!
 
 ---

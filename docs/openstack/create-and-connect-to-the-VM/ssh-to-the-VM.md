@@ -4,18 +4,18 @@
 Before trying to access instances from the outside world, you need to make sure
 you have followed these steps:
 
-- You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
-  to set up a public ssh key.
+-   You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+    to set up a public ssh key.
 
-- Your public ssh-key has selected (in "Key Pair" tab) while
-  [launching the instance](launch-a-VM.md).
+-   Your public ssh-key has selected (in "Key Pair" tab) while
+    [launching the instance](launch-a-VM.md).
 
-- [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
-  access it from outside world.
+-   [Assign a Floating IP](assign-a-floating-IP.md) to the instance in order to
+    access it from outside world.
 
-- Make sure you have added rules in the
-  [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
-  allow **ssh** using Port 22 access to the instance.
+-   Make sure you have added rules in the
+    [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
+    allow **ssh** using Port 22 access to the instance.
 
 !!! info "How to update New Security Group(s) on any running VM?"
 
@@ -33,17 +33,17 @@ In our example, the IP is `199.94.60.66`.
 
 Default usernames for all the base images are:
 
-- **all Ubuntu images**: ubuntu
+-   **all Ubuntu images**: ubuntu
 
-- **all AlmaLinux images**: almalinux
+-   **all AlmaLinux images**: almalinux
 
-- **all Rocky Linux images**: rocky
+-   **all Rocky Linux images**: rocky
 
-- **all Fedora images**: fedora
+-   **all Fedora images**: fedora
 
-- **all Debian images**: debian
+-   **all Debian images**: debian
 
-- **all RHEL images**: cloud-user
+-   **all RHEL images**: cloud-user
 
 !!! warning "Removed Centos Images"
 

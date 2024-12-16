@@ -24,14 +24,14 @@ appropriate environment variables.
 
 You can download the environment file with the credentials from the [OpenStack dashboard](https://stack.nerc.mghpcc.org/dashboard/identity/application_credentials/).
 
-- Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
-  the project for which you want to download the OpenStack RC file.
+-   Log in to the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org), choose
+    the project for which you want to download the OpenStack RC file.
 
-- Navigate to _Identity -> Application Credentials_.
+-   Navigate to _Identity -> Application Credentials_.
 
-- Click on "Create Application Credential" button and provide a **Name** and **Roles**
-  for the application credential. All other fields are optional and leaving the
-  "Secret" field empty will set it to autogenerate (recommended).
+-   Click on "Create Application Credential" button and provide a **Name** and **Roles**
+    for the application credential. All other fields are optional and leaving the
+    "Secret" field empty will set it to autogenerate (recommended).
 
 ![OpenStackClient Credentials Setup](images/openstack_cli_cred.png)
 
@@ -95,13 +95,13 @@ For more information on configuring the OpenStackClient please see the
 
 Generally, the OpenStack terminal client offers the following methods:
 
-- **list**: Lists information about objects currently in the cloud.
+-   **list**: Lists information about objects currently in the cloud.
 
-- **show**: Displays information about a single object currently in the cloud.
+-   **show**: Displays information about a single object currently in the cloud.
 
-- **create**: Creates a new object in the cloud.
+-   **create**: Creates a new object in the cloud.
 
-- **set**: Edits an existing object in the cloud.
+-   **set**: Edits an existing object in the cloud.
 
 To test that you have everything configured, try out some commands. The
 following command lists all the images available to your project:

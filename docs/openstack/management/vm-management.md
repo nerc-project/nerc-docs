@@ -134,20 +134,20 @@ openstack server restart my-vm
 
 ## Create Snapshot
 
-- Click _Action -> Create Snapshot_.
+-   Click _Action -> Create Snapshot_.
 
-- Instances must have status `Active`, `Suspended`, or `Shutoff` to create snapshot.
+-   Instances must have status `Active`, `Suspended`, or `Shutoff` to create snapshot.
 
-- This creates an image template from a VM instance also known as "Instance Snapshot"
-  as [described here](../backup/backup-with-snapshots.md#create-and-use-instance-snapshots).
+-   This creates an image template from a VM instance also known as "Instance Snapshot"
+    as [described here](../backup/backup-with-snapshots.md#create-and-use-instance-snapshots).
 
-- The menu will automatically shift to _Project -> Compute -> Images_ once the
-  image is created.
+-   The menu will automatically shift to _Project -> Compute -> Images_ once the
+    image is created.
 
-- The sole distinction between an _image_ directly uploaded to the image data
-  service, [glance](https://docs.openstack.org/glance) and an _image_ generated
-  through a snapshot is that the snapshot-created image possesses additional
-  properties in the glance database and defaults to being **private**.
+-   The sole distinction between an _image_ directly uploaded to the image data
+    service, [glance](https://docs.openstack.org/glance) and an _image_ generated
+    through a snapshot is that the snapshot-created image possesses additional
+    properties in the glance database and defaults to being **private**.
 
 !!! info "Glance Image Service"
 
@@ -290,8 +290,8 @@ There are other options available if you wish to keep the virtual machine for
 future usage. These do, however, continue to use quota for the project even though
 the VM is not running.
 
-- **Snapshot the VM** to keep an offline copy of the virtual machine that can be
-  performed as [described here](../backup/backup-with-snapshots.md#how-to-create-an-instance-snapshot).
+-   **Snapshot the VM** to keep an offline copy of the virtual machine that can be
+    performed as [described here](../backup/backup-with-snapshots.md#how-to-create-an-instance-snapshot).
 
 If however, the virtual machine is no longer required and no data on the
 associated system or ephemeral disk needs to be preserved, the following command
@@ -315,24 +315,24 @@ Click _Action -> Delete Instance_.
     the deletion process, as failure to do so may lead to data corruption in
     both your data and the associated volume.
 
-- If the instance is using [Ephemeral disk](../persistent-storage/volumes.md#ephemeral-disk):
-  It stops and removes the instance along with the ephemeral disk.
-  **All data will be permanently lost!**
+-   If the instance is using [Ephemeral disk](../persistent-storage/volumes.md#ephemeral-disk):
+    It stops and removes the instance along with the ephemeral disk.
+    **All data will be permanently lost!**
 
-- If the instance is using [Volume-backed disk](../persistent-storage/volumes.md#volumes):
-  It stops and removes the instance. If **"Delete Volume on Instance Delete"**
-  was explicitely set to **Yes**, **All data will be permanently lost!**. If set
-  to **No** (which is default selected while launching an instance), the volume
-  may be used to boot a new instance, though any data stored in memory will be
-  permanently lost. For more in-depth information on making your VM setup and
-  data persistent, you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
+-   If the instance is using [Volume-backed disk](../persistent-storage/volumes.md#volumes):
+    It stops and removes the instance. If **"Delete Volume on Instance Delete"**
+    was explicitely set to **Yes**, **All data will be permanently lost!**. If set
+    to **No** (which is default selected while launching an instance), the volume
+    may be used to boot a new instance, though any data stored in memory will be
+    permanently lost. For more in-depth information on making your VM setup and
+    data persistent, you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
 
-- Status will briefly change to **Deleting** while the instance is being removed.
+-   Status will briefly change to **Deleting** while the instance is being removed.
 
 The quota associated with this virtual machine will be returned to the project
 and you can review and verify that looking at your
 [OpenStack dashboard overview](../logging-in/dashboard-overview.md#compute-panel).
 
-- Navigate to _Project -> Compute -> Overview_.
+-   Navigate to _Project -> Compute -> Overview_.
 
 ---

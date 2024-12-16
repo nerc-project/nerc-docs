@@ -27,17 +27,17 @@ details page, as shown below:
 
 Within the data science project, you can add the following configuration options:
 
-- **Workbenches**: Development environments within your project where you can access
-  notebooks and generate models.
+-   **Workbenches**: Development environments within your project where you can access
+    notebooks and generate models.
 
-- **Cluster storage**: Storage for your project in your OpenShift cluster.
+-   **Cluster storage**: Storage for your project in your OpenShift cluster.
 
-- **Data connections**: A list of data sources that your project uses.
+-   **Data connections**: A list of data sources that your project uses.
 
-- **Pipelines**: A list of created and configured pipeline servers.
+-   **Pipelines**: A list of created and configured pipeline servers.
 
-- **Models and model servers**: A list of models and model servers that your project
-  uses.
+-   **Models and model servers**: A list of models and model servers that your project
+    uses.
 
 As you can see in the project's details figure, our selected data science project
 currently has no workbenches, storage, data connections, pipelines, or model servers.
@@ -58,23 +58,23 @@ On the Create workbench page, complete the following information.
 
 **Note**: Not all fields are required.
 
-- Name
+-   Name
 
-- Description
+-   Description
 
-- Notebook image (Image selection)
+-   Notebook image (Image selection)
 
-- Deployment size (Container size and Number of GPUs)
+-   Deployment size (Container size and Number of GPUs)
 
-- Environment variables
+-   Environment variables
 
-- Cluster storage name
+-   Cluster storage name
 
-- Cluster storage description
+-   Cluster storage description
 
-- Persistent storage size
+-   Persistent storage size
 
-- Data connections
+-   Data connections
 
 !!! tip "How to specify CPUs, Memory, and GPUs for your JupyterLab workbench?"
 

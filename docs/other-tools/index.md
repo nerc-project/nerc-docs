@@ -1,8 +1,8 @@
 # Kubernetes
 
-- [Kubernetes Overview](kubernetes/kubernetes.md)
+-   [Kubernetes Overview](kubernetes/kubernetes.md)
 
-- [K8s Flavors Comparision](kubernetes/comparisons.md)
+-   [K8s Flavors Comparision](kubernetes/comparisons.md)
 
 ## i. **Kubernetes Development environment**
 
@@ -38,7 +38,7 @@
 
 ## CI/ CD Tools
 
-- [CI/CD Overview](CI-CD/CI-CD-pipeline.md)
+-   [CI/CD Overview](CI-CD/CI-CD-pipeline.md)
 
 1. Using Jenkins
 
@@ -52,6 +52,6 @@
 
 ## Apache Spark
 
-- [Apache Spark](apache-spark/spark.md)
+-   [Apache Spark](apache-spark/spark.md)
 
 ---

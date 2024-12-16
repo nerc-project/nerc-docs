@@ -3,15 +3,15 @@
 First find the following details using openstack command, we would required
 these details during the creation of virtual machine.
 
-- Flavor
+-   Flavor
 
-- Image
+-   Image
 
-- Network
+-   Network
 
-- Security Group
+-   Security Group
 
-- Key Name
+-   Key Name
 
 Get the flavor list using below openstack command:
 

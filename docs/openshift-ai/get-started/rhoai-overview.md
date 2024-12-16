@@ -20,18 +20,18 @@ graphics processing unit (GPU) resources.
 
 Recent enhancements to Red Hat OpenShift AI include:
 
-- Implementation **Deployment pipelines** for monitoring AI/ML experiments and
-  automating ML workflows accelerate the iteration process for data scientists
-  and developers of intelligent applications. This integration facilitates swift
-  iteration on machine learning projects and embeds automation into application
-  deployment and updates.
+-   Implementation **Deployment pipelines** for monitoring AI/ML experiments and
+    automating ML workflows accelerate the iteration process for data scientists
+    and developers of intelligent applications. This integration facilitates swift
+    iteration on machine learning projects and embeds automation into application
+    deployment and updates.
 
-- **Model serving** now incorporates GPU assistance for inference tasks and custom
-  model serving runtimes, enhancing inference performance and streamlining the
-  deployment of foundational models.
+-   **Model serving** now incorporates GPU assistance for inference tasks and custom
+    model serving runtimes, enhancing inference performance and streamlining the
+    deployment of foundational models.
 
-- With **Model monitoring**, organizations can oversee performance and operational
-  metrics through a centralized dashboard, enhancing management capabilities.
+-   With **Model monitoring**, organizations can oversee performance and operational
+    metrics through a centralized dashboard, enhancing management capabilities.
 
 ## Red Hat OpenShift AI ecosystem
 

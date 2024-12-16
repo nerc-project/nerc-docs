@@ -81,7 +81,7 @@ sudo dnf install sshuttle
 
 It is also possible to install into a **virtualenv** as _a non-root user_.
 
-- From PyPI:
+-   From PyPI:
 
 ```sh
 virtualenv -p python3 /tmp/sshuttle
@@ -89,7 +89,7 @@ virtualenv -p python3 /tmp/sshuttle
 pip install sshuttle
 ```
 
-- Clone:
+-   Clone:
 
 ```sh
 virtualenv -p python3 /tmp/sshuttle

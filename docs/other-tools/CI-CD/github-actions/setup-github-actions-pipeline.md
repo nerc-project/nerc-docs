@@ -23,7 +23,7 @@ workflow.
 
 ## Deploy an Application to your NERC OpenShift Project
 
-- **Prerequisites**
+-   **Prerequisites**
 
     You must have at least one active **NERC-OCP (OpenShift)** type resource allocation.
     You can refer to [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
@@ -77,10 +77,10 @@ workflow.
 
 7.  Enable and Update GitHub Actions Pipeline on your own forked repo:
 
-    - Enable the OpenShift Workflow in the Actions tab of in your GitHub repository.
+    -   Enable the OpenShift Workflow in the Actions tab of in your GitHub repository.
 
-    - Update the provided sample OpenShift workflow YAML file i.e. `openshift.yml`,
-      which is located at "`https://github.com/<github_username>/simple-node-app/actions/workflows/openshift.yml`".
+    -   Update the provided sample OpenShift workflow YAML file i.e. `openshift.yml`,
+        which is located at "`https://github.com/<github_username>/simple-node-app/actions/workflows/openshift.yml`".
 
         !!! info "Very Important Information"
 

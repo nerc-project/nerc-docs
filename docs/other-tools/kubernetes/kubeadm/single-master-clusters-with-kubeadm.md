@@ -2,13 +2,13 @@
 
 ## Objectives
 
-- Install a single control-plane(master) Kubernetes cluster
+-   Install a single control-plane(master) Kubernetes cluster
 
-- Install a Pod network on the cluster so that your Pods can talk to each other
+-   Install a Pod network on the cluster so that your Pods can talk to each other
 
-- Deploy and test a sample app
+-   Deploy and test a sample app
 
-- Deploy K8s Dashboard to view all cluster's components
+-   Deploy K8s Dashboard to view all cluster's components
 
 ## Components and architecure
 
@@ -22,17 +22,17 @@ We will need 1 control-plane(master) and 2 worker node to create a single
 control-plane kubernetes cluster using `kubeadm`. We are using following setting
 for this purpose:
 
-- 1 Linux machine for master, `ubuntu-20.04-x86_64`, `cpu-su.2` flavor with 2vCPU,
-  8GB RAM, 20GB storage.
+-   1 Linux machine for master, `ubuntu-20.04-x86_64`, `cpu-su.2` flavor with 2vCPU,
+    8GB RAM, 20GB storage.
 
-- 2 Linux machines for worker, `ubuntu-20.04-x86_64`, `cpu-su.1` flavor with 1vCPU,
-  4GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-  to both of the worker nodes.
+-   2 Linux machines for worker, `ubuntu-20.04-x86_64`, `cpu-su.1` flavor with 1vCPU,
+    4GB RAM, 20GB storage - also [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+    to both of the worker nodes.
 
-- ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-  on how to set up SSH on your remote VMs.
+-   ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+    on how to set up SSH on your remote VMs.
 
-- Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
+-   Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
 i. To be used by the master nodes:
 
@@ -42,7 +42,7 @@ ii. To be used by the worker nodes:
 
 ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
 
-- setup Unique hostname to each machine using the following command:
+-   setup Unique hostname to each machine using the following command:
 
     ```sh
     echo "<node_internal_IP> <host_name>" >> /etc/hosts
@@ -91,42 +91,42 @@ does things like starting pods and containers.
 
 In this step, you will install kubelet and kubeadm on the below nodes
 
-- master
+-   master
 
-- worker1
+-   worker1
 
-- worker2
+-   worker2
 
 The below steps will be performed on all the above mentioned nodes:
 
-- SSH into all the 3 machines
+-   SSH into all the 3 machines
 
-- Update the repositories and packages:
+-   Update the repositories and packages:
 
     ```sh
     sudo apt-get update && sudo apt-get upgrade -y
     ```
 
-- Turn off `swap`
+-   Turn off `swap`
 
     ```sh
     swapoff -a
     sudo sed -i '/ swap / s/^/#/' /etc/fstab
     ```
 
-- Install `curl` and `apt-transport-https`
+-   Install `curl` and `apt-transport-https`
 
     ```sh
     sudo apt-get update && sudo apt-get install -y apt-transport-https curl
     ```
 
-- Download the Google Cloud public signing key and add key to verify releases
+-   Download the Google Cloud public signing key and add key to verify releases
 
     ```sh
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     ```
 
-- add kubernetes apt repo
+-   add kubernetes apt repo
 
     ```sh
     cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -134,14 +134,14 @@ The below steps will be performed on all the above mentioned nodes:
     EOF
     ```
 
-- Install kubelet, kubeadm, and kubectl
+-   Install kubelet, kubeadm, and kubectl
 
     ```sh
     sudo apt-get update
     sudo apt-get install -y kubelet kubeadm kubectl
     ```
 
-- `apt-mark hold` is used so that these packages will not be updated/removed automatically
+-   `apt-mark hold` is used so that these packages will not be updated/removed automatically
 
     ```sh
     sudo apt-mark hold kubelet kubeadm kubectl
@@ -156,7 +156,7 @@ To run containers in Pods, Kubernetes uses a [container runtime](https://kuberne
 By default, Kubernetes uses the **Container Runtime Interface (CRI)** to interface
 with your chosen container runtime.
 
-- Install container runtime - **containerd**
+-   Install container runtime - **containerd**
 
     The first thing to do is configure the persistent loading of the necessary
     `containerd` modules. This forwarding IPv4 and letting iptables see bridged
@@ -172,7 +172,7 @@ with your chosen container runtime.
     sudo modprobe br_netfilter
     ```
 
-- Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
+-   Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
 
     ```sh
     # sysctl params required by setup, params persist across reboots
@@ -183,20 +183,20 @@ with your chosen container runtime.
     EOF
     ```
 
-- Apply sysctl params without reboot:
+-   Apply sysctl params without reboot:
 
     ```sh
     sudo sysctl --system
     ```
 
-- Install the necessary dependencies with:
+-   Install the necessary dependencies with:
 
     ```sh
     sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
     ```
 
-- The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
-  Add the required GPG key with:
+-   The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
+    Add the required GPG key with:
 
     ```sh
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -226,10 +226,10 @@ with your chosen container runtime.
 
     !!! danger "Configuring the kubelet cgroup driver"
 
-                      From 1.22 onwards, if you do not set the `cgroupDriver` field under
-                      `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
-                      not need to do anything here by default but if you want you change it you
-                      can refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
+        From 1.22 onwards, if you do not set the `cgroupDriver` field under
+        `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+        not need to do anything here by default but if you want you change it you
+        can refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
 ---
 
@@ -238,11 +238,11 @@ with your chosen container runtime.
 Run the below command on the master node i.e. `master` that you want to setup as
 control plane.
 
-- SSH into **master** machine
+-   SSH into **master** machine
 
-- Switch to root user: `sudo su`
+-   Switch to root user: `sudo su`
 
-- Execute the below command to initialize the cluster:
+-   Execute the below command to initialize the cluster:
 
     ```sh
     export MASTER_IP=<Master-Internal-IP>
@@ -252,14 +252,14 @@ control plane.
 
     !!! note "Important Note"
 
-                      Please make sure you replace the correct IP of the node with
-                      `<Master-Internal-IP>` which is the Internal IP of master node.
-                      `--pod-network-cidr` value depends upon what CNI plugin you going to use
-                      so need to be very careful while setting this CIDR values. In our case,
-                      you are going to use **Flannel** CNI network plugin so you will use:
-                      `--pod-network-cidr=10.244.0.0/16`. If you are opted to use **Calico** CNI
-                      network plugin then you need to use: `--pod-network-cidr=192.168.0.0/16`
-                      and if you are opted to use **Weave Net** no need to pass this parameter.
+        Please make sure you replace the correct IP of the node with
+        `<Master-Internal-IP>` which is the Internal IP of master node.
+        `--pod-network-cidr` value depends upon what CNI plugin you going to use
+        so need to be very careful while setting this CIDR values. In our case,
+        you are going to use **Flannel** CNI network plugin so you will use:
+        `--pod-network-cidr=10.244.0.0/16`. If you are opted to use **Calico** CNI
+        network plugin then you need to use: `--pod-network-cidr=192.168.0.0/16`
+        and if you are opted to use **Weave Net** no need to pass this parameter.
 
     For example, our `Flannel` CNI network plugin based kubeadm init command with
     _master node_ with internal IP: `192.168.0.167` look like below:
@@ -334,12 +334,12 @@ control plane.
 
     !!! warning "Warning"
 
-                      Kubeadm signs the certificate in the admin.conf to have
-                      `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
-                      break-glass, super user group that bypasses the authorization layer
-                      (e.g. RBAC). Do not share the admin.conf file with anyone and instead
-                      grant users custom permissions by generating them a kubeconfig file using
-                      the `kubeadm kubeconfig user` command.
+        Kubeadm signs the certificate in the admin.conf to have
+        `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
+        break-glass, super user group that bypasses the authorization layer
+        (e.g. RBAC). Do not share the admin.conf file with anyone and instead
+        grant users custom permissions by generating them a kubeconfig file using
+        the `kubeadm kubeconfig user` command.
 
     B. Join worker nodes running following command on individual worker nodes:
 
@@ -350,9 +350,9 @@ control plane.
 
     !!! note "Important Note"
 
-                      **Your output will be different than what is provided here. While
-                      performing the rest of the demo, ensure that you are executing the
-                      command provided by your output and dont copy and paste from here.**
+        **Your output will be different than what is provided here. While
+        performing the rest of the demo, ensure that you are executing the
+        command provided by your output and dont copy and paste from here.**
 
     If you do not have the token, you can get it by running the following command
     on the control-plane node:
@@ -405,20 +405,20 @@ control plane.
 Now that you have initialized the master - you can now work on bootstrapping the
 worker nodes.
 
-- SSH into **worker1** and **worker2**
+-   SSH into **worker1** and **worker2**
 
-- Switch to root user on both the machines: `sudo su`
+-   Switch to root user on both the machines: `sudo su`
 
-- Check the output given by the init command on **master** to join worker node:
+-   Check the output given by the init command on **master** to join worker node:
 
     ```sh
     kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
         --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
     ```
 
-- Execute the above command on both the nodes:
+-   Execute the above command on both the nodes:
 
-- Your output should look like:
+-   Your output should look like:
 
     ```sh
     This node has joined the cluster:
@@ -431,7 +431,7 @@ worker nodes.
 
 ## Validate all cluster components and nodes are visible on all nodes
 
-- Verify the cluster
+-   Verify the cluster
 
     ```sh
     kubectl get nodes
@@ -609,11 +609,11 @@ For your example,
 You will going to setup [K8dash/Skooner](https://github.com/skooner-k8s/skooner)
 to view a dashboard that shows all your K8s cluster components.
 
-- SSH into `master` node
+-   SSH into `master` node
 
-- Switch to root user: `sudo su`
+-   Switch to root user: `sudo su`
 
-- Apply available deployment by running the following command:
+-   Apply available deployment by running the following command:
 
     ```sh
     kubectl apply -f https://raw.githubusercontent.com/skooner-k8s/skooner/master/kubernetes-skooner-nodeport.yaml
@@ -663,19 +663,19 @@ Setup the **Service Account Token** to access the Skooner Dashboard:
 The first (and easiest) option is to create a dedicated service account. Run the
 following commands:
 
-- Create the service account in the current namespace (we assume default)
+-   Create the service account in the current namespace (we assume default)
 
     ```sh
     kubectl create serviceaccount skooner-sa
     ```
 
-- Give that service account root on the cluster
+-   Give that service account root on the cluster
 
     ```sh
     kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa
     ```
 
-- Create a secret that was created to hold the token for the SA:
+-   Create a secret that was created to hold the token for the SA:
 
     ```sh
     kubectl apply -f - <<EOF
@@ -691,23 +691,23 @@ following commands:
 
     !!! info "Information"
 
-                      Since 1.22, this type of Secret is no longer used to mount credentials into
-                      Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
-                      is recommended instead of using service account token Secret objects. Tokens
-                      obtained from the _TokenRequest API_ are more secure than ones stored in
-                      Secret objects, because they have a bounded lifetime and are not readable
-                      by other API clients. You can use the `kubectl create token` command to
-                      obtain a token from the TokenRequest API. For example:
-                      `kubectl create token skooner-sa`, where `skooner-sa` is service account
-                      name.
+        Since 1.22, this type of Secret is no longer used to mount credentials into
+        Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+        is recommended instead of using service account token Secret objects. Tokens
+        obtained from the _TokenRequest API_ are more secure than ones stored in
+        Secret objects, because they have a bounded lifetime and are not readable
+        by other API clients. You can use the `kubectl create token` command to
+        obtain a token from the TokenRequest API. For example:
+        `kubectl create token skooner-sa`, where `skooner-sa` is service account
+        name.
 
-- Find the secret that was created to hold the token for the SA
+-   Find the secret that was created to hold the token for the SA
 
     ```sh
     kubectl get secrets
     ```
 
-- Show the contents of the secret to extract the token
+-   Show the contents of the secret to extract the token
 
     ```sh
     kubectl describe secret skooner-sa-token
@@ -761,13 +761,13 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 ## Clean Up
 
-- To view the Cluster info:
+-   To view the Cluster info:
 
     ```sh
     kubectl cluster-info
     ```
 
-- To delete your local references to the cluster:
+-   To delete your local references to the cluster:
 
     ```sh
     kubectl config delete-cluster
@@ -781,7 +781,7 @@ Talking to the control-plane node with the appropriate credentials, run:
 kubectl drain <node name> --delete-emptydir-data --force --ignore-daemonsets
 ```
 
-- Before removing the node, reset the state installed by kubeadm:
+-   Before removing the node, reset the state installed by kubeadm:
 
     ```sh
     kubeadm reset
@@ -800,7 +800,7 @@ kubectl drain <node name> --delete-emptydir-data --force --ignore-daemonsets
     ipvsadm -C
     ```
 
-- Now remove the node:
+-   Now remove the node:
 
     ```sh
     kubectl delete node <node name>

@@ -58,7 +58,7 @@ b. Download the signed **VirtIO drivers** ISO file from the [Fedora website](htt
 c. Install [Virtual Machine Manager](https://virt-manager.org/download/) on your
 local Windows 10 machine using WSL:
 
-- **Enable WSL on your local Windows 10 subsystem for Linux:**
+-   **Enable WSL on your local Windows 10 subsystem for Linux:**
 
     The steps given here are straightforward, however, before following them
     make sure on Windows 10, you have WSL enabled and have at least Ubuntu
@@ -66,12 +66,12 @@ local Windows 10 machine using WSL:
     that then see our tutorial on [how to enable WSL and install Ubuntu over
     it](https://www.how2shout.com/how-to/enable-windows-subsystem-linux-feature.html).
 
-- **Download and install MobaXterm:**
+-   **Download and install MobaXterm:**
 
     **MobaXterm** is a free application that can be downloaded using [this link](https://mobaxterm.mobatek.net/download-home-edition.html).
     After downloading, install it like any other normal Windows software.
 
-- **Open MobaXterm and run WSL Linux:**
+-   **Open MobaXterm and run WSL Linux:**
 
     As you open this advanced terminal for Windows 10, WSL installed Ubuntu
     app will show on the left side panel of it. Double click on that to start
@@ -79,14 +79,14 @@ local Windows 10 machine using WSL:
 
     ![MobaXterm WSL Ubuntu-20.04 LTS](images/a.mobaxterm_ubuntu_WSL.png)
 
-- **Install Virt-Manager:**
+-   **Install Virt-Manager:**
 
     ```sh
     sudo apt update
     sudo apt install virt-manager
     ```
 
-- **Run Virtual Machine Manager:**
+-   **Run Virtual Machine Manager:**
 
     Start the Virtual Machine Manager running this command on the opened
     terminal: `virt-manager` as shown below:
@@ -97,7 +97,7 @@ local Windows 10 machine using WSL:
 
     ![Virt-Manager interface](images/0.virtual-manager.png)
 
-- **Connect QEMU/KVM user session on Virt-Manager:**
+-   **Connect QEMU/KVM user session on Virt-Manager:**
 
     ![Virt-Manager Add Connection](images/0.0.add_virtual_connection.png)
 

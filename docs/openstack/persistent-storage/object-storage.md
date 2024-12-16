@@ -135,8 +135,8 @@ This will deactivate the public URL of the container and then it will show "Disa
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 #### Some Object Storage management examples
 
@@ -253,10 +253,10 @@ To check the space used by a specific container
 This is a python client for the Swift API. There's a [Python API](https://github.com/openstack/python-swiftclient)
 (the `swiftclient` module), and a command-line script (`swift`).
 
-- This example uses a `Python3` virtual environment, but you are free to choose
-  any other method to create a local virtual environment like `Conda`.
+-   This example uses a `Python3` virtual environment, but you are free to choose
+    any other method to create a local virtual environment like `Conda`.
 
-          python3 -m venv venv
+        python3 -m venv venv
 
 !!! note "Choosing Correct Python Interpreter"
 
@@ -264,7 +264,7 @@ This is a python client for the Swift API. There's a [Python API](https://github
       Windows Only) to create a directory named `venv` (or whatever name you
       specified) in your current working directory.
 
-- Activate the virtual environment by running:
+-   Activate the virtual environment by running:
 
 **on Linux/Mac:** `source venv/bin/activate`
 
@@ -272,12 +272,12 @@ This is a python client for the Swift API. There's a [Python API](https://github
 
 #### Install [Python Swift Client page at PyPi](https://pypi.org/project/python-swiftclient/)
 
-- Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
+-   Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
 
 pip install python-swiftclient python-keystoneclient
 
-- Swift authenticates using a user, tenant, and key, which map to your OpenStack
-  username, project,and password.
+-   Swift authenticates using a user, tenant, and key, which map to your OpenStack
+    username, project,and password.
 
 For this, you need to download the **"NERC's OpenStack RC File"** with the
 credentials for your NERC project from the [NERC's OpenStack dashboard](https://stack.nerc.mghpcc.org/).
@@ -425,11 +425,11 @@ to access object storage on your NERC project.
 
 To run the `s3` or `s3api` commands, you need to have:
 
-- AWS CLI installed, see
-  [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-  for more information.
+-   AWS CLI installed, see
+    [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+    for more information.
 
-- The NERC's Swift End Point URL: `https://stack.nerc.mghpcc.org:13808`
+-   The NERC's Swift End Point URL: `https://stack.nerc.mghpcc.org:13808`
 
 !!! note "Understand these Amazon S3 terms"
 
@@ -482,9 +482,9 @@ While clicking on "EC2 Credentials", this will download a file **zip file** incl
 
     openstack ec2 credentials create
 
-- Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
-  `source *-openrc.sh` command. Sourcing the RC File will set the required environment
-  variables.
+-   Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
+    `source *-openrc.sh` command. Sourcing the RC File will set the required environment
+    variables.
 
 Then run aws configuration command which requires the `EC2_ACCESS_KEY` and
 `EC2_SECRET_KEY` keys that you noted from `ec2rc.sh` file (during the **"Configuring
@@ -628,8 +628,8 @@ the S3 protocol.
 
 **Prerequisites**:
 
-- S3cmd installed, see [Download and Install the latest version of the S3cmd](https://s3tools.org/download)
-  for more information.
+-   S3cmd installed, see [Download and Install the latest version of the S3cmd](https://s3tools.org/download)
+    for more information.
 
 #### Configuring s3cmd
 
@@ -785,9 +785,9 @@ NERC's containers.
 
 To run the `rclone` commands, you need to have:
 
-- `rclone` installed, see
-  [Downloading and Installing the latest version of the Rclone](https://rclone.org/downloads/)
-  for more information.
+-   `rclone` installed, see
+    [Downloading and Installing the latest version of the Rclone](https://rclone.org/downloads/)
+    for more information.
 
 #### Configuring Rclone
 
@@ -1023,32 +1023,32 @@ using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
 
 **Prerequisites**:
 
-- WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
-  for more information.
+-   WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
+    for more information.
 
-- Go to WinSCP menu and open "Options > Preferences".
+-   Go to WinSCP menu and open "Options > Preferences".
 
-- When the "Preferences" dialog window appears, select "Transfer" in the options
-  on the left pane.
+-   When the "Preferences" dialog window appears, select "Transfer" in the options
+    on the left pane.
 
-- Click on "Edit" button.
+-   Click on "Edit" button.
 
-- Then, on shown popup dialog box review the "Common options" group, uncheck the
-  "Preserve timestamp" option as shown below:
+-   Then, on shown popup dialog box review the "Common options" group, uncheck the
+    "Preserve timestamp" option as shown below:
 
 ![Disable Preserve TimeStamp](images/winscp-perserve-timestamp-disable.png)
 
 #### Configuring WinSCP
 
-- Click on "New Session" tab button as shown below:
+-   Click on "New Session" tab button as shown below:
 
 ![Login](images/winscp-new-session.png)
 
-- Select **"Amazon S3"** from the "File protocol" dropdown options as shown below:
+-   Select **"Amazon S3"** from the "File protocol" dropdown options as shown below:
 
 ![Choose Amazon S3 File Protocol](images/choose_S3_protocol.png)
 
-- Provide the following required endpoint information:
+-   Provide the following required endpoint information:
 
 **"Host name"**: "stack.nerc.mghpcc.org"
 
@@ -1088,20 +1088,20 @@ servers, enterprise file sharing, and cloud storage.
 
 **Prerequisites**:
 
-- Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
-  for more information.
+-   Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
+    for more information.
 
 #### Configuring Cyberduck
 
-- Click on "Open Connection" tab button as shown below:
+-   Click on "Open Connection" tab button as shown below:
 
 ![Open Connection](images/cyberduck-open-connection.png)
 
-- Select **"Amazon S3"** from the dropdown options as shown below:
+-   Select **"Amazon S3"** from the dropdown options as shown below:
 
 ![Choose Amazon S3](images/cyberduck-select-Amazon-s3.png)
 
-- Provide the following required endpoint information:
+-   Provide the following required endpoint information:
 
 **"Server"**: "stack.nerc.mghpcc.org"
 

@@ -6,9 +6,9 @@ VM and in **"Available"** status.
 
 The steps are as follows:
 
-- Extend the volume to its new size
+-   Extend the volume to its new size
 
-- Extend the filesystem to its new size
+-   Extend the filesystem to its new size
 
 ## Using Horizon dashboard
 
@@ -28,8 +28,8 @@ Specify, the new extened size in GiB:
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 ### Using the openstack client
 

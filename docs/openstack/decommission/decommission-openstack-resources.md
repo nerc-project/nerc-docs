@@ -5,16 +5,16 @@ below.
 
 ## Prerequisite
 
-- **Backup**: Back up any critical data or configurations stored on the resources
-  that going to be decommissioned. This ensures that important information is not
-  lost during the process. You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md)
-  to initiate and carry out data transfer to and from the virtual machine.
+-   **Backup**: Back up any critical data or configurations stored on the resources
+    that going to be decommissioned. This ensures that important information is not
+    lost during the process. You can refer to [this guide](../data-transfer/data-transfer-from-to-vm.md)
+    to initiate and carry out data transfer to and from the virtual machine.
 
-- **Shutdown Instances**: If applicable, [Shut Off any running instances](../management/vm-management.md#stopping-and-starting)
-  to ensure they are not actively processing data during decommissioning.
+-   **Shutdown Instances**: If applicable, [Shut Off any running instances](../management/vm-management.md#stopping-and-starting)
+    to ensure they are not actively processing data during decommissioning.
 
-- Setup **OpenStack CLI**, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   Setup **OpenStack CLI**, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 ## Delete all VMs
 

@@ -102,11 +102,11 @@ file and share it to the new client.
 It would be kind of pointless to have our VPN server allow anyone to connect.
 This is where our public &amp; private keys come into play.
 
-- Each **client's \*\*public\*\* key** needs to be added to the
-  **SERVER'S** configuration file
+-   Each **client's \*\*public\*\* key** needs to be added to the
+    **SERVER'S** configuration file
 
-- The **server's \*\*public\*\* key** added to the **CLIENT'S**
-  configuration file
+-   The **server's \*\*public\*\* key** added to the **CLIENT'S**
+    configuration file
 
 ### Useful commands
 

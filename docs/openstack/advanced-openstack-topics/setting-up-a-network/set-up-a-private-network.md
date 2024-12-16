@@ -20,7 +20,7 @@ side of the screen.
 
 In the Create Network dialog box, specify the following values.
 
-- Network tab:
+-   Network tab:
 
     Network Name: Specify a name to identify the network.
 
@@ -33,7 +33,7 @@ In the Create Network dialog box, specify the following values.
 
     ![Create a Network](images/create_network.png)
 
-- Subnet tab:
+-   Subnet tab:
 
     You do not have to specify a subnet when you create a network, but if you do
     not specify a subnet, the network can not be attached to an instance.
@@ -44,9 +44,9 @@ In the Create Network dialog box, specify the following values.
     networks, you should use IP addresses which fall within the ranges that are
     specifically reserved for private networks:
 
-                            10.0.0.0/8
-                            172.16.0.0/12
-                            192.168.0.0/16
+        10.0.0.0/8
+        172.16.0.0/12
+        192.168.0.0/16
 
     In the example below, we configure a network containing addresses 192.168.0.1
     to 192.168.0.255 using CIDR 192.168.0.0/24
@@ -62,7 +62,7 @@ In the Create Network dialog box, specify the following values.
 
     Disable Gateway: Select this check box to disable a gateway IP address.
 
-- Subnet Details tab
+-   Subnet Details tab
 
     Enable DHCP: Select this check box to enable DHCP so that your VM instances
     will automatically be assigned an IP on the subnet.

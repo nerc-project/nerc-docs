@@ -254,9 +254,9 @@ given NERC VM.
 
 To run the `rclone` commands, you need to have:
 
-- To run the `rclone` commands you will need to have `rclone` installed.
-  See [Downloading and Installing the latest version of Rclone](https://rclone.org/downloads/)
-  for more information.
+-   To run the `rclone` commands you will need to have `rclone` installed.
+    See [Downloading and Installing the latest version of Rclone](https://rclone.org/downloads/)
+    for more information.
 
 ### Configuring Rclone
 
@@ -396,33 +396,33 @@ using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
 **Prerequisites**:
 
-- WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
-  for more information.
+-   WinSCP installed, see [Download and Install the latest version of the WinSCP](https://winscp.net/eng/docs/guide_install)
+    for more information.
 
-- Go to WinSCP menu and open "View > Preferences".
+-   Go to WinSCP menu and open "View > Preferences".
 
-- When the "Preferences" dialog window appears, select "Transfer" in the options
-  on the left pane.
+-   When the "Preferences" dialog window appears, select "Transfer" in the options
+    on the left pane.
 
-- Click on the "Edit" button.
+-   Click on the "Edit" button.
 
-- Then, in the popup dialog box, review the "Common options" group and uncheck
-  the "Preserve timestamp" option as shown below:
+-   Then, in the popup dialog box, review the "Common options" group and uncheck
+    the "Preserve timestamp" option as shown below:
 
 ![Disable Preserve TimeStamp](images/winscp-preferences-perserve-timestamp-disable.png)
 
 #### Configuring WinSCP
 
-- Click on the "New Tab" button as shown below:
+-   Click on the "New Tab" button as shown below:
 
 ![Login](images/winscp-new-tab.png)
 
-- Select either **"SFTP"** or **"SCP"** from the "File protocol" dropdown options
-  as shown below:
+-   Select either **"SFTP"** or **"SCP"** from the "File protocol" dropdown options
+    as shown below:
 
 ![Choose SFTP or SCP File Protocol](images/choose_SFTP_or_SCP_protocol.png)
 
-- Provide the following required information:
+-   Provide the following required information:
 
 **"File protocol"**: Choose either "**"SFTP"** or **"SCP"**"
 
@@ -451,7 +451,7 @@ using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
 **"Password"**: "`<Leave blank as you using SSH key>`"
 
-- Change Authentication Options
+-   Change Authentication Options
 
 Before saving, click the "Advanced" button.
 In the "Advanced Site Settings", under "SSH >> Authentication" settings, check
@@ -493,20 +493,20 @@ connections to servers, enterprise file sharing, and various cloud storage platf
 
 **Prerequisites**:
 
-- Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
-  for more information.
+-   Cyberduck installed, see [Download and Install the latest version of the Cyberduck](https://cyberduck.io/download/)
+    for more information.
 
 #### Configuring Cyberduck
 
-- Click on the "Open Connection" button as shown below:
+-   Click on the "Open Connection" button as shown below:
 
 ![Open Connection](images/cyberduck-open-connection-new.png)
 
-- Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
+-   Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
 
 ![Choose Amazon S3](images/cyberduck-select-sftp-or-ftp.png)
 
-- Provide the following required information:
+-   Provide the following required information:
 
 **"Server"**: "`<Your Floating IP of VM>`"
 
@@ -555,25 +555,25 @@ computer (shared drives, Dropbox, etc.)
 
 **Prerequisites**:
 
-- Filezilla installed, see
-  [Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation)
-  for more information.
+-   Filezilla installed, see
+    [Download and Install the latest version of the Filezilla](https://wiki.filezilla-project.org/Client_Installation)
+    for more information.
 
 #### Configuring Filezilla
 
-- Click on "Site Manager" icon as shown below:
+-   Click on "Site Manager" icon as shown below:
 
 ![Site Manager](images/filezilla-new-site.png)
 
-- Click on "New Site" as shown below:
+-   Click on "New Site" as shown below:
 
 ![Click New Site](images/filezilla-click-new-site.png)
 
-- Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
+-   Select either **"SFTP"** or **"FTP"** from the dropdown options as shown below:
 
 ![Select Protocol](images/filezilla-sftp-or-ftp.png)
 
-- Provide the following required information:
+-   Provide the following required information:
 
 **"Server"**: "`<Your Floating IP of VM>`"
 

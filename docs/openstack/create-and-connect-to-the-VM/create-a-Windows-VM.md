@@ -7,9 +7,9 @@ Windows virtual machine, similar steps can be used on other types of virtual
 machines. The following steps show how to create a virtual machine which boots
 from an external volume:
 
-- Create a volume with source data from the image
+-   Create a volume with source data from the image
 
-- Launch a VM with that volume as the system disk
+-   Launch a VM with that volume as the system disk
 
 !!! note "Recommendations"
 
@@ -48,9 +48,9 @@ for the size of the volume as shown below:
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see
-  [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see
+    [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To create a volume from image using the CLI, do this:
 
@@ -168,9 +168,9 @@ Attach a Floating IP to your instance:
 
 To run the OpenStack CLI commands, you need to have:
 
-- OpenStack CLI setup, see
-  [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-  for more information.
+-   OpenStack CLI setup, see
+    [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+    for more information.
 
 To launch an instance from existing bootable volume using the CLI, do this:
 

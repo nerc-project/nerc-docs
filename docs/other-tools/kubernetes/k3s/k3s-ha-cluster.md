@@ -79,15 +79,15 @@ curl -sfL https://get.k3s.io | sh -s - server \
     --tls-san <Loadbalancer-Internal-IP_or_Hostname>
 ```
 
-- Verify all master nodes are visible to one another:
+-   Verify all master nodes are visible to one another:
 
     ```sh
     sudo k3s kubectl get node
     ```
 
-- Generate **token** from one of the K3s Master VMs:
-  You need to extract a token from the master that will be used to join the nodes
-  to the control plane by running following command on one of the K3s master node:
+-   Generate **token** from one of the K3s Master VMs:
+    You need to extract a token from the master that will be used to join the nodes
+    to the control plane by running following command on one of the K3s master node:
 
     ```sh
     sudo cat /var/lib/rancher/k3s/server/node-token
@@ -127,7 +127,7 @@ sudo systemctl stop k3s
 
 **The third server will take over at this point.**
 
-- To restart servers manually:
+-   To restart servers manually:
 
     ```sh
     sudo systemctl restart k3s
@@ -139,11 +139,11 @@ sudo systemctl stop k3s
 
     Your local development machine must have installed `kubectl`.
 
-- Copy kubernetes config to your local machine:
-  Copy the `kubeconfig` file's content located at the K3s master node at `/etc/rancher/k3s/k3s.yaml`
-  to your local machine's `~/.kube/config` file. Before saving, please change the
-  cluster server path from **127.0.0.1** to **`<Loadbalancer-Internal-IP>`**. This
-  will allow your local machine to see the cluster nodes:
+-   Copy kubernetes config to your local machine:
+    Copy the `kubeconfig` file's content located at the K3s master node at `/etc/rancher/k3s/k3s.yaml`
+    to your local machine's `~/.kube/config` file. Before saving, please change the
+    cluster server path from **127.0.0.1** to **`<Loadbalancer-Internal-IP>`**. This
+    will allow your local machine to see the cluster nodes:
 
     ```sh
     kubectl get nodes
@@ -162,7 +162,7 @@ to use for _Installation_:
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml
 ```
 
-- Dashboard RBAC Configuration:
+-   Dashboard RBAC Configuration:
 
     `dashboard.admin-user.yml`
 
@@ -191,7 +191,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
       namespace: kubernetes-dashboard
     ```
 
-- Deploy the `admin-user` configuration:
+-   Deploy the `admin-user` configuration:
 
     ```sh
     sudo k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
@@ -199,17 +199,17 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
 
     !!! note "Important Note"
 
-                If you're doing this from your local development machine, remove `sudo k3s`
-                and just use `kubectl`)
+        If you're doing this from your local development machine, remove `sudo k3s`
+        and just use `kubectl`)
 
-- Get bearer **token**
+-   Get bearer **token**
 
     ```sh
     sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token \
       | grep ^token
     ```
 
-- Start _dashboard_ locally:
+-   Start _dashboard_ locally:
 
     ```sh
     sudo k3s kubectl proxy
@@ -223,13 +223,13 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
 
 ## Deploying Nginx using deployment
 
-- Create a deployment `nginx.yaml`:
+-   Create a deployment `nginx.yaml`:
 
     ```sh
     vi nginx.yaml
     ```
 
-- Copy and paste the following content in `nginx.yaml`:
+-   Copy and paste the following content in `nginx.yaml`:
 
     ```sh
     apiVersion: apps/v1
@@ -259,7 +259,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     sudo k3s kubectl apply -f nginx.yaml
     ```
 
-- Verify the nginx pod is in **Running** state:
+-   Verify the nginx pod is in **Running** state:
 
     ```sh
     sudo k3s kubectl get pods --all-namespaces
@@ -277,13 +277,13 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     kubectl get pods -A -o wide
     ```
 
-- Scale the pods to available agents:
+-   Scale the pods to available agents:
 
     ```sh
     sudo k3s kubectl scale --replicas=2 deploy/mysite
     ```
 
-- View all deployment status:
+-   View all deployment status:
 
     ```sh
     sudo k3s kubectl get deploy mysite
@@ -292,7 +292,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
     mysite   2/2     2            2           85s
     ```
 
-- Delete the nginx deployment and pod:
+-   Delete the nginx deployment and pod:
 
     ```sh
     sudo k3s kubectl delete -f nginx.yaml

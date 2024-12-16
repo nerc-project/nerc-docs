@@ -154,16 +154,16 @@ its administrative access)
 
 Please fill out the following information on this popup box:
 
-- Scheme: _http_
+-   Scheme: _http_
 
-- Forward Hostname/IP:
-  _`<The Private-IP of your NERC VM where you are hosting the web services>`_
+-   Forward Hostname/IP:
+    _`<The Private-IP of your NERC VM where you are hosting the web services>`_
 
-- Forward Port: _`<Port exposed on your VM to the public>`_
+-   Forward Port: _`<Port exposed on your VM to the public>`_
 
-- Enable all toggles i.e. Cache Assets, Block Common Exploits, Websockets Support
+-   Enable all toggles i.e. Cache Assets, Block Common Exploits, Websockets Support
 
-- Access List: _Publicly Accessible_
+-   Access List: _Publicly Accessible_
 
 For your reference, you can review your selection should looks like below with your
 own Domain Name and other settings:

@@ -71,11 +71,11 @@ dialog box.
 
 Enter the following values:
 
-- Rule: SSH
+-   Rule: SSH
 
-- Remote: CIDR
+-   Remote: CIDR
 
-- CIDR: 0.0.0.0/0
+-   CIDR: 0.0.0.0/0
 
     !!! note "Note"
 
@@ -99,13 +99,13 @@ choose "ALL ICMP" from the dropdown.
 
 In the Add Rule dialog box, enter the following values:
 
-- Rule: All ICMP
+-   Rule: All ICMP
 
-- Direction: Ingress
+-   Direction: Ingress
 
-- Remote: CIDR
+-   Remote: CIDR
 
-- CIDR: 0.0.0.0/0
+-   CIDR: 0.0.0.0/0
 
 ![Adding ICMP - ping in Security Group Rules](images/ping_icmp_security_rule.png)
 
@@ -135,11 +135,11 @@ Choose "RDP" from the Rule dropdown option as shown below:
 
 Enter the following values:
 
-- Rule: RDP
+-   Rule: RDP
 
-- Remote: CIDR
+-   Remote: CIDR
 
-- CIDR: 0.0.0.0/0
+-   CIDR: 0.0.0.0/0
 
 !!! note "Note"
 
@@ -154,15 +154,15 @@ from any IP address.
 
 ## Editing Existing Security Group and Adding New Security Rules
 
-- Navigate to Security Groups:
+-   Navigate to Security Groups:
 
     Navigate to _Project -> Network -> Security Groups_.
 
-- Select the Security Group:
+-   Select the Security Group:
 
     Choose the security group to which you want to add new rules.
 
-- Add New Rule:
+-   Add New Rule:
 
     Look for an option to add a new rule within the selected security group.
 
@@ -173,7 +173,7 @@ from any IP address.
 
     ![Add New Security Rules](images/sg_new_rule.png)
 
-- Save Changes:
+-   Save Changes:
 
     Save the changes to apply the new security rules to the selected security group.
 

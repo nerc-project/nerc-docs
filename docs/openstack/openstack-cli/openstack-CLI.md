@@ -37,10 +37,10 @@ You can download the environment file with the credentials from the [OpenStack d
 
 !!! note "Important Note"
 
-    Please note that an application credential is only valid for a single
-    project, and to access multiple projects you need to create an application
-    credential for each. You can switch projects by clicking on the project name
-    at the top right corner and choosing from the dropdown under "Project".
+      Please note that an application credential is only valid for a single
+      project, and to access multiple projects you need to create an application
+      credential for each. You can switch projects by clicking on the project name
+      at the top right corner and choosing from the dropdown under "Project".
 
 After clicking "Create Application Credential" button, the **ID** and
 **Secret** will be displayed and you will be prompted to `Download openrc file`

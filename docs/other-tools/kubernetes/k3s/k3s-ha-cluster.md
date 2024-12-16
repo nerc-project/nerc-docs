@@ -199,8 +199,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/a
 
     !!! note "Important Note"
 
-          If you're doing this from your local development machine, remove
-          `sudo k3s` and just use `kubectl`)
+                If you're doing this from your local development machine, remove `sudo k3s`
+                and just use `kubectl`)
 
 - Get bearer **token**
 

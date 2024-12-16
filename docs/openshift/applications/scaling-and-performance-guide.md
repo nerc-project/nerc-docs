@@ -102,9 +102,9 @@ CPU and memory can be specified in a couple of ways:
 
     !!! note "Important Information"
 
-          If a Pod's total requests are not available on a single node, then the Pod
-          will remain in a *Pending* state (i.e. not running) until these resources
-          become available.
+        If a Pod's total requests are not available on a single node, then the Pod
+        will remain in a *Pending* state (i.e. not running) until these resources
+        become available.
 
 - The **limit** value specifies the max value you can consume. Limit is the value
   applications should be tuned to use. Pods will be memory, CPU throttled when
@@ -283,11 +283,11 @@ Click the **Observe** tab to:
 
     !!! note "Detailed Monitoring your project and application metrics"
 
-            On the left navigation panel of the **Developer** perspective, click
-            **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
-            For more information about Monitoring project and application metrics
-            using the Developer perspective, please
-            [read this](https://docs.openshift.com/container-platform/4.10/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
+        On the left navigation panel of the **Developer** perspective, click
+        **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
+        For more information about Monitoring project and application metrics
+        using the Developer perspective, please
+        [read this](https://docs.openshift.com/container-platform/4.10/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
 
 ## Scaling manually
 
@@ -402,8 +402,8 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
     !!! note "Configure via: Form or YAML View"
 
-          While creating or editing the horizontal pod autoscaler in the web console,
-          you can switch from **Form view** to **YAML view**.
+        While creating or editing the horizontal pod autoscaler in the web console,
+        you can switch from **Form view** to **YAML view**.
 
 - From the **Add HorizontalPodAutoscaler** form, define the name, minimum and maximum
   pod limits, the CPU and memory usage, and click **Save**.

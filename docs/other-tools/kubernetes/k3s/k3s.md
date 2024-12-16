@@ -66,9 +66,9 @@ must be accessible to each other on ports **2379** and **2380**.
 
     !!! note "Important Note"
 
-            The VXLAN overlay networking port on nodes should not be exposed to the world
-            as it opens up your cluster network to be accessed by anyone. Run your nodes
-            behind a firewall/security group that disables access to port **8472**.
+                          The VXLAN overlay networking port on nodes should not be exposed to the world
+                          as it opens up your cluster network to be accessed by anyone. Run your nodes
+                          behind a firewall/security group that disables access to port **8472**.
 
 - setup Unique hostname to each machine using the following command:
 

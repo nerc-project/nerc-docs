@@ -82,13 +82,13 @@ Run the below command on the Ubuntu VM:
 
     !!! note "Note"
 
-            Another way to access the default token to be used for the dashboard access
-            can be retrieved with:
+          Another way to access the default token to be used for the dashboard access
+          can be retrieved with:
 
-            ```sh
-            token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d "" -f1)
-            microk8s kubectl -n kube-system describe secret $token
-            ```
+          ```sh
+          token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d "" -f1)
+          microk8s kubectl -n kube-system describe secret $token
+          ```
 
 - Keep running the kubernetes-dashboad on Proxy to access it via web browser:
 
@@ -103,11 +103,11 @@ Run the below command on the Ubuntu VM:
 
     !!! note "Important"
 
-            This tells us the IP address of the Dashboard and the port. The values assigned
-            to your Dashboard will differ. Please note the displayed **PORT** and
-            the **TOKEN** that are required to access the kubernetes-dashboard. Make
-            sure, the exposed **PORT** is opened in Security Groups for the instance
-            following [this guide](../../openstack/access-and-security/security-groups.md).
+          This tells us the IP address of the Dashboard and the port. The values assigned
+          to your Dashboard will differ. Please note the displayed **PORT** and
+          the **TOKEN** that are required to access the kubernetes-dashboard. Make
+          sure, the exposed **PORT** is opened in Security Groups for the instance
+          following [this guide](../../openstack/access-and-security/security-groups.md).
 
     This will show the token to login to the Dashbord shown on the url with NodePort.
 

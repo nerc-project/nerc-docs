@@ -434,20 +434,20 @@ using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
 !!! info "Default User name based on OS"
 
-    - **all Ubuntu images**: ubuntu
+      - **all Ubuntu images**: ubuntu
 
-    - **all AlmaLinux images**: almalinux
+      - **all AlmaLinux images**: almalinux
 
-    - **all Rocky Linux images**: rocky
+      - **all Rocky Linux images**: rocky
 
-    - **all Fedora images**: fedora
+      - **all Fedora images**: fedora
 
-    - **all Debian images**: debian
+      - **all Debian images**: debian
 
-    - **all RHEL images**: cloud-user
+      - **all RHEL images**: cloud-user
 
-    If you still have VMs running with deleted **CentOS** images, you need to
-    use the following default username for your CentOS images: `centos`.
+      If you still have VMs running with deleted **CentOS** images, you need to
+      use the following default username for your CentOS images: `centos`.
 
 **"Password"**: "`<Leave blank as you using SSH key>`"
 
@@ -462,12 +462,12 @@ from the file picker.
 
 !!! tip "Helpful Tip"
 
-    You can save your above configured site with some preferred name by
-    clicking the "Save" button and then giving a proper name to your site.
-    This prevents needing to manually enter all of your configuration again the
-    next time you need to use WinSCP.
+      You can save your above configured site with some preferred name by
+      clicking the "Save" button and then giving a proper name to your site.
+      This prevents needing to manually enter all of your configuration again the
+      next time you need to use WinSCP.
 
-    ![Save Site WinSCP](images/winscp-save-site.png)
+      ![Save Site WinSCP](images/winscp-save-site.png)
 
 #### Using WinSCP
 
@@ -516,17 +516,17 @@ connections to servers, enterprise file sharing, and various cloud storage platf
 
 !!! info "Default User name based on OS"
 
-    - **all Ubuntu images**: ubuntu
+      - **all Ubuntu images**: ubuntu
 
-    - **all AlmaLinux images**: almalinux
+      - **all AlmaLinux images**: almalinux
 
-    - **all Rocky Linux images**: rocky
+      - **all Rocky Linux images**: rocky
 
-    - **all Fedora images**: fedora
+      - **all Fedora images**: fedora
 
-    - **all Debian images**: debian
+      - **all Debian images**: debian
 
-    - **all RHEL images**: cloud-user
+      - **all RHEL images**: cloud-user
 
 **"Password"**: "`<Leave blank as you using SSH key>`"
 
@@ -585,20 +585,20 @@ computer (shared drives, Dropbox, etc.)
 
 !!! info "Default User name based on OS"
 
-    - **all Ubuntu images**: ubuntu
+      - **all Ubuntu images**: ubuntu
 
-    - **all AlmaLinux images**: almalinux
+      - **all AlmaLinux images**: almalinux
 
-    - **all Rocky Linux images**: rocky
+      - **all Rocky Linux images**: rocky
 
-    - **all Fedora images**: fedora
+      - **all Fedora images**: fedora
 
-    - **all Debian images**: debian
+      - **all Debian images**: debian
 
-    - **all RHEL images**: cloud-user
+      - **all RHEL images**: cloud-user
 
-    If you still have VMs running with deleted **CentOS** images, you need to
-    use the following default username for your CentOS images: `centos`.
+      If you still have VMs running with deleted **CentOS** images, you need to
+      use the following default username for your CentOS images: `centos`.
 
 **"Key file"**: "Browse and choose the appropriate SSH Private Key from you
 local machine that has corresponding Public Key attached to your VM"

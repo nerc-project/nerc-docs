@@ -65,8 +65,8 @@ and Scala applications using the IP address of the master VM.
 
     !!! note "Note"
 
-        Installing Scala means installing various command-line tools such as the
-        Scala compiler and build tools.
+                    Installing Scala means installing various command-line tools such as the
+                    Scala compiler and build tools.
 
 - Download and unpack Apache Spark:
 
@@ -81,10 +81,10 @@ and Scala applications using the IP address of the master VM.
 
     !!! warning "Very Important Note"
 
-        Please ensure you are using the latest Spark version by modifying the
-        `SPARK_VERSION` in the above script. Additionally, verify that the version
-        exists on the `APACHE_MIRROR` website. Please note the value of `SPARK_VERSION`
-        as you will need it during [Preparing Jobs for Execution and Examination](#preparing-jobs-for-execution-and-examination).
+                    Please ensure you are using the latest Spark version by modifying the
+                    `SPARK_VERSION` in the above script. Additionally, verify that the version
+                    exists on the `APACHE_MIRROR` website. Please note the value of `SPARK_VERSION`
+                    as you will need it during [Preparing Jobs for Execution and Examination](#preparing-jobs-for-execution-and-examination).
 
 - Create an SSH/RSA Key by running `ssh-keygen -t rsa` without using any passphrase:
 
@@ -145,11 +145,11 @@ and Scala applications using the IP address of the master VM.
 
     !!! note "Naming, Security Group and Flavor for Worker Nodes"
 
-        You can specify the "Instance Name" as "spark-worker", and for each instance,
-        it will automatically append incremental values at the end, such as
-        `spark-worker-1` and `spark-worker-2`. Also, make sure you have attached
-        the [Security Groups](../../openstack/access-and-security/security-groups.md#allowing-ssh)
-        to allow **ssh** using Port 22 access to the worker instances.
+                    You can specify the "Instance Name" as "spark-worker", and for each instance,
+                    it will automatically append incremental values at the end, such as
+                    `spark-worker-1` and `spark-worker-2`. Also, make sure you have attached
+                    the [Security Groups](../../openstack/access-and-security/security-groups.md#allowing-ssh)
+                    to allow **ssh** using Port 22 access to the worker instances.
 
 Additionally, during launch, you will have the option to choose your preferred
 flavor for the worker nodes, which can differ from the master VM based on your
@@ -189,8 +189,8 @@ computational requirements.
 
     !!! danger "Very Important Note"
 
-        Make sure to use `>>` instead of `>` to avoid overwriting the existing content
-        and append the new content at the end of the file.
+                    Make sure to use `>>` instead of `>` to avoid overwriting the existing content
+                    and append the new content at the end of the file.
 
     For example, the end of the `/etc/hosts` file looks like this:
 
@@ -222,13 +222,13 @@ computational requirements.
 
     !!! tip "Environment Variables"
 
-        Executing this command: `readlink -f $(which java)` will display the path
-        to the current Java setup in your VM. For example:
-        `/usr/lib/jvm/java-11-openjdk-amd64/bin/java`, you need to remove the
-        last `bin/java` part, i.e. `/usr/lib/jvm/java-11-openjdk-amd64`, to set
-        it as the `JAVA_HOME` environment variable.
-        Learn more about other Spark settings that can be configured through environment
-        variables [here](https://spark.apache.org/docs/3.4.2/configuration.html#environment-variables).
+                    Executing this command: `readlink -f $(which java)` will display the path
+                    to the current Java setup in your VM. For example:
+                    `/usr/lib/jvm/java-11-openjdk-amd64/bin/java`, you need to remove the
+                    last `bin/java` part, i.e. `/usr/lib/jvm/java-11-openjdk-amd64`, to set
+                    it as the `JAVA_HOME` environment variable.
+                    Learn more about other Spark settings that can be configured through environment
+                    variables [here](https://spark.apache.org/docs/3.4.2/configuration.html#environment-variables).
 
     For example:
 
@@ -269,8 +269,8 @@ computational requirements.
 
     !!! info "How to Stop All Spark Cluster"
 
-        To stop all of the Spark cluster nodes, execute `./sbin/stop-all.sh`
-        command from `/usr/local/spark`.
+                    To stop all of the Spark cluster nodes, execute `./sbin/stop-all.sh`
+                    command from `/usr/local/spark`.
 
 ## Connect to the Spark WebUI
 
@@ -335,9 +335,9 @@ resources for both the Spark cluster and individual applications.
 
     !!! warning "Very Important Note"
 
-        Please ensure you are using the same Spark version that you have
-        [downloaded and installed previously](#setup-a-master-vm) as the value
-        of `SPARK_VERSION` in the above script.
+                    Please ensure you are using the same Spark version that you have
+                    [downloaded and installed previously](#setup-a-master-vm) as the value
+                    of `SPARK_VERSION` in the above script.
 
 - **Single Node Job:**
 

@@ -59,7 +59,7 @@ parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 - Allow Other User option by editing fuse config by editing `/etc/fuse.conf` file
   and uncomment "user_allow_other" option.
 
-                  sudo nano /etc/fuse.conf
+          sudo nano /etc/fuse.conf
 
 The output going to look like this:
 
@@ -977,9 +977,9 @@ Also, check that binding to `localhost` is working fine by running the following
 
 !!! warning "Important Note"
 
-    The `netstat` command may not be available on your system by default. If
-    this is the case, you can install it (along with a number of other handy
-    networking tools) with the following command: `sudo apt install net-tools`.
+      The `netstat` command may not be available on your system by default. If
+      this is the case, you can install it (along with a number of other handy
+      networking tools) with the following command: `sudo apt install net-tools`.
 
 ##### Configuring a Redis Password
 

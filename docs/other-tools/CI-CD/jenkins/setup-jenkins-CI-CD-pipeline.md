@@ -31,11 +31,11 @@ _Figure: CI/CD Pipeline To Deploy To Kubernetes Cluster Using Jenkins on NERC_
 - [Assign a Floating IP](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
   to your new instance so that you will be able to ssh into this machine:
 
-        ssh ubuntu@<Floating-IP> -A -i <Path_To_Your_Private_Key>
+                        ssh ubuntu@<Floating-IP> -A -i <Path_To_Your_Private_Key>
 
     For example:
 
-        ssh ubuntu@199.94.60.4 -A -i cloud.key
+                        ssh ubuntu@199.94.60.4 -A -i cloud.key
 
 Upon successfully SSH accessing the machine, execute the following dependencies:
 
@@ -45,16 +45,16 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
 - Update the repositories and packages:
 
-        sudo apt-get update && sudo apt-get upgrade -y
+                        sudo apt-get update && sudo apt-get upgrade -y
 
 - Turn off `swap`
 
-        swapoff -a
-        sudo sed -i '/ swap / s/^/#/' /etc/fstab
+                        swapoff -a
+                        sudo sed -i '/ swap / s/^/#/' /etc/fstab
 
 - Install `curl` and `apt-transport-https`
 
-        sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+                        sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
 ---
 
@@ -62,12 +62,12 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
 - Download and install Docker CE:
 
-        curl -fsSL https://get.docker.com -o get-docker.sh
-        sudo sh get-docker.sh
+                        curl -fsSL https://get.docker.com -o get-docker.sh
+                        sudo sh get-docker.sh
 
 - Configure the Docker daemon:
 
-        sudo usermod -aG docker $USER && newgrp docker
+                        sudo usermod -aG docker $USER && newgrp docker
 
 ---
 
@@ -77,23 +77,23 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
 - Download the Google Cloud public signing key and add key to verify releases
 
-        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo \
-          apt-key add -
+                        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo \
+                          apt-key add -
 
 - add kubernetes apt repo
 
-        cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-        deb https://apt.kubernetes.io/ kubernetes-xenial main
-        EOF
+                        cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+                        deb https://apt.kubernetes.io/ kubernetes-xenial main
+                        EOF
 
 - Install kubectl
 
-        sudo apt-get update
-        sudo apt-get install -y kubectl
+                        sudo apt-get update
+                        sudo apt-get install -y kubectl
 
 - `apt-mark hold` is used so that these packages will not be updated/removed automatically
 
-        sudo apt-mark hold kubectl
+                        sudo apt-mark hold kubectl
 
 ---
 
@@ -252,79 +252,79 @@ To create a fork of the example `nodeapp` repository:
 
     !!! warning "Very Important Information"
 
-        You need to replace "`<dockerhub_username>`" and "`<github_username>`"
-        with your actual DockerHub and GitHub usernames, respectively. Also,
-        ensure that the global credentials IDs mentioned above match those used
-        during the credential saving steps mentioned earlier. For instance,
-        `dockerhublogin` corresponds to the **DockerHub** ID saved during the
-        credential saving process for your Docker Hub Registry's username and
-        password. Similarly, `kubernetes` corresponds to the **'Kubeconfig'** ID
-        assigned for the Kubeconfig credential file.
+                        You need to replace "`<dockerhub_username>`" and "`<github_username>`"
+                        with your actual DockerHub and GitHub usernames, respectively. Also,
+                        ensure that the global credentials IDs mentioned above match those used
+                        during the credential saving steps mentioned earlier. For instance,
+                        `dockerhublogin` corresponds to the **DockerHub** ID saved during the
+                        credential saving process for your Docker Hub Registry's username and
+                        password. Similarly, `kubernetes` corresponds to the **'Kubeconfig'** ID
+                        assigned for the Kubeconfig credential file.
 
 - Below is an example of a Jenkins declarative Pipeline Script file:
 
     pipeline {
 
-        environment {
-          dockerimagename = "<dockerhub_username>/nodeapp:${env.BUILD_NUMBER}"
-          dockerImage = ""
-        }
+                        environment {
+                          dockerimagename = "<dockerhub_username>/nodeapp:${env.BUILD_NUMBER}"
+                          dockerImage = ""
+                        }
 
-        agent any
+                        agent any
 
-        stages {
+                        stages {
 
-          stage('Checkout Source') {
-            steps {
-              git branch: 'main', url: 'https://github.com/<github_username>/nodeapp.git'
-            }
-          }
+                          stage('Checkout Source') {
+                            steps {
+                              git branch: 'main', url: 'https://github.com/<github_username>/nodeapp.git'
+                            }
+                          }
 
-          stage('Build image') {
-            steps{
-              script {
-                dockerImage = docker.build dockerimagename
-              }
-            }
-          }
+                          stage('Build image') {
+                            steps{
+                              script {
+                                dockerImage = docker.build dockerimagename
+                              }
+                            }
+                          }
 
-          stage('Pushing Image') {
-            environment {
-              registryCredential = 'dockerhublogin'
-            }
-            steps{
-              script {
-                docker.withRegistry('https://registry.hub.docker.com', registryCredential){
-                  dockerImage.push()
-                }
-              }
-            }
-          }
+                          stage('Pushing Image') {
+                            environment {
+                              registryCredential = 'dockerhublogin'
+                            }
+                            steps{
+                              script {
+                                docker.withRegistry('https://registry.hub.docker.com', registryCredential){
+                                  dockerImage.push()
+                                }
+                              }
+                            }
+                          }
 
-          stage('Docker Remove Image') {
-            steps {
-              sh "docker rmi -f ${dockerimagename}"
-              sh "docker rmi -f registry.hub.docker.com/${dockerimagename}"
-            }
-          }
+                          stage('Docker Remove Image') {
+                            steps {
+                              sh "docker rmi -f ${dockerimagename}"
+                              sh "docker rmi -f registry.hub.docker.com/${dockerimagename}"
+                            }
+                          }
 
-          stage('Deploying App to Kubernetes') {
-            steps {
-              sh "sed -i 's/nodeapp:latest/nodeapp:${env.BUILD_NUMBER}/g' deploymentservice.yml"
-              withKubeConfig([credentialsId: 'kubernetes']) {
-                sh 'kubectl apply -f deploymentservice.yml'
-              }
-            }
-          }
-        }
+                          stage('Deploying App to Kubernetes') {
+                            steps {
+                              sh "sed -i 's/nodeapp:latest/nodeapp:${env.BUILD_NUMBER}/g' deploymentservice.yml"
+                              withKubeConfig([credentialsId: 'kubernetes']) {
+                                sh 'kubectl apply -f deploymentservice.yml'
+                              }
+                            }
+                          }
+                        }
 
     }
 
     !!! question "Other way to Generate Pipeline Jenkinsfile"
 
-        You can generate your custom Jenkinsfile by clicking on **"Pipeline Syntax"**
-        link shown when you create a new Pipeline when clicking the "New Item" menu
-        link.
+                        You can generate your custom Jenkinsfile by clicking on **"Pipeline Syntax"**
+                        link shown when you create a new Pipeline when clicking the "New Item" menu
+                        link.
 
 ## Setup a Pipeline
 

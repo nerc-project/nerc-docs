@@ -226,10 +226,10 @@ with your chosen container runtime.
 
     !!! danger "Configuring the kubelet cgroup driver"
 
-        From 1.22 onwards, if you do not set the `cgroupDriver` field under
-        `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
-        not need to do anything here by default but if you want you change it you
-        can refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
+                      From 1.22 onwards, if you do not set the `cgroupDriver` field under
+                      `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+                      not need to do anything here by default but if you want you change it you
+                      can refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
 ---
 
@@ -252,14 +252,14 @@ control plane.
 
     !!! note "Important Note"
 
-        Please make sure you replace the correct IP of the node with
-        `<Master-Internal-IP>` which is the Internal IP of master node.
-        `--pod-network-cidr` value depends upon what CNI plugin you going to use
-        so need to be very careful while setting this CIDR values. In our case,
-        you are going to use **Flannel** CNI network plugin so you will use:
-        `--pod-network-cidr=10.244.0.0/16`. If you are opted to use **Calico** CNI
-        network plugin then you need to use: `--pod-network-cidr=192.168.0.0/16`
-        and if you are opted to use **Weave Net** no need to pass this parameter.
+                      Please make sure you replace the correct IP of the node with
+                      `<Master-Internal-IP>` which is the Internal IP of master node.
+                      `--pod-network-cidr` value depends upon what CNI plugin you going to use
+                      so need to be very careful while setting this CIDR values. In our case,
+                      you are going to use **Flannel** CNI network plugin so you will use:
+                      `--pod-network-cidr=10.244.0.0/16`. If you are opted to use **Calico** CNI
+                      network plugin then you need to use: `--pod-network-cidr=192.168.0.0/16`
+                      and if you are opted to use **Weave Net** no need to pass this parameter.
 
     For example, our `Flannel` CNI network plugin based kubeadm init command with
     _master node_ with internal IP: `192.168.0.167` look like below:
@@ -334,12 +334,12 @@ control plane.
 
     !!! warning "Warning"
 
-        Kubeadm signs the certificate in the admin.conf to have
-        `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
-        break-glass, super user group that bypasses the authorization layer
-        (e.g. RBAC). Do not share the admin.conf file with anyone and instead
-        grant users custom permissions by generating them a kubeconfig file using
-        the `kubeadm kubeconfig user` command.
+                      Kubeadm signs the certificate in the admin.conf to have
+                      `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
+                      break-glass, super user group that bypasses the authorization layer
+                      (e.g. RBAC). Do not share the admin.conf file with anyone and instead
+                      grant users custom permissions by generating them a kubeconfig file using
+                      the `kubeadm kubeconfig user` command.
 
     B. Join worker nodes running following command on individual worker nodes:
 
@@ -350,9 +350,9 @@ control plane.
 
     !!! note "Important Note"
 
-        **Your output will be different than what is provided here. While
-        performing the rest of the demo, ensure that you are executing the
-        command provided by your output and dont copy and paste from here.**
+                      **Your output will be different than what is provided here. While
+                      performing the rest of the demo, ensure that you are executing the
+                      command provided by your output and dont copy and paste from here.**
 
     If you do not have the token, you can get it by running the following command
     on the control-plane node:
@@ -691,15 +691,15 @@ following commands:
 
     !!! info "Information"
 
-        Since 1.22, this type of Secret is no longer used to mount credentials into
-        Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
-        is recommended instead of using service account token Secret objects. Tokens
-        obtained from the _TokenRequest API_ are more secure than ones stored in
-        Secret objects, because they have a bounded lifetime and are not readable
-        by other API clients. You can use the `kubectl create token` command to
-        obtain a token from the TokenRequest API. For example:
-        `kubectl create token skooner-sa`, where `skooner-sa` is service account
-        name.
+                      Since 1.22, this type of Secret is no longer used to mount credentials into
+                      Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+                      is recommended instead of using service account token Secret objects. Tokens
+                      obtained from the _TokenRequest API_ are more secure than ones stored in
+                      Secret objects, because they have a bounded lifetime and are not readable
+                      by other API clients. You can use the `kubectl create token` command to
+                      obtain a token from the TokenRequest API. For example:
+                      `kubectl create token skooner-sa`, where `skooner-sa` is service account
+                      name.
 
 - Find the secret that was created to hold the token for the SA
 

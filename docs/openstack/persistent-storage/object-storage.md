@@ -256,13 +256,13 @@ This is a python client for the Swift API. There's a [Python API](https://github
 - This example uses a `Python3` virtual environment, but you are free to choose
   any other method to create a local virtual environment like `Conda`.
 
-                  python3 -m venv venv
+          python3 -m venv venv
 
 !!! note "Choosing Correct Python Interpreter"
 
-    Make sure you are able to use `python` or `python3` or **`py -3`** (For
-    Windows Only) to create a directory named `venv` (or whatever name you
-    specified) in your current working directory.
+      Make sure you are able to use `python` or `python3` or **`py -3`** (For
+      Windows Only) to create a directory named `venv` (or whatever name you
+      specified) in your current working directory.
 
 - Activate the virtual environment by running:
 
@@ -526,8 +526,8 @@ directory `~/.aws/config` with the ec2 profile and credentials as shown below:
 
 !!! note "Information"
 
-    We need to have a profile that you use must have permissions to allow
-    the AWS operations can be performed.
+      We need to have a profile that you use must have permissions to allow
+      the AWS operations can be performed.
 
 #### Listing buckets using **aws-cli**
 
@@ -1062,9 +1062,9 @@ respectively.
 
 !!! note "Helpful Tips"
 
-    You can save your above configured session with some preferred name by
-    clicking the "Save" button and then giving a proper name to your session.
-    So that next time you don't need to again manually enter all your configuration.
+      You can save your above configured session with some preferred name by
+      clicking the "Save" button and then giving a proper name to your session.
+      So that next time you don't need to again manually enter all your configuration.
 
 #### Using WinSCP
 

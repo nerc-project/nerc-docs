@@ -84,14 +84,14 @@ workflow.
 
         !!! info "Very Important Information"
 
-              Workflow execution on OpenShift pipelines follows these steps:
+            Workflow execution on OpenShift pipelines follows these steps:
 
-              1. Checkout your repository
-              2. Perform a container image build
-              3. Push the built image to the GitHub Container Registry (GHCR) or
-              your preferred Registry
-              4. Log in to your NERC OpenShift cluster's project space
-              5. Create an OpenShift app from the image and expose it to the internet
+            1. Checkout your repository
+            2. Perform a container image build
+            3. Push the built image to the GitHub Container Registry (GHCR) or
+            your preferred Registry
+            4. Log in to your NERC OpenShift cluster's project space
+            5. Create an OpenShift app from the image and expose it to the internet
 
 8.  Edit the top-level 'env' section as marked with '🖊️' if the defaults are not
     suitable for your project.

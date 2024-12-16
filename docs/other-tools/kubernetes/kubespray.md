@@ -230,10 +230,10 @@ control plane.
 
     !!! note "Very Important"
 
-        As **Ubuntu 20 kvm kernel** doesn't have **dummy module** we need to **modify**
-        the following two variables in `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`:
-        `enable_nodelocaldns: false` and `kube_proxy_mode: iptables` which will
-        _Disable nodelocal dns cache_ and _Kube-proxy proxyMode to iptables_ respectively.
+              As **Ubuntu 20 kvm kernel** doesn't have **dummy module** we need to **modify**
+              the following two variables in `inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml`:
+              `enable_nodelocaldns: false` and `kube_proxy_mode: iptables` which will
+              _Disable nodelocal dns cache_ and _Kube-proxy proxyMode to iptables_ respectively.
 
 - Deploy Kubespray with Ansible Playbook - run the playbook as `root` user.
   The option `--become` is required, as for example writing SSL keys in `/etc/`,
@@ -246,8 +246,8 @@ control plane.
 
     !!! note "Note"
 
-        Running ansible playbook takes little time because it depends on the network
-        bandwidth also.
+              Running ansible playbook takes little time because it depends on the network
+              bandwidth also.
 
 ---
 

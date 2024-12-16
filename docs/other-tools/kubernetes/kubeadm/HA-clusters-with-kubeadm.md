@@ -2,13 +2,13 @@
 
 ## Objectives
 
--   Install a multi control-plane(master) Kubernetes cluster
+- Install a multi control-plane(master) Kubernetes cluster
 
--   Install a Pod network on the cluster so that your Pods can talk to each other
+- Install a Pod network on the cluster so that your Pods can talk to each other
 
--   Deploy and test a sample app
+- Deploy and test a sample app
 
--   Deploy K8s Dashboard to view all cluster's components
+- Deploy K8s Dashboard to view all cluster's components
 
 ## Components and architecure
 
@@ -25,21 +25,21 @@ You will need 2 control-plane(master node) and 2 worker nodes to create a
 multi-master kubernetes cluster using `kubeadm`. You are going to use the
 following set up for this purpose:
 
--   2 Linux machines for master, `ubuntu-20.04-x86_64` or your choice of Ubuntu OS
-    image, `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage.
+- 2 Linux machines for master, `ubuntu-20.04-x86_64` or your choice of Ubuntu OS
+  image, `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage.
 
--   2 Linux machines for worker, `ubuntu-20.04-x86_64` or your choice of Ubuntu OS
-    image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage - also
-    [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-    to both of the worker nodes.
+- 2 Linux machines for worker, `ubuntu-20.04-x86_64` or your choice of Ubuntu OS
+  image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage - also
+  [assign Floating IPs](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+  to both of the worker nodes.
 
--   1 Linux machine for loadbalancer, `ubuntu-20.04-x86_64` or your choice of Ubuntu
-    OS image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage.
+- 1 Linux machine for loadbalancer, `ubuntu-20.04-x86_64` or your choice of Ubuntu
+  OS image, `cpu-su.1` flavor with 1vCPU, 4GB RAM, 20GB storage.
 
--   ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
-    on how to setup SSH to your remote VMs.
+- ssh access to all machines: [Read more here](../../../openstack/create-and-connect-to-the-VM/bastion-host-based-ssh/index.md)
+  on how to setup SSH to your remote VMs.
 
--   Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
+- Create 2 security groups with appropriate [ports and protocols](https://kubernetes.io/docs/reference/ports-and-protocols/):
 
 i. To be used by the master nodes:
 
@@ -49,7 +49,7 @@ ii. To be used by the worker nodes:
 
 ![Worker node ports and protocols](../images/worker_nodes_ports_protocols.png)
 
--   setup Unique hostname to each machine using the following command:
+- setup Unique hostname to each machine using the following command:
 
     ```sh
     echo "<node_internal_IP> <host_name>" >> /etc/hosts
@@ -105,23 +105,23 @@ outside of the cluster and interacts with the cluster using ports.
 You have 2 master nodes. Which means the user can connect to either of the 2
 apiservers. The loadbalancer will be used to loadbalance between the 2 apiservers.
 
--   Login to the loadbalancer node
+- Login to the loadbalancer node
 
--   Switch as root - `sudo su`
+- Switch as root - `sudo su`
 
--   Update your repository and your system
+- Update your repository and your system
 
     ```sh
     sudo apt-get update && sudo apt-get upgrade -y
     ```
 
--   Install haproxy
+- Install haproxy
 
     ```sh
     sudo apt-get install haproxy -y
     ```
 
--   Edit haproxy configuration
+- Edit haproxy configuration
 
     ```sh
     vi /etc/haproxy/haproxy.cfg
@@ -159,13 +159,13 @@ apiservers. The loadbalancer will be used to loadbalance between the 2 apiserver
     Here - **master1** and **master2** are the hostnames of the master nodes and
     **10.138.0.15** and **10.138.0.16** are the corresponding internal IP addresses.
 
--   Ensure haproxy config file is correctly formatted:
+- Ensure haproxy config file is correctly formatted:
 
     ```sh
     haproxy -c -q -V -f /etc/haproxy/haproxy.cfg
     ```
 
--   Restart and Verify haproxy
+- Restart and Verify haproxy
 
     ```sh
     systemctl restart haproxy
@@ -203,44 +203,44 @@ does things like starting pods and containers.
 
 In this step, you will install kubelet and kubeadm on the below nodes
 
--   master1
+- master1
 
--   master2
+- master2
 
--   worker1
+- worker1
 
--   worker2
+- worker2
 
 The below steps will be performed on all the above mentioned nodes:
 
--   SSH into all the 4 machines
+- SSH into all the 4 machines
 
--   Update the repositories and packages:
+- Update the repositories and packages:
 
     ```sh
     sudo apt-get update && sudo apt-get upgrade -y
     ```
 
--   Turn off `swap`
+- Turn off `swap`
 
     ```sh
     swapoff -a
     sudo sed -i '/ swap / s/^/#/' /etc/fstab
     ```
 
--   Install `curl` and `apt-transport-https`
+- Install `curl` and `apt-transport-https`
 
     ```sh
     sudo apt-get update && sudo apt-get install -y apt-transport-https curl
     ```
 
--   Download the Google Cloud public signing key and add key to verify releases
+- Download the Google Cloud public signing key and add key to verify releases
 
     ```sh
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     ```
 
--   add kubernetes apt repo
+- add kubernetes apt repo
 
     ```sh
     cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -248,14 +248,14 @@ The below steps will be performed on all the above mentioned nodes:
     EOF
     ```
 
--   Install kubelet and kubeadm
+- Install kubelet and kubeadm
 
     ```sh
     sudo apt-get update
     sudo apt-get install -y kubelet kubeadm
     ```
 
--   `apt-mark hold` is used so that these packages will not be updated/removed automatically
+- `apt-mark hold` is used so that these packages will not be updated/removed automatically
 
     ```sh
     sudo apt-mark hold kubelet kubeadm
@@ -270,7 +270,7 @@ To run containers in Pods, Kubernetes uses a [container runtime](https://kuberne
 By default, Kubernetes uses the **Container Runtime Interface (CRI)** to interface
 with your chosen container runtime.
 
--   Install container runtime - **containerd**
+- Install container runtime - **containerd**
 
     The first thing to do is configure the persistent loading of the necessary
     `containerd` modules. This forwarding IPv4 and letting iptables see bridged
@@ -286,7 +286,7 @@ with your chosen container runtime.
     sudo modprobe br_netfilter
     ```
 
--   Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
+- Ensure `net.bridge.bridge-nf-call-iptables` is set to `1` in your sysctl config:
 
     ```sh
     # sysctl params required by setup, params persist across reboots
@@ -297,20 +297,20 @@ with your chosen container runtime.
     EOF
     ```
 
--   Apply sysctl params without reboot:
+- Apply sysctl params without reboot:
 
     ```sh
     sudo sysctl --system
     ```
 
--   Install the necessary dependencies with:
+- Install the necessary dependencies with:
 
     ```sh
     sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
     ```
 
--   The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
-    Add the required GPG key with:
+- The `containerd.io` packages in DEB and RPM formats are distributed by Docker.
+  Add the required GPG key with:
 
     ```sh
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -346,9 +346,9 @@ You will start off by initializing only one master node. For this purpose, you
 choose `master1` to initialize our first control plane but you can also do the
 same in `master2`.
 
--   SSH into **master1** machine
+- SSH into **master1** machine
 
--   Switch to root user: `sudo su`
+- Switch to root user: `sudo su`
 
     !!! danger "Configuring the kubelet cgroup driver"
 
@@ -357,7 +357,7 @@ same in `master2`.
         not need to do anything here by default but if you want you change it you can
         refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
--   Execute the below command to initialize the cluster:
+- Execute the below command to initialize the cluster:
 
     ```sh
     kubeadm config images pull
@@ -532,11 +532,11 @@ same in `master2`.
 
 ---
 
--   SSH into `master2`
+- SSH into `master2`
 
--   Switch to root user:`sudo su`
+- Switch to root user:`sudo su`
 
--   Check the command provided by the output of `master1`:
+- Check the command provided by the output of `master1`:
 
     You can now use the below command to add another control-plane node(master) to
     the control plane:
@@ -549,7 +549,7 @@ same in `master2`.
 
     ```
 
--   Execute the kubeadm join command for control plane on `master2`
+- Execute the kubeadm join command for control plane on `master2`
 
     Your output should look like:
 
@@ -567,20 +567,20 @@ same in `master2`.
 Now that you have initialized both the masters - you can now work on
 bootstrapping the worker nodes.
 
--   SSH into **worker1** and **worker2**
+- SSH into **worker1** and **worker2**
 
--   Switch to root user on both the machines: `sudo su`
+- Switch to root user on both the machines: `sudo su`
 
--   Check the output given by the init command on **master1** to join worker node:
+- Check the output given by the init command on **master1** to join worker node:
 
     ```sh
     kubeadm join 192.168.0.167:6443 --token cnslau.kd5fjt96jeuzymzb \
         --discovery-token-ca-cert-hash sha256:871ab3f050bc9790c977daee9e44cf52e15ee37ab9834567333b939458a5bfb5
     ```
 
--   Execute the above command on both the nodes:
+- Execute the above command on both the nodes:
 
--   Your output should look like:
+- Your output should look like:
 
     ```sh
     This node has joined the cluster:
@@ -600,17 +600,17 @@ also be setup externally on a separate machine which has access to loadbalancer
 node. For the purpose of this demo you will use loadbalancer node to host
 kubeconfig and `kubectl`.
 
--   SSH into `loadbalancer` node
+- SSH into `loadbalancer` node
 
--   Switch to root user: `sudo su`
+- Switch to root user: `sudo su`
 
--   Create a directory: .kube at $HOME of root user
+- Create a directory: .kube at $HOME of root user
 
     ```sh
     mkdir -p $HOME/.kube
     ```
 
--   SCP configuration file from any one **master** node to **loadbalancer** node
+- SCP configuration file from any one **master** node to **loadbalancer** node
 
     ```sh
     scp master1:/etc/kubernetes/admin.conf $HOME/.kube/config
@@ -624,7 +624,7 @@ kubeconfig and `kubectl`.
         loadbalancer node. Ensure that the kubeconfig file path is
         **`$HOME/.kube/config`** on the loadbalancer node.
 
--   Provide appropriate ownership to the copied file
+- Provide appropriate ownership to the copied file
 
     ```sh
     chown $(id -u):$(id -g) $HOME/.kube/config
@@ -634,7 +634,7 @@ kubeconfig and `kubectl`.
 
 ## Install **kubectl**
 
--   Install kubectl binary
+- Install kubectl binary
 
     **kubectl**: the command line util to talk to your cluster.
 
@@ -644,7 +644,7 @@ kubeconfig and `kubectl`.
 
         kubectl 1.26.1 from Canonical✓ installed
 
--   Verify the cluster
+- Verify the cluster
 
         kubectl get nodes
 
@@ -816,11 +816,11 @@ For your example,
 You will going to setup [K8dash/Skooner](https://github.com/skooner-k8s/skooner)
 to view a dashboard that shows all your K8s cluster components.
 
--   SSH into `loadbalancer` node
+- SSH into `loadbalancer` node
 
--   Switch to root user: `sudo su`
+- Switch to root user: `sudo su`
 
--   Apply available deployment by running the following command:
+- Apply available deployment by running the following command:
 
     ```sh
     kubectl apply -f https://raw.githubusercontent.com/skooner-k8s/skooner/master/kubernetes-skooner-nodeport.yaml
@@ -872,19 +872,19 @@ Setup the **Service Account Token** to access the Skooner Dashboard:
 The first (and easiest) option is to create a dedicated service account. Run the
 following commands:
 
--   Create the service account in the current namespace (we assume default)
+- Create the service account in the current namespace (we assume default)
 
     ```sh
     kubectl create serviceaccount skooner-sa
     ```
 
--   Give that service account root on the cluster
+- Give that service account root on the cluster
 
     ```sh
     kubectl create clusterrolebinding skooner-sa --clusterrole=cluster-admin --serviceaccount=default:skooner-sa
     ```
 
--   Create a secret that was created to hold the token for the SA:
+- Create a secret that was created to hold the token for the SA:
 
     ```sh
     kubectl apply -f - <<EOF
@@ -909,13 +909,13 @@ following commands:
         the TokenRequest API. For example: `kubectl create token skooner-sa`, where
         `skooner-sa` is service account name.
 
--   Find the secret that was created to hold the token for the SA
+- Find the secret that was created to hold the token for the SA
 
     ```sh
     kubectl get secrets
     ```
 
--   Show the contents of the secret to extract the token
+- Show the contents of the secret to extract the token
 
     ```sh
     kubectl describe secret skooner-sa-token
@@ -969,13 +969,13 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 ## Clean Up
 
--   To view the Cluster info:
+- To view the Cluster info:
 
     ```sh
     kubectl cluster-info
     ```
 
--   To delete your local references to the cluster:
+- To delete your local references to the cluster:
 
     ```sh
     kubectl config delete-cluster
@@ -989,7 +989,7 @@ Talking to the control-plane node with the appropriate credentials, run:
 kubectl drain <node name> --delete-emptydir-data --force --ignore-daemonsets
 ```
 
--   Before removing the node, reset the state installed by kubeadm:
+- Before removing the node, reset the state installed by kubeadm:
 
     ```sh
     kubeadm reset
@@ -1008,7 +1008,7 @@ kubectl drain <node name> --delete-emptydir-data --force --ignore-daemonsets
     ipvsadm -C
     ```
 
--   Now remove the node:
+- Now remove the node:
 
     ```sh
     kubectl delete node <node name>

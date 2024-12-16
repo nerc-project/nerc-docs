@@ -5,11 +5,11 @@
 We will need 1 VM to create a single node kubernetes cluster using `microk8s`.
 We are using following setting for this purpose:
 
--   1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
-    `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-    to this VM.
+- 1 Linux machine, `ubuntu-22.04-x86_64` or your choice of Ubuntu OS image,
+  `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+  to this VM.
 
--   setup Unique hostname to the machine using the following command:
+- setup Unique hostname to the machine using the following command:
 
     ```sh
     echo "<node_internal_IP> <host_name>" >> /etc/hosts
@@ -27,29 +27,29 @@ We are using following setting for this purpose:
 
 Run the below command on the Ubuntu VM:
 
--   SSH into **microk8s** machine
+- SSH into **microk8s** machine
 
--   Switch to root user: `sudo su`
+- Switch to root user: `sudo su`
 
--   Update the repositories and packages:
+- Update the repositories and packages:
 
     ```sh
     apt-get update && apt-get upgrade -y
     ```
 
--   Install MicroK8s:
+- Install MicroK8s:
 
     ```sh
     sudo snap install microk8s --classic
     ```
 
--   Check the status while Kubernetes starts
+- Check the status while Kubernetes starts
 
     ```sh
     microk8s status --wait-ready
     ```
 
--   Turn on the services you want:
+- Turn on the services you want:
 
     ```sh
     microk8s enable dns dashboard
@@ -59,7 +59,7 @@ Run the below command on the Ubuntu VM:
     `microk8s disable <name>` turns off a service. For example other useful services
     are: `microk8s enable registry istio storage`
 
--   Start using Kubernetes
+- Start using Kubernetes
 
     ```sh
     microk8s kubectl get all --all-namespaces
@@ -70,8 +70,8 @@ Run the below command on the Ubuntu VM:
     upstream kubectl, you can also drive other Kubernetes clusters with it by
     pointing to the respective kubeconfig file via the `--kubeconfig` argument.
 
--   Access the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
-    UI:
+- Access the [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+  UI:
 
     ![Microk8s Dashboard Ports](images/microk8s_dashboard_ports.png)
 
@@ -82,15 +82,15 @@ Run the below command on the Ubuntu VM:
 
     !!! note "Note"
 
-        Another way to access the default token to be used for the dashboard access
-        can be retrieved with:
+            Another way to access the default token to be used for the dashboard access
+            can be retrieved with:
 
-        ```sh
-        token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d "" -f1)
-        microk8s kubectl -n kube-system describe secret $token
-        ```
+            ```sh
+            token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d "" -f1)
+            microk8s kubectl -n kube-system describe secret $token
+            ```
 
--   Keep running the kubernetes-dashboad on Proxy to access it via web browser:
+- Keep running the kubernetes-dashboad on Proxy to access it via web browser:
 
     ```sh
     microk8s dashboard-proxy
@@ -103,11 +103,11 @@ Run the below command on the Ubuntu VM:
 
     !!! note "Important"
 
-        This tells us the IP address of the Dashboard and the port. The values assigned
-        to your Dashboard will differ. Please note the displayed **PORT** and
-        the **TOKEN** that are required to access the kubernetes-dashboard. Make
-        sure, the exposed **PORT** is opened in Security Groups for the instance
-        following [this guide](../../openstack/access-and-security/security-groups.md).
+            This tells us the IP address of the Dashboard and the port. The values assigned
+            to your Dashboard will differ. Please note the displayed **PORT** and
+            the **TOKEN** that are required to access the kubernetes-dashboard. Make
+            sure, the exposed **PORT** is opened in Security Groups for the instance
+            following [this guide](../../openstack/access-and-security/security-groups.md).
 
     This will show the token to login to the Dashbord shown on the url with NodePort.
 
@@ -162,19 +162,19 @@ i.e. <http://128.31.26.4:30012/> to check the nginx default page.
 
 ## Deploy A Sample Nginx Application
 
--   Create an alias:
+- Create an alias:
 
     ```sh
     alias mkctl="microk8s kubectl"
     ```
 
--   Create a deployment, in this case **Nginx**:
+- Create a deployment, in this case **Nginx**:
 
     ```sh
     mkctl create deployment --image nginx my-nginx
     ```
 
--   To access the deployment we will need to expose it:
+- To access the deployment we will need to expose it:
 
     ```sh
     mkctl expose deployment my-nginx --port=80 --type=NodePort

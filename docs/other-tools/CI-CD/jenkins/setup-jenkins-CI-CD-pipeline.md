@@ -16,20 +16,20 @@ _Figure: CI/CD Pipeline To Deploy To Kubernetes Cluster Using Jenkins on NERC_
 
 ## Setup a Jenkins Server VM
 
--   Launch 1 Linux machine based on `ubuntu-20.04-x86_64` and `cpu-su.2` flavor with
-    2vCPU, 8GB RAM, and 20GB storage.
+- Launch 1 Linux machine based on `ubuntu-20.04-x86_64` and `cpu-su.2` flavor with
+  2vCPU, 8GB RAM, and 20GB storage.
 
--   Make sure you have added rules in the
-    [Security Groups](../../../openstack/access-and-security/security-groups.md#allowing-ssh)
-    to allow **ssh** using Port 22 access to the instance.
+- Make sure you have added rules in the
+  [Security Groups](../../../openstack/access-and-security/security-groups.md#allowing-ssh)
+  to allow **ssh** using Port 22 access to the instance.
 
--   Setup a new Security Group with the following rules exposing **port 8080** and
-    attach it to your new instance.
+- Setup a new Security Group with the following rules exposing **port 8080** and
+  attach it to your new instance.
 
     ![Jenkins Server Security Group](images/security_groups_jenkins.png)
 
--   [Assign a Floating IP](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-    to your new instance so that you will be able to ssh into this machine:
+- [Assign a Floating IP](../../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+  to your new instance so that you will be able to ssh into this machine:
 
         ssh ubuntu@<Floating-IP> -A -i <Path_To_Your_Private_Key>
 
@@ -43,16 +43,16 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
     Run the following steps as non-root user i.e. **ubuntu**.
 
--   Update the repositories and packages:
+- Update the repositories and packages:
 
         sudo apt-get update && sudo apt-get upgrade -y
 
--   Turn off `swap`
+- Turn off `swap`
 
         swapoff -a
         sudo sed -i '/ swap / s/^/#/' /etc/fstab
 
--   Install `curl` and `apt-transport-https`
+- Install `curl` and `apt-transport-https`
 
         sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
@@ -60,12 +60,12 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
 ## Download and install the latest version of **Docker CE**
 
--   Download and install Docker CE:
+- Download and install Docker CE:
 
         curl -fsSL https://get.docker.com -o get-docker.sh
         sudo sh get-docker.sh
 
--   Configure the Docker daemon:
+- Configure the Docker daemon:
 
         sudo usermod -aG docker $USER && newgrp docker
 
@@ -75,23 +75,23 @@ Upon successfully SSH accessing the machine, execute the following dependencies:
 
 **kubectl**: the command line util to talk to your cluster.
 
--   Download the Google Cloud public signing key and add key to verify releases
+- Download the Google Cloud public signing key and add key to verify releases
 
         curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo \
           apt-key add -
 
--   add kubernetes apt repo
+- add kubernetes apt repo
 
         cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
         deb https://apt.kubernetes.io/ kubernetes-xenial main
         EOF
 
--   Install kubectl
+- Install kubectl
 
         sudo apt-get update
         sudo apt-get install -y kubectl
 
--   `apt-mark hold` is used so that these packages will not be updated/removed automatically
+- `apt-mark hold` is used so that these packages will not be updated/removed automatically
 
         sudo apt-mark hold kubectl
 
@@ -136,8 +136,8 @@ copy and paste on the web GUI on the browser.
     as shown below:
     ![Initial Admin Password](images/jenkins_admin_password.png)
 
--   Once you login to the Jenkins Web UI by entering the admin password shown on
-    CLI terminal, click on the "Install suggested plugins" button as shown below:
+- Once you login to the Jenkins Web UI by entering the admin password shown on
+  CLI terminal, click on the "Install suggested plugins" button as shown below:
 
     ![Install Customize Jenkins Plugins](images/customize-jenkins-installing-plugins.png)
 
@@ -154,8 +154,8 @@ copy and paste on the web GUI on the browser.
 
 ## Install the required Plugins
 
--   Jenkins has a wide range of plugin options. From your Jenkins dashboard navigate
-    to "Manage Jenkins > Manage Plugins" as shown below:
+- Jenkins has a wide range of plugin options. From your Jenkins dashboard navigate
+  to "Manage Jenkins > Manage Plugins" as shown below:
 
     ![Jenkins Plugin Installation](images/plugins-installation.png)
 
@@ -171,8 +171,8 @@ copy and paste on the web GUI on the browser.
 
 ## Create the required Credentials
 
--   Create a global credential for your Docker Hub Registry by providing the username
-    and password that will be used by the Jenkins pipelines:
+- Create a global credential for your Docker Hub Registry by providing the username
+  and password that will be used by the Jenkins pipelines:
 
     1. Click on the "Manage Jenkins" menu and then click on the "Manage Credentials"
        link as shown below:
@@ -188,8 +188,8 @@ copy and paste on the web GUI on the browser.
 
         ![Adding Credentials](images/add-credentials.png)
 
--   First, add the **'DockerHub'** credentials as 'Username with password' with the
-    ID `dockerhublogin`.
+- First, add the **'DockerHub'** credentials as 'Username with password' with the
+  ID `dockerhublogin`.
 
     a. Select the Kind "Username with password" from the dropdown options.
 
@@ -200,9 +200,9 @@ copy and paste on the web GUI on the browser.
 
     ![Docker Hub Credentials](images/docker-hub-credentials.png)
 
--   Config the **'Kubeconfig'** credentials as 'Secret file' that holds Kubeconfig
-    file from K8s master i.e. located at `/etc/kubernetes/admin.conf` with the ID
-    'kubernetes'
+- Config the **'Kubeconfig'** credentials as 'Secret file' that holds Kubeconfig
+  file from K8s master i.e. located at `/etc/kubernetes/admin.conf` with the ID
+  'kubernetes'
 
     a. Click on the "Add Credentials" button in the left pane.
 
@@ -247,8 +247,8 @@ To create a fork of the example `nodeapp` repository:
 
 ## Modify the Jenkins Declarative Pipeline Script file
 
--   Modify the provided ‘**Jenkinsfile**’ to specify your own Docker Hub account
-    and github repository as specified in "`<dockerhub_username>`" and "`<github_username>`".
+- Modify the provided ‘**Jenkinsfile**’ to specify your own Docker Hub account
+  and github repository as specified in "`<dockerhub_username>`" and "`<github_username>`".
 
     !!! warning "Very Important Information"
 
@@ -261,7 +261,7 @@ To create a fork of the example `nodeapp` repository:
         password. Similarly, `kubernetes` corresponds to the **'Kubeconfig'** ID
         assigned for the Kubeconfig credential file.
 
--   Below is an example of a Jenkins declarative Pipeline Script file:
+- Below is an example of a Jenkins declarative Pipeline Script file:
 
     pipeline {
 
@@ -328,8 +328,8 @@ To create a fork of the example `nodeapp` repository:
 
 ## Setup a Pipeline
 
--   Once you review the provided **Jenkinsfile** and understand the stages,
-    you can now create a pipeline to trigger it on your newly setup Jenkins server:
+- Once you review the provided **Jenkinsfile** and understand the stages,
+  you can now create a pipeline to trigger it on your newly setup Jenkins server:
 
     a. Click on the "New Item" link.
 
@@ -360,10 +360,10 @@ To create a fork of the example `nodeapp` repository:
 
 ## How to manually Trigger the Pipeline
 
--   Finally, click on the **"Build Now"** menu link on right side navigation that
-    will triggers the Pipeline process i.e. Build docker image, Push Image to your
-    Docker Hub Registry and Pull the image from Docker Registry, Remove local Docker
-    images and then Deploy to K8s Cluster as shown below:
+- Finally, click on the **"Build Now"** menu link on right side navigation that
+  will triggers the Pipeline process i.e. Build docker image, Push Image to your
+  Docker Hub Registry and Pull the image from Docker Registry, Remove local Docker
+  images and then Deploy to K8s Cluster as shown below:
 
     ![Jenkins Pipeline Build Now](images/jenkins-pipeline-build.png)
 

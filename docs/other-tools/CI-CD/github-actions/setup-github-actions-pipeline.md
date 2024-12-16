@@ -23,7 +23,7 @@ workflow.
 
 ## Deploy an Application to your NERC OpenShift Project
 
--   **Prerequisites**
+- **Prerequisites**
 
     You must have at least one active **NERC-OCP (OpenShift)** type resource allocation.
     You can refer to [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
@@ -77,21 +77,21 @@ workflow.
 
 7.  Enable and Update GitHub Actions Pipeline on your own forked repo:
 
-    -   Enable the OpenShift Workflow in the Actions tab of in your GitHub repository.
+    - Enable the OpenShift Workflow in the Actions tab of in your GitHub repository.
 
-    -   Update the provided sample OpenShift workflow YAML file i.e. `openshift.yml`,
-        which is located at "`https://github.com/<github_username>/simple-node-app/actions/workflows/openshift.yml`".
+    - Update the provided sample OpenShift workflow YAML file i.e. `openshift.yml`,
+      which is located at "`https://github.com/<github_username>/simple-node-app/actions/workflows/openshift.yml`".
 
         !!! info "Very Important Information"
 
-            Workflow execution on OpenShift pipelines follows these steps:
+              Workflow execution on OpenShift pipelines follows these steps:
 
-            1. Checkout your repository
-            2. Perform a container image build
-            3. Push the built image to the GitHub Container Registry (GHCR) or
-            your preferred Registry
-            4. Log in to your NERC OpenShift cluster's project space
-            5. Create an OpenShift app from the image and expose it to the internet
+              1. Checkout your repository
+              2. Perform a container image build
+              3. Push the built image to the GitHub Container Registry (GHCR) or
+              your preferred Registry
+              4. Log in to your NERC OpenShift cluster's project space
+              5. Create an OpenShift app from the image and expose it to the internet
 
 8.  Edit the top-level 'env' section as marked with '🖊️' if the defaults are not
     suitable for your project.

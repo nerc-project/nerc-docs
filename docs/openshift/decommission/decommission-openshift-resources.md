@@ -5,16 +5,16 @@ below.
 
 ## Prerequisite
 
--   **Backup**: Back up any critical data or configurations stored on the resources
-    that going to be decommissioned. This ensures that important information is not
-    lost during the process.
+- **Backup**: Back up any critical data or configurations stored on the resources
+  that going to be decommissioned. This ensures that important information is not
+  lost during the process.
 
--   **Kubernetes Objects (Resources)**: Please review all OpenShift Kubernetes Objects
-    (Resources) to ensure they are not actively used and ready to be decommissioned.
+- **Kubernetes Objects (Resources)**: Please review all OpenShift Kubernetes Objects
+  (Resources) to ensure they are not actively used and ready to be decommissioned.
 
--   Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
-    OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
-    for more information.
+- Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
+  OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
+  for more information.
 
 ## Delete all Data Science Project resources from the NERC's Red Hat OpenShift AI
 

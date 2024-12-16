@@ -102,11 +102,11 @@ file and share it to the new client.
 It would be kind of pointless to have our VPN server allow anyone to connect.
 This is where our public &amp; private keys come into play.
 
--   Each **client's \*\*public\*\* key** needs to be added to the
-    **SERVER'S** configuration file
+- Each **client's \*\*public\*\* key** needs to be added to the
+  **SERVER'S** configuration file
 
--   The **server's \*\*public\*\* key** added to the **CLIENT'S**
-    configuration file
+- The **server's \*\*public\*\* key** added to the **CLIENT'S**
+  configuration file
 
 ### Useful commands
 
@@ -126,10 +126,10 @@ To deactivate config: `wg-quick down /path/to/file_name.config`
 
 !!! note "Important Note"
 
-      You need to contact your project administrator to get your own WireGUard
-      configuration file (file with .conf extension). Download it and Keep it in
-      your local machine so in next steps we can use this configuration client
-      profile file.
+    You need to contact your project administrator to get your own WireGUard
+    configuration file (file with .conf extension). Download it and Keep it in
+    your local machine so in next steps we can use this configuration client
+    profile file.
 
 A WireGuard client or compatible software is needed to connect to the WireGuard
 VPN server. Please install[one of these clients](https://www.wireguard.com/install/)

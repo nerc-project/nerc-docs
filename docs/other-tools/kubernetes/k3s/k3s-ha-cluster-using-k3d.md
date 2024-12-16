@@ -21,7 +21,7 @@ Here, `--server 3`: specifies requests three nodes to be created with the role s
 and `--image rancher/k3s:latest`: specifies the K3s image to be used here we are
 using `latest`
 
--   Switch context to the new cluster:
+- Switch context to the new cluster:
 
     ```sh
     kubectl config use-context k3d-k3s-default

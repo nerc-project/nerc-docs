@@ -43,8 +43,8 @@ A set of volume_image meta data is also copied from the image service.
 
 To run the OpenStack CLI commands, you need to have:
 
--   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-    for more information.
+- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+  for more information.
 
 To create a volume using the CLI, do this:
 

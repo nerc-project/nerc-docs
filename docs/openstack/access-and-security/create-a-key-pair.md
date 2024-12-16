@@ -96,9 +96,9 @@ You can now skip ahead to [Adding the key to an ssh-agent](#adding-your-ssh-key-
 
 To run the OpenStack CLI commands, you need to have:
 
--   OpenStack CLI setup, see
-    [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-    for more information.
+- OpenStack CLI setup, see
+  [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+  for more information.
 
 To create OpenStack keypair using the CLI, do this:
 

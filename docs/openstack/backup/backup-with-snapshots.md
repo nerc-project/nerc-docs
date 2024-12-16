@@ -3,13 +3,13 @@
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
 
--   boot from image
+- boot from image
 
--   boot from instance snapshot
+- boot from instance snapshot
 
--   boot from volume
+- boot from volume
 
--   boot from volume snapshot
+- boot from volume snapshot
 
 In its default configuration, when the instance is launched from an **Image** or
 an **Instance Snapshot**, the choice for utilizing persistent storage is configured
@@ -34,12 +34,12 @@ data.
 
 This mainly serves two purposes:
 
--   _As a backup mechanism:_ save the main disk of your instance to an image in
-    Horizon dashboard under _Project -> Compute -> Images_ and later boot a new instance
-    from this image with the saved data.
+- _As a backup mechanism:_ save the main disk of your instance to an image in
+  Horizon dashboard under _Project -> Compute -> Images_ and later boot a new instance
+  from this image with the saved data.
 
--   _As a templating mechanism:_ customise and upgrade a base image and save it to
-    use as a template for new instances.
+- _As a templating mechanism:_ customise and upgrade a base image and save it to
+  use as a template for new instances.
 
 !!! info "Considerations: using Instance snapshots"
 
@@ -57,8 +57,8 @@ This mainly serves two purposes:
 
 To run the OpenStack CLI commands, you need to have:
 
--   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-    for more information.
+- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+  for more information.
 
 To snapshot an instance to an image using the CLI, do this:
 
@@ -164,8 +164,8 @@ Also, it consumes **less storage space** compared to instance snapshots.
 
 To run the OpenStack CLI commands, you need to have:
 
--   OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
-    for more information.
+- OpenStack CLI setup, see [OpenStack Command Line setup](../openstack-cli/openstack-CLI.md#command-line-setup)
+  for more information.
 
 To snapshot an instance to an image using the CLI, do this:
 

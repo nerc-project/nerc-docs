@@ -16,14 +16,14 @@ Availability clusters just with few commands.
 
 ## Install **Docker**
 
--   Install container runtime - **docker**
+- Install container runtime - **docker**
 
     ```sh
     apt-get install docker.io -y
     ```
 
--   Configure the Docker daemon, in particular to use systemd for the management
-    of the container’s cgroups
+- Configure the Docker daemon, in particular to use systemd for the management
+  of the container’s cgroups
 
     ```sh
     cat <<EOF | sudo tee /etc/docker/daemon.json
@@ -42,7 +42,7 @@ Availability clusters just with few commands.
 
 ## Install **kubectl**
 
--   Install kubectl binary
+- Install kubectl binary
 
     **kubectl**: the command line util to talk to your cluster.
 
@@ -52,7 +52,7 @@ Availability clusters just with few commands.
 
         kubectl 1.26.1 from Canonical✓ installed
 
--   Now verify the kubectl version:
+- Now verify the kubectl version:
 
         kubectl version -o yaml
 
@@ -108,11 +108,11 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
 
     Here, the above single command spawns a K3s cluster with six containers:
 
-    -   load balancer
+    - load balancer
 
-    -   3 servers (control-plane nodes)
+    - 3 servers (control-plane nodes)
 
-    -   2 agents (formerly worker nodes)
+    - 2 agents (formerly worker nodes)
 
     With the `--api-port 127.0.0.1:6445`, you tell k3d to map the Kubernetes
     API Port (6443 internally) to `127.0.0.1/localhost`’s port **6445**. That

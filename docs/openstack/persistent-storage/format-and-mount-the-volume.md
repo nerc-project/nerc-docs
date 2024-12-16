@@ -127,22 +127,22 @@ partition style (GPT or MBR), see [Compare partition styles - GPT and MBR](https
 
 Format the New Volume:
 
--   Select and hold (or right-click) the unallocated space of the new disk.
+- Select and hold (or right-click) the unallocated space of the new disk.
 
--   Select "New Simple Volume" and follow the wizard to create a new partition.
+- Select "New Simple Volume" and follow the wizard to create a new partition.
 
 ![Windows Simple Volume Wizard Start](images/win_disk_simple_volume.png)
 
--   Choose the file system (usually NTFS for Windows).
+- Choose the file system (usually NTFS for Windows).
 
--   Assign a drive letter or mount point.
+- Assign a drive letter or mount point.
 
 Complete Formatting:
 
--   Complete the wizard to format the new volume.
+- Complete the wizard to format the new volume.
 
--   Once formatting is complete, the new volume should be visible in File Explorer
-    as shown below:
+- Once formatting is complete, the new volume should be visible in File Explorer
+  as shown below:
 
 ![Windows Simple Volume Wizard Start](images/win_new_drive.png)
 

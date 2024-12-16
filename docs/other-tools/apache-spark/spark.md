@@ -27,16 +27,16 @@ and Scala applications using the IP address of the master VM.
 
 ### Setup a Master VM
 
--   To create a master VM for the first time, ensure that the "Image" dropdown option
-    is selected. In this example, we selected **ubuntu-22.04-x86_64** and the `cpu-su.2`
-    flavor is being used.
+- To create a master VM for the first time, ensure that the "Image" dropdown option
+  is selected. In this example, we selected **ubuntu-22.04-x86_64** and the `cpu-su.2`
+  flavor is being used.
 
--   Make sure you have added rules in the
-    [Security Groups](../../openstack/access-and-security/security-groups.md#allowing-ssh)
-    to allow **ssh** using Port 22 access to the instance.
+- Make sure you have added rules in the
+  [Security Groups](../../openstack/access-and-security/security-groups.md#allowing-ssh)
+  to allow **ssh** using Port 22 access to the instance.
 
--   [Assign a Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
-    to your new instance so that you will be able to ssh into this machine:
+- [Assign a Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
+  to your new instance so that you will be able to ssh into this machine:
 
     ```sh
     ssh ubuntu@<Floating-IP> -A -i <Path_To_Your_Private_Key>
@@ -48,14 +48,14 @@ and Scala applications using the IP address of the master VM.
     ssh ubuntu@199.94.61.4 -A -i cloud.key
     ```
 
--   Upon successfully accessing the machine, execute the following dependencies:
+- Upon successfully accessing the machine, execute the following dependencies:
 
     ```sh
     sudo apt-get -y update
     sudo apt install default-jre -y
     ```
 
--   Download and install Scala:
+- Download and install Scala:
 
     ```sh
     wget https://downloads.lightbend.com/scala/2.13.10/scala-2.13.10.deb
@@ -68,7 +68,7 @@ and Scala applications using the IP address of the master VM.
         Installing Scala means installing various command-line tools such as the
         Scala compiler and build tools.
 
--   Download and unpack Apache Spark:
+- Download and unpack Apache Spark:
 
     ```sh
     SPARK_VERSION="3.4.2"
@@ -86,7 +86,7 @@ and Scala applications using the IP address of the master VM.
         exists on the `APACHE_MIRROR` website. Please note the value of `SPARK_VERSION`
         as you will need it during [Preparing Jobs for Execution and Examination](#preparing-jobs-for-execution-and-examination).
 
--   Create an SSH/RSA Key by running `ssh-keygen -t rsa` without using any passphrase:
+- Create an SSH/RSA Key by running `ssh-keygen -t rsa` without using any passphrase:
 
     ```sh
     ssh-keygen -t rsa
@@ -113,30 +113,30 @@ and Scala applications using the IP address of the master VM.
     +----[SHA256]-----+
     ```
 
--   Copy and append the contents of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
-    the `~/.ssh/authorized_keys` file.
+- Copy and append the contents of **SSH public key** i.e. `~/.ssh/id_rsa.pub` to
+  the `~/.ssh/authorized_keys` file.
 
 ### Create a Volume Snapshot of the master VM
 
--   Once you're logged in to NERC's Horizon dashboard. You need to **Shut Off** the
-    master vm before creating a volume snapshot.
+- Once you're logged in to NERC's Horizon dashboard. You need to **Shut Off** the
+  master vm before creating a volume snapshot.
 
     Click _Action -> Shut Off Instance_.
 
     Status will change to `Shutoff`.
 
--   Then, create a snapshot of its attached volume by clicking on the "Create snapshot"
-    from the _Project -> Volumes -> Volumes_ as [described here](../../openstack/backup/backup-with-snapshots.md#volume-snapshots).
+- Then, create a snapshot of its attached volume by clicking on the "Create snapshot"
+  from the _Project -> Volumes -> Volumes_ as [described here](../../openstack/backup/backup-with-snapshots.md#volume-snapshots).
 
 ### Create Two Worker Instances from the Volume Snapshot
 
--   Once a snapshot is created and is in "Available" status, you can view and manage
-    it under the Volumes menu in the Horizon dashboard under Volume Snapshots.
+- Once a snapshot is created and is in "Available" status, you can view and manage
+  it under the Volumes menu in the Horizon dashboard under Volume Snapshots.
 
     Navigate to _Project -> Volumes -> Snapshots_.
 
--   You have the option to directly launch this volume as an instance by clicking
-    on the arrow next to "Create Volume" and selecting "Launch as Instance".
+- You have the option to directly launch this volume as an instance by clicking
+  on the arrow next to "Create Volume" and selecting "Launch as Instance".
 
     **NOTE:** Specify **Count: 2** to launch 2 instances using the volume snapshot
     as shown below:
@@ -155,21 +155,21 @@ Additionally, during launch, you will have the option to choose your preferred
 flavor for the worker nodes, which can differ from the master VM based on your
 computational requirements.
 
--   Navigate to _Project -> Compute -> Instances_.
+- Navigate to _Project -> Compute -> Instances_.
 
--   Restart the shutdown master VM, click _Action -> Start Instance_.
+- Restart the shutdown master VM, click _Action -> Start Instance_.
 
--   The final set up for our Spark cluster looks like this, with 1 master node and
-    2 worker nodes:
+- The final set up for our Spark cluster looks like this, with 1 master node and
+  2 worker nodes:
 
     ![Spark Cluster VMs](images/spark-nodes.png)
 
 ### Configure Spark on the Master VM
 
--   SSH login into the master VM again.
+- SSH login into the master VM again.
 
--   Update the `/etc/hosts` file to specify all three hostnames with their corresponding
-    internal IP addresses.
+- Update the `/etc/hosts` file to specify all three hostnames with their corresponding
+  internal IP addresses.
 
     ```sh
     sudo nano /etc/hosts
@@ -202,18 +202,18 @@ computational requirements.
     192.168.0.136 worker2
     ```
 
--   Verify that you can SSH into both worker nodes by using `ssh worker1` and
-    `ssh worker2` from the Spark master node's terminal.
+- Verify that you can SSH into both worker nodes by using `ssh worker1` and
+  `ssh worker2` from the Spark master node's terminal.
 
--   Copy the sample configuration file for the Spark:
+- Copy the sample configuration file for the Spark:
 
     ```sh
     cd /usr/local/spark/conf/
     cp spark-env.sh.template spark-env.sh
     ```
 
--   Update the environment variables file i.e. `spark-env.sh` to include the following
-    information:
+- Update the environment variables file i.e. `spark-env.sh` to include the following
+  information:
 
     ```sh
     export SPARK_MASTER_HOST='<Master-Internal-IP>'
@@ -237,15 +237,15 @@ computational requirements.
     echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64" >> spark-env.sh
     ```
 
--   Source the changed environment variables file i.e. `spark-env.sh`:
+- Source the changed environment variables file i.e. `spark-env.sh`:
 
     ```sh
     source spark-env.sh
     ```
 
--   Create a file named `slaves` in the Spark configuration directory (i.e.,
-    `/usr/local/spark/conf/`) that specifies all 3 hostnames (nodes) as specified
-    in `/etc/hosts`:
+- Create a file named `slaves` in the Spark configuration directory (i.e.,
+  `/usr/local/spark/conf/`) that specifies all 3 hostnames (nodes) as specified
+  in `/etc/hosts`:
 
     ```sh
     sudo cat slaves
@@ -256,9 +256,9 @@ computational requirements.
 
 ## Run the Spark cluster from the Master VM
 
--   SSH into the master VM again if you are not already logged in.
+- SSH into the master VM again if you are not already logged in.
 
--   You need to run the Spark cluster from `/usr/local/spark`:
+- You need to run the Spark cluster from `/usr/local/spark`:
 
     ```sh
     cd /usr/local/spark
@@ -283,9 +283,9 @@ that you can use to monitor the status and resource consumption of your Spark cl
     Apache Spark provides different web UIs: **Master web UI**, **Worker web UI**,
     and **Application web UI**.
 
--   You can connect to the **Master web UI** using
-    [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
-    i.e. **Local Port Forwarding** from your local machine's terminal by running:
+- You can connect to the **Master web UI** using
+  [SSH Port Forwarding, aka SSH Tunneling](https://www.ssh.com/academy/ssh/tunneling-example)
+  i.e. **Local Port Forwarding** from your local machine's terminal by running:
 
     ```sh
     ssh -N -L <Your_Preferred_Port>:localhost:8080 <User>@<Floating-IP> -i <Path_To_Your_Private_Key>
@@ -301,19 +301,19 @@ that you can use to monitor the status and resource consumption of your Spark cl
     ssh -N -L 8080:localhost:8080 ubuntu@199.94.61.4 -i ~/.ssh/cloud.key
     ```
 
--   Once the SSH Tunneling is successful, please do not close or stop the terminal
-    where you are running the SSH Tunneling. Instead, log in to the Master web UI
-    using your web browser: `http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8080`.
+- Once the SSH Tunneling is successful, please do not close or stop the terminal
+  where you are running the SSH Tunneling. Instead, log in to the Master web UI
+  using your web browser: `http://localhost:<Your_Preferred_Port>` i.e. `http://localhost:8080`.
 
 The Master web UI offers an overview of the Spark cluster, showcasing the following
 details:
 
--   Master URL and REST URL
--   Available CPUs and memory for the Spark cluster
--   Status and allocated resources for each worker
--   Details on active and completed applications, including their status, resources,
-    and duration
--   Details on active and completed drivers, including their status and resources
+- Master URL and REST URL
+- Available CPUs and memory for the Spark cluster
+- Status and allocated resources for each worker
+- Details on active and completed applications, including their status, resources,
+  and duration
+- Details on active and completed drivers, including their status and resources
 
 The Master web UI appears as shown below when you navigate to `http://localhost:<Your_Preferred_Port>`
 i.e. `http://localhost:8080` from your web browser:
@@ -326,7 +326,7 @@ resources for both the Spark cluster and individual applications.
 
 ## Preparing Jobs for Execution and Examination
 
--   To run jobs from `/usr/local/spark`, execute the following commands:
+- To run jobs from `/usr/local/spark`, execute the following commands:
 
     ```sh
     cd /usr/local/spark
@@ -339,7 +339,7 @@ resources for both the Spark cluster and individual applications.
         [downloaded and installed previously](#setup-a-master-vm) as the value
         of `SPARK_VERSION` in the above script.
 
--   **Single Node Job:**
+- **Single Node Job:**
 
     Let's quickly start to run a simple job:
 
@@ -347,7 +347,7 @@ resources for both the Spark cluster and individual applications.
     ./bin/spark-submit --driver-memory 2g --class org.apache.spark.examples.SparkPi examples/jars/spark-examples_2.13-$SPARK_VERSION.jar 50
     ```
 
--   **Cluster Mode Job:**
+- **Cluster Mode Job:**
 
     Let's submit a longer and more complex job with many tasks that will be
     distributed among the multi-node cluster, and then view the Master web UI:

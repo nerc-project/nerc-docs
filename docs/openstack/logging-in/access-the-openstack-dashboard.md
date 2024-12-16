@@ -19,13 +19,13 @@ Next, you will be redirected to CILogon welcome page as shown below:
 MGHPCC Shared Services (MSS) Keycloak will request approval of access to the
 following information from the user:
 
--   Your CILogon user identifier
+- Your CILogon user identifier
 
--   Your name
+- Your name
 
--   Your email address
+- Your email address
 
--   Your username and affiliation from your identity provider
+- Your username and affiliation from your identity provider
 
 which are required in order to allow access your account on NERC's OpenStack
 dashboard.

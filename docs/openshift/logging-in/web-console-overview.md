@@ -56,9 +56,9 @@ administrators and cluster administrators can view the Administrator perspective
 
 !!! note "Important Note"
 
-The default web console perspective that is shown depends on the role of the
-user. The **Administrator** perspective is displayed by default if the user is
-recognized as an administrator.
+    The default web console perspective that is shown depends on the role of the
+    user. The **Administrator** perspective is displayed by default if the user
+    is recognized as an administrator.
 
 ### About the Developer perspective in the web console
 
@@ -67,8 +67,8 @@ services, and databases.
 
 !!! info "Important Note"
 
-The default view for the OpenShift Container Platform web console is the **Developer**
-perspective.
+    The default view for the OpenShift Container Platform web console is the **Developer**
+    perspective.
 
 The web console provides a comprehensive set of tools for managing your projects
 and applications.
@@ -82,8 +82,8 @@ located on top navigation as shown below:
 
 !!! info "Important Note"
 
-You can identify the currently selected project with **tick** mark and also
-you can click on **star** icon to keep the project under your **Favorites** list.
+    You can identify the currently selected project with **tick** mark and also
+    you can click on **star** icon to keep the project under your **Favorites** list.
 
 ## Navigation Menu
 

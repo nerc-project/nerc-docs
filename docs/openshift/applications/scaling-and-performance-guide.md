@@ -83,10 +83,10 @@ below:
 
 CPU and memory can be specified in a couple of ways:
 
--   Resource **requests** and _limits_ are optional parameters specified at the container
-    level. OpenShift computes a Pod's request and limit as the sum of requests and
-    limits across all of its containers. OpenShift then uses these parameters for
-    scheduling and resource allocation decisions.
+- Resource **requests** and _limits_ are optional parameters specified at the container
+  level. OpenShift computes a Pod's request and limit as the sum of requests and
+  limits across all of its containers. OpenShift then uses these parameters for
+  scheduling and resource allocation decisions.
 
     The **request** value specifies the min value you will be guaranteed. The request
     value is also used by the scheduler to assign pods to nodes.
@@ -102,13 +102,13 @@ CPU and memory can be specified in a couple of ways:
 
     !!! note "Important Information"
 
-        If a Pod's total requests are not available on a single node, then the Pod
-        will remain in a *Pending* state (i.e. not running) until these resources
-        become available.
+          If a Pod's total requests are not available on a single node, then the Pod
+          will remain in a *Pending* state (i.e. not running) until these resources
+          become available.
 
--   The **limit** value specifies the max value you can consume. Limit is the value
-    applications should be tuned to use. Pods will be memory, CPU throttled when
-    they exceed their available memory and CPU limit.
+- The **limit** value specifies the max value you can consume. Limit is the value
+  applications should be tuned to use. Pods will be memory, CPU throttled when
+  they exceed their available memory and CPU limit.
 
 CPU is measured in units called millicores, where 1000 millicores ("m") = 1 vCPU
 or 1 Core. Each node in a cluster inspects the operating system to determine the
@@ -253,8 +253,8 @@ Click on the component node to see the _Overview_ panel to the right.
 
 Use the **Details** tab to:
 
--   Scale your pods using the up and down arrows to increase or decrease the number
-    of pods or instances of the application manually as shown below:
+- Scale your pods using the up and down arrows to increase or decrease the number
+  of pods or instances of the application manually as shown below:
 
     ![Scale the Pod Count](images/pod-scale-count-arrow.png)
 
@@ -264,30 +264,30 @@ Use the **Details** tab to:
 
     ![Edit the Pod Count](images/scale-pod-count.png)
 
--   Check the Labels, Annotations, and Status of the application.
+- Check the Labels, Annotations, and Status of the application.
 
 Click the **Resources** tab to:
 
--   See the list of all the pods, view their status, access logs, and click on the
-    pod to see the pod details.
+- See the list of all the pods, view their status, access logs, and click on the
+  pod to see the pod details.
 
--   See the builds, their status, access logs, and start a new build if needed.
+- See the builds, their status, access logs, and start a new build if needed.
 
--   See the services and routes used by the component.
+- See the services and routes used by the component.
 
 Click the **Observe** tab to:
 
--   See the metrics to see CPU usage, Memory usage and Bandwidth consumption.
+- See the metrics to see CPU usage, Memory usage and Bandwidth consumption.
 
--   See the Events.
+- See the Events.
 
     !!! note "Detailed Monitoring your project and application metrics"
 
-        On the left navigation panel of the **Developer** perspective, click
-        **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
-        For more information about Monitoring project and application metrics
-        using the Developer perspective, please
-        [read this](https://docs.openshift.com/container-platform/4.10/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
+            On the left navigation panel of the **Developer** perspective, click
+            **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
+            For more information about Monitoring project and application metrics
+            using the Developer perspective, please
+            [read this](https://docs.openshift.com/container-platform/4.10/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
 
 ## Scaling manually
 
@@ -389,42 +389,42 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
 #### To create an HPA in the web console
 
--   In the **Topology** view, click the node to reveal the side pane.
+- In the **Topology** view, click the node to reveal the side pane.
 
--   From the _Actions_ drop-down list, select **Add HorizontalPodAutoscaler** as
-    shown below:
+- From the _Actions_ drop-down list, select **Add HorizontalPodAutoscaler** as
+  shown below:
 
     ![Horizontal Pod Autoscaler Popup](images/add-hpa-popup.png)
 
--   This will open the **Add HorizontalPodAutoscaler** form as shown below:
+- This will open the **Add HorizontalPodAutoscaler** form as shown below:
 
     ![Horizontal Pod Autoscaler Form](images/hpa-form.png)
 
     !!! note "Configure via: Form or YAML View"
 
-        While creating or editing the horizontal pod autoscaler in the web console,
-        you can switch from **Form view** to **YAML view**.
+          While creating or editing the horizontal pod autoscaler in the web console,
+          you can switch from **Form view** to **YAML view**.
 
--   From the **Add HorizontalPodAutoscaler** form, define the name, minimum and maximum
-    pod limits, the CPU and memory usage, and click **Save**.
+- From the **Add HorizontalPodAutoscaler** form, define the name, minimum and maximum
+  pod limits, the CPU and memory usage, and click **Save**.
 
 #### To edit an HPA in the web console
 
--   In the **Topology** view, click the node to reveal the side pane.
+- In the **Topology** view, click the node to reveal the side pane.
 
--   From the **Actions** drop-down list, select **Edit HorizontalPodAutoscaler**
-    to open the **Edit Horizontal Pod Autoscaler** form.
+- From the **Actions** drop-down list, select **Edit HorizontalPodAutoscaler**
+  to open the **Edit Horizontal Pod Autoscaler** form.
 
--   From the **Edit Horizontal Pod Autoscaler** form, edit the minimum and maximum
-    pod limits and the CPU and memory usage, and click **Save**.
+- From the **Edit Horizontal Pod Autoscaler** form, edit the minimum and maximum
+  pod limits and the CPU and memory usage, and click **Save**.
 
 #### To remove an HPA in the web console
 
--   In the **Topology** view, click the node to reveal the side panel.
+- In the **Topology** view, click the node to reveal the side panel.
 
--   From the **Actions** drop-down list, select **Remove HorizontalPodAutoscaler**.
+- From the **Actions** drop-down list, select **Remove HorizontalPodAutoscaler**.
 
--   In the confirmation pop-up window, click **Remove** to remove the HPA.
+- In the confirmation pop-up window, click **Remove** to remove the HPA.
 
 !!! tip "Best Practices"
 

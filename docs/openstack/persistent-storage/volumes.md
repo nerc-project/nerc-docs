@@ -44,31 +44,31 @@ another project as [described here](../persistent-storage/transfer-a-volume.md).
 
 Some uses for volumes:
 
--   Persistent data storage for ephemeral instances.
+- Persistent data storage for ephemeral instances.
 
--   Transfer of data between projects
+- Transfer of data between projects
 
--   Bootable image where disk changes persist
+- Bootable image where disk changes persist
 
--   Mounting the disk of one instance to another for troubleshooting
+- Mounting the disk of one instance to another for troubleshooting
 
 ## How do you make your VM setup and data persistent?
 
--   By default, when the instance is launched from an **Image** or an
-    **Instance Snapshot**, the choice for utilizing persistent storage is configured
-    by selecting the **Yes** option for **"Create New Volume"**. It's crucial to
-    note that this configuration automatically creates persistent block storage
-    in the form of a Volume instead of using Ephemeral disk, which appears in
-    the "Volumes" list in the Horizon dashboard: _Project -> Volumes -> Volumes_.
+- By default, when the instance is launched from an **Image** or an
+  **Instance Snapshot**, the choice for utilizing persistent storage is configured
+  by selecting the **Yes** option for **"Create New Volume"**. It's crucial to
+  note that this configuration automatically creates persistent block storage
+  in the form of a Volume instead of using Ephemeral disk, which appears in
+  the "Volumes" list in the Horizon dashboard: _Project -> Volumes -> Volumes_.
 
 ![Instance Persistent Storage Option](images/instance-persistent-storage-option.png)
 
--   By default, the setting for **"Delete Volume on Instance Delete"** is configured
-    to use **No**. This setting ensures that the volume created during the launch
-    of a virtual machine remains persistent and won't be deleted alongside the
-    instance unless explicitly chosen as "Yes". Such instances boot from a
-    **bootable volume**, utilizing an existing volume listed in the
-    _Project -> Volumes -> Volumes_ menu.
+- By default, the setting for **"Delete Volume on Instance Delete"** is configured
+  to use **No**. This setting ensures that the volume created during the launch
+  of a virtual machine remains persistent and won't be deleted alongside the
+  instance unless explicitly chosen as "Yes". Such instances boot from a
+  **bootable volume**, utilizing an existing volume listed in the
+  _Project -> Volumes -> Volumes_ menu.
 
 To minimize the risk of potential data loss, we highly recommend consistently
 [creating backups through snapshots](../backup/backup-with-snapshots.md).

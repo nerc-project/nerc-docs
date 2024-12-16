@@ -4,9 +4,9 @@
 
 To run a **model server** and **deploy a model** on it, you need to have:
 
--   Select the correct data science project and create workbench, see [Populate
-    the data science project](using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
-    for more information.
+- Select the correct data science project and create workbench, see [Populate
+  the data science project](using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+  for more information.
 
 ## Create a data connection
 
@@ -20,17 +20,17 @@ Data connections are configurations for remote data location. Within this window
 enter the information about the S3-compatible object bucket where the model is stored.
 Enter the following information:
 
--   **Name**: The name you want to give to the data connection.
+- **Name**: The name you want to give to the data connection.
 
--   **Access Key**: The access key to the bucket.
+- **Access Key**: The access key to the bucket.
 
--   **Secret Key**: The secret for the access key.
+- **Secret Key**: The secret for the access key.
 
--   **Endpoint**: The endpoint to connect to the storage.
+- **Endpoint**: The endpoint to connect to the storage.
 
--   **Region**: The region to connect to the storage.
+- **Region**: The region to connect to the storage.
 
--   **Bucket**: The name of the bucket.
+- **Bucket**: The name of the bucket.
 
 **NOTE**: However, you are not required to use the S3 service from **Amazon Web
 Services (AWS)**. Any S3-compatible storage i.e. NERC OpenStack Container (Ceph),
@@ -88,24 +88,24 @@ following details:
 
 ![Configure A New Model Server](images/configure-a-new-model-server.png)
 
--   **Model server name**
+- **Model server name**
 
--   **Serving runtime**: either "OpenVINO Model Server" or "OpenVINO Model Server
-    (Supports GPUs)"
+- **Serving runtime**: either "OpenVINO Model Server" or "OpenVINO Model Server
+  (Supports GPUs)"
 
--   **Number of model server replicas**: This is the number of instances of the
-    model server engine that you want to deploy. You can scale it up as needed,
-    depending on the number of requests you will receive.
+- **Number of model server replicas**: This is the number of instances of the
+  model server engine that you want to deploy. You can scale it up as needed,
+  depending on the number of requests you will receive.
 
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Select the appropriate configuration for size and
-    the complexity of your model.
+- **Model server size**: This is the amount of resources, CPU, and RAM that will
+  be allocated to your server. Select the appropriate configuration for size and
+  the complexity of your model.
 
--   **Model route**: Check this box if you want the serving endpoint (the model serving
-    API) to be accessible outside of the OpenShift cluster through an external route.
+- **Model route**: Check this box if you want the serving endpoint (the model serving
+  API) to be accessible outside of the OpenShift cluster through an external route.
 
--   **Token authorization**: Check this box if you want to secure or restrict access
-    to the model by forcing requests to provide an authorization token.
+- **Token authorization**: Check this box if you want to secure or restrict access
+  to the model by forcing requests to provide an authorization token.
 
 After adding and selecting options within the **Add model server** pop-up
 window, click **Add** to create the model server.
@@ -146,17 +146,17 @@ initiate the Deploy model pop-up window as shown below:
 
 Enter the following information for your new model:
 
--   **Model Name**: The name you want to give to your model (e.g., "coolstore").
+- **Model Name**: The name you want to give to your model (e.g., "coolstore").
 
--   **Model framework (name-version)**: The framework used to save this model.
-    At this time, OpenVINO IR or ONNX or Tensorflow are supported.
+- **Model framework (name-version)**: The framework used to save this model.
+  At this time, OpenVINO IR or ONNX or Tensorflow are supported.
 
--   **Model location**: Select the data connection that you created to store the
-    model. Alternatively, you can create another data connection directly from this
-    menu.
+- **Model location**: Select the data connection that you created to store the
+  model. Alternatively, you can create another data connection directly from this
+  menu.
 
--   **Folder path**: If your model is not located at the root of the bucket of your
-    data connection, you must enter the path to the folder it is in.
+- **Folder path**: If your model is not located at the root of the bucket of your
+  data connection, you must enter the path to the folder it is in.
 
 For our example project, let's name the **Model** as "coolstore", select
 "onnx-1" for the framework, select the Data location you created before for the
@@ -184,16 +184,16 @@ for the gRPC and the REST URLs for the inference endpoints as shown below:
 
 **Notes:**
 
--   The REST URL displayed is only the base address of the endpoint. You must
-    append `/v2/models/name-of-your-model/infer` to it to have the full address.
-    Example: `http://modelmesh-serving.model-serving:8008/v2/models/coolstore/infer`
+- The REST URL displayed is only the base address of the endpoint. You must
+  append `/v2/models/name-of-your-model/infer` to it to have the full address.
+  Example: `http://modelmesh-serving.model-serving:8008/v2/models/coolstore/infer`
 
--   The full documentation of the API (REST and gRPC) is [available here](https://github.com/kserve/kserve/blob/master/docs/predict-api/v2/required_api.md).
+- The full documentation of the API (REST and gRPC) is [available here](https://github.com/kserve/kserve/blob/master/docs/predict-api/v2/required_api.md).
 
--   The gRPC proto file for the Model Server is [available here](https://github.com/kserve/kserve/blob/master/docs/predict-api/v2/grpc_predict_v2.proto).
+- The gRPC proto file for the Model Server is [available here](https://github.com/kserve/kserve/blob/master/docs/predict-api/v2/grpc_predict_v2.proto).
 
--   If you have exposed the model through an external route, the Inference endpoint
-    displays the full URL that you can copy.
+- If you have exposed the model through an external route, the Inference endpoint
+  displays the full URL that you can copy.
 
 !!! note "Important Note"
 

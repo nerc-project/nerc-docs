@@ -2,12 +2,12 @@
 
 **Prerequisites**:
 
--   You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
-    to set up a public ssh key.
+- You followed the instruction in [Create a Key Pair](../access-and-security/create-a-key-pair.md)
+  to set up a public ssh key.
 
--   Make sure you have added rules in the
-    [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
-    allow **ssh** using Port 22 access to the instance.
+- Make sure you have added rules in the
+  [Security Groups](../access-and-security/security-groups.md#allowing-ssh) to
+  allow **ssh** using Port 22 access to the instance.
 
 ## Using Horizon dashboard
 
@@ -46,13 +46,13 @@ Double check that in the dropdown "Select Boot Source".
 When you start a new instance, you can choose the Instance Boot Source from the
 following list:
 
--   boot from image
+- boot from image
 
--   boot from instance snapshot
+- boot from instance snapshot
 
--   boot from volume
+- boot from volume
 
--   boot from volume snapshot
+- boot from volume snapshot
 
 In its default configuration, when the instance is launched from an **Image** or
 an **Instance Snapshot**, the choice for utilizing persistent storage is configured

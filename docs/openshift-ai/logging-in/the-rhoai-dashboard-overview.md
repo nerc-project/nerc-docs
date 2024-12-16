@@ -4,10 +4,10 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
 
 1.  **Applications**:
 
-    -   _Enabled_: Launch your enabled applications, view documentation, or get
-        started with quick start instructions and tasks.
+    - _Enabled_: Launch your enabled applications, view documentation, or get
+      started with quick start instructions and tasks.
 
-    -   _Explore_: View optional applications for your RHOAI instance.
+    - _Explore_: View optional applications for your RHOAI instance.
 
         **NOTE**: Most of them are disabled by default on NERC RHOAI right now.
 
@@ -26,11 +26,11 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
 
 3.  **Data Science Pipelines**:
 
-    -   _Pipelines_: Manage your pipelines for a specific project selected from the
-        dropdown menu.
+    - _Pipelines_: Manage your pipelines for a specific project selected from the
+      dropdown menu.
 
-    -   _Runs_: Manage and view your runs for a specific project selected from the
-        dropdown menu.
+    - _Runs_: Manage and view your runs for a specific project selected from the
+      dropdown menu.
 
 4.  **Model Serving**: Manage and view the health and performance of your deployed
     models across different projects corresponding to your NERC-OCP (OpenShift)

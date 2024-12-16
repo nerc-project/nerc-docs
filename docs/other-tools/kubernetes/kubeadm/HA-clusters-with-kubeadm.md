@@ -142,7 +142,7 @@ apiservers. The loadbalancer will be used to loadbalance between the 2 apiserver
 
     !!! note "Note"
 
-        6443 is the default port of **kube-apiserver**
+          6443 is the default port of **kube-apiserver**
 
     ```sh
     backend be-apiserver
@@ -183,8 +183,8 @@ apiservers. The loadbalancer will be used to loadbalance between the 2 apiserver
 
     !!! note "Note"
 
-        If you see failures for `master1` and `master2` connectivity, you can ignore
-        them for time being as you have not yet installed anything on the servers.
+          If you see failures for `master1` and `master2` connectivity, you can ignore
+          them for time being as you have not yet installed anything on the servers.
 
 ---
 
@@ -352,10 +352,10 @@ same in `master2`.
 
     !!! danger "Configuring the kubelet cgroup driver"
 
-        From 1.22 onwards, if you do not set the `cgroupDriver` field under
-        `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
-        not need to do anything here by default but if you want you change it you can
-        refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
+          From 1.22 onwards, if you do not set the `cgroupDriver` field under
+          `KubeletConfiguration`, `kubeadm` will default it to `systemd`. So you do
+          not need to do anything here by default but if you want you change it you can
+          refer to [this documentation](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/).
 
 - Execute the below command to initialize the cluster:
 
@@ -377,12 +377,12 @@ same in `master2`.
 
     !!! note "Important Note"
 
-        `--pod-network-cidr` value depends upon what CNI plugin you going to use so
-        need to be very careful while setting this CIDR values. In our case, you are
-        going to use **Flannel** CNI network plugin so you will use:
-        `--pod-network-cidr=10.244.0.0/16`. If you are opted to use **Calico** CNI
-        network plugin then you need to use: `--pod-network-cidr=192.168.0.0/16` and
-        if you are opted to use **Weave Net** no need to pass this parameter.
+          `--pod-network-cidr` value depends upon what CNI plugin you going to use so
+          need to be very careful while setting this CIDR values. In our case, you are
+          going to use **Flannel** CNI network plugin so you will use:
+          `--pod-network-cidr=10.244.0.0/16`. If you are opted to use **Calico** CNI
+          network plugin then you need to use: `--pod-network-cidr=192.168.0.0/16` and
+          if you are opted to use **Weave Net** no need to pass this parameter.
 
     For example, our `Flannel` CNI network plugin based kubeadm init command with
     _loadbalancer node_ with internal IP: `192.168.0.167` look like below:
@@ -454,12 +454,12 @@ same in `master2`.
 
     !!! warning "Warning"
 
-        Kubeadm signs the certificate in the admin.conf to have
-        `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
-        break-glass, super user group that bypasses the authorization layer
-        (e.g. RBAC). Do not share the admin.conf file with anyone and instead
-        grant users custom permissions by generating them a kubeconfig file using
-        the `kubeadm kubeconfig user` command.
+          Kubeadm signs the certificate in the admin.conf to have
+          `Subject: O = system:masters, CN = kubernetes-admin. system:masters` is a
+          break-glass, super user group that bypasses the authorization layer
+          (e.g. RBAC). Do not share the admin.conf file with anyone and instead
+          grant users custom permissions by generating them a kubeconfig file using
+          the `kubeadm kubeconfig user` command.
 
     B. Setup a new control plane (master) i.e. `master2` by running following
     command on **master2** node:
@@ -480,9 +480,9 @@ same in `master2`.
 
     !!! note "Important Note"
 
-        **Your output will be different than what is provided here. While
-        performing the rest of the demo, ensure that you are executing the
-        command provided by your output and dont copy and paste from here.**
+          **Your output will be different than what is provided here. While
+          performing the rest of the demo, ensure that you are executing the
+          command provided by your output and dont copy and paste from here.**
 
     If you do not have the token, you can get it by running the following command
     on the control-plane node:
@@ -618,11 +618,11 @@ kubeconfig and `kubectl`.
 
     !!! note "Important Note"
 
-        If you havent setup ssh connection between master node and loadbalancer, you
-        can manually copy the contents of the file `/etc/kubernetes/admin.conf` from
-        `master1` node and then paste it to `$HOME/.kube/config` file on the
-        loadbalancer node. Ensure that the kubeconfig file path is
-        **`$HOME/.kube/config`** on the loadbalancer node.
+          If you havent setup ssh connection between master node and loadbalancer, you
+          can manually copy the contents of the file `/etc/kubernetes/admin.conf` from
+          `master1` node and then paste it to `$HOME/.kube/config` file on the
+          loadbalancer node. Ensure that the kubeconfig file path is
+          **`$HOME/.kube/config`** on the loadbalancer node.
 
 - Provide appropriate ownership to the copied file
 
@@ -638,21 +638,21 @@ kubeconfig and `kubectl`.
 
     **kubectl**: the command line util to talk to your cluster.
 
-        snap install kubectl --classic
+          snap install kubectl --classic
 
     This outputs:
 
-        kubectl 1.26.1 from Canonical✓ installed
+          kubectl 1.26.1 from Canonical✓ installed
 
 - Verify the cluster
 
-        kubectl get nodes
+          kubectl get nodes
 
-        NAME STATUS ROLES AGE VERSION
-        master1 NotReady control-plane,master 21m v1.26.1
-        master2 NotReady control-plane,master 15m v1.26.1
-        worker1 Ready <none> 9m17s v1.26.1
-        worker2 Ready <none> 9m25s v1.26.1
+          NAME STATUS ROLES AGE VERSION
+          master1 NotReady control-plane,master 21m v1.26.1
+          master2 NotReady control-plane,master 15m v1.26.1
+          worker1 Ready <none> 9m17s v1.26.1
+          worker2 Ready <none> 9m25s v1.26.1
 
 ---
 
@@ -900,14 +900,14 @@ following commands:
 
     !!! info "Information"
 
-        Since 1.22, this type of Secret is no longer used to mount credentials into
-        Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
-        is recommended instead of using service account token Secret objects. Tokens
-        obtained from the _TokenRequest API_ are more secure than ones stored in Secret
-        objects, because they have a bounded lifetime and are not readable by other API
-        clients. You can use the `kubectl create token` command to obtain a token from
-        the TokenRequest API. For example: `kubectl create token skooner-sa`, where
-        `skooner-sa` is service account name.
+          Since 1.22, this type of Secret is no longer used to mount credentials into
+          Pods, and obtaining tokens via the [TokenRequest API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-request-v1/)
+          is recommended instead of using service account token Secret objects. Tokens
+          obtained from the _TokenRequest API_ are more secure than ones stored in Secret
+          objects, because they have a bounded lifetime and are not readable by other API
+          clients. You can use the `kubectl create token` command to obtain a token from
+          the TokenRequest API. For example: `kubectl create token skooner-sa`, where
+          `skooner-sa` is service account name.
 
 - Find the secret that was created to hold the token for the SA
 

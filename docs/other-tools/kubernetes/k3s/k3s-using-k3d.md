@@ -46,15 +46,15 @@ Availability clusters just with few commands.
 
     **kubectl**: the command line util to talk to your cluster.
 
-        snap install kubectl --classic
+          snap install kubectl --classic
 
     This outputs:
 
-        kubectl 1.26.1 from Canonical✓ installed
+          kubectl 1.26.1 from Canonical✓ installed
 
 - Now verify the kubectl version:
 
-        kubectl version -o yaml
+          kubectl version -o yaml
 
 ---
 

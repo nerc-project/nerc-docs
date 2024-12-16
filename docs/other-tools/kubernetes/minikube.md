@@ -220,30 +220,30 @@ with your chosen container runtime.
 
     !!! note "Note"
 
-        - To check the internal IP, run the `minikube ip` command.
+          - To check the internal IP, run the `minikube ip` command.
 
-        - By default, Minikube uses the driver most relevant to the host OS. To
-        use a different driver, set the `--driver` flag in `minikube start`. For
-        example, to use others or none instead of Docker, run
-        `minikube start --driver=none`. To persistent configuration so that
-        you to run minikube start without explicitly passing i.e. in global scope
-        the `--vm-driver docker` flag each time, run:
-        `minikube config set vm-driver docker`.
+          - By default, Minikube uses the driver most relevant to the host OS. To
+          use a different driver, set the `--driver` flag in `minikube start`. For
+          example, to use others or none instead of Docker, run
+          `minikube start --driver=none`. To persistent configuration so that
+          you to run minikube start without explicitly passing i.e. in global scope
+          the `--vm-driver docker` flag each time, run:
+          `minikube config set vm-driver docker`.
 
-        - Other start options:
-        `minikube start --force --driver=docker --network-plugin=cni --container-runtime=containerd`
+          - Other start options:
+          `minikube start --force --driver=docker --network-plugin=cni --container-runtime=containerd`
 
-        - In case you want to start minikube with customize resources and want installer
-        to automatically select the driver then you can run following command,
-        `minikube start --addons=ingress --cpus=2 --cni=flannel --install-addons=true
-        --kubernetes-version=stable --memory=6g`
+          - In case you want to start minikube with customize resources and want installer
+          to automatically select the driver then you can run following command,
+          `minikube start --addons=ingress --cpus=2 --cni=flannel --install-addons=true
+          --kubernetes-version=stable --memory=6g`
 
-        Output would like below:
+          Output would like below:
 
-        ![Minikube sucessfully started](images/minikube_started.png)
+          ![Minikube sucessfully started](images/minikube_started.png)
 
-        Perfect, above confirms that minikube cluster has been configured and started
-        successfully.
+          Perfect, above confirms that minikube cluster has been configured and started
+          successfully.
 
 - Run below minikube command to check status:
 

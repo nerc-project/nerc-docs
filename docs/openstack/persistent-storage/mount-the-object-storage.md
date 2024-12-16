@@ -59,7 +59,7 @@ parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 - Allow Other User option by editing fuse config by editing `/etc/fuse.conf` file
   and uncomment "user_allow_other" option.
 
-                  sudo nano /etc/fuse.conf
+                    sudo nano /etc/fuse.conf
 
 The output going to look like this:
 

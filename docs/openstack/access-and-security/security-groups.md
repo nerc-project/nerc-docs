@@ -79,8 +79,8 @@ Enter the following values:
 
     !!! note "Note"
 
-          To accept requests from a particular range of IP addresses, specify the
-          IP address block in the CIDR box.
+            To accept requests from a particular range of IP addresses, specify the
+            IP address block in the CIDR box.
 
 The new rule now appears in the list. This signifies that any instances using
 this newly added Security Group will now have SSH port 22 open for requests
@@ -143,8 +143,8 @@ Enter the following values:
 
     !!! note "Note"
 
-          To accept requests from a particular range of IP addresses, specify the
-          IP address block in the CIDR box.
+            To accept requests from a particular range of IP addresses, specify the
+            IP address block in the CIDR box.
 
 The new rule now appears in the list. This signifies that any instances using
 this newly added Security Group will now have RDP port 3389 open for requests

@@ -260,9 +260,9 @@ This is a python client for the Swift API. There's a [Python API](https://github
 
 !!! note "Choosing Correct Python Interpreter"
 
-      Make sure you are able to use `python` or `python3` or **`py -3`** (For
-      Windows Only) to create a directory named `venv` (or whatever name you
-      specified) in your current working directory.
+    Make sure you are able to use `python` or `python3` or **`py -3`** (For
+    Windows Only) to create a directory named `venv` (or whatever name you
+    specified) in your current working directory.
 
 -   Activate the virtual environment by running:
 
@@ -1062,9 +1062,9 @@ respectively.
 
 !!! note "Helpful Tips"
 
-      You can save your above configured session with some preferred name by
-      clicking the "Save" button and then giving a proper name to your session.
-      So that next time you don't need to again manually enter all your configuration.
+    You can save your above configured session with a preferred name by
+    clicking the "Save" button and then giving a proper name to your session.
+    So that next time you don't need to again manually enter all your configuration.
 
 #### Using WinSCP
 

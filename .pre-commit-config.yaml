@@ -12,7 +12,7 @@ repos:
           - id: remove-tabs
 
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.6.0
+      rev: v5.0.0
       hooks:
           - id: trailing-whitespace
             args: [--markdown-linebreak-ext=md]
@@ -37,20 +37,10 @@ repos:
             exclude: .*.param.yaml
 
     - repo: https://github.com/igorshubovych/markdownlint-cli
-      rev: v0.41.0
+      rev: v0.43.0
       hooks:
           - id: markdownlint
             args: [-c, .markdownlint.yaml, --fix]
-
-    - repo: https://github.com/pre-commit/mirrors-prettier
-      rev: v4.0.0-alpha.8
-      hooks:
-          - id: prettier
-            args:
-                - --ignore-path
-                - .prettierignore
-                - --config
-                - .prettierrc.yaml
 
     - repo: https://github.com/Yelp/detect-secrets
       rev: v1.5.0

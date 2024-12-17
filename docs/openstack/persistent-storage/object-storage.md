@@ -1062,7 +1062,7 @@ respectively.
 
 !!! note "Helpful Tips"
 
-    You can save your above configured session with some preferred name by
+    You can save your above configured session with a preferred name by
     clicking the "Save" button and then giving a proper name to your session.
     So that next time you don't need to again manually enter all your configuration.
 

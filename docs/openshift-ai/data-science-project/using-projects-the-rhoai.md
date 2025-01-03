@@ -89,7 +89,7 @@ On the Create workbench page, complete the following information.
     this "**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront, as
     [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
 
-    The different options for accelerator are "NVIDIA A100 GPU", "NVIDIA V100 GPU", and "NONE". 
+    The different options for accelerator are "NVIDIA A100 GPU", "NVIDIA V100 GPU", and "NONE".
 
     If you need to increase this quota value, you can request a change as
     [explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
@@ -99,7 +99,8 @@ Once you have entered the information for your workbench, click **Create**.
 ![Fill Workbench Information](images/tensor-flow-workbench.png)
 
 For our example project, let's name it "Tensorflow Workbench". We'll select the
-**TensorFlow** image, choose a **Deployment size** of **Small**, **Accelerator** of **NVIDIA A100 GPU**, **Number of Accelerators** 
+**TensorFlow** image, choose a **Deployment size** of **Small**,
+**Accelerator** of **NVIDIA A100 GPU**, **Number of Accelerators**
 as **1** and allocate a **Cluster storage** space of **1GB**.
 
 !!! info "More About Cluster Storage"

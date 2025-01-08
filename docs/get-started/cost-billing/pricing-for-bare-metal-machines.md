@@ -19,7 +19,6 @@ Bare metal instances pricing is currently available as a limited offering.
 | FC830            | 0    | 176  | 2,048     | $3.97         |
 | FC430            | 0    | 40   | 128       | $0.75         |
 
-
 !!! info "How to request Bare Metal Machines?"
 
     Interested parties who wish to explore this option are encouraged to send

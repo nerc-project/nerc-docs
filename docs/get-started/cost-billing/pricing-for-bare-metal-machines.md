@@ -6,7 +6,11 @@
 
     All prices listed on this page are **introductory** and subject to change
     without notice. Please stay informed by reviewing this page regularly or
-    contacting our support team for updates.
+    contacting us by emailing us at [help@esi.mghpcc.org](mailto:help@esi.mghpcc.org?subject=New%20User%20Query)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
+    by selecting "**ESI Inquiry**" as the *Help Topic* option as shown below:
+
+    ![ESI Inquiry Help Topic](images/esi-help-topic.png)
 
 Bare metal instances pricing is currently available as a limited offering.
 
@@ -34,8 +38,9 @@ Bare metal instances pricing is currently available as a limited offering.
     bare metal offerings in the future.
 
     For inquiries or to submit your request, please contact us to discuss it soon
-    by emailing us at [help@nerc.mghpcc.org](mailto:help@nerc.mghpcc.org?subject=NERC%20Best%20Practices%20Question) or, by submitting a new ticket
-    at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php).
+    by emailing us at [help@esi.mghpcc.org](mailto:help@esi.mghpcc.org?subject=New%20User%20Query)
+    or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
+    by selecting "**ESI Inquiry**" as the *Help Topic* option.
 
 ## BM SU Example
 

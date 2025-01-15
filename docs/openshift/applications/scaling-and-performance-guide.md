@@ -136,7 +136,8 @@ Gi, Mi, Ki).
 ## How to specify pod to use GPU?
 
 So from a **Developer** perspective, the only thing you have to worry about is
-asking for GPU resources when defining your pods, with something like:
+asking for GPU resources when defining your pods, with something like the
+following for requesting (NVIDIA A100 GPU):
 
     spec:
       containers:
@@ -150,13 +151,25 @@ asking for GPU resources when defining your pods, with something like:
           limits:
             memory: "128Mi"
             cpu: "500m"
+      tolerations:
+        - key: nvidia.com/gpu.product
+          operator: Equal
+          value: NVIDIA-A100-SXM4-40GB
+          effect: NoSchedule
+      nodeSelector:
+        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
 
-In the sample Pod Spec above, you can allocate GPUs to pods by specifying the GPU
+In the sample Pod Spec above, you can allocate GPUs to containers by specifying
+ the GPU
 resource `nvidia.com/gpu` and indicating the desired number of GPUs. This number
 should not exceed the GPU quota specified by the value of the
 "**OpenShift Request on GPU Quota**" attribute that has been approved for your
 "**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront as
 [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
+
+    !!! note "Pod Spec: tolerations & nodeSelector"
+
+        When requesting GPU resources directly from pods and deployments, you must include the spec.tolerations and spec.nodeSelector shown above, for your ddesired GPU type.
 
 If you need to increase this quota value, you can request a change as
 [explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
@@ -203,22 +216,25 @@ the name of the GPU device:
 We can specify information about the GPU product type, family, count, and so on,
 as shown in the Pod Spec above. Also, these node labels can be used in the Pod Spec
 to schedule workloads based on criteria such as the GPU device name, as shown under
-_nodeSelector_ as shown below:
+_nodeSelector_ in this case (NVIDIA V100 GPU):
 
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: gpu-pod2
     spec:
-      restartPolicy: Never
       containers:
-        - name: cuda-container
-          image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda10.2
-          command: ["sleep"]
-          args: ["infinity"]
-          resources:
-            limits:
-              nvidia.com/gpu: 1
+      - name: app
+        image: ...
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+            nvidia.com/gpu: 1
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      tolerations:
+        - key: nvidia.com/gpu.product
+          operator: Equal
+          value: Tesla-V100-PCIE-32GB
+          effect: NoSchedule
       nodeSelector:
         nvidia.com/gpu.product: Tesla-V100-PCIE-32GB
 

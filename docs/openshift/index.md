@@ -37,6 +37,10 @@ the list below.
 
 -   [Storage Overview](storage/storage-overview.md)
 
+## GPUs
+
+-   [Intro to GPUs in NERC OCP Clusters](gpus/intro-to-gpus-in-nerc-ocp.md)
+
 ## Deleting Applications
 
 -   [Deleting your applications](applications/deleting-applications.md)

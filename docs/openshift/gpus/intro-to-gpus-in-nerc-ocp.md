@@ -4,6 +4,12 @@ NERC OCP clusters leverage the [NVIDIA GPU Operator](https://docs.nvidia.com/dat
 as well as the [Node Feature Discovery Operator](https://docs.openshift.com/container-platform/4.15/hardware_enablement/psap-node-feature-discovery-operator.html)
 to manage and deploy GPU worker nodes to clusters.
 
+GPU nodes in NERC clusters are also managed via
+ [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+ according to their GPU device.
+This ensures that only workloads explicitly requesting GPUs will consume GPU
+resources.
+
 ## NERC GPU Worker Node Arhitectures
 
 The NERC OpenShift environment currently supports two different NVIDIA GPU
@@ -29,26 +35,9 @@ There are two ways to deploy workloads on GPU nodes:
 1. Deploy directly in your OCP namespace:
 
 In your project namespace you can deploy a GPU workload by explicitely
- requesting a GPU in your manifest, like for instance:
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: sample-gpu-request
-spec:
-  restartPolicy: Never
-  containers:
-  - name: sample-gpu-request
-    image: <your-image-url>
-    ...
-    ...
-    resources:
-      limits:
-        nvidia.com/gpu: 1
-```
+ requesting a GPU in your manifest, see: [How to specify pod to use GPU](https://nerc-project.github.io/nerc-docs/openshift/applications/scaling-and-performance-guide/#how-to-specify-pod-to-use-gpu)
 
 1. Deploy through RHOAI
 
-See [Populate the data science project with a Workbench](https://github.com/nerc-project/nerc-docs/blob/main/docs/openshift-ai/data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+See [Populate the data science project with a Workbench](https://nerc-project.github.io/nerc-docs/openshift-ai/data-science-project/using-projects-the-rhoai/#populate-the-data-science-project-with-a-workbench)
  for selecting GPU options.

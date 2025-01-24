@@ -107,6 +107,8 @@ nav:
           - Editing Applications:
                 - Editing your applications: openshift/applications/editing-applications.md
                 - Scaling and Performance Guide: openshift/applications/scaling-and-performance-guide.md
+          - GPUs:
+                - Introduction to GPUs in NERC OpenShift: openshift/gpus/intro-to-gpus-in-nerc-ocp.md
           - Storage:
                 - Storage Overview: openshift/storage/storage-overview.md
           - Deleting Applications:

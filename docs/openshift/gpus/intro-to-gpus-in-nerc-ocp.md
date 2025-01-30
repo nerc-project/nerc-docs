@@ -45,6 +45,6 @@ There are two ways to deploy workloads on GPU nodes:
 
     !!! note "GPU Accelerator on NERC RHOAI"
 
-        The different options for accelerator are "NONE", "NVIDIA GPU", "NVIDIA V100 GPU", and "NVIDIA A100 GPU" as shown below:
+        The different options for GPU accelerator are "NONE", "NVIDIA A100 GPU", and "NVIDIA V100 GPU" as shown below:
 
         ![NVIDIA GPU Accelerator](images/gpu_accelerator.png)

@@ -160,16 +160,17 @@ following for requesting (NVIDIA A100 GPU):
         nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
 
 In the sample Pod Spec above, you can allocate GPUs to containers by specifying
- the GPU
-resource `nvidia.com/gpu` and indicating the desired number of GPUs. This number
-should not exceed the GPU quota specified by the value of the
+the GPU resource `nvidia.com/gpu` and indicating the desired number of GPUs. This
+number should not exceed the GPU quota specified by the value of the
 "**OpenShift Request on GPU Quota**" attribute that has been approved for your
 "**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront as
 [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
 
-    !!! note "Pod Spec: tolerations & nodeSelector"
+!!! note "Pod Spec: tolerations & nodeSelector"
 
-        When requesting GPU resources directly from pods and deployments, you must include the spec.tolerations and spec.nodeSelector shown above, for your ddesired GPU type.
+    When requesting GPU resources directly from pods and deployments, you must include
+    the `spec.tolerations` and `spec.nodeSelector` shown above, for your desired
+    GPU type.
 
 If you need to increase this quota value, you can request a change as
 [explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).

@@ -157,9 +157,9 @@ This will show more details about the change request as shown below:
 
     To learn more about the key differences between CPUs and GPUs, please [read this](../../openstack/create-and-connect-to-the-VM/flavors.md#comparison-between-cpu-and-gpu).
 
-For OpenShift pods, we can specify different types of GPUs. Since OpenShift is not
-based on flavors, we can customize the resources as needed at the pod level while
-still utilizing GPU resources.
+For OpenShift pods, we can specify [different types of GPUs](../../openshift/gpus/intro-to-gpus-in-nerc-ocp.md).
+Since OpenShift is not based on flavors, we can customize the resources as
+needed at the pod level while still utilizing GPU resources.
 
 You can read about how to specify a pod to use a GPU [here](../../openshift/applications/scaling-and-performance-guide.md#how-to-specify-pod-to-use-gpu).
 

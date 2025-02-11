@@ -193,6 +193,11 @@ a running pod YAML that requests the GPU device with a count of 2:
           resources:
             limits:
               nvidia.com/gpu: 2
+      tolerations:
+        - key: nvidia.com/gpu.product
+          operator: Equal
+          value: NVIDIA-A100-SXM4-40GB
+          effect: NoSchedule
       nodeSelector:
         nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
 

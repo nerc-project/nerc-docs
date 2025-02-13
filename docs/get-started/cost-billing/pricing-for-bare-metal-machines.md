@@ -32,12 +32,12 @@ Bare metal instances pricing is currently available as a limited offering.
 
     - Expected Workload
 
-    - Preferred Hardware Specifications
+    - Funding Resource (Optional)
 
     This information will help us evaluate the demand and feasibility of expanding
     bare metal offerings in the future.
 
-    For inquiries or to submit your request, please contact us to discuss it soon
+    For inquiries or to submit your request, please contact us to discuss it
     by emailing us at [help@esi.mghpcc.org](mailto:help@esi.mghpcc.org?subject=New%20User%20Query)
     or, by submitting a new ticket at [the NERC's Support Ticketing System](https://mghpcc.supportsystem.com/open.php)
     by selecting "**ESI Inquiry**" as the *Help Topic* option.

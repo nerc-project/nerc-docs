@@ -3,6 +3,8 @@ name: Build and Deploy Documentation using MkDocs
 # Controls when the action will run. Triggers the workflow on push events on main branch
 # but pull request events on any branch but deployement happens only for the main branch
 on:
+    schedule:
+        - cron: '0 0 * * *' # Runs at 00:00 UTC every day
     push:
         branches: [main]
     pull_request:
@@ -35,6 +37,9 @@ jobs:
                   python -m pip install --upgrade pip
                   if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
                   git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
+            - name: Fetch nerc_rates and render Jinja templates
+              run: |
+                  python scripts/add_nerc_rates.py
             - name: Clean Build
               run: |
                   mkdocs build --clean
@@ -64,6 +69,9 @@ jobs:
                   python -m pip install --upgrade pip
                   if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
                   git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
+            - name: Fetch nerc_rates and render Jinja templates
+              run: |
+                  python scripts/add_nerc_rates.py
             - name: Deploy
               run: |
                   mkdocs gh-deploy --force

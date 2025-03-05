@@ -29,15 +29,16 @@ and billing model.
 ## Calculations
 
 ### Service Units (SUs)
-
+<!-- markdownlint-disable MD052 -->
 | Name         | vGPU | vCPU | RAM (GiB) | Current Price |
 | ------------ | ---- | ---- | --------- | ------------- |
-| H100 GPU     | 1    | 63   | 376       | $6.04         |
-| A100sxm4 GPU | 1    | 31   | 240       | $2.078        |
-| A100 GPU     | 1    | 24   | 74        | $1.803        |
-| V100 GPU     | 1    | 48   | 192       | $1.214        |
-| K80 GPU      | 1    | 6    | 28.5      | $0.463        |
-| CPU          | 0    | 1    | 4         | $0.013        |
+| H100 GPU     | {{su_info_dict["GPUH100"]["vGPUs"]}}    | {{su_info_dict["GPUH100"]["vCPUs"]}}   | {{su_info_dict["GPUH100"]["RAM"]}}       | ${{su_info_dict["GPUH100"]["rate"]}}        |
+| A100sxm4 GPU | {{su_info_dict["GPUA100SXM4"]["vGPUs"]}}    | {{su_info_dict["GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["GPUA100SXM4"]["rate"]}}        |
+| A100 GPU     | {{su_info_dict["GPUA100"]["vGPUs"]}}    | {{su_info_dict["GPUA100"]["vCPUs"]}}   | {{su_info_dict["GPUA100"]["RAM"]}}       | ${{su_info_dict["GPUA100"]["rate"]}}        |
+| V100 GPU     | {{su_info_dict["GPUV100"]["vGPUs"]}}    | {{su_info_dict["GPUV100"]["vCPUs"]}}   | {{su_info_dict["GPUV100"]["RAM"]}}       | ${{su_info_dict["GPUV100"]["rate"]}}        |
+| K80 GPU      | {{su_info_dict["GPUK80"]["vGPUs"]}}    | {{su_info_dict["GPUK80"]["vCPUs"]}}   | {{su_info_dict["GPUK80"]["RAM"]}}       | ${{su_info_dict["GPUK80"]["rate"]}}        |
+| CPU          | {{su_info_dict["CPU"]["vGPUs"]}}    | {{su_info_dict["CPU"]["vCPUs"]}}   | {{su_info_dict["CPU"]["RAM"]}}       | ${{su_info_dict["CPU"]["rate"]}}        |
+<!-- markdownlint-enable MD052 -->
 
 !!! info "Expected Availability of H100 GPUs"
 
@@ -52,6 +53,7 @@ Pods (summed up by Project) and VMs on a per-hour basis for any portion of an
 hour they are used, and any VM "flavor"/Pod reservation is charged as a multiplier
 of the base SU for the maximum resource they reserve.
 
+<!-- markdownlint-disable MD052 -->
 **GPU SU Example:**
 
 -   A Project or VM with:
@@ -60,9 +62,9 @@ of the base SU for the maximum resource they reserve.
 
 -   Will be charged:
 
-    `1 A100 GPU SUs x 200hrs (199.2 rounded up) x $1.803`
+    `1 A100 GPU SUs x 200hrs (199.2 rounded up) x ${{su_info_dict["GPUA100"]["rate"]}}`
 
-    `$360.60`
+    `${{ "{:,.2f}".format(su_info_dict["GPUA100"]["rate"] * 200) }}`
 
 **OpenStack CPU SU Example:**
 
@@ -72,9 +74,10 @@ of the base SU for the maximum resource they reserve.
 
 -   Will be charged:
 
-    `5 CPU SUs due to the extra RAM (20GiB vs. 12GiB(3 x 4GiB)) x 720hrs x $0.013`
+    `5 CPU SUs due to the extra RAM (20GiB vs. 12GiB(3 x 4GiB)) x 720hrs x ${{su_info_dict["CPU"]["rate"]}}`
 
-    `$46.80`
+    `${{ "{:,.2f}".format(su_info_dict["CPU"]["rate"] * 5 * 720) }}`
+<!-- markdownlint-enable MD052 -->
 
 !!! warning "Are VMs invoiced even when shut down?"
 
@@ -99,21 +102,23 @@ of the base SU for the maximum resource they reserve.
 
     iii. `2 vCPU, 4 GiB RAM, 720hrs (24hr*30days)`
 
+<!-- markdownlint-disable MD052 MD013 -->
 -   Project Will be charged:
 
     `RoundUP(Sum(`
 
-    `1 CPU SUs due to first pod * 720hrs * $0.013`
+    `1 CPU SUs due to first pod * 720hrs * ${{su_info_dict["CPU"]["rate"]}}`
 
-    `2 CPU SUs due to extra RAM (8GiB vs 0.4GiB(0.1*4GiB)) * 720hrs * $0.013`
+    `2 CPU SUs due to extra RAM (8GiB vs 0.4GiB(0.1*4GiB)) * 720hrs * ${{su_info_dict["CPU"]["rate"]}}`
 
-    `2 CPU SUs due to more CPU (2vCPU vs 1vCPU(4GiB/4)) * 720hrs * $0.013`
+    `2 CPU SUs due to more CPU (2vCPU vs 1vCPU(4GiB/4)) * 720hrs * ${{su_info_dict["CPU"]["rate"]}}`
 
     `))`
 
-    `=RoundUP(Sum(720(1+2+2)))*0.013`
+    `=RoundUP(Sum(720(1+2+2)))*{{su_info_dict["CPU"]["rate"]}}`
 
-    `$46.80`
+    `${{ "{:,.2f}".format(su_info_dict["CPU"]["rate"] * 720 * (1 + 2 + 2)) }}`
+<!-- markdownlint-enable MD052 MD013 -->
 
 !!! note "How to calculate cost for all running OpenShift pods?"
 
@@ -128,7 +133,9 @@ GPU pods, as GPU pods cannot currently share resources with CPU pods.
 
 ### Storage
 
-Storage is charged separately at a rate of **$0.009 TiB/hr** or **$9.00E-6 GiB/hr**.
+<!-- markdownlint-disable MD052 MD013 -->
+Storage is charged separately at a rate of **${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr**
+<!-- markdownlint-enable MD052 MD013 -->
 OpenStack volumes remain provisioned until they are deleted. VM's reserve
 volumes, and you can also create extra volumes yourself. In OpenShift pods, storage
 is only provisioned while it is active, and in persistent volumes, storage remains
@@ -159,6 +166,7 @@ provisioned until it is deleted.
     allocations and [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project)
     for NERC-OCP (OpenShift) allocations.
 
+<!-- markdownlint-disable MD052 MD013 -->
 **Storage Example 1:**
 
 -   Volume or VM with:
@@ -167,9 +175,9 @@ provisioned until it is deleted.
 
 -   Will be charged:
 
-    `.5 Storage TiB SU (.5 TiB x 700hrs) x $0.009 TiB/hr`
+    `.5 Storage TiB SU (.5 TiB x 700hrs) x ${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr`
 
-    `$3.15`
+    `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 700 / 2) }}`
 
 **Storage Example 2:**
 
@@ -179,9 +187,10 @@ provisioned until it is deleted.
 
 -   Will be charged:
 
-    `10 Storage TiB SU (10TiB x 720 hrs) x $0.009 TiB/hr`
+    `10 Storage TiB SU (10TiB x 720 hrs) x ${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr`
 
-    `$64.80`
+    `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 10 * 720) }}`
+<!-- markdownlint-enable MD052 MD013 -->
 
 Storage includes all types of storage Object, Block, Ephemeral & Image.
 

@@ -354,8 +354,8 @@ your pods should target.
 
 | Metric             | Description                                                                                 |
 | ------------------ | ------------------------------------------------------------------------------------------- |
-| CPU Utilization    | Number of CPU cores used. Can be used to calculate a percentage of the pod’s requested CPU. |
-| Memory Utilization | Amount of memory used. Can be used to calculate a percentage of the pod’s requested memory. |
+| CPU Utilization    | Number of CPU cores used. Can be used to calculate a percentage of the pod's requested CPU. |
+| Memory Utilization | Amount of memory used. Can be used to calculate a percentage of the pod's requested memory. |
 
 After you create a horizontal pod autoscaler, OCP begins to query the CPU and/or
 memory resource metrics on the pods. When these metrics are available, the HPA

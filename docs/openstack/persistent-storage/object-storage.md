@@ -791,7 +791,7 @@ To run the `rclone` commands, you need to have:
 
 #### Configuring Rclone
 
-First, you’ll need to configure `rclone`. As the object storage systems
+First, you'll need to configure `rclone`. As the object storage systems
 have quite complicated authentication these are kept in a config file.
 
 If you run `rclone config file` you will see where the default location is

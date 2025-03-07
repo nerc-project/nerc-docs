@@ -9,7 +9,7 @@ These files are used to manage underlying infrastructure rather than through
 [NERC's web-based graphical interface - Horizon](https://stack.nerc.mghpcc.org).
 Terraform allows you to build, change, and manage your infrastructure in a safe,
 consistent, and repeatable way by defining resource configurations that you can
-version, reuse, and share. Terraform’s main job is to create, modify, and destroy
+version, reuse, and share. Terraform's main job is to create, modify, and destroy
 compute instances, private networks and other NERC resources.
 
 ## Benefits of Terraform

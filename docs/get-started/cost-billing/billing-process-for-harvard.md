@@ -34,7 +34,7 @@ Please follow these two steps to ensure proper billing setup:
 
         Please note that if you already have an existing active NERC account, you
         need to provide your HUIT Customer Code to NERC. If you think your department
-        may already have a HUIT account but you don’t know the corresponding Customer
+        may already have a HUIT account but you don't know the corresponding Customer
         Code then you can [contact HUIT Billing](https://billing.huit.harvard.edu/portal/allusers/contactus)
         to get the required Customer Code.
 

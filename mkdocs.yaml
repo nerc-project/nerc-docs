@@ -108,10 +108,12 @@ nav:
           - Editing Applications:
                 - Editing your applications: openshift/applications/editing-applications.md
                 - Scaling and Performance Guide: openshift/applications/scaling-and-performance-guide.md
+          - Set up Domain Name for Your Application:  openshift/domain-name-system/domain-name-for-your-application.md
           - GPUs:
-                - Introduction to GPUs in NERC OpenShift: openshift/gpus/intro-to-gpus-in-nerc-ocp.md
+                - Introduction to GPUs on NERC OpenShift: openshift/gpus/intro-to-gpus-in-nerc-ocp.md
           - Storage:
                 - Storage Overview: openshift/storage/storage-overview.md
+                - Minio: openshift/storage/minio.md
           - Deleting Applications:
                 - Deleting your applications: openshift/applications/deleting-applications.md
           - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
@@ -130,6 +132,11 @@ nav:
           - Other Example Projects:
                 - How to access, download, and analyze data for S3 usage: openshift-ai/other-projects/how-access-s3-data-then-download-and-analyze-it.md
                 - Configure a Jupyter Notebook to use GPUs for AI/ML modeling: openshift-ai/other-projects/configure-jupyter-notebook-use-gpus-aiml-modeling.md
+                - Predictive & Generative AI on NERC:
+                    - Predictive & Generative AI (LLM & RAG) in Action: openshift-ai/other-projects/predictive-and-generative-AI.md
+                    - Predictive AI tutorial:
+                        - Credit Card Fraud Detection Application: openshift-ai/other-projects/fraud-detection-predictive-ai-app.md
+                        - Object Detection Application Using YOLOv5 Model: openshift-ai/other-projects/object-detection-app-using-yolo5.md
     - Other Tools On NERC:
           - Other Useful Tools: other-tools/index.md
           - Kubernetes:

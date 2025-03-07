@@ -10,14 +10,40 @@ we can test it.
 
     ![Jupyter Hub Control Panel Menu](images/juyter-hub-control-panel-menu.png)
 
--   In your project in JupyterLab, open the notebook `03_remote_inference.ipynb`
+## Using the Model Server Inference Endpoint
+
+As [described here](model-serving-in-the-rhoai.md#deploy-the-model), once your
+model is successfully deployed using **Models and model servers**, the model is
+accessible through the inference API endpoints as shown below:
+
+![Successfully Deployed Model Inference endpoints Info](images/deployed-model-inference-endpoints.png)
+
+In the **Inference endpoint** field contains an **Internal Service** link, click
+the link to open a popup that shows the URL details, and then take note of
+the **grpcUrl** and **restUrl** values.
+
+### Using the model server to do an inference using gRPC
+
+-   In your project in JupyterLab, open the notebook `03_remote_inference_grpc.ipynb`
     and follow the instructions to see how the model can be queried.
 
--   Update the `grpc_url` as [noted before](model-serving-in-the-rhoai.md#deploy-the-model)
-    for the **the grpc URL value** from the deployed model on the NERC RHOAI Model
-    server.
+-   Update the `grpc_url` with your own **grpcUrl** value as [previously noted](#using-the-model-server-inference-endpoint).
 
-    ![Change grpc URL Value](images/change-grpc-url-value.png)
+    ![Change grpcUrl Value](images/change-grpc-url-value.png)
+
+-   Once you've completed the notebook's instructions, the object detection model
+    can isolate and recognize T-shirts, bottles, and hats in pictures, as shown below:
+
+    ![Model Test to Detect Objects In An Image](images/model-test-object-detection.png)
+
+### Using the model server to do an inference using REST
+
+-   In your project in JupyterLab, open the notebook `04-remote_inference_rest.ipynb`
+    and follow the instructions to see how the model can be queried.
+
+-   Update the `rest_url` with the **restUrl** as [previously noted](#using-the-model-server-inference-endpoint).
+
+    ![Change restUrl Value](images/change-rest-url-value.png)
 
 -   Once you've completed the notebook's instructions, the object detection model
     can isolate and recognize T-shirts, bottles, and hats in pictures, as shown below:

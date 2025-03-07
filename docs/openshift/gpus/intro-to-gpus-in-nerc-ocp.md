@@ -1,10 +1,10 @@
-# Introduction to GPUs in NERC OpenShift
+# Introduction to GPUs on NERC OpenShift
 
 NERC OCP clusters leverage the [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html)
 as well as the [Node Feature Discovery Operator](https://docs.openshift.com/container-platform/4.15/hardware_enablement/psap-node-feature-discovery-operator.html)
 to manage and deploy GPU worker nodes to clusters.
 
-GPU nodes in NERC clusters are also managed via
+GPU nodes on NERC clusters are also managed via
 [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 according to their GPU device. This ensures that only workloads explicitly
 requesting GPUs will consume GPU resources.

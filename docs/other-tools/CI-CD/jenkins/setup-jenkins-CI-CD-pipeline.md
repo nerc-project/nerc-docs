@@ -247,7 +247,7 @@ To create a fork of the example `nodeapp` repository:
 
 ## Modify the Jenkins Declarative Pipeline Script file
 
--   Modify the provided ‘**Jenkinsfile**’ to specify your own Docker Hub account
+-   Modify the provided '**Jenkinsfile**' to specify your own Docker Hub account
     and github repository as specified in "`<dockerhub_username>`" and "`<github_username>`".
 
     !!! warning "Very Important Information"

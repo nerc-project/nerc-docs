@@ -1,7 +1,7 @@
 # K3s with High Availability setup
 
 First, Kubernetes HA has **two possible setups**: embedded or external database
-(DB). We’ll use the **external DB** in this HA K3s cluster setup. For which `MySQL`
+(DB). We'll use the **external DB** in this HA K3s cluster setup. For which `MySQL`
 is the external DB as shown here:
 ![k3s HA architecture with external database](../images/k3s_ha_architecture.jpg)
 
@@ -10,7 +10,7 @@ connect to the TCP **Load Balancer**. The Load Balancer uses a list of private I
 addresses to balance the traffic between the **three servers**. If one of the
 servers crashes, it is be removed from the list of IP addresses.
 
-The servers use the **SQL data store** to synchronize the cluster’s state.
+The servers use the **SQL data store** to synchronize the cluster's state.
 
 ## Requirements
 
@@ -101,7 +101,7 @@ curl -sfL https://get.k3s.io | sh -s - server \
 
 ## Two VMs to run as K3s agents
 
-Set the `K3S_URL` to point to the Loadbalancer’s internal IP and set the `K3S_TOKEN`
+Set the `K3S_URL` to point to the Loadbalancer's internal IP and set the `K3S_TOKEN`
 from the clipboard on both of the agent nodes:
 
 ```sh

@@ -53,10 +53,18 @@ Then click **Clone** button as shown below:
 
 ![NERC RHOAI MLOps Example Project](images/nerc-mlops-git-repo.png)
 
+Alternatively, you can clone any **Public Git repository** directly by clicking
+on the **Git Clone** icon in the toolbar, as shown below:
+
+![Git Clone icon](images/jupyter-git-icon.png)
+
 !!! info "What is MLOps?"
 
     Machine learning operations (MLOps) are a set of practices that automate and
     simplify machine learning (ML) workflows and deployments.
+
+    To learn more about the end-to-end reference design for MLOps, read the blog:
+    [Enterprise MLOps Reference Design](https://www.redhat.com/en/blog/enterprise-mlops-reference-design).
 
 Cloning takes a few seconds, after which you can double-click and navigate to the
 newly-created folder that contains your cloned Git repository.
@@ -122,8 +130,8 @@ the notebook file to launch it. This action will open another tab in the content
 section of the environment, on the right.
 
 Here, you can find three primary starter notebooks for setting up the intelligent
-application: `01_sandbox.ipynb`, `02_model_training_basics.ipynb`, and `03_remote_inference.ipynb`
-within the root folder path of `nerc_rhoai_mlops`.
+application: `01_sandbox.ipynb`, `02_model_training_basics.ipynb`, `03_remote_inference_grpc.ipynb`,
+and `04-remote_inference_rest.ipynb` within the root folder path of `nerc_rhoai_mlops`.
 
 You can click and run `01_sandbox.ipynb` to verify the setup JupyterLab environment
 can run python code properly.
@@ -147,8 +155,9 @@ This environment isolation is also a great advantage brought by NERC RHOAI.
 
 #### Testing for GPU Code
 
-As we have setup the workbench specifing the desired **Number of GPUs**: "1", we
-will be able to test GPU based code running `gpu.ipynb` notebook file as shown below:
+As we have setup the workbench specifing the desired **Accelerator** as
+**NVIDIA V100 GPU** and **Number of accelerators**: "1", we will be able to test
+GPU based code running `gpu.ipynb` notebook file as shown below:
 
 ![GPU Code Test](images/gpu-code-test.png)
 
@@ -170,13 +179,12 @@ generate and save the model `my-model.keras` within the root folder path of
     isolate and recognize T-shirts, bottles, and hats in pictures. Although the
     process is globally the same one as what we have seen in the
     [previous section](#training-a-model), this model has already been trained as
-    it takes a few hours with the help of a GPU to do it. If you want to know
-    more about this training process, you can have a look [here](https://github.com/rh-aiservices-bu/yolov5-transfer-learning).
+    it takes a few hours with the help of a GPU to do it.
 
     The resulting model has been saved in the [**ONNX**](https://onnx.ai/) format,
     an open standard for machine learning interoperability, which is one we can
     use with OpenVINO and RHOAI model serving. The model has been stored and is
-    available for download in NERC OpenStack Object Storage container as [described
+    available for download on NERC OpenStack Object Storage container as [described
     here](model-serving-in-the-rhoai.md#create-a-data-connection).
 
 ---

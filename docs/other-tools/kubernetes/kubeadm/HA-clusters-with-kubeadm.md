@@ -759,7 +759,7 @@ worker2   Ready    <none>                   10m   v1.26.1
 ## Deploy A Sample Nginx Application From one of the master nodes
 
 Now that we have all the components to make the cluster and applications work,
-let’s deploy a sample Nginx application and see if we can access it over a
+let's deploy a sample Nginx application and see if we can access it over a
 [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)
 that has port range of _30000-32767_.
 
@@ -926,7 +926,7 @@ to access the dashboard.
 
 ## Watch Demo Video showing how to setup the cluster
 
-Here’s a [recorded demo video](https://drive.google.com/file/d/1mALftMHEUkjQ7lK6oJ6S_tiY59Q0JASY/view?usp=sharing)
+Here's a [recorded demo video](https://drive.google.com/file/d/1mALftMHEUkjQ7lK6oJ6S_tiY59Q0JASY/view?usp=sharing)
 on how to setup HA K8s cluster using `kubeadm` as
 explained above.
 

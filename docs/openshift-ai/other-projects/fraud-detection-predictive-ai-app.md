@@ -56,13 +56,13 @@ creates the following **local MinIO storage buckets**:
 this bucket and its connection for notebooks and model servers.
 
 -   **pipeline-artifacts** – Use this bucket to store pipeline artifacts. A pipeline
-    artifacts bucket is required when setting up a pipeline server. For clarity, this
-    tutorial keeps it separate from the first storage bucket, as it is considered
+    artifacts bucket is required when setting up a pipeline server. For clarity,
+    this tutorial keeps it separate from the first storage bucket, as it is considered
     best practice to use dedicated storage buckets for different purposes.
 
-    You must also create a connection to each storage bucket. For this tutorial, you
-    have two options depending on whether you want to use your own storage buckets or
-    a script to create local MinIO storage buckets:
+You must also create a connection to each storage bucket. For this tutorial, you
+have two options depending on whether you want to use your own storage buckets
+or a script to create local MinIO storage buckets:
 
 #### 1.1. **Using your own S3-compatible storage buckets**
 
@@ -79,16 +79,16 @@ and **Pipeline Artifacts** as shown below:
 ![Data Connections](images/data-connections.png)
 
 #### 1.2. **Using a script to set up local MinIO storage**
-        
+
 Alternatively, if you want to run a script that automates the setup by completing
 the following tasks:
-        
+
 -   **Deploys a MinIO instance** in your project namespace.
-        
+
 -   **Creates two storage buckets** within the MinIO instance.
-        
+
 -   **Generates a random user ID and password** for the MinIO instance.
-        
+
 -   **Establishes two connections** in your project - one for each bucket - using
     the same generated credentials.
 
@@ -119,396 +119,396 @@ iv. Copy the following code and paste it into the Import YAML editor.
 
     ```yaml
     ---
-	apiVersion: v1
-	kind: ServiceAccount
-	metadata:
-	  name: demo-setup
-	---
-	apiVersion: rbac.authorization.k8s.io/v1
-	kind: RoleBinding
-	metadata:
-	  name: demo-setup-edit
-	roleRef:
-	  apiGroup: rbac.authorization.k8s.io
-	  kind: ClusterRole
-	  name: edit
-	subjects:
-	- kind: ServiceAccount
-	  name: demo-setup
-	---
-	apiVersion: v1
-	kind: Service
-	metadata:
-	  labels:
-	    app: minio
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: minio
-	spec:
-	  ports:
-	  - name: api
-	    port: 9000
-	    targetPort: api
-	  - name: console
-	    port: 9090
-	    targetPort: 9090
-	  selector:
-	    app: minio
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  sessionAffinity: None
-	  type: ClusterIP
-	---
-	apiVersion: v1
-	kind: PersistentVolumeClaim
-	metadata:
-	  labels:
-	    app: minio
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: minio
-	spec:
-	  accessModes:
-	  - ReadWriteOnce
-	  resources:
-	    requests:
-	      storage: 10Gi
-	---
-	apiVersion: apps/v1
-	kind: Deployment
-	metadata:
-	  labels:
-	    app: minio
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: minio
-	spec:
-	  replicas: 1
-	  selector:
-	    matchLabels:
-	      app: minio
-	      app.kubernetes.io/component: minio
-	      app.kubernetes.io/instance: minio
-	      app.kubernetes.io/name: minio
-	      app.kubernetes.io/part-of: minio
-	      component: minio
-	  strategy:
-	    type: Recreate
-	  template:
-	    metadata:
-	      labels:
-	        app: minio
-	        app.kubernetes.io/component: minio
-	        app.kubernetes.io/instance: minio
-	        app.kubernetes.io/name: minio
-	        app.kubernetes.io/part-of: minio
-	        component: minio
-	    spec:
-	      containers:
-	      - args:
-	        - minio server /data --console-address :9090
-	        command:
-	        - /bin/bash
-	        - -c
-	        envFrom:
-	        - secretRef:
-	            name: minio-root-user
-	        image: quay.io/minio/minio:latest
-	        name: minio
-	        ports:
-	        - containerPort: 9000
-	          name: api
-	          protocol: TCP
-	        - containerPort: 9090
-	          name: console
-	          protocol: TCP
-	        resources:
-	          limits:
-	            cpu: "2"
-	            memory: 2Gi
-	          requests:
-	            cpu: 200m
-	            memory: 1Gi
-	        volumeMounts:
-	        - mountPath: /data
-	          name: minio
-	      volumes:
-	      - name: minio
-	        persistentVolumeClaim:
-	          claimName: minio
-	      - emptyDir: {}
-	        name: empty
-	---
-	apiVersion: batch/v1
-	kind: Job
-	metadata:
-	  labels:
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: create-ds-connections
-	spec:
-	  selector: {}
-	  template:
-	    spec:
-	      containers:
-	      - args:
-	        - -ec
-	        - |-
-	          echo -n 'Waiting for minio route'
-	          while ! oc get route minio-s3 2>/dev/null | grep -qF minio-s3; do
-	            echo -n .
-	            sleep 5
-	          done; echo
-	
-	          echo -n 'Waiting for minio root user secret'
-	          while ! oc get secret minio-root-user 2>/dev/null | grep -qF minio-root-user; do
-	            echo -n .
-	            sleep 5
-	          done; echo
-	
-	          MINIO_ROOT_USER=$(oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}')
-	          MINIO_ROOT_PASSWORD=$(oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}')
-	          MINIO_HOST=https://$(oc get route minio-s3 -o template --template '{{.spec.host}}')
-	
-	          cat << EOF | oc apply -f-
-	          apiVersion: v1
-	          kind: Secret
-	          metadata:
-	            annotations:
-	              opendatahub.io/connection-type: s3
-	              openshift.io/display-name: My Storage
-	            labels:
-	              opendatahub.io/dashboard: "true"
-	              opendatahub.io/managed: "true"
-	            name: aws-connection-my-storage
-	          data:
-	            AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER}
-	            AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD}
-	          stringData:
-	            AWS_DEFAULT_REGION: us-east-1
-	            AWS_S3_BUCKET: my-storage
-	            AWS_S3_ENDPOINT: ${MINIO_HOST}
-	          type: Opaque
-	          EOF
-	          cat << EOF | oc apply -f-
-	          apiVersion: v1
-	          kind: Secret
-	          metadata:
-	            annotations:
-	              opendatahub.io/connection-type: s3
-	              openshift.io/display-name: Pipeline Artifacts
-	            labels:
-	              opendatahub.io/dashboard: "true"
-	              opendatahub.io/managed: "true"
-	            name: aws-connection-pipeline-artifacts
-	          data:
-	            AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER}
-	            AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD}
-	          stringData:
-	            AWS_DEFAULT_REGION: us-east-1
-	            AWS_S3_BUCKET: pipeline-artifacts
-	            AWS_S3_ENDPOINT: ${MINIO_HOST}
-	          type: Opaque
-	          EOF
-	        command:
-	        - /bin/bash
-	        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
-	        imagePullPolicy: IfNotPresent
-	        name: create-ds-connections
-	      restartPolicy: Never
-	      serviceAccount: demo-setup
-	      serviceAccountName: demo-setup
-	---
-	apiVersion: batch/v1
-	kind: Job
-	metadata:
-	  labels:
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: create-minio-buckets
-	spec:
-	  selector: {}
-	  template:
-	    metadata:
-	      labels:
-	        app.kubernetes.io/component: minio
-	        app.kubernetes.io/instance: minio
-	        app.kubernetes.io/name: minio
-	        app.kubernetes.io/part-of: minio
-	        component: minio
-	    spec:
-	      containers:
-	      - args:
-	        - -ec
-	        - |-
-	          oc get secret minio-root-user
-	          env | grep MINIO
-	          cat << 'EOF' | python3
-	          import boto3, os
-	
-	          s3 = boto3.client("s3",
-	                            endpoint_url="http://minio:9000",
-	                            aws_access_key_id=os.getenv("MINIO_ROOT_USER"),
-	                            aws_secret_access_key=os.getenv("MINIO_ROOT_PASSWORD"))
-	          bucket = 'pipeline-artifacts'
-	          print('creating pipeline-artifacts bucket')
-	          if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
-	            s3.create_bucket(Bucket=bucket)
-	          bucket = 'my-storage'
-	          print('creating my-storage bucket')
-	          if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
-	            s3.create_bucket(Bucket=bucket)
-	          EOF
-	        command:
-	        - /bin/bash
-	        envFrom:
-	        - secretRef:
-	            name: minio-root-user
-	        image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2023.2
-	        imagePullPolicy: IfNotPresent
-	        name: create-buckets
-	      initContainers:
-	      - args:
-	        - -ec
-	        - |-
-	          echo -n 'Waiting for minio root user secret'
-	          while ! oc get secret minio-root-user 2>/dev/null | grep -qF minio-root-user; do
-	          echo -n .
-	          sleep 5
-	          done; echo
-	
-	          echo -n 'Waiting for minio deployment'
-	          while ! oc get deployment minio 2>/dev/null | grep -qF minio; do
-	            echo -n .
-	            sleep 5
-	          done; echo
-	          oc wait --for=condition=available --timeout=60s deployment/minio
-	          sleep 10
-	        command:
-	        - /bin/bash
-	        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
-	        imagePullPolicy: IfNotPresent
-	        name: wait-for-minio
-	      restartPolicy: Never
-	      serviceAccount: demo-setup
-	      serviceAccountName: demo-setup
-	---
-	apiVersion: batch/v1
-	kind: Job
-	metadata:
-	  labels:
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: create-minio-root-user
-	spec:
-	  backoffLimit: 4
-	  template:
-	    metadata:
-	      labels:
-	        app.kubernetes.io/component: minio
-	        app.kubernetes.io/instance: minio
-	        app.kubernetes.io/name: minio
-	        app.kubernetes.io/part-of: minio
-	        component: minio
-	    spec:
-	      containers:
-	      - args:
-	        - -ec
-	        - |-
-	          if [ -n "$(oc get secret minio-root-user -oname 2>/dev/null)" ]; then
-	            echo "Secret already exists. Skipping." >&2
-	            exit 0
-	          fi
-	          genpass() {
-	              < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c"${1:-32}"
-	          }
-	          id=$(genpass 16)
-	          secret=$(genpass)
-	          cat << EOF | oc apply -f-
-	          apiVersion: v1
-	          kind: Secret
-	          metadata:
-	            name: minio-root-user
-	          type: Opaque
-	          stringData:
-	            MINIO_ROOT_USER: ${id}
-	            MINIO_ROOT_PASSWORD: ${secret}
-	          EOF
-	        command:
-	        - /bin/bash
-	        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
-	        imagePullPolicy: IfNotPresent
-	        name: create-minio-root-user
-	      restartPolicy: Never
-	      serviceAccount: demo-setup
-	      serviceAccountName: demo-setup
-	---
-	apiVersion: route.openshift.io/v1
-	kind: Route
-	metadata:
-	  labels:
-	    app: minio
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: minio-console
-	spec:
-	  port:
-	    targetPort: console
-	  tls:
-	    insecureEdgeTerminationPolicy: Redirect
-	    termination: edge
-	  to:
-	    kind: Service
-	    name: minio
-	    weight: 100
-	  wildcardPolicy: None
-	---
-	apiVersion: route.openshift.io/v1
-	kind: Route
-	metadata:
-	  labels:
-	    app: minio
-	    app.kubernetes.io/component: minio
-	    app.kubernetes.io/instance: minio
-	    app.kubernetes.io/name: minio
-	    app.kubernetes.io/part-of: minio
-	    component: minio
-	  name: minio-s3
-	spec:
-	  port:
-	    targetPort: api
-	  tls:
-	    insecureEdgeTerminationPolicy: Redirect
-	    termination: edge
-	  to:
-	    kind: Service
-	    name: minio
-	    weight: 100
-	  wildcardPolicy: None
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: demo-setup
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: demo-setup-edit
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: edit
+    subjects:
+    - kind: ServiceAccount
+      name: demo-setup
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: minio
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: minio
+    spec:
+      ports:
+      - name: api
+        port: 9000
+        targetPort: api
+      - name: console
+        port: 9090
+        targetPort: 9090
+      selector:
+        app: minio
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      sessionAffinity: None
+      type: ClusterIP
+    ---
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      labels:
+        app: minio
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: minio
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: minio
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: minio
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: minio
+          app.kubernetes.io/component: minio
+          app.kubernetes.io/instance: minio
+          app.kubernetes.io/name: minio
+          app.kubernetes.io/part-of: minio
+          component: minio
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/component: minio
+            app.kubernetes.io/instance: minio
+            app.kubernetes.io/name: minio
+            app.kubernetes.io/part-of: minio
+            component: minio
+        spec:
+          containers:
+          - args:
+            - minio server /data --console-address :9090
+            command:
+            - /bin/bash
+            - -c
+            envFrom:
+            - secretRef:
+                name: minio-root-user
+            image: quay.io/minio/minio:latest
+            name: minio
+            ports:
+            - containerPort: 9000
+              name: api
+              protocol: TCP
+            - containerPort: 9090
+              name: console
+              protocol: TCP
+            resources:
+              limits:
+                cpu: "2"
+                memory: 2Gi
+              requests:
+                cpu: 200m
+                memory: 1Gi
+            volumeMounts:
+            - mountPath: /data
+              name: minio
+          volumes:
+          - name: minio
+            persistentVolumeClaim:
+              claimName: minio
+          - emptyDir: {}
+            name: empty
+    ---
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      labels:
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: create-ds-connections
+    spec:
+      selector: {}
+      template:
+        spec:
+          containers:
+          - args:
+            - -ec
+            - |-
+              echo -n 'Waiting for minio route'
+              while ! oc get route minio-s3 2>/dev/null | grep -qF minio-s3; do
+                echo -n .
+                sleep 5
+              done; echo
+
+              echo -n 'Waiting for minio root user secret'
+              while ! oc get secret minio-root-user 2>/dev/null | grep -qF minio-root-user; do
+                echo -n .
+                sleep 5
+              done; echo
+
+              MINIO_ROOT_USER=$(oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}')
+              MINIO_ROOT_PASSWORD=$(oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}')
+              MINIO_HOST=https://$(oc get route minio-s3 -o template --template '{{.spec.host}}')
+
+              cat << EOF | oc apply -f-
+              apiVersion: v1
+              kind: Secret
+              metadata:
+                annotations:
+                  opendatahub.io/connection-type: s3
+                  openshift.io/display-name: My Storage
+                labels:
+                  opendatahub.io/dashboard: "true"
+                  opendatahub.io/managed: "true"
+                name: aws-connection-my-storage
+              data:
+                AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER}
+                AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD}
+              stringData:
+                AWS_DEFAULT_REGION: us-east-1
+                AWS_S3_BUCKET: my-storage
+                AWS_S3_ENDPOINT: ${MINIO_HOST}
+              type: Opaque
+              EOF
+              cat << EOF | oc apply -f-
+              apiVersion: v1
+              kind: Secret
+              metadata:
+                annotations:
+                  opendatahub.io/connection-type: s3
+                  openshift.io/display-name: Pipeline Artifacts
+                labels:
+                  opendatahub.io/dashboard: "true"
+                  opendatahub.io/managed: "true"
+                name: aws-connection-pipeline-artifacts
+              data:
+                AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER}
+                AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD}
+              stringData:
+                AWS_DEFAULT_REGION: us-east-1
+                AWS_S3_BUCKET: pipeline-artifacts
+                AWS_S3_ENDPOINT: ${MINIO_HOST}
+              type: Opaque
+              EOF
+            command:
+            - /bin/bash
+            image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+            imagePullPolicy: IfNotPresent
+            name: create-ds-connections
+          restartPolicy: Never
+          serviceAccount: demo-setup
+          serviceAccountName: demo-setup
+    ---
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      labels:
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: create-minio-buckets
+    spec:
+      selector: {}
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/component: minio
+            app.kubernetes.io/instance: minio
+            app.kubernetes.io/name: minio
+            app.kubernetes.io/part-of: minio
+            component: minio
+        spec:
+          containers:
+          - args:
+            - -ec
+            - |-
+              oc get secret minio-root-user
+              env | grep MINIO
+              cat << 'EOF' | python3
+              import boto3, os
+
+              s3 = boto3.client("s3",
+                                endpoint_url="http://minio:9000",
+                                aws_access_key_id=os.getenv("MINIO_ROOT_USER"),
+                                aws_secret_access_key=os.getenv("MINIO_ROOT_PASSWORD"))
+              bucket = 'pipeline-artifacts'
+              print('creating pipeline-artifacts bucket')
+              if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
+                s3.create_bucket(Bucket=bucket)
+              bucket = 'my-storage'
+              print('creating my-storage bucket')
+              if bucket not in [bu["Name"] for bu in s3.list_buckets()["Buckets"]]:
+                s3.create_bucket(Bucket=bucket)
+              EOF
+            command:
+            - /bin/bash
+            envFrom:
+            - secretRef:
+                name: minio-root-user
+            image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2023.2
+            imagePullPolicy: IfNotPresent
+            name: create-buckets
+          initContainers:
+          - args:
+            - -ec
+            - |-
+              echo -n 'Waiting for minio root user secret'
+              while ! oc get secret minio-root-user 2>/dev/null | grep -qF minio-root-user; do
+              echo -n .
+              sleep 5
+              done; echo
+
+              echo -n 'Waiting for minio deployment'
+              while ! oc get deployment minio 2>/dev/null | grep -qF minio; do
+                echo -n .
+                sleep 5
+              done; echo
+              oc wait --for=condition=available --timeout=60s deployment/minio
+              sleep 10
+            command:
+            - /bin/bash
+            image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+            imagePullPolicy: IfNotPresent
+            name: wait-for-minio
+          restartPolicy: Never
+          serviceAccount: demo-setup
+          serviceAccountName: demo-setup
+    ---
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      labels:
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: create-minio-root-user
+    spec:
+      backoffLimit: 4
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/component: minio
+            app.kubernetes.io/instance: minio
+            app.kubernetes.io/name: minio
+            app.kubernetes.io/part-of: minio
+            component: minio
+        spec:
+          containers:
+          - args:
+            - -ec
+            - |-
+              if [ -n "$(oc get secret minio-root-user -oname 2>/dev/null)" ]; then
+                echo "Secret already exists. Skipping." >&2
+                exit 0
+              fi
+              genpass() {
+                  < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c"${1:-32}"
+              }
+              id=$(genpass 16)
+              secret=$(genpass)
+              cat << EOF | oc apply -f-
+              apiVersion: v1
+              kind: Secret
+              metadata:
+                name: minio-root-user
+              type: Opaque
+              stringData:
+                MINIO_ROOT_USER: ${id}
+                MINIO_ROOT_PASSWORD: ${secret}
+              EOF
+            command:
+            - /bin/bash
+            image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+            imagePullPolicy: IfNotPresent
+            name: create-minio-root-user
+          restartPolicy: Never
+          serviceAccount: demo-setup
+          serviceAccountName: demo-setup
+    ---
+    apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      labels:
+        app: minio
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: minio-console
+    spec:
+      port:
+        targetPort: console
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+      to:
+        kind: Service
+        name: minio
+        weight: 100
+      wildcardPolicy: None
+    ---
+    apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      labels:
+        app: minio
+        app.kubernetes.io/component: minio
+        app.kubernetes.io/instance: minio
+        app.kubernetes.io/name: minio
+        app.kubernetes.io/part-of: minio
+        component: minio
+      name: minio-s3
+    spec:
+      port:
+        targetPort: api
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+      to:
+        kind: Service
+        name: minio
+        weight: 100
+      wildcardPolicy: None
     ```
 
 v. Click **Create**.
@@ -523,7 +523,7 @@ created" message and the following resources listed:
 ii. Once the deployment is successful, you will be able to see all resources
 are created and grouped under "minio" application grouping on the
 **Topology View** menu, as shown below:
-        
+
 ![MinIO Under Topology](images/minio-topology.png)
 
 Click on the **minio** deployment and select the "Resources" tab to review
@@ -531,7 +531,7 @@ created *Pods*, *Services*, and *Routes*. Please note the **minio-console**
 route url.
 
 ![MinIO Deployemnt Resources](images/minio-deployment-resources.png)
-        
+
 When you click on the **minio-console** route url, this will open the MinIO
 web console that looks like below:
 
@@ -541,19 +541,19 @@ web console that looks like below:
 
     The Username and Password for the MinIO web console can be retrieved from
     the Data Connection's **Access key** and **Secret key**.
-        
+
 iii. [Navigate back to the OpenShift AI dashboard](#navigating-to-the-openshift-ai-dashboard)
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Fraud detection**.
-            
+
 b. Click **Data connections**. You should see two connections listed:
 *My Storage* and *Pipeline Artifacts* as shown below:
 
 ![Data Connections](images/data-connections.png)
 
 c. Verify the buckets are created on the MinIO Web Console:
-        
+
 -   Click on any data connection from the list that was created and then click
 the action menu (⋮) at the end of the selected data connection row. Choose
 "Edit data connection" from the dropdown menu. This will open a pop-up
@@ -564,14 +564,14 @@ the action menu (⋮) at the end of the selected data connection row. Choose
 -   Note both  *Secret key* (by clicking eye icon near the end of the textbox) and
 *Access key*.
 
-    !!! note "Alternatively, Running `oc` commands to get *Secret key* and *Access key*"
+    !!! note "Alternatively, Run `oc` commands to get *Secret key* and *Access key*"
 
         Alternatively, you can run the following `oc` commands:
 
         i. To get *Secret key* run:
 
         `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
-        
+
         ii. And to get *Access key* run:
 
         `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
@@ -643,7 +643,7 @@ for the pipeline server. as shown below:
 
 ### 3. Creating a workbench and a notebook
 
-#### Creating a workbench and selecting a notebook image 
+#### Creating a workbench and selecting a notebook image
 
 **Procedure:**
 
@@ -704,7 +704,7 @@ values, which you have retrieved while "Editing data connection":
     i. To get *Secret key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
-    
+
     ii. And to get *Access key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
@@ -712,7 +712,7 @@ values, which you have retrieved while "Editing data connection":
     iii. And to get *Endpoint* run:
 
     `oc get route minio-s3 -o template --template '{{.spec.host}}'`
-    
+
     You need to add `https://` in the front of the endpoint host url.
 
 !!! info "Running Workbench without GPU"
@@ -731,7 +731,7 @@ to _Running_ and you can select "Open" to go to your environment:
 ![Open Fraud Detection JupyterLab Environment](images/open-fraud-detection-jupyter-lab.png)
 
 !!! info "Note"
-        
+
     If you made a mistake, you can edit the workbench to make changes. Please
     make sure your toggle the _Running_ status of your workbench to _Stopped_
     prior clicking the action menu (⋮) at the end of the selected workbench row
@@ -748,7 +748,7 @@ It's pretty empty right now, though. On the left side of the navigation
 pane, locate the **Name** explorer panel. This panel is where you can create
 and manage your project directories.
 
-!!! note "Learn More About Working with Notebooks" 
+!!! note "Learn More About Working with Notebooks"
 
     For detailed guidance on using notebooks on NERC RHOAI JupyterLab, please
     refer to [this documentation](../data-science-project/explore-the-jupyterlab-environment.md#working-with-notebooks).
@@ -789,7 +789,7 @@ double click it and execute the "Run" button to run all notebook cells at once.
     In the `1_experiment_train.ipynb` Jupyter notebook file, find the
     **"Monitor the Training"** section where you can use [ClearML](https://clear.ml/)
     to monitor your model training process.
-    
+
     Please register your account at [https://app.clear.ml/login](https://app.clear.ml/login).
     After successfully registering your account, get **Application API Credentials**
     at: [https://app.clear.ml/settings/workspace-configuration](https://app.clear.ml/settings/workspace-configuration).
@@ -921,9 +921,11 @@ you test the model API.
 
 In previous sections of this tutorial, you used a notebook to train and save your
 model. Alternatively, you can automate these tasks using
-**Red Hat OpenShift AI pipelines**. 
+**Red Hat OpenShift AI pipelines**.
 
-Pipelines allow you to automate the execution of multiple notebooks and Python scripts. By using pipelines, you can run long training jobs or schedule model retraining without manually executing notebooks.
+Pipelines allow you to automate the execution of multiple notebooks and Python scripts.
+By using pipelines, you can run long training jobs or schedule model retraining
+without manually executing notebooks.
 
 In this section, you will create a simple pipeline using the **GUI pipeline editor**.
 
@@ -1098,9 +1100,9 @@ b. Enter the following values and then click **Add**.
 
 -   **Environment Variable:** *AWS_ACCESS_KEY_ID*
 
-    -   **Secret Name:** *aws-connection-my-storage*
+-   **Secret Name:** *aws-connection-my-storage*
 
-    -   **Secret Key:** *AWS_ACCESS_KEY_ID*
+-   **Secret Key:** *AWS_ACCESS_KEY_ID*
 
 ![Secret Form](images/wb-pipeline-kube-secret-form.png)
 
@@ -1108,27 +1110,27 @@ iii. Repeat Step 2 for each of the following Kubernetes secrets:
 
 -   **Environment Variable:** *AWS_SECRET_ACCESS_KEY*
 
-    -   **Secret Name:** *aws-connection-my-storage*
+-   **Secret Name:** *aws-connection-my-storage*
 
-    -   **Secret Key:** *AWS_SECRET_ACCESS_KEY*
+-   **Secret Key:** *AWS_SECRET_ACCESS_KEY*
 
 -   **Environment Variable:** AWS_S3_ENDPOINT
 
-    -   **Secret Name:** aws-connection-my-storage
+-   **Secret Name:** aws-connection-my-storage
 
-    -   **Secret Key:** AWS_S3_ENDPOINT
+-   **Secret Key:** AWS_S3_ENDPOINT
 
 -   **Environment Variable:** AWS_DEFAULT_REGION
 
-    -   **Secret Name:** aws-connection-my-storage
+-   **Secret Name:** aws-connection-my-storage
 
-    -   **Secret Key:** AWS_DEFAULT_REGION
+-   **Secret Key:** AWS_DEFAULT_REGION
 
 -   **Environment Variable:** AWS_S3_BUCKET
 
-    -   **Secret Name:** aws-connection-my-storage
+-   **Secret Name:** aws-connection-my-storage
 
-    -   **Secret Key:** AWS_S3_BUCKET
+-   **Secret Key:** AWS_S3_BUCKET
 
 iv.Select File → Save Pipeline As to save and rename the *.pipeline* file. For
 example, rename it to **My Train Save.pipeline**.
@@ -1265,7 +1267,8 @@ the build is going and what's happening to the pod.
 
 The application will be ready when the build is complete and the pod is "Running".
 
-When the application has been deployed you can press the "Open URL" button to open up the interface in a new tab.
+When the application has been deployed you can press the "Open URL" button to open
+up the interface in a new tab.
 
 ![Application deployed](images/Application_deployed.png)
 

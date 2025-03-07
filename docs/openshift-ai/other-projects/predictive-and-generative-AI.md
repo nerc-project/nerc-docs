@@ -13,7 +13,7 @@ performance, making it more efficient for specific tasks.
 
 Model tuning optimizes a model's hyperparameters, while fine-tuning adapts a
 pretrained model for a specific task by adjusting its weights and sometimes
-architecture. Fine-tuning enhances the model's performance for specialized tasks, 
+architecture. Fine-tuning enhances the model's performance for specialized tasks,
 ike sentiment analysis or question answering, without needing to train a new model
 from scratch.
 
@@ -181,8 +181,8 @@ into a prompt template.
 
 #### RAG Application - Talk with your PDF
 
-In [this tutorial](RAG-talk-with-your-pdf.md), we will demonstrate how to to deploy a LLM
-Application i.e. "AI ChatBot App" in [NERC OpenShift](../../openshift/index.md),
+In [this tutorial](RAG-talk-with-your-pdf.md), we will demonstrate how to to deploy
+a LLM Application i.e. "AI ChatBot App" in [NERC OpenShift](../../openshift/index.md),
 which connects to a [pre-trained foundation model](#foundation-model).
 
 ![Talk with your PDF](images/talk-with-your-pdf.gif)

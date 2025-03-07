@@ -4,7 +4,6 @@
 compatible with the Amazon S3 API. It provides reliable and scalable storage for
 cloud-native applications, big data, and AI workloads.
 
-
 ## Deploying Minio in OpenShift
 
 You can deploy your own MinIO-based Object Storage in the NERC OpenShift by following

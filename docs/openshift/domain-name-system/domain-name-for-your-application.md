@@ -25,7 +25,7 @@ you need to generate **TLS certificates** and have them signed by a
 
 ## What is DNS?
 
-You can learn more about DNS by reading [this page](../../openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md#what-is-dns). 
+You can learn more about DNS by reading [this page](../../openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md#what-is-dns).
 
 Unlike DNS services on NERC OpenStack, where the **Domain Name** requires an
 [**A Record**](../../openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md#what-is-a-a-record)
@@ -33,7 +33,7 @@ pointing to the public floating IP of your NERC VM, on NERC OpenShift, you need
 to point your unique public **Route** url i.e. `<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org`
 of your deployed application to the public DNS by creating a **CNAME Record**.
 
-###  What is a CNAME Record?
+### What is a CNAME Record?
 
 A **CNAME (Canonical Name) record**: CNAME is a type of DNS record that maps one
 domain name (alias) to another domain name (canonical name). This allows multiple
@@ -85,9 +85,10 @@ Click **Create Hostname**.
 Then, browse your host or domain name as you setup during registration or later
 i.e. [http://nerc.hopto.org](http://nerc.hopto.org) on above example.
 
-#### How to create an Ingress with TLS/SSL certificates from Let's Encrypt.
+#### How to create an Ingress with TLS/SSL certificates from Let's Encrypt
 
-To use your own custom domain with HTTPS, you need to create an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) with annotations for [cert-manager](https://cert-manager.io).
+To use your own custom domain with HTTPS, you need to create an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+with annotations for [cert-manager](https://cert-manager.io).
 
 To expose your application securely with HTTPS on OpenShift, you need to create
 an **Ingress** resource per port that is used by Service to serve public facing.
@@ -145,30 +146,30 @@ cluster.
 
     ```yaml
     kind: Ingress
-	apiVersion: networking.k8s.io/v1
-	metadata:
-	  name: <your-unique-ingress-name>
-	  namespace: <your-namespace>
-	  annotations:
-	    acme.cert-manager.io/http01-ingress-class: openshift-default
-	    cert-manager.io/cluster-issuer: letsencrypt-production-http01
-	spec:
-	  ingressClassName: openshift-default
-	  tls:
-	    - hosts:
-	        - nerc.hopto.org
-	      secretName: <your-unique-tls-secret-name>
-	  rules:
-	    - host: nerc.hopto.org
-	      http:
-	        paths:
-	          - path: <your-path-to-service>
-	            pathType: Prefix
-	            backend:
-	              service:
-	                name: <your-service-name>
-	                port:
-	                  number: <your-service-exposed-port>
+    apiVersion: networking.k8s.io/v1
+    metadata:
+      name: <your-unique-ingress-name>
+      namespace: <your-namespace>
+      annotations:
+        acme.cert-manager.io/http01-ingress-class: openshift-default
+        cert-manager.io/cluster-issuer: letsencrypt-production-http01
+    spec:
+      ingressClassName: openshift-default
+      tls:
+        - hosts:
+            - nerc.hopto.org
+          secretName: <your-unique-tls-secret-name>
+      rules:
+        - host: nerc.hopto.org
+          http:
+            paths:
+              - path: <your-path-to-service>
+                pathType: Prefix
+                backend:
+                  service:
+                    name: <your-service-name>
+                    port:
+                      number: <your-service-exposed-port>
     ```
 
 6. Click **Create**.
@@ -211,7 +212,8 @@ of your deployed application.
 
 Alternatively, you can purchase a fully registered domain name or host name from
 commercial hosting providers and then register DNS records for your route url i.e.
-`<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org` from commercial cloud
-servies i.e. AWS Route53, Azure DNS, CloudFlare, Google Cloud Platform, GoDaddy, etc.
+`<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org` from commercial
+cloud servies i.e. AWS Route53, Azure DNS, CloudFlare, Google Cloud Platform,
+GoDaddy, etc.
 
 ---

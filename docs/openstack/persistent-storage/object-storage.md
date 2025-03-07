@@ -429,7 +429,11 @@ To run the `s3` or `s3api` commands, you need to have:
     [Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
     for more information.
 
--   The NERC's Swift End Point URL: `https://stack.nerc.mghpcc.org:13808`
+- The NERC's Swift Endpoint URL: `https://stack.nerc.mghpcc.org:13808`.
+
+!!! info "Very Important: Endpoint for S3 API for the NERC Object Storage/ Swift"
+    
+    The default endpoint for S3 API for the NERC Object Storage/ Swift is `https://stack.nerc.mghpcc.org:13808`.
 
 !!! note "Understand these Amazon S3 terms"
 

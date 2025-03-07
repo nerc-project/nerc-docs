@@ -47,6 +47,8 @@ the list below.
 
 -   [Minio](storage/minio.md)
 
+-   [Rclone](storage/Rclone.md)
+
 ## Deleting Applications
 
 -   [Deleting your applications](applications/deleting-applications.md)

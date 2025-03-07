@@ -1,6 +1,6 @@
 # Set up Domain Name for Your Application
 
-**Prerequisites:**
+**Prerequisites**:
 
 Your application should be running in **Pods** within **NERC OpenShift**, with a
 **Service** created for the **port(s)** you want to expose. By default, an

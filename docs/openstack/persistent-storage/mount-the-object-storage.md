@@ -9,6 +9,12 @@ NERC OpenStack VM:
     `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
     to this VM.
 
+-   The NERC's Swift Endpoint URL: `https://stack.nerc.mghpcc.org:13808`.
+
+    !!! info "Very Important: Endpoint for S3 API for the NERC Object Storage/ Swift"
+        
+        The default endpoint for S3 API for the NERC Object Storage/ Swift is `https://stack.nerc.mghpcc.org:13808`.
+
 -   Setup and enable your S3 API credentials:
 
 To access the API credentials, you must login through the OpenStack Dashboard

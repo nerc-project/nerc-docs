@@ -138,6 +138,9 @@ nav:
                     - Predictive AI tutorial:
                         - Credit Card Fraud Detection Application: openshift-ai/other-projects/fraud-detection-predictive-ai-app.md
                         - Object Detection Application Using YOLOv5 Model: openshift-ai/other-projects/object-detection-app-using-yolo5.md
+                    - Generative AI tutorial:
+                        - Large Language Model (LLM) - AI ChatBot App: openshift-ai/other-projects/LLM-chatbot-app.md
+                        - Retrieval Augumented Generation (RAG) - Talk with your PDF: openshift-ai/other-projects/RAG-talk-with-your-pdf.md
     - Other Tools On NERC:
           - Other Useful Tools: other-tools/index.md
           - Kubernetes:
@@ -182,8 +185,16 @@ theme:
           toggle:
               icon: material/toggle-switch
               name: Switch to light mode
-#  features:
-#    - navigation.tabs
+    features:
+        - content.code.copy
+        # - navigation.instant
+        # - navigation.tracking
+        # - navigation.sections
+        # - navigation.indexes
+        # - navigation.top
+        # - navigation.tabs
+        # - navigation.tabs.sticky
+        # - navigation.expand
 extra_css:
     - stylesheets/extra.css
 extra_javascript:

@@ -18,7 +18,7 @@ accessible through the inference API endpoints as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/deployed-model-inference-endpoints.png)
 
-In the **Inference endpoint** field contains an **Internal Service** link, click
+The **Inference endpoint** field contains an **Internal Service** link, click
 the link to open a popup that shows the URL details, and then take note of
 the **grpcUrl** and **restUrl** values.
 

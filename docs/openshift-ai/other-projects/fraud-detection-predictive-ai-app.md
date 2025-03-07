@@ -40,7 +40,7 @@ the NERC OpenShift AI dashboard.
 
 **Prerequisites**:
 
--   Before proceeding, confirm that you have an active GPU quota has been approved
+-   Before proceeding, confirm that you have an active GPU quota that has been approved
     for your current NERC OpenShift Allocation through NERC ColdFront. Read
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-in-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.
@@ -895,7 +895,7 @@ you test the model API.
 
     ![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
 
-    In the **Inference endpoint** field contains an **Internal Service** link, click
+    The **Inference endpoint** field contains an **Internal Service** link, click
     the link to open a popup that shows the URL details, and then take note of
     the **grpcUrl** and **restUrl** values.
 

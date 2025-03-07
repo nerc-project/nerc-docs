@@ -4,7 +4,7 @@
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
--   Before proceeding, confirm that you have an active GPU quota has been approved
+-   Before proceeding, confirm that you have an active GPU quota that has been approved
     for your current NERC OpenShift Allocation through NERC ColdFront. Read more
     about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-in-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.

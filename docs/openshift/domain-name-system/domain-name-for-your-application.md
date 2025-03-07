@@ -185,7 +185,7 @@ set up above as shown below:
 
 ![Successful Route With HTTPS](images/successful-route-with-https.png)
 
-- Click on the Route link it will load the web application with HTTPS and domain
+- Click on the Route link it will load the web application with the HTTPS and domain
 name you defined in your ingress: `https://<your-hostname>` i.e. `https://nerc.hopto.org`
 
 !!! tips "To Troubleshoot Certificate Requests"

@@ -12,7 +12,7 @@ NERC OpenStack VM:
 -   The NERC's Swift Endpoint URL: `https://stack.nerc.mghpcc.org:13808`.
 
     !!! info "Very Important: Endpoint for S3 API for the NERC Object Storage/ Swift"
-        
+
         The default endpoint for S3 API for the NERC Object Storage/ Swift is `https://stack.nerc.mghpcc.org:13808`.
 
 -   Setup and enable your S3 API credentials:

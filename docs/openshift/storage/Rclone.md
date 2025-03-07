@@ -13,12 +13,12 @@ is mature, open-source software originally inspired by **rsync** and written in 
     Setup the OpenShift CLI Tools locally and configure the OpenShift CLI to enable
     `oc` commands. Refer to [this user guide](../../openshift/logging-in/setup-the-openshift-cli.md).
 
-
 ### Steps
 
 1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift.git).
 
-2. Run this `oc` command: `oc apply -f ./standalone/deploy/.` to execute all YAML files located in the **standalone/deploy** folder.
+2. Run this `oc` command: `oc apply -f ./standalone/deploy/.` to execute all YAML
+files located in the **standalone/deploy** folder.
 
 In the `standalone/deploy` folder, you will find the following YAML files:
 
@@ -36,12 +36,11 @@ In the `standalone/deploy` folder, you will find the following YAML files:
 
 -   You will see the `rclone-app` application on OpenShift Web Dashboard.
 
--   Once the application is deployed and the route is set up, it can be accessed at
-    a web URL similar to `http://rclone-<mynamespace>.apps.shift.nerc.mghpcc.org`
-    by clicking on the link as shown here:
+-   Once the application is deployed and the route is set up, it can be accessed
+    at a web URL similar to `http://rclone-<mynamespace>.apps.shift.nerc.mghpcc.org`
+    by clicking any one of the links as shown here:
 
     ![Rclone Web Link](images/Rclone-route-link.png)
-
 
 -   Log in to the Rclone by entering the username and password setup in `02-deployment.yaml`
     as [environment variables](https://github.com/nerc-project/rclone-web-on-openshift/blob/main/standalone/deploy/02-deployment.yaml#L40-L43).
@@ -58,7 +57,7 @@ In the `standalone/deploy` folder, you will find the following YAML files:
         access key, secret key, and container name. Refer to [this guide](../../openstack/persistent-storage/object-storage.md#configuring-the-aws-cli)
         to learn how to retrieve this information from your NERC OpenStack project.
 
-    i. In Rclone, click on "**Configs**" Menu.    
+    i. In Rclone, click on "**Configs**" Menu.  
 
     ii. Click on "Create a New Config" button to create a new Remote.
 
@@ -77,7 +76,7 @@ In the `standalone/deploy` folder, you will find the following YAML files:
     is automatically copied into other fields - this is expected behavior.
 
     !!! info "Very Important: Endpoint for S3 API for the NERC Object Storage/ Swift"
-    
+
         The default endpoint for S3 API for the NERC Object Storage/ Swift is `https://stack.nerc.mghpcc.org:13808`.
 
     ![Rclone Connection Info](images/Rclone-connection-info.png)
@@ -92,7 +91,7 @@ In the `standalone/deploy` folder, you will find the following YAML files:
 ## Usage
 
 In this simple example, we will transfer a sample dump from Wikipedia. Wikimedia
-publishes these dumps daily, and they are mirrored by various organizations. 
+publishes these dumps daily, and they are mirrored by various organizations.
 
 In a "standard" setup, loading this data into your object store wouldn't be very
 practical, as it often requires downloading it locally first before uploading it
@@ -118,7 +117,7 @@ This is how we can do it with Rclone:
     ![Rclone Two Pane View](images/Rclone-two-pane-view.png)
 
     Browse to the folder you want, select a file or folder, and simply drag and
-    drop it from `wikidump` to your NERC OpenStack Object Storage container/bucket. 
+    drop it from `wikidump` to your NERC OpenStack Object Storage container/bucket.
 
     For a more interesting test, try selecting a larger file!
 

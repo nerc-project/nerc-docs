@@ -17,9 +17,6 @@ is mature, open-source software originally inspired by **rsync** and written in 
 
 1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift.git).
 
-2. Run this `oc` command: `oc apply -f ./standalone/deploy/.` to execute all YAML
-files located in the **standalone/deploy** folder.
-
 In the `standalone/deploy` folder, you will find the following YAML files:
 
     i. `01-pvc.yaml`: Creates a persistent volume to store the configuration.
@@ -31,6 +28,9 @@ In the `standalone/deploy` folder, you will find the following YAML files:
         Modify the admin account and password to restrict access (highly recommended).
 
     iii. `03-service.yaml`, `04-route.yaml`: Set up external access to connect to the Web UI.
+
+2. Run this `oc` command: `oc apply -f ./standalone/deploy/.` to execute all YAML
+files located in the **standalone/deploy** folder.
 
 ## Configuration
 

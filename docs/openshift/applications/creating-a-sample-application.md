@@ -37,7 +37,7 @@ tasks using both the web console and the command-line tool.
    circle if you are in graphical topology view. In the details panel that displays,
    scroll to the **Routes** section on the Resources tab and click on the link to
    go to the sample application. This will open your application in a new browser
-   window. The link will look similar to `http://<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
+   window. The link will look similar to `https://<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 !!! tip "Example: Deploying a Python application"
 
@@ -100,7 +100,7 @@ automatically set up to make your application web accessible. Run the following
 to make the test application web accessible:
 `oc create route edge --service=mytestapp --insecure-policy=Redirect`.
 Once the application is deployed and the route is set up, it can be accessed at
-a web URL similar to `http://mytestapp-<mynamespace>.apps.shift.nerc.mghpcc.org`.
+a web URL similar to `https://mytestapp-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 ### For more additional resources
 

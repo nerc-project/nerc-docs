@@ -13,7 +13,7 @@ Click "Create Network" button on the right side of the screen.
 
 In the Create Router dialog box, specify a name for the router.
 
-From the External Network dropdown, select the ‘provider’ network, and click
+From the External Network dropdown, select the 'provider' network, and click
 "Create Router" button. This will set the Gateway for the new router to public network.
 
 ![Create Router](images/create_router.png)
@@ -61,7 +61,7 @@ The Router will now appear connected to the private network in Network Topology 
 **OR,**
 
 You can set Internal Interface on the Router From the Network Topology view,
-click on the router you just created, and click ‘Add Interface’ on the popup
+click on the router you just created, and click 'Add Interface' on the popup
 that appears.
 
 ![Add Interface from Network Topology](images/router_add_interface_from_topology.png)

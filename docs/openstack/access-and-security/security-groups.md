@@ -15,7 +15,7 @@ choose Security Groups from the tabs that appears.
 
 Navigate to _Project -> Network -> Security Groups_.
 
-You should see a ‘default’ security group. The default security group allows
+You should see a 'default' security group. The default security group allows
 traffic only between members of the security group, so by default you can
 always connect between VMs in this group. However, it blocks all traffic from
 outside, including incoming SSH connections. In order to access instances via a

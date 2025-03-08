@@ -80,7 +80,7 @@ the list below.
 
 ## Domain or Host Name for your VM
 
--   [Domain Name System (DNS)](advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md)
+-   [Set up Domain names for your VMs](advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md)
 
 ## Using Terraform to provision NERC resources
 
@@ -90,7 +90,7 @@ the list below.
 
 -   [Python SDK](advanced-openstack-topics/python-sdk/python-SDK.md)
 
-## Setting Up Your Own Images
+## Setting Up Your Own Custom Images
 
 -   [Microsoft Windows image](advanced-openstack-topics/setting-up-your-own-images/how-to-build-windows-image.md)
 

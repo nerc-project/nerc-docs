@@ -2,7 +2,7 @@
 
 **Prerequisites**:
 
-Prepare your Jupyter notebook server for using a GPU, you need to have:
+Prepare your Jupyter notebook server, you need to have:
 
 -   Select the correct data science project and create workbench, see
     [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
@@ -10,13 +10,14 @@ Prepare your Jupyter notebook server for using a GPU, you need to have:
 
 Please ensure that you start your Jupyter notebook server with options as depicted
 in the following configuration screen. This screen provides you with the opportunity
-to select a notebook image and configure its options, including the number of GPUs.
+to select a notebook image and configure its options, including the Accelerator
+and Number of accelerators (GPUs).
 
 ![Standard Data Science Workbech Information](images/standard-data-science-workbench.png)
 
 For our example project, let's name it "Standard Data Science Workbench". We'll
 select the **Standard Data Science** image, choose a **Deployment size** of **Small**,
-**Number of GPUs** as **0** and allocate a **Cluster storage** space of **1GB**.
+**Accelerator** as **None** and allocate a **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
 When your workbench is ready, the status will change to _Running_ and you can select

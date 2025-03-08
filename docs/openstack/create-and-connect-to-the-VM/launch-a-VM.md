@@ -112,7 +112,7 @@ tab by clicking on the "+" icon.
 
 !!! question "Important Note"
 
-    In NERC OpenStack, flavors define the compute, memory, and storage
+    on NERC OpenStack, flavors define the compute, memory, and storage
     capacity of nova computing instances. In other words, a flavor is an
     available hardware configuration for a server.
 

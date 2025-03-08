@@ -73,7 +73,7 @@ basic components of OpenShift:
     application DNS names will have a hyphen separator between your application name
     and your unique project namespace. If the application is a web application, this
     DNS name is also used for the URL to access the application. All names are in
-    the form of `<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
+    the form of `<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
     For example: `mytestapp-mynamespace.apps.shift.nerc.mghpcc.org`.
 
 ---

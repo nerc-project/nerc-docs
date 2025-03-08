@@ -78,8 +78,10 @@ now see the data connection displayed in the main project window as shown below:
 
 ## Create a model server
 
-After creating the data connection, you can add your model server. Select
-**Add server** as shown below:
+After creating the data connection, you can add your model server. In the
+OpenShift AI dashboard, navigate to the data science project details page and
+click the **Models and model servers** tab. Click on **Add model server** button
+as shown below:
 
 ![Add A Model Server](images/add-a-model-server.png)
 
@@ -172,6 +174,13 @@ the model deployment is complete as shown below:
 
 ![Model Deployed Successfully](images/model-deployed-successful.png)
 
+!!! danger "Important Note"
+
+    When you delete a model server, all models hosted on it are also removed,
+    making them unavailable to applications.
+
+## Test the model API
+
 The model is now accessible through the API endpoint of the model server. The
 information about the endpoint is different, depending on how you configured the
 model server.
@@ -203,7 +212,7 @@ for the gRPC and the REST URLs for the inference endpoints as shown below:
     - **REST**: `http://modelmesh-serving.name-of-your-project:8008/v2/models/name-of-your-model/infer`
 
     - **gRPC**: `grpc://modelmesh-serving.name-of-your-project:8033`. *Please make
-    note of the grpc URL value, we will need it later.*
+    note of the **grpcURL** value, we will need it later.*
 
 Your model is now deployed and ready to use!
 

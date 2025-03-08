@@ -1,7 +1,7 @@
 # Set up K3s in High Availability using k3d
 
 First, Kubernetes HA has **two possible setups**: embedded or external database
-(DB). We’ll use the **embedded DB** in this HA K3s cluster setup. For which `etcd`
+(DB). We'll use the **embedded DB** in this HA K3s cluster setup. For which `etcd`
 is the default embedded DB.
 
 There are some strongly recommended [Kubernetes HA best practices](https://kubernetes.io/docs/tasks/administer-cluster/highly-available-master/#best-practices-for-replicating-masters-for-ha-clusters)
@@ -119,9 +119,9 @@ critical in allowing us to continue accessing the K3s cluster.
 
 While the load balancer internally switched to the next available node, from an
 external connectivity point of view, we still use the same IP/host. This abstraction
-saves us quite some efforts and it’s one of the most useful features of k3d.
+saves us quite some efforts and it's one of the most useful features of k3d.
 
-Let’s look at the state of the cluster:
+Let's look at the state of the cluster:
 
 ```sh
 kubectl get all --all-namespaces
@@ -143,7 +143,7 @@ As the output can be seen:
 
 ![k3d self healing HA nodes](../images/k3d_self_healing_ha_nodes.png)
 
-Finally, to show the power of HA and how K3s manages it, let’s restart the node0
+Finally, to show the power of HA and how K3s manages it, let's restart the node0
 and see it being re-included into the cluster as if nothing happened:
 
 ```sh

@@ -34,7 +34,7 @@ do the following tasks:
 
 -   Manage existing projects
 
--   Request allocations that fall under projects in NERC's resources such as clusters,
+-   Request allocations that fall under projects on NERC's resources such as clusters,
     cloud resources, servers, storage, and software licenses
 
 -   Add/remove user access to/from allocated resources who is a member of the project

@@ -10,7 +10,7 @@
 NERC offers you a **pay-as-you-go** approach for pricing for our cloud infrastructure
 offerings (Tiers of Service), including Infrastructure-as-a-Service (IaaS) – Red
 Hat OpenStack and Platform-as-a-Service (PaaS) – Red Hat OpenShift. The exception
-is the **Storage quotas** in NERC Storage Tiers, where the cost is determined by
+is the **Storage quotas** on NERC Storage Tiers, where the cost is determined by
 [your requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view)
 to reserve storage from the total NESE storage pool. For **NERC (OpenStack)**
 Resource Allocations, storage quotas are specified by the "OpenStack Volume Quota

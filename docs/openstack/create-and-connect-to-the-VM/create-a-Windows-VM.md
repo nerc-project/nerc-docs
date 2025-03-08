@@ -146,7 +146,7 @@ shown below:
     ```sh
     #ps1
 
-    net user Administrator <Your_Own_Admin_Password>
+    net user Administrator '<Your_Own_Admin_Password>'
     ```
 
     Please ensure that your script in the "Configuration" section resembles the
@@ -200,7 +200,7 @@ used to log in to the Windows VM via Remote Desktop.
 
     #ps1
 
-    net user Administrator <Your_Own_Admin_Password>
+    net user Administrator '<Your_Own_Admin_Password>'
 
 Setup a Security Group named "rdp_test" that allows RDP (port: 3389) using the
 CLI, use the command `openstack security group create <group-name>`:

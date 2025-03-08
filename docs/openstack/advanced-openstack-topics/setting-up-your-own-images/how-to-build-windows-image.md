@@ -62,7 +62,7 @@ local Windows 10 machine using WSL:
 
     The steps given here are straightforward, however, before following them
     make sure on Windows 10, you have WSL enabled and have at least Ubuntu
-    20.04 or above LTS version running over it. If you don’t know how to do
+    20.04 or above LTS version running over it. If you don't know how to do
     that then see our tutorial on [how to enable WSL and install Ubuntu over
     it](https://www.how2shout.com/how-to/enable-windows-subsystem-linux-feature.html).
 

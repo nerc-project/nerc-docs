@@ -65,15 +65,15 @@ Bare metal instances pricing is currently available as a limited offering.
     {% set fc430_cost = su_info_dict["BM FC430"]["rate"] * 720 * 3 %}
     {% set cost_sum = h100_cost + a100sxm_cost + fc830_cost + fc430_cost %}
 
-    `1 H100 SU * 720hrs * $24.16 = ${{ "{:,.2f}".format(h100_cost) }}`
+    1 H100 SU * 720hrs * $24.16 = ${{ "{:,.2f}".format(h100_cost) }}
 
-    `1 A100SXM4 * 720hrs * $8.312 = ${{  "{:,.2f}".format(a100sxm_cost)}}`
+    1 A100SXM4 * 720hrs * $8.312 = ${{  "{:,.2f}".format(a100sxm_cost)}}
 
-    `2 FC830 SU * 720hrs * $3.97 = ${{ "{:,.2f}".format(fc830_cost) }}`
+    2 FC830 SU * 720hrs * $3.97 = ${{ "{:,.2f}".format(fc830_cost) }}
 
-    `3 FC430 SU * 720hrs * $0.75 = ${{ "{:,.2f}".format(fc430_cost) }}`
+    3 FC430 SU * 720hrs * $0.75 = ${{ "{:,.2f}".format(fc430_cost) }}
 
-    **Total charge** = `${{ "{:,.2f}".format(cost_sum) }}`
+**Total charge** = ${{ "{:,.2f}".format(cost_sum) }}
 <!-- markdownlint-enable MD052 -->
 
 ---

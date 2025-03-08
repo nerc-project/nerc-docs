@@ -9,6 +9,12 @@ NERC OpenStack VM:
     `cpu-su.2` flavor with 2vCPU, 8GB RAM, 20GB storage - also [assign Floating IP](../../openstack/create-and-connect-to-the-VM/assign-a-floating-IP.md)
     to this VM.
 
+-   The NERC's Swift Endpoint URL: `https://stack.nerc.mghpcc.org:13808`.
+
+    !!! info "Very Important: Endpoint for S3 API for the NERC Object Storage/ Swift"
+
+        The default endpoint for S3 API for the NERC Object Storage/ Swift is `https://stack.nerc.mghpcc.org:13808`.
+
 -   Setup and enable your S3 API credentials:
 
 To access the API credentials, you must login through the OpenStack Dashboard
@@ -87,7 +93,7 @@ access to data stored in S3 Object Storage through a file system interface.
     Mountpoint for Amazon S3 intentionally does not implement the full [POSIX](https://en.wikipedia.org/wiki/POSIX)
     standard specification for file systems. Mountpoint supports file-based workloads
     that perform sequential and random reads, sequential (append only) writes,
-    and that don’t need full POSIX semantics.
+    and that don't need full POSIX semantics.
 
 ### Install Mountpoint
 
@@ -1026,7 +1032,7 @@ works. The first command tries to set a key to a value before authentication:
 
     127.0.0.1:6379> set key1 10
 
-That won’t work because you didn't authenticate, so Redis returns an error:
+That won't work because you didn't authenticate, so Redis returns an error:
 
 Output:
 

@@ -1,6 +1,6 @@
 # Nova flavors
 
-In NERC OpenStack, flavors define the compute, memory, and storage capacity of
+on NERC OpenStack, flavors define the compute, memory, and storage capacity of
 nova computing instances. In other words, a flavor is an available hardware
 configuration for a server.
 

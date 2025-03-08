@@ -121,7 +121,7 @@ The below steps will be performed on all the above mentioned nodes:
     ```
 
 -   Configure the Docker daemon, in particular to use systemd for the management
-    of the container’s cgroups
+    of the container's cgroups
 
     ```sh
     cat <<EOF | sudo tee /etc/docker/daemon.json
@@ -421,7 +421,7 @@ to it.
 
 ## Deploy Addons to K3s
 
-K3s is a lightweight kubernetes tool that doesn’t come packaged with all the tools
+K3s is a lightweight kubernetes tool that doesn't come packaged with all the tools
 but you can install them separately.
 
 -   Install **Helm** Commandline tool on K3s:

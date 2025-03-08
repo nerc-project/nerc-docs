@@ -114,7 +114,7 @@ Run the below command on the Ubuntu VM:
     You'll need to wait a few minutes before the dashboard becomes available. If
     you open a web browser on the same desktop you deployed Microk8s and point it
     to `https://<Floating-IP>:<PORT>` (where PORT is the PORT assigned to the Dashboard
-    noted while running the above command), you’ll need to accept the risk
+    noted while running the above command), you'll need to accept the risk
     (because the Dashboard uses a self-signed certificate). And, we can enter the
     previously noted **TOKEN** to access the kubernetes-dashboard.
 
@@ -129,7 +129,7 @@ Run the below command on the Ubuntu VM:
 
     - Start and stop Kubernetes:
     Kubernetes is a collection of system services that talk to each other all
-    the time. If you don’t need them running in the background then you will
+    the time. If you don't need them running in the background then you will
     save battery by stopping them. `microk8s start` and `microk8s stop` will
     those tasks for you.
 

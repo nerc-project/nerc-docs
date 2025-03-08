@@ -8,7 +8,7 @@ Your application should be running in **Pods** within **NERC OpenShift**, with a
 `https://<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org`.
 
 In this example, we have set up **Credit Card Fraud Detection Application** based
-on [this Predictive AI tutorial](../../openshift-ai/other-projects/fraud-detection-predictive-ai-app.md#deploy-the-model-application-in-nerc-openshift).
+on [this Predictive AI tutorial](../../openshift-ai/other-projects/fraud-detection-predictive-ai-app.md#deploy-the-model-application-on-nerc-openshift).
 
 The **Topology** view shows application details as shown below:
 

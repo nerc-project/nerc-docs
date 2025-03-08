@@ -11,7 +11,7 @@ troubleshooting.
     You need Kubernetes cluster running in your OpenStack environment. To setup your
     K8s cluster please [Read this](../../kubernetes/kubeadm/single-master-clusters-with-kubeadm.md).
 
-![CI/CD Pipeline on NERC](images/CICD-in-NERC-Kubernetes.png)
+![CI/CD Pipeline on NERC](images/CICD-on-NERC-Kubernetes.png)
 _Figure: CI/CD Pipeline To Deploy To Kubernetes Cluster Using Jenkins on NERC_
 
 ## Setup a Jenkins Server VM

@@ -42,7 +42,7 @@ the NERC OpenShift AI dashboard.
 
 -   Before proceeding, confirm that you have an active GPU quota that has been approved
     for your current NERC OpenShift Allocation through NERC ColdFront. Read
-    more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-in-nerc-ocp.md#accessing-gpu-resources)
+    more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.
 
 ### 1. Storing data with connections

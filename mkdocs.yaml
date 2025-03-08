@@ -110,7 +110,7 @@ nav:
                 - Scaling and Performance Guide: openshift/applications/scaling-and-performance-guide.md
           - Set up Domain Name for Your Application:  openshift/domain-name-system/domain-name-for-your-application.md
           - GPUs:
-                - Introduction to GPUs on NERC OpenShift: openshift/gpus/intro-to-gpus-in-nerc-ocp.md
+                - Introduction to GPUs on NERC OpenShift: openshift/gpus/intro-to-gpus-on-nerc-ocp.md
           - Storage:
                 - Storage Overview: openshift/storage/storage-overview.md
                 - Minio: openshift/storage/minio.md
@@ -138,9 +138,6 @@ nav:
                     - Predictive AI tutorial:
                         - Credit Card Fraud Detection Application: openshift-ai/other-projects/fraud-detection-predictive-ai-app.md
                         - Object Detection Application Using YOLOv5 Model: openshift-ai/other-projects/object-detection-app-using-yolo5.md
-                    - Generative AI tutorial:
-                        - Large Language Model (LLM) - AI ChatBot App: openshift-ai/other-projects/LLM-chatbot-app.md
-                        - Retrieval Augumented Generation (RAG) - Talk with your PDF: openshift-ai/other-projects/RAG-talk-with-your-pdf.md
     - Other Tools On NERC:
           - Other Useful Tools: other-tools/index.md
           - Kubernetes:

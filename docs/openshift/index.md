@@ -39,7 +39,7 @@ the list below.
 
 ## GPUs
 
--   [# Introduction to GPUs on NERC OpenShift](gpus/intro-to-gpus-in-nerc-ocp.md)
+-   [# Introduction to GPUs on NERC OpenShift](gpus/intro-to-gpus-on-nerc-ocp.md)
 
 ## Storage
 

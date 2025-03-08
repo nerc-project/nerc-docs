@@ -37,7 +37,7 @@ files located in the **standalone/deploy** folder.
 -   You will see the `rclone-app` application on OpenShift Web Dashboard.
 
 -   Once the application is deployed and the route is set up, it can be accessed
-    at a web URL similar to `http://rclone-<mynamespace>.apps.shift.nerc.mghpcc.org`
+    at a web URL similar to `https://rclone-<your-namespace>.apps.shift.nerc.mghpcc.org`
     by clicking any one of the links as shown here:
 
     ![Rclone Web Link](images/Rclone-route-link.png)

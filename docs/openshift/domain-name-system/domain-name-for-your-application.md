@@ -5,7 +5,7 @@
 Your application should be running in **Pods** within **NERC OpenShift**, with a
 **Service** created for the **port(s)** you want to expose. By default, an
 **HTTPS-enabled route** is set up for each deployed application, following this format:
-`https://<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org`.
+`https://<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 In this example, we have set up **Credit Card Fraud Detection Application** based
 on [this Predictive AI tutorial](../../openshift-ai/other-projects/fraud-detection-predictive-ai-app.md#deploy-the-model-application-on-nerc-openshift).
@@ -30,7 +30,7 @@ You can learn more about DNS by reading [this page](../../openstack/advanced-ope
 Unlike DNS services on NERC OpenStack, where the **Domain Name** requires an
 [**A Record**](../../openstack/advanced-openstack-topics/domain-name-system/domain-names-for-your-vms.md#what-is-a-a-record)
 pointing to the public floating IP of your NERC VM, on NERC OpenShift, you need
-to point your unique public **Route** url i.e. `<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org`
+to point your unique public **Route** url i.e. `<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`
 of your deployed application to the public DNS by creating a **CNAME Record**.
 
 ### What is a CNAME Record?
@@ -205,14 +205,14 @@ name you defined in your ingress: `https://<your-hostname>` i.e. `https://nerc.h
 
 You need to contact and work with your Research Computing department or
 academic institution's Central IT services to create **CNAME record** for your
-hostname that maps to the Public Route url i.e. `<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org`
+hostname that maps to the Public Route url i.e. `<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`
 of your deployed application.
 
 ### 3. Using commercial DNS providers
 
 Alternatively, you can purchase a fully registered domain name or host name from
 commercial hosting providers and then register DNS records for your route url i.e.
-`<your-application-name>-<namespace>.apps.shift.nerc.mghpcc.org` from commercial
+`<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org` from commercial
 cloud servies i.e. AWS Route53, Azure DNS, CloudFlare, Google Cloud Platform,
 GoDaddy, etc.
 

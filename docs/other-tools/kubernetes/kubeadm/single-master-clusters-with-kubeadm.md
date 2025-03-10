@@ -544,7 +544,7 @@ worker2   Ready    <none>                   10m   v1.26.1
 
 ## Watch Recorded Video showing the above steps on setting up the cluster
 
-Here’s a quick [recorded demo video](https://drive.google.com/file/d/1kVQSX2CSFbB1WbzAMFOKFt1YuUy-nVh0/view?usp=sharing)
+Here's a quick [recorded demo video](https://drive.google.com/file/d/1kVQSX2CSFbB1WbzAMFOKFt1YuUy-nVh0/view?usp=sharing)
 upto this point where we successfully setup single master K8s cluster using Kubeadm.
 
 ---
@@ -552,7 +552,7 @@ upto this point where we successfully setup single master K8s cluster using Kube
 ## Deploy A Sample Nginx Application From the master node
 
 Now that we have all the components to make the cluster and applications work,
-let’s deploy a sample Nginx application and see if we can access it over a
+let's deploy a sample Nginx application and see if we can access it over a
 [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport)
 that has port range of _30000-32767_.
 
@@ -718,7 +718,7 @@ to access the dashboard.
 
 ## Watch Demo Video showing how to deploy applications
 
-Here’s a [recorded demo video](https://drive.google.com/file/d/1hTkgpXtzkhdOd6KnoQiVDWgNnsoN5VZB/view?usp=sharing)
+Here's a [recorded demo video](https://drive.google.com/file/d/1hTkgpXtzkhdOd6KnoQiVDWgNnsoN5VZB/view?usp=sharing)
 on how to deploy applications on top of setup single master K8s cluster as
 explained above.
 

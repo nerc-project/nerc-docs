@@ -4,7 +4,7 @@
 
 You may wish to transfer a volume which includes all data to a different project
 which can be your own (with access in project dropdown list) or external collaborators
-with in NERC. For this you can follow [this guide](../persistent-storage/transfer-a-volume.md).
+with on NERC. For this you can follow [this guide](../persistent-storage/transfer-a-volume.md).
 
 !!! danger "Very Important Note"
 
@@ -79,7 +79,7 @@ i.e. you can setup your local machine as another personal endpoint.
 
 We generally recommend using SCP (Secure Copy) to copy data to and from your VM.
 SCP is used to securely transfer files between two hosts using the Secure Shell
-(ssh) protocol. It’s usage is simple, but the order that file locations are
+(ssh) protocol. It's usage is simple, but the order that file locations are
 specified is crucial. SCP always expects the 'from' location first, then the 'to'
 destination. Depending on which is the remote system, you will prefix your username
 and Floating IP of your NERC VM.
@@ -140,7 +140,7 @@ For e.g.
 
 !!! info "Important Note"
 
-    While it’s probably best to compress all the files you intend to transfer into
+    While it's probably best to compress all the files you intend to transfer into
     one file, this is not always an option. To copy the contents of an entire directory,
     you can use the `-r` (for recursive) flag.
 
@@ -191,7 +191,7 @@ working directory, or they can be remote but prefixing something like
 
     rsync -avz -e "ssh -i ~/.ssh/your_pem_key_file.pem" -r <user_name>@<Floating_IP>:~/source_directory/ ./destination_directory/
 
-**iii. Update a previously made copy of "foo" on the NERC VM after you’ve made changes
+**iii. Update a previously made copy of "foo" on the NERC VM after you've made changes
 to the local copy:**
 
     rsync -avz --delete foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
@@ -200,7 +200,7 @@ to the local copy:**
 
     The `--delete` option has no effect when making a new copy, and therefore can
     be used in the previous example too (making the commands identical), but since
-    it recursively deletes files, it’s best to use it sparingly. If you want to
+    it recursively deletes files, it's best to use it sparingly. If you want to
     maintain a mirror (i.e. the `DESTINATION` is to be an exact copy of the
     `SOURCE`) then you will want to add the `--delete` option. This deletes
     files/directories in the `DESTINATION` that are no longer in the `SOURCE`.

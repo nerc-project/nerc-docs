@@ -64,7 +64,7 @@ On the Create workbench page, complete the following information.
 
 -   Notebook image (Image selection)
 
--   Deployment size (Container size, Type and Number of GPUs)
+-   Deployment size (Container size, Accelerator and Number of accelerators)
 
 -   Environment variables
 
@@ -82,7 +82,7 @@ On the Create workbench page, complete the following information.
     resources, including CPUs and memory. Each container size comes with pre-configured
     CPU and memory resources.
 
-    Optionally, you can specify the desired **Accelerator** and **Number of Accelerators** (GPUs), depending on the
+    Optionally, you can specify the desired **Accelerator** and **Number of accelerators** (GPUs), depending on the
     nature of your data analysis and machine learning code requirements. However,
     this number should not exceed the GPU quota specified by the value of the
     "**OpenShift Request on GPU Quota**" attribute that has been approved for
@@ -102,7 +102,7 @@ Once you have entered the information for your workbench, click **Create**.
 
 For our example project, let's name it "Tensorflow Workbench". We'll select the
 **TensorFlow** image, choose a **Deployment size** of **Small**,
-**Accelerator** of **NVIDIA A100 GPU**, **Number of Accelerators**
+**Accelerator** of **NVIDIA A100 GPU**, **Number of accelerators**
 as **1** and allocate a **Cluster storage** space of **1GB**.
 
 !!! info "More About Cluster Storage"
@@ -112,6 +112,16 @@ as **1** and allocate a **Cluster storage** space of **1GB**.
     can create PVCs directly from here and mount them in your workbenches as
     needed. It's worth noting that a default cluster storage (PVC) is automatically
     created with the same name as your workbench to save your work.
+
+    **Note:** Once persistent storage is created, you can only increase its size
+    by editing it. Adjusting the storage size will restart the workbench, making
+    it temporarily unavailable, with the downtime typically depending on the size
+    increase.
+
+
+    Additionally, you can use previously created persistent storage that isn't
+    attached to any existing workbench cluster storage by selecting the **existing
+    persistent storage** option while creating a new workbench.
 
 After creating the workbench, you will return to your project page. It shows the
 status of the workbench as shown below:

@@ -34,4 +34,14 @@ the list below.
 
 -   [Configure a Jupyter Notebook to use GPUs for AI/ML modeling](other-projects/configure-jupyter-notebook-use-gpus-aiml-modeling.md)
 
+## Predictive & Generative AI on NERC
+
+-   [Predictive & Generative AI (LLM & RAG) in Action](other-projects/predictive-and-generative-AI.md)
+
+## Predictive AI tutorial
+
+-   [Credit Card Fraud Detection Application](other-projects/fraud-detection-predictive-ai-app.md)
+
+-   [Object Detection Application Using YOLOv5 Model](other-projects/object-detection-app-using-yolo5.md)
+
 ---

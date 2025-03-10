@@ -1,4 +1,4 @@
-# DNS services in NERC OpenStack
+# Set up Domain names for your VMs
 
 ## What is DNS?
 
@@ -10,7 +10,12 @@ DNS simplifies the communication between computers and servers through a network
 and provides a user-friendly method for users to interact with and get the desired
 information.
 
-## How to get user-friendly domain names for your NERC VMs?
+### What is a "A record"?
+
+**A record:** The primary DNS record used to connect your domain to an IP address
+that directs visitors to your website.
+
+## How to get user-friendly domain names (hostnames) for your NERC VMs?
 
 NERC does not currently offer integrated domain name service management.
 
@@ -184,9 +189,6 @@ https and domain name you defined i.e. `https://<Your-Domain-Name>`.
 You need to contact and work with your Research Computing department or
 academic institution's Central IT services to create **A record** for your hostname
 that maps to the address of a Floating IP of your NERC virtual instance.
-
-**A record:** The primary DNS record used to connect your domain to an IP address
-that directs visitors to your website.
 
 ### 4. Using commercial DNS providers
 

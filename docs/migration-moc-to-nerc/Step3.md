@@ -183,7 +183,7 @@
     1. If the value is different than `https://kzn-swift.massopen.cloud` copy
        the base URL for this service (circled in red above).
 
-2.  Look up information on the `object-store` service in NERC with the command
+2.  Look up information on the `object-store` service on NERC with the command
     below.
 
         openstack --os-cloud nerc catalog show object-store -c endpoints

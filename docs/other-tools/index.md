@@ -50,8 +50,18 @@
 
     - [GitHub Actions CI/CD Pipeline](CI-CD/github-actions/setup-github-actions-pipeline.md)
 
+## R
+
+-   [R Studio](R/rstudio-server/running-rstudio-on-NERC.md)
+
+-   [R Shiny](R/r-shiny-server/running-rshiny-on-NERC.md)
+
 ## Apache Spark
 
 -   [Apache Spark](apache-spark/spark.md)
+
+## Setup NFS Server and Client
+
+-   [Setup NFS Server and Client](nfs/nfs-server-client-setup.md)
 
 ---

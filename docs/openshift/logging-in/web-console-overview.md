@@ -95,7 +95,7 @@ and the components and services associated with them. If you have no workloads o
 applications in the project, the Topology view displays the available options to
 create applications. If you have existing workloads, the Topology view graphically
 displays your workload nodes. To read more about how to view the topology of
-your application please read [this official documentation from Red Hat](https://docs.openshift.com/container-platform/4.10/applications/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-topology_viewing-application-composition-using-topology-view)
+your application please read [this official documentation from Red Hat](https://docs.openshift.com/container-platform/4.17/applications/odc-viewing-application-composition-using-topology-view.html#odc-viewing-application-topology_viewing-application-composition-using-topology-view)
 
 ### Observe
 

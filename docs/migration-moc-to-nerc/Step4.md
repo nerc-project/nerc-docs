@@ -78,7 +78,7 @@ Verify the `<ContainerName>` is removed from MOC:
 2.  Only remove Volume Backups you are sure have been migrated to NERC Volumes.
     Keep in mind that you might not have named the volume the same as on the MOC
     so check your table from [Step 2](./Step2.md#moc-volume-information-table) to
-    confirm. You can confirm what Volumes you have in NERC with the following command.
+    confirm. You can confirm what Volumes you have on NERC with the following command.
 
         openstack --os-cloud nerc volume list
         +----------------+------------------+--------+------+----------------------------------+

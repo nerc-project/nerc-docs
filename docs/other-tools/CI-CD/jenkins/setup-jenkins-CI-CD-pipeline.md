@@ -11,7 +11,7 @@ troubleshooting.
     You need Kubernetes cluster running in your OpenStack environment. To setup your
     K8s cluster please [Read this](../../kubernetes/kubeadm/single-master-clusters-with-kubeadm.md).
 
-![CI/CD Pipeline on NERC](images/CICD-in-NERC-Kubernetes.png)
+![CI/CD Pipeline on NERC](images/CICD-on-NERC-Kubernetes.png)
 _Figure: CI/CD Pipeline To Deploy To Kubernetes Cluster Using Jenkins on NERC_
 
 ## Setup a Jenkins Server VM
@@ -247,7 +247,7 @@ To create a fork of the example `nodeapp` repository:
 
 ## Modify the Jenkins Declarative Pipeline Script file
 
--   Modify the provided ‘**Jenkinsfile**’ to specify your own Docker Hub account
+-   Modify the provided '**Jenkinsfile**' to specify your own Docker Hub account
     and github repository as specified in "`<dockerhub_username>`" and "`<github_username>`".
 
     !!! warning "Very Important Information"

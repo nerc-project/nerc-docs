@@ -4,19 +4,31 @@
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
+-   Before proceeding, confirm that you have an active GPU quota that has been approved
+    for your current NERC OpenShift Allocation through NERC ColdFront. Read more
+    about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
+    on NERC OpenShift Allocation.
+
 -   Select the correct data science project and create workbench, see
     [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
     for more information.
 
 Please ensure that you start your Jupyter notebook server with options as depicted
 in the following configuration screen. This screen provides you with the opportunity
-to select a notebook image and configure its options, including the number of GPUs.
+to select a notebook image and configure its options, including the Accelerator
+and Number of accelerators (GPUs).
 
 ![PyTorch Workbench Information](images/pytorch-workbench.png)
 
 For our example project, let's name it "PyTorch Workbench". We'll select the
-**PyTorch** image, choose a **Deployment size** of **Small**, **Number of GPUs**
-as **1** and allocate a **Cluster storage** space of **1GB**.
+**PyTorch** image, choose a **Deployment size** of **Small**, choose **Accelerator**
+of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate a
+**Cluster storage** space of **1GB**.
+
+!!! tip "Hardware Acceleration using GPU"
+
+    A GPU is highly recommended for this type of training to significantly improve
+    performance and reduce training time.
 
 If this procedure is successful, you have started your Jupyter notebook server.
 When your workbench is ready, the status will change to _Running_ and you can select
@@ -313,7 +325,7 @@ Once the model is trained, save it locally:
 torch.save(model.state_dict(), "mnist_fashion_SimpleNet.pt")
 ```
 
-## Load and run a PyTorch model
+## Load and Test the PyTorch model
 
 Let's now determine how our simple torch model performs using GPU resources.
 
@@ -363,8 +375,8 @@ class SimpleNet(nn.Module):
 ```
 
 ```python
-model = SimpleNet().to( device )
-model.load_state_dict( torch.load("mnist_fashion_SimpleNet.pt") )
+model = SimpleNet().to(device)
+model.load_state_dict(torch.load("mnist_fashion_SimpleNet.pt"))
 ```
 
 You are now ready to examine some data and determine how your model performs.

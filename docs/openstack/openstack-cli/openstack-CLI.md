@@ -91,6 +91,30 @@ please see the [OpenStack documentation](https://docs.openstack.org/python-opens
 For more information on configuring the OpenStackClient please see the
 [OpenStack documentation](https://docs.openstack.org/ocata/user-guide/common/cli-install-openstack-command-line-clients.html).
 
+!!! tips "Tip"
+
+    Install the OpenStack CLI by following the instructions specific to your operating
+    system:
+
+    For Ubuntu (Debian-based):
+
+    ```sh
+    sudo apt update
+    sudo apt install python3-openstackclient
+    ```
+
+    For CentOS (Red Hat-based):
+
+    ```sh
+    sudo yum install python3-openstackclient
+    ```
+
+    Alternatively, you can install it via pip:
+
+    ```sh
+    pip install python-openstackclient
+    ```
+
 ### OpenStack Hello World
 
 Generally, the OpenStack terminal client offers the following methods:

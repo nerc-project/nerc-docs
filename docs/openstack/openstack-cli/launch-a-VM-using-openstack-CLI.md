@@ -79,7 +79,7 @@ openstack keypair list | grep -i cloud_key
 
 ## Launch an instance from an Image
 
-Now we have all the details, let’s create a virtual machine using "openstack
+Now we have all the details, let's create a virtual machine using "openstack
 server create" command
 
 Syntax :

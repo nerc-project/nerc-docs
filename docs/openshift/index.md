@@ -33,13 +33,21 @@ the list below.
 
 -   [Scaling and Performance Guide](applications/scaling-and-performance-guide.md)
 
+## Set up Domain Name for Your Application
+
+-   [Set up Domain Name for Your Application](domain-name-system/domain-name-for-your-application.md)
+
+## GPUs
+
+-   [# Introduction to GPUs on NERC OpenShift](gpus/intro-to-gpus-on-nerc-ocp.md)
+
 ## Storage
 
 -   [Storage Overview](storage/storage-overview.md)
 
-## GPUs
+-   [Minio](storage/minio.md)
 
--   [Intro to GPUs in NERC OCP Clusters](gpus/intro-to-gpus-in-nerc-ocp.md)
+-   [Rclone](storage/Rclone.md)
 
 ## Deleting Applications
 

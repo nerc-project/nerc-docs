@@ -15,7 +15,7 @@ end-users and the security of the systems and applications that are deployed as
 part of their project(s) on NERC. This includes being responsible for the security
 of their data hosted on the NERC as well as users, accounts and access management.
 
-Every individual user needs to comply with your Institution’s [**Security**
+Every individual user needs to comply with your Institution's [**Security**
 and **Privacy** policies](https://nerc.mghpcc.org/privacy-and-security/) to protect
 their **Data, Endpoints, Accounts and Access management**. They
 must ensure any data created on or uploaded to the NERC is adequately secured.

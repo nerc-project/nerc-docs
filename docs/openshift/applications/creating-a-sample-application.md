@@ -37,16 +37,16 @@ tasks using both the web console and the command-line tool.
    circle if you are in graphical topology view. In the details panel that displays,
    scroll to the **Routes** section on the Resources tab and click on the link to
    go to the sample application. This will open your application in a new browser
-   window. The link will look similar to `http://<appname>-<mynamespace>.apps.shift.nerc.mghpcc.org`.
+   window. The link will look similar to `https://<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 !!! tip "Example: Deploying a Python application"
 
     For a quick example on how to use the "Import from Git" option to deploy a
-    sample Python application, please refer to [this guide](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/getting_started/openshift-web-console#getting-started-web-console-deploying-python-app_openshift-web-console).
+    sample Python application, please refer to [this guide](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/getting_started/openshift-web-console#getting-started-web-console-deploying-python-app_openshift-web-console).
 
 ### Additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/odc-creating-applications-using-developer-perspective.html).
+For more options and customization please [read this](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/odc-creating-applications-using-developer-perspective.html).
 
 ## Using the CLI (oc command) on your local terminal
 
@@ -72,7 +72,7 @@ use the `--code` flag to specify the URL of the repository. For example:
 `oc new-app --code https://github.com/myuser/mypublicrepo`. If you want to use a
 different name, you can add the `--name=<newname>` argument to the `oc new-app` command.
 For example: `oc new-app --name=mytestapp https://github.com/myuser/mypublicrepo`.
-The platform will try to automatically [detect the programming language](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/creating-applications-using-cli.html#language-detection)
+The platform will try to automatically [detect the programming language](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/creating-applications-using-cli.html#language-detection)
 of the application code and select the latest version of the base language image
 available. If `oc new-app` can't find any suitable Source-To-Image (S2I) builder
 images based on your source code in your Git repository or unable to detect the programming
@@ -93,18 +93,20 @@ iv. Once your application has been created, You can run `oc status` to see if yo
 application was successfully built and deployed. Builds and deployments can sometimes
 take several minutes to complete, so you may run this several times. you can view
 the details by running the `oc get pods` command. This will show you a list of all
-the pods running in your project, including the pod for your new application.
+the pods running in your project, including the pod for your new application. The
+`oc rsh pod/<pod_name>` command opens a remote shell session inside the specified
+OpenShift pod i.e. <pod_name>, allowing you to interact with its container.
 
 v. When using the `oc` command-line tool to create an application, a route is not
 automatically set up to make your application web accessible. Run the following
 to make the test application web accessible:
 `oc create route edge --service=mytestapp --insecure-policy=Redirect`.
 Once the application is deployed and the route is set up, it can be accessed at
-a web URL similar to `http://mytestapp-<mynamespace>.apps.shift.nerc.mghpcc.org`.
+a web URL similar to `https://mytestapp-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 ### For more additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/creating-applications-using-cli.html).
+For more options and customization please [read this](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/creating-applications-using-cli.html).
 
 ## Using the Developer Catalog on NERC's OpenShift Web Console
 
@@ -118,7 +120,7 @@ your project.
 
     By default, the templates build using a public source repository on GitHub that
     contains the necessary application code. For more options and customization
-    please [read this](https://docs.openshift.com/container-platform/4.10/openshift_images/using-templates.html#templates-quickstart_using-templates).
+    please [read this](https://docs.openshift.com/container-platform/4.17/openshift_images/using-templates.html#templates-quickstart_using-templates).
 
 ### Steps
 
@@ -161,6 +163,6 @@ your project.
 
 ### For Additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.10/applications/creating_applications/odc-creating-applications-using-developer-perspective.html#odc-using-the-developer-catalog-to-add-services-or-components_odc-creating-applications-using-developer-perspective).
+For more options and customization please [read this](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/odc-creating-applications-using-developer-perspective.html#odc-using-the-developer-catalog-to-add-services-or-components_odc-creating-applications-using-developer-perspective).
 
 ---

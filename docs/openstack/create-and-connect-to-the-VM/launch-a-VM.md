@@ -112,7 +112,7 @@ tab by clicking on the "+" icon.
 
 !!! question "Important Note"
 
-    In NERC OpenStack, flavors define the compute, memory, and storage
+    on NERC OpenStack, flavors define the compute, memory, and storage
     capacity of nova computing instances. In other words, a flavor is an
     available hardware configuration for a server.
 
@@ -187,8 +187,11 @@ tab: Please ignore these tabs as these are not important and only for advance se
 !!! info "How to use 'Configuration' tab"
 
     If you want to specify a customization script that runs after your instance
-    launches then you can write those custom script inside the
-    "**Customization Script**" text area. For example:
+    launches then you can write those custom script inside the "**Customization
+    Script**" text area or load the script by uploading the script file.
+
+    For example:
+
     ![VM Launch Instance Configuration Script](images/instance_configuration.png)
 
 You are now ready to launch your VM - go ahead and click "Launch Instance". This

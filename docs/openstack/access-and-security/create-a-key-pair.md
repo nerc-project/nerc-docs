@@ -40,7 +40,7 @@ your key._
 
 This process creates two files in your `.ssh` folder:
 
-    cloud.key      # private key - don’t share this with anyone, and never upload
+    cloud.key      # private key - don't share this with anyone, and never upload
     # it anywhere ever
     cloud.key.pub  # this is your public key
 

@@ -23,7 +23,7 @@ Availability clusters just with few commands.
     ```
 
 -   Configure the Docker daemon, in particular to use systemd for the management
-    of the container’s cgroups
+    of the container's cgroups
 
     ```sh
     cat <<EOF | sudo tee /etc/docker/daemon.json
@@ -115,7 +115,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     -   2 agents (formerly worker nodes)
 
     With the `--api-port 127.0.0.1:6445`, you tell k3d to map the Kubernetes
-    API Port (6443 internally) to `127.0.0.1/localhost`’s port **6445**. That
+    API Port (6443 internally) to `127.0.0.1/localhost`'s port **6445**. That
     means that you will have this connection string in your Kubeconfig:
     `server: https://127.0.0.1:6445` to connect to this cluster.
 
@@ -129,10 +129,10 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     Replace \* with an index (here: 0 or 1) to only mount it into one of them.
 
     The specification telling k3d which nodes it should mount the volume to
-    is called "node filter" and it’s also used for other flags, like the `--port`
+    is called "node filter" and it's also used for other flags, like the `--port`
     flag for port mappings.
 
-    That said, `--port '8080:80@loadbalancer'` maps your local host’s port 8080
+    That said, `--port '8080:80@loadbalancer'` maps your local host's port 8080
     to port 80 on the load balancer (serverlb), which can be used to forward
     HTTP ingress traffic to your cluster. For example, you can now deploy a
     web app into the cluster (Deployment), which is exposed (Service) externally
@@ -141,7 +141,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
     Then (provided that everything is set up to resolve that domain to your
     localhost IP), you can point your browser to `http://myapp.k3d.localhost:8080`
     to access your app. Traffic then flows from your host through the Docker
-    bridge interface to the load balancer. From there, it’s proxied to the
+    bridge interface to the load balancer. From there, it's proxied to the
     cluster, where it passes via Ingress and Service to your application Pod.
 
     !!! note "Note"
@@ -154,8 +154,8 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
         cumbersome after a while, so you may want to have a look at tools like
         `dnsmasq` (MacOS/UNIX) or `Acrylic` (Windows)  to ease the burden.
 
-2.  Getting the cluster’s kubeconfig:
-    Get the new cluster’s connection details merged into your default kubeconfig
+2.  Getting the cluster's kubeconfig:
+    Get the new cluster's connection details merged into your default kubeconfig
     (usually specified using the `KUBECONFIG` environment variable or the default
     path `$HOME/.kube/config`) and directly switch to the new context:
 
@@ -189,7 +189,7 @@ Now let's directly jump into creating our K3s cluster using `k3d`.
 
     ![k3d nodes list](../images/k3d_nodes.png)
 
-    ii. To look at what’s inside the K3s cluster (pods, services, deployments,
+    ii. To look at what's inside the K3s cluster (pods, services, deployments,
     etc.):
 
         kubectl get all --all-namespaces

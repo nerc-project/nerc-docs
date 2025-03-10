@@ -9,7 +9,7 @@ These files are used to manage underlying infrastructure rather than through
 [NERC's web-based graphical interface - Horizon](https://stack.nerc.mghpcc.org).
 Terraform allows you to build, change, and manage your infrastructure in a safe,
 consistent, and repeatable way by defining resource configurations that you can
-version, reuse, and share. Terraform’s main job is to create, modify, and destroy
+version, reuse, and share. Terraform's main job is to create, modify, and destroy
 compute instances, private networks and other NERC resources.
 
 ## Benefits of Terraform
@@ -24,9 +24,14 @@ To use Terraform you will need to install it from [here](https://www.terraform.i
 
 ## Basic Template to use Terraform on your NERC Project
 
-You can Git clone: `git clone https://github.com/nerc-project/terraform-nerc.git`
-and run our base template for terraform to provision some basic NERC's OpenStack
-resources using this [terraform-nerc repo](https://github.com/nerc-project/terraform-nerc.git).
+To get started, clone the repository using:
+
+```sh
+git clone https://github.com/nerc-project/terraform-nerc.git
+```
+
+Then run this base template for terraform to provision some basic NERC's OpenStack
+resources within this repo.
 
 !!! info "Note"
 
@@ -35,20 +40,36 @@ resources using this [terraform-nerc repo](https://github.com/nerc-project/terra
 
 ## Template to setup R Shiny server using Terraform on your NERC Project
 
-You can Git clone: `git clone https://github.com/nerc-project/terraform-nerc-r-shiny.git`
-and can run this template locally using terraform to provision
+To get started, clone the repository using:
+
+```sh
+git clone https://github.com/nerc-project/terraform-nerc-r-shiny.git
+```
+
+Then you can run this template locally using terraform to provision
 [R Shiny server](https://www.rstudio.com/products/shiny/shiny-server/) on NERC's
-OpenStack resources using this [terraform-nerc-r-shiny repo](https://github.com/nerc-project/terraform-nerc-r-shiny.git).
+OpenStack resources within this repo.
 
 !!! tip "Important Note"
 
-    Please make sure to review bash script file i.e. `install-R-Shiny.sh` located
+    Please make sure to review bash script file i.e. `install-R-Shiny-<OS>.sh` located
     in this repo that is pointing as `user-data-path` variable in `example.tfvars`.
-    This repo includes the script required to setup Shiny R server. You can use
+    This repo includes the script required to setup the R Shiny Server. You can use
     similar concept to any other project that needs custom user defined scripts
     while launching an instance. If you want to change and update this script you
     can just change this file and then run `terraform plan` and `terraform apply`
     command pointing this `example.tfvars` file.
+
+!!! warning "Which R Shiny Script i.e. `install-R-Shiny-<OS>.sh` to Choose?"
+
+    Please use the appropriate bash script file i.e. `install-R-Shiny-<OS>.sh` based
+    on your operating system (OS):
+
+    - **AlmaLinux** → `install-R-Shiny-AlmaLinux.sh`
+
+    - **CentOS** → `install-R-Shiny-Centos.sh`
+
+    - **Ubuntu** → `install-R-Shiny-Ubuntu.sh`
 
 ## How Terraform Works
 

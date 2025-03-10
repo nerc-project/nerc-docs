@@ -1,7 +1,7 @@
 # How to Setup the OpenShift CLI Tools
 
 The most commonly used command-line client tool for the NERC's OpenShift is
-[OpenShift CLI (oc)](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#cli-getting-started).
+[OpenShift CLI (`oc`)](https://docs.openshift.com/container-platform/4.17/cli_reference/openshift_cli/getting-started-cli.html#cli-getting-started).
 It is available for Linux, Windows, or macOS and allows you to create
 applications and manage OpenShift Container Platform projects from a terminal.
 
@@ -19,13 +19,13 @@ below:
 
 ![oc - OpenShift Command Line Interface (CLI) Binary Download](images/CLI-login-tools.png)
 
-Then add it to your path environment based on your OS choice by following [this documentation](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli).
+Then add it to your path environment based on your OS choice by following [this documentation](https://docs.openshift.com/container-platform/4.17/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli).
 
 ## Configuring the OpenShift CLI
 
 You can configure the `oc` command tool to enable tab completion to automatically
 complete oc commands or suggest options when you press Tab for the _Bash_ or _Zsh_
-shells by following [these steps](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/configuring-cli.html).
+shells by following [these steps](https://docs.openshift.com/container-platform/4.17/cli_reference/openshift_cli/configuring-cli.html).
 
 ## First Time Usage
 
@@ -61,7 +61,7 @@ new token on your terminal.
 
 ## Other Useful oc Commands
 
-[This reference document](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/developer-cli-commands.html)
+[This reference document](https://docs.openshift.com/container-platform/4.17/cli_reference/openshift_cli/developer-cli-commands.html)
 provides descriptions and example commands for OpenShift CLI (oc) developer commands.
 
 !!! info "Important Note"

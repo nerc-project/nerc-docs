@@ -178,13 +178,17 @@ generate and save the model `my-model.keras` within the root folder path of
     The model we are going to use is an object detection model that is able to
     isolate and recognize T-shirts, bottles, and hats in pictures. Although the
     process is globally the same one as what we have seen in the
-    [previous section](#training-a-model), this model has already been trained as
-    it takes a few hours with the help of a GPU to do it.
+    [**Training a model** section](#training-a-model), this model has already been
+    trained as it takes a few hours with the help of a GPU to do it.
 
     The resulting model has been saved in the [**ONNX**](https://onnx.ai/) format,
     an open standard for machine learning interoperability, which is one we can
     use with OpenVINO and RHOAI model serving. The model has been stored and is
     available for download on NERC OpenStack Object Storage container as [described
     here](model-serving-in-the-rhoai.md#create-a-data-connection).
+
+    You can use [**Netron**](https://netron.app/), a cross-platform machine learning
+    model visualization tool, to explore, analyse and share the structure of your
+    model by simply uploading an **ONNX** file.
 
 ---

@@ -85,15 +85,13 @@ as shown below:
 
 ![Add A Model Server](images/add-a-model-server.png)
 
-In the pop-up window that appears, depicted as shown below, you can specify the
-following details:
+In the pop-up window that appears, you can specify the following details:
 
-![Configure A New Model Server](images/configure-a-new-model-server.png)
+-   **Model server name**: Enables users to enter a unique name for the model server.
 
--   **Model server name**
-
--   **Serving runtime**: either "OpenVINO Model Server" or "OpenVINO Model Server
-    (Supports GPUs)"
+-   **Serving runtime**: Select a model-serving runtime framework from the available
+    options in your OpenShift Data Science deployment. This framework is used to
+    deploy and serve machine learning models.
 
 -   **Number of model server replicas**: This is the number of instances of the
     model server engine that you want to deploy. You can scale it up as needed,
@@ -102,6 +100,15 @@ following details:
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will
     be allocated to your server. Select the appropriate configuration for size and
     the complexity of your model.
+
+-   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
+    it to leverage optimized hardware for faster inference and improved efficiency.
+
+    !!! warning "Serving Runtime and Accelerator Compatibility"
+
+        If you need to use an **Accelerator**, it is recommended to select a compatible
+        **Serving runtime** for optimal performance. Also, **Number of accelerators**
+        (GPUs) is based on your available quota for GPUs for your project.
 
 -   **Model route**: Check this box if you want the serving endpoint (the model serving
     API) to be accessible outside of the OpenShift cluster through an external route.
@@ -113,23 +120,22 @@ After adding and selecting options within the **Add model server** pop-up
 window, click **Add** to create the model server.
 
 For our example project, let's name the **Model server** as "coolstore-modelserver".
-We'll select the **OpenVINO Model Server** in **Serving runtime**. Leave **replicas**
-to "1", **size** to "Small". At this point, _don't check_
+We'll select the **OpenVINO Model Server** in **Serving runtime**.
+
+Please leave the other fields with the default settings such as Leave **replicas**
+to "1", **size** to "Small", **Accelerator** to "None". At this point, _don't check_
 **Make model available via an external route** as shown below:
+
+![Configure A New Model Server](images/configure-a-new-model-server.png)
+
+Once you've configured your model server, you can deploy your model by clicking
+on "Deploy model" located on the right side of the running model server as shown
+below:
 
 ![Running Model Server](images/running-model-server.png)
 
-!!! info "NERC RHOAI supported Model Server Runtimes"
-
-    NERC RHOAI integrates the [Intel's OpenVINO Model Server](https://docs.openvino.ai/latest/ovms_what_is_openvino_model_server.html)
-    runtime, a high-performance system for serving models, optimized for deployment
-    on Intel architectures. Also, NERC RHOAI offers OpenVINO Model Server serving
-    runtime that supports GPUs.
-
-Once you've configured your model server, you can deploy your model by clicking
-on "Deploy model" located on the right side of the running model server. Alternatively,
-you can also do this from the main RHOAI dashboard's "Model Serving" menu item as
-shown below:
+Alternatively, you can also do this from the main RHOAI dashboard's "Model Serving"
+menu item as shown below:
 
 ![Model Serving Deploy Model Option](images/model-serving-deploy-model-option.png)
 

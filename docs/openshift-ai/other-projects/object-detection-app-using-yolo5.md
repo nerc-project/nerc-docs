@@ -496,14 +496,14 @@ are created and grouped under "minio" application grouping on the
 
 ![MinIO Under Topology](images/minio-topology.png)
 
-Click on the **minio** deployment and select the "Resources" tab to review
-created *Pods*, *Services*, and *Routes*. Please note the **minio-console**
-route url.
+Once successfully initiated, click on the **minio** deployment and select the
+"Resources" tab to review created *Pods*, *Services*, and *Routes*.
 
 ![MinIO Deployemnt Resources](images/minio-deployment-resources.png)
 
-When you click on the **minio-console** route url, this will open the MinIO
-web console that looks like below:
+Please note the **minio-console** route URL by navigating to the "Routes" section
+under the _Location_ path. When you click on the **minio-console** route URL, it
+will open the MinIO web console that looks like below:
 
 ![MinIO Web Console](images/minio-web-console.png)
 

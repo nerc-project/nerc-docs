@@ -6,18 +6,60 @@ cloud storage products support rclone including S3 object stores, business &
 consumer file storage services, as well as standard transfer protocols. Rclone
 is mature, open-source software originally inspired by **rsync** and written in Go.
 
-## Deploying Rclone on NERC OpenShift
+## Deployment
 
--   **Prerequisites**
+### Deploying Using Data Science Project (DSP) in the NERC RHOAI
 
-    Setup the OpenShift CLI Tools locally and configure the OpenShift CLI to enable
-    `oc` commands. Refer to [this user guide](../../openshift/logging-in/setup-the-openshift-cli.md).
+1.  Navigating to the OpenShift AI dashboard
 
-### Steps
+    Please follow [these steps](../logging-in/access-the-rhoai-dashboard.md) to access
+    the NERC OpenShift AI dashboard.
+
+2.  Please ensure that you start your Rclone Web server with options as depicted
+    in the following configuration screen. This screen provides you with the opportunity
+    to select a notebook image and configure its options, including the Accelerator
+    and Number of accelerators (GPUs).
+
+    ![Rclone Workbench Information](images/rclone-workbench.png)
+
+    For our example project, let's name it "Rclone Workbench". We'll select the
+    **Rclone** image, choose a **Deployment size** of **Small**, choose **Accelerator**
+    of **None**, and allocate a **Cluster storage** space of **100Mi**.
+
+    !!! tip "Tip"
+
+        The dashboard currently enforces a minimum storage volume size of 20GB, which
+        exceeds the requirements for the Rclone configuration. Please ensure that you
+        change it to **100Mi** in **Cluster Storage**.
+
+3.  If this procedure is successful, you have started your Rclone web server. When
+    your workbench is ready, the status will change to _Running_ and you can select
+    "Open" to go to your environment:
+
+    ![Open RClone Web Server](images/open-rclone-web-server.png)
+
+4.  Once you successfully authenticate you should see the NERC RHOAI RClone Login
+    page as shown below:
+
+    ![Rclone Login](images/RHOAI-Rclone-login.png)
+
+    !!! info "What are the Username and Password for Accessing the Rclone Web Interface?"
+
+       **No username or password** is required for this setup. Simply click on
+       "Login" to access the Rclone Web Interface.  
+
+### Deploying Rclone on NERC OpenShift
+
+-   **Prerequisites**:
+
+    Setup the OpenShift CLI (`oc`) Tools locally and configure the OpenShift CLI
+    to enable `oc` commands. Refer to [this user guide](../../openshift/logging-in/setup-the-openshift-cli.md).
+
+#### Steps
 
 1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift.git).
 
-In the `standalone/deploy` folder, you will find the following YAML files:
+    In the `standalone/deploy` folder, you will find the following YAML files:
 
     i. `01-pvc.yaml`: Creates a persistent volume to store the configuration.
 
@@ -27,7 +69,8 @@ In the `standalone/deploy` folder, you will find the following YAML files:
 
         Modify the admin account and password to restrict access (highly recommended).
 
-    iii. `03-service.yaml`, `04-route.yaml`: Set up external access to connect to the Web UI.
+    iii. `03-service.yaml`, `04-route.yaml`: Set up external access to connect to
+    the Web UI.
 
 2. Run this `oc` command: `oc apply -f ./standalone/deploy/.` to execute all YAML
 files located in the **standalone/deploy** folder.

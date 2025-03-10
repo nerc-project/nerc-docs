@@ -166,6 +166,9 @@ nav:
                       - GitHub to Jenkins Pipeline: other-tools/CI-CD/jenkins/integrate-your-GitHub-repository.md
                 - Using Github Actions:
                       - GitHub Actions CI/CD Pipeline: other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md
+          - R:
+                - R Studio: other-tools/R/rstudio-server/running-rstudio-on-NERC.md
+                - R Shiny: other-tools/R/r-shiny-server/running-rshiny-on-NERC.md
           - Apache Spark: other-tools/apache-spark/spark.md
           - Setup NFS Server and Client: other-tools/nfs/nfs-server-client-setup.md
 theme:

@@ -31,7 +31,7 @@ and thus only briefly mentioned here:
    format in the `metadata` hash.
 
 2. The pod restart policy with possible values `Always`, `OnFailure`, and `Never`.
-   The default value is `Always`. [Read this](https://docs.openshift.com/container-platform/4.10/nodes/pods/nodes-pods-configuring.html#nodes-pods-configuring-restart_nodes-pods-configuring)
+   The default value is `Always`. [Read this](https://docs.openshift.com/container-platform/4.17/nodes/pods/nodes-pods-configuring.html#nodes-pods-configuring-restart_nodes-pods-configuring)
    to learn about "Configuring how pods behave after restart".
 
 3. OpenShift Container Platform defines a security context for containers which
@@ -65,7 +65,7 @@ and thus only briefly mentioned here:
 
 !!! note "Viewing pods"
 
-    You can refer to [this user guide](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html-single/nodes/index#nodes-pods-viewing)
+    You can refer to [this user guide](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html-single/nodes/index#nodes-pods-about_nodes-pods-viewing)
     on how to view all pods, their usage statics (i.e. CPU, memory, and storage
     consumption) and logs in your project using the OpenShift CLI (`oc`) commands.
 
@@ -255,9 +255,9 @@ Scaling defines the number of pods or instances of the application you want to
 deploy. Bare pods not managed by a replication controller will not be rescheduled
 in the event of a node disruption. You can deploy your application using `Deployment`
 or `Deployment Config` objects to maintain the desired number of healthy pods and
-manage them from the web console. You can create [deployment strategies](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.10/html/building_applications/deployments#deployment-strategies)
+manage them from the web console. You can create [deployment strategies](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/building_applications/deployments#deployment-strategies)
 that help reduce downtime during a change or an upgrade to the application. For
-more information about deployment, please [read this](https://docs.openshift.com/container-platform/4.10/applications/deployments/what-deployments-are.html#what-deployments-are-build-blocks).
+more information about deployment, please [read this](https://docs.openshift.com/container-platform/4.17/applications/deployments/what-deployments-are.html#what-deployments-are-build-blocks).
 
 !!! note "Benefits of Scaling"
 
@@ -309,7 +309,7 @@ Click the **Observe** tab to:
         **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
         For more information about Monitoring project and application metrics
         using the Developer perspective, please
-        [read this](https://docs.openshift.com/container-platform/4.10/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
+        [read this](https://docs.openshift.com/container-platform/4.17/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
 
 ## Scaling manually
 
@@ -450,7 +450,7 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
 !!! tip "Best Practices"
 
-    Read [this document](https://docs.openshift.com/container-platform/4.10/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
+    Read [this document](https://docs.openshift.com/container-platform/4.17/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
     to learn more about best practices regarding Horizontal Pod Autoscaler (HPA)
     autoscaling.
 

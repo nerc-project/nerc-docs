@@ -23,7 +23,7 @@ workflow.
 
 ## Deploy an Application to your NERC OpenShift Project
 
--   **Prerequisites**
+-   **Prerequisites**:
 
     You must have at least one active **NERC-OCP (OpenShift)** type resource allocation.
     You can refer to [this documentation](../../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
@@ -36,8 +36,8 @@ workflow.
     To get access to NERC's OCP web console you need to be part of ColdFront's active
     allocation.
 
-2.  Setup the OpenShift CLI Tools locally and configure the OpenShift CLI to
-    enable `oc` commands. Refer to [this user guide](../../../openshift/logging-in/setup-the-openshift-cli.md).
+2.  Setup the OpenShift CLI (`oc`) Tools locally and configure the OpenShift CLI
+    to enable `oc` commands. Refer to [this user guide](../../../openshift/logging-in/setup-the-openshift-cli.md).
 
 3.  Setup Github CLI on your local machine as [described here](https://docs.github.com/en/github-cli/github-cli/quickstart)
     and verify you are able to run `gh` commands as shown below:

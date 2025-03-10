@@ -18,13 +18,13 @@ git clone https://github.com/nerc-project/terraform-nerc-r-shiny.git
 ### Setup R Shiny Server while launching a VM
 
 Within the [terraform-nerc-r-shiny repo](https://github.com/nerc-project/terraform-nerc-r-shiny.git),
-it includes the bash script file i.e. `install-R-Shiny-<OS>.sh` required to setup the
-R Shiny Server. You can use a custom user-defined bash script based on your selected
-Image OS while launching an instance.
+it includes the bash script file i.e. `install-R-Shiny-<OS>.sh` required to setup
+the R Shiny Server. You can use a custom user-defined bash script based on your
+selected Image OS while launching an instance.
 
 [During the launch](../../../openstack/create-and-connect-to-the-VM/launch-a-VM.md#ignore-other-tabs),
-in the **"Configuration"** tab, you can enter the script in the **"Customization Script"**
-text area or upload the script file directly.
+in the **"Configuration"** tab, you can enter the script in the
+**"CustomizationScript"** text area or upload the script file directly.
 
 !!! warning "Which R Shiny Script i.e. `install-R-Shiny-<OS>.sh` to Choose?"
 
@@ -34,7 +34,7 @@ text area or upload the script file directly.
     - **AlmaLinux** → `install-R-Shiny-AlmaLinux.sh`
 
     - **CentOS** → `install-R-Shiny-Centos.sh`
-    
+
     - **Ubuntu** → `install-R-Shiny-Ubuntu.sh`
 
 ## Running R Shiny Server on NERC OpenShift
@@ -47,7 +47,7 @@ application using that template.
 
 To get started, clone the repository using:
 
-```bash
+```sh
 git clone https://github.com/nerc-project/rshiny-testapp.git
 ```
 
@@ -60,7 +60,7 @@ and the location of your Shiny application code.
 For example, if your app is under the `src` directory and has no additional requirements,
 your `Dockerfile` should look like this:
 
-```
+```dockerfile
 FROM dukegcb/openshift-shiny-verse:4.1.2
 RUN install2.r here
 ADD ./src /srv/code
@@ -181,17 +181,18 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
         Some users may have access to multiple projects. Run the following command to
         switch to a specific project space: `oc project <your-project-namespace>`.
 
-    Please confirm the correct project is being selected by running `oc project`, as
-    shown below:
+    Please confirm the correct project is being selected by running `oc project`,
+    as shown below:
 
         oc project
         Using project "<your_openshift_project_to_add_r_shiny_app>" on server "https://api.shift.nerc.mghpcc.org:6443".
 
 #### Deploy your R Shiny application
 
-Process and apply template using default values from the template and passing your application specific parameters.
+Process and apply template using default values from the template and passing your
+application specific parameters.
 
-```
+```sh
 oc process -f ./openshift/rshiny-server-template.yaml \
    -p APP_GIT_URI=<YOUR_GIT_REPO> \
    -p APP_GIT_BRANCH=<YOUR_GIT_BRANCH> \
@@ -202,7 +203,7 @@ oc process -f ./openshift/rshiny-server-template.yaml \
 
 For example, the command will look like this:
 
-```
+```sh
 oc process -f ./openshift/rshiny-server-template.yaml \
     -p APP_GIT_URI=https://github.com/nerc-project/rshiny-testapp \
     -p APP_GIT_BRANCH=main \
@@ -226,7 +227,7 @@ box and then confirm to delete it as shown below:
 Alternatively, you can use the OpenShift CLI i.e. `oc` commands to delete all
 application resources:
 
-```
+```sh
 oc delete all -l app=<APP_LABEL>
 oc delete svc <APP_NAME>-service
 oc delete route <APP_NAME>-route
@@ -238,7 +239,7 @@ oc delete template shiny-server-template
 
 For example, the command will look like this:
 
-```
+```sh
 oc delete all -l app=shiny
 oc delete svc shiny-app-service
 oc delete route shiny-app-route

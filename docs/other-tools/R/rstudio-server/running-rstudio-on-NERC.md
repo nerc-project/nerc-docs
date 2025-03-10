@@ -10,7 +10,7 @@ RStudio server from that template.
 
 To get started, clone the repository by running:
 
-```bash
+```sh
 git clone https://github.com/nerc-project/rstudio-testapp.git
 ```
 

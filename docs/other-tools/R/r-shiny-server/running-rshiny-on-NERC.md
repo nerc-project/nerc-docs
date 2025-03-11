@@ -45,20 +45,56 @@ the process of creating a simple R Shiny Server template that bundles all the
 necessary resources—ConfigMap, Pod, Route, Service, etc.—and then deploy a Shiny
 application using that template.
 
-To get started, clone the repository using:
-
-```sh
-git clone https://github.com/nerc-project/rshiny-testapp.git
-```
-
 ### Steps to Prepare Your Git Repo with Application Source Code
 
-To get started, create a new Git repository and add a `Dockerfile` to specify the
-base image i.e. `dukegcb/openshift-shiny-verse:4.1.2`, additional **package** requirements,
-and the location of your Shiny application code.
+!!! tip "Shiny Application Sample"
 
-For example, if your app is under the `src` directory and has no additional requirements,
-your `Dockerfile` should look like this:
+    A ready-to-use sample Shiny application is available within the [Git Repository](https://github.com/nerc-project/rshiny-testapp).
+
+    The repository includes:
+
+    -   A `Dockerfile` for containerization
+
+    -   A `src` directory containing `app.R`, the main application script for a
+        sample shiny app.
+
+    -   A `rshiny-server-template.yaml` file is available under the `openshift`
+        directory, providing a ready-to-use **OpenShift Template** for deploying
+        Shiny applications.
+
+To get started, fork the `rshiny-testapp` App in your own Github account. To create
+a fork of the example `rshiny-testapp` repository:
+
+-   Go to [https://github.com/nerc-project/rshiny-testapp](https://github.com/nerc-project/rshiny-testapp).
+
+-   Click the "Fork" button to create a fork in your own GitHub account, e.g. "`https://github.com/<github_username>/rshiny-testapp`".
+
+    ![How to Fork Github Repo](images/rshiny-repo-fork-github.png)
+
+!!! warning "Very Important Information"
+
+    As you won't have full access to [this repository](https://github.com/nerc-project/rshiny-testapp/),
+    we recommend first forking the repository on your own GitHub account. So,
+    you'll need to update all references to `https://github.com/nerc-project/rshiny-testapp.git`
+    to point to your own forked repository.
+
+Clone your forked _rshiny-testapp_ git repository:
+
+```sh
+git clone <https://github.com/><github_username>/rshiny-testapp.git
+cd rshiny-testapp
+```
+
+Always remember the `Dockerfile` needs to specify the base image i.e. `dukegcb/openshift-shiny-verse:4.1.2`,
+additional **package** requirements, and the location of your Shiny application
+code under `src` directory.
+
+You can update the contents of your forked repository with your own `Dockerfile`
+and `src` directory containing your Shiny app files.
+
+For example, if your app is located in the `src` directory and requires the `here`
+package (_you can comment it out if no additional packages are needed_), your
+`Dockerfile` should look like this:
 
 ```dockerfile
 FROM dukegcb/openshift-shiny-verse:4.1.2
@@ -70,13 +106,6 @@ ADD ./src /srv/code
 
     The `install2.r` script is a simple utility to install R packages that is provided
     by the `rocker` images.
-
-A sample Shiny application is available within the [Git Repository](https://github.com/nerc-project/rshiny-testapp),
-which includes the `Dockerfile` and the `src` directory containing `app.R`.
-
-!!! note "More about Writing Templates"
-
-    For more options and customization please [read this](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/using-templates.html#templates-writing_using-templates).
 
 ### Deploy your shiny app using the OpenShift Web console
 

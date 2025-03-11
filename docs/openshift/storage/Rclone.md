@@ -10,7 +10,7 @@ is mature, open-source software originally inspired by **rsync** and written in 
 
 ### Deploying Using Data Science Project (DSP) in the NERC RHOAI
 
-1.  Navigating to the OpenShift AI dashboard
+1.  Navigating to the OpenShift AI dashboard.
 
     Please follow [these steps](../logging-in/access-the-rhoai-dashboard.md) to access
     the NERC OpenShift AI dashboard.
@@ -36,9 +36,9 @@ is mature, open-source software originally inspired by **rsync** and written in 
     your workbench is ready, the status will change to _Running_ and you can select
     "Open" to go to your environment:
 
-    ![Open RClone Web Server](images/open-rclone-web-server.png)
+    ![Open Rclone Web Server](images/open-rclone-web-server.png)
 
-4.  Once you successfully authenticate you should see the NERC RHOAI RClone Login
+4.  Once you successfully authenticate you should see the NERC RHOAI Rclone Login
     page as shown below:
 
     ![Rclone Login](images/RHOAI-Rclone-login.png)
@@ -58,6 +58,12 @@ is mature, open-source software originally inspired by **rsync** and written in 
 #### Steps
 
 1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift.git).
+
+    To get started, clone the repository using:
+
+    ```sh
+    git clone https://github.com/nerc-project/rclone-web-on-openshift.git
+    ```
 
     In the `standalone/deploy` folder, you will find the following YAML files:
 

@@ -464,10 +464,10 @@ iv. Copy the following code and paste it into the Import YAML editor.
       wildcardPolicy: None
     ```
 
-    !!! warning "Very Important Note"
+!!! warning "Very Important Note"
 
-        In this YAML file, the size of the storage is set as 10Gi. Change it if
-        you need to.
+    In this YAML file, the size of the storage is set as 10Gi. Change it if
+    you need to.
 
 v. Click **Create**.
 

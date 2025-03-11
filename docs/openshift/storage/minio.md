@@ -23,6 +23,15 @@ to migrate existing applications and workflows to MinIO.
 
 ## Deploying Minio in Your OpenShift Project
 
+You can run a script that automates the setup of a local MinIO storage by completing
+the following tasks:  
+
+-   **Deploys a MinIO instance** in your project namespace.
+
+-   **Generates a random user ID and password** for the MinIO Console.
+
+-   Installs all required **network policies**.
+
 **Procedure:**
 
 1.  From the OpenShift AI dashboard, you can return to OpenShift Web Console
@@ -48,198 +57,198 @@ to migrate existing applications and workflows to MinIO.
 
         ```yaml
         ---
-		apiVersion: v1
-		kind: ServiceAccount
-		metadata:
-		  name: demo-setup
-		---
-		apiVersion: rbac.authorization.k8s.io/v1
-		kind: RoleBinding
-		metadata:
-		  name: demo-setup-edit
-		roleRef:
-		  apiGroup: rbac.authorization.k8s.io
-		  kind: ClusterRole
-		  name: edit
-		subjects:
-		- kind: ServiceAccount
-		  name: demo-setup
-		---
-		apiVersion: v1
-		kind: Service
-		metadata:
-		  labels:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  name: minio
-		spec:
-		  ports:
-		  - name: api
-		    port: 9000
-		    targetPort: api
-		  - name: console
-		    port: 9090
-		    targetPort: 9090
-		  selector:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  sessionAffinity: None
-		  type: ClusterIP
-		---
-		apiVersion: v1
-		kind: PersistentVolumeClaim
-		metadata:
-		  labels:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  name: minio
-		spec:
-		  accessModes:
-		  - ReadWriteOnce
-		  resources:
-		    requests:
-		      storage: 10Gi # Adjust the size according to your needs
-		---
-		apiVersion: apps/v1
-		kind: Deployment
-		metadata:
-		  labels:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  name: minio
-		spec:
-		  replicas: 1
-		  selector:
-		    matchLabels:
-		      app: minio
-		      app.kubernetes.io/part-of: minio
-		  strategy:
-		    type: Recreate
-		  template:
-		    metadata:
-		      labels:
-		        app: minio
-		        app.kubernetes.io/part-of: minio
-		    spec:
-		      containers:
-		      - args:
-		        - minio server /data --console-address :9090
-		        command:
-		        - /bin/bash
-		        - -c
-		        envFrom:
-		        - secretRef:
-		            name: minio-root-user
-		        image: quay.io/minio/minio:latest
-		        name: minio
-		        ports:
-		        - containerPort: 9000
-		          name: api
-		          protocol: TCP
-		        - containerPort: 9090
-		          name: console
-		          protocol: TCP
-		        resources:
-		          limits:
-		            cpu: "2"
-		            memory: 2Gi
-		          requests:
-		            cpu: 200m
-		            memory: 1Gi
-		        volumeMounts:
-		        - mountPath: /data
-		          name: minio
-		      volumes:
-		      - name: minio
-		        persistentVolumeClaim:
-		          claimName: minio
-		      - emptyDir: {}
-		        name: empty        
-		---
-		apiVersion: batch/v1
-		kind: Job
-		metadata:
-		  labels:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  name: create-minio-root-user
-		spec:
-		  backoffLimit: 4
-		  template:
-		    metadata:
-		      labels:
-		        app: minio
-		        app.kubernetes.io/part-of: minio
-		    spec:
-		      containers:
-		      - args:
-		        - -ec
-		        - |-
-		          if [ -n "$(oc get secret minio-root-user -oname 2>/dev/null)" ]; then
-		            echo "Secret already exists. Skipping." >&2
-		            exit 0
-		          fi
-		          genpass() {
-		              < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c"${1:-32}"
-		          }
-		          id=$(genpass 16)
-		          secret=$(genpass)
-		          cat << EOF | oc apply -f-
-		          apiVersion: v1
-		          kind: Secret
-		          metadata:
-		            name: minio-root-user
-		          type: Opaque
-		          stringData:
-		            MINIO_ROOT_USER: ${id}
-		            MINIO_ROOT_PASSWORD: ${secret}
-		          EOF
-		        command:
-		        - /bin/bash
-		        image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
-		        imagePullPolicy: IfNotPresent
-		        name: create-minio-root-user
-		      restartPolicy: Never
-		      serviceAccount: demo-setup
-		      serviceAccountName: demo-setup
-		---
-		apiVersion: route.openshift.io/v1
-		kind: Route
-		metadata:
-		  labels:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  name: minio-console
-		spec:
-		  port:
-		    targetPort: console
-		  tls:
-		    insecureEdgeTerminationPolicy: Redirect
-		    termination: edge
-		  to:
-		    kind: Service
-		    name: minio
-		    weight: 100
-		  wildcardPolicy: None
-		---
-		apiVersion: route.openshift.io/v1
-		kind: Route
-		metadata:
-		  labels:
-		    app: minio
-		    app.kubernetes.io/part-of: minio
-		  name: minio-s3
-		spec:
-		  port:
-		    targetPort: api
-		  tls:
-		    insecureEdgeTerminationPolicy: Redirect
-		    termination: edge
-		  to:
-		    kind: Service
-		    name: minio
-		    weight: 100
-		  wildcardPolicy: None
+        apiVersion: v1
+        kind: ServiceAccount
+        metadata:
+          name: demo-setup
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: RoleBinding
+        metadata:
+          name: demo-setup-edit
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: edit
+        subjects:
+        - kind: ServiceAccount
+          name: demo-setup
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          name: minio
+        spec:
+          ports:
+          - name: api
+            port: 9000
+            targetPort: api
+          - name: console
+            port: 9090
+            targetPort: 9090
+          selector:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          sessionAffinity: None
+          type: ClusterIP
+        ---
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          name: minio
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi # Adjust the size according to your needs
+        ---
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          name: minio
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: minio
+              app.kubernetes.io/part-of: minio
+          strategy:
+            type: Recreate
+          template:
+            metadata:
+              labels:
+                app: minio
+                app.kubernetes.io/part-of: minio
+            spec:
+              containers:
+              - args:
+                - minio server /data --console-address :9090
+                command:
+                - /bin/bash
+                - -c
+                envFrom:
+                - secretRef:
+                    name: minio-root-user
+                image: quay.io/minio/minio:latest
+                name: minio
+                ports:
+                - containerPort: 9000
+                  name: api
+                  protocol: TCP
+                - containerPort: 9090
+                  name: console
+                  protocol: TCP
+                resources:
+                  limits:
+                    cpu: "2"
+                    memory: 2Gi
+                  requests:
+                    cpu: 200m
+                    memory: 1Gi
+                volumeMounts:
+                - mountPath: /data
+                  name: minio
+              volumes:
+              - name: minio
+                persistentVolumeClaim:
+                  claimName: minio
+              - emptyDir: {}
+                name: empty  
+        ---
+        apiVersion: batch/v1
+        kind: Job
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          name: create-minio-root-user
+        spec:
+          backoffLimit: 4
+          template:
+            metadata:
+              labels:
+                app: minio
+                app.kubernetes.io/part-of: minio
+            spec:
+              containers:
+              - args:
+                - -ec
+                - |-
+                  if [ -n "$(oc get secret minio-root-user -oname 2>/dev/null)" ]; then
+                    echo "Secret already exists. Skipping." >&2
+                    exit 0
+                  fi
+                  genpass() {
+                      < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c"${1:-32}"
+                  }
+                  id=$(genpass 16)
+                  secret=$(genpass)
+                  cat << EOF | oc apply -f-
+                  apiVersion: v1
+                  kind: Secret
+                  metadata:
+                    name: minio-root-user
+                  type: Opaque
+                  stringData:
+                    MINIO_ROOT_USER: ${id}
+                    MINIO_ROOT_PASSWORD: ${secret}
+                  EOF
+                command:
+                - /bin/bash
+                image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+                imagePullPolicy: IfNotPresent
+                name: create-minio-root-user
+              restartPolicy: Never
+              serviceAccount: demo-setup
+              serviceAccountName: demo-setup
+        ---
+        apiVersion: route.openshift.io/v1
+        kind: Route
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          name: minio-console
+        spec:
+          port:
+            targetPort: console
+          tls:
+            insecureEdgeTerminationPolicy: Redirect
+            termination: edge
+          to:
+            kind: Service
+            name: minio
+            weight: 100
+          wildcardPolicy: None
+        ---
+        apiVersion: route.openshift.io/v1
+        kind: Route
+        metadata:
+          labels:
+            app: minio
+            app.kubernetes.io/part-of: minio
+          name: minio-s3
+        spec:
+          port:
+            targetPort: api
+          tls:
+            insecureEdgeTerminationPolicy: Redirect
+            termination: edge
+          to:
+            kind: Service
+            name: minio
+            weight: 100
+          wildcardPolicy: None
         ```
 
     !!! warning "Very Important Note"

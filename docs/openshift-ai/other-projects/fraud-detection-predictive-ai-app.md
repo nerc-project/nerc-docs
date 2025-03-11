@@ -87,10 +87,10 @@ the following tasks:
 
 -   **Creates two storage buckets** within the MinIO instance.
 
--   **Generates a random user ID and password** for the MinIO instance.
+-   **Generates a random user ID and password** for the MinIO Console.
 
--   **Establishes two connections** in your project - one for each bucket - using
-    the same generated credentials.
+-   **Establishes two data connections** in your project - one for each bucket -
+    using the same generated credentials.
 
 -   Installs all required **network policies**.
 

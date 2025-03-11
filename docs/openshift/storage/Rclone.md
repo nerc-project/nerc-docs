@@ -12,8 +12,8 @@ is mature, open-source software originally inspired by **rsync** and written in 
 
 1.  Navigating to the OpenShift AI dashboard.
 
-    Please follow [these steps](../../openshift-ai/logging-in/access-the-rhoai-dashboard.md) to access
-    the NERC OpenShift AI dashboard.
+    Please follow [these steps](../../openshift-ai/logging-in/access-the-rhoai-dashboard.md)
+    to access the NERC OpenShift AI dashboard.
 
 2.  Please ensure that you start your Rclone Web server with options as depicted
     in the following configuration screen. This screen provides you with the opportunity

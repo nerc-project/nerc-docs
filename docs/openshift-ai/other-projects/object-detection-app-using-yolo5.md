@@ -82,7 +82,7 @@ the following tasks:
 
 -   **Creates one storage buckets** within the MinIO instance.
 
--   **Generates a random user ID and password** for the MinIO instance.
+-   **Generates a random user ID and password** for the MinIO Console.
 
 -   **Establishes a data connection** in your project - for a bucket - using
     the generated credentials.

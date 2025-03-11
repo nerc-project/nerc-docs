@@ -136,11 +136,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio
     spec:
       ports:
@@ -152,11 +148,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
         targetPort: 9090
       selector:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       sessionAffinity: None
       type: ClusterIP
     ---
@@ -165,51 +157,35 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio
     spec:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 10Gi # Adjust the size according to your needs
     ---
     apiVersion: apps/v1
     kind: Deployment
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio
     spec:
       replicas: 1
       selector:
         matchLabels:
           app: minio
-          app.kubernetes.io/component: minio
-          app.kubernetes.io/instance: minio
-          app.kubernetes.io/name: minio
           app.kubernetes.io/part-of: minio
-          component: minio
       strategy:
         type: Recreate
       template:
         metadata:
           labels:
             app: minio
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
             app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -250,11 +226,8 @@ iv. Copy the following code and paste it into the Import YAML editor.
     kind: Job
     metadata:
       labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
+        app: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: create-ds-connections
     spec:
       selector: {}
@@ -313,22 +286,16 @@ iv. Copy the following code and paste it into the Import YAML editor.
     kind: Job
     metadata:
       labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
+        app: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-buckets
     spec:
       selector: {}
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
+            app: minio
             app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -386,22 +353,16 @@ iv. Copy the following code and paste it into the Import YAML editor.
     kind: Job
     metadata:
       labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
+        app: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-root-user
     spec:
       backoffLimit: 4
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
+            app: minio
             app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -440,11 +401,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio-console
     spec:
       port:
@@ -463,11 +420,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio-s3
     spec:
       port:
@@ -481,6 +434,12 @@ iv. Copy the following code and paste it into the Import YAML editor.
         weight: 100
       wildcardPolicy: None
     ```
+
+    !!! warning "Very Important Note"
+
+        In this YAML file, the size of the storage is set as 10Gi. Change it if
+        you need to.
+
 v. Click **Create**.
 
 **Verification:**

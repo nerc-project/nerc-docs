@@ -24,8 +24,9 @@ git clone https://github.com/nerc-project/rstudio-testapp.git
 
     ![Import YAML](images/import-yaml.png)
 
-2. On opened YAML editor paste the contents of the template copied from the
-   `rstudio-server-template.yaml` file located at the provided [Git Repo](https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml).
+2. Either drag and drop `https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml`
+   or copy and paste the contents of this `rstudio-server-template.yaml` file into
+   the opened Import YAML editor box.
 
     ![YAML Editor](images/import-yaml-content.png)
 

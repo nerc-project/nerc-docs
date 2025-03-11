@@ -47,7 +47,31 @@ application using that template.
 
 ### Steps to Prepare Your Git Repo with Application Source Code
 
-!!! tip "Shiny Application Sample"
+To get started, fork the `rshiny-testapp` App in your own Github account.
+
+!!! warning "Very Important Information"
+
+    As you won't have full access to [this repository](https://github.com/nerc-project/rshiny-testapp/),
+    we recommend first forking the repository on your own GitHub account. So,
+    you'll need to update all references to `https://github.com/nerc-project/rshiny-testapp.git`
+    to point to your own forked repository.
+
+To create a fork of the example `rshiny-testapp` repository:
+
+-   Go to [https://github.com/nerc-project/rshiny-testapp](https://github.com/nerc-project/rshiny-testapp).
+
+-   Click the "Fork" button to create a fork in your own GitHub account, e.g. "`https://github.com/<github_username>/rshiny-testapp`".
+
+    ![How to Fork Github Repo](images/rshiny-repo-fork-github.png)
+
+Clone your forked _rshiny-testapp_ git repository:
+
+```sh
+git clone <https://github.com/><github_username>/rshiny-testapp.git
+cd rshiny-testapp
+```
+
+!!! tip "Shiny Application Source"
 
     A ready-to-use sample Shiny application is available within the [Git Repository](https://github.com/nerc-project/rshiny-testapp).
 
@@ -61,29 +85,6 @@ application using that template.
     -   A `rshiny-server-template.yaml` file is available under the `openshift`
         directory, providing a ready-to-use **OpenShift Template** for deploying
         Shiny applications.
-
-To get started, fork the `rshiny-testapp` App in your own Github account. To create
-a fork of the example `rshiny-testapp` repository:
-
--   Go to [https://github.com/nerc-project/rshiny-testapp](https://github.com/nerc-project/rshiny-testapp).
-
--   Click the "Fork" button to create a fork in your own GitHub account, e.g. "`https://github.com/<github_username>/rshiny-testapp`".
-
-    ![How to Fork Github Repo](images/rshiny-repo-fork-github.png)
-
-!!! warning "Very Important Information"
-
-    As you won't have full access to [this repository](https://github.com/nerc-project/rshiny-testapp/),
-    we recommend first forking the repository on your own GitHub account. So,
-    you'll need to update all references to `https://github.com/nerc-project/rshiny-testapp.git`
-    to point to your own forked repository.
-
-Clone your forked _rshiny-testapp_ git repository:
-
-```sh
-git clone <https://github.com/><github_username>/rshiny-testapp.git
-cd rshiny-testapp
-```
 
 Always remember the `Dockerfile` needs to specify the base image i.e. `dukegcb/openshift-shiny-verse:4.1.2`,
 additional **package** requirements, and the location of your Shiny application
@@ -128,8 +129,9 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
 
     ![Import YAML](images/import-yaml.png)
 
-2. On opened YAML editor paste the contents of the template copied from the
-   `openshift/rshiny-server-template.yaml` file located at the provided [Git Repo](https://raw.githubusercontent.com/nerc-project/rshiny-testapp/main/openshift/rshiny-server-template.yaml).
+2. Either drag and drop `https://raw.githubusercontent.com/nerc-project/rshiny-testapp/main/openshift/rshiny-server-template.yaml`
+   or copy and paste the contents of the `openshift/rshiny-server-template.yaml`
+   file into the opened Import YAML editor box.
 
     ![YAML Editor](images/import-yaml-content.png)
 
@@ -203,7 +205,7 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
 -   **Prerequisites**:
 
     Setup the OpenShift CLI (`oc`) Tools locally and configure the OpenShift CLI
-    to enable `oc` commands. Refer to [this user guide](../../openshift/logging-in/setup-the-openshift-cli.md).
+    to enable `oc` commands. Refer to [this user guide](../../../openshift/logging-in/setup-the-openshift-cli.md).
 
     !!! info "Information"
 

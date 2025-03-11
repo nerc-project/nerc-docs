@@ -173,7 +173,7 @@ TensorFlow. This process will take some time to complete. At the end, it will
 generate and save the model `my-model.keras` within the root folder path of
 `nerc_rhoai_mlops`.
 
-!!! info "The Machine Learning Model File Hosted on NERC OpenStack Object Bucket."
+!!! info "The Machine Learning Model File Hosted on A Bucket."
 
     The model we are going to use is an object detection model that is able to
     isolate and recognize T-shirts, bottles, and hats in pictures. Although the
@@ -183,12 +183,21 @@ generate and save the model `my-model.keras` within the root folder path of
 
     The resulting model has been saved in the [**ONNX**](https://onnx.ai/) format,
     an open standard for machine learning interoperability, which is one we can
-    use with OpenVINO and RHOAI model serving. The model has been stored and is
-    available for download on NERC OpenStack Object Storage container as [described
-    here](model-serving-in-the-rhoai.md#create-a-data-connection).
+    use with OpenVINO and RHOAI model serving.
 
+    In this tutorial, the fine-tuned model has been stored and is available for
+    download on the NERC OpenStack Object Storage container, as
+    [described here](model-serving-in-the-rhoai.md#create-a-data-connection).
+    However, you can also set up your own S3 backend to store the model by using
+    a script to configure local MinIO storage, as [explained here](../../openshift/storage/minio.md).
+
+!!! tip "Visualizing the Machine Learning Model"
     You can use [**Netron**](https://netron.app/), a cross-platform machine learning
-    model visualization tool, to explore, analyse and share the structure of your
-    model by simply uploading an **ONNX** file.
+    model visualization tool, to explore, analyze, and share the structure of your
+    model by simply uploading a supported machine learning model file.
+
+    For example:
+
+    ![Netron Model Vizualization](images/netron-model-visualized.png)
 
 ---

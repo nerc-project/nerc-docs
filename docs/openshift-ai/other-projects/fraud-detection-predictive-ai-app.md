@@ -141,11 +141,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio
     spec:
       ports:
@@ -157,11 +153,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
         targetPort: 9090
       selector:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       sessionAffinity: None
       type: ClusterIP
     ---
@@ -170,51 +162,35 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio
     spec:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 10Gi # Adjust the size according to your needs
     ---
     apiVersion: apps/v1
     kind: Deployment
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio
     spec:
       replicas: 1
       selector:
         matchLabels:
           app: minio
-          app.kubernetes.io/component: minio
-          app.kubernetes.io/instance: minio
-          app.kubernetes.io/name: minio
           app.kubernetes.io/part-of: minio
-          component: minio
       strategy:
         type: Recreate
       template:
         metadata:
           labels:
             app: minio
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
             app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -255,11 +231,8 @@ iv. Copy the following code and paste it into the Import YAML editor.
     kind: Job
     metadata:
       labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
+        app: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: create-ds-connections
     spec:
       selector: {}
@@ -338,22 +311,16 @@ iv. Copy the following code and paste it into the Import YAML editor.
     kind: Job
     metadata:
       labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
+        app: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-buckets
     spec:
       selector: {}
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
+            app: minio
             app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -415,22 +382,16 @@ iv. Copy the following code and paste it into the Import YAML editor.
     kind: Job
     metadata:
       labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
+        app: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-root-user
     spec:
       backoffLimit: 4
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
+            app: minio
             app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -469,11 +430,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio-console
     spec:
       port:
@@ -492,11 +449,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     metadata:
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
       name: minio-s3
     spec:
       port:
@@ -510,6 +463,11 @@ iv. Copy the following code and paste it into the Import YAML editor.
         weight: 100
       wildcardPolicy: None
     ```
+
+    !!! warning "Very Important Note"
+
+        In this YAML file, the size of the storage is set as 10Gi. Change it if
+        you need to.
 
 v. Click **Create**.
 
@@ -784,7 +742,7 @@ in the notebook environment. The instructions guide you through some simple data
 exploration, experimentation, and model training tasks. To run it you need to
 double click it and execute the "Run" button to run all notebook cells at once.
 
-!!! warning "Very Important: Ensure Your Notebook is Updated"
+!!! warning "Very Important: Monitoring Your Model Training Process"
 
     In the `1_experiment_train.ipynb` Jupyter notebook file, find the
     **"Monitor the Training"** section where you can use [ClearML](https://clear.ml/)
@@ -795,7 +753,10 @@ double click it and execute the "Run" button to run all notebook cells at once.
     at: [https://app.clear.ml/settings/workspace-configuration](https://app.clear.ml/settings/workspace-configuration).
 
     Please update `CLEARML_API_ACCESS_KEY` and `CLEARML_API_SECRET_KEY` with your
-    own ClearML **Application API credentials**.
+    own ClearML Application API credentials, then uncomment the following code in
+    the specified cell:
+
+    ![Monitor the Training using ClearML](images/monitor-the-training.png)
 
 **Verification:**
 

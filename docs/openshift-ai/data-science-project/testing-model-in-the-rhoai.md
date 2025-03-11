@@ -105,9 +105,11 @@ To deploy the Pre-Post Processing Service service and the Application:
 
     ![Correct Project Selected for YAML Editor](images/project-verify-yaml-editor.png)
 
--   Copy/Paste the content of the file `pre_post_processor_deployment.yaml` inside
-    the opened YAML editor. If you have named your model **coolstore** as instructed,
-    you're good to go. If not, modify the value on **[line # 35](https://github.com/nerc-project/nerc_rhoai_mlops/blob/33b3b7fa7448756f3defb3d6ae793524d1c5ff14/deployment/pre_post_processor_deployment.yaml#L35C23-L35C32)**
+-   Either drag and drop `https://github.com/nerc-project/nerc_rhoai_mlops/blob/main/deployment/pre_post_processor_deployment.yaml`
+    or copy and paste the contents of this `pre_post_processor_deployment.yaml`
+    file into the opened Import YAML editor box. If you have named your model
+    **coolstore** as instructed, you're good to go. If not, modify the value on
+    **[line # 35](https://github.com/nerc-project/nerc_rhoai_mlops/blob/main/deployment/pre_post_processor_deployment.yaml#L35)**
     with the name you set. You can then click the **Create** button as shown below:
 
     ![YAML Editor Add Pre-Post Processing Service Content](images/pre_post_processor_deployment-yaml-content.png)

@@ -31,7 +31,7 @@ fraudulent activity by analyzing the following details:
 Based on the above mentioned factors, the model determines the likelihood of a
 transaction being fraudulent.
 
-## Navigating to the OpenShift AI dashboard.
+## Navigating to the OpenShift AI dashboard
 
 Please follow [these steps](../logging-in/access-the-rhoai-dashboard.md) to access
 the NERC OpenShift AI dashboard.

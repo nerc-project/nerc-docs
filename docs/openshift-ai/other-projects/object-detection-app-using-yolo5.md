@@ -35,7 +35,7 @@ segmentation and object tracking.
 YOLO has been widely applied across various fields, including autonomous vehicles,
 security and surveillance, and medical imaging.
 
-## Navigating to the OpenShift AI dashboard.
+## Navigating to the OpenShift AI dashboard
 
 Please follow [these steps](../logging-in/access-the-rhoai-dashboard.md) to access
 the NERC OpenShift AI dashboard.

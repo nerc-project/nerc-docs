@@ -61,11 +61,15 @@ the following tasks:
         kind: ServiceAccount
         metadata:
           name: demo-setup
+          labels:
+            app: minio
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
         metadata:
           name: demo-setup-edit
+          labels:
+            app: minio
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: ClusterRole
@@ -77,10 +81,10 @@ the following tasks:
         apiVersion: v1
         kind: Service
         metadata:
+          name: minio
           labels:
             app: minio
             app.kubernetes.io/part-of: minio
-          name: minio
         spec:
           ports:
           - name: api
@@ -91,17 +95,15 @@ the following tasks:
             targetPort: 9090
           selector:
             app: minio
-            app.kubernetes.io/part-of: minio
           sessionAffinity: None
           type: ClusterIP
         ---
         apiVersion: v1
         kind: PersistentVolumeClaim
         metadata:
+          name: minio
           labels:
             app: minio
-            app.kubernetes.io/part-of: minio
-          name: minio
         spec:
           accessModes:
           - ReadWriteOnce
@@ -112,23 +114,21 @@ the following tasks:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
+          name: minio
           labels:
             app: minio
             app.kubernetes.io/part-of: minio
-          name: minio
         spec:
           replicas: 1
           selector:
             matchLabels:
               app: minio
-              app.kubernetes.io/part-of: minio
           strategy:
             type: Recreate
           template:
             metadata:
               labels:
                 app: minio
-                app.kubernetes.io/part-of: minio
             spec:
               containers:
               - args:
@@ -168,17 +168,16 @@ the following tasks:
         apiVersion: batch/v1
         kind: Job
         metadata:
+          name: create-minio-root-user
           labels:
             app: minio
             app.kubernetes.io/part-of: minio
-          name: create-minio-root-user
         spec:
           backoffLimit: 4
           template:
             metadata:
               labels:
                 app: minio
-                app.kubernetes.io/part-of: minio
             spec:
               containers:
               - args:
@@ -215,10 +214,10 @@ the following tasks:
         apiVersion: route.openshift.io/v1
         kind: Route
         metadata:
+          name: minio-console
           labels:
             app: minio
             app.kubernetes.io/part-of: minio
-          name: minio-console
         spec:
           port:
             targetPort: console
@@ -234,10 +233,10 @@ the following tasks:
         apiVersion: route.openshift.io/v1
         kind: Route
         metadata:
+          name: minio-s3
           labels:
             app: minio
             app.kubernetes.io/part-of: minio
-          name: minio-s3
         spec:
           port:
             targetPort: api

@@ -151,6 +151,7 @@ following for requesting (NVIDIA A100 GPU):
           limits:
             memory: "128Mi"
             cpu: "500m"
+            nvidia.com/gpu: 1
       tolerations:
         - key: nvidia.com/gpu.product
           operator: Equal
@@ -159,6 +160,14 @@ following for requesting (NVIDIA A100 GPU):
       nodeSelector:
         nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
 
+!!! note "GPU Resource Spec: resources, tolerations & nodeSelector"
+
+    When requesting GPU resources directly from pods and deployments, you must include
+    the `spec.tolerations` and `spec.nodeSelector` shown above, for your desired
+    GPU type. Also, the `spec.containers.resources.requests` and `spec.containers.resources.limits`
+    needs to include the `nvidia.com/gpu` specification that indicates the number
+    of GPUs you want in your container.
+
 In the sample Pod Spec above, you can allocate GPUs to containers by specifying
 the GPU resource `nvidia.com/gpu` and indicating the desired number of GPUs. This
 number should not exceed the GPU quota specified by the value of the
@@ -166,18 +175,17 @@ number should not exceed the GPU quota specified by the value of the
 "**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront as
 [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
 
-!!! note "Pod Spec: tolerations & nodeSelector"
+!!! info "ColdFront OpenShift GPU Resource Quota"
 
-    When requesting GPU resources directly from pods and deployments, you must include
-    the `spec.tolerations` and `spec.nodeSelector` shown above, for your desired
-    GPU type.
+    There is no quota attribute to specify a desired GPU type. You can only specify
+    the number of GPUs required per allocation (OpenShift Project) by setting the
+    value in the "**OpenShift Request on GPU Quota**" attribute.
 
-If you need to increase this quota value, you can request a change as
-[explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
+If you need to increase the quota value for the total GPUs available on your OpenShift
+allocation, you can submit an allocation quota change request as [explained here](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openshift-project).
 
-The "resources" section under "containers" with the `nvidia.com/gpu` specification
-indicates the number of GPUs you want in this container. Below is an example of
-a running pod YAML that requests the GPU device with a count of 2:
+Below is an example of a running pod YAML that requests the GPU device i.e. `NVIDIA-A100-SXM4-40GB`
+with a count of 2:
 
     apiVersion: v1
     kind: Pod
@@ -222,20 +230,31 @@ the name of the GPU device:
 We can specify information about the GPU product type, family, count, and so on,
 as shown in the Pod Spec above. Also, these node labels can be used in the Pod Spec
 to schedule workloads based on criteria such as the GPU device name, as shown under
-_nodeSelector_ in this case (NVIDIA V100 GPU):
+_nodeSelector_ to specify a different NVIDIA GPU.
 
+Below is an example of a running pod YAML that requests the GPU device i.e. `Tesla-V100-PCIE-32GB`
+with a count of 1:
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: gpu-pod2
     spec:
+      restartPolicy: Never
       containers:
-      - name: app
-        image: ...
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-            nvidia.com/gpu: 1
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        - name: cuda-container
+          image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda10.2
+          command: ["sleep"]
+          args: ["infinity"]
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+              nvidia.com/gpu: 1
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+              nvidia.com/gpu: 1
       tolerations:
         - key: nvidia.com/gpu.product
           operator: Equal

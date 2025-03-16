@@ -51,7 +51,7 @@ chatbot solution.
 
     For our example project, let's name it "AnythingLLM Workbench". We'll select
     the **AnythingLLM** image, choose a **Deployment size** of **Small**, **Accelerator**
-    as **None** (no GPU is needed for this setup) and allocate a **Cluster storage**
+    as **None** (no GPU is needed for this setup), and allocate a **Cluster storage**
     space of **20GB**.
 
     !!! tip "Tip"

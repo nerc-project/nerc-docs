@@ -23,7 +23,7 @@ to migrate existing applications and workflows to MinIO.
 
 ## Deploying Minio in Your OpenShift Project
 
-You can run a script that automates the setup of a local MinIO storage by completing
+You can run a script that automates the setup of a local S3 storage (MinIO) by completing
 the following tasks:  
 
 -   **Deploys a MinIO instance** in your project namespace.
@@ -53,7 +53,7 @@ the following tasks:
 
 4.  Copy the following code and paste it into the Import YAML editor.
 
-    ??? note "Local MinIO storage Creation YAML Script"
+    ??? note "Local S3 storage (MinIO) Creation YAML Script"
 
         ```yaml
         ---
@@ -162,7 +162,7 @@ the following tasks:
                 persistentVolumeClaim:
                   claimName: minio-pvc
               - emptyDir: {}
-                name: empty  
+                name: empty
         ---
         apiVersion: batch/v1
         kind: Job
@@ -303,13 +303,13 @@ as the **Username** and the **Secret Key** as the **Password**.
 
     Alternatively, you can run a script to install local object storage using the
     OpenShift CLI (`oc`). Once the OpenShift CLI is set up, execute the following
-    command to install MinIO object storage along with local MinIO storage:
+    command to install MinIO object storage along with local S3 storage (MinIO):
 
-    `oc apply -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/s3-basic.yaml`
+    `oc apply -f https://raw.githubusercontent.com/nerc-project/llm-on-nerc/main/setup/s3-basic.yaml`
 
 !!! tip "Clean Up"
 
-    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/s3-basic.yaml`
+    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/llm-on-nerc/main/setup/s3-basic.yaml`
     or `oc delete all,sa,rolebindings,pvc,job -l app=minio`.
 
 !!! danger "Important Note"

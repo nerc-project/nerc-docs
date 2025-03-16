@@ -16,7 +16,8 @@
 
     For our example project, let's name it "RStudio Workbench". We'll select the
     **RStudio** image, choose a **Deployment size** of **Small**, choose **Accelerator**
-    of **None**, and allocate a **Cluster storage** space of **20Gi** (default).
+    of **None** (no GPU is needed for this setup), and allocate a **Cluster storage**
+    space of **20Gi** (default).
 
     !!! tip "Tip"
 

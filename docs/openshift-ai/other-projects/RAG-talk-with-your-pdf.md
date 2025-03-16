@@ -47,12 +47,6 @@ be populated with documents.
     [this guide](../../openshift/applications/editing-applications.md#rate-limits-while-pulling-container-image)
     for detailed steps on how to resolve the issue.
 
-### Integrating Qdrant with LangChain
-
-Once you have Qdrant set up, the next step is to integrate it with LangChain.
-The LangChain library provides various tools to interact with vector databases,
-including Qdrant.
-
 ## Deploying as a Workbench Using a Data Science Project (DSP) on NERC RHOAI
 
 **Prerequisites**:
@@ -78,9 +72,8 @@ including Qdrant.
 
     For our example project, let's name it "RAG Workbench". We'll select the
     **TensorFlow** image with Recommended Version (selected by default), choose
-    a **Deployment size** of **Medium**, choose **Accelerator** of
-    **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
-    a **Cluster storage** space of **20GB**.
+    a **Deployment size** of **Medium**, **Accelerator** as **None** (no GPU is
+    needed for this setup) and allocate a **Cluster storage** space of **20GB**.
 
     !!! tip "Tip"
 
@@ -156,8 +149,14 @@ shown below:
     Update the Ollama's **BASE_URL** and Qdrant's **QDRANT_HOST** in this notebook
     to match your deployment settings.
 
-The AI model, now enriched with additional data, including *The Forgotten Lighthouse
-Book* (located at `llm-on-nerc/examples/notebooks/langchain/datasource/The_Forgotten_Lighthouse_Book.pdf`),
+**Integrating Qdrant with LangChain:**
+
+Once you have Qdrant set up, the next step is to integrate it with LangChain.
+The LangChain library provides various tools to interact with vector databases,
+including Qdrant.
+
+The AI model, now enriched with additional data, including *The Forgotten Lighthouse*
+book pdf that is located at [`llm-on-nerc/examples/notebooks/langchain/datasource/The_Forgotten_Lighthouse_Book.pdf`](https://github.com/nerc-project/llm-on-nerc/blob/main/examples/notebooks/langchain/datasource/The_Forgotten_Lighthouse_Book.pdf),
 can be queried. When asked, *"Who is the starfish, and how do you know?"*, it
 processes the PDF and infers that Grandpa calls Sarah “my little starfish” in his
 letter. Since the model wasn't originally trained on this book, its response

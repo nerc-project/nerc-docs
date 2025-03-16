@@ -189,7 +189,7 @@ generate and save the model `my-model.keras` within the root folder path of
     download on the NERC OpenStack Object Storage container, as
     [described here](model-serving-in-the-rhoai.md#create-a-data-connection).
     However, you can also set up your own S3 backend to store the model by using
-    a script to configure local MinIO storage, as [explained here](../../openshift/storage/minio.md).
+    a script to configure local S3 storage (MinIO), as [explained here](../../openshift/storage/minio.md).
 
 !!! tip "Visualizing the Machine Learning Model"
     You can use [**Netron**](https://netron.app/), a cross-platform machine learning

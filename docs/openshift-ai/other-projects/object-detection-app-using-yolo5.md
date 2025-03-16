@@ -54,7 +54,7 @@ the NERC OpenShift AI dashboard.
 For this tutorial, you will need **two S3-compatible object storage buckets**,
 such as **NERC OpenStack Container (Ceph)**, **MinIO**, or **AWS S3**. You can
 either use your own storage buckets or run a provided script that automatically
-creates the following **local MinIO storage bucket**:
+creates the following **local S3 storage (MinIO) bucket**:
 
 -   **my-storage** – Use this bucket to store your models and data. You can reuse
 this bucket and its connection for notebooks and model servers.
@@ -73,7 +73,7 @@ as shown below:
 
 ![Data Connections](images/single-data-connection.png)
 
-### 1.2. **Using a script to set up local MinIO storage**
+### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
 Alternatively, if you want to run a script that automates the setup by completing
 the following tasks:
@@ -110,7 +110,7 @@ iii. Verify that you selected the correct project.
 
 iv. Copy the following code and paste it into the Import YAML editor.
 
-??? note "Local MinIO storage Creation YAML Script"
+??? note "Local S3 storage (MinIO) Creation YAML Script"
 
     ```yaml
     ---
@@ -219,7 +219,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
             persistentVolumeClaim:
               claimName: minio-pvc
           - emptyDir: {}
-            name: empty  
+            name: empty
     ---
     apiVersion: batch/v1
     kind: Job
@@ -468,7 +468,7 @@ will open the MinIO web console that looks like below:
     The Username and Password for the MinIO web console can be retrieved from
     the Data Connection's **Access key** and **Secret key**.
 
-iii. [Navigate back to the OpenShift AI dashboard](#navigating-to-the-openshift-ai-dashboard)
+iii. Navigate back to the OpenShift AI dashboard.
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Object Detection Workbench**.
@@ -516,7 +516,7 @@ bucket: **my-storage** is visible as shown below:
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
-    install MinIO object storage along with local MinIO storage buckets
+    install MinIO object storage along with local S3 storage (MinIO) buckets
     and necessary data connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/object-detection/main/setup/setup-s3.yaml`

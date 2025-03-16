@@ -50,7 +50,7 @@ the NERC OpenShift AI dashboard.
 For this tutorial, you will need **two S3-compatible object storage buckets**,
 such as **NERC OpenStack Container (Ceph)**, **MinIO**, or **AWS S3**. You can
 either use your own storage buckets or run a provided script that automatically
-creates the following **local MinIO storage buckets**:
+creates the following **local S3 storage (MinIO) buckets**:
 
 -   **my-storage** – Use this bucket to store your models and data. You can reuse
 this bucket and its connection for notebooks and model servers.
@@ -62,7 +62,7 @@ this bucket and its connection for notebooks and model servers.
 
 You must also create a connection to each storage bucket. For this tutorial, you
 have two options depending on whether you want to use your own storage buckets
-or a script to create local MinIO storage buckets:
+or a script to create local S3 storage (MinIO) buckets:
 
 #### 1.1. **Using your own S3-compatible storage buckets**
 
@@ -78,7 +78,7 @@ and **Pipeline Artifacts** as shown below:
 
 ![Data Connections](images/data-connections.png)
 
-#### 1.2. **Using a script to set up local MinIO storage**
+#### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
 Alternatively, if you want to run a script that automates the setup by completing
 the following tasks:
@@ -115,7 +115,7 @@ iii. Verify that you selected the correct project.
 
 iv. Copy the following code and paste it into the Import YAML editor.
 
-??? note "Local MinIO storage Creation YAML Script"
+??? note "Local S3 storage (MinIO) Creation YAML Script"
 
     ```yaml
     ---
@@ -224,7 +224,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
             persistentVolumeClaim:
               claimName: minio-pvc
           - emptyDir: {}
-            name: empty  
+            name: empty
     ---
     apiVersion: batch/v1
     kind: Job
@@ -497,7 +497,7 @@ will open the MinIO web console that looks like below:
     The Username and Password for the MinIO web console can be retrieved from
     the Data Connection's **Access key** and **Secret key**.
 
-iii. [Navigate back to the OpenShift AI dashboard](#navigating-to-the-openshift-ai-dashboard)
+iii. Navigate back to the OpenShift AI dashboard.
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Fraud detection**.
@@ -545,14 +545,14 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
-    install MinIO object storage along with local MinIO storage buckets
+    install MinIO object storage along with local S3 storage (MinIO) buckets
     and necessary data connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/setup-s3.yaml`
 
 !!! tip "Clean Up"
 
-    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/s3-basic.yaml`
+    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/setup-s3.yaml`
     or `oc delete all,sa,rolebindings,pvc,job -l app=minio`.
 
 !!! danger "Important Note"
@@ -1210,7 +1210,7 @@ Set these values in the **Environment variables (runtime only)** fields:
 
 **Value:** From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
 copy the **restUrl** value and add `/v2/models/fraud/infer` to the end. For
-example: `http://modelmesh-serving.nerc-demo-xxx:8008/v2/models/fraud/infer`.
+example: `http://modelmesh-serving.<your-namespace>:8008/v2/models/fraud/infer`.
 
 ![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
 

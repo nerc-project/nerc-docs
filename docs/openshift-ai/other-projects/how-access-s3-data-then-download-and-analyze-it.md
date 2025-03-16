@@ -17,7 +17,7 @@ and Number of accelerators (GPUs).
 
 For our example project, let's name it "Standard Data Science Workbench". We'll
 select the **Standard Data Science** image, choose a **Deployment size** of **Small**,
-**Accelerator** as **None** (no GPU is needed for this setup) and allocate a
+**Accelerator** as **None** (no GPU is needed for this setup), and allocate a
 **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.

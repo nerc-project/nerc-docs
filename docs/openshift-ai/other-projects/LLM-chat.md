@@ -48,7 +48,7 @@ This deployment sets up a ready-to-use container runtime that pulls the
 [Hugging Face](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3).
 
 !!! info "About Mistral-7B Model"
-    
+
     *Mistral-7B* is a high-performance, relatively lightweight **LLM**, fully
     **open-source** under the **Apache 2.0** license. The *Mistral-7B-Instruct-v0.3*
     LLM is an instruct fine-tuned version of the *Mistral-7B-v0.3*.
@@ -75,7 +75,8 @@ This deployment sets up a ready-to-use container runtime that pulls the
 
     ![Ollama New Chat UI](images/ollama-change-UI-promt-style.png)
 
-5. Test your Inferencing by querying the inferencing runtime at the "Say Something" box:
+5. Test your Inferencing by querying the inferencing runtime at the "Say Something"
+    box:
 
     ![Ollama Start Chat](images/ollama-start-chat.png)
 
@@ -101,7 +102,6 @@ For more details, refer to this [documentation](https://github.com/nerc-project/
     for Ollama, allowing you to log in, download new models, and start chatting!
 
     ![Ollama Open WebUI](images/llama-open-webui.png)
-
 
 !!! tip "Connecting LLM Clients to the Deployed LLM Providers"
 

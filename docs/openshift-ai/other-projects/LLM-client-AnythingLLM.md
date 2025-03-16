@@ -22,7 +22,7 @@ responses based on their content.
 Here, we'll guide you through deploying **AnythingLLM** as a workbench on
 **NERC RHOAI** to create a private chatbot for internal users. **AnythingLLM**
 enables teams to securely interact with documents and knowledge bases by integrating
-various **LLMs** and **LLM servers** with private data in a controlled environment. 
+various **LLMs** and **LLM servers** with private data in a controlled environment.
 
 By leveraging NERC OpenShift's powerful AI platform and built-in security
 features, we can deploy **AnythingLLM** as an efficient and secure internal
@@ -59,9 +59,9 @@ chatbot solution.
         The dashboard currently enforces a minimum storage volume size of 20GB.
         Please ensure that you modify this based on your need in **Cluster Storage**.
 
-3.  If this procedure is successful, you have started your AnythingLLM Workbench. When
-    your workbench is ready, the status will change to _Running_ and you can select
-    "Open" to go to your environment:
+3.  If this procedure is successful, you have started your AnythingLLM Workbench.
+    When your workbench is ready, the status will change to _Running_ and you can
+    select "Open" to go to your environment:
 
     ![Open AnythingLLM Workbench](images/open-AnythingLLM-workbench.png)
 
@@ -83,7 +83,7 @@ chatbot solution.
         options for the "Ollama Base URL," as explained below:
 
         -   **Internal Service Endpoint:**  
-        
+
             This option is only accessible **within the OpenShift cluster** and cannot
             be accessed externally.
 
@@ -94,8 +94,8 @@ chatbot solution.
                 ![Ollama Resources](images/ollama-resources.png)
 
             -   Alternatively, you can click on the service name to **view details**,
-                including the internal service routing **Hostname** and **Port**, as
-                shown below:
+                including the internal service routing **Hostname** and **Port**,
+                as shown below:
 
                 ![Internal Service Routing Hostname](images/ollama-internal-serving-hostname.png)
 
@@ -109,7 +109,7 @@ chatbot solution.
 
         Choose the appropriate URL option based on your needs and whether the Ollama
         service is intended for internal use or external access.
-    
+
     -   **Ollama Model:** Choose the specific Ollama model you want to use for
         your conversations.
 
@@ -122,7 +122,7 @@ chatbot solution.
 6.  **Set Up User Access** by selecting `Just me` on the next screen. Since OpenShift's
     authentication ensures that only you can access your workbench, this option
     is appropriate.
-    
+
     You will then be prompted to set up a secondary password. However, this step
     is generally not necessary, as access to the workbench is already secured by
     OpenShift authentication.

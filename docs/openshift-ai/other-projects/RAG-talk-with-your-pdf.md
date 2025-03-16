@@ -27,7 +27,7 @@ below:
 
 ![Ollama Open WebUI Pull Model](images/ollama-pull-phi3-model.png)
 
-Alternatively, you can [Pull the Models](https://github.com/nerc-project/llm-on-nerc/tree/main/llm-servers/ollama#pull-the-models) 
+Alternatively, you can [Pull the Models](https://github.com/nerc-project/llm-on-nerc/tree/main/llm-servers/ollama#pull-the-models)
 using the "Terminal" connected to the Ollama pod.
 
 ## Deploying a Vector Database

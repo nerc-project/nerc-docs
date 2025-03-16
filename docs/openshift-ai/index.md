@@ -44,4 +44,14 @@ the list below.
 
 -   [Object Detection Application Using YOLOv5 Model](other-projects/object-detection-app-using-yolo5.md)
 
+## Generative AI tutorial
+
+-   [Large Language Model (LLM) - Chat](other-projects/LLM-chat.md)
+
+-   [Retrieval Augumented Generation (RAG) - Talk with your PDF](other-projects/RAG-talk-with-your-pdf.md)
+
+## LLM Clients
+
+-   [LLM Client - AnythingLLM](other-projects/LLM-client-AnythingLLM.md)
+
 ---

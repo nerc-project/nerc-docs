@@ -35,8 +35,8 @@ tasks using both the web console and the command-line tool.
 
 7. On the **Topology View** menu, click on your application, or the application
    circle if you are in graphical topology view. In the details panel that displays,
-   scroll to the **Routes** section on the Resources tab and click on the link to
-   go to the sample application. This will open your application in a new browser
+   scroll to the **Routes** section on the "Resources" tab and click on the link
+   to go to the sample application. This will open your application in a new browser
    window. The link will look similar to `https://<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 !!! tip "Example: Deploying a Python application"

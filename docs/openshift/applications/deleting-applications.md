@@ -60,6 +60,10 @@ application, then run `oc delete`.
 
 `oc delete all --selector app=<application-name>`
 
+**Or,**
+
+`oc delete all -l app=<application-name>`
+
 !!! note "Important Note"
 
     Selector all matches on a subset of all resource object types that exist.
@@ -71,6 +75,10 @@ You will either need to delete these resource objects separately, or if they als
 have been labelled with the app tag, list the resource object types along with all.
 
 `oc delete all,configmap,pvc,serviceaccount,rolebinding --selector app=<application-name>`
+
+**Or,**
+
+`oc delete all,configmap,pvc,serviceaccount,rolebinding -l app=<application-name>`
 
 If you are not sure what labels have been applied to resource objects for your
 application, you can run oc describe on the resource object to see the labels

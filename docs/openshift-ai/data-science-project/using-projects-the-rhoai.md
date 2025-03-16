@@ -118,7 +118,6 @@ as **1** and allocate a **Cluster storage** space of **1GB**.
     it temporarily unavailable, with the downtime typically depending on the size
     increase.
 
-
     Additionally, you can use previously created persistent storage that isn't
     attached to any existing workbench cluster storage by selecting the **existing
     persistent storage** option while creating a new workbench.

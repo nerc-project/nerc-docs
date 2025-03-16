@@ -36,7 +36,7 @@ When your workbench is ready, the status will change to _Running_ and you can se
 
 ![Open JupyterLab Environment](images/open-pytorch-jupyter-lab.png)
 
-Once you successfully authenticate you should see the NERC RHOAI JupyterLab Web
+Once you successfully authenticate, you should see the NERC RHOAI JupyterLab Web
 Interface as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)

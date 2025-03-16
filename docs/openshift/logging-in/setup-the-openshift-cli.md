@@ -66,7 +66,9 @@ provides descriptions and example commands for OpenShift CLI (oc) developer comm
 
 !!! info "Important Note"
 
-    Run `oc help` to list all commands or run `oc <command> --help` to get additional
-    details for a specific command.
+    Run `oc help` to list all commands and run `oc <command> --help` or
+    `oc <command> -h` to get additional details for a specific command.
+
+    You can always use `oc explain <resource>`, if you need help with resources.
 
 ---

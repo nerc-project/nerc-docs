@@ -43,7 +43,7 @@ login page where you need to enter your institutional credentials.
     it points to your selected insitution's identity provider and redirects back
     once authenticated.
 
-Once you successfully authenticate you should see an overview of the resources
+Once you successfully authenticate, you should see an overview of the resources
 like Compute (instances, VCPUs, RAM, etc.), Volume and Network. You can also
 see usage summary for provided date range.
 

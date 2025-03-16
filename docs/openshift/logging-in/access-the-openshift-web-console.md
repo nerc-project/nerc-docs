@@ -44,7 +44,7 @@ login page where you need to enter your institutional credentials.
     it points to your selected insitution's identity provider and redirects back
     once authenticated.
 
-Once you successfully authenticate you should see a graphical user interface to
+Once you successfully authenticate, you should see a graphical user interface to
 visualize your project data and perform administrative, management, and troubleshooting
 tasks.
 

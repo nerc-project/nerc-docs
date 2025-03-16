@@ -60,14 +60,14 @@ the following tasks:
         apiVersion: v1
         kind: ServiceAccount
         metadata:
-          name: demo-setup
+          name: minio-setup
           labels:
             app: minio
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
         metadata:
-          name: demo-setup-edit
+          name: minio-setup-edit
           labels:
             app: minio
         roleRef:
@@ -76,15 +76,14 @@ the following tasks:
           name: edit
         subjects:
         - kind: ServiceAccount
-          name: demo-setup
+          name: minio-setup
         ---
         apiVersion: v1
         kind: Service
         metadata:
-          name: minio
+          name: minio-service
           labels:
             app: minio
-            app.kubernetes.io/part-of: minio
         spec:
           ports:
           - name: api
@@ -101,7 +100,7 @@ the following tasks:
         apiVersion: v1
         kind: PersistentVolumeClaim
         metadata:
-          name: minio
+          name: minio-pvc
           labels:
             app: minio
         spec:
@@ -114,7 +113,7 @@ the following tasks:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
-          name: minio
+          name: minio-deployment
           labels:
             app: minio
             app.kubernetes.io/part-of: minio
@@ -157,11 +156,11 @@ the following tasks:
                     memory: 1Gi
                 volumeMounts:
                 - mountPath: /data
-                  name: minio
+                  name: minio-volume
               volumes:
-              - name: minio
+              - name: minio-volume
                 persistentVolumeClaim:
-                  claimName: minio
+                  claimName: minio-pvc
               - emptyDir: {}
                 name: empty  
         ---
@@ -208,8 +207,8 @@ the following tasks:
                 imagePullPolicy: IfNotPresent
                 name: create-minio-root-user
               restartPolicy: Never
-              serviceAccount: demo-setup
-              serviceAccountName: demo-setup
+              serviceAccount: minio-setup
+              serviceAccountName: minio-setup
         ---
         apiVersion: route.openshift.io/v1
         kind: Route
@@ -226,7 +225,7 @@ the following tasks:
             termination: edge
           to:
             kind: Service
-            name: minio
+            name: minio-service
             weight: 100
           wildcardPolicy: None
         ---
@@ -245,7 +244,7 @@ the following tasks:
             termination: edge
           to:
             kind: Service
-            name: minio
+            name: minio-service
             weight: 100
           wildcardPolicy: None
         ```
@@ -307,6 +306,11 @@ as the **Username** and the **Secret Key** as the **Password**.
     command to install MinIO object storage along with local MinIO storage:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/s3-basic.yaml`
+
+!!! tip "Clean Up"
+
+    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/s3-basic.yaml`
+    or `oc delete all,sa,rolebindings,pvc,job -l app=minio`.
 
 !!! danger "Important Note"
 

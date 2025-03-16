@@ -117,14 +117,14 @@ iv. Copy the following code and paste it into the Import YAML editor.
     apiVersion: v1
     kind: ServiceAccount
     metadata:
-      name: demo-setup
+      name: minio-setup
       labels:
         app: minio
     ---
     apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
-      name: demo-setup-edit
+      name: minio-setup-edit
       labels:
         app: minio
     roleRef:
@@ -133,15 +133,14 @@ iv. Copy the following code and paste it into the Import YAML editor.
       name: edit
     subjects:
     - kind: ServiceAccount
-      name: demo-setup
+      name: minio-setup
     ---
     apiVersion: v1
     kind: Service
     metadata:
-      name: minio
+      name: minio-service
       labels:
         app: minio
-        app.kubernetes.io/part-of: minio
     spec:
       ports:
       - name: api
@@ -158,7 +157,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
-      name: minio
+      name: minio-pvc
       labels:
         app: minio
     spec:
@@ -171,7 +170,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: minio
+      name: minio-deployment
       labels:
         app: minio
         app.kubernetes.io/part-of: minio
@@ -214,13 +213,13 @@ iv. Copy the following code and paste it into the Import YAML editor.
                 memory: 1Gi
             volumeMounts:
             - mountPath: /data
-              name: minio
+              name: minio-volume
           volumes:
-          - name: minio
+          - name: minio-volume
             persistentVolumeClaim:
-              claimName: minio
+              claimName: minio-pvc
           - emptyDir: {}
-            name: empty
+            name: empty  
     ---
     apiVersion: batch/v1
     kind: Job
@@ -279,8 +278,8 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: create-ds-connections
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: batch/v1
     kind: Job
@@ -306,7 +305,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
               import boto3, os
 
               s3 = boto3.client("s3",
-                                endpoint_url="http://minio:9000",
+                                endpoint_url="http://minio-service:9000",
                                 aws_access_key_id=os.getenv("MINIO_ROOT_USER"),
                                 aws_secret_access_key=os.getenv("MINIO_ROOT_PASSWORD"))
               bucket = 'my-storage'
@@ -333,11 +332,11 @@ iv. Copy the following code and paste it into the Import YAML editor.
               done; echo
 
               echo -n 'Waiting for minio deployment'
-              while ! oc get deployment minio 2>/dev/null | grep -qF minio; do
+              while ! oc get deployment minio-deployment 2>/dev/null | grep -qF minio-deployment; do
                 echo -n .
                 sleep 5
               done; echo
-              oc wait --for=condition=available --timeout=60s deployment/minio
+              oc wait --for=condition=available --timeout=60s deployment/minio-deployment
               sleep 10
             command:
             - /bin/bash
@@ -345,8 +344,8 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: wait-for-minio
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: batch/v1
     kind: Job
@@ -391,8 +390,8 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: create-minio-root-user
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: route.openshift.io/v1
     kind: Route
@@ -409,7 +408,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
         termination: edge
       to:
         kind: Service
-        name: minio
+        name: minio-service
         weight: 100
       wildcardPolicy: None
     ---
@@ -428,7 +427,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
         termination: edge
       to:
         kind: Service
-        name: minio
+        name: minio-service
         weight: 100
       wildcardPolicy: None
     ```
@@ -521,6 +520,11 @@ bucket: **my-storage** is visible as shown below:
     and necessary data connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/object-detection/main/setup/setup-s3.yaml`
+
+!!! tip "Clean Up"
+
+    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/object-detection/main/setup/setup-s3.yaml`
+    or `oc delete all,sa,rolebindings,pvc,job -l app=minio`.
 
 !!! danger "Important Note"
 
@@ -625,7 +629,7 @@ to _Running_ and you can select "Open" to go to your environment:
 
     ![Workbench edit](images/ds-od-project-workbench-list-edit.png)
 
-Once you successfully authenticate you should see the NERC RHOAI JupyterLab
+Once you successfully authenticate, you should see the NERC RHOAI JupyterLab
 Web Interface as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)
@@ -647,9 +651,11 @@ On the toolbar, click the Git Clone icon:
 
 ![Git Clone icon](images/jupyter-git-icon.png)
 
-Enter the following tutorial **Git https URL**: [https://github.com/nerc-project/object-detection](https://github.com/nerc-project/object-detection)
+Enter the following **Git Repo URL**: [https://github.com/nerc-project/object-detection](https://github.com/nerc-project/object-detection)
 
 Check the Include submodules option, and then click Clone.
+
+![Clone A Repo](images/clone-a-repo.png)
 
 In the file browser, double-click the newly-created **object-detection** folder.
 

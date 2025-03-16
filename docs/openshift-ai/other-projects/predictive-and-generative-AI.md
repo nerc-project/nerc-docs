@@ -51,11 +51,104 @@ By leveraging foundation models, developers can significantly reduce the time
 and resources needed for task-specific training. These models enable efficient
 adaptation to various domains, making them a powerful tool for AI-driven applications.
 
+### LLM Serving
+
+On NERC, we offer various solutions to handle LLM serving.
+
+1.  An easier option is to use the NERC RHOAI **Serving runtime**, which can be utilized
+    when setting up the RHOAI **Moder Server**, as [explained here](../data-science-project/model-serving-in-the-rhoai.md#create-a-model-server).
+
+2.  Alternatively, you can set up compatible LLM servers as standalone deployments.
+
+    #### As a Standalone Deployment
+
+    In [this repository](https://github.com/nerc-project/llm-on-nerc.git), you
+    will find:
+
+    - **Deployment Recipes** for various LLM servers as standalone deployments.
+
+    - **Notebook Examples** demonstrating how to query different LLM servers.
+
+    Within the `standalone` folder of each LLM server's directory, you
+    will find all the necessary **YAML files** defining the required **PVC**,
+    **Deployment**, **Service**, **Route**, etc. objects.
+
+    If the deployment's container image relies on a custom-built Docker image, the
+    LLM server directory will also include a **Containerfile**. You can use this
+    file to build the inference runtime container from scratch.
+
+    !!! warning "Very Important Note"
+
+        This is only an example! Adapt the files to your specific requirements,
+        especially the **Deployment** configuration, including **CPU, RAM, GPU,
+        tolerations**, and other relevant settings.
+
+#### LLM clients
+
+LLM clients provide user-friendly interfaces for interacting with LLMs. These
+clients help streamline the deployment and usage of LLMs for various applications,
+such as chatbots, document processing, and AI-powered automation.  
+
+-   **AnythingLLM**:
+
+    [AnythingLLM](https://anythingllm.com/) is an open-source framework that allows
+    users to connect and interact with LLMs efficiently. It supports integrations
+    with multiple AI models and provides a web-based UI for seamless communication.
+
+    You can deploy and run the AnythingLLM directly on the NERC RHOAI by following
+    [these intructions](LLM-client-AnythingLLM.md).
+
 ### Quantization
 
 Model quantization reduces computational and memory demands by converting model
 parameters into lower-precision formats. This improves efficiency, making models
 more suitable for resource-constrained devices, albeit with a slight loss in accuracy.
+
+### Vector Database
+
+A Vector Database is a specialized database system designed for efficiently indexing,
+querying, and retrieving multi-dimensional vector data. These databases enable
+advanced data analysis and similarity search operations, going beyond the traditional
+structured query approach used in conventional databases. These databases are widely
+used in machine learning, image processing, and NLP to enable fast retrieval and
+complex computations on vector data.
+
+!!! info "What Is a Vector?"
+
+    A vector is a numerical representation of data that can capture the context
+    and semantics of data.
+
+#### Qdrant
+
+**Qdrant** is an AI-native vector database and semantic search engine designed to
+extract meaningful insights from unstructured data.
+
+You can deploy and run the Qdrant vector database directly on the NERC OpenShift
+environment by following [these intructions](https://github.com/nerc-project/llm-on-nerc/blob/main/vector-databases/qdrant/README.md).
+
+#### Milvus
+
+**Milvus** is an open-source vector database built for AI applications, particularly
+those involving machine learning models that generate high-dimensional vectors for
+similarity search and clustering. It is optimized to handle large-scale vector data
+with low latency and high throughput, making it perfect for use cases like recommendation
+systems, image and video search, and natural language processing.
+
+Milvus is an excellent choice for those looking for a scalable, flexible, and
+high-performance vector database to support their AI applications.
+
+Deployment instructions for the NERC OpenShift are available [here](https://github.com/nerc-project/llm-on-nerc/blob/main/vector-databases/milvus/README.md).
+
+#### pgvector
+
+[pgvector](https://github.com/pgvector/pgvector) is an open-source extension for
+PostgreSQL that allows efficient storage, indexing, and querying of high-dimensional
+vector embeddings for similarity search. It seamlessly integrates with PostgreSQL,
+making it ideal for AI applications such as recommendation systems, image retrieval,
+and natural language processing (NLP).
+
+You can deploy and run pgvector directly on the NERC OpenShift environment by
+following [these intructions](https://github.com/nerc-project/llm-on-nerc/blob/main/vector-databases/pgvector/README.md).
 
 ### Embeddings
 
@@ -64,12 +157,9 @@ semantic relationships, allowing machines to better understand language. They ar
 created through unsupervised learning and are crucial for tasks like sentiment
 analysis, machine translation, and recommendation systems.
 
-### Vector Database
-
-A vector database efficiently stores and manages multi-dimensional vector data,
-optimized for high-dimensional operations. These databases are widely used in
-machine learning, image processing, and NLP to enable fast retrieval and complex
-computations on vector data.
+Embeddings are another type of model often associated with LLMs as they are used
+to convert documents into vectors. A database of those vectors can then be queried
+to find the documents related to a query you make.
 
 ## Predictive AI
 
@@ -130,11 +220,11 @@ marketing copy generation.
 
 ![Predictive AI](images/Predictive-AI.png)
 
-#### LLM Application - AI ChatBot App
+#### LLM Application
 
-In [this tutorial](LLM-chatbot-app.md), we will demonstrate how to to deploy an LLM
-Application i.e. "AI ChatBot App" in [NERC OpenShift](../../openshift/index.md),
-which connects to a [pre-trained foundation model](#foundation-model).
+In [this tutorial](LLM-chat.md), we will demonstrate how to deploy an LLM Model
+server that includes command-line tools and a server with a simple web interface,
+i.e., "Chat", which can connect to a [pre-trained foundation model](#foundation-model).
 
 ![AI ChatBot](images/AI-ChatBot.png)
 
@@ -181,9 +271,11 @@ into a prompt template.
 
 #### RAG Application - Talk with your PDF
 
-In [this tutorial](RAG-talk-with-your-pdf.md), we will demonstrate how to to deploy
-an LLM Application i.e. "AI ChatBot App" in [NERC OpenShift](../../openshift/index.md),
-which connects to a [pre-trained foundation model](#foundation-model).
+In [this tutorial](RAG-talk-with-your-pdf.md), we will demonstrate how to set up
+a Workbench using a Data Science Project (DSP) on the [NERC RHOAI](../../openshift-ai/data-science-project/using-projects-the-rhoai.md),
+and explore an LLM application, i.e., "Talk with your PDF," which connects to a
+[pre-trained foundation model](#foundation-model). Finally, we will deploy this
+application on [NERC OpenShift](../../openshift/index.md).
 
 ![Talk with your PDF](images/talk-with-your-pdf.gif)
 

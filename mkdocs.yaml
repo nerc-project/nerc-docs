@@ -139,8 +139,9 @@ nav:
                         - Credit Card Fraud Detection Application: openshift-ai/other-projects/fraud-detection-predictive-ai-app.md
                         - Object Detection Application Using YOLOv5 Model: openshift-ai/other-projects/object-detection-app-using-yolo5.md
                     - Generative AI tutorial:
-                        - Large Language Model (LLM) - AI ChatBot App: openshift-ai/other-projects/LLM-chatbot-app.md
+                        - Large Language Model (LLM) - Chat: openshift-ai/other-projects/LLM-chat.md
                         - Retrieval Augumented Generation (RAG) - Talk with your PDF: openshift-ai/other-projects/RAG-talk-with-your-pdf.md
+                    - LLM Client - AnythingLLM: openshift-ai/other-projects/LLM-client-AnythingLLM.md
     - Other Tools On NERC:
           - Other Useful Tools: other-tools/index.md
           - Kubernetes:
@@ -194,7 +195,7 @@ theme:
         # - navigation.tracking
         # - navigation.sections
         # - navigation.indexes
-        # - navigation.top
+        - navigation.top
         # - navigation.tabs
         # - navigation.tabs.sticky
         # - navigation.expand
@@ -219,3 +220,10 @@ markdown_extensions:
     - pymdownx.details
     - pymdownx.superfences
     - tables
+    - attr_list
+    - md_in_html
+    - pymdownx.blocks.caption
+
+plugins:
+    - material/search
+    - glightbox

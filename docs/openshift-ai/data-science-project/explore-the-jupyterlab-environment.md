@@ -22,7 +22,7 @@ This will initiate your [JupyterLab](https://jupyterlab.readthedocs.io/en/stable
 environment based on the Jupyter Image you have selected. JupyterLab offers a
 shared interactive integrated development environment.
 
-Once you successfully authenticate you should see the NERC RHOAI JupyterLab Web
+Once you successfully authenticate, you should see the NERC RHOAI JupyterLab Web
 Interface as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)

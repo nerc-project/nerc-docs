@@ -53,6 +53,19 @@ and thus only briefly mentioned here:
 
 7. Each container in the pod is instantiated from its own container image.
 
+    !!! warning "Rate Limits While Pulling Container Image"
+
+        By default, **Container Images** are pulled from **Registry** i.e. Docker
+        Hub or other commercial and private registries, which enforce rate limits
+        on *anonymous users*. If your setup involves frequent image pulls, you may
+        face these restrictions.
+
+        You need to create a **Secret** and link it to your **Service Account**
+        or include it within the `spec.imagePullSecrets`, as explained in
+        [this document](editing-applications.md#rate-limits-while-pulling-container-image),
+        which provides instructions on how to resolve the rate limit issue while
+        pulling container images.
+
 8. Pods making requests against the OpenShift Container Platform API is a common
    enough pattern that there is a `serviceAccount` field for specifying which service
    account user the pod should authenticate as when making the requests. This enables
@@ -141,24 +154,22 @@ following for requesting (NVIDIA A100 GPU):
 
     spec:
       containers:
-      - name: app
-        image: ...
+      - name: <Your Pod Name>
+        image: <Your GPU Enabled Container Image>
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "250m"
-            nvidia.com/gpu: 1
+            ...
+            nvidia.com/gpu: <Number Of GPUs>
           limits:
-            memory: "128Mi"
-            cpu: "500m"
-            nvidia.com/gpu: 1
+            ...
+            nvidia.com/gpu: <Number Of GPUs>
       tolerations:
         - key: nvidia.com/gpu.product
           operator: Equal
-          value: NVIDIA-A100-SXM4-40GB
+          value: <GPU Type>
           effect: NoSchedule
       nodeSelector:
-        nvidia.com/gpu.product: NVIDIA-A100-SXM4-40GB
+        nvidia.com/gpu.product: <GPU Type>
 
 !!! note "GPU Resource Spec: resources, tolerations & nodeSelector"
 

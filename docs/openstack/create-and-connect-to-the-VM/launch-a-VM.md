@@ -121,7 +121,7 @@ tab by clicking on the "+" icon.
 
     ![Flavor Not Avaliable due to Your Quota](images/flavor-not-available-due-to-quota.png)
 
-    **NOTE:** More details about available flavors can be found [**here**](flavors.md)
+    **NOTE**: More details about available flavors can be found [**here**](flavors.md)
     and how to change request the current allocation quota attributes can be found
     [**here**](../../get-started/allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project).
 
@@ -181,7 +181,7 @@ To add a Key Pair first create and add them to your Project as [described here](
 
 ### Ignore other Tabs
 
-**Network Ports, Configuration, Server Groups, Schedular Hints, and Metadata:**
+**Network Ports, Configuration, Server Groups, Schedular Hints, and Metadata**:
 tab: Please ignore these tabs as these are not important and only for advance setup.
 
 !!! info "How to use 'Configuration' tab"

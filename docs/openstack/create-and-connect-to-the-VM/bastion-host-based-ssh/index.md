@@ -42,13 +42,13 @@ your cluster with.**
 ssh-add -l
 ```
 
-**If you need to add the key to your agent:**
+**If you need to add the key to your agent**:
 
 ```sh
 ssh-add path/to/private/key
 ```
 
-**Now you can SSH into the bastion host:**
+**Now you can SSH into the bastion host**:
 
 ```sh
 ssh -A <user>@<bastion-floating-IP>
@@ -62,7 +62,7 @@ ssh -A <user>@<bastion-floating-IP>
 
 ![Security Groups](images/security_groups.png)
 
-**i. Bastion Host Security Group:**
+**i. Bastion Host Security Group**:
 
 Allow inbound SSH (optional ICMP) for this security group. Make sure you have
 added rules in the [Security Groups](../../access-and-security/security-groups.md)
@@ -70,7 +70,7 @@ to allow ssh to the bastion host.
 
 ![Bastion Host Security Group](images/bastion_host_security_group.png)
 
-**ii. Private Instances Security Group:**
+**ii. Private Instances Security Group**:
 
 You need to select "Security Group" in Remote dropdown option, and
 then select the "**Bastion Host Security Group**" under Security
@@ -90,11 +90,11 @@ Make a note of the Floating IP you have associated to your instance.
 While adding the Bastion host and private instance, please select appropriate
 Security Group as shown below:
 
-**private1:**
+**private1**:
 
 ![private1 Instance Security Group](images/private1_sg.png)
 
-**bastion_host_demo:**
+**bastion_host_demo**:
 
 ![Bastion Host Security Group](images/bastion_host_demo_sg.png)
 

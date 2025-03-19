@@ -266,9 +266,9 @@ This is a python client for the Swift API. There's a [Python API](https://github
 
 -   Activate the virtual environment by running:
 
-**on Linux/Mac:** `source venv/bin/activate`
+**on Linux/Mac**: `source venv/bin/activate`
 
-**on Windows:** `venv\Scripts\activate`
+**on Windows**: `venv\Scripts\activate`
 
 #### Install [Python Swift Client page at PyPi](https://pypi.org/project/python-swiftclient/)
 
@@ -896,7 +896,7 @@ Then sync for real
 
 ##### Mounting object storage on local filesystem
 
-**Linux:**
+**Linux**:
 
 First, you need to create a directory on which you will mount your filesystem:
 
@@ -910,7 +910,7 @@ Then you can simply mount your object storage with:
 
     You can read more about Rclone Mounting [here](mount-the-object-storage.md#4-using-rclone).
 
-**Windows:**
+**Windows**:
 
 First you have to [download Winfsp](http://www.secfs.net/winfsp/rel/):
 

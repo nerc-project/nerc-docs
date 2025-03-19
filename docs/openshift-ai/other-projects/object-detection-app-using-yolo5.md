@@ -54,26 +54,26 @@ the NERC OpenShift AI dashboard.
 For this tutorial, you will need **two S3-compatible object storage buckets**,
 such as **NERC OpenStack Container (Ceph)**, **MinIO**, or **AWS S3**. You can
 either use your own storage buckets or run a provided script that automatically
-creates the following **local MinIO storage bucket**:
+creates the following **local S3 storage (MinIO) bucket**:
 
 -   **my-storage** – Use this bucket to store your models and data. You can reuse
 this bucket and its connection for notebooks and model servers.
 
 ### 1.1. **Using your own S3-compatible storage buckets**
 
-**Procedure:**
+**Procedure**:
 
 Manually create a data connection: **My Storage** by following
 [How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
 
-**Verification:**
+**Verification**:
 
 You should see a data connection listed under your RHOAI Dashboard **My Storage**
 as shown below:
 
 ![Data Connections](images/single-data-connection.png)
 
-### 1.2. **Using a script to set up local MinIO storage**
+### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
 Alternatively, if you want to run a script that automates the setup by completing
 the following tasks:
@@ -82,14 +82,14 @@ the following tasks:
 
 -   **Creates one storage buckets** within the MinIO instance.
 
--   **Generates a random user ID and password** for the MinIO instance.
+-   **Generates a random user ID and password** for the MinIO Console.
 
 -   **Establishes a data connection** in your project - for a bucket - using
     the generated credentials.
 
 -   Installs all required **network policies**.
 
-**Procedure:**
+**Procedure**:
 
 i. From the OpenShift AI dashboard, you can return to OpenShift Web Console
 by using the application launcher icon (the black-and-white icon that looks
@@ -110,38 +110,37 @@ iii. Verify that you selected the correct project.
 
 iv. Copy the following code and paste it into the Import YAML editor.
 
-??? note "Local MinIO storage Creation YAML Script"
+??? note "Local S3 storage (MinIO) Creation YAML Script"
 
     ```yaml
     ---
     apiVersion: v1
     kind: ServiceAccount
     metadata:
-      name: demo-setup
+      name: minio-setup
+      labels:
+        app: minio
     ---
     apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
-      name: demo-setup-edit
+      name: minio-setup-edit
+      labels:
+        app: minio
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: ClusterRole
       name: edit
     subjects:
     - kind: ServiceAccount
-      name: demo-setup
+      name: minio-setup
     ---
     apiVersion: v1
     kind: Service
     metadata:
+      name: minio-service
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio
     spec:
       ports:
       - name: api
@@ -152,64 +151,40 @@ iv. Copy the following code and paste it into the Import YAML editor.
         targetPort: 9090
       selector:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       sessionAffinity: None
       type: ClusterIP
     ---
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
+      name: minio-pvc
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio
     spec:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 10Gi # Adjust the size according to your needs
     ---
     apiVersion: apps/v1
     kind: Deployment
     metadata:
+      name: minio-deployment
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio
     spec:
       replicas: 1
       selector:
         matchLabels:
           app: minio
-          app.kubernetes.io/component: minio
-          app.kubernetes.io/instance: minio
-          app.kubernetes.io/name: minio
-          app.kubernetes.io/part-of: minio
-          component: minio
       strategy:
         type: Recreate
       template:
         metadata:
           labels:
             app: minio
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
-            app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -238,24 +213,21 @@ iv. Copy the following code and paste it into the Import YAML editor.
                 memory: 1Gi
             volumeMounts:
             - mountPath: /data
-              name: minio
+              name: minio-volume
           volumes:
-          - name: minio
+          - name: minio-volume
             persistentVolumeClaim:
-              claimName: minio
+              claimName: minio-pvc
           - emptyDir: {}
             name: empty
     ---
     apiVersion: batch/v1
     kind: Job
     metadata:
-      labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       name: create-ds-connections
+      labels:
+        app: minio
+        app.kubernetes.io/part-of: minio
     spec:
       selector: {}
       template:
@@ -306,29 +278,22 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: create-ds-connections
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: batch/v1
     kind: Job
     metadata:
-      labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-buckets
+      labels:
+        app: minio
+        app.kubernetes.io/part-of: minio
     spec:
       selector: {}
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
-            app.kubernetes.io/part-of: minio
-            component: minio
+            app: minio
         spec:
           containers:
           - args:
@@ -340,7 +305,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
               import boto3, os
 
               s3 = boto3.client("s3",
-                                endpoint_url="http://minio:9000",
+                                endpoint_url="http://minio-service:9000",
                                 aws_access_key_id=os.getenv("MINIO_ROOT_USER"),
                                 aws_secret_access_key=os.getenv("MINIO_ROOT_PASSWORD"))
               bucket = 'my-storage'
@@ -367,11 +332,11 @@ iv. Copy the following code and paste it into the Import YAML editor.
               done; echo
 
               echo -n 'Waiting for minio deployment'
-              while ! oc get deployment minio 2>/dev/null | grep -qF minio; do
+              while ! oc get deployment minio-deployment 2>/dev/null | grep -qF minio-deployment; do
                 echo -n .
                 sleep 5
               done; echo
-              oc wait --for=condition=available --timeout=60s deployment/minio
+              oc wait --for=condition=available --timeout=60s deployment/minio-deployment
               sleep 10
             command:
             - /bin/bash
@@ -379,29 +344,22 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: wait-for-minio
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: batch/v1
     kind: Job
     metadata:
-      labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-root-user
+      labels:
+        app: minio
+        app.kubernetes.io/part-of: minio
     spec:
       backoffLimit: 4
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
-            app.kubernetes.io/part-of: minio
-            component: minio
+            app: minio
         spec:
           containers:
           - args:
@@ -432,20 +390,16 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: create-minio-root-user
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
+      name: minio-console
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio-console
     spec:
       port:
         targetPort: console
@@ -454,21 +408,17 @@ iv. Copy the following code and paste it into the Import YAML editor.
         termination: edge
       to:
         kind: Service
-        name: minio
+        name: minio-service
         weight: 100
       wildcardPolicy: None
     ---
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
+      name: minio-s3
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio-s3
     spec:
       port:
         targetPort: api
@@ -477,13 +427,19 @@ iv. Copy the following code and paste it into the Import YAML editor.
         termination: edge
       to:
         kind: Service
-        name: minio
+        name: minio-service
         weight: 100
       wildcardPolicy: None
     ```
+
+!!! warning "Very Important Note"
+
+    In this YAML file, the size of the storage is set as 10Gi. Change it if
+    you need to.
+
 v. Click **Create**.
 
-**Verification:**
+**Verification**:
 
 i. Once Resource is successfully created, you will see a "Resources successfully
 created" message and the following resources listed:
@@ -512,7 +468,7 @@ will open the MinIO web console that looks like below:
     The Username and Password for the MinIO web console can be retrieved from
     the Data Connection's **Access key** and **Secret key**.
 
-iii. [Navigate back to the OpenShift AI dashboard](#navigating-to-the-openshift-ai-dashboard)
+iii. Navigate back to the OpenShift AI dashboard.
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Object Detection Workbench**.
@@ -560,10 +516,15 @@ bucket: **my-storage** is visible as shown below:
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
-    install MinIO object storage along with local MinIO storage buckets
+    install MinIO object storage along with local S3 storage (MinIO) buckets
     and necessary data connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/object-detection/main/setup/setup-s3.yaml`
+
+!!! tip "Clean Up"
+
+    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/object-detection/main/setup/setup-s3.yaml`
+    or `oc delete all,sa,rolebindings,pvc,job -l app=minio`.
 
 !!! danger "Important Note"
 
@@ -574,7 +535,7 @@ bucket: **my-storage** is visible as shown below:
 
 ### Creating a workbench and selecting a notebook image
 
-**Procedure:**
+**Procedure**:
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
@@ -651,7 +612,7 @@ values, which you have retrieved while "Editing data connection":
 
     ![Workbench accelerator](images/workbench-without-gpu-accelerator.png)
 
-**Verification:**
+**Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
 server. When your workbench is ready, the status will change from _Starting_
@@ -668,14 +629,18 @@ to _Running_ and you can select "Open" to go to your environment:
 
     ![Workbench edit](images/ds-od-project-workbench-list-edit.png)
 
-Once you successfully authenticate you should see the NERC RHOAI JupyterLab
-Web Interface as shown below:
+Once you have successfully authenticated by clicking "**mss-keycloak**" when
+prompted, as shown below:
+
+![Authenticate](images/authenticate-user.png)
+
+Next, you should see the NERC RHOAI JupyterLab Web Interface, as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)
 
-It's pretty empty right now, though. On the left side of the navigation
-pane, locate the **Name** explorer panel. This panel is where you can create
-and manage your project directories.
+The Jupyter environment is currently empty. To begin, populate it with content
+using *Git*. On the left side of the navigation pane, locate the **Name** explorer
+panel, where you can create and manage your project directories.
 
 !!! note "Learn More About Working with Notebooks"
 
@@ -690,15 +655,17 @@ On the toolbar, click the Git Clone icon:
 
 ![Git Clone icon](images/jupyter-git-icon.png)
 
-Enter the following tutorial **Git https URL**: [https://github.com/nerc-project/object-detection](https://github.com/nerc-project/object-detection)
+Enter the following **Git Repo URL**: [https://github.com/nerc-project/object-detection](https://github.com/nerc-project/object-detection)
 
 Check the Include submodules option, and then click Clone.
+
+![Clone A Repo](images/clone-a-repo.png)
 
 In the file browser, double-click the newly-created **object-detection** folder.
 
 ![Jupyter file browser](images/jupyter-file-browser-git.png)
 
-**Verification:**
+**Verification**:
 
 In the file browser, you should see the notebooks that you cloned from Git.
 
@@ -753,7 +720,7 @@ In this example, we will train using the smallest base model i.e. YOLOv5 to save
 time. However, you can modify the base model and adjust the training hyperparameters
 to achieve better results.
 
-**Verification:**
+**Verification**:
 
 This process will take some time to complete. At the end, it will generate and
 save the model `yolov5n.pt` within the root folder path of `object-detection`.
@@ -765,27 +732,27 @@ save the model `yolov5n.pt` within the root folder path of `object-detection`.
 
 ## 5. Preparing a model for deployment
 
-**Procedure:**
+**Procedure**:
 
 In your JupyterLab environment, open the notebook file `03-yolov5_to_onnx.ipynb`.
 Follow the instructions in the notebook to store the model and save it in the portable
 **ONNX** format from YoloV5 model.
 
-**Verification:**
+**Verification**:
 
 After completing the notebook steps, verify that the `yolov5n.onnx` file is created
 within the root folder path of `object-detection`.
 
 ## 6. Save the Model
 
-**Procedure:**
+**Procedure**:
 
 In your JupyterLab environment, open the notebook file `04-save_model.ipynb` and
 follow the instructions. This notebook will guide you through saving the model
 to S3-compatible object storage, corresponding to the **My Storage** data connection,
 which was set up in [this step](#1-storing-data-with-connection).
 
-**Verification:**
+**Verification**:
 
 After completing the notebook steps, verify that the `models/yolov5n.onnx` file
 is stored in the object storage. Once saved, the model is now ready for use by
@@ -803,7 +770,7 @@ deploy it as an API using an OpenShift AI **Model Server**.
 NERC RHOAI multi-model servers can host multiple models simultaneously. You can
 create a new model server and deploy your model to it.
 
-**Procedure:**
+**Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
 and click the **Models and model servers** tab.
@@ -846,7 +813,7 @@ Leave the other fields with the default settings.
 
 Click **Deploy**.
 
-**Verification:**
+**Verification**:
 
 When you return to the Deployed models page, you will see your newly deployed model.
 You should click on the 1 on the Deployed models tab to see details. Notice the
@@ -868,7 +835,7 @@ complete as shown below:
 
 Now that you've deployed the model, you can test its API endpoints.
 
-**Procedure:**
+**Procedure**:
 
 -   In the OpenShift AI dashboard, navigate to the project details page and click
 the **Models** tab.

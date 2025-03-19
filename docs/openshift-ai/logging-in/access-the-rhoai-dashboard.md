@@ -7,7 +7,7 @@ Make sure you are selecting "**mss-keycloak**" as shown here:
 
 ![OpenShift Login with KeyCloak](images/openshift_login.png)
 
-Once you successfully authenticate you should see the NERC OpenShift Web Console
+Once you successfully authenticate, you should see the NERC OpenShift Web Console
 as shown below:
 
 ![OpenShift Web Console](images/openshift-web-console.png)

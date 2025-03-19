@@ -39,7 +39,7 @@ shown below:
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
 
-    Ensure you choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember:**
+    Ensure you choose **NERC-OCP (OpenShift)** in the Resource option (**Always Remember**:
     the first option, i.e. **NERC (OpenStack)** is selected by default!) and specify
     your anticipated computing units. Each allocation, whether requested or approved,
     will be billed based on the **pay-as-you-go** model. The exception is for

@@ -4,7 +4,7 @@ Please read the instructions in their entirety before proceeding.
 Allow yourself enough time to complete them.
 
 Volume Snapshots will not be migrated.
-If you have a Snapshot you wish to backup please “Create Volume” from it first.
+If you have a Snapshot you wish to backup please "Create Volume" from it first.
 
 ## Confirm Access and Login to MOC Dashboard
 
@@ -172,7 +172,7 @@ to the NERC).
    the Instance this Volume is attached to (highlighted in orange above).
 
     1. If the volume is not attached to an image it will state
-       “Not attached”.
+       "Not attached".
 
 8. Repeat this [section](#gather-the-volume-information) for each Volume
    you have.

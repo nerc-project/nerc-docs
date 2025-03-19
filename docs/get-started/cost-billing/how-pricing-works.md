@@ -54,7 +54,7 @@ hour they are used, and any VM "flavor"/Pod reservation is charged as a multipli
 of the base SU for the maximum resource they reserve.
 
 <!-- markdownlint-disable MD052 -->
-**GPU SU Example:**
+**GPU SU Example**:
 
 -   A Project or VM with:
 
@@ -66,7 +66,7 @@ of the base SU for the maximum resource they reserve.
 
     `${{ "{:,.2f}".format(su_info_dict["GPUA100"]["rate"] * 200) }}`
 
-**OpenStack CPU SU Example:**
+**OpenStack CPU SU Example**:
 
 -   A Project or VM with:
 
@@ -92,7 +92,7 @@ of the base SU for the maximum resource they reserve.
     [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
     answers.
 
-**OpenShift CPU SU Example:**
+**OpenShift CPU SU Example**:
 
 -   Project with 3 Pods with:
 
@@ -167,7 +167,7 @@ provisioned until it is deleted.
     for NERC-OCP (OpenShift) allocations.
 
 <!-- markdownlint-disable MD052 MD013 -->
-**Storage Example 1:**
+**Storage Example 1**:
 
 -   Volume or VM with:
 
@@ -179,7 +179,7 @@ provisioned until it is deleted.
 
     `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 700 / 2) }}`
 
-**Storage Example 2:**
+**Storage Example 2**:
 
 -   Volume or VM with:
 

@@ -40,9 +40,9 @@ and continue with these steps once you recieve approval.
     4. Fill out the Justification (highlighted in purple above) for
        the quota allocation.
 
-    5. Using your “MOC Instance information” table you gathered from your MOC
+    5. Using your "MOC Instance information" table you gathered from your MOC
        project calculate the total number of Instances, VCPUs, RAM and use your
-       “MOC Volume Information” table to calculate Disk space you will need.
+       "MOC Volume Information" table to calculate Disk space you will need.
 
     6. Using the up and down arrows (highlighted in yellow above) or by
        entering the number manually select the multiple of 1 Instance, 2 vCPUs,
@@ -105,7 +105,7 @@ and continue with these steps once you recieve approval.
        [here](https://nerc-project.github.io/nerc-docs/openstack/access-and-security/security-groups/)
        to set up your Security Group/s.
 
-        1. This is where you can use your “MOC Security Group Information”
+        1. This is where you can use your "MOC Security Group Information"
            table to create similar Security Groups to the ones you had in the MOC.
 
     5. Follow the instructions

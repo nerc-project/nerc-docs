@@ -875,9 +875,9 @@ Verify, if the container is mounted successfully:
 
 A JuiceFS file system consists of two parts:
 
--   **Object Storage:** Used for data storage.
+-   **Object Storage**: Used for data storage.
 
--   **Metadata Engine:** A database used for storing metadata. In this case, we will
+-   **Metadata Engine**: A database used for storing metadata. In this case, we will
     use a durable [**Redis**](https://redis.io/) in-memory database service that
     provides extremely fast performance.
 

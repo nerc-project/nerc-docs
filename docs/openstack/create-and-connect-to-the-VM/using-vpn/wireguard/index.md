@@ -64,7 +64,7 @@ Host wireguard
 
     ![Setup Client completed](images/setup_client_completed.png)
 
-    **NOTE:** For each peers the client configuration files comply with the
+    **NOTE**: For each peers the client configuration files comply with the
     following template:
 
     ![Client Config Template](images/client_config_template.png)
@@ -116,7 +116,7 @@ To activateconfig: `wg-quick up /path/to/file_name.config`
 
 To deactivate config: `wg-quick down /path/to/file_name.config`
 
-**Read more:**
+**Read more**:
 
 [https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8](https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8)
 
@@ -246,7 +246,7 @@ Use `wg-quick down mac_client` to take the VPN connection down.
 
     ![Import Config File in Mac](images/import_config_file_mac.png)
 
-    **Browse to the configuration file:**
+    **Browse to the configuration file**:
 
     ![Browse and Locate Import Config File](images/browse_import_config_file.png)
 
@@ -289,14 +289,14 @@ Use `wg-quick down mac_client` to take the VPN connection down.
 
 WireGuard is available through the package management system on most Linux distributions.
 
-**On Debian/Ubuntu:**
+**On Debian/Ubuntu**:
 
 ```sh
 sudo apt update
 sudo apt-get install wireguard resolvconf -y
 ```
 
-**On RedHat/Rocky/AlmaLinux:**
+**On RedHat/Rocky/AlmaLinux**:
 
 ```sh
 sudo dnf install wireguard

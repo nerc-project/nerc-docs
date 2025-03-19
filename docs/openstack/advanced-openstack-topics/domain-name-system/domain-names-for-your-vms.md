@@ -12,7 +12,7 @@ information.
 
 ### What is a "A record"?
 
-**A record:** The primary DNS record used to connect your domain to an IP address
+**A record**: The primary DNS record used to connect your domain to an IP address
 that directs visitors to your website.
 
 ## How to get user-friendly domain names (hostnames) for your NERC VMs?

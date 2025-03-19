@@ -134,13 +134,13 @@ application to Applications. Please refer to
 
 OpenVPN is available through the package management system on most Linux distributions.
 
-**On Debian/Ubuntu:**
+**On Debian/Ubuntu**:
 
 ```sh
 sudo apt-get install openvpn
 ```
 
-**On RedHat/Rocky/AlmaLinux:**
+**On RedHat/Rocky/AlmaLinux**:
 
 ```sh
 sudo dnf install openvpn

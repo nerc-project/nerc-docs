@@ -50,7 +50,7 @@ the NERC OpenShift AI dashboard.
 For this tutorial, you will need **two S3-compatible object storage buckets**,
 such as **NERC OpenStack Container (Ceph)**, **MinIO**, or **AWS S3**. You can
 either use your own storage buckets or run a provided script that automatically
-creates the following **local MinIO storage buckets**:
+creates the following **local S3 storage (MinIO) buckets**:
 
 -   **my-storage** – Use this bucket to store your models and data. You can reuse
 this bucket and its connection for notebooks and model servers.
@@ -62,23 +62,23 @@ this bucket and its connection for notebooks and model servers.
 
 You must also create a connection to each storage bucket. For this tutorial, you
 have two options depending on whether you want to use your own storage buckets
-or a script to create local MinIO storage buckets:
+or a script to create local S3 storage (MinIO) buckets:
 
 #### 1.1. **Using your own S3-compatible storage buckets**
 
-**Procedure:**
+**Procedure**:
 
 Manually create two connections: **My Storage** and **Pipeline Artifacts**
 by following [How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
 
-**Verification:**
+**Verification**:
 
 You should see two connections listed under your RHOAI Dashboard **My Storage**
 and **Pipeline Artifacts** as shown below:
 
 ![Data Connections](images/data-connections.png)
 
-#### 1.2. **Using a script to set up local MinIO storage**
+#### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
 Alternatively, if you want to run a script that automates the setup by completing
 the following tasks:
@@ -87,14 +87,14 @@ the following tasks:
 
 -   **Creates two storage buckets** within the MinIO instance.
 
--   **Generates a random user ID and password** for the MinIO instance.
+-   **Generates a random user ID and password** for the MinIO Console.
 
--   **Establishes two connections** in your project - one for each bucket - using
-    the same generated credentials.
+-   **Establishes two data connections** in your project - one for each bucket -
+    using the same generated credentials.
 
 -   Installs all required **network policies**.
 
-**Procedure:**
+**Procedure**:
 
 i. From the OpenShift AI dashboard, you can return to OpenShift Web Console
 by using the application launcher icon (the black-and-white icon that looks
@@ -115,38 +115,37 @@ iii. Verify that you selected the correct project.
 
 iv. Copy the following code and paste it into the Import YAML editor.
 
-??? note "Local MinIO storage Creation YAML Script"
+??? note "Local S3 storage (MinIO) Creation YAML Script"
 
     ```yaml
     ---
     apiVersion: v1
     kind: ServiceAccount
     metadata:
-      name: demo-setup
+      name: minio-setup
+      labels:
+        app: minio
     ---
     apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
-      name: demo-setup-edit
+      name: minio-setup-edit
+      labels:
+        app: minio
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: ClusterRole
       name: edit
     subjects:
     - kind: ServiceAccount
-      name: demo-setup
+      name: minio-setup
     ---
     apiVersion: v1
     kind: Service
     metadata:
+      name: minio-service
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio
     spec:
       ports:
       - name: api
@@ -157,64 +156,40 @@ iv. Copy the following code and paste it into the Import YAML editor.
         targetPort: 9090
       selector:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       sessionAffinity: None
       type: ClusterIP
     ---
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
+      name: minio-pvc
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio
     spec:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 10Gi # Adjust the size according to your needs
     ---
     apiVersion: apps/v1
     kind: Deployment
     metadata:
+      name: minio-deployment
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio
     spec:
       replicas: 1
       selector:
         matchLabels:
           app: minio
-          app.kubernetes.io/component: minio
-          app.kubernetes.io/instance: minio
-          app.kubernetes.io/name: minio
-          app.kubernetes.io/part-of: minio
-          component: minio
       strategy:
         type: Recreate
       template:
         metadata:
           labels:
             app: minio
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
-            app.kubernetes.io/part-of: minio
-            component: minio
         spec:
           containers:
           - args:
@@ -243,24 +218,21 @@ iv. Copy the following code and paste it into the Import YAML editor.
                 memory: 1Gi
             volumeMounts:
             - mountPath: /data
-              name: minio
+              name: minio-volume
           volumes:
-          - name: minio
+          - name: minio-volume
             persistentVolumeClaim:
-              claimName: minio
+              claimName: minio-pvc
           - emptyDir: {}
             name: empty
     ---
     apiVersion: batch/v1
     kind: Job
     metadata:
-      labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       name: create-ds-connections
+      labels:
+        app: minio
+        app.kubernetes.io/part-of: minio
     spec:
       selector: {}
       template:
@@ -331,29 +303,22 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: create-ds-connections
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: batch/v1
     kind: Job
     metadata:
-      labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-buckets
+      labels:
+        app: minio
+        app.kubernetes.io/part-of: minio
     spec:
       selector: {}
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
-            app.kubernetes.io/part-of: minio
-            component: minio
+            app: minio
         spec:
           containers:
           - args:
@@ -365,7 +330,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
               import boto3, os
 
               s3 = boto3.client("s3",
-                                endpoint_url="http://minio:9000",
+                                endpoint_url="http://minio-service:9000",
                                 aws_access_key_id=os.getenv("MINIO_ROOT_USER"),
                                 aws_secret_access_key=os.getenv("MINIO_ROOT_PASSWORD"))
               bucket = 'pipeline-artifacts'
@@ -396,11 +361,11 @@ iv. Copy the following code and paste it into the Import YAML editor.
               done; echo
 
               echo -n 'Waiting for minio deployment'
-              while ! oc get deployment minio 2>/dev/null | grep -qF minio; do
+              while ! oc get deployment minio-deployment 2>/dev/null | grep -qF minio-deployment; do
                 echo -n .
                 sleep 5
               done; echo
-              oc wait --for=condition=available --timeout=60s deployment/minio
+              oc wait --for=condition=available --timeout=60s deployment/minio-deployment
               sleep 10
             command:
             - /bin/bash
@@ -408,29 +373,22 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: wait-for-minio
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: batch/v1
     kind: Job
     metadata:
-      labels:
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
-        app.kubernetes.io/part-of: minio
-        component: minio
       name: create-minio-root-user
+      labels:
+        app: minio
+        app.kubernetes.io/part-of: minio
     spec:
       backoffLimit: 4
       template:
         metadata:
           labels:
-            app.kubernetes.io/component: minio
-            app.kubernetes.io/instance: minio
-            app.kubernetes.io/name: minio
-            app.kubernetes.io/part-of: minio
-            component: minio
+            app: minio
         spec:
           containers:
           - args:
@@ -461,20 +419,16 @@ iv. Copy the following code and paste it into the Import YAML editor.
             imagePullPolicy: IfNotPresent
             name: create-minio-root-user
           restartPolicy: Never
-          serviceAccount: demo-setup
-          serviceAccountName: demo-setup
+          serviceAccount: minio-setup
+          serviceAccountName: minio-setup
     ---
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
+      name: minio-console
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio-console
     spec:
       port:
         targetPort: console
@@ -483,21 +437,17 @@ iv. Copy the following code and paste it into the Import YAML editor.
         termination: edge
       to:
         kind: Service
-        name: minio
+        name: minio-service
         weight: 100
       wildcardPolicy: None
     ---
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
+      name: minio-s3
       labels:
         app: minio
-        app.kubernetes.io/component: minio
-        app.kubernetes.io/instance: minio
-        app.kubernetes.io/name: minio
         app.kubernetes.io/part-of: minio
-        component: minio
-      name: minio-s3
     spec:
       port:
         targetPort: api
@@ -506,14 +456,19 @@ iv. Copy the following code and paste it into the Import YAML editor.
         termination: edge
       to:
         kind: Service
-        name: minio
+        name: minio-service
         weight: 100
       wildcardPolicy: None
     ```
 
+!!! warning "Very Important Note"
+
+    In this YAML file, the size of the storage is set as 10Gi. Change it if
+    you need to.
+
 v. Click **Create**.
 
-**Verification:**
+**Verification**:
 
 i. Once Resource is successfully created, you will see a "Resources successfully
 created" message and the following resources listed:
@@ -542,7 +497,7 @@ will open the MinIO web console that looks like below:
     The Username and Password for the MinIO web console can be retrieved from
     the Data Connection's **Access key** and **Secret key**.
 
-iii. [Navigate back to the OpenShift AI dashboard](#navigating-to-the-openshift-ai-dashboard)
+iii. Navigate back to the OpenShift AI dashboard.
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Fraud detection**.
@@ -590,10 +545,15 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
-    install MinIO object storage along with local MinIO storage buckets
+    install MinIO object storage along with local S3 storage (MinIO) buckets
     and necessary data connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/setup-s3.yaml`
+
+!!! tip "Clean Up"
+
+    To delete all resources if not necessary just run `oc delete -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/setup-s3.yaml`
+    or `oc delete all,sa,rolebindings,pvc,job -l app=minio`.
 
 !!! danger "Important Note"
 
@@ -605,7 +565,7 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
 In this section, you prepare your workshop environment so that you can use data
 science pipelines.
 
-**Procedure:**
+**Procedure**:
 
 i. From the OpenShift AI dashboard, click the **Pipelines** tab.
 
@@ -627,7 +587,7 @@ v. Click **Configure pipeline server**.
 vi. Wait until the loading spinner disappears and **Start by importing a pipeline**
 is displayed.
 
-**Verification:**
+**Verification**:
 
 a. Navigate to the **Pipelines** tab for the project.
 
@@ -645,7 +605,7 @@ for the pipeline server. as shown below:
 
 #### Creating a workbench and selecting a notebook image
 
-**Procedure:**
+**Procedure**:
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
@@ -722,7 +682,7 @@ values, which you have retrieved while "Editing data connection":
 
     ![Workbench accelerator](images/workbench-without-gpu-accelerator.png)
 
-**Verification:**
+**Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
 server. When your workbench is ready, the status will change from _Starting_
@@ -739,14 +699,18 @@ to _Running_ and you can select "Open" to go to your environment:
 
     ![Workbench edit](images/ds-project-workbench-list-edit.png)
 
-Once you successfully authenticate you should see the NERC RHOAI JupyterLab
-Web Interface as shown below:
+Once you have successfully authenticated by clicking "**mss-keycloak**" when
+prompted, as shown below:
+
+![Authenticate](images/authenticate-user.png)
+
+Next, you should see the NERC RHOAI JupyterLab Web Interface, as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)
 
-It's pretty empty right now, though. On the left side of the navigation
-pane, locate the **Name** explorer panel. This panel is where you can create
-and manage your project directories.
+The Jupyter environment is currently empty. To begin, populate it with content
+using *Git*. On the left side of the navigation pane, locate the **Name** explorer
+panel, where you can create and manage your project directories.
 
 !!! note "Learn More About Working with Notebooks"
 
@@ -761,15 +725,17 @@ On the toolbar, click the Git Clone icon:
 
 ![Git Clone icon](images/jupyter-git-icon.png)
 
-Enter the following tutorial **Git https URL**: [https://github.com/nerc-project/fraud-detection](https://github.com/nerc-project/fraud-detection)
+Enter the following **Git Repo URL**: [https://github.com/nerc-project/fraud-detection](https://github.com/nerc-project/fraud-detection)
 
 Check the Include submodules option, and then click Clone.
+
+![Clone A Repo](images/clone-a-repo.png)
 
 In the file browser, double-click the newly-created **fraud-detection** folder.
 
 ![Jupyter file browser](images/jupyter-file-browser.png)
 
-**Verification:**
+**Verification**:
 
 In the file browser, you should see the notebooks that you cloned from Git.
 
@@ -784,7 +750,7 @@ in the notebook environment. The instructions guide you through some simple data
 exploration, experimentation, and model training tasks. To run it you need to
 double click it and execute the "Run" button to run all notebook cells at once.
 
-!!! warning "Very Important: Ensure Your Notebook is Updated"
+!!! warning "Very Important: Monitoring Your Model Training Process"
 
     In the `1_experiment_train.ipynb` Jupyter notebook file, find the
     **"Monitor the Training"** section where you can use [ClearML](https://clear.ml/)
@@ -795,22 +761,25 @@ double click it and execute the "Run" button to run all notebook cells at once.
     at: [https://app.clear.ml/settings/workspace-configuration](https://app.clear.ml/settings/workspace-configuration).
 
     Please update `CLEARML_API_ACCESS_KEY` and `CLEARML_API_SECRET_KEY` with your
-    own ClearML **Application API credentials**.
+    own ClearML Application API credentials, then uncomment the following code in
+    the specified cell:
 
-**Verification:**
+    ![Monitor the Training using ClearML](images/monitor-the-training.png)
+
+**Verification**:
 
 This process will take some time to complete. At the end, it will generate and
 save the model `model.onnx` within the `models/fraud/1/` folder path of `fraud-detection`.
 
 ### 4. Preparing a model for deployment
 
-**Procedure:**
+**Procedure**:
 
 In your JupyterLab environment, open the notebook file `2_save_model.ipynb`. Follow
 the instructions in the notebook to store the model and save it in the portable
 **ONNX** format.
 
-**Verification:**
+**Verification**:
 
 After completing the notebook steps, verify that the `models/fraud/1/model.onnx`
 file is stored in the object storage corresponding to the **My Storage** data
@@ -828,7 +797,7 @@ deploy it as an API using an OpenShift AI **Model Server**.
 NERC RHOAI multi-model servers can host multiple models simultaneously. You can
 create a new model server and deploy your model to it.
 
-**Procedure:**
+**Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
 and click the **Models and model servers** tab.
@@ -871,7 +840,7 @@ Leave the other fields with the default settings.
 
 Click **Deploy**.
 
-**Verification:**
+**Verification**:
 
 When you return to the Deployed models page, you will see your newly deployed model.
 You should click on the 1 on the Deployed models tab to see details. Notice the
@@ -885,7 +854,7 @@ complete as shown below:
 
 Now that you've deployed the model, you can test its API endpoints.
 
-**Procedure:**
+**Procedure**:
 
 -   In the OpenShift AI dashboard, navigate to the project details page and click
 the **Models** tab.
@@ -1073,7 +1042,7 @@ The `aws-connection-my-storage` secret includes the following fields:
 
 You must set the secret name and key for each of these fields.
 
-**Procedure:**
+**Procedure**:
 
 i. Remove any pre-filled environment variables.
 
@@ -1098,39 +1067,39 @@ a. Under **Kubernetes Secrets**, click **Add**.
 
 b. Enter the following values and then click **Add**.
 
--   **Environment Variable:** *AWS_ACCESS_KEY_ID*
+-   **Environment Variable**: *AWS_ACCESS_KEY_ID*
 
--   **Secret Name:** *aws-connection-my-storage*
+-   **Secret Name**: *aws-connection-my-storage*
 
--   **Secret Key:** *AWS_ACCESS_KEY_ID*
+-   **Secret Key**: *AWS_ACCESS_KEY_ID*
 
 ![Secret Form](images/wb-pipeline-kube-secret-form.png)
 
 iii. Repeat Step 2 for each of the following Kubernetes secrets:
 
--   **Environment Variable:** *AWS_SECRET_ACCESS_KEY*
+-   **Environment Variable**: *AWS_SECRET_ACCESS_KEY*
 
--   **Secret Name:** *aws-connection-my-storage*
+-   **Secret Name**: *aws-connection-my-storage*
 
--   **Secret Key:** *AWS_SECRET_ACCESS_KEY*
+-   **Secret Key**: *AWS_SECRET_ACCESS_KEY*
 
--   **Environment Variable:** AWS_S3_ENDPOINT
+-   **Environment Variable**: AWS_S3_ENDPOINT
 
--   **Secret Name:** aws-connection-my-storage
+-   **Secret Name**: aws-connection-my-storage
 
--   **Secret Key:** AWS_S3_ENDPOINT
+-   **Secret Key**: AWS_S3_ENDPOINT
 
--   **Environment Variable:** AWS_DEFAULT_REGION
+-   **Environment Variable**: AWS_DEFAULT_REGION
 
--   **Secret Name:** aws-connection-my-storage
+-   **Secret Name**: aws-connection-my-storage
 
--   **Secret Key:** AWS_DEFAULT_REGION
+-   **Secret Key**: AWS_DEFAULT_REGION
 
--   **Environment Variable:** AWS_S3_BUCKET
+-   **Environment Variable**: AWS_S3_BUCKET
 
--   **Secret Name:** aws-connection-my-storage
+-   **Secret Name**: aws-connection-my-storage
 
--   **Secret Key:** AWS_S3_BUCKET
+-   **Secret Key**: AWS_S3_BUCKET
 
 iv.Select File → Save Pipeline As to save and rename the *.pipeline* file. For
 example, rename it to **My Train Save.pipeline**.
@@ -1140,7 +1109,7 @@ example, rename it to **My Train Save.pipeline**.
 You can use your own newly created pipeline or the pipeline in the provided
 `5 Train Save.pipeline` file.
 
-**Procedure:**
+**Procedure**:
 
 i. Click the play button in the toolbar of the pipeline editor.
 
@@ -1241,11 +1210,11 @@ Set these values in the **Environment variables (runtime only)** fields:
 
 ![Deployment Options](images/deploy-advance-option.png)
 
-**Name:** *INFERENCE_ENDPOINT*
+**Name**: *INFERENCE_ENDPOINT*
 
-**Value:** From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
+**Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
 copy the **restUrl** value and add `/v2/models/fraud/infer` to the end. For
-example: `http://modelmesh-serving.nerc-demo-xxx:8008/v2/models/fraud/infer`.
+example: `http://modelmesh-serving.<your-namespace>:8008/v2/models/fraud/infer`.
 
 ![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
 

@@ -148,7 +148,7 @@ Ubuntu-based NERC OpenStack VMs:
     /mnt/nfs_share 192.168.0.0/24(rw,sync,no_subtree_check)
     ```
 
-    **Explanation:**
+    **Explanation**:
 
     -   **rw**: Read and write access.
     -   **sync**: Changes are written to disk immediately.

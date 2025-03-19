@@ -44,7 +44,7 @@ workflow.
 
     ![GitHub CLI Setup](images/gh-cli.png)
 
-4.  Fork the `simple-node-app` App in your own Github:
+4.  Fork the `simple-node-app` App in your own Github account:
 
     This application runs a simple node.js server and serves up some static routes
     with some static responses. This demo shows a simple container based app can
@@ -59,14 +59,19 @@ workflow.
 
     To create a fork of the example `simple-node-app` repository:
 
-    1. Go to [https://github.com/nerc-project/simple-node-app](https://github.com/nerc-project/simple-node-app).
+    -   Go to [https://github.com/nerc-project/simple-node-app](https://github.com/nerc-project/simple-node-app).
 
-    2. Cick the "Fork" button to create a fork in your own GitHub account, e.g. "`https://github.com/<github_username>/simple-node-app`".
+    -   Click the "Fork" button to create a fork in your own GitHub account, e.g.
+    "`https://github.com/<github_username>/simple-node-app`".
 
-5.  Clone the _simple-node-app_ git repository:
+        ![How to Fork Github Repo](images/github-repo-fork.png)
 
+5.  Clone your forked _simple-node-app_ git repository:
+
+    ```sh
     git clone <https://github.com/><github_username>/simple-node-app.git
     cd simple-node-app
+    ```
 
 6.  Run either `setsecret.cmd` file if you are using **Windows** or `setsecret.sh`
     file if you are using **Linux** based machine. Once executed, verify Github Secrets

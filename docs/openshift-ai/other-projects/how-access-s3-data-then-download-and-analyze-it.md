@@ -17,7 +17,8 @@ and Number of accelerators (GPUs).
 
 For our example project, let's name it "Standard Data Science Workbench". We'll
 select the **Standard Data Science** image, choose a **Deployment size** of **Small**,
-**Accelerator** as **None** and allocate a **Cluster storage** space of **1GB**.
+**Accelerator** as **None** (no GPU is needed for this setup), and allocate a
+**Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
 When your workbench is ready, the status will change to _Running_ and you can select
@@ -25,14 +26,23 @@ When your workbench is ready, the status will change to _Running_ and you can se
 
 ![Open JupyterLab Environment](images/open-standard-ds-workbench-jupyter-lab.png)
 
-Once you successfully authenticate you should see the NERC RHOAI JupyterLab Web
-Interface as shown below:
+Once you have successfully authenticated by clicking "**mss-keycloak**" when
+prompted, as shown below:
+
+![Authenticate](images/authenticate-user.png)
+
+Next, you should see the NERC RHOAI JupyterLab Web Interface, as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)
 
-It's pretty empty right now, though. On the left side of the navigation pane,
-locate the **Name** explorer panel. This panel is where you can create and manage
-your project directories.
+The Jupyter environment is currently empty. To begin, populate it with content
+using *Git*. On the left side of the navigation pane, locate the **Name** explorer
+panel, where you can create and manage your project directories.
+
+!!! note "Learn More About Working with Notebooks"
+
+    For detailed guidance on using notebooks on NERC RHOAI JupyterLab, please
+    refer to [this documentation](../data-science-project/explore-the-jupyterlab-environment.md#working-with-notebooks).
 
 ## Clone a GitHub Repository
 

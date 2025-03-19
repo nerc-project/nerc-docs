@@ -18,7 +18,7 @@ Once we click on the "Add Users" button, it will show us the following search in
 
     ![Searching Multiple User(s)](images/coldfront-search-multiple-users.png)
 
-    **NOTE:** This will return a list of all users matching those provided usernames
+    **NOTE**: This will return a list of all users matching those provided usernames
     only if they exist.
 
 They can search for any users in the system that are not already part of the project

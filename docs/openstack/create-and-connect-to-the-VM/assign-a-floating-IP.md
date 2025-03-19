@@ -75,7 +75,7 @@ and you can see the Floating IP is attached to your VM on the Instances page:
 
     ![Floating IP Quota Exceed](images/floating_ip_quota_exceed.png)
 
-    **NOTE:** By default, each approved project is provided with only 2 OpenStack
+    **NOTE**: By default, each approved project is provided with only 2 OpenStack
     Floating IPs, regardless of the units requested in the quota, as
     [described here](../../get-started/allocation/requesting-an-allocation.md#resource-allocation-quotas-for-openstack-project).
     Your PI or Project Manager(s) can adjust the quota and request additional

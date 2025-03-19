@@ -24,10 +24,15 @@ git clone https://github.com/nerc-project/rstudio-testapp.git
 
     ![Import YAML](images/import-yaml.png)
 
-2. On opened YAML editor paste the contents of the template copied from the
-   `rstudio-server-template.yaml` file located at the provided [Git Repo](https://github.com/nerc-project/rstudio-testapp/blob/main/rstudio-server-template.yaml).
+    Next, the Import YAML editor box will open, as shown below:
 
     ![YAML Editor](images/import-yaml-content.png)
+
+2. Either drag and drop the locally downloaded [rstudio-server-template.yaml](https://raw.githubusercontent.com/nerc-project/rstudio-testapp/refs/heads/main/rstudio-server-template.yaml)
+   file or copy and paste its contents into the opened Import YAML editor box, as
+   shown below:
+
+    ![RStudio Server Template YAML Content](images/import-rstudio-server-template-content.png)
 
 3. You need to find the Developer Catalog section and then select **All services**
    option as shown below:

@@ -8,12 +8,12 @@ is mature, open-source software originally inspired by **rsync** and written in 
 
 ## Deployment
 
-### Deploying Using Data Science Project (DSP) in the NERC RHOAI
+### Deploying as a Workbench Using a Data Science Project (DSP) on NERC RHOAI
 
-1.  Navigating to the OpenShift AI dashboard
+1.  Navigating to the OpenShift AI dashboard.
 
-    Please follow [these steps](../logging-in/access-the-rhoai-dashboard.md) to access
-    the NERC OpenShift AI dashboard.
+    Please follow [these steps](../../openshift-ai/logging-in/access-the-rhoai-dashboard.md)
+    to access the NERC OpenShift AI dashboard.
 
 2.  Please ensure that you start your Rclone Web server with options as depicted
     in the following configuration screen. This screen provides you with the opportunity
@@ -36,19 +36,23 @@ is mature, open-source software originally inspired by **rsync** and written in 
     your workbench is ready, the status will change to _Running_ and you can select
     "Open" to go to your environment:
 
-    ![Open RClone Web Server](images/open-rclone-web-server.png)
+    ![Open Rclone Web Server](images/open-rclone-web-server.png)
 
-4.  Once you successfully authenticate you should see the NERC RHOAI RClone Login
-    page as shown below:
+4.  Once you have successfully authenticated by clicking "**mss-keycloak**" when
+    prompted, as shown below:
+
+    ![Authenticate](images/authenticate-user.png)
+
+    Next, you should see the Rclone WebUI Login page, as shown below:
 
     ![Rclone Login](images/RHOAI-Rclone-login.png)
 
     !!! info "What are the Username and Password for Accessing the Rclone Web Interface?"
 
-       **No username or password** is required for this setup. Simply click on
-       "Login" to access the Rclone Web Interface.  
+        **No username or password** is required for this setup. Simply click on
+        "Login" to access the Rclone Web Interface.
 
-### Deploying Rclone on NERC OpenShift
+### Deploying Rclone on NERC OpenShift as a Standalone Application
 
 -   **Prerequisites**:
 
@@ -58,6 +62,13 @@ is mature, open-source software originally inspired by **rsync** and written in 
 #### Steps
 
 1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift.git).
+
+    To get started, clone the repository using:
+
+    ```sh
+    git clone https://github.com/nerc-project/rclone-web-on-openshift.git
+    cd rclone-web-on-openshift
+    ```
 
     In the `standalone/deploy` folder, you will find the following YAML files:
 
@@ -85,8 +96,14 @@ files located in the **standalone/deploy** folder.
 
     ![Rclone Web Link](images/Rclone-route-link.png)
 
--   Log in to the Rclone by entering the username and password setup in `02-deployment.yaml`
-    as [environment variables](https://github.com/nerc-project/rclone-web-on-openshift/blob/main/standalone/deploy/02-deployment.yaml#L40-L43).
+-   Users will be prompted to log in with a username and password set in
+    `02-deployment.yaml` as [environment variables](https://github.com/nerc-project/rclone-web-on-openshift/blob/main/standalone/deploy/02-deployment.yaml#L40-L43)
+    before gaining access to the Rclone Login page, as shown below:
+
+    ![Rclone Web Login](images/rclone-web-login.png)  
+
+-   Once authenticated, log in to the Rclone WebUI Login page again using the same
+    username and password.
 
     ![Rclone Login](images/Rclone-login.png)
 

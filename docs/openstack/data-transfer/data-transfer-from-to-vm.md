@@ -105,7 +105,7 @@ various sources.
     the current directory path from where the command is issued. This can be
     replaced with the actual path.
 
-**i. Copying Files From the NERC VM to Another Computer:**
+**i. Copying Files From the NERC VM to Another Computer**:
 
 From a terminal/shell from your local machine, you'll issue your SCP command by
 specifying the SSH Private Key to connect with the VM that has included corresponding
@@ -122,7 +122,7 @@ For e.g.
 
     scp -i ~/.ssh/your_pem_key_file.pem almalinux@199.94.60.219:~/myfile.zip /my_local_directory/
 
-**ii. Copying Files From Another Computer to the NERC VM:**
+**ii. Copying Files From Another Computer to the NERC VM**:
 
 From a terminal/shell on your computer (or another server or cluster) where you
 have access to the SSH Private Key, you'll issue your SCP command. The syntax is:
@@ -159,11 +159,11 @@ When you want to transfer many small files in a directory, we recommend
 [Globus](#using-globus). If you don't wish to use Globus, you can consider using
 ssh piped with tar.
 
-**i. Send a directory to NERC VM:**
+**i. Send a directory to NERC VM**:
 
     tar cz /local/path/dirname | ssh -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM> tar zxv -C /remote/path
 
-**ii. Get a directory from NERC VM:**
+**ii. Get a directory from NERC VM**:
 
     ssh -i <Your SSH Private Key including Path> <Default User name based on OS>@<Your Floating IP of VM> tar cz /remote/path/dirname | tar zxv -C /local/path
 
@@ -183,16 +183,16 @@ are filesystem paths. They can be local, either absolute or relative to the curr
 working directory, or they can be remote but prefixing something like
 `USERNAME@HOSTNAME:` to the front of them.
 
-**i. Synchronizing from a local machine to NERC VM:**
+**i. Synchronizing from a local machine to NERC VM**:
 
     rsync -avxz ./source_directory/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/destination_directory/
 
-**ii. Synchronizing from NERC VM to a local machine:**
+**ii. Synchronizing from NERC VM to a local machine**:
 
     rsync -avz -e "ssh -i ~/.ssh/your_pem_key_file.pem" -r <user_name>@<Floating_IP>:~/source_directory/ ./destination_directory/
 
 **iii. Update a previously made copy of "foo" on the NERC VM after you've made changes
-to the local copy:**
+to the local copy**:
 
     rsync -avz --delete foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
@@ -206,7 +206,7 @@ to the local copy:**
     files/directories in the `DESTINATION` that are no longer in the `SOURCE`.
 
 **iv. Update a previously made copy of "foo" on the NERC VM after you or someone
-else has already updated it from a different source:**
+else has already updated it from a different source**:
 
     rsync -aAvz --update foo/ -e "ssh -i ~/.ssh/your_pem_key_file.pem" <user_name>@<Floating_IP>:~/foo/
 
@@ -353,7 +353,7 @@ Then sync for real
 
 #### Mounting VM filesystem on local filesystem
 
-**Linux:**
+**Linux**:
 
 First, you need to create a directory on which you will mount your filesystem:
 
@@ -363,7 +363,7 @@ Then you can simply mount your filesystem with:
 
 `rclone -vv --vfs-cache-mode writes mount nerc: ~/mnt-rclone`
 
-**Windows:**
+**Windows**:
 
 First you have to [download Winfsp](http://www.secfs.net/winfsp/rel/):
 

@@ -138,7 +138,7 @@ and Scala applications using the IP address of the master VM.
 -   You have the option to directly launch this volume as an instance by clicking
     on the arrow next to "Create Volume" and selecting "Launch as Instance".
 
-    **NOTE:** Specify **Count: 2** to launch 2 instances using the volume snapshot
+    **NOTE**: Specify **Count: 2** to launch 2 instances using the volume snapshot
     as shown below:
 
     ![Launch 2 Workers From Volume Snapshot](images/launch-multiple-worker-instances.png)
@@ -339,7 +339,7 @@ resources for both the Spark cluster and individual applications.
         [downloaded and installed previously](#setup-a-master-vm) as the value
         of `SPARK_VERSION` in the above script.
 
--   **Single Node Job:**
+-   **Single Node Job**:
 
     Let's quickly start to run a simple job:
 
@@ -347,7 +347,7 @@ resources for both the Spark cluster and individual applications.
     ./bin/spark-submit --driver-memory 2g --class org.apache.spark.examples.SparkPi examples/jars/spark-examples_2.13-$SPARK_VERSION.jar 50
     ```
 
--   **Cluster Mode Job:**
+-   **Cluster Mode Job**:
 
     Let's submit a longer and more complex job with many tasks that will be
     distributed among the multi-node cluster, and then view the Master web UI:

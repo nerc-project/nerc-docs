@@ -35,7 +35,7 @@ chatbot solution.
     [these instructions](https://github.com/nerc-project/llm-on-nerc/blob/main/llm-servers/ollama/README.md)
     for a Standalone Deployment.
 
-**Procedure:**
+**Procedure**:
 
 1.  Navigating to the OpenShift AI dashboard.
 
@@ -79,14 +79,14 @@ chatbot solution.
 5.  Configure the LLM Endpoint to Connect the Workbench to your locally deployed
     **Ollama** Model Serving instance:
 
-    -   **Search LLM Providers:** Scroll through the list and select **Ollama**
+    -   **Search LLM Providers**: Scroll through the list and select **Ollama**
         from the available options.
 
-    -   **Ollama Base URL:** Enter the URL where Ollama is running. For your
+    -   **Ollama Base URL**: Enter the URL where Ollama is running. For your
         locally deployed **Ollama** Model Serving instance, you have **two main**
         options for the "Ollama Base URL," as explained below:
 
-        -   **Internal Service Endpoint:**  
+        -   **Internal Service Endpoint**:  
 
             !!! warning "Important Note"
 
@@ -107,7 +107,7 @@ chatbot solution.
 
                 Thus, the internal service URL will be: `http://ollama-service.<your-namespace>.svc.cluster.local:11434`.
 
-        -   **Public Route URL:**
+        -   **Public Route URL**:
 
             -   The Ollama service can be accessed externally using the public
                 **Route** URL provided by OpenShift. The URL follows this format:
@@ -116,10 +116,10 @@ chatbot solution.
         Choose the appropriate URL option based on your needs and whether the Ollama
         service is intended for internal use or external access.
 
-    -   **Ollama Model:** Choose the specific Ollama model you want to use for
+    -   **Ollama Model**: Choose the specific Ollama model you want to use for
         your conversations.
 
-    -   **Max Tokens:** Specify the maximum number of tokens to be used for
+    -   **Max Tokens**: Specify the maximum number of tokens to be used for
         context and responses. A good starting point is 4096, but you can adjust
         this later within your workspaces.
 

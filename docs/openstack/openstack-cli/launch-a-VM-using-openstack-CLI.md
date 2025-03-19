@@ -139,7 +139,7 @@ openstack server create --flavor cpu-su.2 \
     my-vm
 ```
 
-**NOTE:** To get more help on "openstack server create" command , use:
+**NOTE**: To get more help on "openstack server create" command , use:
 
 ```sh
 openstack -h server create

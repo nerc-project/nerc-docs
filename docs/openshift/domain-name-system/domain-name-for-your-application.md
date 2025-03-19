@@ -107,7 +107,7 @@ cluster.
 
 5. You will need to:
 
-    - **i. Change:**
+    - **i. Change**:
 
     `metadata.name` i.e. `<your-unique-ingress-name>`
 
@@ -116,7 +116,7 @@ cluster.
     `spec.rules[0].http.paths[*].backend.service` i.e. path, servicename and service
     exposed port number
 
-    - **ii. Add:**
+    - **ii. Add**:
 
     `metadata.annotations` i.e.
 

@@ -61,12 +61,12 @@ this bucket and its connection for notebooks and model servers.
 
 ### 1.1. **Using your own S3-compatible storage buckets**
 
-**Procedure:**
+**Procedure**:
 
 Manually create a data connection: **My Storage** by following
 [How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
 
-**Verification:**
+**Verification**:
 
 You should see a data connection listed under your RHOAI Dashboard **My Storage**
 as shown below:
@@ -89,7 +89,7 @@ the following tasks:
 
 -   Installs all required **network policies**.
 
-**Procedure:**
+**Procedure**:
 
 i. From the OpenShift AI dashboard, you can return to OpenShift Web Console
 by using the application launcher icon (the black-and-white icon that looks
@@ -439,7 +439,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
 
 v. Click **Create**.
 
-**Verification:**
+**Verification**:
 
 i. Once Resource is successfully created, you will see a "Resources successfully
 created" message and the following resources listed:
@@ -535,7 +535,7 @@ bucket: **my-storage** is visible as shown below:
 
 ### Creating a workbench and selecting a notebook image
 
-**Procedure:**
+**Procedure**:
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
@@ -612,7 +612,7 @@ values, which you have retrieved while "Editing data connection":
 
     ![Workbench accelerator](images/workbench-without-gpu-accelerator.png)
 
-**Verification:**
+**Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
 server. When your workbench is ready, the status will change from _Starting_
@@ -665,7 +665,7 @@ In the file browser, double-click the newly-created **object-detection** folder.
 
 ![Jupyter file browser](images/jupyter-file-browser-git.png)
 
-**Verification:**
+**Verification**:
 
 In the file browser, you should see the notebooks that you cloned from Git.
 
@@ -720,7 +720,7 @@ In this example, we will train using the smallest base model i.e. YOLOv5 to save
 time. However, you can modify the base model and adjust the training hyperparameters
 to achieve better results.
 
-**Verification:**
+**Verification**:
 
 This process will take some time to complete. At the end, it will generate and
 save the model `yolov5n.pt` within the root folder path of `object-detection`.
@@ -732,27 +732,27 @@ save the model `yolov5n.pt` within the root folder path of `object-detection`.
 
 ## 5. Preparing a model for deployment
 
-**Procedure:**
+**Procedure**:
 
 In your JupyterLab environment, open the notebook file `03-yolov5_to_onnx.ipynb`.
 Follow the instructions in the notebook to store the model and save it in the portable
 **ONNX** format from YoloV5 model.
 
-**Verification:**
+**Verification**:
 
 After completing the notebook steps, verify that the `yolov5n.onnx` file is created
 within the root folder path of `object-detection`.
 
 ## 6. Save the Model
 
-**Procedure:**
+**Procedure**:
 
 In your JupyterLab environment, open the notebook file `04-save_model.ipynb` and
 follow the instructions. This notebook will guide you through saving the model
 to S3-compatible object storage, corresponding to the **My Storage** data connection,
 which was set up in [this step](#1-storing-data-with-connection).
 
-**Verification:**
+**Verification**:
 
 After completing the notebook steps, verify that the `models/yolov5n.onnx` file
 is stored in the object storage. Once saved, the model is now ready for use by
@@ -770,7 +770,7 @@ deploy it as an API using an OpenShift AI **Model Server**.
 NERC RHOAI multi-model servers can host multiple models simultaneously. You can
 create a new model server and deploy your model to it.
 
-**Procedure:**
+**Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
 and click the **Models and model servers** tab.
@@ -813,7 +813,7 @@ Leave the other fields with the default settings.
 
 Click **Deploy**.
 
-**Verification:**
+**Verification**:
 
 When you return to the Deployed models page, you will see your newly deployed model.
 You should click on the 1 on the Deployed models tab to see details. Notice the
@@ -835,7 +835,7 @@ complete as shown below:
 
 Now that you've deployed the model, you can test its API endpoints.
 
-**Procedure:**
+**Procedure**:
 
 -   In the OpenShift AI dashboard, navigate to the project details page and click
 the **Models** tab.

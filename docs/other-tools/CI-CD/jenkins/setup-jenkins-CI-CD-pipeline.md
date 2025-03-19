@@ -337,7 +337,7 @@ To create a fork of the example `nodeapp` repository:
 
     b. Select the "Pipeline" link.
 
-    c. Give name to your Pipeline i.e. “_jenkins-k8s-pipeline_”
+    c. Give name to your Pipeline i.e. "_jenkins-k8s-pipeline_"
 
     ![Adding Jenkins Credentials](images/adding-Jenkins-pipeline.png)
 

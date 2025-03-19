@@ -132,7 +132,7 @@ default of 20 GB root disk at a rate of $2.078 / hr of wall time.
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **NOTE:** These commands are **ONLY** applicable for the VM based on
+    **NOTE**: These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 
@@ -165,7 +165,7 @@ wall time.
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **NOTE:** These commands are **ONLY** applicable for the VM based on
+    **NOTE**: These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 
@@ -195,7 +195,7 @@ The **"gpu-su-v100"** flavor is provided from Dell R740xd (2x Intel Xeon Gold 61
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **NOTE:** These commands are **ONLY** applicable for the VM based on
+    **NOTE**: These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 
@@ -228,7 +228,7 @@ hr of wall time.
     setup the NVIDIA driver in order to use GPU-based codes and libraries.
     Please run the following commands to setup the NVIDIA driver and CUDA
     version required for these flavors in order to execute GPU-based codes.
-    **NOTE:** These commands are **ONLY** applicable for the VM based on
+    **NOTE**: These commands are **ONLY** applicable for the VM based on
     "**ubuntu-22.04-x86_64**" image. You might need to find corresponding
     packages for your own OS of choice.
 

@@ -56,7 +56,7 @@ be populated with documents.
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.
 
-**Procedure:**
+**Procedure**:
 
 1.  Navigating to the OpenShift AI dashboard.
 
@@ -138,7 +138,7 @@ In the file browser, double-click the newly-created **llm-on-nerc** folder.
 
 ![Jupyter file browser](images/jupyter-git-rag-repo-browser.png)
 
-**Verification:**
+**Verification**:
 
 In the file browser, you should see the notebooks that you cloned from Git. Navigate
 to the `llm-on-nerc/examples/notebooks/langchain` directory, where you will find
@@ -153,7 +153,7 @@ shown below:
     Update the Ollama's **BASE_URL** and Qdrant's **QDRANT_HOST** in this notebook
     to match your deployment settings.
 
-**Integrating Qdrant with LangChain:**
+**Integrating Qdrant with LangChain**:
 
 Once you have Qdrant set up, the next step is to integrate it with LangChain.
 The LangChain library provides various tools to interact with vector databases,
@@ -162,7 +162,7 @@ including Qdrant.
 The AI model, now enriched with additional data, including *The Forgotten Lighthouse*
 book pdf that is located at [`llm-on-nerc/examples/notebooks/langchain/datasource/The_Forgotten_Lighthouse_Book.pdf`](https://github.com/nerc-project/llm-on-nerc/blob/main/examples/notebooks/langchain/datasource/The_Forgotten_Lighthouse_Book.pdf),
 can be queried. When asked, *"Who is the starfish, and how do you know?"*, it
-processes the PDF and infers that Grandpa calls Sarah “my little starfish” in his
+processes the PDF and infers that Grandpa calls Sarah "my little starfish" in his
 letter. Since the model wasn't originally trained on this book, its response
 relies on RAG, demonstrating how AI can extract and infer new information without
 retraining.

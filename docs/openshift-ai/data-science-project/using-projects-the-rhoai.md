@@ -113,7 +113,7 @@ as **1** and allocate a **Cluster storage** space of **1GB**.
     needed. It's worth noting that a default cluster storage (PVC) is automatically
     created with the same name as your workbench to save your work.
 
-    **Note:** Once persistent storage is created, you can only increase its size
+    **Note**: Once persistent storage is created, you can only increase its size
     by editing it. Adjusting the storage size will restart the workbench, making
     it temporarily unavailable, with the downtime typically depending on the size
     increase.

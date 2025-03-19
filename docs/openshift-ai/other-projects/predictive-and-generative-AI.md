@@ -254,16 +254,16 @@ to fetch relevant documents, providing more accurate and contextually enriched r
 
 ![RAG Workflow](images/RAG-Workflow.png)
 
-**1. Retrieve:** The user query is used to retrieve relevant context from an
+**1. Retrieve**: The user query is used to retrieve relevant context from an
 external knowledge source. For this, the user query is embedded with an embedding
 model into the same vector space as the additional context in the vector database.
 This allows to perform a similarity search, and the top k closest data objects
 from the vector database are returned.
 
-**2. Augment:** The user query and the retrieved additional context are stuffed
+**2. Augment**: The user query and the retrieved additional context are stuffed
 into a prompt template.
 
-**3. Generate:** Finally, the retrieval-augmented prompt is fed to the LLM.
+**3. Generate**: Finally, the retrieval-augmented prompt is fed to the LLM.
 
 #### RAG Best Practices
 

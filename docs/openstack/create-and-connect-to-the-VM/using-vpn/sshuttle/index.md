@@ -67,13 +67,13 @@ sudo port install sshuttle
 
 sshuttle is available through the package management system on most Linux distributions.
 
-**On Debian/Ubuntu:**
+**On Debian/Ubuntu**:
 
 ```sh
 sudo apt-get install sshuttle
 ```
 
-**On RedHat/Rocky/AlmaLinux:**
+**On RedHat/Rocky/AlmaLinux**:
 
 ```sh
 sudo dnf install sshuttle
@@ -101,7 +101,7 @@ cd sshuttle
 
 ## How to Connect
 
-**Tunnel to all networks (0.0.0.0/0):**
+**Tunnel to all networks (0.0.0.0/0)**:
 
 ```sh
 sshuttle -r ubuntu @140.247.152.244 0.0.0.0/0

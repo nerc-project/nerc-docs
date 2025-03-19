@@ -197,7 +197,7 @@ for the gRPC and the REST URLs for the inference endpoints as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/deployed-model-inference-endpoints.png)
 
-**Notes:**
+**Notes**:
 
 -   The REST URL displayed is only the base address of the endpoint. You must
     append `/v2/models/name-of-your-model/infer` to it to have the full address.

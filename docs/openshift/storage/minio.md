@@ -32,7 +32,7 @@ the following tasks:
 
 -   Installs all required **network policies**.
 
-**Procedure:**
+**Procedure**:
 
 1.  From the OpenShift AI dashboard, you can return to OpenShift Web Console
     by using the application launcher icon (the black-and-white icon that looks
@@ -256,7 +256,7 @@ the following tasks:
 
 5.  Click **Create**.
 
-**Verification:**
+**Verification**:
 
 i. Once Resource is successfully created, you will see a "Resources successfully
 created" message and the following resources listed:

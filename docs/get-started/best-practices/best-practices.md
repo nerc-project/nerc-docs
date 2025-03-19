@@ -10,7 +10,7 @@ the security risks and some of the shared responsibilities for the customers whi
 using the NERC. This ensures roles and responsibilities are distinctly understood
 by each party.
 
-**NERC Principal Investigators (PIs):** PIs are ultimately responsible for their
+**NERC Principal Investigators (PIs)**: PIs are ultimately responsible for their
 end-users and the security of the systems and applications that are deployed as
 part of their project(s) on NERC. This includes being responsible for the security
 of their data hosted on the NERC as well as users, accounts and access management.

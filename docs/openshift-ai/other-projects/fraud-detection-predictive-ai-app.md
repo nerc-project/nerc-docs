@@ -66,12 +66,12 @@ or a script to create local S3 storage (MinIO) buckets:
 
 #### 1.1. **Using your own S3-compatible storage buckets**
 
-**Procedure:**
+**Procedure**:
 
 Manually create two connections: **My Storage** and **Pipeline Artifacts**
 by following [How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
 
-**Verification:**
+**Verification**:
 
 You should see two connections listed under your RHOAI Dashboard **My Storage**
 and **Pipeline Artifacts** as shown below:
@@ -94,7 +94,7 @@ the following tasks:
 
 -   Installs all required **network policies**.
 
-**Procedure:**
+**Procedure**:
 
 i. From the OpenShift AI dashboard, you can return to OpenShift Web Console
 by using the application launcher icon (the black-and-white icon that looks
@@ -468,7 +468,7 @@ iv. Copy the following code and paste it into the Import YAML editor.
 
 v. Click **Create**.
 
-**Verification:**
+**Verification**:
 
 i. Once Resource is successfully created, you will see a "Resources successfully
 created" message and the following resources listed:
@@ -565,7 +565,7 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
 In this section, you prepare your workshop environment so that you can use data
 science pipelines.
 
-**Procedure:**
+**Procedure**:
 
 i. From the OpenShift AI dashboard, click the **Pipelines** tab.
 
@@ -587,7 +587,7 @@ v. Click **Configure pipeline server**.
 vi. Wait until the loading spinner disappears and **Start by importing a pipeline**
 is displayed.
 
-**Verification:**
+**Verification**:
 
 a. Navigate to the **Pipelines** tab for the project.
 
@@ -605,7 +605,7 @@ for the pipeline server. as shown below:
 
 #### Creating a workbench and selecting a notebook image
 
-**Procedure:**
+**Procedure**:
 
 Prepare your Jupyter notebook server for using a GPU, you need to have:
 
@@ -682,7 +682,7 @@ values, which you have retrieved while "Editing data connection":
 
     ![Workbench accelerator](images/workbench-without-gpu-accelerator.png)
 
-**Verification:**
+**Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
 server. When your workbench is ready, the status will change from _Starting_
@@ -735,7 +735,7 @@ In the file browser, double-click the newly-created **fraud-detection** folder.
 
 ![Jupyter file browser](images/jupyter-file-browser.png)
 
-**Verification:**
+**Verification**:
 
 In the file browser, you should see the notebooks that you cloned from Git.
 
@@ -766,20 +766,20 @@ double click it and execute the "Run" button to run all notebook cells at once.
 
     ![Monitor the Training using ClearML](images/monitor-the-training.png)
 
-**Verification:**
+**Verification**:
 
 This process will take some time to complete. At the end, it will generate and
 save the model `model.onnx` within the `models/fraud/1/` folder path of `fraud-detection`.
 
 ### 4. Preparing a model for deployment
 
-**Procedure:**
+**Procedure**:
 
 In your JupyterLab environment, open the notebook file `2_save_model.ipynb`. Follow
 the instructions in the notebook to store the model and save it in the portable
 **ONNX** format.
 
-**Verification:**
+**Verification**:
 
 After completing the notebook steps, verify that the `models/fraud/1/model.onnx`
 file is stored in the object storage corresponding to the **My Storage** data
@@ -797,7 +797,7 @@ deploy it as an API using an OpenShift AI **Model Server**.
 NERC RHOAI multi-model servers can host multiple models simultaneously. You can
 create a new model server and deploy your model to it.
 
-**Procedure:**
+**Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
 and click the **Models and model servers** tab.
@@ -840,7 +840,7 @@ Leave the other fields with the default settings.
 
 Click **Deploy**.
 
-**Verification:**
+**Verification**:
 
 When you return to the Deployed models page, you will see your newly deployed model.
 You should click on the 1 on the Deployed models tab to see details. Notice the
@@ -854,7 +854,7 @@ complete as shown below:
 
 Now that you've deployed the model, you can test its API endpoints.
 
-**Procedure:**
+**Procedure**:
 
 -   In the OpenShift AI dashboard, navigate to the project details page and click
 the **Models** tab.
@@ -1042,7 +1042,7 @@ The `aws-connection-my-storage` secret includes the following fields:
 
 You must set the secret name and key for each of these fields.
 
-**Procedure:**
+**Procedure**:
 
 i. Remove any pre-filled environment variables.
 
@@ -1067,39 +1067,39 @@ a. Under **Kubernetes Secrets**, click **Add**.
 
 b. Enter the following values and then click **Add**.
 
--   **Environment Variable:** *AWS_ACCESS_KEY_ID*
+-   **Environment Variable**: *AWS_ACCESS_KEY_ID*
 
--   **Secret Name:** *aws-connection-my-storage*
+-   **Secret Name**: *aws-connection-my-storage*
 
--   **Secret Key:** *AWS_ACCESS_KEY_ID*
+-   **Secret Key**: *AWS_ACCESS_KEY_ID*
 
 ![Secret Form](images/wb-pipeline-kube-secret-form.png)
 
 iii. Repeat Step 2 for each of the following Kubernetes secrets:
 
--   **Environment Variable:** *AWS_SECRET_ACCESS_KEY*
+-   **Environment Variable**: *AWS_SECRET_ACCESS_KEY*
 
--   **Secret Name:** *aws-connection-my-storage*
+-   **Secret Name**: *aws-connection-my-storage*
 
--   **Secret Key:** *AWS_SECRET_ACCESS_KEY*
+-   **Secret Key**: *AWS_SECRET_ACCESS_KEY*
 
--   **Environment Variable:** AWS_S3_ENDPOINT
+-   **Environment Variable**: AWS_S3_ENDPOINT
 
--   **Secret Name:** aws-connection-my-storage
+-   **Secret Name**: aws-connection-my-storage
 
--   **Secret Key:** AWS_S3_ENDPOINT
+-   **Secret Key**: AWS_S3_ENDPOINT
 
--   **Environment Variable:** AWS_DEFAULT_REGION
+-   **Environment Variable**: AWS_DEFAULT_REGION
 
--   **Secret Name:** aws-connection-my-storage
+-   **Secret Name**: aws-connection-my-storage
 
--   **Secret Key:** AWS_DEFAULT_REGION
+-   **Secret Key**: AWS_DEFAULT_REGION
 
--   **Environment Variable:** AWS_S3_BUCKET
+-   **Environment Variable**: AWS_S3_BUCKET
 
--   **Secret Name:** aws-connection-my-storage
+-   **Secret Name**: aws-connection-my-storage
 
--   **Secret Key:** AWS_S3_BUCKET
+-   **Secret Key**: AWS_S3_BUCKET
 
 iv.Select File → Save Pipeline As to save and rename the *.pipeline* file. For
 example, rename it to **My Train Save.pipeline**.
@@ -1109,7 +1109,7 @@ example, rename it to **My Train Save.pipeline**.
 You can use your own newly created pipeline or the pipeline in the provided
 `5 Train Save.pipeline` file.
 
-**Procedure:**
+**Procedure**:
 
 i. Click the play button in the toolbar of the pipeline editor.
 
@@ -1210,9 +1210,9 @@ Set these values in the **Environment variables (runtime only)** fields:
 
 ![Deployment Options](images/deploy-advance-option.png)
 
-**Name:** *INFERENCE_ENDPOINT*
+**Name**: *INFERENCE_ENDPOINT*
 
-**Value:** From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
+**Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
 copy the **restUrl** value and add `/v2/models/fraud/infer` to the end. For
 example: `http://modelmesh-serving.<your-namespace>:8008/v2/models/fraud/infer`.
 

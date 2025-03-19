@@ -126,7 +126,7 @@ as shown below:
 
     ![Instance Persistent Storage Option](images/instance-persistent-storage-option.png)
 
-    **NOTE:** For more in-depth information on making your VM setup and data persistent,
+    **NOTE**: For more in-depth information on making your VM setup and data persistent,
     you can explore the details [here](../persistent-storage/volumes.md#how-do-you-make-your-vm-setup-and-data-persistent).
 
 Add other information and setup a Security Group that allows RDP (port: 3389) as

@@ -20,10 +20,10 @@ Once the Ollama setup is successfully completed, you will be able to access the
 **Open WebUI** for Ollama as [explained here](https://github.com/nerc-project/llm-on-nerc/tree/main/llm-servers/ollama#access-deployed-open-webui-for-ollama).
 
 Using Open WebUI, you can download and manage LLM models as per your need. For our
-*RAG application*, we going to use [**Phi-3 model**](https://ollama.com/library/phi3:14b)
+*RAG application*, we are going to use [**Phi-3 model**](https://ollama.com/library/phi3:14b)
 which is a family of lightweight 3B (Mini) and 14B (Medium) state-of-the-art open
-models by Microsoft. We going to pull the **Phi-3 model** using Open WebUI as shown
-below:
+models by Microsoft. We are going to pull the **Phi-3 model** using Open WebUI as
+shown below:
 
 ![Ollama Open WebUI Pull Model](images/ollama-pull-phi3-model.png)
 
@@ -102,14 +102,18 @@ be populated with documents.
 
     ![Open RAG Workbench](images/open-RAG-workbench.png)
 
-4.  Once you successfully authenticate, you should see the NERC RHOAI JupyterLab
-    Web Interface as shown below:
+4.  Once you have successfully authenticated by clicking "**mss-keycloak**" when
+    prompted, as shown below:
+
+    ![Authenticate](images/authenticate-user.png)
+
+    Next, you should see the NERC RHOAI JupyterLab Web Interface, as shown below:
 
     ![RAG Jupyter Notebook Setup](images/jupyterlab_web_interface.png)
 
-    It's pretty empty right now, though. On the left side of the navigation
-    pane, locate the **Name** explorer panel. This panel is where you can create
-    and manage your project directories.
+    The Jupyter environment is currently empty. To begin, populate it with content
+    using *Git*. On the left side of the navigation pane, locate the **Name** explorer
+    panel, where you can create and manage your project directories.
 
     !!! note "Learn More About Working with Notebooks"
 

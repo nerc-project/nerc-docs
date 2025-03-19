@@ -52,7 +52,7 @@
 
 ## R
 
--   [R Studio](R/rstudio-server/running-rstudio-on-NERC.md)
+-   [RStudio](R/rstudio-server/running-rstudio-on-NERC.md)
 
 -   [R Shiny](R/r-shiny-server/running-rshiny-on-NERC.md)
 

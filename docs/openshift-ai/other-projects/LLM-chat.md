@@ -75,7 +75,7 @@ This deployment sets up a ready-to-use container runtime that pulls the
 
     ![Ollama New Chat UI](images/ollama-change-UI-promt-style.png)
 
-5. Test your Inferencing by querying the inferencing runtime at the "Say Something"
+5. Test your inferencing by querying the inferencing runtime at the "Say Something"
     box:
 
     ![Ollama Start Chat](images/ollama-start-chat.png)

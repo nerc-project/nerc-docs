@@ -699,14 +699,18 @@ to _Running_ and you can select "Open" to go to your environment:
 
     ![Workbench edit](images/ds-project-workbench-list-edit.png)
 
-Once you successfully authenticate, you should see the NERC RHOAI JupyterLab
-Web Interface as shown below:
+Once you have successfully authenticated by clicking "**mss-keycloak**" when
+prompted, as shown below:
+
+![Authenticate](images/authenticate-user.png)
+
+Next, you should see the NERC RHOAI JupyterLab Web Interface, as shown below:
 
 ![RHOAI JupyterLab Web Interface](images/jupyterlab_web_interface.png)
 
-It's pretty empty right now, though. On the left side of the navigation
-pane, locate the **Name** explorer panel. This panel is where you can create
-and manage your project directories.
+The Jupyter environment is currently empty. To begin, populate it with content
+using *Git*. On the left side of the navigation pane, locate the **Name** explorer
+panel, where you can create and manage your project directories.
 
 !!! note "Learn More About Working with Notebooks"
 

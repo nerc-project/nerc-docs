@@ -38,8 +38,12 @@ is mature, open-source software originally inspired by **rsync** and written in 
 
     ![Open Rclone Web Server](images/open-rclone-web-server.png)
 
-4.  Once you successfully authenticate, you should see the Rclone WebUI Login page
-    as shown below:
+4.  Once you have successfully authenticated by clicking "**mss-keycloak**" when
+    prompted, as shown below:
+
+    ![Authenticate](images/authenticate-user.png)
+
+    Next, you should see the Rclone WebUI Login page, as shown below:
 
     ![Rclone Login](images/RHOAI-Rclone-login.png)
 

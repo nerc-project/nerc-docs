@@ -129,11 +129,15 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
 
     ![Import YAML](images/import-yaml.png)
 
-2. Either drag and drop `https://raw.githubusercontent.com/nerc-project/rshiny-testapp/main/openshift/rshiny-server-template.yaml`
-   or copy and paste the contents of the `openshift/rshiny-server-template.yaml`
-   file into the opened Import YAML editor box.
+    Next, the Import YAML editor box will open, as shown below:
 
     ![YAML Editor](images/import-yaml-content.png)
+
+2. Either drag and drop the locally downloaded [rshiny-server-template.yaml](https://raw.githubusercontent.com/nerc-project/rshiny-testapp/main/openshift/rshiny-server-template.yaml)
+   file or copy and paste its contents into the opened Import YAML editor box, as
+   shown below:
+
+    ![R Shiny Server Template YAML Content](images/import-rshiny-server-template-content.png)
 
 3. You need to find the Developer Catalog section and then select **All services**
    option as shown below:

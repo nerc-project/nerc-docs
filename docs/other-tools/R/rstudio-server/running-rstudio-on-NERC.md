@@ -30,8 +30,12 @@
 
     ![Open RStudio Web Server](images/open-rstudio-web-server.png)
 
-4.  Once you successfully authenticate, you should see the RStudio Web Server, as
-    shown below:
+4.  Once you have successfully authenticated by clicking "**mss-keycloak**" when
+    prompted, as shown below:
+
+    ![Authenticate](images/authenticate-user.png)
+
+    Next, you should see the RStudio Web Server, as shown below:
 
     ![RStudio WebUI](images/rstudio-web-server.png)
 

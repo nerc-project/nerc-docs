@@ -65,8 +65,12 @@ chatbot solution.
 
     ![Open AnythingLLM Workbench](images/open-AnythingLLM-workbench.png)
 
-4.  Once you successfully authenticate, on the first launch, you'll see the
-    **AnythingLLM** welcome splash screen as shown below:  
+4.  Once you have successfully authenticated by clicking "**mss-keycloak**" when
+    prompted, as shown below:
+
+    ![Authenticate](images/authenticate-user.png)
+
+    Next, you should see the **AnythingLLM** welcome splash screen, as shown below:
 
     ![AnythingLLM Web Interface](images/AnythingLLM_web_interface.png)
 
@@ -84,8 +88,10 @@ chatbot solution.
 
         -   **Internal Service Endpoint:**  
 
-            This option is only accessible **within the OpenShift cluster** and cannot
-            be accessed externally.
+            !!! warning "Important Note"
+
+                This option is only accessible **within the OpenShift cluster**
+                and cannot be accessed externally.
 
             -   You can use the internal service URL for the Ollama service within
                 your OpenShift environment based on the service name and exposed

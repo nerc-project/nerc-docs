@@ -73,20 +73,17 @@ in your namespace and linking it to your service account.
         registries also provide **access tokens** for authentication in user accounts.
 
     **Or**, based on the **configuration file**, create a generic Kubernetes **Secret**
-    by following the followins steps:
+    by following the steps below:
 
-    i. Create the `.dockerconfigjson` file manually by running:
+    i. Create a `.dockerconfigjson` file manually by running:
 
-        ```sh
         echo -n "<your-username>:<your-secret-token>" | base64
-        ```
 
-        Replace `<your-username>` and `<your-secret-token>` with your own.
+    Replace `<your-username>` and `<your-secret-token>` with your own.
 
     ii. Then, create a `config.json` file with the following structure. Here is
         an example for `docker.io`:
 
-        ```sh
         {
         "auths": {
             "https://index.docker.io/v1/": {
@@ -94,15 +91,12 @@ in your namespace and linking it to your service account.
             }
           }
         }
-        ```
 
     iii. Now, use this JSON file to create a Kubernetes secret:
 
-        ```sh
         oc create secret generic <your-secret-name> \
           --from-file=.dockerconfigjson=config.json \
           --type=kubernetes.io/dockerconfigjson
-        ```
 
 -   Finally, patch the **default** service account in your namespace to use this
     secret when pulling images:
@@ -110,6 +104,12 @@ in your namespace and linking it to your service account.
     ```sh
     oc patch serviceaccount default -p '{"imagePullSecrets": [{"name": "<your-secret-name>"}]}'
     ```
+
+    !!! info "Another Way"
+
+        Alternatively, you can use `oc secrets link` command like this:
+
+        `oc secrets link default <your-secret-name> --for=pull`
 
     You can check if the secret is correctly applied by running:
 
@@ -119,10 +119,6 @@ in your namespace and linking it to your service account.
 
     This ensures OpenShift authenticates with the Registry to bypass anonymous
     rate limits when pulling images.
-
-    !!! info "Another Way"
-
-        oc secrets link default docker-hub-pull-secret —-for=pull
 
 ### Reference Image Pull Secret in YAML Deployment Files
 

@@ -946,7 +946,7 @@ copy the **restUrl** value. For example: `http://modelmesh-serving.<your-namespa
 
 Your full settings page should look something like this:
 
-![Import from Git Settings](images/Import_from_Git_object-detection-setting.png)
+![Import from Git Settings](images/Import_from_Git_object_detection-settings.png)
 
 !!! note "Target Port"
 
@@ -963,6 +963,8 @@ If you want more details on how the deployment is going, you can press the circl
 and look at **Resources** in the right menu that opens up. There you can see how
 the build is going and what's happening to the pod.
 
+![Object Detection Deployment Resources](images/object_detection_deployment_resources.png)
+
 The application will be ready when the build is complete and the pod is "Running".
 
 When the application has been deployed successfully, you can either open the
@@ -977,7 +979,7 @@ This will open the application interface in a new tab.
 Congratulations, you now have an application running your AI model!
 
 Try uploading your own image by browsing or dragging and dropping a file  
-(*.jpg, *.png, or *.jpeg only*) to see if the app can accurately predict and
+(*.jpg,*.png, or *.jpeg only*) to see if the app can accurately predict and
 label objects in it.
 
 ![Predict Object Detection Streamlit Interface](images/streamlit_application_interface.png)

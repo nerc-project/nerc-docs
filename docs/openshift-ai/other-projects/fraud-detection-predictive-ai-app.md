@@ -1243,7 +1243,7 @@ If you want more details on how the deployment is going, you can press the circl
 and look at **Resources** in the right menu that opens up. There you can see how
 the build is going and what's happening to the pod.
 
-![Deployment Resources](images/deployment_resources.png)
+![Fraud Detection Deployment Resources](images/fraud_detection_deployment_resources.png)
 
 The application will be ready when the build is complete and the pod is "Running".
 

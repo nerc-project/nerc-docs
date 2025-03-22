@@ -1159,19 +1159,21 @@ The model application code is located in the `"application"` folder within the
 root directory of `fraud-detection`. You can find this folder in the **GitHub repository**
 you cloned during the step: [Importing the tutorial files into the Jupyter environment](#importing-the-tutorial-files-into-the-jupyter-environment).
 
-![Model Application Folder](images/Model_Application_Folder.png)
+![Model Application Folder](images/Model_Application_Folder_fraud-detection.png)
 
-If you look inside it `model_application.py`, you will see two particularly
-important lines of code:
+If you look inside it `model_application.py`, you will find two crucial lines of
+code for retrieving environment variables:
 
 ```python
 # Get a few environment variables. These are so we:
 # - Know what endpoint we should request
 # - Set server name and port for Gradio
-URL = os.getenv("INFERENCE_ENDPOINT")   <----------
+MODEL_NAME = os.getenv("MODEL_NAME", "fraud")   <----------
+REST_URL = os.getenv("INFERENCE_ENDPOINT")   <----------
+INFER_URL = f"{REST_URL}/v2/models/{MODEL_NAME}/infer"
 ...
 
-    response = requests.post(URL, json=payload, headers=headers)    <----------
+    response = requests.post(INFER_URL, json=payload, headers=headers)    <----------
 ```
 
 This is how you send a request to the NERC RHOAI Model Server with the data that
@@ -1196,31 +1198,40 @@ is the same repository you [pulled into RHOAI earlier](#importing-the-tutorial-f
 Then press "Show advanced Git options" and set "Context dir" to "/application"
 where the application **Dockerfile** is located as shown below:
 
-![Import Git Repo With Dockerfile](images/import_git_repo.png)
+![Import Git Repo With Dockerfile](images/import_fraud_detection_git_repo.png)
 
 At the **General** section, select "Create application" option under **Application**
 and then give unique **Application name** i.e. `fraud-detection-application` and
 also **Name** i.e. `fraud-detection-application` as shown below:
 
-![General Application Information](images/general-application-info.png)
+![General Application Information](images/general-fraud-detection-application-info.png)
 
 Finally, at the **Deploy** section, press "Show advanced Deployment option".
 
 Set these values in the **Environment variables (runtime only)** fields:
 
-![Deployment Options](images/deploy-advance-option.png)
+![Deployment Options](images/deploy-fraud-detection-advance-option.png)
+
+**Name**: *MODEL_NAME*
+
+**Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
+copy the **Model name** value. For example: `fraud`.
 
 **Name**: *INFERENCE_ENDPOINT*
 
 **Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
-copy the **restUrl** value and add `/v2/models/fraud/infer` to the end. For
-example: `http://modelmesh-serving.<your-namespace>:8008/v2/models/fraud/infer`.
+copy the **restUrl** value. For example: `http://modelmesh-serving.<your-namespace>:8008`.
 
 ![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
 
 Your full settings page should look something like this:
 
-![Import from Git Settings](images/Import_from_Git_settings.png)
+![Import from Git Settings](images/Import_from_Git_fraud_detection-settings.png)
+
+!!! note "Target Port"
+
+    Under "Advanced options," make sure to set the **Target Port** to **8080**,
+    which corresponds to the exposed port in the application's [Dockerfile](https://github.com/nerc-project/fraud-detection/blob/main/application/Dockerfile#L14).
 
 Press **Create** to start deploying the application.
 
@@ -1236,10 +1247,14 @@ the build is going and what's happening to the pod.
 
 The application will be ready when the build is complete and the pod is "Running".
 
-When the application has been deployed you can press the "Open URL" button to open
-up the interface in a new tab.
+When the application has been deployed successfully, you can either open the
+application URL using the **Open URL** icon as shown below or you can naviate to
+the route URL by navigating to the "Routes" section under the _Location_ path as
+shown below:
 
-![Application deployed](images/Application_deployed.png)
+![Application deployed](images/fraud-detection-application_deployed.png)
+
+This will open the application interface in a new tab.
 
 Congratulations, you now have an application running your AI model!
 

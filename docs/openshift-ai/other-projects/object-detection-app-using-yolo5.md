@@ -866,4 +866,124 @@ you test the model API.
         demonstrates batch processing for multiple images from the **images** folder.
         This enables a basic benchmark to measure processing and inference time.
 
+## Deploy the Model Application on NERC OpenShift
+
+The **model application** includes a visual user interface (UI) powered by [Streamlit](https://streamlit.io/),
+allowing users to interact with the [trained model](#4-model-training). This
+interface enables users to upload images and interact with machine learning models
+seamlessly. This app communicates with a remote model inference service via a
+REST API to process images and generate predictions about the objects in the
+uploaded image.
+
+The model application code is located in the `"application"` folder within the
+root directory of `object-detection`. You can find this folder in the **GitHub repository**
+you cloned during the step: [Importing the tutorial files into the Jupyter environment](#importing-the-tutorial-files-into-the-jupyter-environment).
+
+![Model Application Folder](images/Model_Application_Folder_object-detection.png)
+
+If you look inside it `app.py`, you will find two crucial lines of
+code for retrieving environment variables:
+
+```python
+# Get a few environment variables. These are so we:
+# - Know what endpoint we should request
+# - Set server name and port for Streamlit
+MODEL_NAME = os.getenv("MODEL_NAME", "yolo")    <----------
+REST_URL = os.getenv("INFERENCE_ENDPOINT")    <----------
+INFER_URL = f"{REST_URL}/v2/models/{MODEL_NAME}/infer"
+...
+
+    infer = ort_v5(uploaded_image_path, INFER_URL, ...)    <----------
+```
+
+This is how you send a request to the NERC RHOAI Model Server with the user uploaded
+image to process for a prediction.
+
+We will deploy the application on OpenShift by linking it to the [GitHub repository](https://github.com/nerc-project/object-detection).
+OpenShift will fetch the repository, build a container image using the **Dockerfile**,
+and publish it automatically.
+
+To accomplish this, from the OpenShift AI dashboard, navigate to the OpenShift Web
+Console:
+
+![The NERC OpenShift Web Console Link](images/the-nerc-openshift-web-console-link.png)
+
+Ensure you are in **Developer** view and have selected the correct data science
+project. Then, click on "**+Add**" in the left menu and select "**Import from Git**".
+
+![Import from Git](images/Import_from_Git.png)
+
+In the "Git Repo URL" enter: `https://github.com/nerc-project/object-detection` (this
+is the same repository you [pulled into RHOAI earlier](#importing-the-tutorial-files-into-the-jupyter-environment)).
+Then press "Show advanced Git options" and set "Context dir" to "/application"
+where the application **Dockerfile** is located as shown below:
+
+![Import Git Repo With Dockerfile](images/import_object_detection_git_repo.png)
+
+At the **General** section, select "Create application" option under **Application**
+and then give unique **Application name** i.e. `object-detection-application` and
+also **Name** i.e. `object-detection-application` as shown below:
+
+![General Application Information](images/general-object-detection-application-info.png)
+
+Finally, at the **Deploy** section, press "Show advanced Deployment option".
+
+Set these values in the **Environment variables (runtime only)** fields:
+
+![Deployment Options](images/deploy-object-detection-advance-option.png)
+
+**Name**: *MODEL_NAME*
+
+**Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
+copy the **Model name** value. For example: `yolo`.
+
+**Name**: *INFERENCE_ENDPOINT*
+
+**Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
+copy the **restUrl** value. For example: `http://modelmesh-serving.<your-namespace>:8008`.
+
+![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
+
+Your full settings page should look something like this:
+
+![Import from Git Settings](images/Import_from_Git_object_detection-settings.png)
+
+!!! note "Target Port"
+
+    Under "Advanced options," make sure to set the **Target Port** to **8501**,
+    which corresponds to the exposed port in the application's [Dockerfile](https://github.com/nerc-project/object-detection/blob/main/application/Dockerfile#L19).
+
+Press **Create** to start deploying the application.
+
+You should now see a new object is added in your topology map for the application
+that you just added. When the circle of your deployment turns dark blue it means
+that it has finished deploying.
+
+If you want more details on how the deployment is going, you can press the circle
+and look at **Resources** in the right menu that opens up. There you can see how
+the build is going and what's happening to the pod.
+
+![Object Detection Deployment Resources](images/object_detection_deployment_resources.png)
+
+The application will be ready when the build is complete and the pod is "Running".
+
+When the application has been deployed successfully, you can either open the
+application URL using the **Open URL** icon as shown below or you can naviate to
+the route URL by navigating to the "Routes" section under the _Location_ path as
+shown below:
+
+![Application deployed](images/object-detection-application_deployed.png)
+
+This will open the application interface in a new tab.
+
+Congratulations, you now have an application running your AI model!
+
+Try uploading your own image by browsing or dragging and dropping a file  
+(*.jpg,*.png, or *.jpeg only*) to see if the app can accurately predict and
+label objects in it.
+
+![Predict Object Detection Streamlit Interface](images/streamlit_application_interface.png)
+
+![Object Prediction Result](images/object-prediction.png)
+
 ---

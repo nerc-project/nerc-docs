@@ -279,6 +279,40 @@ availability of the different V100 NVIDIA GPU device, as shown below:
 
 ![NVIDIA SMI V100 command](images/nvidia-V100-gpu.png)
 
+#### Requesting an H100 GPU in a Pod Specification
+
+Below is an example of a running pod YAML that requests the GPU device
+`NVIDIA-H100-80GB-HBM3` with a count of 1:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-pod3
+spec:
+  restartPolicy: Never
+  containers:
+    - name: cuda-container
+      image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda10.2
+      command: ["sleep"]
+      args: ["infinity"]
+      resources:
+        limits:
+          nvidia.com/gpu: 1
+  tolerations:
+    - key: nvidia.com/gpu.product
+      operator: Equal
+      value: NVIDIA-H100-80GB-HBM3
+      effect: NoSchedule
+  nodeSelector:
+    nvidia.com/gpu.product: NVIDIA-H100-80GB-HBM3
+```
+
+When you run the `nvidia-smi` command in the terminal, you can observe the
+availability of the different H100 NVIDIA GPU device, as shown below:
+
+![NVIDIA SMI H100 command](images/nvidia-H100-gpu.png)
+
 ## Scaling
 
 Scaling defines the number of pods or instances of the application you want to
@@ -292,7 +326,8 @@ more information about deployment, please [read this](https://docs.openshift.com
 !!! note "Benefits of Scaling"
 
     This will allow for a quicker response to peaks in demand, and reduce costs by
-    automatically scaling down when resources are no longer needed.
+    automatically scaling down when resources are no longer needed. This is especially
+    useful for **GPU-based resources**, which are often limited and more costly.
 
 ## Scaling application pods, resources and observability
 

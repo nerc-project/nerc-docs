@@ -19,7 +19,7 @@ The NERC OpenShift environment currently supports three different NVIDIA GPU
 3. Tesla-V100-PCIE-32GB (V100)
 
 !!! note "NERC GPU Worker Nodes Info"
-    
+
     A100 worker nodes also contain 4 individual GPUs, but each has 40 GB of memory.
     H100 worker nodes contain 4 individual GPUs, each with 80 GB of memory.
     In contrast, V100 worker nodes contain a single GPU with 32 GB of memory.

@@ -89,7 +89,8 @@ On the Create workbench page, complete the following information.
     this "**NERC-OCP (OpenShift)**" resource allocation on NERC's ColdFront, as
     [described here](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation).
 
-    The different options for GPU accelerator are "NONE", "NVIDIA A100 GPU", and "NVIDIA V100 GPU" as shown below:
+    The different options for GPU accelerator are "None", "NVIDIA A100 GPU",
+    "NVIDIA H100 GPU", and "NVIDIA V100 GPU" as shown below:
 
     ![NVIDIA GPU Accelerator](images/gpu_accelerator.png)
 

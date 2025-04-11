@@ -11,16 +11,18 @@ requesting GPUs will consume GPU resources.
 
 ## NERC GPU Worker Node Architecture
 
-The NERC OpenShift environment currently supports two different NVIDIA GPU
+The NERC OpenShift environment currently supports three different NVIDIA GPU
  products:
 
 1. NVIDIA-A100-SXM4-40GB (A100)
-2. Tesla-V100-PCIE-32GB (V100)
+2. NVIDIA-H100-80GB-HBM3 (H100)
+3. Tesla-V100-PCIE-32GB (V100)
 
 !!! note "NERC GPU Worker Nodes Info"
 
-    A100 worker nodes contain 4 individual gpus, each with 40GB of memory whereas
-    V100 worker nodes contain 1 gpu with 32 GB of memory.
+    A100 worker nodes also contain 4 individual GPUs, but each has 40 GB of memory.
+    H100 worker nodes contain 4 individual GPUs, each with 80 GB of memory.
+    In contrast, V100 worker nodes contain a single GPU with 32 GB of memory.
 
 ## Accessing GPU Resources
 
@@ -36,15 +38,16 @@ There are two ways to deploy workloads on GPU nodes:
 1. Deploy directly in your OCP namespace:
 
     In your project namespace you can deploy a GPU workload by explicitely requesting
-    a GPU in your pod manifest, see: [How to specify pod to use GPU](https://nerc-project.github.io/nerc-docs/openshift/applications/scaling-and-performance-guide/#how-to-specify-pod-to-use-gpu).
+    a GPU in your pod manifest, see: [How to specify pod to use GPU](../applications/scaling-and-performance-guide.md#how-to-specify-pod-to-use-gpu).
 
 2. Deploy through NERC RHOAI
 
-    See [Populate the data science project with a Workbench](https://nerc-project.github.io/nerc-docs/openshift-ai/data-science-project/using-projects-the-rhoai/#populate-the-data-science-project-with-a-workbench)
+    See [Populate the data science project with a Workbench](../../openshift-ai/data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
     for selecting GPU options.
 
-    !!! note "GPU Accelerator on NERC RHOAI"
+    !!! note "GPU Accelerator Available on NERC RHOAI"
 
-        The different options for GPU accelerator are "NONE", "NVIDIA A100 GPU", and "NVIDIA V100 GPU" as shown below:
+        The different options for GPU accelerator are "None", "NVIDIA A100 GPU",
+        "NVIDIA H100 GPU", and "NVIDIA V100 GPU" as shown below:
 
         ![NVIDIA GPU Accelerator](images/gpu_accelerator.png)

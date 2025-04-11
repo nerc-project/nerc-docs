@@ -22,7 +22,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                python-version: [3.10.12]
+                python-version: [3.11]
 
         steps:
             - name: Checkout Main
@@ -49,7 +49,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                python-version: [3.10.12]
+                python-version: [3.11]
 
         # this part will only run if the PR has been merged
         # if: github.event.pull_request.merged == true

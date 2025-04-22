@@ -41,18 +41,16 @@ if __name__ == "__main__":
     su_info_dict = {}
     for su_type in SU_TYPE_LIST:
         su_info_dict[su_type] = {}
-        su_info_dict[su_type]["rate"] = Decimal(
-            rates_info.get_value_at(f"{su_type} SU Rate", get_current_month())
-        )
+        su_info_dict[su_type]["rate"] = rates_info.get_value_at(f"{su_type} SU Rate", get_current_month(), Decimal)
         for su_resourcetype in SU_RESOURCETYPE_LIST:
             su_resource_info = rates_info.get_value_at(
-                f"{su_resourcetype} in {su_type} SU", get_current_month()
+                f"{su_resourcetype} in {su_type} SU", get_current_month(), Decimal
             )
             if su_resourcetype == "RAM":
                 su_resource_info = Decimal(su_resource_info) / MiB_IN_GiB
             su_info_dict[su_type][su_resourcetype] = su_resource_info
 
-    storage_rate = Decimal(rates_info.get_value_at(STORAGE_NAME, get_current_month()))
+    storage_rate = rates_info.get_value_at(STORAGE_NAME, get_current_month(), Decimal)
     storage_rate = (storage_rate * Decimal(GiB_in_TiB)).quantize(
         Decimal("0.001"), rounding="ROUND_UP"
     )  # Storage rates ar only shown in TiB in the docs

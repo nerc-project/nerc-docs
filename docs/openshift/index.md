@@ -53,6 +53,18 @@ the list below.
 
 -   [Deleting your applications](applications/deleting-applications.md)
 
+## Virtualization on OpenShift
+
+-   [Introduction](virtualization/intro-virtualization-on-openshift.md)
+
+-   [Getting Started](virtualization/getting-started.md)
+
+-   [Running and Managing VMs](virtualization/running-and-managing-vms.md)
+
+-   [Setting up Windows VM](virtualization/windows-vm.md)
+
+-   [Storage](virtualization/storage.md)
+
 ## Decommission OpenShift Resources
 
 -   [Decommission OpenShift Resources](decommission/decommission-openshift-resources.md)

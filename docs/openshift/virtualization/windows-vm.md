@@ -21,36 +21,36 @@ machines (VMs).
         and select **All Projects**. Also, ensure the *All templates* option is
         selected. This will display all available boot sources, including templates
         for Microsoft Windows operating systems.
-        
+
         To narrow the view, apply the **Operating System** filter and select **Windows**,
         as shown below:
-        
+
         ![Windows Templates](images/windows-templates.png)
 
-4. Select any one of the "Microsoft Windows OS" based template option.
+3. Select any one of the "Microsoft Windows OS" based template option.
 
     !!! info "Important Note"
-    
+
         This type of machine does not have a **Quick Create VirtualMachine** option
         as they don't have a boot source available. So once clicked they need to
         be customized by clicking **Customize VirtualMachine** button.
 
-5. Click **Customize VirtualMachine** to proceed to the customize template options.
+4. Click **Customize VirtualMachine** to proceed to the customize template options.
 
-6. Under Disk source, click the dropdown and select the Upload option.
+5. Under Disk source, click the dropdown and select the Upload option.
 
-7. You may browse your local system for the desired Windows disk image. Once
+6. You may browse your local system for the desired Windows disk image. Once
 selected, the upload process will begin and take several minutes.
 
-8. After the upload is completed, you can create the virtual machine and watch
+7. After the upload is completed, you can create the virtual machine and watch
 its provision in the refreshed screen.
 
-9. Once this posts, click Open web console to open a new tab accessing the VM.
+8. Once this posts, click Open web console to open a new tab accessing the VM.
 
-10. Proceed with steps to change the Windows machine *Administrator* password. Once
+9. Proceed with steps to change the Windows machine *Administrator* password. Once
 done, the VM will be running.
 
-##  How to Configure Sysprep
+## How to Configure Sysprep
 
 **Sysprep** is a Microsoft Windows tool used for automatically configuring new
 OS deployments. It supports settings such as the hostname, default `Administrator`
@@ -80,7 +80,7 @@ options:
         <?xml version="1.0" encoding="utf-8"?>
         <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:schemas-microsoft-com:unattend">
           <settings pass="windowsPE">
-            <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">#pragma: allowlist secret
               <DiskConfiguration>
                 <Disk wcm:action="add">
                   <CreatePartitions>
@@ -124,7 +124,7 @@ options:
               </UserData>
               <EnableFirewall>false</EnableFirewall>
             </component>
-            <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">#pragma: allowlist secret
               <SetupUILanguage>
                 <UILanguage>en-US</UILanguage>
               </SetupUILanguage>
@@ -135,12 +135,12 @@ options:
             </component>
           </settings>
           <settings pass="offlineServicing">
-            <component name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <component name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">#pragma: allowlist secret
               <EnableLUA>false</EnableLUA>
             </component>
           </settings>
           <settings pass="specialize">
-            <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">#pragma: allowlist secret
               <AutoLogon>
                 <Password>
                   <Value>R3dh4t1!</Value>
@@ -173,13 +173,13 @@ options:
             </component>
           </settings>
           <settings pass="oobeSystem">
-            <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">#pragma: allowlist secret
               <InputLocale>en-US</InputLocale>
               <SystemLocale>en-US</SystemLocale>
               <UILanguage>en-US</UILanguage>
               <UserLocale>en-US</UserLocale>
             </component>
-            <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+            <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">#pragma: allowlist secret
               <AutoLogon>
                 <Password>
                   <Value>R3dh4t1!</Value>
@@ -223,7 +223,7 @@ options:
 
     iv. Click **Save**.
 
--   If you want to use existing sysprep options for the Windows volume, follow 
+-   If you want to use existing sysprep options for the Windows volume, follow
     these steps:
 
     i. Click **Attach existing sysprep**.

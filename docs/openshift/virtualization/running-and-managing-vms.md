@@ -19,7 +19,7 @@ across your environment.
 
     When you create a VM from an instance type, you cannot override any parameters
     defined in the instance type.
-    
+
     Because instance types require defined CPU and memory attributes, OpenShift
     Virtualization always rejects additional requests for these resources when
     creating a VM from an instance type.
@@ -28,7 +28,7 @@ You can create a VM from an instance type by using the OpenShift Container Platf
 web console. Additionally, you can create a VM by copying an existing snapshot or
 cloning an existing VM.
 
-You also have the option to create a VM from a list of available bootable volumes.  
+You also have the option to create a VM from a list of available bootable volumes.
 Both Linux-based and Windows-based volumes can be added to the bootable volumes
 list for VM creation.
 
@@ -78,7 +78,7 @@ section in the OpenShift Web Console.
         shown below:
 
         ![Empty Volume List](images/empty-volume-list.png)
-        
+
         You can add a new volume that meets your requirements by clicking the
         **Add volume** button.
 
@@ -166,7 +166,7 @@ available for both Linux and Microsoft Windows VMs. Templates allow you to creat
 VMs based on reusable configurations, ideal for specific operating systems,
 application stacks, or organizational standards.
 
-#### Provision a virtual machine using default templates:
+#### Provision a virtual machine using default templates
 
 1. In the left navigation pane, navigate to the **Virtualization** -> **Catalog**
 section in the OpenShift Web Console.
@@ -296,7 +296,7 @@ tabs and click **Create VirtualMachine**.
             strategy. This enables seamless migration of VMs to another node when
             a node is cordoned and drained for maintenance, such as applying updates.
             You can alternatively configure the VM to:
-            
+
             -   Shut down and perform a cold migration
 
             -   Remain on the current node without migrating
@@ -304,9 +304,9 @@ tabs and click **Create VirtualMachine**.
         -   **Descheduler**: OpenShift includes a **descheduler** that periodically
             evaluates VMs and their host nodes. It can trigger migration to another
             node for reasons such as:
-            
+
             -   Resource optimization
-            
+
             -   Affinity or anti-affinity rule violations
 
     -   **Network Interfaces**: Use the **Network Interfaces** tab to view and manage
@@ -346,7 +346,7 @@ tabs and click **Create VirtualMachine**.
 
         - **Cloud-init** can be configured either through the GUI dialog or by using
         a standard YAML script for more advanced customization.
-        
+
             ![Cloud Init Dialog](images/cloud-init-dialog.png)
 
         - An **Authorized SSH key** can optionally be provided to allow one or more
@@ -506,7 +506,7 @@ the ability to specify a custom time range.
 
 ### YAML Tab
 
-Navigate to the **YAML** tab to access the VM's full Kubernetes resource definition,  
+Navigate to the **YAML** tab to access the VM's full Kubernetes resource definition,
 ideal for making low-level or bulk configuration changes not available through the
 web console. The `VirtualMachine` resource manages virtual machines that are not
 currently running or are in a stopped state. It contains the template used to create
@@ -521,7 +521,8 @@ The **Configuration** tab provides access to editable VM properties such as
 scheduling policies, environment variables, network interfaces, disks, and `cloud-init`
 or `sysprep` scripts. It enables you to fine-tune VM behavior before or after deployment.
 
-For more details on how to update VM configurations, see [Updating Virtual Machine Configurations](#update-virtual-machine-configurations).
+For more details on how to update VM configurations, see
+[Updating Virtual Machine Configurations](#update-virtual-machine-configurations).
 
 ### Events Tab
 
@@ -535,11 +536,12 @@ in this tab. This is helpful for debugging and auditing VM behavior.
 
 ### Console Tab
 
-Navigate to the **Console** tab to access the VM's graphical or serial console.  
+Navigate to the **Console** tab to access the VM's graphical or serial console.
 This enables direct interaction with the guest operating system as if you were
 physically accessing the machine.
 
-For more details on how to access the VM via console, see [Access the Virtual Machine Console](#access-the-virtual-machine-console).
+For more details on how to access the VM via console, see
+[Access the Virtual Machine Console](#access-the-virtual-machine-console).
 
 ### Snapshots Tab
 
@@ -547,7 +549,8 @@ The **Snapshots** tab allows you to create, manage, and restore snapshots of
 the VM. Snapshots capture the VM's state and data at a specific point in time and
 can be used for backups, rollbacks, or cloning.
 
-For more details on using snapshots to backup and restore a VM, see [Backup and Restore by Using VM Snapshots](storage.md#backup-and-restore-by-using-vm-snapshots).
+For more details on using snapshots to backup and restore a VM, see
+[Backup and Restore by Using VM Snapshots](storage.md#backup-and-restore-by-using-vm-snapshots).
 
 ### Diagnostics Tab
 
@@ -596,7 +599,7 @@ section in the OpenShift Web Console.
 
         -   **Environment**: You can attach ConfigMaps, Secrets, and Service Accounts
         as additional disks. This is useful for passing configuration data to applications
-        running inside the VM. 
+        running inside the VM.
 
     -   **Network**:
         Displays the current network interfaces configured for the VM and provides
@@ -613,10 +616,10 @@ section in the OpenShift Web Console.
         Allows you to set the SSH settings such as injecting SSH keys for the VM.
 
     -   **Initial run**:
-        This tab allows you to configure **cloud-init** for Linux or **sysprep** for
-        Microsoft Windows. You can specify commands to be executed at first boot,
-        such as user credentials, installing applications, setting up network configuration,
-        and more.
+        This tab allows you to configure **cloud-init** for Linux or **sysprep**
+        for Microsoft Windows. You can specify commands to be executed at first
+        boot, such as user credentials, installing applications, setting up network
+        configuration, and more.
 
     -   **Metadata**:
         This allows you to view and edit Kubernetes metadata for the VM, such as
@@ -642,7 +645,7 @@ subtab:
     `masquerade` type is created by default. This connects the VM to the OpenShift
     SDN, enabling outbound access from the VM and allowing other VMs and Pods within
     the cluster to reach it.
-   
+
 !!! note "Important Note"
 
     Some changes require a restart of the VM. The web console notifies you if a
@@ -708,7 +711,7 @@ OpenShift Virtualization with `cloud-init` to set the password.
     ![IP Interfaces](images/ip-interfaces.png)
 
     Since this network adapter is connected to the SDN, the assigned IP address
-    is an internal IP used by the KVM hypervisor and is not externally accessible.  
+    is an internal IP used by the KVM hypervisor and is not externally accessible.
     This internal IP remains the same even if the VM is live migrated to a different
     node, although the external IP associated with the SDN connection may change.
 
@@ -736,10 +739,8 @@ inside the VM:
 8. To review the guest customization, mount the `cloud-init` disk by running the
 following commands:
 
-    ```
     sudo mount /dev/vdb /mnt
     sudo cat /mnt/user-data; echo
-    ```
 
     ![Cloud Init Data](images/cloud-init-user-data.png)
 

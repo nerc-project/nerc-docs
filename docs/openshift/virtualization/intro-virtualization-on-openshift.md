@@ -25,9 +25,10 @@ or alongside containerized workloads on the same platform.
 Users seeking to leverage the [Kubernetes-native benefits](#benefits-of-using-red-hat-openshift-virtualization)
 of OpenShift Virtualization can modernize their infrastructure by migrating workloads
 from traditional servers-based platforms, such as [NERC OpenStack](../../openstack/index.md),
-to modern cloud-native NERC Red Hat OpenShift Virtualization. This transition enables organizations
-to maintain compatibility with existing VM-based workloads while benefiting from
-a unified platform that supports both containerized and VM workloads.
+to modern cloud-native NERC Red Hat OpenShift Virtualization. This transition
+enables organizations to maintain compatibility with existing VM-based workloads
+while benefiting from a unified platform that supports both containerized and VM
+workloads.
 
 This approach enables organizations to benefit from faster time-to-market and
 other advantages of these modern workflows - without needing to first redesign

@@ -10,7 +10,7 @@ Container Platform web console.
 2. Click on the **Perspective Switcher** drop-down menu and select **Virtualization**
 as shown below:
 
-    ![Virtualization Perspective](images/virtualization-perspective.png)    
+    ![Virtualization Perspective](images/virtualization-perspective.png)  
 
     This short guided tour introduces several key aspects of using OpenShift Virtualization.
 
@@ -22,7 +22,7 @@ as shown below:
     ![OpenShift Virtualization Dialog](images/openshift-virtualization-dialog.png)
 
     **Or,**
-    
+
     Go to **Virtualization** > **Overview** > **Settings** > **User** >
     **Getting started resources** and click **Guided tour**.
 
@@ -67,7 +67,8 @@ ii. Select one of the following options:
 
     ii. Enter the secret name.
 
-    iii. Optional: Select **Automatically apply this key to any new VirtualMachine you create in this project**.
+    iii. Optional: Select **Automatically apply this key to any new VirtualMachine
+    you create in this project**.
 
 iii. Click **Save**.
 

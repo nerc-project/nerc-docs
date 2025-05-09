@@ -46,7 +46,7 @@ click **Create** to provision the PVC.
 
 To verify that you have successfully created the PVC:
 
-Navigate to **Storage** -> **PersistentVolumeClaims** in the left menu bar to 
+Navigate to **Storage** -> **PersistentVolumeClaims** in the left menu bar to
 view the status of all PVCs and their associated bound PVs.
 
 ## Upload a boot source
@@ -122,7 +122,7 @@ Using these OS images is optional, and their creation and download can be disabl
 through the appropriate setting in the Operator. However, they offer a quick and
 convenient way to start provisioning VMs with OpenShift Virtualization, as they
 use cloud images tailored for each supported distribution. These images typically
-include `cloud-init` and have a minimal OS footprint optimized for virtualization.  
+include `cloud-init` and have a minimal OS footprint optimized for virtualization.
 Additionally, Red Hat-provided boot images are automatically updated when new
 templates are released.
 
@@ -157,7 +157,7 @@ detailed configuration.
 
     ![Fedora PVC](images/fedora-pvc.png)
 
-    As you can see, `ocs-external-storagecluster-ceph-rbd` storage class is used.  
+    As you can see, `ocs-external-storagecluster-ceph-rbd` storage class is used.
     The details reveal that the PVC is configured as `ReadWriteMany` (RWX), which
     is required for features like live migration, and is using **Block** volume
     mode. Note that the access mode (RWX) is critical, but the volume mode - block
@@ -221,7 +221,7 @@ section in the OpenShift Web Console.
     If the VM is running, some changes (e.g., disk size) may require you to stop
     the VM before editing.
 
-## Cloning a VM by using the web console 
+## Cloning a VM by using the web console
 
 You can clone an existing VM by using the web console.
 
@@ -313,7 +313,7 @@ The VM snapshot includes disks that meet the following requirements:
 
         You can take snapshot of a VM from the **VirtualMachine details** page
         using **Actions** and the **Take snapshot** option.
-        
+
         ![Take Snapshot using VM Action](images/take-snapshot-vm-action.png)
 
 4. Enter the snapshot name.
@@ -331,7 +331,7 @@ as *Operation complete*.
 
     ![Snapshot Operation Complete](images/snapshot-operation-complete.png)
 
-### Creating a VM from an existing snapshot by using the web console 
+### Creating a VM from an existing snapshot by using the web console
 
 You can create a new VM by copying an existing snapshot.
 

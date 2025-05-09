@@ -117,6 +117,12 @@ nav:
                 - Rclone: openshift/storage/Rclone.md
           - Deleting Applications:
                 - Deleting your applications: openshift/applications/deleting-applications.md
+          - Virtualization on OpenShift:
+                - Introduction: openshift/virtualization/intro-virtualization-on-openshift.md
+                - Getting Started: openshift/virtualization/getting-started.md
+                - Running and Managing VMs: openshift/virtualization/running-and-managing-vms.md
+                - Setting up Windows VM: openshift/virtualization/windows-vm.md
+                - Storage: openshift/virtualization/storage.md
           - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md
     - Red Hat OpenShift AI (RHOAI):
           - NERC RHOAI: openshift-ai/index.md

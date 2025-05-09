@@ -1,0 +1,186 @@
+Course Content Summary
+Create VMs from installation media and disk images
+Access text and graphical consoles of a VM
+Connect to VMs using Kubernetes networking (services, ingress, and routes)
+Provision storage to VMs using Kubernetes storage (PVC, PV, and storage classes)
+Start, pause, and stop VMs
+Clone and snapshot VMs
+Create and seal golden VM images
+Connect VMs to external and extra networks (outside of the Kubernetes pod and service networks)
+Provision load balancer services for VMs and then use the services to enable SSH access to VMs
+Connecting Virtual Machines to External Networks
+Connect VMs to host storage and external storage
+Create VMs from predefined and custom VM Templates and InstanceTypes
+Create VMs from VM Templates
+Migrate VMs from compatible hypervisors
+Back up and restore VMs by using OADP and command-line tools
+
+
+Course Outline
+Red Hat OpenShift Virtualization
+Distinguish Red Hat OpenShift Virtualization from container technologies and from traditional virtual machine technologies. Describe the features and use cases of OpenShift Virtualization. Deploy the OpenShift Virtualization operator in an existing Red Hat OpenShift environment.
+Running and Accessing Virtual Machines
+Create, manage, inspect, and monitor virtual machines in Red Hat OpenShift Virtualization.
+Configuring Kubernetes Networking for Virtual Machines
+Configure standard Kubernetes network objects and external access for VMs and virtual machine-backed applications.
+Connecting Virtual Machines to External Networks
+Configure node networking to connect virtual machines and nodes to networks outside of the cluster by using Multus CNI plug-ins and the NMState operator.
+Configuring Storage for Virtual Machines
+Manage storage and disks for virtual machines in Red Hat OpenShift by using Kubernetes.
+Create and Restore Backups of Virtual Machines
+Create virtual machine snapshots and back up virtual machine components individually and by using the OpenShift APIs for Data Protection (OADP) operator.
+Replicating Virtual Machines by Using Instance Types, Templates, and Clones
+Create and manage clones, templates, and instance types to provision virtual machines.
+Advanced Virtual Machine Management
+Import, control the placement of, monitor the health of, and live migrate virtual machines.
+Configuring Kubernetes High Availability for Virtual Machines
+Implement high availability virtual machines that are resilient to failures, planned maintenance, and cluster upgrades by configuring Kubernetes resources.
+
+-------
+VM management
+-------
+
+https://youtu.be/7EpmmUIhQ7c
+
+## Setup SSH Key for your Project
+
+https://infohub.delltechnologies.com/zh-cn/l/deployment-guide-red-hat-openshift-container-platform-reference-architecture-for-telecom-2/creating-a-virtual-machine-4
+
+Guides on creating and managing virtual machines using the OpenShift web console. Create, manage, inspect, and monitor virtual machines in Red Hat OpenShift Virtualization.
+
+https://demo.openshift.com/en/latest/openshift-virtualization/
+
+https://www.redhat.com/en/resources/get-started-with-openshift-virtualization-ebook
+file:///C:/Users/Milson/Downloads/vi-get-started-with-openshift-virtualization-ebook-1934147pr-202504-en_1.pdf
+
+https://github.com/rhpds/roadshow_ocpvirt_instructions/blob/main/workshop/content/01_welcome.adoc
+
+
+
+Creating a virtual machine documents basic VM creation: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/creating-a-virtual-machine#virt-creating-vms-from-instance-types
+
+Advanced VM creation documents advanced ways to create VMs: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/advanced-vm-creation#advanced-vm-creation-overview
+
+Managing VMs documents all procedures relevant to managing VMs, both basic and advanced: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/managing-vms#virt-installing-qemu-guest-agent
+
+[Create a VM from a Red Hat image](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/advanced-vm-creation#virt-creating-vms-from-rh-images-overview).
+
+You can create a VM by using a Red Hat template or an [instance type](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/creating-a-virtual-machine#virt-creating-vms-from-instance-types).
+
+You can create a VM by [importing a custom image from a container registry or a web page, by uploading an image from your local machine](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/advanced-vm-creation#virt-creating-vms-from-web-images), or by [cloning a persistent volume claim (PVC)](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/advanced-vm-creation#virt-creating-vms-by-cloning-pvcs).
+
+Connect a VM to a secondary network:
+
+-   [Linux bridge network](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-linux-bridge).
+
+-   [Open Virtual Network (OVN)-Kubernetes secondary network](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-ovn-secondary-network).
+
+-   [Single Root I/O Virtualization (SR-IOV) network](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-sriov).
+
+
+!!! note "Note"
+
+    VMs are connected to the pod network by default.
+
+Connect to a VM:
+
+Creating a virtual machine: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/creating-a-virtual-machine#virt-about-instance-types_virt-creating-vms-from-instance-types
+
+Connect to the serial console or VNC console of a VM.
+Connect to a VM by using SSH.
+Connect to the desktop viewer for Windows VMs.
+Manage a VM:
+
+Manage a VM by using the web console.
+Manage a VM by using the virtctl CLI tool.
+Export a VM.
+
+
+## VM Templates and Cloning
+
+## Resource Allocation and Sizing
+
+List Virtual Machines
+
+Create Virtual Machine
+
+Templates
+
+VM Snapshots
+
+VM Imports (e.g., from VMware or OVA)
+
+Following standard Red Hat OpenShift roles, users can create virtual machines in their
+projects—and then grant access to other project members—to help their entire team
+quickly get the resources they need. [Virtual machine instance types](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/virtualization/virtual-machines#virt-creating-vms-from-instance-types)
+
+Pre-defined instance types:https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/creating-a-virtual-machine#virt-common-instancetypes_virt-creating-vms-from-instance-types
+
+simplify self-service
+provisioning via predefined operating system images, workload types, and hardware
+requirements. You can also use [templates](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/virtualization/virtual-machines#doc-wrapper) to deploy virtual machines that require
+advanced configuration, including virtual appliances.
+
+Creating virtual machines from templates: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/creating-a-virtual-machine#virt-creating-vms-from-templates
+
+https://console-openshift-console.apps.ocp-test.nerc.mghpcc.org/quickstart?
+
+https://developers.redhat.com/learn/openshift/migrate-virtual-applications-red-hat-openshift-virtualization
+
+
+VM manifest creation commands: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/getting-started#vm-manifest-creation-commands_virt-using-the-cli-tools
+
+
+
+When [deleting a virtual machine by using the web console](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/managing-vms#virt-delete-vm-web_virt-delete-vms), the **grace period** option is ignored.
+
+[Deleting virtual machines](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/managing-vms#virt-delete-vm-web_virt-delete-vms)
+
+[Deleting virtual machine instances](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/managing-vms#virt-deleting-vmis-cli_virt-manage-vmis)
+
+
+Creating a Windows VM: https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/advanced-vm-creation#virt-creating-windows-vm_virt-creating-vms-uploading-images
+
+
+
+VM management commands 
+
+Copy link
+You use virtctl virtual machine (VM) management commands to manage and migrate virtual machines (VMs) and virtual machine instances (VMIs).
+
+
+
+--------
+## Creating a Microsoft Windows virtual machine
+
+https://github.com/rhpds/roadshow_ocpvirt_instructions/blob/main/workshop/content/06_windows_vm.adoc
+----------
+
+-------
+Storage:
+-------
+https://github.com/rhpds/roadshow_ocpvirt_instructions/blob/main/workshop/content/09_storage_management.adoc
+
+
+Manage storage and disks for virtual machines in Red Hat OpenShift by using Kubernetes.
+
+https://docs.openshift.com/container-platform/4.12/virt/virtual_machines/virtual_disks/virt-features-for-storage.html
+
+Details on features and configurations for storage in OpenShift Virtualization.
+
+
+## Disks
+
+## CD-ROMs
+
+## Volume Snapshots
+
+## PVCs used by VMs
+
+
+Configuring VM Storage
+Persistent Storage Options
+Storage Performance Tuning
+
+https://www.redhat.com/en/blog/high-performance-storage-openshift-virtualization-review-lightbits-labs
+

@@ -27,7 +27,7 @@ machines (VMs).
 
         ![Windows Templates](images/windows-templates.png)
 
-3. Select any one of the "Microsoft Windows OS" based template option.
+3. Select any one of the "Microsoft Windows OS" based template options.
 
     !!! info "Important Note"
 
@@ -42,8 +42,8 @@ machines (VMs).
 6. You may browse your local system for the desired Windows disk image. Once
 selected, the upload process will begin and take several minutes.
 
-7. After the upload is completed, you can create the virtual machine and watch
-its provision in the refreshed screen.
+7. After the upload is complete, you can create the virtual machine and watch
+it provisioning in the refreshed screen.
 
 8. Once this posts, click Open web console to open a new tab accessing the VM.
 

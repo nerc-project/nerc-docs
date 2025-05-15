@@ -516,18 +516,18 @@ the action menu (⋮) at the end of the selected data connection row. Choose
 
     ![Edit Data Connection Pop up](images/edit-data-connection.png)
 
--   Note both  *Secret key* (by clicking eye icon near the end of the textbox) and
-*Access key*.
+-   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
+*Secret key*.
 
-    !!! note "Alternatively, Run `oc` commands to get *Secret key* and *Access key*"
+    !!! note "Alternatively, Run `oc` commands to get *Access key* and *Secret key*"
 
         Alternatively, you can run the following `oc` commands:
 
-        i. To get *Secret key* run:
+        i. To get *Access key* run:
 
         `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
 
-        ii. And to get *Access key* run:
+        ii. And to get *Secret key* run:
 
         `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
 
@@ -661,11 +661,11 @@ values, which you have retrieved while "Editing data connection":
 
     Alternatively, you can run the following `oc` commands:
 
-    i. To get *Secret key* run:
+    i. To get *Access key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
 
-    ii. And to get *Access key* run:
+    ii. And to get *Secret key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
 

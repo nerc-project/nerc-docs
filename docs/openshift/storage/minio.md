@@ -288,11 +288,11 @@ will open the MinIO web console that looks like below:
     Once the OpenShift CLI is set up, the Username and Password for the MinIO web
     console can be retrieved by running the following `oc` commands:
 
-    i. To get *Secret key* run:
+    i. To get *Access key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
 
-    ii. And to get *Access key* run:
+    ii. And to get *Secret key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`  
 

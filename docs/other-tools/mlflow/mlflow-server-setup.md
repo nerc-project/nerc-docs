@@ -1,5 +1,4 @@
 
-
 # MLflow Server Setup
 
 Our MLflow Server Setup has a straightforward architecture, as illustrated in the
@@ -61,9 +60,9 @@ S3 bucket is required.
 
         -   Creates one storage bucket within the MinIO instance named as `mlflow-bucket`.
 
-        -   Generates a random **Root User**, which can also be used as the *Access Key*,
-            and a **Root User Password**, which serves as the *Secret Key* for accessing
-            both the MinIO API and the MinIO Console.
+        -   Generates a random **Root User**, which can also be used as the
+            *Access Key*, and a **Root User Password**, which serves as the
+            *Secret Key* for accessing both the MinIO API and the MinIO Console.
 
         -   Installs all required network policies.
 
@@ -220,7 +219,7 @@ as shown below:
 ![MLflow Experiment Artifact](images/mlflow-experiment-artifact.png)
 
 !!! info "Very Important"
-    
+
     There are ways we can improve this setup - for example, by adding basic
     authentication to the MLflow GUI to ensure that only authorized users can
     access it.

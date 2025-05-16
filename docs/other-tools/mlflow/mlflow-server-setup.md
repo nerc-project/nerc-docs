@@ -4,7 +4,7 @@
 Our MLflow Server Setup has a straightforward architecture, as illustrated in the
 figure below:
 
-![MLflow Setup](images/minio-setup.png)
+![MLflow Setup](images/mlflow-setup.png)
 
 It consists of three main components: a backend store that holds experiment metadata
 (such as hyperparameters and metrics), an artifact store for storing all artifacts

@@ -1,6 +1,8 @@
 # About NERC
 
+<!-- markdownlint-disable -->
 <iframe width="600" height="400" src="https://www.youtube.com/embed/Sbo7sR4atuc?si=shvyBmL6deznsOdk" title="About NERC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable -->
 
 We are currently in the pilot phase of the project and are focusing on
 developing the technology to make it easy for researchers to take advantage of

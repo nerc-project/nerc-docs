@@ -176,6 +176,7 @@ nav:
           - Apache Spark: other-tools/apache-spark/spark.md
           - MLflow:
                 - MLflow Overview: other-tools/mlflow/mlflow-overview.md
+                - MLflow Server Setup: other-tools/mlflow/mlflow-server-setup.md
           - Setup NFS Server and Client: other-tools/nfs/nfs-server-client-setup.md
 theme:
     name: material

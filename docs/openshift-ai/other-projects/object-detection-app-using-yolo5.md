@@ -136,25 +136,6 @@ iv. Copy the following code and paste it into the Import YAML editor.
       name: minio-setup
     ---
     apiVersion: v1
-    kind: Service
-    metadata:
-      name: minio-service
-      labels:
-        app: minio
-    spec:
-      ports:
-      - name: api
-        port: 9000
-        targetPort: api
-      - name: console
-        port: 9090
-        targetPort: 9090
-      selector:
-        app: minio
-      sessionAffinity: None
-      type: ClusterIP
-    ---
-    apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       name: minio-pvc
@@ -393,13 +374,31 @@ iv. Copy the following code and paste it into the Import YAML editor.
           serviceAccount: minio-setup
           serviceAccountName: minio-setup
     ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: minio-service
+      labels:
+        app: minio
+    spec:
+      ports:
+      - name: api
+        port: 9000
+        targetPort: api
+      - name: console
+        port: 9090
+        targetPort: 9090
+      selector:
+        app: minio
+      sessionAffinity: None
+      type: ClusterIP
+    ---
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
       name: minio-console
       labels:
         app: minio
-        app.kubernetes.io/part-of: minio
     spec:
       port:
         targetPort: console
@@ -418,7 +417,6 @@ iv. Copy the following code and paste it into the Import YAML editor.
       name: minio-s3
       labels:
         app: minio
-        app.kubernetes.io/part-of: minio
     spec:
       port:
         targetPort: api

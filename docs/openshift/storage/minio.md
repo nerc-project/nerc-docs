@@ -79,25 +79,6 @@ the following tasks:
           name: minio-setup
         ---
         apiVersion: v1
-        kind: Service
-        metadata:
-          name: minio-service
-          labels:
-            app: minio
-        spec:
-          ports:
-          - name: api
-            port: 9000
-            targetPort: api
-          - name: console
-            port: 9090
-            targetPort: 9090
-          selector:
-            app: minio
-          sessionAffinity: None
-          type: ClusterIP
-        ---
-        apiVersion: v1
         kind: PersistentVolumeClaim
         metadata:
           name: minio-pvc
@@ -210,13 +191,31 @@ the following tasks:
               serviceAccount: minio-setup
               serviceAccountName: minio-setup
         ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: minio-service
+          labels:
+            app: minio
+        spec:
+          ports:
+          - name: api
+            port: 9000
+            targetPort: api
+          - name: console
+            port: 9090
+            targetPort: 9090
+          selector:
+            app: minio
+          sessionAffinity: None
+          type: ClusterIP
+        ---
         apiVersion: route.openshift.io/v1
         kind: Route
         metadata:
           name: minio-console
           labels:
             app: minio
-            app.kubernetes.io/part-of: minio
         spec:
           port:
             targetPort: console
@@ -235,7 +234,6 @@ the following tasks:
           name: minio-s3
           labels:
             app: minio
-            app.kubernetes.io/part-of: minio
         spec:
           port:
             targetPort: api
@@ -288,11 +286,11 @@ will open the MinIO web console that looks like below:
     Once the OpenShift CLI is set up, the Username and Password for the MinIO web
     console can be retrieved by running the following `oc` commands:
 
-    i. To get *Secret key* run:
+    i. To get *Access key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
 
-    ii. And to get *Access key* run:
+    ii. And to get *Secret key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`  
 

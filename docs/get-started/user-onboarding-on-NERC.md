@@ -5,13 +5,17 @@ postdoctoral researchers and students. In order to get access to resources provi
 by NERC's computational infrastructure, you must first register and obtain a user
 account.
 
+<!-- markdownlint-disable -->
+<iframe width="600" height="400" src="https://www.youtube.com/embed/d8_49bg27is?si=eZY-I9TSV8PnrHl2" title="User Onboarding Process Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable -->
+
 The overall user flow can be summarized using the following sequence diagram:
 
 ![NERC user flow](images/user-flow-NERC.png)
 
-1.  All users including PI need to register to NERC via: [https://regapp.mss.mghpcc.org/](https://regapp.mss.mghpcc.org/).
+1. All users including PI need to register to NERC via: [https://regapp.mss.mghpcc.org/](https://regapp.mss.mghpcc.org/).
 
-2.  **PI** will send a request for a Principal Investigator (PI) user account role
+2. **PI** will send a request for a Principal Investigator (PI) user account role
     by submitting: [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/).
 
     **Alternatively,** users can request a Principal Investigator (PI) user account
@@ -30,13 +34,13 @@ The overall user flow can be summarized using the following sequence diagram:
 
         - External research focused institutions will be considered on a case-by-case basis and are subject to an external customer cost structure.
 
-3.  Wait until the PI request gets approved by the **NERC's admin**.
+3. Wait until the PI request gets approved by the **NERC's admin**.
 
-4.  Once a PI request is **approved**, **PI** can add a new project and also search
+4. Once a PI request is **approved**, **PI** can add a new project and also search
     and add user(s) to the project - Other **general user(s)** can also see the project(s)
     once they are added to a project via: [https://coldfront.mss.mghpcc.org](https://coldfront.mss.mghpcc.org/).
 
-5.  **PI or project Manager** can request resource allocation either **NERC (OpenStack)**
+5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**
     or **NERC-OCP (OpenShift)** for the newly added project and select which user(s)
     can use the requested allocation.
 
@@ -47,9 +51,9 @@ The overall user flow can be summarized using the following sequence diagram:
         But remember, this credit **can not** be used in **the following months**.
         Also, it **does not apply** to **GPU resource usage**.
 
-6.  Wait until the requested resource allocation gets approved by the **NERC's admin**.
+6. Wait until the requested resource allocation gets approved by the **NERC's admin**.
 
-7.  Once **approved**, **PI and the corresponding project users** can go to either
+7. Once **approved**, **PI and the corresponding project users** can go to either
     NERC Openstack horizon web interface: [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org)
     or NERC OpenShift web console: [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
     based on approved **Resource Type** and they can start using the NERC's resources

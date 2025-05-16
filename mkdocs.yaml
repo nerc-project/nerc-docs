@@ -174,6 +174,9 @@ nav:
                 - RStudio: other-tools/R/rstudio-server/running-rstudio-on-NERC.md
                 - R Shiny: other-tools/R/r-shiny-server/running-rshiny-on-NERC.md
           - Apache Spark: other-tools/apache-spark/spark.md
+          - MLflow:
+                - MLflow Overview: other-tools/mlflow/mlflow-overview.md
+                - MLflow Server Setup: other-tools/mlflow/mlflow-server-setup.md
           - Setup NFS Server and Client: other-tools/nfs/nfs-server-client-setup.md
 theme:
     name: material

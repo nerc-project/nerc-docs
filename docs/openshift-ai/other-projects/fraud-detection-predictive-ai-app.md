@@ -141,25 +141,6 @@ iv. Copy the following code and paste it into the Import YAML editor.
       name: minio-setup
     ---
     apiVersion: v1
-    kind: Service
-    metadata:
-      name: minio-service
-      labels:
-        app: minio
-    spec:
-      ports:
-      - name: api
-        port: 9000
-        targetPort: api
-      - name: console
-        port: 9090
-        targetPort: 9090
-      selector:
-        app: minio
-      sessionAffinity: None
-      type: ClusterIP
-    ---
-    apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       name: minio-pvc
@@ -422,13 +403,31 @@ iv. Copy the following code and paste it into the Import YAML editor.
           serviceAccount: minio-setup
           serviceAccountName: minio-setup
     ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: minio-service
+      labels:
+        app: minio
+    spec:
+      ports:
+      - name: api
+        port: 9000
+        targetPort: api
+      - name: console
+        port: 9090
+        targetPort: 9090
+      selector:
+        app: minio
+      sessionAffinity: None
+      type: ClusterIP
+    ---
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
       name: minio-console
       labels:
         app: minio
-        app.kubernetes.io/part-of: minio
     spec:
       port:
         targetPort: console
@@ -447,7 +446,6 @@ iv. Copy the following code and paste it into the Import YAML editor.
       name: minio-s3
       labels:
         app: minio
-        app.kubernetes.io/part-of: minio
     spec:
       port:
         targetPort: api
@@ -516,18 +514,18 @@ the action menu (⋮) at the end of the selected data connection row. Choose
 
     ![Edit Data Connection Pop up](images/edit-data-connection.png)
 
--   Note both  *Secret key* (by clicking eye icon near the end of the textbox) and
-*Access key*.
+-   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
+*Secret key*.
 
-    !!! note "Alternatively, Run `oc` commands to get *Secret key* and *Access key*"
+    !!! note "Alternatively, Run `oc` commands to get *Access key* and *Secret key*"
 
         Alternatively, you can run the following `oc` commands:
 
-        i. To get *Secret key* run:
+        i. To get *Access key* run:
 
         `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
 
-        ii. And to get *Access key* run:
+        ii. And to get *Secret key* run:
 
         `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
 
@@ -661,11 +659,11 @@ values, which you have retrieved while "Editing data connection":
 
     Alternatively, you can run the following `oc` commands:
 
-    i. To get *Secret key* run:
+    i. To get *Access key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
 
-    ii. And to get *Access key* run:
+    ii. And to get *Secret key* run:
 
     `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
 

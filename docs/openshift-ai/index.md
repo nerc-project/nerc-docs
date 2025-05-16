@@ -1,5 +1,7 @@
 # Red Hat OpenShift AI (RHOAI) Tutorial Index
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qzGk05Isgbc?si=DntpBWSEbXaEpxIk" title="NERC RHODS Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 If you're just starting out, we recommend starting from [Red Hat OpenShift AI
 (RHOAI) Overview](get-started/rhoai-overview.md) and going through the tutorial
 in order.

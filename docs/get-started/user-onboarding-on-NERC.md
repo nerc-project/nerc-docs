@@ -5,6 +5,8 @@ postdoctoral researchers and students. In order to get access to resources provi
 by NERC's computational infrastructure, you must first register and obtain a user
 account.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d8_49bg27is?si=eZY-I9TSV8PnrHl2" title="User Onboarding Process Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 The overall user flow can be summarized using the following sequence diagram:
 
 ![NERC user flow](images/user-flow-NERC.png)

@@ -1,5 +1,7 @@
 # OpenStack Tutorial Index
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9CV86Vf3r24?si=AtKZHPYqEuNZgw50" title="NERC OpenStack Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 If you're just starting out, we recommend starting from
 
 [Access the OpenStack Dashboard](logging-in/access-the-openstack-dashboard.md)

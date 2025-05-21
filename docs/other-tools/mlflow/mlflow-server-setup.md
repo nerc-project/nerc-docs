@@ -66,7 +66,17 @@ S3 bucket is required.
 
         -   Installs all required network policies.
 
-    -   **03-mlflow-server.yml**: Creates a **Mlflow Server** that connects
+    -   **03-mlflow-server.yml**: Creates a **MLflow Server** that connects
+
+    -   **04-mlflow-others.yml**: Creates the **mlflow-test-connection** pod to
+        test the MLflow server connection. And also creates the **mlflow-test-training**
+        pod to run a test experiment by submitting a sample training job to the
+        MLflow server.
+
+        !!! info "Note"
+
+            The **mlflow-test-connection** and **mlflow-test-training** pods will
+            be removed after the initial run.
 
 You can run this `oc` command: `oc apply -f ./standalone/.` to execute all of the
 above described YAML files located in the **standalone** folder at once.
@@ -90,6 +100,8 @@ route.route.openshift.io/mlflow-minio-s3 created
 deployment.apps/mlflow-deployment created
 service/mlflow-service created
 route.route.openshift.io/mlflow-route created
+pod/mlflow-test-connection created
+pod/mlflow-test-training created
 ```
 
 ## Clean Up

@@ -64,7 +64,7 @@
 
 -   [MLflow Overview](mlflow/mlflow-overview.md)
 
--   [MLflow Tracking Server Setup](mlflow/mlflow-tracking-server-setup.md)
+-   [MLflow Tracking Server Setup](mlflow/mlflow-server-setup.md)
 
 ## Setup NFS Server and Client
 

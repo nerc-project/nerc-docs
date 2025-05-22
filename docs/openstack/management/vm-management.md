@@ -88,9 +88,7 @@ actions are executed through the openstack command with the relevant parameters.
 
     - Click _Action -> Shelve Instance_.
 
-    - When shelved it stops all computing, stores a snapshot of the instance. The
-      shelved instances are already imaged as part of the shelving process and appear
-      in _Project -> Compute -> Images_ as "<Instance_Name>\_shelved".
+    - Releases all computing resources (i.e., vCPU, RAM, and disk).
 
     - We strongly recommend detaching volumes before shelving.
 

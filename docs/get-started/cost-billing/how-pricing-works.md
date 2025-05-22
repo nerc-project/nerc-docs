@@ -227,7 +227,7 @@ and a transparent relationship with us.
 If you have any some common questions or need further information, see our
 [Billing FAQs](billing-faqs.md) for comprehensive answers.
 
-## SU Conservation - to Save Cost
+## SU Conservation - How to Save Cost?
 
 With SUs being the primary metric for resource consumption, it's crucial to actively
 manage your workloads when they're not in use.
@@ -236,7 +236,7 @@ Below are practical ways to conserve SUs across different NERC services:
 
 ### NERC OpenStack
 
-Once you're logged in to [[NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
 
 Navigate: Project -> Compute -> Instances.
 
@@ -303,7 +303,7 @@ replicas to reclaim the necessary resources.
 
 #### Using the OpenShift `oc` CLI
 
-## Prerequisite
+##### Prerequisite
 
 -   Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
     OpenShift CLI Tools](../../openshift/logging-in/setup-the-openshift-cli.md)
@@ -319,6 +319,9 @@ replicas to reclaim the necessary resources.
 
         oc project
         Using project "<your_openshift_project_where_pod_deployed>" on server "https://api.shift.nerc.mghpcc.org:6443".
+
+If your application or job is idle, you can scale your pod's replica count to
+**0** by running the following `oc` command:
 
 ```sh
 oc scale deployment <your-deployment> --replicas=0

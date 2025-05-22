@@ -227,4 +227,134 @@ and a transparent relationship with us.
 If you have any some common questions or need further information, see our
 [Billing FAQs](billing-faqs.md) for comprehensive answers.
 
+## SU Conservation - to Save Cost
+
+With SUs being the primary metric for resource consumption, it's crucial to actively
+manage your workloads when they're not in use.
+
+Below are practical ways to conserve SUs across different NERC services:
+
+### NERC OpenStack
+
+Once you're logged in to [[NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
+
+Navigate: Project -> Compute -> Instances.
+
+After launching an instance (On the left side bar, click on
+_Project -> Compute -> Instances_), several options are available under the
+Actions menu located on the right hand side of your screen as shown here:
+
+![Instance Management Actions](images/instance_actions.png)
+
+**Shelve your VM when not in use**:
+
+In [NERC OpenStack](../../openstack/index.md), if your VM does not need to run
+continuously, you can **shelve** it to free up consumed resources such as vCPUs,
+RAM, and disk. This action releases all allocated resources while preserving the
+VM's state.
+
+- Click _Action -> Shelve Instance_.
+
+- Releases all computing resources (i.e., vCPU, RAM, and disk).
+
+- We strongly recommend detaching volumes before shelving.
+
+- Status will change to `Shelved Offloaded`.
+
+You can later **unshelve** the VM without needing to recreate it - allowing you
+to reduce costs without losing any progress.
+
+- To unshelve the instance, click _Action -> Unshelve Instance_.
+
+For more details on *shelving a VM*, see the explanation [here](../../openstack/management/vm-management.md#instance-management-actions).
+
+### NERC OpenShift
+
+**Scale your pods to 0 replicas**:
+
+In [NERC OpenShift](../../openshift/index.md), if your application or job is idle,
+you can scale its pod replica count to **0**. This effectively frees up compute
+resources (CPU, GPU, and RAM) while retaining the configuration, environment settings,
+and persistent volume claims (PVCs) for future use.
+
+#### Using Web Console
+
+1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
+
+2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
+
+3. Click the pod or application you want to scale to see the _Overview_ panel to
+    the right.
+
+4. In the **Details** tab (usually the *default* tab when you open the deployment):
+
+5. Look for the Pod count or Replicas section.
+
+6. Use the up/down arrows next to the number to adjust the replica count.
+
+7. Set it to **0** by clicking down arrow as shown below:
+
+    ![Scaling Pod to 0](images/scale-0-pod.png)
+
+8. OpenShift will automatically scale down the pods to 0.
+
+When you need to run your application again, you can scale up the pod count or
+replicas to reclaim the necessary resources.
+
+#### Using the OpenShift `oc` CLI
+
+## Prerequisite
+
+-   Install and configure the **OpenShift CLI (oc)**, see [How to Setup the
+    OpenShift CLI Tools](../../openshift/logging-in/setup-the-openshift-cli.md)
+    for more information.
+
+    !!! info "Information"
+
+        Some users may have access to multiple projects. Run the following command to
+        switch to a specific project space: `oc project <your-project-namespace>`.
+
+    Please confirm the correct project is being selected by running `oc project`,
+    as shown below:
+
+        oc project
+        Using project "<your_openshift_project_where_pod_deployed>" on server "https://api.shift.nerc.mghpcc.org:6443".
+
+```sh
+oc scale deployment <your-deployment> --replicas=0
+```
+
+When you need to run your application again, you can scale up the pod count or
+replicas to reclaim the necessary resources by running:
+
+```sh
+oc scale deployment <your-deployment> --replicas=1
+```
+
+### NERC RHOAI
+
+**Toggle the Workbench to "Stopped"**:
+
+In [NERC Red Hat OpenShift AI (RHOAI)](../../openshift-ai/index.md), workbench
+environments can be toggled between **Running** and **Stopped** states.
+
+1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
+
+2. After logging in to the NERC OpenShift console, access the NERC's Red Hat OpenShift
+AI dashboard by clicking the application launcher icon (the black-and-white
+icon that looks like a grid), located on the header.
+
+3. When you've completed a workload such as model development or experimentation
+using the [Data Science Project (DSP)](../../openshift-ai/data-science-project/using-projects-the-rhoai.md)
+**Workbench**, you can stop the compute resources by toggling the status from
+**Running** to **Stopped**, as shown below:
+
+![Toggle Workbench](images/toggle-workbench.png)
+
+This action immediately releases the compute resources allocated to the notebook
+environment within the Workbench setup.
+
+When you need to run your workbench again, toggle its status back from **Stopped**
+to **Running**.
+
 ---

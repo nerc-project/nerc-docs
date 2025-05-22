@@ -236,6 +236,6 @@ as shown below:
     authentication to the MLflow GUI to ensure that only authorized users can
     access it.
 
-For more details, refer to this [documentation](https://github.com/nerc-project/llm-on-nerc/blob/main/llm-servers/llama.cpp/README.md).
+For more details, refer to this [documentation](https://github.com/nerc-project/llm-on-nerc/blob/main/mlflow/README.md).
 
 ---

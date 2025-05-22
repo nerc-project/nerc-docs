@@ -97,9 +97,9 @@ openstack server rebuild --image my-snapshot test-nerc-0
 
 #### Using Horizon dashboard
 
-Once you're logged in to NERC's Horizon dashboard, you can create a snapshot via
-the "Compute -> Instances" page by clicking on the "Create snapshot" action button
-on desired instance as shown below:
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org),
+you can create a snapshot via the "Compute -> Instances" page by clicking on the
+"Create snapshot" action button on desired instance as shown below:
 
 ![Create Instance Snapshot](images/create-instance-snapshot.png)
 
@@ -237,9 +237,9 @@ openstack volume snapshot delete my-volume-snapshot
 
 #### Using NERC's Horizon dashboard
 
-Once you're logged in to NERC's Horizon dashboard, you can create a snapshot via
-the "Volumes" menu by clicking on the "Create Snapshot" action button
-on desired volume as shown below:
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org),
+you can create a snapshot via the "Volumes" menu by clicking on the "Create Snapshot"
+action button on desired volume as shown below:
 
 ![Create Volume Snapshot](images/volume-create-snapshot.png)
 

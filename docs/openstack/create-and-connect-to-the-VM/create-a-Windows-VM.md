@@ -13,16 +13,45 @@ from an external volume:
 
 !!! note "Recommendations"
 
-    - The recommended method to create a Windows desktop virtual machine is `boot
-    from volume`, although you can also launch a Windows-based instance following
-    the normal process using `boot from image` as [described here](launch-a-VM.md).
+    - The recommended method for creating a Windows desktop virtual machine is to
+    **boot from volume**. However, you can also launch a Windows-based instance
+    using the standard **boot from image** method, as [described here](launch-a-VM.md).
+    When launching a Windows VM using **boot from image**, please ensure that you
+    have configured a **Security Group** that allows **RDP (port 3389)**, as shown
+    below:
+
+        ![Launch Instance Security Group for RDP](images/security_group_for_rdp.png)
+
+    To access the Windows VM, you must log in via **Remote Desktop**, as
+    [described here](#how-to-add-remote-desktop-login-to-your-windows-instance).
+
+    To configure a password for the **Administrator** user account:
+
+    1. Go to the **Configuration** section during instance launch.
+
+    2. Enter the following PowerShell-based custom script:
+
+        ```powershell
+        #ps1
+
+        net user Administrator '<Your_Own_Admin_Password>'
+        ```
+
+    3. Replace `<Your_Own_Admin_Password>` with your desired password.
+
+    **Note**: Ensure that your script in the "Configuration" section resembles
+    the format shown below:
+
+    ![Setting Administrator Password Custom Script](images/set_windows_administrator_password.png)
+
+    This enables Remote Desktop login for the **Administrator** user account.
 
     - To ensure smooth upgrade and maintenance of the system, select at least
     100 GiB for the size of the volume.
 
     - Make sure your project has sufficient [storage quotas](../../get-started/allocation/allocation-details.md#general-user-view).
 
-### Create a volume from image
+### Create a Bootable Volume from the Existing Windows Image
 
 ### 1. Using NERC's Horizon dashboard
 
@@ -106,14 +135,14 @@ service to the volume service
 "available" means the volume can now be used for booting. A set of volume_image
 meta data is also copied from the image service.
 
-### Launch instance from existing bootable volume
+### Launch instance from existing Bootable Volume
 
 ### 1. Using Horizon dashboard
 
 Navigate: Project -> Volumes -> Volumes.
 
-Once successfully Volume is created, we can use the Volume to launch an instance
-as shown below:
+Once successfully Volume is created by [following this](#create-a-bootable-volume-from-the-existing-windows-image),
+we can use the Bootable Volume to launch an Windows instance as shown below:
 
 ![Launch Instance from Volume](images/launch_instance_from_volume.png)
 
@@ -143,7 +172,7 @@ shown below:
     Make sure to substitute `<Your_Own_Admin_Password>` with your preferred password,
     which will enable Remote Desktop login to the Windows VM.
 
-    ```sh
+    ```powershell
     #ps1
 
     net user Administrator '<Your_Own_Admin_Password>'

@@ -118,8 +118,8 @@ and Scala applications using the IP address of the master VM.
 
 ### Create a Volume Snapshot of the master VM
 
--   Once you're logged in to NERC's Horizon dashboard. You need to **Shut Off** the
-    master vm before creating a volume snapshot.
+-   Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
+    You need to **Shut Off** the master vm before creating a volume snapshot.
 
     Click _Action -> Shut Off Instance_.
 

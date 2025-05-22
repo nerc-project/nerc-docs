@@ -352,12 +352,12 @@ using the [Data Science Project (DSP)](../../openshift-ai/data-science-project/u
 **Workbench**, you can stop the compute resources by toggling the status from
 **Running** to **Stopped**, as shown below:
 
-![Toggle Workbench](images/toggle-workbench.png)
+    ![Toggle Workbench](images/toggle-workbench.png)
 
-This action immediately releases the compute resources allocated to the notebook
-environment within the Workbench setup.
+    This action immediately releases the compute resources allocated to the notebook
+    environment within the Workbench setup.
 
-When you need to run your workbench again, toggle its status back from **Stopped**
-to **Running**.
+    When you need to run your workbench again, just toggle its status back from
+    **Stopped** to **Running**.
 
 ---

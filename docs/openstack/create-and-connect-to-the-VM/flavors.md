@@ -263,8 +263,8 @@ Our team will review your request and reach out to you to discuss further.
 
 ### Using Horizon dashboard
 
-Once you're logged in to NERC's Horizon dashboard, you can navigate to
-_Project -> Compute -> Instances_.
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org),
+you can navigate to _Project -> Compute -> Instances_.
 
 You can select the instance you wish to extend or change the flavor. Here, you
 will see several options available under the Actions menu located on the right-hand

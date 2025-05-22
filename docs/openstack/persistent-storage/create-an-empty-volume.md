@@ -5,8 +5,9 @@ instance, create a filesystem on it, and mount it to the instance.
 
 ## Using Horizon dashboard
 
-Once you're logged in to NERC's Horizon dashboard, you can create a volume via
-the "Volumes -> Volumes" page by clicking on the "Create Volume" button.
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org),
+you can create a volume via the "Volumes -> Volumes" page by clicking on the
+"Create Volume" button.
 
 Navigate to _Project -> Volumes -> Volumes_.
 

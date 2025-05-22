@@ -12,7 +12,7 @@ up new instances.
 
 ## NERC Images List
 
-Once you're logged in to NERC's Horizon dashboard.
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
 
 Navigate to _Project -> Compute -> Images_.
 

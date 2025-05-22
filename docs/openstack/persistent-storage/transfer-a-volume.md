@@ -12,7 +12,7 @@ to a project and can only be attached to one virtual machine at a time.
 
 ## Using Horizon dashboard
 
-Once you're logged in to NERC's Horizon dashboard.
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
 
 Navigate to _Project -> Volumes -> Volumes_.
 

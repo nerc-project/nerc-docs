@@ -12,7 +12,7 @@ The steps are as follows:
 
 ## Using Horizon dashboard
 
-Once you're logged in to NERC's Horizon dashboard.
+Once you're logged in to [NERC's Horizon dashboard](https://stack.nerc.mghpcc.org).
 
 Navigate to _Project -> Volumes -> Volumes_.
 

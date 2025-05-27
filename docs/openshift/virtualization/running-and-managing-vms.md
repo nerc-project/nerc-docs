@@ -201,7 +201,7 @@ templates. Click on the template tile you want to use to create your VM.
         the **Quick Create VirtualMachine** button is enabled, allowing you to
         rapidly deploy a VM with minimal configuration.
 
-        ![Source Available Template](images/source-available-template.png)
+            ![Source Available Template](images/source-available-template.png)
 
         - **Standardized configurations**: Ensures consistent VM settings across
         environments.

@@ -88,7 +88,7 @@ actions are executed through the openstack command with the relevant parameters.
 
     - Click _Action -> Shelve Instance_.
 
-    - Releases all computing resources (i.e., vCPU, RAM, and disk).
+    - Releases all computing resources (i.e., GPU, vCPU, RAM, and disk).
 
     - We strongly recommend detaching volumes before shelving.
 

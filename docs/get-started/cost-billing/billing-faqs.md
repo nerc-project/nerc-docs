@@ -56,38 +56,48 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
 
     Currently, a project will continue be able to utilize allocations even after
     their "End Date", resulting in ongoing **costs** for you. Such allocations
-    will be marked as "Active (Needs Renewal)". In the future, we plan to change
+    will be marked as "**Active (Needs Renewal)**". In the future, we plan to change
     this behavior so that allocations after end date will prevent associated
     VMs/pods from starting and may cause active VMs/pods to cease running.
 
 ??? question "7. Are VMs invoiced even when shut down?"
 
-    Yes, as long as VMs are using resources they are invoiced. In order not to be
-    billed for a VM you **[must delete](../../openstack/management/vm-management.md#delete-instance)**
-    the Instance/VM. It is a good idea to [create a snapshot of your VM](../../openstack/management/vm-management.md#create-snapshot)
-    prior to deleting it.
+    Yes, VMs continue to incur charges as long as they are consuming resources.
+    To avoid being billed, you can either **[shelve](../../get-started/cost-billing/how-pricing-works.md#nerc-openstack)**
+    or **[delete](../../openstack/management/vm-management.md#delete-instance)** the instance/VM.
 
-??? question "8. Will OpenStack & OpenShift show on a single invoice?"
+    If you choose to delete the VM, it's a good idea to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
+    beforehand to preserve your data and configuration.
+
+??? question "8. What actions can I take to reduce usage and therefore cost?"
+
+    For step-by-step instructions, please refer to [this detailed guide](../cost-billing/how-pricing-works.md#su-conservation-how-to-save-cost)
+    and keep in mind that storage is billed by requested amount not used amount.
+
+??? question "9. Is storage charged separately?"
+
+    Yes, but on the same invoice. To learn more, see [our page on Storage](how-pricing-works.md#storage).
+
+    **Very Important:** Be sure to adjust your approved storage quotas accordingly
+    to avoid unnecessary charges for unused or unneeded storage.
+
+??? question "10. Will OpenStack & OpenShift show on a single invoice?"
 
     Yes. In the near future customers of NERC will be able to view per project service
     utilization via the XDMoD tool.
 
-??? question "9. What happens when a Flavor is expanded during the month?"
+??? question "11. What happens when a Flavor is expanded during the month?"
 
     a. Flavors cannot be expanded.
 
     b. You can create a snapshot of an existing VM/Instance and, with that snapshot,
     deploy a new flavor of VM/Instance.
 
-??? question "10. Is storage charged separately?"
-
-    Yes, but on the same invoice. To learn more, see [our page on Storage](how-pricing-works.md#storage).
-
-??? question "11. Will I be charged for storage attached to shut-off instances?"
+??? question "12. Will I be charged for storage attached to shut-off instances?"
 
     Yes.
 
-??? question "12. Are we Invoicing Storage using ColdFront Requests or resource usage?"
+??? question "13. Are we Invoicing Storage using ColdFront Requests or resource usage?"
 
     a. Storage is invoiced based on [Coldfront Requests](../allocation/requesting-an-allocation.md).
 
@@ -107,7 +117,7 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
     2. I request a decrease in storage.
         - The invoicing for that storage stops immediately.
 
-??? question "13. For OpenShift, what values are we using to track CPU & Memory?"
+??? question "14. For OpenShift, what values are we using to track CPU & Memory?"
 
     a. For invoicing we utilize `requests.cpu` for tracking CPU utilization &
     `requests.memory` for tracking memory utilization.
@@ -115,19 +125,19 @@ or, by submitting a new ticket at [the NERC's Support Ticketing System](https://
     b. Utilization will be capped based on the limits you set in ColdFront for
     your resource allocations.
 
-??? question "14. If a single Pod exceeds the resources for a GPU SU, how is it invoiced?"
+??? question "15. If a single Pod exceeds the resources for a GPU SU, how is it invoiced?"
 
     It will be invoiced as 2 or more GPU SU's depending on how many multiples of
     the resources it exceeds.
 
-??? question "15. How often will we change the pricing?"
+??? question "16. How often will we change the pricing?"
 
     a. Our current plan is no more than once a year for existing offerings.
 
     b. Additional offerings may be added throughout the year (i.e. new types of
     hardware or storage).
 
-??? question "16. Is there any NERC Pricing Calculator?"
+??? question "17. Is there any NERC Pricing Calculator?"
 
     Yes. Start your estimate with no commitment based on your resource needs by
     using [this online tool](https://docs.google.com/spreadsheets/d/187bQgz3eB3W9OL7x9rrgaJ2pi7u85xMJvUJbnKzzBQM/edit#gid=0). For more information about how to use this tool, see

@@ -60,7 +60,7 @@ When the requested allocation is approved, it must have an "End Date" - which
 is normally 365 days or 1 year from the date it is approved i.e. "Start Date".
 Automated emails are triggered to all users on an allocation when the end date
 is 60 days away, 30 days, 7 days, and then set the allocation status to
-"Active (Needs Renewal)", unless the user turns off notifications on the project.
+"**Active (Needs Renewal)**", unless the user turns off notifications on the project.
 
 !!! danger "Very Important: Urgent Allocation Renewal is Required Before End Date"
 

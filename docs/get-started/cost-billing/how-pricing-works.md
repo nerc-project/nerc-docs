@@ -40,9 +40,15 @@ and billing model.
 | CPU          | {{su_info_dict["CPU"]["vGPUs"]}}    | {{su_info_dict["CPU"]["vCPUs"]}}   | {{su_info_dict["CPU"]["RAM"]}}       | ${{su_info_dict["CPU"]["rate"]}}        |
 <!-- markdownlint-enable MD052 -->
 
-!!! info "Expected Availability of H100 GPUs"
+!!! info "Now Available on NERC: NVIDIA H100 GPUs"
 
-    H100 GPUs will be available in OpenShift in early 2025.
+    The cutting-edge NVIDIA H100 80GB GPUs are now available for use with:
+
+    🔹 **NERC Red Hat OpenShift AI (RHOAI)** via JupyterLab workbenches
+
+    🔹 **NERC OpenShift - based Containers**
+
+    To get started, read our latest [announcement](https://nerc.mghpcc.org/nvidia-h100-gpus-on-nerc/).
 
 ## Breakdown
 
@@ -81,16 +87,46 @@ of the base SU for the maximum resource they reserve.
 
 !!! warning "Are VMs invoiced even when shut down?"
 
-    Yes, VMs are invoiced as long as they are utilizing resources. In order not
-    to be billed for a VM, you **[must delete](../../openstack/management/vm-management.md#delete-instance)**
-    your Instance/VM. It is advisable to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
-    of your VM prior to deleting it, ensuring you have a backup of your data and
-    configurations. By proactively managing your VMs and resources, you can
-    optimize your usage and minimize unnecessary costs.
+    Yes, VMs incur charges as long as they are utilizing resources. Proactively
+    managing your VMs helps optimize usage and reduce unnecessary costs. To avoid
+    being billed for unused resources (i.e., **GPU, vCPU, RAM**), you can release
+    the underlying compute resources in one of the following two ways:
 
-    If you have common questions or need more information, refer to our
-    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
-    answers.
+    1. **By Shelving the VM**:
+
+       Shelving temporarily shuts down the VM and releases all its compute resources
+       (i.e., GPU, vCPU, RAM), while preserving the disk and metadata. This allows
+       you to resume the VM later without needing to reconfigure it. It's a cost-effective
+       (**Recommended**) option if you plan to use the VM again in the future.
+
+    2. **By Deleting the VM**:
+
+       [Deleting the VM](../../openstack/management/vm-management.md#delete-instance)
+       permanently removes it along with all associated resources, including compute,
+       storage, and network allocations. Choose this option if the VM is no longer
+       needed, as it fully eliminates any future charges.
+
+       It is advisable to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
+       of your VM prior to deletion to ensure you have a backup of your data and
+       configurations. We strongly recommend [detaching any additional volumes](../../openstack/persistent-storage/detach-a-volume.md)
+       from your instance before creating any snapshots.
+
+    **Please note:**  
+    The **storage cost** is determined by your [requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view)
+    for the storage quotas defined under "OpenStack Volume Quota (GiB)" and
+    "OpenStack Swift Quota (GiB)" in your **NERC (OpenStack)** Resource Allocations.
+
+    Even if you have deleted all volumes, snapshots, and object storage buckets and
+    objects in your OpenStack project, it's essential to adjust the approved storage
+    values for your NERC (OpenStack) allocation to zero (0). Otherwise, charges will
+    continue to apply based on the approved storage quota.
+
+    You can easily scale or reduce your current resource allocations within your
+    project. Follow [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
+    to request changes using NERC's ColdFront interface.
+
+    For common questions or additional information, please refer to our
+    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 **OpenShift CPU SU Example**:
 
@@ -148,7 +184,7 @@ provisioned until it is deleted.
     Once approved, these **Storage quotas** will need to be reserved from the
     total NESE storage pool for both **NERC (OpenStack)** and **NERC-OCP (OpenShift)**
     resources. For **NERC (OpenStack)** Resource Allocations, storage quotas are
-    specified by the "OpenStack Volume Quota (GiB)" and "OOpenStack Swift Quota
+    specified by the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
     (GiB)" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
     Allocations, storage quotas are specified by the "OpenShift Request on Storage
     Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)" allocation
@@ -251,11 +287,12 @@ Actions menu located on the right hand side of your screen as shown here:
 In [NERC OpenStack](../../openstack/index.md), if your VM does not need to run
 continuously, you can **shelve** it to free up consumed resources such as vCPUs,
 RAM, and disk. This action releases all allocated resources while preserving the
-VM's state.
+VM's state and metadata.
 
 - Click _Action -> Shelve Instance_.
 
-- Releases all computing resources (i.e., vCPU, RAM, and disk).
+- Releases all computing resources (i.e., **GPU, vCPU, RAM**), while preserving
+  the disk and metadata.
 
 - We strongly recommend detaching volumes before shelving.
 
@@ -274,8 +311,8 @@ For more details on *shelving a VM*, see the explanation [here](../../openstack/
 
 In [NERC OpenShift](../../openshift/index.md), if your application or job is idle,
 you can scale its pod replica count to **0**. This effectively frees up compute
-resources (CPU, GPU, and RAM) while retaining the configuration, environment settings,
-and persistent volume claims (PVCs) for future use.
+resources (i.e., **GPU, vCPU, and RAM**) while retaining the configuration, metadata,
+environment settings, and persistent volume claims (PVCs) for future use.
 
 #### Using Web Console
 

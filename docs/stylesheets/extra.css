@@ -46,9 +46,9 @@ footer .footer-center {
 
 .maintain {
     position: absolute;
-    /* top: 5%; */
+    top: 5%;
     /* left: 50%; */
-    margin: 0 0 0 -35px
+    /* margin: -25px 0 0 -35px; */
 }
 
 .upgrade {
@@ -63,9 +63,9 @@ footer .footer-center {
     width: 70px;
     height: 70px; */
     position: absolute;
-    top: 50%;
+    top: 8%;
     left: 40%;
-    margin: -25px 0 0 -35px;
+    /* margin: -25px 0 0 -35px; */
 }
 
 /* img {

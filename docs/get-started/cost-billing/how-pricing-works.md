@@ -284,6 +284,11 @@ Actions menu located on the right hand side of your screen as shown here:
 
 **Shelve your VM when not in use**:
 
+!!! info "Only Available From Next Billing Cycle"
+
+    We will implement the invoicing piece of this feature as of the June 2025
+    Invoicing cycle.
+
 In [NERC OpenStack](../../openstack/index.md), if your VM does not need to run
 continuously, you can **shelve** it to free up consumed resources such as vCPUs,
 RAM, and disk. This action releases all allocated resources while preserving the

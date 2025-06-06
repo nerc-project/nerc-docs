@@ -27,36 +27,36 @@ While clicking on "EC2 Credentials", this will download a file **zip file**
 including `ec2rc.sh` file that has content similar to shown below. The important
 parts are `EC2_ACCESS_KEY` and `EC2_SECRET_KEY`, keep them noted.
 
-      #!/bin/bash
+    #!/bin/bash
 
-      NOVARC=$(readlink -f "${BASH_SOURCE:-${0}}" 2>/dev/null) || NOVARC=$(python -c 'import os,sys; print os.path.abspath(os.path.realpath(sys.argv[1]))' "${BASH_SOURCE:-${0}}")
-      NOVA_KEY_DIR=${NOVARC%/*}
-      export EC2_ACCESS_KEY=...
-      export EC2_SECRET_KEY=...
-      export EC2_URL=https://localhost/notimplemented
-      export EC2_USER_ID=42 # nova does not use user id, but bundling requires it
-      export EC2_PRIVATE_KEY=${NOVA_KEY_DIR}/pk.pem
-      export EC2_CERT=${NOVA_KEY_DIR}/cert.pem
-      export NOVA_CERT=${NOVA_KEY_DIR}/cacert.pem
-      export EUCALYPTUS_CERT=${NOVA_CERT} # euca-bundle-image seems to require this set
+    NOVARC=$(readlink -f "${BASH_SOURCE:-${0}}" 2>/dev/null) || NOVARC=$(python -c 'import os,sys; print os.path.abspath(os.path.realpath(sys.argv[1]))' "${BASH_SOURCE:-${0}}")
+    NOVA_KEY_DIR=${NOVARC%/*}
+    export EC2_ACCESS_KEY=...
+    export EC2_SECRET_KEY=...
+    export EC2_URL=https://localhost/notimplemented
+    export EC2_USER_ID=42 # nova does not use user id, but bundling requires it
+    export EC2_PRIVATE_KEY=${NOVA_KEY_DIR}/pk.pem
+    export EC2_CERT=${NOVA_KEY_DIR}/cert.pem
+    export NOVA_CERT=${NOVA_KEY_DIR}/cacert.pem
+    export EUCALYPTUS_CERT=${NOVA_CERT} # euca-bundle-image seems to require this set
 
-      alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
-      alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
+    alias ec2-bundle-image="ec2-bundle-image --cert ${EC2_CERT} --privatekey ${EC2_PRIVATE_KEY} --user 42 --ec2cert ${NOVA_CERT}"
+    alias ec2-upload-bundle="ec2-upload-bundle -a ${EC2_ACCESS_KEY} -s ${EC2_SECRET_KEY} --url ${S3_URL} --ec2cert ${NOVA_CERT}"
 
 **Alternatively,** you can obtain your EC2 access keys using the openstack client:
 
-      sudo apt install python3-openstackclient
+    sudo apt install python3-openstackclient
 
-      openstack ec2 credentials list
-      +------------------+------------------+--------------+-----------+
-      | Access           | Secret           | Project ID   | User ID   |
-      +------------------+------------------+--------------+-----------+
-      | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
-      +------------------+------------------+--------------+-----------+
+    openstack ec2 credentials list
+    +------------------+------------------+--------------+-----------+
+    | Access           | Secret           | Project ID   | User ID   |
+    +------------------+------------------+--------------+-----------+
+    | <EC2_ACCESS_KEY> | <EC2_SECRET_KEY> | <Project_ID> | <User_ID> |
+    +------------------+------------------+--------------+-----------+
 
 **OR,** you can even create a new one by running:
 
-      openstack ec2 credentials create
+    openstack ec2 credentials create
 
 -   Source the downloaded OpenStack RC File from _Projects > API Access_ by using:
     `source *-openrc.sh` command. Sourcing the RC File will set the required environment
@@ -336,6 +336,8 @@ Verify, the service is running successfully in background as `root` user:
 
     ps aux | grep mount-s3
 
+The output should look similar to:
+
     root       13585  0.0  0.0 1060504 11672 ?       Sl   02:00   0:00 /usr/bin/mount-s3 bucket1 /home/ubuntu/bucket1 --profile nerc --endpoint-url https://stack.nerc.mghpcc.org:13808 --read-only --allow-other --force-path-style --debug
 
 ##### Stopping the service
@@ -529,6 +531,8 @@ of the option `noauto`.
     In the `/etc/fstab` content as added above:
 
         grep goofys /etc/fstab
+
+    The output should look similar to:
 
         /usr/bin/goofys#bucket1 /home/ubuntu/bucket1 fuse _netdev,allow_other,--dir-mode=0777,--file-mode=0666,--region=RegionOne,--profile=nerc,--endpoint=https://stack.nerc.mghpcc.org:13808 0 0
 
@@ -871,6 +875,9 @@ To enable your service on every reboot
 Verify, if the container is mounted successfully:
 
     df -hT | grep rclone
+
+The output should look similar to:
+
     nerc:bucket1   fuse.rclone  1.0P     0  1.0P   0% /home/ubuntu/bucket1
 
 ## 5. Using [JuiceFS](https://juicefs.com/docs/)
@@ -897,6 +904,9 @@ the JuiceFS client:
 Verify the JuiceFS client is running in background:
 
     ps aux | grep juicefs
+
+The output should look similar to:
+
     ubuntu     16275  0.0  0.0   7008  2212 pts/0    S+   18:44   0:00 grep --color=auto juicefs
 
 #### Installing and Configuring Redis database
@@ -936,11 +946,11 @@ init system, change this to `systemd` as shown here:
 By default, Redis is only accessible from `localhost`. We need to verify that
 by locating this line by running:
 
-      sudo cat /etc/redis/redis.conf -n | grep bind
+    sudo cat /etc/redis/redis.conf -n | grep bind
 
-      ...
-      68  bind 127.0.0.1 ::1
-      ...
+    ...
+    68  bind 127.0.0.1 ::1
+    ...
 
 and make sure it is uncommented (remove the `#` if it exists) by editing this
 file with your preferred text editor.
@@ -951,7 +961,7 @@ file, do so by pressing `CTRL + X`, `Y`, then `ENTER`.
 Then, restart the Redis service to reflect the changes you made to the configuration
 file:
 
-      sudo systemctl restart redis.service
+    sudo systemctl restart redis.service
 
 With that, you've installed and configured Redis and it's running on your machine.
 Before you begin using it, you should first check whether Redis is functioning
@@ -959,7 +969,7 @@ correctly.
 
 Start by checking that the Redis service is running:
 
-      sudo systemctl status redis
+    sudo systemctl status redis
 
 If it is running without any errors, this command will show "active (running)"
 Status.
@@ -967,23 +977,23 @@ Status.
 To test that Redis is functioning correctly, connect to the server using `redis-cli`,
 Redis's command-line client:
 
-      redis-cli
+    redis-cli
 
 In the prompt that follows, test connectivity with the `ping` command:
 
-      ping
+    ping
 
 Output:
 
-      PONG
+    PONG
 
 Also, check that binding to `localhost` is working fine by running the following
 `netstat` command:
 
-      sudo netstat -lnp | grep redis
+    sudo netstat -lnp | grep redis
 
-      tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      16967/redis-server
-      tcp6       0      0 ::1:6379                :::*                    LISTEN      16967/redis-server
+    tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      16967/redis-server
+    tcp6       0      0 ::1:6379                :::*                    LISTEN      16967/redis-server
 
 !!! warning "Important Note"
 
@@ -1106,12 +1116,17 @@ running the following command:
 After JuiceFS has been successfully formatted, follow this guide to set up auto-mount
 on boot.
 
-We can speficy the `--update-fstab` option on the `mount` command that will automatically
+We can specify the `--update-fstab` option on the `mount` command that will automatically
 help you set up mount at boot:
 
     sudo juicefs mount --update-fstab --max-uploads=50 --writeback --cache-size 204800 <META-URL> <MOUNTPOINT>
 
+Make sure `/etc/fstab` contains an entry for the mount point by running:
+
     grep <MOUNTPOINT> /etc/fstab
+
+The output should look similar to:
+
     <META-URL> <MOUNTPOINT> juicefs _netdev,max-uploads=50,writeback,cache-size=204800 0 0
 
     ls -l /sbin/mount.juicefs
@@ -1121,8 +1136,15 @@ For example,
 
     sudo juicefs mount --update-fstab --max-uploads=50 --writeback --cache-size 204800 redis://default:<your_redis_password>@127.0.0.1:6379/1 ~/bucket1
 
+Make sure `/etc/fstab` contains an entry for the mount point by running:
+
     grep juicefs /etc/fstab
+
+The output should look similar to:
+
     redis://default:<your_redis_password>@127.0.0.1:6379/1  /home/ubuntu/bucket1  juicefs  _netdev,cache-size=204800,max-uploads=50,writeback  0 0
+
+Confirm that `/sbin/mount.juicefs` is correctly symlinked to the JuiceFS binary:
 
     ls -l /sbin/mount.juicefs
     lrwxrwxrwx 1 root root 22 Apr 24 20:25 /sbin/mount.juicefs -> /usr/local/bin/juicefs
@@ -1225,6 +1247,9 @@ To enable your service on every reboot
 Verify, if the container is mounted successfully:
 
     df -hT | grep juicefs
+
+The output should look similar to:
+
     JuiceFS:myjfs  fuse.juicefs  1.0P  4.0K  1.0P   1% /home/ubuntu/bucket1
 
 ### Data Synchronization

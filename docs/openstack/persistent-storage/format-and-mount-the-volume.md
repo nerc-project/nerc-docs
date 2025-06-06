@@ -100,7 +100,7 @@ First, get the **UUID** of the device:
 
     sudo blkid /dev/vdb
 
-Output:
+The output should look similar to:
 
     /dev/vdb: UUID="1234-5678-ABCD-EF00" BLOCK_SIZE="4096" TYPE="ext4"
 

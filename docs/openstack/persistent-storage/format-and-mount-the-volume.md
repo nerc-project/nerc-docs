@@ -71,6 +71,13 @@ vda     254:0    0   10G  0 disk
 vdb     254:16   0    1G  0 disk /mnt/test_volume
 ```
 
+!!! danger "Very Important Information"
+
+    Please note that this mounted drive is not persistent if your VM is stopped
+    or rebooted in the future. After each reboot, you will need to run the mounting
+    command `mount /dev/vdb /mnt/test_volume` again. To enable automatic mounting
+    at system startup, please follow the steps as [outlined here](#mounting-on-system-startup).
+
 If you place data in the directory `/mnt/test_volume`, detach the volume, and
 mount it to another instance, the second instance will have access to the data.
 
@@ -79,6 +86,52 @@ mount it to another instance, the second instance will have access to the data.
     In this case it's easy to spot because there is only one additional disk attached
     to the instance, but it's important to keep track of the device name, especially
     if you have multiple volumes attached.
+
+### Mounting on system startup
+
+Mounts can be set to occur automatically during system initialization so that mounted
+file systems will persist even after the VM reboot.
+
+#### Configure mounting of the disk to your directory
+
+To configure mounting of the `/dev/vdb` disk to your `/mnt/test_volume` directory:
+
+First, get the **UUID** of the device:
+
+    sudo blkid /dev/vdb
+
+Output:
+
+    /dev/vdb: UUID="1234-5678-ABCD-EF00" BLOCK_SIZE="4096" TYPE="ext4"
+
+!!! note "Note"
+    
+    Please note the **UUID**.
+
+Now open the file `/etc/fstab` using your favorite command line text editor for editing.
+You will need sudo privileges for that. For example, if you want to use nano, execute
+this command:
+
+    sudo nano /etc/fstab
+
+Add the following line to the `/etc/fstab` file at the end (replace the **UUID**
+with what you noted before). This will mount the disk automatically on every reboot.
+
+    UUID=1234-5678-ABCD-EF00 /mnt/test_volume ext4 defaults 0 2
+
+!!! tip "Important Information"
+
+    If you just want to test your mounting command written in `/etc/fstab` without
+    "Rebooting" the VM you can also do that by running `sudo mount -a`. If there's
+    no error, your mount is working and will persist after reboot.
+
+Reboot your VM:
+
+    sudo reboot
+
+Confirm the mount:
+
+    df -h | grep /mnt/test_volume
 
 ## For Windows virtual machine
 

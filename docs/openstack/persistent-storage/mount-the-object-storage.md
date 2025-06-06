@@ -204,7 +204,8 @@ The NERC Object Storage container repository has now been mounted using Mountpoi
     Please note that any of these Mountpoints is not persistent if your VM is
     stopped or rebooted in the future. After each reboot, you will need to execute
     the mounting command as mentioned [above](#mount-the-container-locally-using-mountpoint)
-    again.
+    again. To enable automatic mounting at system startup, please follow the steps
+    as [outlined here](#automatically-mounting-an-s3-bucket-at-boot).
 
 ### Automatically mounting an S3 bucket at boot
 
@@ -477,10 +478,11 @@ The NERC Object Storage container repository has now been mounted using `goofys`
 
 !!! danger "Very Important Information"
 
-    Please note that any of these Mountpoints is not persistent if your VM is
+    Please note that any of these mounted buckets is not persistent if your VM is
     stopped or rebooted in the future. After each reboot, you will need to execute
     the mounting command as mentioned [above](#mount-the-container-locally-using-goofys)
-    again.
+    again. To enable automatic mounting at system startup, please follow the steps
+    as [outlined here](#mounting-on-system-startup).
 
 ### Mounting on system startup
 
@@ -545,7 +547,9 @@ is mounted in the directory specified by you i.e. in `/home/ubuntu/bucket1`.
 !!! tip "Important Information"
 
     If you just want to test your mounting command written in `/etc/fstab` without
-    "Rebooting" the VM you can also do that by running `sudo mount -a`.
+    "Rebooting" the VM you can also do that by running `sudo mount -a`. If there's
+    no error, your mount is working and will persist after reboot.
+
     And if you want to stop automatic mounting of the container from the NERC
     Object Storage repository i.e. `bucket1`, remove the line you added in the
     `/etc/fstab` file. You can also comment it out by adding `#` character in front

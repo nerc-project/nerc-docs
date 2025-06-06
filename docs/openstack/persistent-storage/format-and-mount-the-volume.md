@@ -105,7 +105,7 @@ Output:
     /dev/vdb: UUID="1234-5678-ABCD-EF00" BLOCK_SIZE="4096" TYPE="ext4"
 
 !!! note "Note"
-    
+
     Please note the **UUID**.
 
 Now open the file `/etc/fstab` using your favorite command line text editor for editing.

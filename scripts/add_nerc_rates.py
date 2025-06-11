@@ -20,7 +20,7 @@ SU_TYPE_LIST = [
     "BM GPUH100",
 ]
 
-SU_RESOURCETYPE_LIST = ["vCPUs", "vGPUs", "RAM"]
+SU_RESOURCETYPE_LIST = ["vCPUs", "GPUs", "RAM"]
 
 STORAGE_NAME = "Storage GB Rate"
 

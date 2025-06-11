@@ -17,12 +17,12 @@ Bare metal instances pricing is currently available as a limited offering.
 ## Bare Metal Pricing Calculations
 
 <!-- markdownlint-disable MD052 -->
-| Name             | vGPU | vCPU | RAM (GiB) | Current Price |
+| Name             | GPU | vCPU | RAM (GiB) | Current Price |
 |------------------|------|------|-----------|---------------|
-| H100 GPU         | {{su_info_dict["BM GPUH100"]["vGPUs"]}}    | {{su_info_dict["BM GPUH100"]["vCPUs"]}}   | {{su_info_dict["BM GPUH100"]["RAM"]}}       | ${{su_info_dict["BM GPUH100"]["rate"]}}        |
-| A100sxm4 GPU     | {{su_info_dict["BM GPUA100SXM4"]["vGPUs"]}}    | {{su_info_dict["BM GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["BM GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["BM GPUA100SXM4"]["rate"]}}        |
-| FC830            | {{su_info_dict["BM FC830"]["vGPUs"]}}    | {{su_info_dict["BM FC830"]["vCPUs"]}}   | {{su_info_dict["BM FC830"]["RAM"]}}       | ${{su_info_dict["BM FC830"]["rate"]}}        |
-| FC430            | {{su_info_dict["BM FC430"]["vGPUs"]}}    | {{su_info_dict["BM FC430"]["vCPUs"]}}   | {{su_info_dict["BM FC430"]["RAM"]}}       | ${{su_info_dict["BM FC430"]["rate"]}}        |
+| H100 GPU         | {{su_info_dict["BM GPUH100"]["GPUs"]}}    | {{su_info_dict["BM GPUH100"]["vCPUs"]}}   | {{su_info_dict["BM GPUH100"]["RAM"]}}       | ${{su_info_dict["BM GPUH100"]["rate"]}}        |
+| A100sxm4 GPU     | {{su_info_dict["BM GPUA100SXM4"]["GPUs"]}}    | {{su_info_dict["BM GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["BM GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["BM GPUA100SXM4"]["rate"]}}        |
+| FC830            | {{su_info_dict["BM FC830"]["GPUs"]}}    | {{su_info_dict["BM FC830"]["vCPUs"]}}   | {{su_info_dict["BM FC830"]["RAM"]}}       | ${{su_info_dict["BM FC830"]["rate"]}}        |
+| FC430            | {{su_info_dict["BM FC430"]["GPUs"]}}    | {{su_info_dict["BM FC430"]["vCPUs"]}}   | {{su_info_dict["BM FC430"]["RAM"]}}       | ${{su_info_dict["BM FC430"]["rate"]}}        |
 <!-- markdownlint-enable MD052 -->
 
 !!! info "How to request Bare Metal Machines?"

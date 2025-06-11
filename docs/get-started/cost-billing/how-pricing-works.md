@@ -30,14 +30,14 @@ and billing model.
 
 ### Service Units (SUs)
 <!-- markdownlint-disable MD052 -->
-| Name         | vGPU | vCPU | RAM (GiB) | Current Price |
+| Name         | GPU | vCPU | RAM (GiB) | Current Price |
 | ------------ | ---- | ---- | --------- | ------------- |
-| H100 GPU     | {{su_info_dict["GPUH100"]["vGPUs"]}}    | {{su_info_dict["GPUH100"]["vCPUs"]}}   | {{su_info_dict["GPUH100"]["RAM"]}}       | ${{su_info_dict["GPUH100"]["rate"]}}        |
-| A100sxm4 GPU | {{su_info_dict["GPUA100SXM4"]["vGPUs"]}}    | {{su_info_dict["GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["GPUA100SXM4"]["rate"]}}        |
-| A100 GPU     | {{su_info_dict["GPUA100"]["vGPUs"]}}    | {{su_info_dict["GPUA100"]["vCPUs"]}}   | {{su_info_dict["GPUA100"]["RAM"]}}       | ${{su_info_dict["GPUA100"]["rate"]}}        |
-| V100 GPU     | {{su_info_dict["GPUV100"]["vGPUs"]}}    | {{su_info_dict["GPUV100"]["vCPUs"]}}   | {{su_info_dict["GPUV100"]["RAM"]}}       | ${{su_info_dict["GPUV100"]["rate"]}}        |
-| K80 GPU      | {{su_info_dict["GPUK80"]["vGPUs"]}}    | {{su_info_dict["GPUK80"]["vCPUs"]}}   | {{su_info_dict["GPUK80"]["RAM"]}}       | ${{su_info_dict["GPUK80"]["rate"]}}        |
-| CPU          | {{su_info_dict["CPU"]["vGPUs"]}}    | {{su_info_dict["CPU"]["vCPUs"]}}   | {{su_info_dict["CPU"]["RAM"]}}       | ${{su_info_dict["CPU"]["rate"]}}        |
+| H100 GPU     | {{su_info_dict["GPUH100"]["GPUs"]}}    | {{su_info_dict["GPUH100"]["vCPUs"]}}   | {{su_info_dict["GPUH100"]["RAM"]}}       | ${{su_info_dict["GPUH100"]["rate"]}}        |
+| A100sxm4 GPU | {{su_info_dict["GPUA100SXM4"]["GPUs"]}}    | {{su_info_dict["GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["GPUA100SXM4"]["rate"]}}        |
+| A100 GPU     | {{su_info_dict["GPUA100"]["GPUs"]}}    | {{su_info_dict["GPUA100"]["vCPUs"]}}   | {{su_info_dict["GPUA100"]["RAM"]}}       | ${{su_info_dict["GPUA100"]["rate"]}}        |
+| V100 GPU     | {{su_info_dict["GPUV100"]["GPUs"]}}    | {{su_info_dict["GPUV100"]["vCPUs"]}}   | {{su_info_dict["GPUV100"]["RAM"]}}       | ${{su_info_dict["GPUV100"]["rate"]}}        |
+| K80 GPU      | {{su_info_dict["GPUK80"]["GPUs"]}}    | {{su_info_dict["GPUK80"]["vCPUs"]}}   | {{su_info_dict["GPUK80"]["RAM"]}}       | ${{su_info_dict["GPUK80"]["rate"]}}        |
+| CPU          | {{su_info_dict["CPU"]["GPUs"]}}    | {{su_info_dict["CPU"]["vCPUs"]}}   | {{su_info_dict["CPU"]["RAM"]}}       | ${{su_info_dict["CPU"]["rate"]}}        |
 <!-- markdownlint-enable MD052 -->
 
 !!! info "Now Available on NERC: NVIDIA H100 GPUs"
@@ -235,7 +235,7 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
 To provide a more practical way to calculate your usage, here is a function of
 how the calculation works for OpenShift and OpenStack.
 
-1.  **OpenStack** = (Resource (vCPU/RAM/vGPU) assigned to VM flavor converted to
+1.  **OpenStack** = (Resource (vCPU/RAM/GPU) assigned to VM flavor converted to
     number of equivalent SUs) \* (time VM has been running), rounded up to a whole
     hour + Extra storage.
 

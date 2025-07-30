@@ -10,13 +10,13 @@ To run a **model server** and **deploy a model** on it, you need to have:
 
 ## Create a data connection
 
-Once we have our workbench and cluster storage set up, we can add data connections.
-Click the "Add data connection" button to open the data connection configuration
+Once we have our workbench and cluster storage set up, we can create connections.
+Click the "Create connection" button to open the data connection configuration
 window as shown below:
 
-![Add Data Connection](images/add-data-connection.png)
+![Create Connection](images/create-connection.png)
 
-Data connections are configurations for remote data location. Within this window,
+Connections are configurations for remote data location. Within this window,
 enter the information about the S3-compatible object bucket where the model is stored.
 Enter the following information:
 
@@ -71,7 +71,7 @@ as `https://stack.nerc.mghpcc.org:13808`, and the **Region** should be set as `u
 
     **ONNX**: An open standard for machine learning interoperability.
 
-After completing the required fields, click **Add data connection**. You should
+After completing the required fields, click **Create connection**. You should
 now see the data connection displayed in the main project window as shown below:
 
 ![New Data Connection Info](images/data-connection-info.png)
@@ -80,10 +80,27 @@ now see the data connection displayed in the main project window as shown below:
 
 After creating the data connection, you can add your model server. In the
 OpenShift AI dashboard, navigate to the data science project details page and
-click the **Models and model servers** tab. Click on **Add model server** button
-as shown below:
+click the **Models** tab. If this is the first time then you will be able to choose
+the model serving type such as either **Single-model serving platform** or
+**Multi-model serving platform** to be used when deploying from this project.
 
-![Add A Model Server](images/add-a-model-server.png)
+![Add A Model Server](images/add-multi-model-server.png)
+
+!!! note "Important Note"
+
+    You can change the model serving type before the first model is deployed from
+    this project. After deployment, switching types requires deleting all models
+    and servers.
+
+When you select "Single-model serving platform", you will be directly able to
+deploy model by clicking **Deploy model** button as shown below:
+
+![Single-model serving platform](images/single-model-serving.png)
+
+Whereas, when you select "Multi-model serving platform", you will be to create
+a model server by clicking **Add model server** button as shown below:
+
+![Multi-model serving platform](images/add-multi-model-server.png)
 
 In the pop-up window that appears, you can specify the following details:
 
@@ -119,7 +136,8 @@ In the pop-up window that appears, you can specify the following details:
 After adding and selecting options within the **Add model server** pop-up
 window, click **Add** to create the model server.
 
-For our example project, let's name the **Model server** as "coolstore-modelserver".
+For our example project, we will choose "Multi-model serving platform" and then
+add a new model server and let's name the **Model server** as "coolstore-modelserver".
 We'll select the **OpenVINO Model Server** in **Serving runtime**.
 
 Please leave the other fields with the default settings such as Leave **replicas**
@@ -137,13 +155,13 @@ below:
 Alternatively, you can also do this from the main RHOAI dashboard's "Model Serving"
 menu item as shown below:
 
-![Model Serving Deploy Model Option](images/model-serving-deploy-model-option.png)
+![Model Serving Deploy Model Option](images/model-deployments-option.png)
 
 If you wish to view details for the model server, click on the link corresponding
 to the Model Server's Name. You can also modify a model server configuration by
 clicking on the three dots on the right side, and selecting **Edit model server**.
 This will bring back the same configuration page we used earlier. This menu also
-have option for you to **delete the model server**.
+have option for you to **delete model server**.
 
 ## Deploy the model
 

@@ -33,8 +33,8 @@ is mature, open-source software originally inspired by **rsync** and written in 
         change it to **100Mi** in **Cluster Storage**.
 
 3.  If this procedure is successful, you have started your Rclone web server. When
-    your workbench is ready, the status will change to _Running_ and you can select
-    "Open" to go to your environment:
+    your workbench is ready, the status will change to _Running_ and you can click
+    on the workbench name to go to your environment:
 
     ![Open Rclone Web Server](images/open-rclone-web-server.png)
 

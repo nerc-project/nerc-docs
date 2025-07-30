@@ -13,8 +13,8 @@ we can test it.
 ## Using the Model Server Inference Endpoint
 
 As [described here](model-serving-in-the-rhoai.md#deploy-the-model), once your
-model is successfully deployed using **Models and model servers**, the model is
-accessible through the inference API endpoints as shown below:
+model is successfully deployed using **Models**, the model is accessible through
+the inference API endpoints as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/deployed-model-inference-endpoints.png)
 

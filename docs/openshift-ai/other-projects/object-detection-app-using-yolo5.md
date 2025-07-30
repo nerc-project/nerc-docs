@@ -614,7 +614,7 @@ values, which you have retrieved while "Editing data connection":
 
 If this procedure is successful, you have started your Jupyter notebook
 server. When your workbench is ready, the status will change from _Starting_
-to _Running_ and you can select "Open" to go to your environment:
+to _Running_ and you can click on the workbench name to go to your environment:
 
 ![Open Object Detection JupyterLab Environment](images/open-object-detection-jupyter-lab.png)
 
@@ -771,11 +771,11 @@ create a new model server and deploy your model to it.
 **Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
-and click the **Models and model servers** tab.
+and click the **Models** tab.
 
 Select **Add server** as shown below:
 
-![Add A Model Server](images/add-a-model-server.png)
+![Add A Model Server](images/add-multi-model-server.png)
 
 In the pop-up window that appears, depicted as shown below, you can specify the
 following details:
@@ -790,8 +790,7 @@ Leave the other fields with the default settings.
 
 Click **Add**.
 
-In the **Models and model servers** list, next to the new model server, click
-**Deploy** model.
+In the **Models** list, next to the new model server, click **Deploy** model.
 
 ![Create model server form](images/ds-project-workbench-list-deploy.png)
 

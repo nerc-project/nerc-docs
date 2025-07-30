@@ -25,10 +25,12 @@ as shown below:
 
 ![Log In With OpenShift](images/log_in_with_openshift.png)
 
-After the NERC OpenShift AI dashboard launches, it displays all currently enabled
-applications.
+Once the NERC OpenShift AI dashboard is launched, you can view a list of the
+installed OpenShift AI components, as shown below:
 
 ![The NERC RHOAI Dashboard](images/the-rhoai-dashboard.png)
+
+An overview of NERC's OpenShift AI dashboard can be found [here](./the-rhoai-dashboard-overview.md).
 
 You can return to OpenShift Web Console by using the application launcher icon
 (the black-and-white icon that looks like a grid), and choosing the "OpenShift

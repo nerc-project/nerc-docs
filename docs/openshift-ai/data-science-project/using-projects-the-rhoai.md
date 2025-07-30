@@ -27,20 +27,26 @@ details page, as shown below:
 
 Within the data science project, you can add the following configuration options:
 
--   **Workbenches**: Development environments within your project where you can access
-    notebooks and generate models.
+-   **Workbenches**: are instances of your development and experimentation environment.
+    They typically contain IDEs, such as JupyterLab, RStudio, and Visual Studio Code.
+
+-   **Pipelines**: A list of created and configured data science pipeline servers
+    within the project.
+
+-   **Models**: A list of models and model servers that your project uses. Models
+    allow you to quickly serve a trained model for real-time inference. You can
+    have multiple model servers per data science project. One model server can
+    host multiple models.
 
 -   **Cluster storage**: Storage for your project in your OpenShift cluster.
 
--   **Data connections**: A list of data sources that your project uses.
+-   **Connections**: A list of data sources that your project uses, such as an S3
+    object bucket.
 
--   **Pipelines**: A list of created and configured pipeline servers.
-
--   **Models and model servers**: A list of models and model servers that your project
-    uses.
+-   **Permissions**: define which users and groups can access the project.
 
 As you can see in the project's details figure, our selected data science project
-currently has no workbenches, storage, data connections, pipelines, or model servers.
+currently has no workbenches, pipelines, models, storage, connections, and permissions.
 
 ## Populate the data science project with a Workbench
 
@@ -74,7 +80,7 @@ On the Create workbench page, complete the following information.
 
 -   Persistent storage size
 
--   Data connections
+-   Connections
 
 !!! tip "How to specify CPUs, Memory, and GPUs for your JupyterLab workbench?"
 
@@ -126,13 +132,11 @@ as **1** and allocate a **Cluster storage** space of **1GB**.
 After creating the workbench, you will return to your project page. It shows the
 status of the workbench as shown below:
 
-![Workbench and Cluster Storage](images/workbench-cluster-storage.png)
+![Workbench and Cluster Storage](images/open-tensorflow-jupyter-lab.png)
 
 Notice that under the status indicator the workbench is _Running_. However, if any
 issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
-under the Status indicator, as shown in the example below:
-
-![Workbench Error Status](images/workbench-error-status.png)
+under the Status indicator.
 
 You can hover over that icon to view details. Upon closer inspection of the error
 message and the "Event log", you will receive details about the issue, enabling
@@ -141,7 +145,7 @@ you to resolve it accordingly.
 When your workbench is ready and the status changes to _Running_, you can select
 "Open" to access your environment:
 
-![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
+![Open JupyterLab Environment](images/workbench-cluster-storage.png)
 
 !!! tip "How can I start or stop a Workbench?"
 

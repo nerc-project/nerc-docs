@@ -55,9 +55,9 @@ button as shown below:
 
 ![Delete Cluster Storage Confirmation](images/cluster-storage-delete-rhoai-confirmation.png)
 
-### Delete all Data connections
+### Delete all Connections
 
-Delete all data connections by clicking on the three dots on the right side of the
+Delete all Connections by clicking on the three dots on the right side of the
 individual data connection and selecting **Delete data connection**, as shown below:
 
 ![Delete Data Connection](images/delete-data-connections-rhoai.png)

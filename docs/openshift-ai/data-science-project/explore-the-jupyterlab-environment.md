@@ -1,7 +1,7 @@
 # Explore the JupyterLab Environment
 
-When your workbench is ready, the status will change to _Running_ and you can select
-"Open" to go to your environment:
+When your workbench is ready, the status will change to _Running_ and you can click
+on the workbench name to go to your environment:
 
 ![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 

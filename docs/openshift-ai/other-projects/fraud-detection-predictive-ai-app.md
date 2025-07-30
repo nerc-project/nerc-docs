@@ -503,7 +503,7 @@ a. Select Data Science Projects and then click the name of your project, i.e.
 b. Click **Data connections**. You should see two connections listed:
 *My Storage* and *Pipeline Artifacts* as shown below:
 
-![Data Connections](images/data-connections.png)
+![Connections](images/data-connections.png)
 
 c. Verify the buckets are created on the MinIO Web Console:
 
@@ -684,7 +684,7 @@ values, which you have retrieved while "Editing data connection":
 
 If this procedure is successful, you have started your Jupyter notebook
 server. When your workbench is ready, the status will change from _Starting_
-to _Running_ and you can select "Open" to go to your environment:
+to _Running_ and you can click on the workbench name to go to your environment:
 
 ![Open Fraud Detection JupyterLab Environment](images/open-fraud-detection-jupyter-lab.png)
 
@@ -798,11 +798,11 @@ create a new model server and deploy your model to it.
 **Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
-and click the **Models and model servers** tab.
+and click the **Models** tab.
 
-Select **Add server** as shown below:
+Select **Add model server** as shown below:
 
-![Add A Model Server](images/add-a-model-server.png)
+![Add A Model Server](images/add-multi-model-server.png)
 
 In the pop-up window that appears, depicted as shown below, you can specify the
 following details:
@@ -817,8 +817,7 @@ Leave the other fields with the default settings.
 
 Click **Add**.
 
-In the **Models and model servers** list, next to the new model server, click
-**Deploy** model.
+In the **Models** list, next to the new model server, click **Deploy** model.
 
 ![Create model server form](images/ds-project-workbench-list-deploy.png)
 
@@ -934,7 +933,7 @@ b. Select the **Pipeline Properties** tab.
 ![Pipeline Properties Tab](images/wb-pipeline-properties-tab.png)
 
 c. In the **Pipeline Properties** panel, scroll down to **Generic Node Defaults**
-and **Runtime Image**. Set the value to `TensorFlow with CUDA and Python 3.9 (UBI9)`.
+and **Runtime Image**. Set the value to `TensorFlow with CUDA and Python 3.11 (UBI9)`.
 
 ![Pipeline Runtime Image](images/wb-pipeline-runtime-image.png)
 
@@ -1065,7 +1064,7 @@ a. Under **Kubernetes Secrets**, click **Add**.
 
 b. Enter the following values and then click **Add**.
 
--   **Environment Variable**: *AWS_ACCESS_KEY_ID*
+🔸  **Environment Variable**: *AWS_ACCESS_KEY_ID*
 
 -   **Secret Name**: *aws-connection-my-storage*
 
@@ -1073,27 +1072,27 @@ b. Enter the following values and then click **Add**.
 
 ![Secret Form](images/wb-pipeline-kube-secret-form.png)
 
-iii. Repeat Step 2 for each of the following Kubernetes secrets:
+iii. Repeat **Step ii** for each of the following Kubernetes secrets:
 
--   **Environment Variable**: *AWS_SECRET_ACCESS_KEY*
+🔸  **Environment Variable**: *AWS_SECRET_ACCESS_KEY*
 
 -   **Secret Name**: *aws-connection-my-storage*
 
 -   **Secret Key**: *AWS_SECRET_ACCESS_KEY*
 
--   **Environment Variable**: AWS_S3_ENDPOINT
+🔸  **Environment Variable**: AWS_S3_ENDPOINT
 
 -   **Secret Name**: aws-connection-my-storage
 
 -   **Secret Key**: AWS_S3_ENDPOINT
 
--   **Environment Variable**: AWS_DEFAULT_REGION
+🔸  **Environment Variable**: AWS_DEFAULT_REGION
 
 -   **Secret Name**: aws-connection-my-storage
 
 -   **Secret Key**: AWS_DEFAULT_REGION
 
--   **Environment Variable**: AWS_S3_BUCKET
+🔸  **Environment Variable**: AWS_S3_BUCKET
 
 -   **Secret Name**: aws-connection-my-storage
 

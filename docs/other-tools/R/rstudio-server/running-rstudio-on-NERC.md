@@ -25,8 +25,8 @@
         Please ensure that you modify this based on your need in **Cluster Storage**.
 
 3.  If this procedure is successful, you have started your RStudio Web Server. When
-    your workbench is ready, the status will change to _Running_ and you can select
-    "Open" to go to your environment:
+    your workbench is ready, the status will change to _Running_ and you can click
+    on the workbench name to go to your environment:
 
     ![Open RStudio Web Server](images/open-rstudio-web-server.png)
 

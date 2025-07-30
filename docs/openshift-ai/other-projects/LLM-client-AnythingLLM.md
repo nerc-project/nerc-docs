@@ -61,7 +61,7 @@ chatbot solution.
 
 3.  If this procedure is successful, you have started your AnythingLLM Workbench.
     When your workbench is ready, the status will change to _Running_ and you can
-    select "Open" to go to your environment:
+    click on the workbench name to go to your environment:
 
     ![Open AnythingLLM Workbench](images/open-AnythingLLM-workbench.png)
 

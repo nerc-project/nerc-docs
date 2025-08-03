@@ -31,8 +31,9 @@ of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate a
     performance and reduce training time.
 
 If this procedure is successful, you have started your Jupyter notebook server.
-When your workbench is ready, the status will change to _Running_ and you can click
-on the workbench name to go to your environment:
+When your workbench is ready and the status changes to _Running_, click the open
+icon (![Open Workbench](images/open.png)) next to your workbench's name, or click
+the workbench name directly to access your environment:
 
 ![Open JupyterLab Environment](images/open-pytorch-jupyter-lab.png)
 

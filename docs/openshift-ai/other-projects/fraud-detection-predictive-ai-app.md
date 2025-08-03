@@ -69,14 +69,14 @@ or a script to create local S3 storage (MinIO) buckets:
 **Procedure**:
 
 Manually create two connections: **My Storage** and **Pipeline Artifacts**
-by following [How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
+by following [How to create a connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-connection).
 
 **Verification**:
 
 You should see two connections listed under your RHOAI Dashboard **My Storage**
 and **Pipeline Artifacts** as shown below:
 
-![Data Connections](images/data-connections.png)
+![Connections](images/data-connections.png)
 
 #### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
@@ -89,7 +89,7 @@ the following tasks:
 
 -   **Generates a random user ID and password** for the MinIO Console.
 
--   **Establishes two data connections** in your project - one for each bucket -
+-   **Establishes two connections** in your project - one for each bucket -
     using the same generated credentials.
 
 -   Installs all required **network policies**.
@@ -493,7 +493,7 @@ will open the MinIO web console that looks like below:
 !!! info "MinIO Web Console Login Credential"
 
     The Username and Password for the MinIO web console can be retrieved from
-    the Data Connection's **Access key** and **Secret key**.
+    the Connection's **Access key** and **Secret key**.
 
 iii. Navigate back to the OpenShift AI dashboard.
 
@@ -507,12 +507,12 @@ b. Click **Data connections**. You should see two connections listed:
 
 c. Verify the buckets are created on the MinIO Web Console:
 
--   Click on any data connection from the list that was created and then click
-the action menu (⋮) at the end of the selected data connection row. Choose
-"Edit data connection" from the dropdown menu. This will open a pop-up
+-   Click on any connection from the list that was created and then click
+the action menu (⋮) at the end of the selected connection row. Choose
+"Edit connection" from the dropdown menu. This will open a pop-up
  window as shown below:
 
-    ![Edit Data Connection Pop up](images/edit-data-connection.png)
+    ![Edit Connection Pop up](images/edit-data-connection.png)
 
 -   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
@@ -539,12 +539,12 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
 !!! note "Alternatively, Running a script to install local MinIO object storage"
 
     Alternatively, you can run a script to install local object storage
-    buckets and create data connections using the OpenShift CLI (`oc`).
+    buckets and create connections using the OpenShift CLI (`oc`).
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
     install MinIO object storage along with local S3 storage (MinIO) buckets
-    and necessary data connections:
+    and necessary connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/setup-s3.yaml`
 
@@ -634,9 +634,9 @@ i. Click on **"Add variable"**.
 ii. Select **"Config Map"** from the dropdown for the environment variable type.
 
 iii. Choose **"Key / Value"** and enter the following keys along with their corresponding
-values, which you have retrieved while "Editing data connection":
+values, which you have retrieved while "Editing connection":
 
-![Edit Data Connection Pop up](images/edit-data-connection.png)
+![Edit Connection Pop up](images/edit-data-connection.png)
 
 **Environment Variables**:
 
@@ -683,15 +683,16 @@ values, which you have retrieved while "Editing data connection":
 **Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
-server. When your workbench is ready, the status will change from _Starting_
-to _Running_ and you can click on the workbench name to go to your environment:
+server. When your workbench is ready and the status changes to _Running_, click
+the open icon (![Open Workbench](images/open.png)) next to your workbench's name,
+or click the workbench name directly to access your environment:
 
 ![Open Fraud Detection JupyterLab Environment](images/open-fraud-detection-jupyter-lab.png)
 
 !!! info "Note"
 
     If you made a mistake, you can edit the workbench to make changes. Please
-    make sure your toggle the _Running_ status of your workbench to _Stopped_
+    make sure you set the _Running_ status of your workbench to _Stopped_
     prior clicking the action menu (⋮) at the end of the selected workbench row
     as shown below:
 
@@ -977,7 +978,7 @@ iii. Scroll down to the **File Dependencies** section and then click **Add**.
 
 iv. Set the value to `data/*.csv` which contains the data to train your model.
 
-v. Select the Include Subdirectories option.
+v. Select the **Include Subdirectories** option.
 
 ![Set File Dependency Value](images/wb-pipeline-node-1-file-dep-form.png)
 
@@ -999,7 +1000,7 @@ iv. Set the value to `models/fraud/1/model.onnx`.
 
 ![Set file dependency value](images/wb-pipeline-node-1-file-output-form.png)
 
-v. Repeat steps 2-4 for node 2.
+v. Repeat steps ii-iv for node 2.
 
 vi. **Save** the pipeline.
 
@@ -1152,7 +1153,7 @@ potential fraud, providing an intuitive way to test the model's performance.
 Additionally, example inputs are provided within the UI to help users understand
 the expected data format and interact with the model effectively.
 
-The model application code is located in the `"application"` folder within the
+The model application code is located in the `application` folder within the
 root directory of `fraud-detection`. You can find this folder in the **GitHub repository**
 you cloned during the step: [Importing the tutorial files into the Jupyter environment](#importing-the-tutorial-files-into-the-jupyter-environment).
 

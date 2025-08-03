@@ -60,8 +60,9 @@ chatbot solution.
         Please ensure that you modify this based on your need in **Cluster Storage**.
 
 3.  If this procedure is successful, you have started your AnythingLLM Workbench.
-    When your workbench is ready, the status will change to _Running_ and you can
-    click on the workbench name to go to your environment:
+    When your workbench is ready and the status changes to _Running_, click the
+    open icon (![Open Workbench](images/open.png)) next to your workbench's name,
+    or click the workbench name directly to access your environment:
 
     ![Open AnythingLLM Workbench](images/open-AnythingLLM-workbench.png)
 

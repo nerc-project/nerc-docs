@@ -96,9 +96,10 @@ be populated with documents.
 
     Make sure these variables are properly set to establish a secure connection.
 
-3.  If this procedure is successful, you have started your RAG Workbench. When
-    your workbench is ready, the status will change to _Running_ and you can click
-    on the workbench name to go to your environment:
+3.  If this procedure is successful, you have started your RAG Workbench. When your
+    workbench is ready and the status changes to _Running_, click the open icon
+    (![Open Workbench](images/open.png)) next to your workbench's name, or click
+    the workbench name directly to access your environment:
 
     ![Open RAG Workbench](images/open-RAG-workbench.png)
 

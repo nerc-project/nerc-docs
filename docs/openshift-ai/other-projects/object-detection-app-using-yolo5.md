@@ -63,15 +63,15 @@ this bucket and its connection for notebooks and model servers.
 
 **Procedure**:
 
-Manually create a data connection: **My Storage** by following
-[How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
+Manually create a connection: **My Storage** by following
+[How to create a connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-connection).
 
 **Verification**:
 
-You should see a data connection listed under your RHOAI Dashboard **My Storage**
+You should see a connection listed under your RHOAI Dashboard **My Storage**
 as shown below:
 
-![Data Connections](images/single-data-connection.png)
+![Connections](images/single-data-connection.png)
 
 ### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
@@ -84,7 +84,7 @@ the following tasks:
 
 -   **Generates a random user ID and password** for the MinIO Console.
 
--   **Establishes a data connection** in your project - for a bucket - using
+-   **Establishes a connection** in your project - for a bucket - using
     the generated credentials.
 
 -   Installs all required **network policies**.
@@ -464,26 +464,26 @@ will open the MinIO web console that looks like below:
 !!! info "MinIO Web Console Login Credential"
 
     The Username and Password for the MinIO web console can be retrieved from
-    the Data Connection's **Access key** and **Secret key**.
+    the Connection's **Access key** and **Secret key**.
 
 iii. Navigate back to the OpenShift AI dashboard.
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Object Detection Workbench**.
 
-b. Click **Data connections**. You should see one data connection listed:
+b. Click **Data connections**. You should see one connection listed:
 *My Storage* as shown below:
 
-![Data Connections](images/single-data-connection.png)
+![Connections](images/single-data-connection.png)
 
 c. Verify the buckets are created on the MinIO Web Console:
 
--   Click on the newly created data connection from the list and then click
-the action menu (⋮) at the end of the selected data connection row. Choose
-"Edit data connection" from the dropdown menu. This will open a pop-up
+-   Click on the newly created connection from the list and then click
+the action menu (⋮) at the end of the selected connection row. Choose
+"Edit connection" from the dropdown menu. This will open a pop-up
  window as shown below:
 
-    ![Edit Data Connection Pop up](images/edit-data-connection.png)
+    ![Edit Connection Pop up](images/edit-data-connection.png)
 
 -   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
@@ -510,12 +510,12 @@ bucket: **my-storage** is visible as shown below:
 !!! note "Alternatively, Running a script to install local MinIO object storage"
 
     Alternatively, you can run a script to install local object storage
-    buckets and create data connections using the OpenShift CLI (`oc`).
+    buckets and create connections using the OpenShift CLI (`oc`).
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
     install MinIO object storage along with local S3 storage (MinIO) buckets
-    and necessary data connections:
+    and necessary connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/object-detection/main/setup/setup-s3.yaml`
 
@@ -564,9 +564,9 @@ i. Click on **"Add variable"**.
 ii. Select **"Config Map"** from the dropdown for the environment variable type.
 
 iii. Choose **"Key / Value"** and enter the following keys along with their corresponding
-values, which you have retrieved while "Editing data connection":
+values, which you have retrieved while "Editing connection":
 
-![Edit Data Connection Pop up](images/edit-data-connection.png)
+![Edit Connection Pop up](images/edit-data-connection.png)
 
 **Environment Variables**:
 
@@ -613,15 +613,16 @@ values, which you have retrieved while "Editing data connection":
 **Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
-server. When your workbench is ready, the status will change from _Starting_
-to _Running_ and you can click on the workbench name to go to your environment:
+server. When your workbench is ready and the status changes to _Running_, click
+the open icon (![Open Workbench](images/open.png)) next to your workbench's name,
+or click the workbench name directly to access your environment:
 
 ![Open Object Detection JupyterLab Environment](images/open-object-detection-jupyter-lab.png)
 
 !!! info "Note"
 
     If you made a mistake, you can edit the workbench to make changes. Please
-    make sure your toggle the _Running_ status of your workbench to _Stopped_
+    make sure you set the _Running_ status of your workbench to _Stopped_
     prior clicking the action menu (⋮) at the end of the selected workbench row
     as shown below:
 
@@ -747,7 +748,7 @@ within the root folder path of `object-detection`.
 
 In your JupyterLab environment, open the notebook file `04-save_model.ipynb` and
 follow the instructions. This notebook will guide you through saving the model
-to S3-compatible object storage, corresponding to the **My Storage** data connection,
+to S3-compatible object storage, corresponding to the **My Storage** connection,
 which was set up in [this step](#1-storing-data-with-connection).
 
 **Verification**:
@@ -818,14 +819,6 @@ loading symbol under the Status section. When the model has finished deploying,
 the status icon will be a **green checkmark** indicating the model deployment is
 complete as shown below:
 
-![Deployed model status](images/ds-project-model-list-status-mm.png)
-
-When you return to the Deployed models page, you will see your newly deployed model.
-You should click on the 1 on the Deployed models tab to see details. Notice the
-loading symbol under the Status section. When the model has finished deploying,
-the status icon will be a **green checkmark** indicating the model deployment is
-complete as shown below:
-
 ![Deployed model status](images/ds-project-model-list-status-od.png)
 
 ### Testing the model API
@@ -872,7 +865,7 @@ seamlessly. This app communicates with a remote model inference service via a
 REST API to process images and generate predictions about the objects in the
 uploaded image.
 
-The model application code is located in the `"application"` folder within the
+The model application code is located in the `application` folder within the
 root directory of `object-detection`. You can find this folder in the **GitHub repository**
 you cloned during the step: [Importing the tutorial files into the Jupyter environment](#importing-the-tutorial-files-into-the-jupyter-environment).
 
@@ -939,7 +932,7 @@ copy the **Model name** value. For example: `yolo`.
 **Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
 copy the **restUrl** value. For example: `http://modelmesh-serving.<your-namespace>:8008`.
 
-![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
+![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints-od.png)
 
 Your full settings page should look something like this:
 

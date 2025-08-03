@@ -112,6 +112,38 @@ For our example project, let's name it "Tensorflow Workbench". We'll select the
 **Accelerator** of **NVIDIA A100 GPU**, **Number of accelerators**
 as **1** and allocate a **Cluster storage** space of **1GB**.
 
+After creating the workbench, you will return to your project page. It shows the
+status of the workbench as shown below:
+
+![Workbench and Cluster Storage](images/open-tensorflow-jupyter-lab.png)
+
+When your workbench is ready and the status changes to _Running_, click the open
+icon (![Open Workbench](images/open.png)) next to your workbench's name, or click
+the workbench name directly to access your environment.
+
+!!! tip "How can I start or stop a Workbench?"
+
+    If the status of the workbench is `Stopped`, in the Status column for the workbench,
+    click `Start`. The Status column changes from `Stopped` to `Starting` when the
+    workbench server is starting, and then to `Running` when the workbench has
+    successfully started.
+
+    ![Change Workbench Status](images/change-workbench-status.png)
+
+Notice that under the status indicator the workbench is _Running_. However, if any
+issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
+under the Status indicator.
+
+You can hover over that icon to view details. Upon closer inspection of the error
+message and the "Event log", you will receive details about the issue, enabling
+you to resolve it accordingly.
+
+![Open JupyterLab Environment](images/workbench-cluster-storage.png)
+
+Any cluster storage that you associated with the workbench during the creation process
+appears on the "Cluster storage" tab for the project. Also, you can review the
+attached cluster storage by expanding the workbench as shown above.
+
 !!! info "More About Cluster Storage"
 
     Cluster storage consists of Persistent Volume Claims (PVCs), which are
@@ -129,27 +161,16 @@ as **1** and allocate a **Cluster storage** space of **1GB**.
     attached to any existing workbench cluster storage by selecting the **existing
     persistent storage** option while creating a new workbench.
 
-After creating the workbench, you will return to your project page. It shows the
-status of the workbench as shown below:
+!!! question "Note"
 
-![Workbench and Cluster Storage](images/open-tensorflow-jupyter-lab.png)
+    If your data science work requires changes to your workbench image, container
+    size, or identifying information, you can update your project's workbench
+    settings accordingly. For workloads involving large datasets, you can enhance
+    performance by assigning accelerators to your workbench.
 
-Notice that under the status indicator the workbench is _Running_. However, if any
-issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
-under the Status indicator.
+    ![Edit DSP Workbench](images/ds-project-workbench-list-edit.png)
 
-You can hover over that icon to view details. Upon closer inspection of the error
-message and the "Event log", you will receive details about the issue, enabling
-you to resolve it accordingly.
-
-When your workbench is ready and the status changes to _Running_, you can select
-"Open" to access your environment:
-
-![Open JupyterLab Environment](images/workbench-cluster-storage.png)
-
-!!! tip "How can I start or stop a Workbench?"
-
-    You can use this "toggle switch" under the "Status" section to easily _start/stop_
-    this environment later on.
+    Please make sure you set the _Running_ status of your workbench to _Stopped_
+    prior clicking the action menu (⋮) at the end of the selected workbench row.
 
 ---

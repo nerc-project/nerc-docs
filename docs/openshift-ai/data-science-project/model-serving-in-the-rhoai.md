@@ -8,10 +8,10 @@ To run a **model server** and **deploy a model** on it, you need to have:
     the data science project](using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
     for more information.
 
-## Create a data connection
+## Create a connection
 
 Once we have our workbench and cluster storage set up, we can create connections.
-Click the "Create connection" button to open the data connection configuration
+Click the "Create connection" button to open the connection configuration
 window as shown below:
 
 ![Create Connection](images/create-connection.png)
@@ -20,7 +20,7 @@ Connections are configurations for remote data location. Within this window,
 enter the information about the S3-compatible object bucket where the model is stored.
 Enter the following information:
 
--   **Name**: The name you want to give to the data connection.
+-   **Name**: The name you want to give to the connection.
 
 -   **Access Key**: The access key to the bucket.
 
@@ -36,7 +36,7 @@ Enter the following information:
 Services (AWS)**. Any S3-compatible storage i.e. NERC OpenStack Container (Ceph),
 Minio, AWS S3, etc. is supported.
 
-![Configure and Add A New Data Connection](images/configure-a-new-data-connection.png)
+![Configure and Add A New Connection](images/configure-a-new-data-connection.png)
 
 For our example project, let's name it "ocp-nerc-container-connect", we'll select
 the "us-east-1" as **Region**, choose "ocp-container" as **Bucket**.
@@ -72,13 +72,13 @@ as `https://stack.nerc.mghpcc.org:13808`, and the **Region** should be set as `u
     **ONNX**: An open standard for machine learning interoperability.
 
 After completing the required fields, click **Create connection**. You should
-now see the data connection displayed in the main project window as shown below:
+now see the connection displayed in the main project window as shown below:
 
-![New Data Connection Info](images/data-connection-info.png)
+![New Connection Info](images/data-connection-info.png)
 
 ## Create a model server
 
-After creating the data connection, you can add your model server. In the
+After creating the connection, you can add your model server. In the
 OpenShift AI dashboard, navigate to the data science project details page and
 click the **Models** tab. If this is the first time then you will be able to choose
 the model serving type such as either **Single-model serving platform** or
@@ -177,12 +177,12 @@ Enter the following information for your new model:
 -   **Model framework (name-version)**: The framework used to save this model.
     At this time, OpenVINO IR or ONNX or Tensorflow are supported.
 
--   **Model location**: Select the data connection that you created to store the
-    model. Alternatively, you can create another data connection directly from this
+-   **Model location**: Select the connection that you created to store the
+    model. Alternatively, you can create another connection directly from this
     menu.
 
 -   **Folder path**: If your model is not located at the root of the bucket of your
-    data connection, you must enter the path to the folder it is in.
+    connection, you must enter the path to the folder it is in.
 
 For our example project, let's name the **Model** as "coolstore", select
 "onnx-1" for the framework, select the Data location you created before for the

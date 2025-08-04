@@ -1144,6 +1144,78 @@ The result should be a `models/fraud/1/model.onnx` file in your S3 bucket which
 you can serve, just like you did manually in the [Preparing a model for deployment](#4-preparing-a-model-for-deployment)
 section.
 
+#### Running a data science pipeline generated from Python code
+
+In the previous section, you created a simple pipeline using the graphical pipeline
+editor. However, it's often preferable to define pipelines in code, allowing for
+version control and easier collaboration. 
+
+The [Kubeflow pipelines (kfp)](https://github.com/kubeflow/pipelines) SDK offers
+a Python API for building pipelines programmatically. You can install the SDK
+using the following command:
+
+    pip install kfp
+
+With this package, you can write pipeline definitions in Python, compile them into
+YAML format, and then import the resulting YAML into OpenShift AI.
+
+The [GitHub repository](https://github.com/nerc-project/fraud-detection) provides
+the files for you to view and upload.
+
+1. Optionally, view the provided Python code in your JupyterLab environment by
+navigating to the `fraud-detection` project's `pipeline` directory. It contains
+the following files:
+
+    - `6_get_data_train_upload.py` is the main pipeline code.
+
+    - `build.sh` is a script that builds the pipeline and creates the YAML file.
+
+    For your convenience, the output of the `build.sh` script is provided in the
+    top-level `fraud-detection` directory named as `6_get_data_train_upload.yaml`
+    as shown below:
+
+    ![Pipeline Files and Folder](images/pipeline-files-folder.png)
+
+2. Right-click the `6_get_data_train_upload.yaml` file and then click **Download**.
+
+3. Upload the `6_get_data_train_upload.yaml` file to OpenShift AI.
+
+    i. In the OpenShift AI dashboard, navigate to your data science project page.
+    Click the **Pipelines** tab and then click **Import pipeline**.
+
+    ii. Enter values for **Pipeline name** and **Pipeline description**.
+
+    iii. Click **Upload** and then select `6_get_data_train_upload.yaml` from your
+    local files to upload the pipeline.
+
+    ![Pipeline Upload](images/ds-pipeline-upload.png)
+
+    iv. Click **Import pipeline** to import and save the pipeline.
+
+    The pipeline shows in graphic view as shown below:
+
+    ![Pipeline Graph](images/ds-pipeline-graph.png)
+
+4. Select **Actions** >> **Create run**.
+
+5. On the Create run page, provide the following values:
+
+    i. For **Experiment**, leave the value as `Default`.
+
+    ii. For **Name**, type any name, for example `Run 1`.
+
+    iii. For **Pipeline**, select the pipeline that you uploaded.
+
+    You can leave the other fields with their default values.
+
+    ![Create Pipeline Run](images/ds-create-pipeline-run.png)
+
+6. Click **Create run** to create the run.
+
+    A new run starts immediately.
+
+    ![Create Pipeline Run](images/ds-pipeline-run.png)
+
 ## Deploy the Model Application on NERC OpenShift
 
 The **model application** includes a visual user interface (UI) powered by [Gradio](https://www.gradio.app/),

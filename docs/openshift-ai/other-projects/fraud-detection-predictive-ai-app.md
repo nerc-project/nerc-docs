@@ -1166,15 +1166,26 @@ the files for you to view and upload.
 navigating to the `fraud-detection` project's `pipeline` directory. It contains
 the following files:
 
+    - `6_get_data_train_upload-tekton.yaml` is unused older version of pipeline
+    YAML file using [Tekton](https://tekton.dev/).
+
     - `6_get_data_train_upload.py` is the main pipeline code.
 
     - `build.sh` is a script that builds the pipeline and creates the YAML file.
 
-    For your convenience, the output of the `build.sh` script is provided in the
-    top-level `fraud-detection` directory named as `6_get_data_train_upload.yaml`
+    For your convenience, the output of the `build.sh` script is available in the
+    top-level `fraud-detection` directory. The file is named `6_get_data_train_upload.yaml`,
     as shown below:
 
     ![Pipeline Files and Folder](images/pipeline-files-folder.png)
+
+    !!! info "Note"
+
+        You can also run the `build.sh` script manually from your local terminal
+        by executing the following command from the `pipeline` directory of the
+        `fraud-detection` project:
+
+            sh ./build.sh
 
 2. Right-click the `6_get_data_train_upload.yaml` file and then click **Download**.
 

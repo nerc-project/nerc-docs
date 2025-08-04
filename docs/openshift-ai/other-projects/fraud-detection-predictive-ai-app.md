@@ -1148,7 +1148,7 @@ section.
 
 In the previous section, you created a simple pipeline using the graphical pipeline
 editor. However, it's often preferable to define pipelines in code, allowing for
-version control and easier collaboration. 
+version control and easier collaboration.
 
 The [Kubeflow pipelines (kfp)](https://github.com/kubeflow/pipelines) SDK offers
 a Python API for building pipelines programmatically. You can install the SDK

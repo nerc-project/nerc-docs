@@ -774,7 +774,7 @@ create a new model server and deploy your model to it.
 In the OpenShift AI dashboard, navigate to the data science project details page
 and click the **Models** tab.
 
-Select **Add server** as shown below:
+Select **Add model server** as shown below:
 
 ![Add A Model Server](images/add-multi-model-server.png)
 

@@ -84,7 +84,35 @@ click the **Models** tab. If this is the first time then you will be able to cho
 the model serving type such as either **Single-model serving platform** or
 **Multi-model serving platform** to be used when deploying from this project.
 
-![Add A Model Server](images/add-multi-model-server.png)
+![Add A Model Server](images/add-a-model-server.png)
+
+OpenShift AI offers two options for model serving:
+
+**1. Single-Model Serving**:
+
+Each model is deployed on its own dedicated model server. This approach is ideal
+for:
+
+- Large language models (LLMs)
+
+- Generative AI
+
+- Models that require dedicated resources
+
+The single-model serving platform is based on the [KServe](https://github.com/kserve/kserve)
+component.
+
+**2. Multi-Model Serving**:
+
+All models within the project are deployed on a shared model server. This setup
+is best suited for:
+
+- Efficient resource sharing among models
+
+- Lightweight models with lower resource demands
+
+The multi-model serving platform is based on the [ModelMesh](https://github.com/kserve/modelmesh)
+component.
 
 !!! note "Important Note"
 

@@ -1159,6 +1159,11 @@ using the following command:
 With this package, you can write pipeline definitions in Python, compile them into
 YAML format, and then import the resulting YAML into OpenShift AI.
 
+!!! info "Note"
+
+    In OpenShift AI, the current version of kfp uses **Argo Workflows** as its
+    execution backend.
+
 The [GitHub repository](https://github.com/nerc-project/fraud-detection) provides
 the files for you to view and upload.
 
@@ -1167,7 +1172,7 @@ navigating to the `fraud-detection` project's `pipeline` directory. It contains
 the following files:
 
     - `6_get_data_train_upload-tekton.yaml` is unused older version of pipeline
-    YAML file using [Tekton](https://tekton.dev/).
+    YAML file using the [OpenShift Pipeline (Tekton)](https://tekton.dev/).
 
     - `6_get_data_train_upload.py` is the main pipeline code.
 

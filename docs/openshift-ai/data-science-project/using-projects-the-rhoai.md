@@ -132,13 +132,15 @@ the workbench name directly to access your environment.
 
 Notice that under the status indicator the workbench is _Running_. However, if any
 issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
-under the Status indicator.
+under the Status indicator, as shown in the example below:
+
+![Workbench with Error](images/workbench-error-status.png)
 
 You can hover over that icon to view details. Upon closer inspection of the error
 message and the "Event log", you will receive details about the issue, enabling
 you to resolve it accordingly.
 
-![Open JupyterLab Environment](images/workbench-cluster-storage.png)
+![Workbench Successfully Launched](images/workbench-cluster-storage.png)
 
 Any cluster storage that you associated with the workbench during the creation process
 appears on the "Cluster storage" tab for the project. Also, you can review the

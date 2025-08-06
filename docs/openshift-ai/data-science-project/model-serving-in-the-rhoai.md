@@ -231,7 +231,7 @@ the model deployment is complete as shown below:
     When you delete a model server, all models hosted on it are also removed,
     making them unavailable to applications.
 
-## Test the model API
+## Check the model API
 
 The model is now accessible through the API endpoint of the model server. The
 information about the endpoint is different, depending on how you configured the

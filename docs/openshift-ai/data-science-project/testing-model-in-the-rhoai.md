@@ -59,16 +59,18 @@ in an augmented reality way.
 
 ### Architecture
 
+![Application Architecture](images/intelligent-application-architecture.png)
+
 The different components of this intelligent application are:
 
-• **The Frontend**: a React application, typically running on the browser of your
-phone,
+• **The Frontend**: a [React](https://react.dev/) application, typically running
+on the browser of your phone or web browser.
 
 • **The Backend**: a NodeJS server, serving the application and relaying API calls,
 
-• **The Pre-Post Processing Service**: a Python FastAPI service, doing the image
-pre-processing, calling the model server API, and doing the post-processing before
-sending the results back.
+• **The Pre-Post Processing Service**: a Python [FastAPI](https://fastapi.tiangolo.com/)
+service, doing the image pre-processing, calling the model server API, and doing
+the post-processing before sending the results back.
 
 • **The Model Server**: the RHOAI component serving the model as an API to do
 the inference.
@@ -85,7 +87,7 @@ the inference.
 
 5. Pass the result to the frontend for display
 
-### Deploy the application
+### Deploy the Application on NERC OpenShift
 
 The deployment of the application is really easy, as we already created for you
 the necessary YAML files. They are included in the Git project we used for this

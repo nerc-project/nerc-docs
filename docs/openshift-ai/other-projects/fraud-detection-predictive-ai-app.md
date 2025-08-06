@@ -770,6 +770,46 @@ double click it and execute the "Run" button to run all notebook cells at once.
 This process will take some time to complete. At the end, it will generate and
 save the model `model.onnx` within the `models/fraud/1/` folder path of `fraud-detection`.
 
+##### Adding MLflow to Training Code
+
+!!! info "What is MLflow?"
+
+    [MLflow](../../other-tools/mlflow/mlflow-overview.md) is an open-source platform
+    that helps manage the entire machine learning lifecycle, including experimentation,
+    reproducibility, deployment, and model management. For more information about
+    how to set up your own MLflow server, read [this user guide](../../other-tools/mlflow/mlflow-server-setup.md).
+
+In your Jupyter notebook environment, within the root folder path of `fraud-detection`,
+find the `mlflow` directory. It contains the following files:
+
+- `model.ipynb`: This Jupyter notebook contains the end-to-end machine learning
+    workflow, including data preprocessing, model training, and MLflow logging.
+
+- `requirements.txt`: This file lists all the Python package dependencies needed
+    to run the code in `model.ipynb`.
+
+Go back to your "Fraud detection" workbench and add a new  **Environment Variable**
+to specify the Key/Value pairs related to the your MLflow server by clicking the
+action menu (⋮) at the end of your workbench.
+
+To add Environment variable please follow the following steps:
+
+i. Click on **"Add another key / value pair"** under existing "Environment variables"
+section:
+
+ii. Choose **"Key / Value"** and enter the following keys along with their corresponding
+values, which you have retrieved while "Editing connection":
+
+**Environment Variables**:
+
+    Key: MLFLOW_ROUTE
+    Value: https://mlflow-route-<your-namespace>.apps.shift.nerc.mghpcc.org
+
+![MLflow Route Environment Variable](images/mlflow-route-environment-var.png)
+
+Once you execute the provided `model.ipynb`, you’ll be able to track the entire
+training lifecycle by navigating to your MLflow tracking server at: `https://mlflow-route-<your-namespace>.apps.shift.nerc.mghpcc.org`.
+
 ### 4. Preparing a model for deployment
 
 **Procedure**:

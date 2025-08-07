@@ -161,6 +161,12 @@ In the pop-up window that appears, you can specify the following details:
 -   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
     it to leverage optimized hardware for faster inference and improved efficiency.
 
+    !!! warning "Serving Runtime and Accelerator Compatibility"
+
+        If you need to use an **Accelerator**, it is recommended to select a compatible
+        **Serving runtime** for optimal performance. Also, **Number of accelerators**
+        (GPUs) is based on your available quota for GPUs for your project.
+
 -   **Model route**: Check this box if you want the serving endpoint (the model serving
     API) to be accessible outside of the OpenShift cluster through an external route.
 

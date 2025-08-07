@@ -105,12 +105,12 @@ On the Create workbench page, complete the following information.
 
 Once you have entered the information for your workbench, click **Create**.
 
-![Fill Workbench Information](images/tensor-flow-workbench.png)
+![Fill Workbench Information](images/tensorflow-workbench.png)
 
 For our example project, let's name it "Tensorflow Workbench". We'll select the
 **TensorFlow** image, choose a **Deployment size** of **Small**,
 **Accelerator** of **NVIDIA A100 GPU**, **Number of accelerators**
-as **1** and allocate a **Cluster storage** space of **1GB**.
+as **1** and allocate a **Cluster storage** space of **20GB** (By Default Selected).
 
 After creating the workbench, you will return to your project page. It shows the
 status of the workbench as shown below:

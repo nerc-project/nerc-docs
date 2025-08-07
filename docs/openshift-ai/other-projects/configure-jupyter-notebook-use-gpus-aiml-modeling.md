@@ -23,7 +23,7 @@ and Number of accelerators (GPUs).
 For our example project, let's name it "PyTorch Workbench". We'll select the
 **PyTorch** image, choose a **Deployment size** of **Small**, choose **Accelerator**
 of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate a
-**Cluster storage** space of **1GB**.
+**Cluster storage** space of **20GB** (By Default Selected).
 
 !!! tip "Hardware Acceleration using GPU"
 

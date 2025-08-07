@@ -73,7 +73,8 @@ be populated with documents.
     For our example project, let's name it "RAG Workbench". We'll select the
     **TensorFlow** image with Recommended Version (selected by default), choose
     a **Deployment size** of **Medium**, **Accelerator** as **None** (no GPU is
-    needed for this setup) and allocate a **Cluster storage** space of **20GB**.
+    needed for this setup) and allocate a **Cluster storage** space of **20GB**
+    (By Default Selected).
 
     !!! tip "Tip"
 

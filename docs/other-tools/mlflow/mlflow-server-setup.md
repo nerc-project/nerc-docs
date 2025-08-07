@@ -191,6 +191,12 @@ if __name__ == "__main__":
         # train
 ```
 
+!!! tip "How to add MLflow to your Training Code?"
+
+    You can review this provided **Credit Card Fraud Detection Application** to
+    understand how to integrate MLflow into your model training process. The
+    detailed steps are outlined [here](../../openshift-ai/other-projects/fraud-detection-predictive-ai-app.md#adding-mlflow-to-training-code).
+
 ## Examples
 
 Set up your Python Virtual environment and install all required packages by running:

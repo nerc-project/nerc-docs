@@ -15,6 +15,9 @@ The overall user flow can be summarized using the following sequence diagram:
 
 1. All users including PI need to register to NERC via: [https://regapp.mss.mghpcc.org/](https://regapp.mss.mghpcc.org/).
 
+    For detailed instructions on creating a user account through **RegApp**, refer
+    to [this guide](create-a-user-portal-account.md).
+
 2. **PI** will send a request for a Principal Investigator (PI) user account role
     by submitting: [NERC's PI Request Form](https://nerc.mghpcc.org/pi-account-request/).
 
@@ -40,6 +43,9 @@ The overall user flow can be summarized using the following sequence diagram:
     and add user(s) to the project - Other **general user(s)** can also see the project(s)
     once they are added to a project via: [https://coldfront.mss.mghpcc.org](https://coldfront.mss.mghpcc.org/).
 
+    For detailed instructions about **NERC's ColdFront** and how to use it, refer
+    to [this guide](allocation/coldfront.md).
+
 5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**
     or **NERC-OCP (OpenShift)** for the newly added project and select which user(s)
     can use the requested allocation.
@@ -58,5 +64,12 @@ The overall user flow can be summarized using the following sequence diagram:
     or NERC OpenShift web console: [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
     based on approved **Resource Type** and they can start using the NERC's resources
     based on the approved project **quotas**.
+
+    For detailed guidance on using **NERC (OpenStack)** and **NERC-OCP (OpenShift)**,
+    please refer to the respective user guides below:
+
+    - [**NERC (OpenStack)**](../openstack/index.md)
+
+    - [**NERC-OCP (OpenShift)**](../openshift/index.md)
 
 ---

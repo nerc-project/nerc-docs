@@ -16,11 +16,25 @@ window as shown below:
 
 ![Create Connection](images/create-connection.png)
 
-Connections are configurations for remote data location. Within this window,
-enter the information about the S3-compatible object bucket where the model is stored.
-Enter the following information:
+Connections are configurations for remote data location. In the Add connection modal,
+select a Connection type. The **OCI-compliant registry**,
+**S3 compatible object storage**, and **URI** options are pre-installed connection
+types. Please select "S3 compatible object storage - v1" as your *Connection type*
+as shown below:
 
--   **Name**: The name you want to give to the connection.
+![Connection Type Selection Options](images/connection-type-selection.png)
+
+Within this window, enter the information about the S3-compatible object bucket
+where the model is stored. Enter the following information:
+
+-   **Connection name**: Enter a unique name for the connection. A resource name
+    is generated based on the name of the connection. A resource name is the label
+    for the underlying resource in OpenShift.
+
+    **Optional:** Edit the default resource name. Note that you cannot change the
+    resource name after you create the connection.
+
+    **Optional:** Provide a description of the connection.
 
 -   **Access Key**: The access key to the bucket.
 
@@ -71,10 +85,16 @@ as `https://stack.nerc.mghpcc.org:13808`, and the **Region** should be set as `u
 
     **ONNX**: An open standard for machine learning interoperability.
 
-After completing the required fields, click **Create connection**. You should
-now see the connection displayed in the main project window as shown below:
+After completing the required fields, click **Create**. You should now see the
+connection displayed in the main project window as shown below:
 
 ![New Connection Info](images/data-connection-info.png)
+
+!!! tip "Other Connection Type"
+
+    If you selected **URI** in the preceding step, in the URI field, enter the
+    Uniform Resource Identifier (URI). If you selected **OCI-compliant registry**
+    in the preceding step, in the OCI storage location field, enter the URI.
 
 ## Create a model server
 
@@ -102,6 +122,68 @@ for:
 The single-model serving platform is based on the [KServe](https://github.com/kserve/kserve)
 component.
 
+When you select "Single-model serving platform", you will be directly able to
+deploy model by clicking **Deploy model** button as shown below:
+
+![Single-model serving platform](images/single-model-serving.png)
+
+In the pop-up window that appears, you can specify the following details:
+
+-   **Model deployment name**: This is the name of the inference service created
+    when the model is deployed.
+
+-   **Serving runtime**: Select a model-serving runtime framework from the available
+    options in your OpenShift Data Science deployment. This framework is used to
+    deploy and serve machine learning models.
+
+-   **Model framework (name - version)**: This will be auto selected based on your
+    Serving runtime selection.
+
+-   **Deployment mode**: Deployment modes define which technology stack will be
+    used to deploy a model, offering different levels of management and scalability.
+    The options available are:
+
+-   **Advanced**: Advanced deployment mode uses *Knative Serverless*. By default,
+        KServe integrates with Red Hat OpenShift Serverless and Red Hat OpenShift
+        Service Mesh to deploy models on the single-model serving platform.
+
+-   **Standard**: Alternatively, you can use standard deployment mode, which
+        uses KServe RawDeployment mode.
+
+-   **Number of model server replicas to deploy**: This is the number of instances
+    of the model server engine that you want to deploy. You can scale it up as needed,
+    depending on the number of requests you will receive.
+
+-   **Model server size**: This is the amount of resources, CPU, and RAM that will
+    be allocated to your server. Select the appropriate configuration for size and
+    the complexity of your model.
+
+-   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
+    it to leverage optimized hardware for faster inference and improved efficiency.
+
+-   **Model route**: Check this box if you want the serving endpoint (the model serving
+    API) to be accessible outside of the OpenShift cluster through an external route.
+
+-   **Token authorization**: Check this box if you want to secure or restrict access
+    to the model by forcing requests to provide an authorization token.
+
+-   **Source model location**: To specify the location of your model, either select
+    an existing connection you previously created or create a new one.
+
+    !!! warning "Very Important"
+
+        If your connection type is an **S3-compatible object storage**, you must
+        provide the folder path that contains your data file. The
+        **OpenVINO Model Server** runtime has specific requirements for how you
+        specify the model path. For more information, see known issue [RHOAIENG-3025](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html-single/release_notes/index#known-issues_RHOAIENG-3025_relnotes)
+        in the OpenShift AI release notes.
+
+-   **Optional**: Customize the runtime parameters in the Configuration parameters
+    section.
+
+After adding and selecting options within the **Deploy model** pop-up window,
+click **Deploy** to create the model server.
+
 **2. Multi-Model Serving**:
 
 All models within the project are deployed on a shared model server. This setup
@@ -114,19 +196,8 @@ is best suited for:
 The multi-model serving platform is based on the [ModelMesh](https://github.com/kserve/modelmesh)
 component.
 
-!!! note "Important Note"
-
-    You can change the model serving type before the first model is deployed from
-    this project. After deployment, switching types requires deleting all models
-    and servers.
-
-When you select "Single-model serving platform", you will be directly able to
-deploy model by clicking **Deploy model** button as shown below:
-
-![Single-model serving platform](images/single-model-serving.png)
-
-Whereas, when you select "Multi-model serving platform", you will be to create
-a model server by clicking **Add model server** button as shown below:
+When you select "Multi-model serving platform", you will be to create a model
+server by clicking **Add model server** button as shown below:
 
 ![Multi-model serving platform](images/add-multi-model-server.png)
 
@@ -163,6 +234,8 @@ In the pop-up window that appears, you can specify the following details:
 
 After adding and selecting options within the **Add model server** pop-up
 window, click **Add** to create the model server.
+
+---
 
 For our example project, we will choose "Multi-model serving platform" and then
 add a new model server and let's name the **Model server** as "coolstore-modelserver".

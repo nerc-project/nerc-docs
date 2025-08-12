@@ -137,7 +137,7 @@ copy and paste on the web GUI on the browser.
     ![Initial Admin Password](images/jenkins_admin_password.png)
 
 -   Once you login to the Jenkins Web UI by entering the admin password shown on
-    CLI terminal, click on the "Install suggested plugins" button as shown below:
+    CLI terminal, click on the "Install suggested plugins" button, as shown below:
 
     ![Install Customize Jenkins Plugins](images/customize-jenkins-installing-plugins.png)
 
@@ -160,7 +160,7 @@ copy and paste on the web GUI on the browser.
     ![Jenkins Plugin Installation](images/plugins-installation.png)
 
     Select the "Available" tab and then locate **Docker pipeline** by searching
-    and then click "Install without restart" button as shown below:
+    and then click "Install without restart" button, as shown below:
 
     ![Jenkins Required Plugin To Install](images/install-docker-pipeline-plugin.png)
 

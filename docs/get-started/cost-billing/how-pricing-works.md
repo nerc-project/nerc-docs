@@ -381,7 +381,7 @@ oc scale deployment <your-deployment> --replicas=1
 **Toggle the Workbench to "Stopped"**:
 
 In [NERC Red Hat OpenShift AI (RHOAI)](../../openshift-ai/index.md), workbench
-environments can be toggled between **Running** and **Stopped** states.
+environments can be toggled between `Running` and `Stopped` states.
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
@@ -391,15 +391,18 @@ icon that looks like a grid), located on the header.
 
 3. When you've completed a workload such as model development or experimentation
 using the [Data Science Project (DSP)](../../openshift-ai/data-science-project/using-projects-the-rhoai.md)
-**Workbench**, you can stop the compute resources by toggling the status from
-**Running** to **Stopped**, as shown below:
+**Workbench**, you can stop the compute resources used by the workbench
+by clicking `Stop`, next to the **Status** column for the workbench. Then the
+status of the workbench change from `Running` to `Stopped`, as shown below:
 
-    ![Toggle Workbench](images/toggle-workbench.png)
+    ![Change Workbench Status](images/change-workbench-status.png)
 
     This action immediately releases the compute resources allocated to the notebook
     environment within the Workbench setup.
 
-    When you need to run your workbench again, just toggle its status back from
-    **Stopped** to **Running**.
+    To restart your workbench, click `Start` next to the **Status** column for the
+    workbench. The status will change from **Stopped** to `Starting` while the
+    server initializes, and then to `Running` once the workbench has successfully
+    started.
 
 ---

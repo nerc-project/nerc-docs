@@ -21,8 +21,9 @@ select the **Standard Data Science** image, choose a **Deployment size** of **Sm
 **Cluster storage** space of **1GB**.
 
 If this procedure is successful, you have started your Jupyter notebook server.
-When your workbench is ready, the status will change to _Running_ and you can select
-"Open" to go to your environment:
+When your workbench is ready and the status changes to _Running_, click the open
+icon (![Open Workbench](images/open.png)) next to your workbench's name, or click
+the workbench name directly to access your environment:
 
 ![Open JupyterLab Environment](images/open-standard-ds-workbench-jupyter-lab.png)
 
@@ -63,7 +64,7 @@ Then click on **Clone a Repository** as shown below:
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/rh-aiservices-bu/access-s3-data](https://github.com/rh-aiservices-bu/access-s3-data).
 
-Then click **Clone** button as shown below:
+Then click **Clone** button, as shown below:
 
 ![Access, Download and Analysis Example Project](images/access-download-and-analysis-s3-data-git-repo.png)
 

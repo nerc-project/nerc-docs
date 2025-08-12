@@ -1,14 +1,17 @@
 # Explore the JupyterLab Environment
 
-When your workbench is ready, the status will change to _Running_ and you can select
-"Open" to go to your environment:
+When your workbench is ready and the status changes to _Running_, click the open
+icon (![Open Workbench](images/open.png)) next to your workbench's name, or click
+the workbench name directly to access your environment:
 
 ![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
 
 !!! tip "How can I start or stop a Workbench?"
 
-    You can use this "toggle switch" under the "Status" section to easily _start/stop_
-    this environment later on.
+    If the status of the workbench is `Stopped`, in the Status column for the workbench,
+    click `Start`. The Status column changes from `Stopped` to `Starting` when the
+    workbench server is starting, and then to `Running` when the workbench has
+    successfully started.
 
 Make sure you are selecting "**mss-keycloak**" once shown:
 
@@ -55,7 +58,7 @@ Then click on **Clone a Repository** as shown below:
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/nerc-project/nerc_rhoai_mlops](https://github.com/nerc-project/nerc_rhoai_mlops).
 
-Then click **Clone** button as shown below:
+Then click **Clone** button, as shown below:
 
 ![NERC RHOAI MLOps Example Project](images/nerc-mlops-git-repo.png)
 
@@ -193,7 +196,7 @@ generate and save the model `my-model.keras` within the root folder path of
 
     In this tutorial, the fine-tuned model has been stored and is available for
     download on the NERC OpenStack Object Storage container, as
-    [described here](model-serving-in-the-rhoai.md#create-a-data-connection).
+    [described here](model-serving-in-the-rhoai.md#create-a-connection).
     However, you can also set up your own S3 backend to store the model by using
     a script to configure local S3 storage (MinIO), as [explained here](../../openshift/storage/minio.md).
 

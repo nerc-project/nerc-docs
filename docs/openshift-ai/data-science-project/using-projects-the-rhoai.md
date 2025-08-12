@@ -27,24 +27,30 @@ details page, as shown below:
 
 Within the data science project, you can add the following configuration options:
 
--   **Workbenches**: Development environments within your project where you can access
-    notebooks and generate models.
+-   **Workbenches**: are instances of your development and experimentation environment.
+    They typically contain IDEs, such as JupyterLab, RStudio, and Visual Studio Code.
+
+-   **Pipelines**: A list of created and configured data science pipeline servers
+    within the project.
+
+-   **Models**: A list of models and model servers that your project uses. Models
+    allow you to quickly serve a trained model for real-time inference. You can
+    have multiple model servers per data science project. One model server can
+    host multiple models.
 
 -   **Cluster storage**: Storage for your project in your OpenShift cluster.
 
--   **Data connections**: A list of data sources that your project uses.
+-   **Connections**: A list of data sources that your project uses, such as an S3
+    object bucket.
 
--   **Pipelines**: A list of created and configured pipeline servers.
-
--   **Models and model servers**: A list of models and model servers that your project
-    uses.
+-   **Permissions**: define which users and groups can access the project.
 
 As you can see in the project's details figure, our selected data science project
-currently has no workbenches, storage, data connections, pipelines, or model servers.
+currently has no workbenches, pipelines, models, storage, connections, and permissions.
 
 ## Populate the data science project with a Workbench
 
-Add a workbench by clicking the Create workbench button as shown below:
+Add a workbench by clicking the Create workbench button, as shown below:
 
 ![Create Workbench](images/create-workbench.png)
 
@@ -74,7 +80,7 @@ On the Create workbench page, complete the following information.
 
 -   Persistent storage size
 
--   Data connections
+-   Connections
 
 !!! tip "How to specify CPUs, Memory, and GPUs for your JupyterLab workbench?"
 
@@ -99,12 +105,46 @@ On the Create workbench page, complete the following information.
 
 Once you have entered the information for your workbench, click **Create**.
 
-![Fill Workbench Information](images/tensor-flow-workbench.png)
+![Fill Workbench Information](images/tensorflow-workbench.png)
 
 For our example project, let's name it "Tensorflow Workbench". We'll select the
 **TensorFlow** image, choose a **Deployment size** of **Small**,
 **Accelerator** of **NVIDIA A100 GPU**, **Number of accelerators**
-as **1** and allocate a **Cluster storage** space of **1GB**.
+as **1** and allocate a **Cluster storage** space of **20GB** (Selected By Default).
+
+After creating the workbench, you will return to your project page. It shows the
+status of the workbench as shown below:
+
+![Workbench and Cluster Storage](images/open-tensorflow-jupyter-lab.png)
+
+When your workbench is ready and the status changes to _Running_, click the open
+icon (![Open Workbench](images/open.png)) next to your workbench's name, or click
+the workbench name directly to access your environment.
+
+!!! tip "How can I start or stop a Workbench?"
+
+    If the status of the workbench is `Stopped`, in the Status column for the workbench,
+    click `Start`. The Status column changes from `Stopped` to `Starting` when the
+    workbench server is starting, and then to `Running` when the workbench has
+    successfully started.
+
+    ![Change Workbench Status](images/change-workbench-status.png)
+
+Notice that under the status indicator the workbench is _Running_. However, if any
+issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
+under the Status indicator, as shown in the example below:
+
+![Workbench with Error](images/workbench-error-status.png)
+
+You can hover over that icon to view details. Upon closer inspection of the error
+message and the "Event log", you will receive details about the issue, enabling
+you to resolve it accordingly.
+
+![Workbench Successfully Launched](images/workbench-cluster-storage.png)
+
+Any cluster storage that you associated with the workbench during the creation process
+appears on the "Cluster storage" tab for the project. Also, you can review the
+attached cluster storage by expanding the workbench as shown above.
 
 !!! info "More About Cluster Storage"
 
@@ -123,29 +163,16 @@ as **1** and allocate a **Cluster storage** space of **1GB**.
     attached to any existing workbench cluster storage by selecting the **existing
     persistent storage** option while creating a new workbench.
 
-After creating the workbench, you will return to your project page. It shows the
-status of the workbench as shown below:
+!!! question "Note"
 
-![Workbench and Cluster Storage](images/workbench-cluster-storage.png)
+    If your data science work requires changes to your workbench image, container
+    size, or identifying information, you can update your project's workbench
+    settings accordingly. For workloads involving large datasets, you can enhance
+    performance by assigning accelerators to your workbench.
 
-Notice that under the status indicator the workbench is _Running_. However, if any
-issues arise, such as an "exceeded quota" error, a red exclamation mark will appear
-under the Status indicator, as shown in the example below:
+    ![Edit DSP Workbench](images/ds-project-workbench-list-edit.png)
 
-![Workbench Error Status](images/workbench-error-status.png)
-
-You can hover over that icon to view details. Upon closer inspection of the error
-message and the "Event log", you will receive details about the issue, enabling
-you to resolve it accordingly.
-
-When your workbench is ready and the status changes to _Running_, you can select
-"Open" to access your environment:
-
-![Open JupyterLab Environment](images/open-tensorflow-jupyter-lab.png)
-
-!!! tip "How can I start or stop a Workbench?"
-
-    You can use this "toggle switch" under the "Status" section to easily _start/stop_
-    this environment later on.
+    Please make sure you set the _Running_ status of your workbench to _Stopped_
+    prior clicking the action menu (⋮) at the end of the selected workbench row.
 
 ---

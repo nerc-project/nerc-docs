@@ -49,7 +49,7 @@ If you don't have access to the receiving project, give the transfer ID and
 Authorization Key to a collaborator who does, and have them complete the next steps.
 
 In the receiving project, go to the Volumes tab, and click "Accept Transfer"
-button as shown below:
+button, as shown below:
 
 ![Volumes in a New Project](images/volumes-in-a-new-project.png)
 

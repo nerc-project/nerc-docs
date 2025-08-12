@@ -64,7 +64,7 @@ Then click on **Clone a Repository** as shown below:
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/rh-aiservices-bu/access-s3-data](https://github.com/rh-aiservices-bu/access-s3-data).
 
-Then click **Clone** button as shown below:
+Then click **Clone** button, as shown below:
 
 ![Access, Download and Analysis Example Project](images/access-download-and-analysis-s3-data-git-repo.png)
 

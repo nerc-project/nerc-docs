@@ -50,7 +50,7 @@ currently has no workbenches, pipelines, models, storage, connections, and permi
 
 ## Populate the data science project with a Workbench
 
-Add a workbench by clicking the Create workbench button as shown below:
+Add a workbench by clicking the Create workbench button, as shown below:
 
 ![Create Workbench](images/create-workbench.png)
 

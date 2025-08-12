@@ -79,12 +79,12 @@ is 60 days away, 30 days, 7 days, and then set the allocation status to
 
 Allocation renewals may not require any additions or changes to the allocation
 attributes from the PI or Manager. By default, if the PI or Manager clicks on
-the 'Activate' button as shown below:
+the 'Activate' button, as shown below:
 
 ![ColdFront Activate Expiring Allocation](images/coldfront-activate-expiring-allocation.png)
 
 Then it will prompt for confirmation and allow the admin to review and submit the
-activation request by clicking on 'Submit' button as shown below:
+activation request by clicking on 'Submit' button, as shown below:
 
 ![ColdFront Allocation Renewal Submit](images/coldfront-submit-allocation-activation.png)
 

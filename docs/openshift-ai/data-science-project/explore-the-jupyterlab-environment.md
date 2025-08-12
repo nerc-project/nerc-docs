@@ -58,7 +58,7 @@ Then click on **Clone a Repository** as shown below:
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/nerc-project/nerc_rhoai_mlops](https://github.com/nerc-project/nerc_rhoai_mlops).
 
-Then click **Clone** button as shown below:
+Then click **Clone** button, as shown below:
 
 ![NERC RHOAI MLOps Example Project](images/nerc-mlops-git-repo.png)
 

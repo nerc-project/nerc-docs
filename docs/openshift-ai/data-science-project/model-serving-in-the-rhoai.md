@@ -100,8 +100,8 @@ connection displayed in the main project window as shown below:
 
 After creating the connection, you can add your model server. In the
 OpenShift AI dashboard, navigate to the data science project details page and
-click the **Models** tab. If this is the first time then you will be able to choose
-the model serving type such as either **Single-model serving platform** or
+click the **Models** tab. If this is the first time, then you will be able to choose
+the model serving type, either a **Single-model serving platform** or a
 **Multi-model serving platform** to be used when deploying from this project.
 
 ![Add A Model Server](images/add-a-model-server.png)
@@ -122,8 +122,8 @@ for:
 The single-model serving platform is based on the [KServe](https://github.com/kserve/kserve)
 component.
 
-When you select "Single-model serving platform", you will be directly able to
-deploy model by clicking **Deploy model** button as shown below:
+When you select "Single-model serving platform", you will be able to
+deploy the model by clicking the **Deploy model** button, as shown below:
 
 ![Single-model serving platform](images/single-model-serving.png)
 
@@ -202,8 +202,8 @@ is best suited for:
 The multi-model serving platform is based on the [ModelMesh](https://github.com/kserve/modelmesh)
 component.
 
-When you select "Multi-model serving platform", you will be to create a model
-server by clicking **Add model server** button as shown below:
+When you select "Multi-model serving platform", you will be able to create a model
+server by clicking the **Add model server** button, as shown below:
 
 ![Multi-model serving platform](images/add-multi-model-server.png)
 

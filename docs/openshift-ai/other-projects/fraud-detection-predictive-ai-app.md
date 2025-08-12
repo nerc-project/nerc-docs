@@ -1056,15 +1056,18 @@ You can use this secret in your pipeline nodes without having to save the
 information in your pipeline code. This is important, for example, if you want
 to save your pipelines - without any secret keys - to source control.
 
-The secret is named `aws-connection-my-storage`.
+In this example, the secret is named `aws-connection-my-storage`.
 
-!!! note "Note"
+!!! tips "How to get the secret name?"
 
     If you named your connection something other than **"My Storage"**, you can
     obtain the secret name in the OpenShift AI dashboard by hovering over the
     help (?) icon in the Connections tab.
 
     ![My Storage Secret Name](images/dsp-dc-secret-name.png)
+
+    **Very Important:** *Make sure to replace all instances of `aws-connection-my-storage`
+    secret with your own.*
 
 The `aws-connection-my-storage` secret includes the following fields:
 

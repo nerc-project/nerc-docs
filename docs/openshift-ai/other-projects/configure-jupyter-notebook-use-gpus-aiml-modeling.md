@@ -74,7 +74,7 @@ Then click on **Clone a Repository** as shown below:
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/rh-aiservices-bu/getting-started-with-gpus](https://github.com/rh-aiservices-bu/getting-started-with-gpus).
 
-Then click **Clone** button as shown below:
+Then click **Clone** button, as shown below:
 
 ![Getting Started With GPUs Example Project](images/getting-started-with-gpus-git-repo.png)
 

@@ -1,7 +1,7 @@
 # How to request a new Resource Allocation
 
 On the Project Detail page the project PI/manager(s) can request an allocation
-by clicking the "Request Resource Allocation" button as shown below:
+by clicking the "Request Resource Allocation" button, as shown below:
 
 ![Requesting an Allocation](images/new_resource_allocation.png)
 

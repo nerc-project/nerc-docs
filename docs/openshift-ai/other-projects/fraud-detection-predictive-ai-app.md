@@ -622,7 +622,7 @@ For our example project, let's name it "Fraud detection". We'll select the
 **TensorFlow** image with Recommended Version (selected by default), choose
 a **Deployment size** of **Small**, choose **Accelerator** of
 **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
-a **Cluster storage** space of **20GB** (By Default Selected).
+a **Cluster storage** space of **20GB** (Selected By Default).
 
 Here, you will use **Environment Variables** to specify the Key/Value pairs related
 to the S3-compatible object storage bucket for storing your model.

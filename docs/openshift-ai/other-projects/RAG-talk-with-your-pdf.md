@@ -74,7 +74,7 @@ be populated with documents.
     **TensorFlow** image with Recommended Version (selected by default), choose
     a **Deployment size** of **Medium**, **Accelerator** as **None** (no GPU is
     needed for this setup) and allocate a **Cluster storage** space of **20GB**
-    (By Default Selected).
+    (Selected By Default).
 
     !!! tip "Tip"
 

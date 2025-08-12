@@ -64,7 +64,7 @@ in an augmented reality way.
 The different components of this intelligent application are:
 
 • **The Frontend**: a [React](https://react.dev/) application, typically running
-on the browser of your phone or web browser.
+in your phone's browser or a web browser on your computer.
 
 • **The Backend**: a NodeJS server, serving the application and relaying API calls,
 

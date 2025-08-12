@@ -244,7 +244,7 @@ window, click **Add** to create the model server.
 ---
 
 For our example project, we will choose "Multi-model serving platform" and then
-add a new model server and let's name the **Model server** as "coolstore-modelserver".
+add a new model server and let's name the **Model server** "coolstore-modelserver".
 We'll select the **OpenVINO Model Server** in **Serving runtime**.
 
 Please leave the other fields with the default settings such as Leave **replicas**

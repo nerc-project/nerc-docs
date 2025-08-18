@@ -221,7 +221,7 @@ else has already updated it from a different source**:
 ### Progress, Verbosity, Statistics
 
 `-v`
-Verbose mode — list each file transferred.
+Verbose mode  -  list each file transferred.
 Adding more vs makes it more verbose.
 
 `--progress`

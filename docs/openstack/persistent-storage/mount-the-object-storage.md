@@ -1003,7 +1003,7 @@ Also, check that binding to `localhost` is working fine by running the following
 
 ##### Configuring a Redis Password
 
-Configuring a Redis password enables one of its two built-in security features —
+Configuring a Redis password enables one of its two built-in security features  -
 the `auth` command, which requires clients to authenticate to access the database.
 The password is configured directly in Redis's configuration file,
 `/etc/redis/redis.conf`.

@@ -170,7 +170,7 @@ limit of a given container as well as the max ratio between request and limit.
 
 #### Using NERC OCP Web Console
 
-we can easily configure and modify the _Resource Limit_ by right-click the
+We can easily configure and modify the _Resource Limit_ by right-click the
 application to see the edit options available as shown below:
 
 ![Resource Limits Popup](images/resource-limits-popup.png)
@@ -298,7 +298,7 @@ spec:
 
 !!! danger "Very Important Information on Using `oc patch`"
 
-    We can use `oc patch` command to the controller's **Pod template (Deployment/StatefulSet/DaemonSet)**.
+    We can use `oc patch` command on the controller's **Pod template (Deployment/StatefulSet/DaemonSet)**.
     That triggers a *rolling update* with the new **requests/limits**. Policies
     like **LimitRange/ResourceQuota** can block higher values. If you use an **HPA**,
     remember its CPU target is based on **requests**, so keep those set appropriately.

@@ -164,7 +164,7 @@ scheduling and resource allocation decisions.
     Keep `limits ≥ requests`; memory usage above the **limit** can trigger OOM kills.
 
 **Resource limits** control how much CPU and memory a container will consume on
-a node. You can specify a limit on how much memory and CPU an container can consume
+a node. You can specify a limit on how much memory and CPU a container can consume
 in both request and limit values. You can also specify the min request and max
 limit of a given container as well as the max ratio between request and limit.
 

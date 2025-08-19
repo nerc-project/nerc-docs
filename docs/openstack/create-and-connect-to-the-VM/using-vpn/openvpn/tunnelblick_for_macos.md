@@ -2,7 +2,7 @@
 
 Tunnelblick is a free, open-source GUI (graphical user interface) for OpenVPN
 on macOS and OS X: More details can be found [here](https://tunnelblick.net/).
-Access to a VPN server — your computer is one end of the tunnel and the VPN
+Access to a VPN server  -  your computer is one end of the tunnel and the VPN
 server is the other end.
 
 ## Find your client account credentials

@@ -42,7 +42,7 @@ in the **"Configuration"** tab, you can enter the script in the
 We have used the [Base Docker image](https://github.com/Duke-GCB/openshift-shiny/master/dockerfiles/shiny-verse)
 compatible with OpenShift to create an **OpenShift Template**. Here, we walk through
 the process of creating a simple R Shiny Server template that bundles all the
-necessary resources—ConfigMap, Pod, Route, Service, etc.—and then deploy a Shiny
+necessary resources - ConfigMap, Pod, Route, Service, etc. - and then deploy a Shiny
 application using that template.
 
 ### Steps to Prepare Your Git Repo with Application Source Code

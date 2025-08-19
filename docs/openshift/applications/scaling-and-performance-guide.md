@@ -84,7 +84,8 @@ and thus only briefly mentioned here:
 
 ## Compute Resources
 
-Each container running on a node consumes compute resources, which are measurable
+Containers run inside pods, and every container consumes compute resources. Each
+container running on a node consumes compute resources, which are measurable
 quantities that can be requested, allocated, and consumed.
 
 When authoring a pod configuration YAML file, you can optionally specify how much
@@ -94,15 +95,33 @@ below:
 
 ![Pod Compute Resources (YAML)](images/compute_resources_pod_yaml.png)
 
+### How to Define CPU and Memory?
+
+!!! note "CPU, Memory, and Ephemeral Storage Units Explained"
+
+    CPU is measured in units called millicores, where 1000 millicores ("m") = 1
+    vCPU or 1 Core. Each node in a cluster inspects the operating system to determine
+    the amount of CPU cores on the node, then multiplies that value by 1000 to express
+    its total capacity. For example, if a node has _2 cores_, the node's CPU capacity
+    would be represented as _2000m_. If you wanted to use _1/10 of a single core_,
+    it would be represented as _100m_.
+
+    Memory and ephemeral storage are measured in bytes. In addition, it may be used
+    with SI suffixes (E, P, T, G, M, K) or their power-of-two-equivalents (Ei, Pi,
+    Ti, Gi, Mi, Ki).
+
 CPU and memory can be specified in a couple of ways:
 
--   Resource **requests** and _limits_ are optional parameters specified at the container
-    level. OpenShift computes a Pod's request and limit as the sum of requests and
-    limits across all of its containers. OpenShift then uses these parameters for
-    scheduling and resource allocation decisions.
+Resource **requests** and _limits_ are optional parameters specified at the container
+level. OpenShift computes a Pod's request and limit as the sum of requests and
+limits across all of its containers. OpenShift then uses these parameters for
+scheduling and resource allocation decisions.
 
-    The **request** value specifies the min value you will be guaranteed. The request
-    value is also used by the scheduler to assign pods to nodes.
+![Compute Resources](images/compute_resources.png)
+
+-   The **request** value specifies the minimum resource the container is guaranteed.
+    The request value is also used by the scheduler to assign pods to nodes during
+    scheduling.
 
     Pods will get the amount of **memory** they request. If they exceed their memory
     request, they could be killed if another pod happens to need this memory. Pods
@@ -119,20 +138,9 @@ CPU and memory can be specified in a couple of ways:
         will remain in a *Pending* state (i.e. not running) until these resources
         become available.
 
--   The **limit** value specifies the max value you can consume. Limit is the value
-    applications should be tuned to use. Pods will be memory, CPU throttled when
-    they exceed their available memory and CPU limit.
-
-CPU is measured in units called millicores, where 1000 millicores ("m") = 1 vCPU
-or 1 Core. Each node in a cluster inspects the operating system to determine the
-amount of CPU cores on the node, then multiplies that value by 1000 to express its
-total capacity. For example, if a node has _2 cores_, the node's CPU capacity would
-be represented as _2000m_. If you wanted to use _1/10 of a single core_, it would
-be represented as _100m_.
-
-Memory and ephemeral storage are measured in bytes. In addition, it may be used
-with SI suffixes (E, P, T, G, M, K) or their power-of-two-equivalents (Ei, Pi, Ti,
-Gi, Mi, Ki).
+-   The **limit** value specifies the upper cap. A container cannot exceed this.
+    Limit is the value applications should be tuned to use. Pods will be memory,
+    CPU throttled when they exceed their available memory and CPU limit.
 
 !!! warning "What happens if I did not specify the Compute Resources on Pod YAML?"
 
@@ -145,6 +153,165 @@ Gi, Mi, Ki).
     "LimitRange details" as shown below:
 
     ![Limit Ranges](images/limit_ranges.png)
+
+### Updating Compute Resources of a Running Pod via Resource Limits
+
+!!! tips "Tips"
+
+    Changing **CPU/Memory requests** affects scheduling and also the HPA's CPU%
+    target math.
+
+    Keep `limits ≥ requests`; memory usage above the **limit** can trigger OOM kills.
+
+**Resource limits** control how much CPU and memory a container will consume on
+a node. You can specify a limit on how much memory and CPU a container can consume
+in both request and limit values. You can also specify the min request and max
+limit of a given container as well as the max ratio between request and limit.
+
+#### Using NERC OCP Web Console
+
+We can easily configure and modify the _Resource Limit_ by right-click the
+application to see the edit options available as shown below:
+
+![Resource Limits Popup](images/resource-limits-popup.png)
+
+Then selecting the _Edit resource limits_ link to set the amount of CPU and Memory
+resources a container is guaranteed or allowed to use when running. In the pod
+specifications, you must specify the resource requests, such as CPU and memory as
+[described here](#compute-resources).
+
+The HPA uses this specification to determine the resource utilization and then
+scales the target up or down. Utilization values are calculated as a percentage
+of the resource requests of each pod. Missing resource request values can affect
+the optimal performance of the HPA.
+
+![Resource Limits Form](images/resource-limits-form.png)
+
+#### Using `oc` CLI command
+
+You can also **update the Pod template** in the controller (Deployment/StatefulSet/DaemonSet)
+using YAML and roll out new pods with the new limits/requests.
+
+!!! info "Handy checks / rollback"
+
+    To See current resources for container "app" by running:
+
+    ```yaml
+    oc get deploy my-app -o jsonpath='{.spec.template.spec.containers[?(@.name=="app")].resources}'
+    ```
+
+    To Roll back if needed:
+
+    ```yaml
+    oc rollout undo deploy/my-app
+    ```
+
+##### Update a Deployment (recommended)
+
+Edit your Deployment YAML to set `resources` on each container, then
+`oc apply -f <file>.yaml`.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels: { app: my-app }
+  template:
+    metadata:
+      labels: { app: my-app }
+    spec:
+      containers:
+        - name: app
+          image: your-registry/your-image:tag
+          # ⬇️ Update these
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"        # 1 vCPU
+              memory: "512Mi"
+```
+
+After you apply the changes, OpenShift performs a rolling update: old pods are
+terminated and new pods start with the updated resources. To verify the rollout,
+run `oc rollout status deploy/my-app` (replace `my-app` with the value of
+`metadata.name` in your Deployment).
+
+###### Patch the Deployment (no file needed)
+
+-   Using Strategic-merge patch (by container name):
+
+    ```yaml
+    oc patch deploy/my-app --type=strategic -p \
+    '{"spec":{"template":{"spec":{"containers":[{"name":"app","resources":{"requests":{"cpu":"250m","memory":"256Mi"},"limits":{"cpu":"1","memory":"512Mi"}}}]}}}}'
+    oc rollout status deploy/my-app
+    ```
+
+-   Using JSON Patch (replace `resources` on first container):
+
+    ```yaml
+    oc patch deploy/my-app --type=json -p='[
+    {"op":"replace","path":"/spec/template/spec/containers/0/resources",
+    "value":{"requests":{"cpu":"250m","memory":"256Mi"},"limits":{"cpu":"1","memory":"512Mi"}}}
+    ]'
+    ```
+
+###### One-liner helper
+
+```yaml
+oc set resources deployment/my-app \
+  --containers=app \
+  --requests=cpu=250m,memory=256Mi \
+  --limits=cpu=1,memory=512Mi
+oc rollout status deploy/my-app
+```
+
+##### Standalone Pod (not controlled by a Deployment)
+
+Pods are mostly **immutable**. To change resources, **recreate the Pod** with the
+new values:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: app
+      image: your-registry/your-image:tag
+      resources:
+        requests:
+          cpu: "250m"
+          memory: "256Mi"
+        limits:
+          cpu: "1"
+          memory: "512Mi"
+```
+
+**Note**: Delete the old pod and create the new one (same name if desired).
+
+!!! danger "Very Important Information on Using `oc patch`"
+
+    We can use `oc patch` command on the controller's **Pod template (Deployment/StatefulSet/DaemonSet)**.
+    That triggers a *rolling update* with the new **requests/limits**. Policies
+    like **LimitRange/ResourceQuota** can block higher values. If you use an **HPA**,
+    remember its CPU target is based on **requests**, so keep those set appropriately.
+    But we can't patch a standalone Pod's container resources; we can recreate it
+    instead as [explained here](#standalone-pod-not-controlled-by-a-deployment).
+
+    We can also remove `limits` using JSON Patch by running:
+
+    ```yaml
+    oc patch deploy/my-app --type=json -p='[
+        {"op":"remove","path":"/spec/template/spec/containers/0/resources/limits"}
+    ]'
+    ```
 
 ## How to specify pod to use GPU?
 
@@ -413,20 +580,24 @@ can be scaled up to meet demand if traffic to the application increases.
 
 ### Understanding Horizontal Pod Autoscalers (HPA)
 
-You can create a horizontal pod autoscaler to specify the minimum and maximum
-number of pods you want to run, as well as the _CPU utilization_ or _memory utilization_
-your pods should target.
+If your application experiences fluctuating load, you can use a
+**Horizontal Pod Autoscaler (HPA)** to specify the minimum and maximum number of
+pods to run, as well as the target _CPU utilization_ or _memory utilization_ for
+your pods.
+
+Configure HPA to automatically scale your Pods based on CPU utilization and a custom
+metric.
 
 | Metric             | Description                                                                                 |
 | ------------------ | ------------------------------------------------------------------------------------------- |
 | CPU Utilization    | Number of CPU cores used. Can be used to calculate a percentage of the pod's requested CPU. |
 | Memory Utilization | Amount of memory used. Can be used to calculate a percentage of the pod's requested memory. |
 
-After you create a horizontal pod autoscaler, OCP begins to query the CPU and/or
-memory resource metrics on the pods. When these metrics are available, the HPA
-computes the ratio of the current metric utilization with the desired metric
-utilization, and scales up or down accordingly. The query and scaling occurs at
-a regular interval, but can take one to two minutes before metrics become available.
+After you create a HPA, OCP begins to query the CPU and/or memory resource metrics
+on the pods. When these metrics are available, the HPA computes the ratio of the
+current metric utilization with the desired metric utilization, and scales up or
+down accordingly. The query and scaling occurs at a regular interval, but can take
+one to two minutes before metrics become available.
 
 For _replication controllers_, this scaling corresponds directly to the replicas
 of the _replication controller_. For _deployment configurations_, scaling corresponds
@@ -443,33 +614,10 @@ For more information on how the HPA works, read [this documentation](https://doc
     can be set. Memory request and limit must be set before Memory utilization
     can be set.
 
-### Resource Limit
-
-**Resource limits** control how much CPU and memory a container will consume on
-a node. You can specify a limit on how much memory and CPU an container can consume
-in both request and limit values. You can also specify the min request and max
-limit of a given container as well as the max ratio between request and limit.
-we can easily configure and modify the _Resource Limit_ by right-click the
-application to see the edit options available as shown below:
-
-![Resource Limits Popup](images/resource-limits-popup.png)
-
-Then selecting the _Edit resource limits_ link to set the amount of CPU and Memory
-resources a container is guaranteed or allowed to use when running. In the pod
-specifications, you must specify the resource requests, such as CPU and memory as
-[described here](#compute-resources).
-
-The HPA uses this specification to determine the resource utilization and then
-scales the target up or down. Utilization values are calculated as a percentage
-of the resource requests of each pod. Missing resource request values can affect
-the optimal performance of the HPA.
-
-![Resource Limits Form](images/resource-limits-form.png)
-
-### Creating a horizontal pod autoscaler by using the web console
+### Creating a HPA by using the web console
 
 From the web console, you can create a HPA that specifies the minimum and maximum
-number of pods you want to run on a Deployment or DeploymentConfig object. You
+number of pods you want to run on a `Deployment` or `DeploymentConfig` object. You
 can also define the amount of CPU or memory usage that your pods should target.
 The HPA increases and decreases the number of replicas between the minimum and
 maximum numbers to maintain the specified CPU utilization across all pods.

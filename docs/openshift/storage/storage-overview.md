@@ -53,6 +53,12 @@ to a pod please [read this](../applications/scaling-and-performance-guide.md#com
 You can also use an **in-memory** `emptyDir` (RAM-backed tmpfs) on OpenShift that
 is fast, shared by all containers in the Pod, and wiped when the Pod goes away.
 
+For a Pod that defines an `emptyDir` volume, the volume is created when the Pod
+is scheduled onto a node. As the name implies, it starts empty. All containers
+in the Pod can read and write the same files in the `emptyDir`, which can be
+mounted at the same or different paths in each container. When the Pod is removed
+from the node for any reason, the `emptyDir` and its data are permanently deleted.
+
 ##### What it is (and why)
 
 - Set `emptyDir.medium: "Memory"` to mount a **tmpfs** inside the Pod.
@@ -63,6 +69,20 @@ is fast, shared by all containers in the Pod, and wiped when the Pod goes away.
 
 - Files written there **count against the container's memory limit** (not `ephemeral-storage`).
 To learn more about defining CPU and memory, read [this user guide](../applications/scaling-and-performance-guide.md#how-to-define-cpu-and-memory).
+
+**Common uses for an `emptyDir` volume include:**
+
+- Scratch space (e.g., for a disk-based merge sort)
+
+- Checkpointing long-running computations for crash recovery
+
+- Staging files that a content-fetcher/manager container downloads while a web
+server container serves them
+
+!!! note "Note"
+
+    A container crashing does not remove a Pod from a node. The data in an `emptyDir`
+    volume is safe across container crashes.
 
 ##### YAML example
 

@@ -177,4 +177,12 @@ There are two parameters you can change on this application:
     you see, these values could be adjusted in real time, and this could even be
     based on another ML model!
 
+### Model Performance Metrics
+
+Access a comprehensive set of model performance metrics to build custom visualizations
+or integrate with your observability stack - complete with out-of-the-box performance
+and operations dashboards - by clicking the deployed model's name.
+
+![Model Performance Metrics](images/model-performance-metrics.png)
+
 ---

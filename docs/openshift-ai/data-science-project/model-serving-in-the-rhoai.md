@@ -1,5 +1,13 @@
 # Model Serving in the NERC RHOAI
 
+## Model Serving Features
+
+![Model Serving Features](images/model-serving-features.png)
+
+## Model Serving Workflow
+
+![Model Serving Workflow](images/model-serving-workflow.png)
+
 **Prerequisites**:
 
 To run a **model server** and **deploy a model** on it, you need to have:
@@ -102,7 +110,9 @@ After creating the connection, you can add your model server. In the
 OpenShift AI dashboard, navigate to the data science project details page and
 click the **Models** tab. If this is the first time, then you will be able to choose
 the model serving type, either a **Single-model serving platform** or a
-**Multi-model serving platform** to be used when deploying from this project.
+**Multi-model serving platform** to be used when deploying from this project. The
+model-serving UI is integrated into the OpenShift AI dashboard and project workspaces,
+and cluster resources scale up or down with demand.
 
 ![Add A Model Server](images/add-a-model-server.png)
 
@@ -134,7 +144,9 @@ In the pop-up window that appears, you can specify the following details:
 
 -   **Serving runtime**: Select a model-serving runtime framework from the available
     options in your OpenShift Data Science deployment. This framework is used to
-    deploy and serve machine learning models.
+    deploy and serve machine learning models. For LLMs that need maximum scalability
+    and throughput, OpenShift AI offers parallelized, multi-node serving with
+    **vLLM runtimes** to handle high volumes of concurrent, real-time requests.
 
 -   **Model framework (name - version)**: This will be auto selected based on your
     Serving runtime selection.

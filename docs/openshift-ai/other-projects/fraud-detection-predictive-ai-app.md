@@ -807,8 +807,16 @@ values, which you have retrieved while "Editing connection":
 
 ![MLflow Route Environment Variable](images/mlflow-route-environment-var.png)
 
-Once you execute the provided `model.ipynb`, you'll be able to track the entire
-training lifecycle by navigating to your MLflow tracking server at: `https://mlflow-route-<your-namespace>.apps.shift.nerc.mghpcc.org`.
+Once you execute the provided `model.ipynb`, the training process logs model
+parameters, metrics, and artifacts to the MLflow tracking server. After training
+and tuning hyperparameters, the final model artifact is logged to the tracking
+server to record a link between the model, the input data it was trained on, and
+the code used to generate it.
+
+![MLflow Logging](images/mlflow-logging.png)
+
+You'll be able to track the entire training lifecycle by navigating to your MLflow
+tracking server at: `https://mlflow-route-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
 ### 4. Preparing a model for deployment
 

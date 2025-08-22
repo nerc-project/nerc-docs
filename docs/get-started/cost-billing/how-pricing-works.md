@@ -170,7 +170,7 @@ GPU pods, as GPU pods cannot currently share resources with CPU pods.
 ### Storage
 
 <!-- markdownlint-disable MD052 MD013 -->
-Storage is charged separately at a rate of **${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr**
+Storage is charged separately at a rate of **${{su_info_dict["NESE Storage GB Rate"]["rate"]}} TiB/hr**
 <!-- markdownlint-enable MD052 MD013 -->
 OpenStack volumes remain provisioned until they are deleted. VM's reserve
 volumes, and you can also create extra volumes yourself. In OpenShift pods, storage
@@ -211,9 +211,9 @@ provisioned until it is deleted.
 
 -   Will be charged:
 
-    `.5 Storage TiB SU (.5 TiB x 700hrs) x ${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr`
+    `.5 Storage TiB SU (.5 TiB x 700hrs) x ${{su_info_dict["NESE Storage GB Rate"]["rate"]}} TiB/hr`
 
-    `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 700 / 2) }}`
+    `${{ "{:,.2f}".format(su_info_dict["NESE Storage GB Rate"]["rate"] * 700 / 2) }}`
 
 **Storage Example 2**:
 
@@ -223,9 +223,9 @@ provisioned until it is deleted.
 
 -   Will be charged:
 
-    `10 Storage TiB SU (10TiB x 720 hrs) x ${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr`
+    `10 Storage TiB SU (10TiB x 720 hrs) x ${{su_info_dict["NESE Storage GB Rate"]["rate"]}} TiB/hr`
 
-    `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 10 * 720) }}`
+    `${{ "{:,.2f}".format(su_info_dict["NESE Storage GB Rate"]["rate"] * 10 * 720) }}`
 <!-- markdownlint-enable MD052 MD013 -->
 
 Storage includes all types of storage Object, Block, Ephemeral & Image.

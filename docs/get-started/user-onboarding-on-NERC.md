@@ -46,9 +46,9 @@ The overall user flow can be summarized using the following sequence diagram:
     For detailed instructions about **NERC's ColdFront** and how to use it, refer
     to [this guide](allocation/coldfront.md).
 
-5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**
-    or **NERC-OCP (OpenShift)** for the newly added project and select which user(s)
-    can use the requested allocation.
+5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**,
+    **NERC-OCP (OpenShift)** or **NERC-OCP-EDU (OpenShift)** for the newly added
+    project and select which user(s) can use the requested allocation.
 
     !!! question "As a new NERC PI for the first time, am I entitled to any credits?"
 
@@ -60,16 +60,19 @@ The overall user flow can be summarized using the following sequence diagram:
 6. Wait until the requested resource allocation gets approved by the **NERC's admin**.
 
 7. Once **approved**, **PI and the corresponding project users** can go to either
-    NERC Openstack horizon web interface: [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org)
-    or NERC OpenShift web console: [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
-    based on approved **Resource Type** and they can start using the NERC's resources
-    based on the approved project **quotas**.
+    NERC Openstack horizon web interface: [https://stack.nerc.mghpcc.org](https://stack.nerc.mghpcc.org),
+    NERC OpenShift web console: [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)
+    or NERC Academic (EDU) OpenShift web console: [https://console.apps.edu.nerc.mghpcc.org](https://console.apps.edu.nerc.mghpcc.org)
+    based on your requested/approved **Resource Type** and they can start using
+    the NERC's resources based on the approved project **quotas**.
 
-    For detailed guidance on using **NERC (OpenStack)** and **NERC-OCP (OpenShift)**,
-    please refer to the respective user guides below:
+    For detailed guidance on using **NERC (OpenStack)**, **NERC-OCP (OpenShift)**,
+    and **NERC-OCP-EDU (OpenShift)** please refer to the respective user guides below:
 
     - [**NERC (OpenStack)**](../openstack/index.md)
 
-    - [**NERC-OCP (OpenShift)**](../openshift/index.md)
+    - [**NERC OCP (OpenShift)**](../openshift/index.md)
+
+    - [**NERC Academic (EDU) OpenShift**](../openshift/index.md)
 
 ---

@@ -22,7 +22,7 @@ SU_TYPE_LIST = [
 
 SU_RESOURCETYPE_LIST = ["vCPUs", "GPUs", "RAM"]
 
-STORAGE_NAME = "Storage GB Rate"
+STORAGE_NAME = "NESE Storage GB Rate"
 
 TEMPLATE_FILE_LIST = [
     "docs/get-started/cost-billing/how-pricing-works.md",

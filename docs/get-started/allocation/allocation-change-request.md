@@ -116,10 +116,10 @@ as any other compute instance, with a few considerations to keep in mind:
 
 !!! warning "Important: Requested/Approved Allocated OpenShift Storage Quota & Cost"
 
-    For **NERC-OCP (OpenShift)** resource types, the **Storage quotas** are controlled
-    by the values of the "OpenShift Request on Storage Quota (GiB)" and "OpenShift
-    Limit on Ephemeral Storage Quota (GiB)" quota attributes. The **Storage cost**
-    is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
+    For **NERC-OCP (OpenShift)** and **NERC-OCP-EDU (OpenShift)** resource types,
+    the **Storage quotas** are controlled by the values of the "OpenShift Request
+    Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
+    quota attributes. The **Storage cost** is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
     for these quota attributes.
 
 PI or project managers can provide a new value for the individual quota attributes,

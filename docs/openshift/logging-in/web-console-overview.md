@@ -5,6 +5,10 @@ used to perform common management tasks such as building and deploying applicati
 
 You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
 
+!!! info "Very Important: What is the Web Console URL for NERC Academic (EDU) OpenShift?"
+
+    Access the NERC Academic (EDU) OpenShift web console at: [https://console.apps.edu.nerc.mghpcc.org](https://console.apps.edu.nerc.mghpcc.org)
+
 The web console provides tools to access and manage your application code and data.
 
 Below is a sample screenshot of the web interface with labels describing different

@@ -16,6 +16,209 @@ To run a **model server** and **deploy a model** on it, you need to have:
     the data science project](using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
     for more information.
 
+## Create a model server
+
+After creating the connection, you can add your model server. In the
+OpenShift AI dashboard, navigate to the data science project details page and
+click the **Models** tab. If this is the first time, then you will be able to choose
+the model serving type, either a **Single-model serving platform** or a
+**Multi-model serving platform** to be used when deploying from this project. The
+model-serving UI is integrated into the OpenShift AI dashboard and project workspaces,
+and cluster resources scale up or down with demand.
+
+![Add A Model Server](images/add-a-model-server.png)
+
+OpenShift AI offers two options for model serving:
+
+### 1. Single-model Serving
+
+Each model is deployed on its own dedicated model server. This approach is ideal
+for:
+
+- Large language models (LLMs)
+
+- Generative AI
+
+- Models that require dedicated resources
+
+The single-model serving platform is based on the [KServe](https://github.com/kserve/kserve)
+component.
+
+!!! tips "Important Note"
+
+    If you want to deploy each model on its own runtime server, or use a serverless
+    deployment, select the **Single-model serving platform**. This option is recommended
+    for **production use**.
+
+In the "Single-model serving platform" tile, click **Select single-model**.
+
+You will be able to deploy the model by clicking the **Deploy model** button, as
+shown below:
+
+![Single-model serving platform](images/single-model-serving.png)
+
+In the pop-up window that appears, you can specify the following details:
+
+-   **Model deployment name**: This is the name of the inference service created
+    when the model is deployed.
+
+-   **Serving runtime**: Select a model-serving runtime framework from the available
+    options in your OpenShift Data Science deployment. This framework is used to
+    deploy and serve machine learning models. For LLMs that need maximum scalability
+    and throughput, OpenShift AI offers parallelized, multi-node serving with
+    **vLLM runtimes** to handle high volumes of concurrent, real-time requests.
+
+-   **Model framework (name - version)**: This will be auto selected based on your
+    Serving runtime selection.
+
+-   **Deployment mode**: Deployment modes define which technology stack will be
+    used to deploy a model, offering different levels of management and scalability.
+    The options available are:
+
+-   **Advanced**: Advanced deployment mode uses *Knative Serverless*. By default,
+        KServe integrates with Red Hat OpenShift Serverless and Red Hat OpenShift
+        Service Mesh to deploy models on the single-model serving platform.
+
+-   **Standard**: Alternatively, you can use standard deployment mode, which
+        uses KServe RawDeployment mode.
+
+-   **Number of model server replicas to deploy**: This is the number of instances
+    of the model server engine that you want to deploy. You can scale it up as needed,
+    depending on the number of requests you will receive.
+
+-   **Model server size**: This is the amount of resources, CPU, and RAM that will
+    be allocated to your server. Select the appropriate configuration for size and
+    the complexity of your model.
+
+-   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
+    it to leverage optimized hardware for faster inference and improved efficiency.
+
+    !!! warning "Serving Runtime and Accelerator Compatibility"
+
+        If you need to use an **Accelerator**, it is recommended to select a compatible
+        **Serving runtime** for optimal performance. Also, **Number of accelerators**
+        (GPUs) is based on your available quota for GPUs for your project.
+
+-   **Model route**: Check this box if you want the serving endpoint (the model serving
+    API) to be accessible outside of the OpenShift cluster through an external route.
+
+-   **Token authorization**: Check this box if you want to secure or restrict access
+    to the model by forcing requests to provide an authorization token.
+
+-   **Source model location**: To specify the location of your model, either select
+    an existing connection you previously created or create a new one.
+
+    !!! warning "Very Important"
+
+        If your connection type is an **S3-compatible object storage**, you must
+        provide the folder path that contains your data file. The
+        **OpenVINO Model Server** runtime has specific requirements for how you
+        specify the model path. For more information, see known issue [RHOAIENG-3025](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html-single/release_notes/index#known-issues_RHOAIENG-3025_relnotes)
+        in the OpenShift AI release notes.
+
+-   **Optional**: Customize the runtime parameters in the Configuration parameters
+    section.
+
+After adding and selecting options within the **Deploy model** pop-up window,
+click **Deploy** to create the model server.
+
+### 2. Multi-model Serving
+
+!!! danger "Very Important"
+
+    Starting with **OpenShift AI version 2.19**, the **multi-model serving platform**
+    based on *ModelMesh* is deprecated. You can continue to deploy models on the
+    multi-model serving platform, but it is recommended that you migrate to the
+    [single-model serving platform](#1-single-model-serving).
+
+All models within the project are deployed on a shared model server. This setup
+is best suited for:
+
+- Efficient resource sharing among models
+
+- Lightweight models with lower resource demands
+
+The multi-model serving platform is based on the [ModelMesh](https://github.com/kserve/modelmesh)
+component.
+
+!!! tips "Important Note"
+
+    If you want to deploy multiple models using a single runtime server, select
+    the **Multi-model serving platform**. This option is ideal when deploying more
+    than 1,000 small or medium-sized models and aiming to reduce resource consumption.
+
+In the **Multi-model serving platform** tile, click **Select multi-model**.
+
+You will be able to create a new model server by clicking the **Add model server**
+button, as shown below:
+
+![Multi-model serving platform](images/add-multi-model-server.png)
+
+In the pop-up window that appears, you can specify the following details:
+
+-   **Model server name**: Enables users to enter a unique name for the model server.
+
+-   **Serving runtime**: Select a model-serving runtime framework from the available
+    options in your OpenShift Data Science deployment. This framework is used to
+    deploy and serve machine learning models.
+
+-   **Number of model server replicas**: This is the number of instances of the
+    model server engine that you want to deploy. You can scale it up as needed,
+    depending on the number of requests you will receive.
+
+-   **Model server size**: This is the amount of resources, CPU, and RAM that will
+    be allocated to your server. Select the appropriate configuration for size and
+    the complexity of your model.
+
+-   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
+    it to leverage optimized hardware for faster inference and improved efficiency.
+
+    !!! warning "Serving Runtime and Accelerator Compatibility"
+
+        If you need to use an **Accelerator**, it is recommended to select a compatible
+        **Serving runtime** for optimal performance. Also, **Number of accelerators**
+        (GPUs) is based on your available quota for GPUs for your project.
+
+-   **Model route**: Check this box if you want the serving endpoint (the model serving
+    API) to be accessible outside of the OpenShift cluster through an external route.
+
+-   **Token authorization**: Check this box if you want to secure or restrict access
+    to the model by forcing requests to provide an authorization token.
+
+After adding and selecting options within the **Add model server** pop-up
+window, click **Add** to create the model server.
+
+---
+
+#### Setting up Multi-model Server
+
+For our example project, we will choose "Multi-model serving platform" and then
+add a new model server and let's name the **Model server** "coolstore-modelserver".
+We'll select the **OpenVINO Model Server** in **Serving runtime**.
+
+Please leave the other fields with the default settings such as Leave **replicas**
+to "1", **size** to "Small", **Accelerator** to "None". At this point, _don't check_
+**Make model available via an external route** as shown below:
+
+![Configure A New Model Server](images/configure-a-new-model-server.png)
+
+Once you've configured your model server, you can deploy your model by clicking
+on "Deploy model" located on the right side of the running model server as shown
+below:
+
+![Running Model Server](images/running-model-server.png)
+
+Alternatively, you can also do this from the main RHOAI dashboard's "Model Serving"
+menu item as shown below:
+
+![Model Serving Deploy Model Option](images/model-deployments-option.png)
+
+If you wish to view details for the model server, click on the link corresponding
+to the Model Server's Name. You can also modify a model server configuration by
+clicking on the three dots on the right side, and selecting **Edit model server**.
+This will bring back the same configuration page we used earlier. This menu also
+have option for you to **delete model server**.
+
 ## Create a connection
 
 Once we have our workbench and cluster storage set up, we can create connections.
@@ -104,184 +307,6 @@ connection displayed in the main project window as shown below:
     Uniform Resource Identifier (URI). If you selected **OCI-compliant registry**
     in the preceding step, in the OCI storage location field, enter the URI.
 
-## Create a model server
-
-After creating the connection, you can add your model server. In the
-OpenShift AI dashboard, navigate to the data science project details page and
-click the **Models** tab. If this is the first time, then you will be able to choose
-the model serving type, either a **Single-model serving platform** or a
-**Multi-model serving platform** to be used when deploying from this project. The
-model-serving UI is integrated into the OpenShift AI dashboard and project workspaces,
-and cluster resources scale up or down with demand.
-
-![Add A Model Server](images/add-a-model-server.png)
-
-OpenShift AI offers two options for model serving:
-
-**1. Single-Model Serving**:
-
-Each model is deployed on its own dedicated model server. This approach is ideal
-for:
-
-- Large language models (LLMs)
-
-- Generative AI
-
-- Models that require dedicated resources
-
-The single-model serving platform is based on the [KServe](https://github.com/kserve/kserve)
-component.
-
-When you select "Single-model serving platform", you will be able to
-deploy the model by clicking the **Deploy model** button, as shown below:
-
-![Single-model serving platform](images/single-model-serving.png)
-
-In the pop-up window that appears, you can specify the following details:
-
--   **Model deployment name**: This is the name of the inference service created
-    when the model is deployed.
-
--   **Serving runtime**: Select a model-serving runtime framework from the available
-    options in your OpenShift Data Science deployment. This framework is used to
-    deploy and serve machine learning models. For LLMs that need maximum scalability
-    and throughput, OpenShift AI offers parallelized, multi-node serving with
-    **vLLM runtimes** to handle high volumes of concurrent, real-time requests.
-
--   **Model framework (name - version)**: This will be auto selected based on your
-    Serving runtime selection.
-
--   **Deployment mode**: Deployment modes define which technology stack will be
-    used to deploy a model, offering different levels of management and scalability.
-    The options available are:
-
--   **Advanced**: Advanced deployment mode uses *Knative Serverless*. By default,
-        KServe integrates with Red Hat OpenShift Serverless and Red Hat OpenShift
-        Service Mesh to deploy models on the single-model serving platform.
-
--   **Standard**: Alternatively, you can use standard deployment mode, which
-        uses KServe RawDeployment mode.
-
--   **Number of model server replicas to deploy**: This is the number of instances
-    of the model server engine that you want to deploy. You can scale it up as needed,
-    depending on the number of requests you will receive.
-
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Select the appropriate configuration for size and
-    the complexity of your model.
-
--   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
-    it to leverage optimized hardware for faster inference and improved efficiency.
-
-    !!! warning "Serving Runtime and Accelerator Compatibility"
-
-        If you need to use an **Accelerator**, it is recommended to select a compatible
-        **Serving runtime** for optimal performance. Also, **Number of accelerators**
-        (GPUs) is based on your available quota for GPUs for your project.
-
--   **Model route**: Check this box if you want the serving endpoint (the model serving
-    API) to be accessible outside of the OpenShift cluster through an external route.
-
--   **Token authorization**: Check this box if you want to secure or restrict access
-    to the model by forcing requests to provide an authorization token.
-
--   **Source model location**: To specify the location of your model, either select
-    an existing connection you previously created or create a new one.
-
-    !!! warning "Very Important"
-
-        If your connection type is an **S3-compatible object storage**, you must
-        provide the folder path that contains your data file. The
-        **OpenVINO Model Server** runtime has specific requirements for how you
-        specify the model path. For more information, see known issue [RHOAIENG-3025](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html-single/release_notes/index#known-issues_RHOAIENG-3025_relnotes)
-        in the OpenShift AI release notes.
-
--   **Optional**: Customize the runtime parameters in the Configuration parameters
-    section.
-
-After adding and selecting options within the **Deploy model** pop-up window,
-click **Deploy** to create the model server.
-
-**2. Multi-Model Serving**:
-
-All models within the project are deployed on a shared model server. This setup
-is best suited for:
-
-- Efficient resource sharing among models
-
-- Lightweight models with lower resource demands
-
-The multi-model serving platform is based on the [ModelMesh](https://github.com/kserve/modelmesh)
-component.
-
-When you select "Multi-model serving platform", you will be able to create a model
-server by clicking the **Add model server** button, as shown below:
-
-![Multi-model serving platform](images/add-multi-model-server.png)
-
-In the pop-up window that appears, you can specify the following details:
-
--   **Model server name**: Enables users to enter a unique name for the model server.
-
--   **Serving runtime**: Select a model-serving runtime framework from the available
-    options in your OpenShift Data Science deployment. This framework is used to
-    deploy and serve machine learning models.
-
--   **Number of model server replicas**: This is the number of instances of the
-    model server engine that you want to deploy. You can scale it up as needed,
-    depending on the number of requests you will receive.
-
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Select the appropriate configuration for size and
-    the complexity of your model.
-
--   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
-    it to leverage optimized hardware for faster inference and improved efficiency.
-
-    !!! warning "Serving Runtime and Accelerator Compatibility"
-
-        If you need to use an **Accelerator**, it is recommended to select a compatible
-        **Serving runtime** for optimal performance. Also, **Number of accelerators**
-        (GPUs) is based on your available quota for GPUs for your project.
-
--   **Model route**: Check this box if you want the serving endpoint (the model serving
-    API) to be accessible outside of the OpenShift cluster through an external route.
-
--   **Token authorization**: Check this box if you want to secure or restrict access
-    to the model by forcing requests to provide an authorization token.
-
-After adding and selecting options within the **Add model server** pop-up
-window, click **Add** to create the model server.
-
----
-
-For our example project, we will choose "Multi-model serving platform" and then
-add a new model server and let's name the **Model server** "coolstore-modelserver".
-We'll select the **OpenVINO Model Server** in **Serving runtime**.
-
-Please leave the other fields with the default settings such as Leave **replicas**
-to "1", **size** to "Small", **Accelerator** to "None". At this point, _don't check_
-**Make model available via an external route** as shown below:
-
-![Configure A New Model Server](images/configure-a-new-model-server.png)
-
-Once you've configured your model server, you can deploy your model by clicking
-on "Deploy model" located on the right side of the running model server as shown
-below:
-
-![Running Model Server](images/running-model-server.png)
-
-Alternatively, you can also do this from the main RHOAI dashboard's "Model Serving"
-menu item as shown below:
-
-![Model Serving Deploy Model Option](images/model-deployments-option.png)
-
-If you wish to view details for the model server, click on the link corresponding
-to the Model Server's Name. You can also modify a model server configuration by
-clicking on the three dots on the right side, and selecting **Edit model server**.
-This will bring back the same configuration page we used earlier. This menu also
-have option for you to **delete model server**.
-
 ## Deploy the model
 
 To add a model to be served, click the **Deploy model** button. Doing so will
@@ -296,9 +321,9 @@ Enter the following information for your new model:
 -   **Model framework (name-version)**: The framework used to save this model.
     At this time, OpenVINO IR or ONNX or Tensorflow are supported.
 
--   **Model location**: Select the connection that you created to store the
-    model. Alternatively, you can create another connection directly from this
-    menu.
+-   **Model Location**: Select the connection you created [as described here](#create-a-connection)
+    to store the model. Alternatively, you can create a new connection directly
+    from this menu.
 
 -   **Folder path**: If your model is not located at the root of the bucket of your
     connection, you must enter the path to the folder it is in.
@@ -322,11 +347,11 @@ the model deployment is complete as shown below:
     When you delete a model server, all models hosted on it are also removed,
     making them unavailable to applications.
 
-## Check the model API
+### Check the Model API
 
-The model is now accessible through the API endpoint of the model server. The
-information about the endpoint is different, depending on how you configured the
-model server.
+The deployed model is now accessible through the API endpoint of the model server.
+The information about the endpoint is different, depending on how you configured
+the model server.
 
 If you did not expose the model externally through a route, click on the Internal
 Service link in the Inference endpoint section. A popup will display the address

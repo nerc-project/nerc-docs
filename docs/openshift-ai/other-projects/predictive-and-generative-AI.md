@@ -56,7 +56,7 @@ adaptation to various domains, making them a powerful tool for AI-driven applica
 On NERC, we offer various solutions to handle LLM serving.
 
 1.  An easier option is to use the NERC RHOAI **Serving runtime**, which can be utilized
-    when setting up the RHOAI **Moder Server**, as [explained here](../data-science-project/model-serving-in-the-rhoai.md#create-a-model-server).
+    when setting up the RHOAI **Model Server**, as [explained here](../data-science-project/model-serving-in-the-rhoai.md#create-a-model-server).
 
 2.  Alternatively, you can set up compatible LLM servers as standalone deployments.
 

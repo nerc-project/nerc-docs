@@ -49,6 +49,10 @@ PIs and managers can add or remove users from allocations.
 
 ![PI and Manager Allocation View of OpenShift Resource Allocation](images/coldfront-openshift-allocation-pi-manager-view.png)
 
+### PI and Manager Allocation View of Academic (EDU) OpenShift Resource Allocation
+
+![PI and Manager Allocation View of Academic (EDU) OpenShift Resource Allocation](images/coldfront-openshift-edu-allocation-pi-manager-view.png)
+
 ## General User View
 
 General Users who are not PIs or Managers on a project see a read-only view of the
@@ -63,5 +67,9 @@ to access the Allocation detail page.
 ### General User View of OpenShift Resource Allocation
 
 ![General User View of OpenShift Resource Allocation](images/coldfront-openshift-allocation-general-user-view.png)
+
+### General User View of Academic (EDU) OpenShift Resource Allocation
+
+![General User View of Academic (EDU) OpenShift Resource Allocation](images/coldfront-openshift-edu-allocation-general-user-view.png)
 
 ---

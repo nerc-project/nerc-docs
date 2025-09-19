@@ -119,7 +119,7 @@ spec:
             sizeLimit: 256Mi    # strongly recommended
 ```
 
-!!! tips "Sizing & safety tips"
+!!! tip "Sizing & safety tips"
 
     - **Always set `sizeLimit`** to prevent the tmpfs from growing until the node
     or pod runs out of memory.
@@ -223,7 +223,7 @@ spec:
             claimName: data-pvc
 ```
 
-!!! tips "Quick CLI equivalent (creates & mounts a PVC to `/var/lib/data`)"
+!!! tip "Quick CLI equivalent (creates & mounts a PVC to `/var/lib/data`)"
 
     ```yaml
     oc set volume deploy/my-app \
@@ -271,7 +271,7 @@ spec:
         storageClassName: ocs-external-storagecluster-ceph-rbd  # omit to use the default
 ```
 
-!!! tips "Tips & gotchas"
+!!! tip "Tips & gotchas"
 
     - **Permissions (arbitrary UIDs):** OpenShift runs containers with a random
     UID by default. Use `spec.securityContext.fsGroup` (or an image that supports

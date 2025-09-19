@@ -471,7 +471,7 @@ iii. Navigate back to the OpenShift AI dashboard.
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Object Detection Workbench**.
 
-b. Click **Data connections**. You should see one connection listed:
+b. Click **Connections**. You should see one connection listed:
 *My Storage* as shown below:
 
 ![Connections](images/single-data-connection.png)

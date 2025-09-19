@@ -500,7 +500,7 @@ iii. Navigate back to the OpenShift AI dashboard.
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Fraud detection**.
 
-b. Click **Data connections**. You should see two connections listed:
+b. Click **Connections**. You should see two connections listed:
 *My Storage* and *Pipeline Artifacts* as shown below:
 
 ![Connections](images/data-connections.png)
@@ -983,7 +983,7 @@ the **Models** tab.
 -   Take note of the model's Inference endpoint URL. You need this information when
 you test the model API.
 
-    ![Deployed Multi-model Serving Inference Endpoints](images/deploy-model-inference-endpoints-fraud-mm.png)    
+    ![Deployed Multi-model Serving Inference Endpoints](images/deploy-model-inference-endpoints-fraud-mm.png)  
 
     The **Inference endpoint** field contains an **Internal Service** link, click
     the link to open a popup that shows the URL details, and then take note of
@@ -997,7 +997,7 @@ you test the model API.
         access the inference endpoint from within the cluster. If you are accessing
         the model from outside the cluster, be sure to also note the **External**
         value.
-        
+
         ![Deployed Single-model Serving Inference Endpoints](images/deploy-model-inference-endpoints-fraud-sm.png)
 
 -   Return to the Jupyter notebook environment and test your new inference endpoints.
@@ -1156,7 +1156,7 @@ to save your pipelines - without any secret keys - to source control.
 
 In this example, the secret is named `aws-connection-my-storage`.
 
-!!! tips "How to get the secret name?"
+!!! tip "How to get the secret name?"
 
     If you named your connection something other than **"My Storage"**, you can
     obtain the secret name in the OpenShift AI dashboard by hovering over the

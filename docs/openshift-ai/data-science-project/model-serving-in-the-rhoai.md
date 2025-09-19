@@ -44,7 +44,7 @@ for:
 The single-model serving platform is based on the [KServe](https://github.com/kserve/kserve)
 component.
 
-!!! tips "Important Note"
+!!! tip "Important Note"
 
     If you want to deploy each model on its own runtime server, or use a serverless
     deployment, select the **Single-model serving platform**. This option is recommended
@@ -75,12 +75,12 @@ In the pop-up window that appears, you can specify the following details:
     used to deploy a model, offering different levels of management and scalability.
     The options available are:
 
--   **Advanced**: Advanced deployment mode uses *Knative Serverless*. By default,
-        KServe integrates with Red Hat OpenShift Serverless and Red Hat OpenShift
-        Service Mesh to deploy models on the single-model serving platform.
+    i. **Advanced**: Advanced deployment mode uses *Knative Serverless*. By default,
+            KServe integrates with Red Hat OpenShift Serverless and Red Hat OpenShift
+            Service Mesh to deploy models on the single-model serving platform.
 
--   **Standard**: Alternatively, you can use standard deployment mode, which
-        uses KServe RawDeployment mode.
+    ii. **Standard**: Alternatively, you can use standard deployment mode, which
+            uses KServe Raw Deployment mode.
 
 -   **Number of model server replicas to deploy**: This is the number of instances
     of the model server engine that you want to deploy. You can scale it up as needed,
@@ -122,6 +122,11 @@ In the pop-up window that appears, you can specify the following details:
 After adding and selecting options within the **Deploy model** pop-up window,
 click **Deploy** to create the model server.
 
+!!! tip "Serving vLLM and Granite Models with Red Hat OpenShift AI"
+
+    To learn more about how to use single-model serving with the **vLLM runtime**
+    and **Granite** foundation models, check out [this detailed user guide](../other-projects/serving-vLLM-and-Granite-Models.md).
+
 ### 2. Multi-model Serving
 
 !!! danger "Very Important"
@@ -141,7 +146,7 @@ is best suited for:
 The multi-model serving platform is based on the [ModelMesh](https://github.com/kserve/modelmesh)
 component.
 
-!!! tips "Important Note"
+!!! tip "Important Note"
 
     If you want to deploy multiple models using a single runtime server, select
     the **Multi-model serving platform**. This option is ideal when deploying more
@@ -353,17 +358,20 @@ The deployed model is now accessible through the API endpoint of the model serve
 The information about the endpoint is different, depending on how you configured
 the model server.
 
-If you did not expose the model externally through a route, click on the Internal
-Service link in the Inference endpoint section. A popup will display the address
-for the gRPC and the REST URLs for the inference endpoints as shown below:
+If you did not expose the model externally through a route, click on the
+"Internal endpoint details" link in the Inference endpoint section. A popup will
+display the address for the gRPC and the REST URLs for the inference endpoints
+as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/deployed-model-inference-endpoints.png)
+
+Your model is now deployed and ready to use!
 
 **Notes**:
 
 -   The REST URL displayed is only the base address of the endpoint. You must
     append `/v2/models/name-of-your-model/infer` to it to have the full address.
-    Example: `http://modelmesh-serving.model-serving:8008/v2/models/coolstore/infer`
+    Example: `http://modelmesh-serving.name-of-your-project-namespace:8008/v2/models/coolstore/infer`
 
 -   The full documentation of the API (REST and gRPC) is [available here](https://github.com/kserve/kserve/blob/master/docs/predict-api/v2/required_api.md).
 
@@ -381,7 +389,5 @@ for the gRPC and the REST URLs for the inference endpoints as shown below:
 
     - **gRPC**: `grpc://modelmesh-serving.name-of-your-project:8033`. *Please make
     note of the **grpcURL** value, we will need it later.*
-
-Your model is now deployed and ready to use!
 
 ---

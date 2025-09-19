@@ -130,7 +130,7 @@ mileage of 185.5.
 
 Success! You have added analyzed your run results using the NERC RHOAI.
 
-!!! tips "Working with data in an S3-compatible object store"
+!!! tip "Working with data in an S3-compatible object store"
 
     For detailed instructions on how to connect to and use data from an S3-compatible
     object store in your workbench, see this Red Hat documentation:

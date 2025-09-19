@@ -195,11 +195,13 @@ location, enter `models/granite-3.3-8b-instruct` as the folder path, as shown be
 
 When you are ready to deploy your model, select the **Deploy** button.
 
-You will see your newly deployed model. After some time, when the model has
-finished deploying, the status icon will be a green checkmark indicating
-the model deployment is complete. If you wish to view details for the deployed model,
-click on *arrow icon* to the left of your deployed model name i.e. "granite"
-as shown below:
+Confirm that the deployed model appears on the **Models** tab for your project.
+After some time, once the model has finished deploying, the model deployments
+page of the dashboard will display a green checkmark in the **Status** column,
+indicating that the deployment is complete.
+
+To view details for the deployed model, click the *arrow icon* to the left of
+your deployed model name (e.g., `granite`), as shown below:
 
 ![Model Deployed Successfully](images/model-deployed-successful.png)
 

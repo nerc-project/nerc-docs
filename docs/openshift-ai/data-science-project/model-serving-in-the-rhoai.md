@@ -99,11 +99,21 @@ In the pop-up window that appears, you can specify the following details:
         **Serving runtime** for optimal performance. Also, **Number of accelerators**
         (GPUs) is based on your available quota for GPUs for your project.
 
--   **Model route**: Check this box if you want the serving endpoint (the model serving
-    API) to be accessible outside of the OpenShift cluster through an external route.
+-   **Model route**: select the
+    **Make deployed models available through an external route** checkbox, if you
+    want the serving endpoint (the model serving API) to be accessible outside
+    of the OpenShift cluster through an external route.
 
--   **Token authorization**: Check this box if you want to secure or restrict access
-    to the model by forcing requests to provide an authorization token.
+-   **Token authorization**: To require token authentication for inference requests
+    to the deployed model, perform the following actions:
+
+    i. Select **Require token authentication**.
+
+    ii. In the **Service account name** field, enter the service account name that
+    the token will be generated for.
+
+    iii. To add an additional service account, click **Add a service account** and
+    enter another service account name.
 
 -   **Source model location**: To specify the location of your model, either select
     an existing connection you previously created or create a new one.

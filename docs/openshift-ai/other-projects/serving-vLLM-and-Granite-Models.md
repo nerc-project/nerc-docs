@@ -7,14 +7,9 @@
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.
 
--   You have setup and access to S3-compatible object storage.
-
--   For the model that you want to deploy, you know the associated URI in your
-    S3-compatible object storage bucket or Open Container Initiative (OCI) container.
-
 **Procedure**:
 
-## Storing data with connection
+## Set up local S3 storage (MinIO) and Connection
 
 1.  Navigating to the OpenShift AI dashboard.
 
@@ -22,7 +17,7 @@
     to access the NERC OpenShift AI dashboard.
 
 2.  Using a script to set up local S3 storage (MinIO) on your Data Science Project
-    in the NERC RHOAI as [described here](../../openshift-ai/other-projects/object-detection-app-using-yolo5.md#setting-up-your-data-science-project-in-the-nerc-rhoai).
+    in the NERC RHOAI as [described here](../../openshift-ai/other-projects/object-detection-app-using-yolo5.md#12-using-a-script-to-set-up-local-s3-storage-minio).
 
 3.  Once your local S3 Object storage using MinIO is completed, you can browse to
     the **MinIO Web Console** using the provided URL. Enter the **Access Key** as
@@ -160,31 +155,37 @@ Enter the following information for your new model:
 
 -   **Source model location**:
 
--   Select the **Connection** option from the dropdown list that you created
-    [as described here](#storing-data-with-connection) to store the model by using
-    the **Existing connection** option Connection deopdown list i.e. `My Storage`.
+    i.  Select the **Connection** option from the dropdown list that you created
+        [as described here](#set-up-local-s3-storage-minio-and-connection) to store
+        the model by using the **Existing connection** option Connection dropdown
+        list i.e. `My Storage`.
 
-    Alternatively, you can create a new connection directly from this menu by selecting
-    **Create connection** option.
+    Alternatively, you can create a new connection directly from this menu by
+    selecting **Create connection** option.
 
--   **Path**: If your model is not located at the root of the bucket of your
+    ii. **Path**: If your model is not located at the root of the bucket of your
         connection, you must enter the path to the folder it is in i.e. `models/granite-3.3-8b-instruct`.
 
 -   **Configuration parameters**: You can customize the runtime parameters in the
     Configuration parameters section. You don't need to add any arguments here.
 
-For our example project, let's name the **Model deployment name** as "granite",
-select "vLLM NVIDIA GPU ServingRuntime for KServe" as **Serving runtime**. The
-`NVIDIA A100 GPU` is selected as the **Accelerator**. Please leave the other fields
-with the default settings such as Leave **replicas** to "1", **Model server size**
-to "Small".
+For our example, set the **Model deployment name** to `granite`, and select
+**Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Choose
+`NVIDIA A100 GPU` as the **Accelerator**, with the **Number of accelerators** set
+to `1`. Also, ensure that the **Deployment mode** is set to `Advanced`.
+
+Please leave the other fields with their default settings, such as
+**Number of model server replicas to deploy** set to `1` and **Model server size**
+set to `Small`.
 
 ![Configure and Deploy Model Info](images/configure-and-deploy-model-info.png)
 
-At this point, _check_ **Make deployed models available through an external route**
-as well as "Require token authentication" are checked. The **Connection** is selected
-to `My Storage` and for the model **Path** location, enter "models/granite-3.3-8b-instruct"
-as the folder path for the model as shown below:
+At this point, ensure that both
+**Make deployed models available through an external route** and
+**Require token authentication** are checked. Please leave the populated
+**Service account name** i.e. `default-name` as it is. Select `My Storage` as
+the **Connection** from the *Existing connection*, and for the model **Path**
+location, enter `models/granite-3.3-8b-instruct` as the folder path, as shown below:
 
 ![Configure and Deploy Model Route Connection Info](images/configure-and-deploy-model-route-connection-info.png)
 

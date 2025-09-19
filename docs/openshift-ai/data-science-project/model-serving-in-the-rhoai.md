@@ -201,9 +201,10 @@ For our example project, we will choose "Multi-model serving platform" and then
 add a new model server and let's name the **Model server** "coolstore-modelserver".
 We'll select the **OpenVINO Model Server** in **Serving runtime**.
 
-Please leave the other fields with the default settings such as Leave **replicas**
-to "1", **size** to "Small", **Accelerator** to "None". At this point, _don't check_
-**Make model available via an external route** as shown below:
+Please leave the other fields with their default settings, such as
+**replicas** set to `1`, **size** set to `Small`, and **Accelerator** set to `None`.
+At this point, _do not check_ **Make model available via an external route**, as
+shown below:
 
 ![Configure A New Model Server](images/configure-a-new-model-server.png)
 

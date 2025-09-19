@@ -73,7 +73,7 @@ Recent enhancements to Red Hat OpenShift AI include:
     deployment and updates.
 
 -   **Model evaluation**: During model exploration and development, the LM Evaluation
-    (LM-Eval) component provides clear signals about model quality. It benchmarks
+    (LM-Eval) component provides clear signals about the model quality. It benchmarks
     large language models (LLMs) across a range of tasks - such as logical and
     mathematical reasoning and adversarial natural-language challenges - using
     industry-standard benchmark suites.
@@ -81,7 +81,7 @@ Recent enhancements to Red Hat OpenShift AI include:
 -   **Model serving** now incorporates GPU assistance for inference tasks and custom
     model serving runtimes, enhancing inference performance and streamlining the
     deployment of foundational models. For generative AI workloads, OpenShift AI
-    provides **vLLM-powered**model inferencing, offering industry-leading performance
+    provides **vLLM-powered** model inferencing, offering industry-leading performance
     and efficiency across the most popular open source large language models (LLMs).
 
 -   With **Model monitoring**, organizations can oversee performance and operational

@@ -115,7 +115,7 @@ like toxicity and accuracy
 
 ⦿ **Why does it matter?**
 
-- Enhancing Quality Assurance: Test models against both industrystandard and proprietary
+- Enhancing Quality Assurance: Test models against both industry standard and proprietary
 benchmarks
 
 - Simplifying Compliance: Standardized evaluation metrics help meet regulatory and

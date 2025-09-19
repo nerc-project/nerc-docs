@@ -26,7 +26,7 @@ In the Create Network dialog box, specify the following values.
 
     Admin State: The state to start the network in.
 
-    Create Subnet: Select this check box to create a subnet
+    Create Subnet: Select this checkbox to create a subnet
 
     Give your network a name, and leave the two checkboxes for "Admin State" and
     "Create Subnet" with the default settings.
@@ -60,11 +60,11 @@ In the Create Network dialog box, specify the following values.
 
     Gateway IP: Specify an IP address for a specific gateway. This parameter is optional.
 
-    Disable Gateway: Select this check box to disable a gateway IP address.
+    Disable Gateway: Select this checkbox to disable a gateway IP address.
 
 -   Subnet Details tab
 
-    Enable DHCP: Select this check box to enable DHCP so that your VM instances
+    Enable DHCP: Select this checkbox to enable DHCP so that your VM instances
     will automatically be assigned an IP on the subnet.
 
     Allocation Pools: Specify IP address pools.

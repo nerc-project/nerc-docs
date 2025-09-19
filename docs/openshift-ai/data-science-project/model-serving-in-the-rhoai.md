@@ -233,7 +233,7 @@ If you wish to view details for the model server, click on the link correspondin
 to the Model Server's Name. You can also modify a model server configuration by
 clicking on the three dots on the right side, and selecting **Edit model server**.
 This will bring back the same configuration page we used earlier. This menu also
-have option for you to **delete model server**.
+has the option for you to **delete model server**.
 
 ## Create a connection
 

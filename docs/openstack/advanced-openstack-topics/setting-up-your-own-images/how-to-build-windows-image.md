@@ -301,7 +301,7 @@ During Installation, set _Serial port for logging_ to **COM1** as shown below:
 ![Download Cloudbase-init setup for Admin](images/coludbase-init-serial-port-com1.png)
 
 When the installation is done, in the _Complete the Cloudbase-Init Setup Wizard_
-window, select the **Run Sysprep** and **Shutdown** check boxes and click "Finish"
+window, select the **Run Sysprep** and **Shutdown** checkboxes and click "Finish"
 as shown below:
 
 ![Cloudbase-init Final Setup Options](images/cloudinit-final-setup.png)

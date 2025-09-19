@@ -148,11 +148,11 @@ Enter the following information for your new model:
 
 -   **Number of accelerators**: `1`.
 
--   **Model route**: Select check box for "Make deployed models available through
+-   **Model route**: Select the checkbox for "Make deployed models available through
     an external route" this will enable us to send requests to the model endpoint
     from outside the cluster.
 
--   **Token authentication**: Select check box for "Require token authentication"
+-   **Token authentication**: Select the checkbox for "Require token authentication"
     if you want to secure or restrict access to the model by forcing requests to
     provide an authorization token, which is important for security. While selecting
     it, you can keep the populated Service account name i.e. `default-name`.
@@ -208,7 +208,7 @@ your deployed model name (e.g., `granite`), as shown below:
 You can also modify the configure properties for your deployed model configuration
 by clicking on the three dots on the right side, and selecting **Edit**. This will
 bring back the same configuration pop-up window we used earlier. This menu also
-have option for you to **Delete** the deployed model.
+has the option for you to **Delete** the deployed model.
 
 ## Check the Model API
 

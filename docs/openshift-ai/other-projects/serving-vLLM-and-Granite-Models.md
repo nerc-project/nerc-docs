@@ -54,13 +54,13 @@ either using **Git** or using the **Hugging Face CLI** as described below:
 
 ### Using Git with Access Token
 
-```
+```sh
 git clone https://<your-username>:<Access_Token>@huggingface.co/<model_repo_path>
 ```
 
 For example, this looks like as shown below:
 
-```
+```sh
 git clone https://<your-username>:<Access_Token>@huggingface.co/ibm-granite/granite-3.3-8b-instruct
 ```
 
@@ -111,7 +111,7 @@ huggingface-cli download ibm-granite/granite-3.3-8b-instruct
 
 2. Click the name of the project that you want to deploy a model in.
 
-A project details page opens.
+    A project details page opens.
 
 3. Click the **Models** tab.
 
@@ -160,14 +160,14 @@ Enter the following information for your new model:
 
 -   **Source model location**:
 
-  -   Select the **Connection** option from the dropdown list that you created
+-   Select the **Connection** option from the dropdown list that you created
     [as described here](#storing-data-with-connection) to store the model by using
     the **Existing connection** option Connection deopdown list i.e. `My Storage`.
 
     Alternatively, you can create a new connection directly from this menu by selecting
     **Create connection** option.
 
-  -   **Path**: If your model is not located at the root of the bucket of your
+-   **Path**: If your model is not located at the root of the bucket of your
         connection, you must enter the path to the folder it is in i.e. `models/granite-3.3-8b-instruct`.
 
 -   **Configuration parameters**: You can customize the runtime parameters in the

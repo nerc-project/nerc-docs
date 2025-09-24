@@ -59,15 +59,15 @@ the list below.
 
 ## Virtualization on OpenShift
 
--   [Introduction](virtualization/intro-virtualization-on-openshift.md)
+- [Introduction](virtualization/intro-virtualization-on-openshift.md)
 
--   [Getting Started](virtualization/getting-started.md)
+- [Getting Started](virtualization/getting-started.md)
 
--   [Running and Managing VMs](virtualization/running-and-managing-vms.md)
+- [Running and Managing VMs](virtualization/running-and-managing-vms.md)
 
--   [Setting up Windows VM](virtualization/windows-vm.md)
+- [Setting up Windows VM](virtualization/windows-vm.md)
 
--   [Storage](virtualization/storage.md)
+- [Storage](virtualization/storage.md)
 
 ## Decommission OpenShift Resources
 

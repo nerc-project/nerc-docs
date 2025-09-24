@@ -5,6 +5,10 @@ can be accessed via the web.
 
 You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
 
+!!! info "Very Important: What is the Web Console URL for NERC Academic (EDU) OpenShift?"
+
+    Access the NERC Academic (EDU) OpenShift web console at: [https://console.apps.edu.nerc.mghpcc.org](https://console.apps.edu.nerc.mghpcc.org)
+
 The NERC Authentication supports CILogon using Keycloak for gateway authentication
 and authorization that provides federated login via your institution accounts and
 it is the recommended authentication method.

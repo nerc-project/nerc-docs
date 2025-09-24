@@ -23,7 +23,7 @@ and Number of accelerators (GPUs).
 For our example project, let's name it "PyTorch Workbench". We'll select the
 **PyTorch** image, choose a **Deployment size** of **Small**, choose **Accelerator**
 of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate a
-**Cluster storage** space of **1GB**.
+**Cluster storage** space of **20GB** (Selected By Default).
 
 !!! tip "Hardware Acceleration using GPU"
 
@@ -31,8 +31,9 @@ of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate a
     performance and reduce training time.
 
 If this procedure is successful, you have started your Jupyter notebook server.
-When your workbench is ready, the status will change to _Running_ and you can select
-"Open" to go to your environment:
+When your workbench is ready and the status changes to _Running_, click the open
+icon (![Open Workbench](images/open.png)) next to your workbench's name, or click
+the workbench name directly to access your environment:
 
 ![Open JupyterLab Environment](images/open-pytorch-jupyter-lab.png)
 
@@ -73,7 +74,7 @@ Then click on **Clone a Repository** as shown below:
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/rh-aiservices-bu/getting-started-with-gpus](https://github.com/rh-aiservices-bu/getting-started-with-gpus).
 
-Then click **Clone** button as shown below:
+Then click **Clone** button, as shown below:
 
 ![Getting Started With GPUs Example Project](images/getting-started-with-gpus-git-repo.png)
 

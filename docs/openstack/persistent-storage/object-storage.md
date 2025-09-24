@@ -1044,7 +1044,7 @@ using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.
 
 #### Configuring WinSCP
 
--   Click on "New Session" tab button as shown below:
+-   Click on "New Session" tab button, as shown below:
 
 ![Login](images/winscp-new-session.png)
 
@@ -1097,7 +1097,7 @@ servers, enterprise file sharing, and cloud storage.
 
 #### Configuring Cyberduck
 
--   Click on "Open Connection" tab button as shown below:
+-   Click on "Open Connection" tab button, as shown below:
 
 ![Open Connection](images/cyberduck-open-connection.png)
 

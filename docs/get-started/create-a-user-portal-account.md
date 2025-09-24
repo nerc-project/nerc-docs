@@ -104,7 +104,7 @@ by viewing the following page:
 
 1. Log in to the [RegApp](https://regapp.mss.mghpcc.org/) using your MGHPCC-SS account.
 
-2. Click on "Manage Your MGHPCC-SS Account" button as shown below:
+2. Click on "Manage Your MGHPCC-SS Account" button, as shown below:
 
     ![MGHPCC-SS Account Update](images/account_update.png)
 

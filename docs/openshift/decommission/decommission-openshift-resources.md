@@ -39,7 +39,7 @@ individual workbench and selecting **Delete workbench**, as shown below:
 ![Delete Workbench](images/delete-workbench-rhoai.png)
 
 When prompted please confirm your workbench name and then click "Delete workbench"
-button as shown below:
+button, as shown below:
 
 ![Delete Workbench Confirmation](images/delete-workbench-rhoai-confirmation.png)
 
@@ -51,21 +51,21 @@ individual cluster storage and selecting **Delete storage**, as shown below:
 ![Delete Cluster Storage Confirmation](images/cluster-storage-delete-rhoai.png)
 
 When prompted please confirm your cluster storage name and then click "Delete storage"
-button as shown below:
+button, as shown below:
 
 ![Delete Cluster Storage Confirmation](images/cluster-storage-delete-rhoai-confirmation.png)
 
-### Delete all Data connections
+### Delete all Connections
 
-Delete all data connections by clicking on the three dots on the right side of the
-individual data connection and selecting **Delete data connection**, as shown below:
+Delete all Connections by clicking on the three dots on the right side of the
+individual connection and selecting **Delete connection**, as shown below:
 
-![Delete Data Connection](images/delete-data-connections-rhoai.png)
+![Delete Connection](images/delete-data-connections-rhoai.png)
 
-When prompted please confirm your data connection name and then click "Delete data
-connection" button as shown below:
+When prompted please confirm your connection name and then click "Delete data
+connection" button, as shown below:
 
-![Delete Data Connection Confirmation](images/delete-data-connections-rhoai-confirmation.png)
+![Delete Connection Confirmation](images/delete-data-connections-rhoai-confirmation.png)
 
 ### Delete all Pipelines
 
@@ -75,7 +75,7 @@ individual pipeline and selecting **Delete pipeline**, as shown below:
 ![Delete Pipeline](images/delete-pipelines-rhoai.png)
 
 When prompted please confirm your pipeline name and then click "Delete pipeline"
-button as shown below:
+button, as shown below:
 
 ![Delete Pipeline Confirmation](images/delete-pipelines-rhoai-confirmation.png)
 
@@ -87,7 +87,7 @@ individual pipeline and selecting **Delete model server**, as shown below:
 ![Delete Model Server](images/delete-model-server-rhoai.png)
 
 When prompted please confirm your model server name and then click "Delete model
-server" button as shown below:
+server" button, as shown below:
 
 ![Delete Model Server Confirmation](images/delete-model-server-rhoai-confirmation.png)
 

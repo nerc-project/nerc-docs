@@ -69,14 +69,14 @@ or a script to create local S3 storage (MinIO) buckets:
 **Procedure**:
 
 Manually create two connections: **My Storage** and **Pipeline Artifacts**
-by following [How to create a data connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-data-connection).
+by following [How to create a connection](../data-science-project/model-serving-in-the-rhoai.md#create-a-connection).
 
 **Verification**:
 
 You should see two connections listed under your RHOAI Dashboard **My Storage**
 and **Pipeline Artifacts** as shown below:
 
-![Data Connections](images/data-connections.png)
+![Connections](images/data-connections.png)
 
 #### 1.2. **Using a script to set up local S3 storage (MinIO)**
 
@@ -89,7 +89,7 @@ the following tasks:
 
 -   **Generates a random user ID and password** for the MinIO Console.
 
--   **Establishes two data connections** in your project - one for each bucket -
+-   **Establishes two connections** in your project - one for each bucket -
     using the same generated credentials.
 
 -   Installs all required **network policies**.
@@ -493,26 +493,26 @@ will open the MinIO web console that looks like below:
 !!! info "MinIO Web Console Login Credential"
 
     The Username and Password for the MinIO web console can be retrieved from
-    the Data Connection's **Access key** and **Secret key**.
+    the Connection's **Access key** and **Secret key**.
 
 iii. Navigate back to the OpenShift AI dashboard.
 
 a. Select Data Science Projects and then click the name of your project, i.e.
 **Fraud detection**.
 
-b. Click **Data connections**. You should see two connections listed:
+b. Click **Connections**. You should see two connections listed:
 *My Storage* and *Pipeline Artifacts* as shown below:
 
-![Data Connections](images/data-connections.png)
+![Connections](images/data-connections.png)
 
 c. Verify the buckets are created on the MinIO Web Console:
 
--   Click on any data connection from the list that was created and then click
-the action menu (⋮) at the end of the selected data connection row. Choose
-"Edit data connection" from the dropdown menu. This will open a pop-up
+-   Click on any connection from the list that was created and then click
+the action menu (⋮) at the end of the selected connection row. Choose
+"Edit connection" from the dropdown menu. This will open a pop-up
  window as shown below:
 
-    ![Edit Data Connection Pop up](images/edit-data-connection.png)
+    ![Edit Connection Pop up](images/edit-data-connection.png)
 
 -   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
@@ -539,12 +539,12 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
 !!! note "Alternatively, Running a script to install local MinIO object storage"
 
     Alternatively, you can run a script to install local object storage
-    buckets and create data connections using the OpenShift CLI (`oc`).
+    buckets and create connections using the OpenShift CLI (`oc`).
     For that, you need to install and configure the OpenShift CLI by
     following the [setup instructions](../../openshift/logging-in/setup-the-openshift-cli.md#installing-the-openshift-cli).
     Once the OpenShift CLI is set up, execute the following command to
     install MinIO object storage along with local S3 storage (MinIO) buckets
-    and necessary data connections:
+    and necessary connections:
 
     `oc apply -f https://raw.githubusercontent.com/nerc-project/fraud-detection/main/setup/setup-s3.yaml`
 
@@ -560,7 +560,7 @@ buckets: **my-storage** and **pipeline-artifacts** are visible as shown below:
 
 ### 2. Enabling data science pipelines
 
-In this section, you prepare your workshop environment so that you can use data
+In this section, you prepare your workbench environment so that you can use data
 science pipelines.
 
 **Procedure**:
@@ -622,7 +622,7 @@ For our example project, let's name it "Fraud detection". We'll select the
 **TensorFlow** image with Recommended Version (selected by default), choose
 a **Deployment size** of **Small**, choose **Accelerator** of
 **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
-a **Cluster storage** space of **20GB**.
+a **Cluster storage** space of **20GB** (Selected By Default).
 
 Here, you will use **Environment Variables** to specify the Key/Value pairs related
 to the S3-compatible object storage bucket for storing your model.
@@ -634,9 +634,9 @@ i. Click on **"Add variable"**.
 ii. Select **"Config Map"** from the dropdown for the environment variable type.
 
 iii. Choose **"Key / Value"** and enter the following keys along with their corresponding
-values, which you have retrieved while "Editing data connection":
+values, which you have retrieved while "Editing connection":
 
-![Edit Data Connection Pop up](images/edit-data-connection.png)
+![Edit Connection Pop up](images/edit-data-connection.png)
 
 **Environment Variables**:
 
@@ -683,15 +683,16 @@ values, which you have retrieved while "Editing data connection":
 **Verification**:
 
 If this procedure is successful, you have started your Jupyter notebook
-server. When your workbench is ready, the status will change from _Starting_
-to _Running_ and you can select "Open" to go to your environment:
+server. When your workbench is ready and the status changes to _Running_, click
+the open icon (![Open Workbench](images/open.png)) next to your workbench's name,
+or click the workbench name directly to access your environment:
 
 ![Open Fraud Detection JupyterLab Environment](images/open-fraud-detection-jupyter-lab.png)
 
 !!! info "Note"
 
     If you made a mistake, you can edit the workbench to make changes. Please
-    make sure your toggle the _Running_ status of your workbench to _Stopped_
+    make sure you set the _Running_ status of your workbench to _Stopped_
     prior clicking the action menu (⋮) at the end of the selected workbench row
     as shown below:
 
@@ -769,6 +770,54 @@ double click it and execute the "Run" button to run all notebook cells at once.
 This process will take some time to complete. At the end, it will generate and
 save the model `model.onnx` within the `models/fraud/1/` folder path of `fraud-detection`.
 
+##### Adding MLflow to Training Code
+
+!!! info "What is MLflow?"
+
+    [MLflow](../../other-tools/mlflow/mlflow-overview.md) is an open-source platform
+    that helps manage the entire machine learning lifecycle, including experimentation,
+    reproducibility, deployment, and model management. For more information about
+    how to set up your own MLflow server, read [this user guide](../../other-tools/mlflow/mlflow-server-setup.md).
+
+In your Jupyter notebook environment, within the root folder path of `fraud-detection`,
+find the `mlflow` directory. It contains the following files:
+
+- `model.ipynb`: This Jupyter notebook contains the end-to-end machine learning
+    workflow, including data preprocessing, model training, and MLflow logging.
+
+- `requirements.txt`: This file lists all the Python package dependencies needed
+    to run the code in `model.ipynb`.
+
+Go back to your "Fraud detection" workbench and add a new  **Environment Variable**
+to specify the Key/Value pairs related to the your MLflow server by clicking the
+action menu (⋮) at the end of your workbench.
+
+To add Environment variable please follow the following steps:
+
+i. Click on **"Add another key / value pair"** under existing "Environment variables"
+section:
+
+ii. Choose **"Key / Value"** and enter the following keys along with their corresponding
+values, which you have retrieved while "Editing connection":
+
+**Environment Variables**:
+
+    Key: MLFLOW_ROUTE
+    Value: https://mlflow-route-<your-namespace>.apps.shift.nerc.mghpcc.org
+
+![MLflow Route Environment Variable](images/mlflow-route-environment-var.png)
+
+Once you execute the provided `model.ipynb`, the training process logs model
+parameters, metrics, and artifacts to the MLflow tracking server. After training
+and tuning hyperparameters, the final model artifact is logged to the tracking
+server to record a link between the model, the input data it was trained on, and
+the code used to generate it.
+
+![MLflow Logging](images/mlflow-logging.png)
+
+You'll be able to track the entire training lifecycle by navigating to your MLflow
+tracking server at: `https://mlflow-route-<your-namespace>.apps.shift.nerc.mghpcc.org`.
+
 ### 4. Preparing a model for deployment
 
 **Procedure**:
@@ -790,6 +839,78 @@ connection. Once saved, the model is now ready for use by your model server.
 Now that the model is stored and saved in the portable **ONNX** format, you can
 deploy it as an API using an OpenShift AI **Model Server**.
 
+OpenShift AI offers two options for model serving:
+
+-  Single-model serving:
+
+    Each model in the project is deployed on its own model server. This platform
+    works well for large models or models that require dedicated resources.
+
+-   Multi-model serving:
+
+    All models in the project are deployed on the same model server. This platform
+    is suitable for sharing resources among deployed models.
+
+!!! note "Learn More about Model Serving"
+
+    To learn more about how Model Serving works in the NERC RHOAI environment,
+    [read this page](../data-science-project/model-serving-in-the-rhoai.md#create-a-model-server).
+
+In this project, you are deploying only one model, so you can select either serving
+type. The steps for deploying the fraud detection model depend on the type of model
+serving platform you select:
+
+-   [Deploying a model on a single-model server](#deploying-a-model-on-a-single-model-server)
+
+-   [Deploying a model on a multi-model server](#deploying-a-model-on-a-multi-model-server)
+
+##### Deploying a model on a single-model server
+
+OpenShift AI single-model servers host only one model at a time. To deploy a model,
+you first create a new model server and then deploy your model to it.
+
+**Procedure**:
+
+In the OpenShift AI dashboard, navigate to the data science project details page
+and click the **Models** tab.
+
+In the "Single-model serving platform" tile, click **Select single-model**.
+
+You will be able to deploy the model by clicking the **Deploy model** button, as
+shown below:
+
+![Single-model serving platform](images/single-model-serving.png)
+
+In the pop-up window that appears, depicted as shown below, you can specify the
+following details:
+
+For **Model deployment name**, type **fraud**.
+
+For **Serving runtime**, select **OpenVINO Model Server**.
+
+For **Model framework (name - version)**, select **onnx-1**.
+
+For **Deployment mode**, select **Advanced** (*selected by default*).
+
+For **Existing connection**, select **My Storage**.
+
+Type the path that leads to the version folder that contains your model file: **models/fraud**
+
+Leave the other fields with the default settings.
+
+![Deploy model form for single-model serving](images/deploy-model-form-sm.png)
+
+Click **Deploy**.
+
+**Verification**:
+
+When you return to the Deployed models page, you will see your newly deployed model.
+Notice the loading symbol under the **Status** section. When the model has finished
+deploying, the status icon will be a **green checkmark** indicating the model deployment
+is complete as shown below:
+
+![Deployed model status](images/ds-project-model-list-status-sm.png)
+
 ##### Deploying a model on a multi-model server
 
 NERC RHOAI multi-model servers can host multiple models simultaneously. You can
@@ -798,11 +919,14 @@ create a new model server and deploy your model to it.
 **Procedure**:
 
 In the OpenShift AI dashboard, navigate to the data science project details page
-and click the **Models and model servers** tab.
+and click the **Models** tab.
 
-Select **Add server** as shown below:
+In the **Multi-model serving platform** tile, click **Select multi-model**.
 
-![Add A Model Server](images/add-a-model-server.png)
+You will be able to create a new model server by clicking the **Add model server**
+button, as shown below:
+
+![Add A Model Server](images/add-multi-model-server.png)
 
 In the pop-up window that appears, depicted as shown below, you can specify the
 following details:
@@ -817,8 +941,7 @@ Leave the other fields with the default settings.
 
 Click **Add**.
 
-In the **Models and model servers** list, next to the new model server, click
-**Deploy** model.
+In the **Models** list, next to the new model server, click **Deploy** model.
 
 ![Create model server form](images/ds-project-workbench-list-deploy.png)
 
@@ -834,7 +957,7 @@ Type the path that leads to the version folder that contains your model file: **
 
 Leave the other fields with the default settings.
 
-![Deploy model from for multi-model serving](images/deploy-model-form-mm.png)
+![Deploy model form for multi-model serving](images/deploy-model-form-mm.png)
 
 Click **Deploy**.
 
@@ -842,7 +965,7 @@ Click **Deploy**.
 
 When you return to the Deployed models page, you will see your newly deployed model.
 You should click on the 1 on the Deployed models tab to see details. Notice the
-loading symbol under the Status section. When the model has finished deploying,
+loading symbol under the **Status** section. When the model has finished deploying,
 the status icon will be a **green checkmark** indicating the model deployment is
 complete as shown below:
 
@@ -860,20 +983,35 @@ the **Models** tab.
 -   Take note of the model's Inference endpoint URL. You need this information when
 you test the model API.
 
-    ![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
+    ![Deployed Multi-model Serving Inference Endpoints](images/deploy-model-inference-endpoints-fraud-mm.png)  
 
     The **Inference endpoint** field contains an **Internal Service** link, click
     the link to open a popup that shows the URL details, and then take note of
     the **grpcUrl** and **restUrl** values.
 
+    !!! note "Single-model Serving Inference Endpoints"
+
+        In the case of single-model serving, the **Inference endpoint** field
+        contains an **Internal Service** link. Click the link to open a popup that
+        displays the URL details. Take note of the **url** value if you want to
+        access the inference endpoint from within the cluster. If you are accessing
+        the model from outside the cluster, be sure to also note the **External**
+        value.
+
+        ![Deployed Single-model Serving Inference Endpoints](images/deploy-model-inference-endpoints-fraud-sm.png)
+
 -   Return to the Jupyter notebook environment and test your new inference endpoints.
 
-    Follow the instructions in `3_rest_requests_multi_model.ipynb` to make a REST
-    API call. Be sure to update the *rest_url* with your own **restUrl** value (as
-    noted above).
-
+    If you deployed your model with the **multi-model serving platform**, follow
+    the instructions in `3_rest_requests_multi_model.ipynb` to make a REST API call.
+    Be sure to update the *rest_url* with your own **restUrl** value (as noted above).
     To make a gRPC API call, follow the instructions in `4_grpc_requests_multi_model.ipynb`,
     updating the *grpc_host* with your own **grpcUrl** value (as noted above).
+
+    If you deployed your model with the **single-model serving platform**, follow
+    the directions in `5_rest_requests_single_model.ipynb` to try a REST API call.
+    Be sure to update the *rest_url* with your own *url* or *External* value (as
+    noted above).
 
 ### 6. Implementing pipelines
 
@@ -934,7 +1072,7 @@ b. Select the **Pipeline Properties** tab.
 ![Pipeline Properties Tab](images/wb-pipeline-properties-tab.png)
 
 c. In the **Pipeline Properties** panel, scroll down to **Generic Node Defaults**
-and **Runtime Image**. Set the value to `TensorFlow with CUDA and Python 3.9 (UBI9)`.
+and **Runtime Image**. Set the value to `TensorFlow with CUDA and Python 3.11 (UBI9)`.
 
 ![Pipeline Runtime Image](images/wb-pipeline-runtime-image.png)
 
@@ -978,7 +1116,7 @@ iii. Scroll down to the **File Dependencies** section and then click **Add**.
 
 iv. Set the value to `data/*.csv` which contains the data to train your model.
 
-v. Select the Include Subdirectories option.
+v. Select the **Include Subdirectories** option.
 
 ![Set File Dependency Value](images/wb-pipeline-node-1-file-dep-form.png)
 
@@ -1000,7 +1138,7 @@ iv. Set the value to `models/fraud/1/model.onnx`.
 
 ![Set file dependency value](images/wb-pipeline-node-1-file-output-form.png)
 
-v. Repeat steps 2-4 for node 2.
+v. Repeat steps ii-iv for node 2.
 
 vi. **Save** the pipeline.
 
@@ -1016,15 +1154,18 @@ You can use this secret in your pipeline nodes without having to save the
 information in your pipeline code. This is important, for example, if you want
 to save your pipelines - without any secret keys - to source control.
 
-The secret is named `aws-connection-my-storage`.
+In this example, the secret is named `aws-connection-my-storage`.
 
-!!! note "Note"
+!!! tip "How to get the secret name?"
 
     If you named your connection something other than **"My Storage"**, you can
     obtain the secret name in the OpenShift AI dashboard by hovering over the
     help (?) icon in the Connections tab.
 
     ![My Storage Secret Name](images/dsp-dc-secret-name.png)
+
+    **Very Important:** *Make sure to replace all instances of `aws-connection-my-storage`
+    secret with your own.*
 
 The `aws-connection-my-storage` secret includes the following fields:
 
@@ -1065,7 +1206,7 @@ a. Under **Kubernetes Secrets**, click **Add**.
 
 b. Enter the following values and then click **Add**.
 
--   **Environment Variable**: *AWS_ACCESS_KEY_ID*
+🔸  **Environment Variable**: *AWS_ACCESS_KEY_ID*
 
 -   **Secret Name**: *aws-connection-my-storage*
 
@@ -1073,27 +1214,27 @@ b. Enter the following values and then click **Add**.
 
 ![Secret Form](images/wb-pipeline-kube-secret-form.png)
 
-iii. Repeat Step 2 for each of the following Kubernetes secrets:
+iii. Repeat **Step ii** for each of the following Kubernetes secrets:
 
--   **Environment Variable**: *AWS_SECRET_ACCESS_KEY*
+🔸  **Environment Variable**: *AWS_SECRET_ACCESS_KEY*
 
 -   **Secret Name**: *aws-connection-my-storage*
 
 -   **Secret Key**: *AWS_SECRET_ACCESS_KEY*
 
--   **Environment Variable**: AWS_S3_ENDPOINT
+🔸  **Environment Variable**: AWS_S3_ENDPOINT
 
 -   **Secret Name**: aws-connection-my-storage
 
 -   **Secret Key**: AWS_S3_ENDPOINT
 
--   **Environment Variable**: AWS_DEFAULT_REGION
+🔸  **Environment Variable**: AWS_DEFAULT_REGION
 
 -   **Secret Name**: aws-connection-my-storage
 
 -   **Secret Key**: AWS_DEFAULT_REGION
 
--   **Environment Variable**: AWS_S3_BUCKET
+🔸  **Environment Variable**: AWS_S3_BUCKET
 
 -   **Secret Name**: aws-connection-my-storage
 
@@ -1105,7 +1246,7 @@ example, rename it to **My Train Save.pipeline**.
 ##### Run the Pipeline
 
 You can use your own newly created pipeline or the pipeline in the provided
-`5 Train Save.pipeline` file.
+`6 Train Save.pipeline` file.
 
 **Procedure**:
 
@@ -1144,6 +1285,94 @@ The result should be a `models/fraud/1/model.onnx` file in your S3 bucket which
 you can serve, just like you did manually in the [Preparing a model for deployment](#4-preparing-a-model-for-deployment)
 section.
 
+#### Running a data science pipeline generated from Python code
+
+In the previous section, you created a simple pipeline using the graphical pipeline
+editor. However, it's often preferable to define pipelines in code, allowing for
+version control and easier collaboration.
+
+The [Kubeflow pipelines (kfp)](https://github.com/kubeflow/pipelines) SDK offers
+a Python API for building pipelines programmatically. You can install the SDK
+using the following command:
+
+    pip install kfp
+
+With this package, you can write pipeline definitions in Python, compile them into
+YAML format, and then import the resulting YAML into OpenShift AI.
+
+!!! info "Note"
+
+    In OpenShift AI, the current version of kfp uses **Argo Workflows** as its
+    execution backend.
+
+The [GitHub repository](https://github.com/nerc-project/fraud-detection) provides
+the files for you to view and upload.
+
+1. Optionally, view the provided Python code in your JupyterLab environment by
+navigating to the `fraud-detection` project's `pipeline` directory. It contains
+the following files:
+
+    - `7_get_data_train_upload-tekton.yaml` is unused older version of pipeline
+    YAML file using the [OpenShift Pipeline (Tekton)](https://tekton.dev/).
+
+    - `7_get_data_train_upload.py` is the main pipeline code.
+
+    - `build.sh` is a script that builds the pipeline and creates the YAML file.
+
+    For your convenience, the output of the `build.sh` script is available in the
+    top-level `fraud-detection` directory. The file is named `7_get_data_train_upload.yaml`,
+    as shown below:
+
+    ![Pipeline Files and Folder](images/pipeline-files-folder.png)
+
+    !!! info "Note"
+
+        You can also run the `build.sh` script manually from your local terminal
+        by executing the following command from the `pipeline` directory of the
+        `fraud-detection` project:
+
+            sh ./build.sh
+
+2. Right-click the `7_get_data_train_upload.yaml` file and then click **Download**.
+
+3. Upload the `7_get_data_train_upload.yaml` file to OpenShift AI.
+
+    i. In the OpenShift AI dashboard, navigate to your data science project page.
+    Click the **Pipelines** tab and then click **Import pipeline**.
+
+    ii. Enter values for **Pipeline name** and **Pipeline description**.
+
+    iii. Click **Upload** and then select `7_get_data_train_upload.yaml` from your
+    local files to upload the pipeline.
+
+    ![Pipeline Upload](images/ds-pipeline-upload.png)
+
+    iv. Click **Import pipeline** to import and save the pipeline.
+
+    The pipeline shows in graphic view as shown below:
+
+    ![Pipeline Graph](images/ds-pipeline-graph.png)
+
+4. Select **Actions** >> **Create run**.
+
+5. On the Create run page, provide the following values:
+
+    i. For **Experiment**, leave the value as `Default`.
+
+    ii. For **Name**, type any name, for example `Run 1`.
+
+    iii. For **Pipeline**, select the pipeline that you uploaded.
+
+    You can leave the other fields with their default values.
+
+    ![Create Pipeline Run](images/ds-create-pipeline-run.png)
+
+6. Click **Create run** to create the run.
+
+    A new run starts immediately.
+
+    ![Create Pipeline Run](images/ds-pipeline-run.png)
+
 ## Deploy the Model Application on NERC OpenShift
 
 The **model application** includes a visual user interface (UI) powered by [Gradio](https://www.gradio.app/),
@@ -1153,7 +1382,7 @@ potential fraud, providing an intuitive way to test the model's performance.
 Additionally, example inputs are provided within the UI to help users understand
 the expected data format and interact with the model effectively.
 
-The model application code is located in the `"application"` folder within the
+The model application code is located in the `application` folder within the
 root directory of `fraud-detection`. You can find this folder in the **GitHub repository**
 you cloned during the step: [Importing the tutorial files into the Jupyter environment](#importing-the-tutorial-files-into-the-jupyter-environment).
 
@@ -1220,7 +1449,7 @@ copy the **Model name** value. For example: `fraud`.
 **Value**: From the RHOAI projects interface ([from the previous section](#testing-the-model-api)),
 copy the **restUrl** value. For example: `http://modelmesh-serving.<your-namespace>:8008`.
 
-![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints.png)
+![Deployed Model Serving Inference Endpoints](images/deploy-model-inference-endpoints-fraud-mm.png)
 
 Your full settings page should look something like this:
 

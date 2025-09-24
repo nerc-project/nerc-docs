@@ -221,7 +221,7 @@ else has already updated it from a different source**:
 ### Progress, Verbosity, Statistics
 
 `-v`
-Verbose mode — list each file transferred.
+Verbose mode  -  list each file transferred.
 Adding more vs makes it more verbose.
 
 `--progress`
@@ -413,7 +413,7 @@ using FTP, FTPS, SCP, SFTP, WebDAV, or S3 file transfer protocols.
 
 #### Configuring WinSCP
 
--   Click on the "New Tab" button as shown below:
+-   Click on the "New Tab" button, as shown below:
 
 ![Login](images/winscp-new-tab.png)
 
@@ -498,7 +498,7 @@ connections to servers, enterprise file sharing, and various cloud storage platf
 
 #### Configuring Cyberduck
 
--   Click on the "Open Connection" button as shown below:
+-   Click on the "Open Connection" button, as shown below:
 
 ![Open Connection](images/cyberduck-open-connection-new.png)
 

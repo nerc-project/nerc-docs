@@ -188,7 +188,7 @@ set up above as shown below:
 - Click on the Route link it will load the web application with the HTTPS and domain
 name you defined in your ingress: `https://<your-hostname>` i.e. `https://nerc.hopto.org`
 
-!!! tips "To Troubleshoot Certificate Requests"
+!!! tip "To Troubleshoot Certificate Requests"
 
     Naviage to **Search** Menu and search for *certificate* and select **CertificateRequest**.
     Here you will be able to see all requested certificates in your namespaces as

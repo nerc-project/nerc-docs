@@ -60,7 +60,7 @@ When the requested allocation is approved, it must have an "End Date" - which
 is normally 365 days or 1 year from the date it is approved i.e. "Start Date".
 Automated emails are triggered to all users on an allocation when the end date
 is 60 days away, 30 days, 7 days, and then set the allocation status to
-"Active (Needs Renewal)", unless the user turns off notifications on the project.
+"**Active (Needs Renewal)**", unless the user turns off notifications on the project.
 
 !!! danger "Very Important: Urgent Allocation Renewal is Required Before End Date"
 
@@ -79,12 +79,12 @@ is 60 days away, 30 days, 7 days, and then set the allocation status to
 
 Allocation renewals may not require any additions or changes to the allocation
 attributes from the PI or Manager. By default, if the PI or Manager clicks on
-the 'Activate' button as shown below:
+the 'Activate' button, as shown below:
 
 ![ColdFront Activate Expiring Allocation](images/coldfront-activate-expiring-allocation.png)
 
 Then it will prompt for confirmation and allow the admin to review and submit the
-activation request by clicking on 'Submit' button as shown below:
+activation request by clicking on 'Submit' button, as shown below:
 
 ![ColdFront Allocation Renewal Submit](images/coldfront-submit-allocation-activation.png)
 

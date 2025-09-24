@@ -52,7 +52,7 @@ chatbot solution.
     For our example project, let's name it "AnythingLLM Workbench". We'll select
     the **AnythingLLM** image, choose a **Deployment size** of **Small**, **Accelerator**
     as **None** (no GPU is needed for this setup), and allocate a **Cluster storage**
-    space of **20GB**.
+    space of **20GB** (Selected By Default).
 
     !!! tip "Tip"
 
@@ -60,8 +60,9 @@ chatbot solution.
         Please ensure that you modify this based on your need in **Cluster Storage**.
 
 3.  If this procedure is successful, you have started your AnythingLLM Workbench.
-    When your workbench is ready, the status will change to _Running_ and you can
-    select "Open" to go to your environment:
+    When your workbench is ready and the status changes to _Running_, click the
+    open icon (![Open Workbench](images/open.png)) next to your workbench's name,
+    or click the workbench name directly to access your environment:
 
     ![Open AnythingLLM Workbench](images/open-AnythingLLM-workbench.png)
 

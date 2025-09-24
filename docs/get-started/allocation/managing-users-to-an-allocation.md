@@ -1,7 +1,7 @@
 # Adding and removing project Users to project Resource Allocation
 
 Any available users who were not added previously on a given project can be added
-to resource allocation by clicking on the "Add Users" button as shown below:
+to resource allocation by clicking on the "Add Users" button, as shown below:
 
 ![Adding and removing project User(s) to project Allocation](images/coldfront-pi-add-users-on-allocation.png)
 

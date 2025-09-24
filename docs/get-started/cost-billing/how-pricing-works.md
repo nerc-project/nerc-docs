@@ -30,19 +30,25 @@ and billing model.
 
 ### Service Units (SUs)
 <!-- markdownlint-disable MD052 -->
-| Name         | vGPU | vCPU | RAM (GiB) | Current Price |
+| Name         | GPU | vCPU | RAM (GiB) | Current Price |
 | ------------ | ---- | ---- | --------- | ------------- |
-| H100 GPU     | {{su_info_dict["GPUH100"]["vGPUs"]}}    | {{su_info_dict["GPUH100"]["vCPUs"]}}   | {{su_info_dict["GPUH100"]["RAM"]}}       | ${{su_info_dict["GPUH100"]["rate"]}}        |
-| A100sxm4 GPU | {{su_info_dict["GPUA100SXM4"]["vGPUs"]}}    | {{su_info_dict["GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["GPUA100SXM4"]["rate"]}}        |
-| A100 GPU     | {{su_info_dict["GPUA100"]["vGPUs"]}}    | {{su_info_dict["GPUA100"]["vCPUs"]}}   | {{su_info_dict["GPUA100"]["RAM"]}}       | ${{su_info_dict["GPUA100"]["rate"]}}        |
-| V100 GPU     | {{su_info_dict["GPUV100"]["vGPUs"]}}    | {{su_info_dict["GPUV100"]["vCPUs"]}}   | {{su_info_dict["GPUV100"]["RAM"]}}       | ${{su_info_dict["GPUV100"]["rate"]}}        |
-| K80 GPU      | {{su_info_dict["GPUK80"]["vGPUs"]}}    | {{su_info_dict["GPUK80"]["vCPUs"]}}   | {{su_info_dict["GPUK80"]["RAM"]}}       | ${{su_info_dict["GPUK80"]["rate"]}}        |
-| CPU          | {{su_info_dict["CPU"]["vGPUs"]}}    | {{su_info_dict["CPU"]["vCPUs"]}}   | {{su_info_dict["CPU"]["RAM"]}}       | ${{su_info_dict["CPU"]["rate"]}}        |
+| H100 GPU     | {{su_info_dict["GPUH100"]["GPUs"]}}    | {{su_info_dict["GPUH100"]["vCPUs"]}}   | {{su_info_dict["GPUH100"]["RAM"]}}       | ${{su_info_dict["GPUH100"]["rate"]}}        |
+| A100sxm4 GPU | {{su_info_dict["GPUA100SXM4"]["GPUs"]}}    | {{su_info_dict["GPUA100SXM4"]["vCPUs"]}}   | {{su_info_dict["GPUA100SXM4"]["RAM"]}}       | ${{su_info_dict["GPUA100SXM4"]["rate"]}}        |
+| A100 GPU     | {{su_info_dict["GPUA100"]["GPUs"]}}    | {{su_info_dict["GPUA100"]["vCPUs"]}}   | {{su_info_dict["GPUA100"]["RAM"]}}       | ${{su_info_dict["GPUA100"]["rate"]}}        |
+| V100 GPU     | {{su_info_dict["GPUV100"]["GPUs"]}}    | {{su_info_dict["GPUV100"]["vCPUs"]}}   | {{su_info_dict["GPUV100"]["RAM"]}}       | ${{su_info_dict["GPUV100"]["rate"]}}        |
+| K80 GPU      | {{su_info_dict["GPUK80"]["GPUs"]}}    | {{su_info_dict["GPUK80"]["vCPUs"]}}   | {{su_info_dict["GPUK80"]["RAM"]}}       | ${{su_info_dict["GPUK80"]["rate"]}}        |
+| CPU          | {{su_info_dict["CPU"]["GPUs"]}}    | {{su_info_dict["CPU"]["vCPUs"]}}   | {{su_info_dict["CPU"]["RAM"]}}       | ${{su_info_dict["CPU"]["rate"]}}        |
 <!-- markdownlint-enable MD052 -->
 
-!!! info "Expected Availability of H100 GPUs"
+!!! info "Now Available on NERC: NVIDIA H100 GPUs"
 
-    H100 GPUs will be available in OpenShift in early 2025.
+    The cutting-edge NVIDIA H100 80GB GPUs are now available for use with:
+
+    🔹 **NERC Red Hat OpenShift AI (RHOAI)** via JupyterLab workbenches
+
+    🔹 **NERC OpenShift - based Containers**
+
+    To get started, read our latest [announcement](https://nerc.mghpcc.org/nvidia-h100-gpus-on-nerc/).
 
 ## Breakdown
 
@@ -81,16 +87,46 @@ of the base SU for the maximum resource they reserve.
 
 !!! warning "Are VMs invoiced even when shut down?"
 
-    Yes, VMs are invoiced as long as they are utilizing resources. In order not
-    to be billed for a VM, you **[must delete](../../openstack/management/vm-management.md#delete-instance)**
-    your Instance/VM. It is advisable to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
-    of your VM prior to deleting it, ensuring you have a backup of your data and
-    configurations. By proactively managing your VMs and resources, you can
-    optimize your usage and minimize unnecessary costs.
+    Yes, VMs incur charges as long as they are utilizing resources. Proactively
+    managing your VMs helps optimize usage and reduce unnecessary costs. To avoid
+    being billed for unused resources (i.e., **GPU, vCPU, RAM**), you can release
+    the underlying compute resources in one of the following two ways:
 
-    If you have common questions or need more information, refer to our
-    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md) for comprehensive
-    answers.
+    1. **By Shelving the VM**:
+
+       Shelving temporarily shuts down the VM and releases all its compute resources
+       (i.e., GPU, vCPU, RAM), while preserving the disk and metadata. This allows
+       you to resume the VM later without needing to reconfigure it. It's a cost-effective
+       (**Recommended**) option if you plan to use the VM again in the future.
+
+    2. **By Deleting the VM**:
+
+       [Deleting the VM](../../openstack/management/vm-management.md#delete-instance)
+       permanently removes it along with all associated resources, including compute,
+       storage, and network allocations. Choose this option if the VM is no longer
+       needed, as it fully eliminates any future charges.
+
+       It is advisable to [create a snapshot](../../openstack/management/vm-management.md#create-snapshot)
+       of your VM prior to deletion to ensure you have a backup of your data and
+       configurations. We strongly recommend [detaching any additional volumes](../../openstack/persistent-storage/detach-a-volume.md)
+       from your instance before creating any snapshots.
+
+    **Please note:**  
+    The **storage cost** is determined by your [requested and approved allocation values](../allocation/allocation-details.md#pi-and-manager-view)
+    for the storage quotas defined under "OpenStack Volume Quota (GiB)" and
+    "OpenStack Swift Quota (GiB)" in your **NERC (OpenStack)** Resource Allocations.
+
+    Even if you have deleted all volumes, snapshots, and object storage buckets and
+    objects in your OpenStack project, it's essential to adjust the approved storage
+    values for your NERC (OpenStack) allocation to zero (0). Otherwise, charges will
+    continue to apply based on the approved storage quota.
+
+    You can easily scale or reduce your current resource allocations within your
+    project. Follow [this guide](../allocation/allocation-change-request.md#request-change-resource-allocation-attributes-for-openstack-project)
+    to request changes using NERC's ColdFront interface.
+
+    For common questions or additional information, please refer to our
+    [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 **OpenShift CPU SU Example**:
 
@@ -134,7 +170,7 @@ GPU pods, as GPU pods cannot currently share resources with CPU pods.
 ### Storage
 
 <!-- markdownlint-disable MD052 MD013 -->
-Storage is charged separately at a rate of **${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr**
+Storage is charged separately at a rate of **${{su_info_dict["NESE Storage GB Rate"]["rate"]}} TiB/hr**
 <!-- markdownlint-enable MD052 MD013 -->
 OpenStack volumes remain provisioned until they are deleted. VM's reserve
 volumes, and you can also create extra volumes yourself. In OpenShift pods, storage
@@ -148,7 +184,7 @@ provisioned until it is deleted.
     Once approved, these **Storage quotas** will need to be reserved from the
     total NESE storage pool for both **NERC (OpenStack)** and **NERC-OCP (OpenShift)**
     resources. For **NERC (OpenStack)** Resource Allocations, storage quotas are
-    specified by the "OpenStack Volume Quota (GiB)" and "OOpenStack Swift Quota
+    specified by the "OpenStack Volume Quota (GiB)" and "OpenStack Swift Quota
     (GiB)" allocation attributes. Whereas for **NERC-OCP (OpenShift)** Resource
     Allocations, storage quotas are specified by the "OpenShift Request on Storage
     Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)" allocation
@@ -175,9 +211,9 @@ provisioned until it is deleted.
 
 -   Will be charged:
 
-    `.5 Storage TiB SU (.5 TiB x 700hrs) x ${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr`
+    `.5 Storage TiB SU (.5 TiB x 700hrs) x ${{su_info_dict["NESE Storage GB Rate"]["rate"]}} TiB/hr`
 
-    `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 700 / 2) }}`
+    `${{ "{:,.2f}".format(su_info_dict["NESE Storage GB Rate"]["rate"] * 700 / 2) }}`
 
 **Storage Example 2**:
 
@@ -187,9 +223,9 @@ provisioned until it is deleted.
 
 -   Will be charged:
 
-    `10 Storage TiB SU (10TiB x 720 hrs) x ${{su_info_dict["Storage GB Rate"]["rate"]}} TiB/hr`
+    `10 Storage TiB SU (10TiB x 720 hrs) x ${{su_info_dict["NESE Storage GB Rate"]["rate"]}} TiB/hr`
 
-    `${{ "{:,.2f}".format(su_info_dict["Storage GB Rate"]["rate"] * 10 * 720) }}`
+    `${{ "{:,.2f}".format(su_info_dict["NESE Storage GB Rate"]["rate"] * 10 * 720) }}`
 <!-- markdownlint-enable MD052 MD013 -->
 
 Storage includes all types of storage Object, Block, Ephemeral & Image.
@@ -199,7 +235,7 @@ Storage includes all types of storage Object, Block, Ephemeral & Image.
 To provide a more practical way to calculate your usage, here is a function of
 how the calculation works for OpenShift and OpenStack.
 
-1.  **OpenStack** = (Resource (vCPU/RAM/vGPU) assigned to VM flavor converted to
+1.  **OpenStack** = (Resource (vCPU/RAM/GPU) assigned to VM flavor converted to
     number of equivalent SUs) \* (time VM has been running), rounded up to a whole
     hour + Extra storage.
 
@@ -248,14 +284,20 @@ Actions menu located on the right hand side of your screen as shown here:
 
 **Shelve your VM when not in use**:
 
+!!! info "Only Available From Next Billing Cycle"
+
+    We will implement the invoicing piece of this feature as of the June 2025
+    Invoicing cycle.
+
 In [NERC OpenStack](../../openstack/index.md), if your VM does not need to run
 continuously, you can **shelve** it to free up consumed resources such as vCPUs,
 RAM, and disk. This action releases all allocated resources while preserving the
-VM's state.
+VM's state and metadata.
 
 - Click _Action -> Shelve Instance_.
 
-- Releases all computing resources (i.e., vCPU, RAM, and disk).
+- Releases all computing resources (i.e., **GPU, vCPU, RAM**), while preserving
+  the disk and metadata.
 
 - We strongly recommend detaching volumes before shelving.
 
@@ -274,8 +316,8 @@ For more details on *shelving a VM*, see the explanation [here](../../openstack/
 
 In [NERC OpenShift](../../openshift/index.md), if your application or job is idle,
 you can scale its pod replica count to **0**. This effectively frees up compute
-resources (CPU, GPU, and RAM) while retaining the configuration, environment settings,
-and persistent volume claims (PVCs) for future use.
+resources (i.e., **GPU, vCPU, and RAM**) while retaining the configuration, metadata,
+environment settings, and persistent volume claims (PVCs) for future use.
 
 #### Using Web Console
 
@@ -339,7 +381,7 @@ oc scale deployment <your-deployment> --replicas=1
 **Toggle the Workbench to "Stopped"**:
 
 In [NERC Red Hat OpenShift AI (RHOAI)](../../openshift-ai/index.md), workbench
-environments can be toggled between **Running** and **Stopped** states.
+environments can be toggled between `Running` and `Stopped` states.
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
@@ -349,15 +391,18 @@ icon that looks like a grid), located on the header.
 
 3. When you've completed a workload such as model development or experimentation
 using the [Data Science Project (DSP)](../../openshift-ai/data-science-project/using-projects-the-rhoai.md)
-**Workbench**, you can stop the compute resources by toggling the status from
-**Running** to **Stopped**, as shown below:
+**Workbench**, you can stop the compute resources used by the workbench
+by clicking `Stop`, next to the **Status** column for the workbench. Then the
+status of the workbench change from `Running` to `Stopped`, as shown below:
 
-    ![Toggle Workbench](images/toggle-workbench.png)
+    ![Change Workbench Status](images/change-workbench-status.png)
 
     This action immediately releases the compute resources allocated to the notebook
     environment within the Workbench setup.
 
-    When you need to run your workbench again, just toggle its status back from
-    **Stopped** to **Running**.
+    To restart your workbench, click `Start` next to the **Status** column for the
+    workbench. The status will change from **Stopped** to `Starting` while the
+    server initializes, and then to `Running` once the workbench has successfully
+    started.
 
 ---

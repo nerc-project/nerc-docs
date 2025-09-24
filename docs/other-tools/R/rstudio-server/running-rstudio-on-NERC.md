@@ -17,7 +17,7 @@
     For our example project, let's name it "RStudio Workbench". We'll select the
     **RStudio** image, choose a **Deployment size** of **Small**, choose **Accelerator**
     of **None** (no GPU is needed for this setup), and allocate a **Cluster storage**
-    space of **20Gi** (default).
+    space of **20GB** (Selected By Default).
 
     !!! tip "Tip"
 
@@ -25,8 +25,9 @@
         Please ensure that you modify this based on your need in **Cluster Storage**.
 
 3.  If this procedure is successful, you have started your RStudio Web Server. When
-    your workbench is ready, the status will change to _Running_ and you can select
-    "Open" to go to your environment:
+    your workbench is ready and the status changes to _Running_, click the open
+    icon (![Open Workbench](images/open.png)) next to your workbench's name, or
+    click the workbench name directly to access your environment:
 
     ![Open RStudio Web Server](images/open-rstudio-web-server.png)
 

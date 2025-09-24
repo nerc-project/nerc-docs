@@ -100,7 +100,7 @@ Navigate to _Project -> Compute -> Key Pairs_.
 !!! warn "Unable to Delete Key Pairs"
 
     First delete all instances that are using the selected Key Pairs then only you
-    will be to delete them.
+    will be able to delete them.
 
 ## Delete all buckets and objects
 

@@ -156,7 +156,7 @@ scheduling and resource allocation decisions.
 
 ### Updating Compute Resources of a Running Pod via Resource Limits
 
-!!! tips "Tips"
+!!! tip "Tips"
 
     Changing **CPU/Memory requests** affects scheduling and also the HPA's CPU%
     target math.

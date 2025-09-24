@@ -70,7 +70,9 @@ on the **Git Clone** icon in the toolbar, as shown below:
 !!! info "What is MLOps?"
 
     Machine learning operations (MLOps) are a set of practices that automate and
-    simplify machine learning (ML) workflows and deployments.
+    simplify machine learning (ML) workflows and deployments. MLOps encompasses
+    the tools, platforms, and processes required to build, train, deploy, monitor,
+    and continuously improve AI/ML models for cloud-native applications.
 
     To learn more about the end-to-end reference design for MLOps, read the blog:
     [Enterprise MLOps Reference Design](https://www.redhat.com/en/blog/enterprise-mlops-reference-design).

@@ -91,7 +91,7 @@ please see the [OpenStack documentation](https://docs.openstack.org/python-opens
 For more information on configuring the OpenStackClient please see the
 [OpenStack documentation](https://docs.openstack.org/ocata/user-guide/common/cli-install-openstack-command-line-clients.html).
 
-!!! tips "Tip"
+!!! tip "Tip"
 
     Install the OpenStack CLI by following the instructions specific to your operating
     system:

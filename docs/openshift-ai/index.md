@@ -54,6 +54,8 @@ the list below.
 
 - [Retrieval Augumented Generation (RAG) - Talk with your PDF](other-projects/RAG-talk-with-your-pdf.md)
 
+- [Serving vLLM and Granite Models](other-projects/serving-vLLM-and-Granite-Models.md)
+
 ## LLM Clients
 
 - [LLM Client - AnythingLLM](other-projects/LLM-client-AnythingLLM.md)

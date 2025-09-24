@@ -39,7 +39,7 @@ in the **"Configuration"** tab, you can enter the script in the
 
 ## Running R Shiny Server on NERC OpenShift
 
-We have used the [Base Docker image](https://github.com/Duke-GCB/openshift-shiny/master/dockerfiles/shiny-verse)
+We have used the [Base Docker image](https://github.com/Duke-GCB/openshift-shiny/blob/master/dockerfiles/shiny-verse/Dockerfile)
 compatible with OpenShift to create an **OpenShift Template**. Here, we walk through
 the process of creating a simple R Shiny Server template that bundles all the
 necessary resources - ConfigMap, Pod, Route, Service, etc. - and then deploy a Shiny

@@ -141,6 +141,7 @@ nav:
                     - Generative AI tutorial:
                         - Large Language Model (LLM) - Chat: openshift-ai/other-projects/LLM-chat.md
                         - Retrieval Augumented Generation (RAG) - Talk with your PDF: openshift-ai/other-projects/RAG-talk-with-your-pdf.md
+                        - Serving vLLM and Granite Models: openshift-ai/other-projects/serving-vLLM-and-Granite-Models.md
                     - LLM Client - AnythingLLM: openshift-ai/other-projects/LLM-client-AnythingLLM.md
     - Other Tools On NERC:
           - Other Useful Tools: other-tools/index.md

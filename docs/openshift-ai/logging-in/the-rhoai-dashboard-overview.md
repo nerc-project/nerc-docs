@@ -2,6 +2,8 @@
 
 In the NERC's RHOAI dashboard, you can see multiple links on your left hand side.
 
+![RHOAI Dashboard](images/the-rhoai-dashboard.png)
+
 1.  **Data Science Projects**: View your existing projects. This will show different
     projects corresponding to your NERC-OCP (OpenShift) resource allocations. Here,
     you can choose specific projects corresponding to the appropriate allocation
@@ -15,9 +17,16 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
         but also on other types of IDEs, like VS Code or RStudio. You can create
         as many workbenches as you want, and they can run concurrently.
 
-2.  **Model**: Manage and view the health and performance of your deployed
+2.  **Models**: Manage and view the health and performance of your deployed
     models across different projects corresponding to your NERC-OCP (OpenShift)
     resource allocations.
+
+    -   _Model registry_: RHOAI provides a central place to view and manage registered
+        models, helping data scientists share, version, deploy and track predictive
+        and gen AI models, metadata and model artifacts. Model registries provide
+        a structured and organized way to store, share, version, deploy, and track
+        models. Users can select a model registry to view and manage your registered
+        models.
 
     -   _Model deployments_: Manage and view the health and performance of your
         deployed models. Also, you can "Deploy Model" to a specific project selected
@@ -38,16 +47,23 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
     create an experiment to test different hyperparameter configurations, preprocessing
     strategies, or model architectures for the same dataset.
 
-5.  **Applications**:
+5. **Distributed workloads**: Distributed workloads help teams accelerate data
+    processing and the full ML lifecycle-training, tuning, and serving - by prioritizing
+    and distributing jobs for optimal node utilization. Advanced GPU support ensures
+    the performance and scalability required for foundation-model workloads.
+
+6.  **Applications**:
 
     -   _Enabled_: Launch your enabled applications, view documentation, or get
         started with quick start instructions and tasks.
 
     -   _Explore_: View optional applications for your RHOAI instance.
 
-        **NOTE**: Most of them are disabled by default on NERC RHOAI right now.
+    !!! warning "Important Note"
 
-6.  **Resources**: Access all learning resources that Resources showcases various
+        Most of Applications are **disabled by default** on NERC RHOAI right now.
+
+7.  **Resources**: Access all learning resources that Resources showcases various
     tutorials or demos helping your onboarding to the RHOAI platform.
 
 ---

@@ -65,26 +65,26 @@ This deployment sets up a ready-to-use container runtime that pulls the
 
 4. Click the button to open the llama-cpp-server UI:
 
-    ![Ollama Deployment](images/llama-deployment.png)
+    ![llama Deployment](images/llama-deployment.png)
 
-    ![Ollama Deployment Resources](images/ollama-deployment-resources.png)
+    ![llama Deployment Resources](images/llama-deployment-resources.png)
 
-    ![Ollama UI](images/ollam-ui.png)
+    ![llama UI](images/llam-ui.png)
 
     For a better experience customize the Chat UI and Prompt Style:
 
-    ![Ollama New Chat UI](images/ollama-change-UI-promt-style.png)
+    ![llama New Chat UI](images/llama-change-UI-promt-style.png)
 
 5. Test your inferencing by querying the inferencing runtime at the "Say Something"
     box:
 
-    ![Ollama Start Chat](images/ollama-start-chat.png)
+    ![llama Start Chat](images/llama-start-chat.png)
 
 6. Start Chatting:
 
     You can begin interacting with the LLM.
 
-    ![Ollama AI ChatBot](images/AI-ChatBot.png)
+    ![llama AI ChatBot](images/AI-ChatBot.png)
 
 ## Clean Up
 

@@ -56,7 +56,7 @@ adaptation to various domains, making them a powerful tool for AI-driven applica
 On NERC, we offer various solutions to handle LLM serving.
 
 1.  An easier option is to use the NERC RHOAI **Serving runtime**, which can be utilized
-    when setting up the RHOAI **Moder Server**, as [explained here](../data-science-project/model-serving-in-the-rhoai.md#create-a-model-server).
+    when setting up the RHOAI **Model Server**, as [explained here](../data-science-project/model-serving-in-the-rhoai.md#create-a-model-server).
 
 2.  Alternatively, you can set up compatible LLM servers as standalone deployments.
 
@@ -97,6 +97,39 @@ such as chatbots, document processing, and AI-powered automation.
 
     You can deploy and run the AnythingLLM directly on the NERC RHOAI by following
     [these intructions](LLM-client-AnythingLLM.md).
+
+### Language Model Evaluation
+
+⦿ **Overview**
+
+- LLM Evaluation capabilities provides secure, standardized framework for AI model
+assessment
+
+- Integrates LM-evaluation-harness with Unitxt task cards for benchmarking without
+custom code
+
+- Enables data scientists and AI engineers to easily deploy jobs testing metrics
+like toxicity and accuracy
+
+- Advances AI quality assurance and model governance capabilities
+
+⦿ **Why does it matter?**
+
+- Enhancing Quality Assurance: Test models against both industry standard and proprietary
+benchmarks
+
+- Simplifying Compliance: Standardized evaluation metrics help meet regulatory and
+governance requirements
+
+- Boosting Security: Secure evaluation environment with configurable data isolation
+protects sensitive information
+
+- Accelerating Development: Quick feedback cycles on model performance speed up
+iteration and improvement
+
+⦿ **References**
+
+To learn more about evaluating large language models, read [this documentation](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.19/html/monitoring_data_science_models/evaluating-large-language-models_monitor).
 
 ### Quantization
 

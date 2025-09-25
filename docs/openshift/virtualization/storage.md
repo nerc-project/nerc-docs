@@ -155,6 +155,16 @@ PVC represents a boot source image for a supported operating system distribution
 4. Select one of the available boot source PVCs - such as `fedora-XX` - to view its
 detailed configuration.
 
+    !!! note "Examine the PVC for a VM"
+
+        In this section, we are going to take a closer look at the storage behind
+        the virtual machine we created previously using **Fedora VM** template as
+        [explained here](running-and-managing-vms.md#provision-a-virtual-machine-using-customized-templates).
+
+    Once clicked on the `fedora-XX` PVC and and you will be presented with a
+    screen that shows additional details about the storage volume backing the VM
+    as shown below:
+
     ![Fedora PVC](images/fedora-pvc.png)
 
     As you can see, `ocs-external-storagecluster-ceph-rbd` storage class is used.
@@ -189,10 +199,10 @@ PVCs.
 
 Follow these steps to reconfigure existing virtual machines in the web console.
 
-1. In the left navigation pane, navigate to the **Virtualization** -> **Catalog**
+1. In the left navigation pane, navigate to the **Virtualization** -> **VirtualMachines**
 section in the OpenShift Web Console.
 
-2. Select a virtual machine to view the **VirtualMachine details** page.
+2. Select the virtual machine to view its **VirtualMachine details** page.
 
     ![VM List](images/virtualmachines-list.png)
 
@@ -210,11 +220,14 @@ section in the OpenShift Web Console.
 
         ![Add Disk](images/add-disk.png)
 
-    -   Edit existing disks (click the pencil icon next to the disk).
+    -   Edit any existing disks by clicking on the three dots on the right side
+        of the individual disk and selecting **Edit**. This will show a dialog
+        as shown below:
 
         ![Edit Disk](images/edit-disk.png)
 
-    -   Detach or delete unused disks.
+    -   Detach or delete unused disks by clicking on the three dots on the right
+        side of the individual disk and selecting **Detach**.
 
 !!! note "Important Note"
 

@@ -5,12 +5,6 @@
 1. In the left navigation pane, navigate to the **Virtualization** -> **Catalog**
 section in the OpenShift Web Console.
 
-    Alternatively, in the left navigation pane, click  **Virtualization** -> **VirtualMachines**.
-    From the **Create VirtualMachine** dropdown choose **From template** as shown
-    below:
-
-    ![VM From Template](images/from-template.png)
-
 2. On the *Catalog* screen, select the **Template catalog** tab, which contains
 various templates (e.g., RHEL, Fedora, Windows Server) for creating virtual
 machines (VMs).

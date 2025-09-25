@@ -37,53 +37,62 @@ list for VM creation.
 1. In the left navigation pane, navigate to the **Virtualization** -> **Catalog**
 section in the OpenShift Web Console.
 
-    Alternatively, in the left navigation pane, click  **Virtualization** -> **VirtualMachines**.
-    From the **Create VirtualMachine** dropdown choose **From InstanceType** as shown
-    below:
+    The **InstanceTypes** tab opens by default, displaying the available volumes
+    to boot from the `openshift-virtualization-os-images` project in the
+    "Volumes project" dropdown, as shown below:
 
-    ![VM From InstanceType](images/vm-from-instancetype.png)
+    ![Show all Bootable Volume](images/catalog-showall.png)
 
-    The **InstanceTypes** tab opens by default as shown below:
+    !!! note "Note"
 
-    ![InstanceTypes Dashboard](images/catalog-instancetypes.png)
+        The `openshift-virtualization-os-images` project contains all available
+        boot sources and is automatically enabled when OpenShift Virtualization
+        is installed. For more details, read [here](storage.md#openshift-virtualization-default-boot-sources).
 
-2. Select either of the following options:
+2. The first step in using an instance type is to select a volume to boot from.
 
-    -   From the Volume table, select a bootable volume to boot your VirtualMachine.
+    **Select either of the following options:**
+
+    You can see the included volumes by selecting the `openshift-virtualization-os-images`
+    project, or you can select **your own project** from the "Volumes project"
+    dropdown and then upload your own with the **Add volume** button.
+
+    -   Either, from the Volume table, select a bootable volume to boot your VirtualMachine.
     If the list is truncated, click the **Show all** button to display the entire
     list.
+
+        ![Default namespace catalog](images/default-ns-catalog.png)
 
         !!! info "Optional"
 
             Click the **star** icon to designate a bootable volume as a favorite.
             Starred bootable volumes appear first in the volume list.
 
-    -   Click **Add volume** to upload a new volume or to use an existing persistent
-    volume claim (PVC), a volume snapshot, or a *containerDisk* volume. Click **Save**.
+    -   Or, you can select **your own project** from the "Volumes project"
+    dropdown and click **Add volume** button to upload a new volume or to use an
+    existing persistent volume claim (PVC), a volume snapshot, or a *containerDisk*
+    volume. Click **Save**.
 
-        Logos of operating systems that are not available in the cluster are shown
-        at the bottom of the list. You can add a volume for the required operating
-        system by clicking the **Add volume** link.
+        ![Catalog Add New Volume Option](images/catalog-add-new-volume-option.png)
 
-        In addition, there is a link to the **Create a Windows boot source** quick
-        start. The same link appears in a popover if you hover the pointer over
+        For the first-time setup, the list of volumes to boot from under your
+        own project will be empty. Logos of operating systems that are not
+        available in the cluster are shown at the bottom of the list. In this
+        case, three operating system logos are displayed - **Linux**, **RHEL**,
+        and **Windows** - as shown above.
+
+        You can add a volume for the required operating system by clicking the
+        **Add volume** link.
+
+        The same link appears in a popover if you hover the pointer over
         the *question mark* icon next to the Select volume to boot from line as
         shown below:
 
         ![Add Boot Volume](images/add-boot-volume.png)
 
-        Immediately after you install the environment or when the environment is
-        disconnected, the list of volumes to boot from is empty. In that case,
-        three operating system logos are displayed: Linux, RHEL, and Windows as
-        shown below:
-
-        ![Empty Volume List](images/empty-volume-list.png)
-
-        You can add a new volume that meets your requirements by clicking the
-        **Add volume** button.
-
-3. Click an InstanceType tile and select the appropriate resource size (CPU, memory,
-disk size) for your workload, as shown below:
+3. Next you can select the instance type you would like to use. Click an InstanceType
+    tile and select the appropriate resource size (CPU, memory, disk size) for
+    your workload, as shown below:
 
     ![Create VM Seleting InstanceType](images/create-vm-instancetype.png)
 
@@ -115,9 +124,10 @@ parameters for them if necessary.
 6. Review the configuration and then create the virtual machine by clicking
 **Create VirtualMachine**.
 
-7. Navigate to **Virtualization** -> **VirtualMachines** in the left menu bar to
-view the status of the newly provisioned virtual machine. To verify that you have
-successfully created the virtual machine, make sure your VM is in **Running** status.
+7. You will be directed to the Virtual Machine overview page under
+**Virtualization** -> **VirtualMachines**, where you can view the status of
+your newly provisioned virtual machine. To verify that the virtual machine was
+created successfully, ensure that its status is **Running**.
 
 #### Changing the instance type of a VM
 
@@ -171,12 +181,6 @@ application stacks, or organizational standards.
 1. In the left navigation pane, navigate to the **Virtualization** -> **Catalog**
 section in the OpenShift Web Console.
 
-    Alternatively, in the left navigation pane, click  **Virtualization** -> **VirtualMachines**.
-    From the **Create VirtualMachine** dropdown choose **From template** as shown
-    below:
-
-    ![VM From Template](images/from-template.png)
-
 2. On the *Catalog* screen, select the **Template catalog** tab, which contains
 various templates (e.g., RHEL, Fedora, Windows Server) for creating virtual
 machines (VMs). Use the available filters to narrow down the list of displayed
@@ -226,9 +230,25 @@ storage, CPU | Memory, Optional parameters if necessary.
 
 5. Create the virtual machine by clicking **Quick create VirtualMachine**.
 
-6. Navigate to **Virtualization** -> **VirtualMachines** in the left menu bar to
-view the status of the newly provisioned virtual machine. To verify that you have
-successfully created the virtual machine, make sure your VM is in **Running** status.
+6. You will be directed to the Virtual Machine overview page under
+**Virtualization** -> **VirtualMachines**, where you can view the status of
+your newly provisioned virtual machine. To verify that the virtual machine was
+created successfully, ensure that its status is **Running**.
+
+    During this time, the storage provider has cloned the template disk so that
+    it can be used by the newly created virtual machine. The amount of time this
+    takes can vary based on the storage provider being used to create the boot
+    disk.
+
+7. After the VM is created, examine the **Events** tab to see some details of the
+process. If there are any issues with the creation of the VM, they will show up
+on this tab as well.
+
+    -   A **DataVolume** is created. DataVolumes are used to manage the creation
+    of a VM disk, abstracting the clone or import process onto OpenShift native
+    storage during the virtual machine’s creation flow.
+
+    -   The VM is started.
 
 #### Provision a virtual machine using customized templates
 
@@ -313,7 +333,7 @@ tabs and click **Create VirtualMachine**.
         the VM's network configuration. You can attach the VM to one or more networks
         (such as Software Defined Network (SDN) or Multus), define IP address assignment
         modes, and add or remove network interfaces as needed. By default a VM is
-        connected to the `Pod networking` network with a `masquerade` type (which
+        connected to the `Pod networking` network with a `Masquerade` type (which
         is just OpenShift internal networking that connects the VM to the SDN).
         This enables outbound access from the VM and allowing other VMs and Pods
         within the cluster to reach it.
@@ -378,8 +398,9 @@ tabs and click **Create VirtualMachine**.
 
         ![Start this VirtualMachine after creation](images/ensure-start-vm-after-creation.png)
 
-6. Navigate to **Virtualization** -> **VirtualMachines** in the left menu bar to
-view the status of the newly provisioned virtual machine.
+6. You will be directed to the Virtual Machine overview page under
+**Virtualization** -> **VirtualMachines**, where you can view the status of
+your newly provisioned virtual machine.
 
 #### Creating a custom VM template in the web console
 
@@ -408,7 +429,7 @@ The template is displayed on the **Templates** page.
     You can also view amd update the existing VM's configuration using the **YAML**
     tab on the **VirtualMachine Details** page, as [explained here](#yaml-tab).
 
-## Controlling virtual machine states
+## Controlling Virtual Machine States
 
 You can stop, start, restart, pause, and unpause virtual machines from the web console.
 
@@ -522,7 +543,7 @@ scheduling policies, environment variables, network interfaces, disks, and `clou
 or `sysprep` scripts. It enables you to fine-tune VM behavior before or after deployment.
 
 For more details on how to update VM configurations, see
-[Updating Virtual Machine Configurations](#update-virtual-machine-configurations).
+[Updating Virtual Machine Configurations](#administering-virtual-machines).
 
 ### Events Tab
 
@@ -564,7 +585,7 @@ investigate operational or performance issues.
 
     ![Edit Metadata](images/edit-labels-and-annotations.png)
 
-## Update virtual machine configurations
+## Administering Virtual Machines
 
 As workload demands change, you may need to update the configurations of running
 virtual machines. You can change a selection of **configuration** options using
@@ -739,8 +760,10 @@ inside the VM:
 8. To review the guest customization, mount the `cloud-init` disk by running the
 following commands:
 
+    ```sh
     sudo mount /dev/vdb /mnt
     sudo cat /mnt/user-data; echo
+    ```
 
     ![Cloud Init Data](images/cloud-init-user-data.png)
 

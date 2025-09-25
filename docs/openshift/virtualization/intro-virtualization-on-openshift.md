@@ -108,6 +108,40 @@ OpenStack Platform:
 
 ![Containerizing KVM](images/containerizing-kvm.png)
 
+## Why switch from a traditional VM platform?
+
+**Adopt cloud-native development and/or cloud-native operations:**
+
+Red Hat OpenShift helps your team build applications with speed, agility, confidence,
+and choice. Code in production mode, anywhere you choose to build. Get back to doing
+work that matters.
+
+**Complete app dev stack:**
+
+Red Hat OpenShift Dev Spaces (formerly Red Hat CodeReady Workspaces), Runtimes,
+Integration and Process Automation, Serverless, Pipelines, and more with security
+throughout.
+
+**Shift infrastructure spend to innovation:**
+
+OpenShift native architecture changes the heavyweight cost structure from SDDC
+legacy to lightweight container-native frameworks.
+
+**Risk mitigation:**
+
+With OpenShift support for on-premises and public cloud options, OpenShift is
+insurance against public cloud lock-in.
+
+**Independent from infrastructure:**
+
+Red Hat OpenShift runs consistently on bare metal, on-premises virtualization, or
+public cloud for ultimate choice and flexibility of deployment and updates.
+
+**Pure open source innovation:**
+
+The innovation in Kubernetes, serverless, service mesh, Kubernetes Operators, and
+more powered by the velocity of open source, with Red Hat in the lead.
+
 To learn more about Red Hat OpenShift Virtualization, please refer to the  
 [Red Hat OpenShift Virtualization FAQ](https://www.redhat.com/en/resources/openshift-virtualization-faq),
 the [Red Hat OpenShift Virtualization documentation page](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/index),

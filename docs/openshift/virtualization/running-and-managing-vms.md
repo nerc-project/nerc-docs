@@ -244,9 +244,11 @@ created successfully, ensure that its status is **Running**.
 process. If there are any issues with the creation of the VM, they will show up
 on this tab as well.
 
-    -   A **DataVolume** is created. DataVolumes are used to manage the creation
+    ![Events Tab](images/events-tab.png)
+
+    -   A **DataVolume** is created. *DataVolumes* are used to manage the creation
     of a VM disk, abstracting the clone or import process onto OpenShift native
-    storage during the virtual machine’s creation flow.
+    storage during the virtual machine's creation flow.
 
     -   The VM is started.
 
@@ -264,7 +266,8 @@ virtual machine settings, then click **Next** at the bottom of the frame.
 
     ![Customize Parameters](images/customize_parameters.png)
 
-4. Click **Customize VirtualMachine** to edit the virtual machine settings.
+4. Change the name to **fedora01** and press **Customize VirtualMachine** to edit
+the virtual machine settings.
 
 5. Customize virtual machine settings in the **Overview**, **YAML**, **Scheduling**,
 **Environment**, **Network interfaces**, **Disks**, **Scripts**, and **Metadata**
@@ -284,6 +287,8 @@ tabs and click **Create VirtualMachine**.
     -   **YAML**: The **YAML** tab provides direct access to the VM's Kubernetes
         resource definition. This view is ideal for advanced users who want to make
         low-level or bulk configuration changes not exposed in the UI.
+
+        ![VM YAML](images/vm_yaml.png)
 
     -   **Scheduling**: The **Scheduling** tab allows you to control where and how
         the VM runs within the cluster. Here, you can configure node selectors,

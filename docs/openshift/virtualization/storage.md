@@ -248,6 +248,8 @@ You can clone an existing VM by using the web console.
 
 -   Select **Clone**.
 
+    ![VM Clone Action](images/overview_actions_clone.png)
+
 -   On the **Clone VirtualMachine** page, enter the name of the new VM.
 
 -   *Optional*: Select the **Start cloned VM** checkbox to start the cloned VM.
@@ -256,8 +258,27 @@ You can clone an existing VM by using the web console.
 
 -   Click **Clone**.
 
+    !!! danger "Very Important Note"
+
+        The cloned VM will have the same identity as the source VM, which may cause
+        conflicts with applications and other clients interacting with the VM. Use
+        caution when cloning a VM connected to an external network or in the same
+        project.
+
 -   A new VM is created, the disks are cloned and automatically the portal will
-redirect you to the new VM.
+    redirect you to the new VM.
+
+    ![VM Cloned](images/vm_cloned.png)
+
+-   Click on the **YAML** menu at the top of the screen, you will see that the
+    name of the VM is changed, however there are labels that remain from the main
+    source VM (**from the new VM is cloned!**) that will need to be manually updated.
+
+    ![Cloned VM YAML](images/cloned_vm_yaml.png)
+
+-   Modify the the `app` and `kubevirt.io/domain` values in the **YAML** so that
+    they are set to the new VM name, then click the **Save** button at the bottom,
+    this will allow us to work with this VM in future modules much more easily.
 
 !!! note "Note"
 

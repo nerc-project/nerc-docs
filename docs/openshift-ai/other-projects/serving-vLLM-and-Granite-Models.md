@@ -200,8 +200,8 @@ After some time, once the model has finished deploying, the model deployments
 page of the dashboard will display a green checkmark in the **Status** column,
 indicating that the deployment is complete.
 
-To view details for the deployed model, click the *arrow icon* to the left of
-your deployed model name (e.g., `granite`), as shown below:
+To view details for the deployed model, click the dropdown *arrow icon* to the left
+of your deployed model name (e.g., `granite`), as shown below:
 
 ![Model Deployed Successfully](images/model-deployed-successful.png)
 
@@ -234,7 +234,7 @@ below:
     `https://name-of-your-model-name-of-your-project.apps.shift.nerc.mghpcc.org`
     that you can be easily accessed from outside the cluster.
 
--   Get the **Authorization Token** for your deployed model by clicking on
+-   Get the **Authorization Token** for your deployed model by clicking on dropdown
     *arrow icon* to the left of your deployed model name i.e. "granite". Your
     Authorization Token is located at the "Token authentication" section under
     "Token secret", you can just copy the token i.e. `YOUR_BEARER_TOKEN` directly

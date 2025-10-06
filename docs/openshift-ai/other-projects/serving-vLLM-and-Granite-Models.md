@@ -33,22 +33,40 @@
 
 ## Downloading Model
 
-Navigate to [https://huggingface.co/](https://huggingface.co/) and find the model
-you would like to deploy. For this example, we need to find and download the
-`granite-3.3-8b-instruct` model i.e. [https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/tree/main](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/tree/main).
+While you're not strictly required to use object storage to serve models in
+OpenShift AI, doing so simplifies things in terms of scalability and flexibility.
+It also provides the advantage of keeping a static local copy within the cluster
+after a lengthy download, so you don't need to repeatedly fetch the model from
+the internet whenever you restart it.
 
-First you need to generate an access token:
+To download a model from Hugging Face:
 
-1. Go to [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+1. Navigate to [https://huggingface.co/](https://huggingface.co/).
 
-2. Click on the "Create new token" button.
+2. Search for the model you'd like to deploy.
 
-3. Create a "Read" access token by selecting **Read** for **Token type** and then
+    For this example, we'll use the **`granite-3.3-8b-instruct`** model, available
+    here:
+    👉 [https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/tree/main](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct/tree/main).
+
+    !!! note "Important"
+
+        Even though this example uses the `granite-3.3-8b-instruct` LLM, the same
+        mechanism can be applied to any other LLMs as well. Explore the Red Hat
+        AI validated models collections on [Hugging Face](https://huggingface.co/collections/RedHatAI).
+
+3. First you need to generate an access token:
+
+-   Go to [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+
+-   Click on the "Create new token" button.
+
+-   Create a "Read" access token by selecting **Read** for **Token type** and then
     give it a *Token name*.
 
-4. Copy the generated *Access Token* i.e. `Access_Token`.
+-   Copy the generated *Access Token* i.e. `Access_Token`.
 
-Now that you have a Access Token, you can download the model using that token by
+Now that you have an *Access Token*, you can download the model using that token by
 either using **Git** or using the **Hugging Face CLI** as described below:
 
 ### Using Git with Access Token
@@ -178,6 +196,14 @@ For our example, set the **Model deployment name** to `granite`, and select
 `NVIDIA A100 GPU` as the **Accelerator**, with the **Number of accelerators** set
 to `1`. Also, ensure that the **Deployment mode** is set to `Advanced`.
 
+!!! tip "How to use `NVIDIA V100 GPU` instead of using `NVIDIA A100 GPU`?"
+
+    You can Choose `NVIDIA V100 GPU` as the **Accelerator** and add `--dtype=half`
+    as *Additional serving runtime arguments* under **Configuration parameters**
+    section when deploying the model as shown below:
+
+    ![Model Deployment using V100 Accelerator](images/model-deploy-using-v100.png)
+
 Please leave the other fields with their default settings, such as
 **Number of model server replicas to deploy** set to `1` and **Model server size**
 set to `Small`.
@@ -200,8 +226,8 @@ After some time, once the model has finished deploying, the model deployments
 page of the dashboard will display a green checkmark in the **Status** column,
 indicating that the deployment is complete.
 
-To view details for the deployed model, click the *arrow icon* to the left of
-your deployed model name (e.g., `granite`), as shown below:
+To view details for the deployed model, click the dropdown *arrow icon* to the left
+of your deployed model name (e.g., `granite`), as shown below:
 
 ![Model Deployed Successfully](images/model-deployed-successful.png)
 
@@ -234,7 +260,7 @@ below:
     `https://name-of-your-model-name-of-your-project.apps.shift.nerc.mghpcc.org`
     that you can be easily accessed from outside the cluster.
 
--   Get the **Authorization Token** for your deployed model by clicking on
+-   Get the **Authorization Token** for your deployed model by clicking on dropdown
     *arrow icon* to the left of your deployed model name i.e. "granite". Your
     Authorization Token is located at the "Token authentication" section under
     "Token secret", you can just copy the token i.e. `YOUR_BEARER_TOKEN` directly
@@ -291,5 +317,26 @@ for its diverse population".
     the more deterministic the reponse, the higher the temperature the more
     random/unpredictible the response. So if you set the temperature to 0, it
     would always return the same output since there would be no randomness.
+
+## Summary
+
+Deploying validated models from
+[Red Hat AI's Hugging Face Validated Models repository](https://docs.redhat.com/en/documentation/red_hat_ai_inference_server/3.2/html/validated_models/red_hat_ai_validated_models)
+in disconnected OpenShift AI environments involves the following steps:
+
+- **Set up local S3 storage (MinIO)** and create a connection to point to the bucket.
+
+- **Select the desired model.**
+
+- **Download the model** and upload it to the S3 storage bucket.
+
+- **Identify the required serving runtime.**
+
+- **Configure a single-model server** and deploy the model using the connection.
+
+- **Verify and test** the model's API inference endpoints.
+
+This process ensures that AI workloads run seamlessly in restricted or disconnected
+environments, allowing you to securely leverage validated and optimized AI models.
 
 ---

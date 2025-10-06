@@ -66,8 +66,8 @@ To download a model from Hugging Face:
 
 -   Copy the generated *Access Token* i.e. `Access_Token`.
 
-Now that you have an *Access Token*, you can download the model using that token by
-either using **Git** or using the **Hugging Face CLI** as described below:
+Now that you have an *Access Token*, you can download the model using that token
+by either using **Git** or using the **Hugging Face CLI** as described below:
 
 ### Using Git with Access Token
 

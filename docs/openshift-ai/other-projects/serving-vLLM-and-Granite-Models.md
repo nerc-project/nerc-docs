@@ -66,7 +66,7 @@ To download a model from Hugging Face:
 
 -   Copy the generated *Access Token* i.e. `Access_Token`.
 
-Now that you have a *Access Token*, you can download the model using that token by
+Now that you have an *Access Token*, you can download the model using that token by
 either using **Git** or using the **Hugging Face CLI** as described below:
 
 ### Using Git with Access Token
@@ -200,7 +200,7 @@ to `1`. Also, ensure that the **Deployment mode** is set to `Advanced`.
 
     You can Choose `NVIDIA V100 GPU` as the **Accelerator** and add `--dtype=half`
     as *Additional serving runtime arguments* under **Configuration parameters**
-    section during deploying the model as shown below:
+    section when deploying the model as shown below:
 
     ![Model Deployment using V100 Accelerator](images/model-deploy-using-v100.png)
 

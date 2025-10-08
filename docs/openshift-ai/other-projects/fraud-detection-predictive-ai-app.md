@@ -585,6 +585,18 @@ v. Click **Configure pipeline server**.
 vi. Wait until the loading spinner disappears and **Start by importing a pipeline**
 is displayed.
 
+!!! note "Important Note"
+
+    You must wait until the pipeline configuration is complete before you continue
+    and create your workbench. If you continue and [create your workbench](#3-creating-a-workbench-and-a-notebook)
+    **before** the pipeline server is ready, your workbench will not be able to
+    submit pipelines to it.
+
+    If you have waited **more than 5 minutes**, and the pipeline server configuration
+    does not complete, you can delete the pipeline server and create it again.
+
+    ![Delete pipeline server](images/ds-project-delete-pipeline-server.png)
+
 **Verification**:
 
 a. Navigate to the **Pipelines** tab for the project.
@@ -1017,10 +1029,10 @@ you test the model API.
 
 !!! question "Important Note"
 
-    If you create your workbench before the pipeline server is ready, your workbench
-    will not be able to submit pipelines to it. If you configured the pipeline server
-    after you created your workbench, you need to stop the workbench and then started
-    your workbench.
+    If you create your workbench before the pipeline server is ready, it won't
+    be able to submit pipelines. If the pipeline server was configured **after**
+    your workbench was created, you'll need to **stop** and then **restart**
+    your workbench. Wait until the workbench status shows as *Running*.
 
 #### Automating workflows with data science pipelines
 
@@ -1040,13 +1052,13 @@ This pipeline will:
 
 -   Save the trained model to **S3 storage** bucket.
 
-Your completed pipeline should resemble the one in the `5_Train_Save.pipeline` file.
+Your completed pipeline should resemble the one in the `6 Train Save.pipeline` file.
 
 !!! note "Note"
 
     To explore the **pipeline editor**, follow the steps in the next procedure to
     create your own pipeline. Alternatively, you can **skip the procedure** and
-    instead feel free to run and use the provided `5_Train_Save.pipeline` file.
+    instead feel free to run and use the provided `6 Train Save.pipeline` file.
 
 ##### Create a pipeline
 

@@ -31,11 +31,11 @@ in the **"Configuration"** tab, you can enter the script in the
     Please use the appropriate bash script file i.e. `install-R-Shiny-<OS>.sh` based
     on your operating system (OS):
 
-    - **AlmaLinux** → `install-R-Shiny-AlmaLinux.sh`
+    - **AlmaLinux** -> `install-R-Shiny-AlmaLinux.sh`
 
-    - **CentOS** → `install-R-Shiny-Centos.sh`
+    - **CentOS** -> `install-R-Shiny-Centos.sh`
 
-    - **Ubuntu** → `install-R-Shiny-Ubuntu.sh`
+    - **Ubuntu** -> `install-R-Shiny-Ubuntu.sh`
 
 ## Running R Shiny Server on NERC OpenShift
 

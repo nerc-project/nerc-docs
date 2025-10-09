@@ -1252,7 +1252,7 @@ iii. Repeat **Step ii** for each of the following Kubernetes secrets:
 
 -   **Secret Key**: AWS_S3_BUCKET
 
-iv.Select File → Save Pipeline As to save and rename the *.pipeline* file. For
+iv.Select File -> Save Pipeline As to save and rename the *.pipeline* file. For
 example, rename it to **My Train Save.pipeline**.
 
 ##### Run the Pipeline
@@ -1262,15 +1262,19 @@ You can use your own newly created pipeline or the pipeline in the provided
 
 **Procedure**:
 
-i. Click the play button in the toolbar of the pipeline editor.
+i. Click the **play** button in the toolbar of the pipeline editor.
 
 ![Pipeline Run Button](images/wb-pipeline-run-button.png)
 
-ii. Enter a name for your pipeline.
+ii. In the next popup:
 
-iii. Verify that the **Runtime Configuration**: is set to **Data Science Pipeline**.
+![pipeline expanded](images/run-pipeline-ok.png)
 
-iv. Click **OK**.
+-   Enter a name for your pipeline i.e. `My Train Save`.
+
+-   Verify that the **Runtime Configuration**: is set to **Data Science Pipeline**.
+
+-   Click **OK**.
 
 !!! failure "Troubleshooting Help"
 
@@ -1280,16 +1284,16 @@ iv. Click **OK**.
     after you created your workbench, you need to stop the workbench and then started
     your workbench.
 
-v. In the OpenShift AI dashboard, open your data science project and expand the
+iii. In the OpenShift AI dashboard, open your data science project and expand the
 newly created pipeline.
 
 ![New pipeline expanded](images/dsp-pipeline-complete.png)
 
-vi. Click **View runs**.
+iv. Click **View runs**.
 
 ![View runs for selected pipeline](images/dsp-view-run.png)
 
-vii. Click your run and then view the pipeline run in progress.
+v. Click your run and then view the pipeline run in progress.
 
 ![Pipeline run progress](images/pipeline-run-complete.png)
 
@@ -1384,6 +1388,50 @@ the following files:
     A new run starts immediately.
 
     ![Create Pipeline Run](images/ds-pipeline-run.png)
+
+#### Schedule execution
+
+We can also **schedule** an execution so that the confidence check is executed at
+regular intervals.
+
+To do that:
+
+-   Go back to the OpenShift AI dashboard, open your data science project
+
+-   Find the pipeline you just ran in the Pipelines tab
+
+-   Click the 3 dots at the very end of the pipeline row, and click "Create schedule".
+
+    ![Create schedule](images/create-schedule.png)
+
+-   On the next screen:
+
+    i. keep the **Experiment** to `Default`,
+
+    ii. Set a **Name**,
+
+    iii. select a `Periodic` **Trigger type**,
+
+    iv. run it every **Day** with Maximum concurrent runs of **3**.
+
+    v. keep the `My Train Save` **Pipeline** and **Version** (*The Pipeline's name
+        we set while running the Pipeline for the first time*)
+
+    vi. and click **Create schedule**:
+
+    ![Daily Pipeline Run Schedule](images/dailyrun-3.png)
+
+    vii. This will shows the Graph view of the Scheduled Pipeline Run:
+
+    ![Scheduled Pipeline Run](images/dailyrun-scheduled.png)
+
+    viii. In **Data Science Pipelines** -> **Runs**, click the **Schedules** tab
+    to verify that the **Scheduled** run is visible, as shown below:
+
+    ![Schedule Run](images/schedule-run.png)
+
+    It will run daily **3** runs, and will inform us if anything goes wrong with
+    your training and saving the model process.
 
 ## Deploy the Model Application on NERC OpenShift
 

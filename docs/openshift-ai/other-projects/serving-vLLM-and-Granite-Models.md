@@ -192,9 +192,17 @@ Enter the following information for your new model:
     Configuration parameters section. You don't need to add any arguments here.
 
 For our example, set the **Model deployment name** to `granite`, and select
-**Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Choose
-`NVIDIA A100 GPU` as the **Accelerator**, with the **Number of accelerators** set
-to `1`. Also, ensure that the **Deployment mode** is set to `Advanced`.
+**Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure
+that the **Deployment mode** is set to `Advanced`.
+
+Please leave the other fields with their default settings, such as
+**Number of model server replicas to deploy** set to `1` and **Model server size**
+set to `Small`.
+
+![Configure and Deploy Model Info](images/configure-and-deploy-model-info.png)
+
+Choose `NVIDIA A100 GPU` as the **Accelerator**, with the **Number of accelerators**
+set to `1`.
 
 !!! tip "How to use `NVIDIA V100 GPU` instead of using `NVIDIA A100 GPU`?"
 
@@ -203,12 +211,6 @@ to `1`. Also, ensure that the **Deployment mode** is set to `Advanced`.
     section when deploying the model as shown below:
 
     ![Model Deployment using V100 Accelerator](images/model-deploy-using-v100.png)
-
-Please leave the other fields with their default settings, such as
-**Number of model server replicas to deploy** set to `1` and **Model server size**
-set to `Small`.
-
-![Configure and Deploy Model Info](images/configure-and-deploy-model-info.png)
 
 At this point, ensure that both
 **Make deployed models available through an external route** and

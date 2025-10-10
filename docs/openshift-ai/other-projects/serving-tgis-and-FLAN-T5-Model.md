@@ -47,11 +47,11 @@ At a high level, we will:
 
 **Procedure**:
 
-Prepare your Jupyter notebook server without using any **GPU**, you need to have:
+Prepare your Jupyter notebook server for using **No GPU**, you need to have:
 
-Select the correct data science project and create workbench, see
-[Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
-for more information.
+-   Select the correct data science project and create workbench, see
+    [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+    for more information.
 
 Please ensure that you start your Jupyter notebook server with options as
 depicted in the following configuration screen. This screen provides you

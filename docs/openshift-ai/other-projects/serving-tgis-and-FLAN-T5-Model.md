@@ -338,5 +338,4 @@ in disconnected OpenShift AI environments involves the following steps:
 This process ensures that AI workloads run seamlessly in restricted or disconnected
 environments, allowing you to securely leverage validated and optimized AI models.
 
-
 ---

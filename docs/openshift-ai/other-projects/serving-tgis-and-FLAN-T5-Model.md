@@ -250,13 +250,12 @@ Enter the following information for your new model:
     Configuration parameters section. You don't need to add any arguments here.
 
 For our example, set the **Model deployment name** to `flan-t5-small`, and select
-**Serving runtime** as `TGIS Standalone ServingRuntime for KServe`. Choose
-`None` as the **Accelerator**. Also, ensure that the **Deployment mode** is set
-to `Advanced`.
+**Serving runtime** as `TGIS Standalone ServingRuntime for KServe`. Also, ensure
+that the **Deployment mode** is set to `Advanced`.
 
 Please leave the other fields with their default settings, such as
 **Number of model server replicas to deploy** set to `1` and **Model server size**
-set to `Small`.
+set to `Small`, and **Accelerator** set to `None`.
 
 ![Configure and Deploy Model Info](images/flan-configure-and-deploy-model-info.png)
 

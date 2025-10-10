@@ -865,8 +865,9 @@ Console:
 
 ![The NERC OpenShift Web Console Link](images/the-nerc-openshift-web-console-link.png)
 
-Ensure you are in **Developer** view and have selected the correct data science
-project. Then, click on "**+Add**" in the left menu and select "**Import from Git**".
+From your NERC's OpenShift Web Console, navigate to your project corresponding to
+the NERC RHOAI Data Science Project and select the "Import from Git" button,
+represented by the "+" icon in the top navigation bar as shown below:
 
 ![Import from Git](images/Import_from_Git.png)
 

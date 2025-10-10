@@ -509,10 +509,10 @@ c. Verify the buckets are created on the MinIO Web Console:
 
 -   Click on any connection from the list that was created and then click
 the action menu (⋮) at the end of the selected connection row. Choose
-"Edit connection" from the dropdown menu. This will open a pop-up
+"Edit" from the dropdown menu. This will open a pop-up
  window as shown below:
 
-    ![Edit Connection Pop up](images/edit-data-connection.png)
+    ![Edit Connection Pop up](images/edit-connection.png)
 
 -   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
@@ -628,6 +628,22 @@ depicted in the following configuration screen. This screen provides you
 with the opportunity to select a notebook image and configure its options,
 including the Accelerator and Number of accelerators (GPUs).
 
+Click **Attach existing connections** under the **Connections** section, and attach
+the **"My Storage"** connection that was set up previously to the workbench:
+
+![Attach Existing Connection to the Workbench](images/attach-connection-to-workbench.png)
+
+Search and add "My Storage":
+
+![Attach Existing Connection to the Workbench](images/attach-existing-connection-2.png)
+
+Click on "Attach" button:
+
+![Attach Connection to the Workbench](images/attach-my-storage.png)
+
+The final workbench setup, before clicking the **Create workbench** button, should
+look like this:
+
 ![Fraud detection Workbench Information](images/fraud-detection-workbench.png)
 
 For our example project, let's name it "Fraud detection". We'll select the
@@ -635,55 +651,6 @@ For our example project, let's name it "Fraud detection". We'll select the
 a **Deployment size** of **Small**, choose **Accelerator** of
 **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
 a **Cluster storage** space of **20GB** (Selected By Default).
-
-Here, you will use **Environment Variables** to specify the Key/Value pairs related
-to the S3-compatible object storage bucket for storing your model.
-
-To add Environment variables please follow the following steps:
-
-i. Click on **"Add variable"**.
-
-ii. Select **"Config Map"** from the dropdown for the environment variable type.
-
-iii. Choose **"Key / Value"** and enter the following keys along with their corresponding
-values, which you have retrieved while "Editing connection":
-
-![Edit Connection Pop up](images/edit-data-connection.png)
-
-**Environment Variables**:
-
-    Key: AWS_ACCESS_KEY_ID
-    Value: <Access key>
-
-    Key: AWS_SECRET_ACCESS_KEY
-    Value: <Secret key>
-
-    Key: AWS_S3_ENDPOINT
-    Value: <Endpoint>
-
-    Key: AWS_DEFAULT_REGION
-    Value: <Region>
-
-    Key: AWS_S3_BUCKET
-    Value: <Bucket>
-
-!!! note "Alternatively, Running `oc` commands"
-
-    Alternatively, you can run the following `oc` commands:
-
-    i. To get *Access key* run:
-
-    `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
-
-    ii. And to get *Secret key* run:
-
-    `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
-
-    iii. And to get *Endpoint* run:
-
-    `oc get route minio-s3 -o template --template '{{.spec.host}}'`
-
-    You need to add `https://` in the front of the endpoint host url.
 
 !!! info "Running Workbench without GPU"
 

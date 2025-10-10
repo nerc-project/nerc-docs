@@ -56,6 +56,8 @@ the list below.
 
 - [Serving vLLM and Granite Models](other-projects/serving-vLLM-and-Granite-Models.md)
 
+- [Serving Text Generation Inference Service (TGIS) and FLAN-T5 Small Model](other-projects/serving-tgis-and-FLAN-T5-Model.md)
+
 ## LLM Clients
 
 - [LLM Client - AnythingLLM](other-projects/LLM-client-AnythingLLM.md)

@@ -57,13 +57,9 @@ This deployment sets up a ready-to-use container runtime that pulls the
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
+2. In the **Navigation Menu**, navigate to the **Workloads** -> **Topology** menu.
 
-3. In the **Navigation Menu**, click **Topology**.
-
-    ![Topology View](images/topology-view.png)
-
-4. Click the button to open the llama-cpp-server UI:
+3. Click the button to open the llama-cpp-server UI:
 
     ![llama Deployment](images/llama-deployment.png)
 
@@ -75,12 +71,12 @@ This deployment sets up a ready-to-use container runtime that pulls the
 
     ![llama New Chat UI](images/llama-change-UI-promt-style.png)
 
-5. Test your inferencing by querying the inferencing runtime at the "Say Something"
+4. Test your inferencing by querying the inferencing runtime at the "Say Something"
     box:
 
     ![llama Start Chat](images/llama-start-chat.png)
 
-6. Start Chatting:
+5. Start Chatting:
 
     You can begin interacting with the LLM.
 

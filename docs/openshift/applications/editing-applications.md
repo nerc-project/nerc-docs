@@ -3,7 +3,7 @@
 You can edit the configuration and the source code of the application you create
 using the **Topology** view.
 
-## Editing the source code of an application using the Developer perspective
+## Editing the source code of an application
 
 You can click the "Edit Source Code" icon, displayed at the bottom-right of the
 deployed application, to access your source code and modify it as shown below:
@@ -16,7 +16,7 @@ deployed application, to access your source code and modify it as shown below:
     **From Git**, **Container Image**, **From Catalog**, and **From Dockerfile**
     options.
 
-## Editing the application configuration using the Developer perspective
+## Editing the application configuration
 
 1. In the **Topology** view, right-click the application to see the edit options
    available as shown below:

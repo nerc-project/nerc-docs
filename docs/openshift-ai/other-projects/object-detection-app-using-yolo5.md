@@ -445,8 +445,8 @@ created" message and the following resources listed:
 ![Resources successfully created Importing More YAML](images/yaml-import-success.png)
 
 ii. Once the deployment is successful, you will be able to see all resources
-are created and grouped under "minio" application grouping on the
-**Topology View** menu, as shown below:
+are created and grouped under "minio" application grouping on the **Workloads**
+-> **Topology** menu, as shown below:
 
 ![MinIO Under Topology](images/minio-topology.png)
 
@@ -870,6 +870,12 @@ the NERC RHOAI Data Science Project and select the "Import from Git" button,
 represented by the "+" icon in the top navigation bar as shown below:
 
 ![Import from Git](images/Import_from_Git.png)
+
+**Alternatively**, navigate to the **Topology** page under **Workloads**. Right-click
+on the page and select the "Import from Git" option from the **Add to Project**
+in-context menu as shown below:
+
+![Import from Git - Right-click](images/Import_from_Git-right-click.png)
 
 In the "Git Repo URL" enter: `https://github.com/nerc-project/object-detection` (this
 is the same repository you [pulled into RHOAI earlier](#importing-the-tutorial-files-into-the-jupyter-environment)).

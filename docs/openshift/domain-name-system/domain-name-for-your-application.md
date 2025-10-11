@@ -97,15 +97,13 @@ cluster.
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. Click on the **Perspective Switcher** drop-down menu and select **Administrator**.
-
-3. Click on the **Ingresses** under **Networking** Menu:
+2. In the **Navigation Menu**, navigate to the **Networking** -> **Ingresses** menu:
 
     ![Ingress Dashboard](images/goto-ingress.png)
 
-4. Click **Create Ingress**.
+3. Click **Create Ingress**.
 
-5. You will need to:
+4. You will need to:
 
     - **i. Change**:
 
@@ -172,12 +170,11 @@ cluster.
                       number: <your-service-exposed-port>
     ```
 
-6. Click **Create**.
+5. Click **Create**.
 
-7. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
+6. In the **Navigation Menu**, navigate to the **Workloads** -> **Topology** menu.
 
-8. Go to **Topology** Menu and click on your deployed application to see the
-_Overview_ panel to the right.
+7. Click on your deployed application to see the _Overview_ panel to the right.
 
 - Click the **Resources** tab to view the **Routes** used by the component. You
 will see a new Route that has been added by the Ingress configuration you just

@@ -1,16 +1,13 @@
 # Deleting your applications
 
-## Deleting applications using the Developer perspective on NERC's OpenShift Web Console
-
-You can delete applications created in your project by using the
-**Developer** perspective as following:
+## Deleting applications on NERC's OpenShift Web Console
 
 To delete an application and all of its associated components using the
-**Topology view** menu in the **Developer** perspective:
+**Topology** view:
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
+2. In the **Navigation Menu**, navigate to the **Workloads** -> **Topology** menu.
 
 3. Click the application you want to delete to see the side panel with
    the resource details of the application.

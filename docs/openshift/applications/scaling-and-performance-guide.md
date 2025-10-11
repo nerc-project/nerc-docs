@@ -31,7 +31,7 @@ and thus only briefly mentioned here:
    format in the `metadata` hash.
 
 2. The pod restart policy with possible values `Always`, `OnFailure`, and `Never`.
-   The default value is `Always`. [Read this](https://docs.openshift.com/container-platform/4.17/nodes/pods/nodes-pods-configuring.html#nodes-pods-configuring-restart_nodes-pods-configuring)
+   The default value is `Always`. [Read this](https://docs.openshift.com/container-platform/4.19/nodes/pods/nodes-pods-configuring.html#nodes-pods-configuring-restart_nodes-pods-configuring)
    to learn about "Configuring how pods behave after restart".
 
 3. OpenShift Container Platform defines a security context for containers which
@@ -78,7 +78,7 @@ and thus only briefly mentioned here:
 
 !!! note "Viewing pods"
 
-    You can refer to [this user guide](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html-single/nodes/index#nodes-pods-about_nodes-pods-viewing)
+    You can refer to [this user guide](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html-single/nodes/index#nodes-pods-about_nodes-pods-viewing)
     on how to view all pods, their usage statics (i.e. CPU, memory, and storage
     consumption) and logs in your project using the OpenShift CLI (`oc`) commands.
 
@@ -149,8 +149,7 @@ scheduling and resource allocation decisions.
     the objects will use the limit ranges specified for your project namespace.
     With limit ranges, we restrict resource consumption for specific objects in
     a project. You can also be able to view the current limit range for your project
-    by going into the **Administrator** perspective and then navigating into the
-    "LimitRange details" as shown below:
+    by going into the **Administration** -> **LimitRange** menu as shown below:
 
     ![Limit Ranges](images/limit_ranges.png)
 
@@ -315,7 +314,7 @@ spec:
 
 ## How to specify pod to use GPU?
 
-So from a **Developer** perspective, the only thing you have to worry about is
+So from a **Topology** view, the only thing you have to worry about is
 asking for GPU resources when defining your pods, with something like the
 following for requesting (NVIDIA A100 GPU):
 
@@ -486,9 +485,9 @@ Scaling defines the number of pods or instances of the application you want to
 deploy. Bare pods not managed by a replication controller will not be rescheduled
 in the event of a node disruption. You can deploy your application using `Deployment`
 or `Deployment Config` objects to maintain the desired number of healthy pods and
-manage them from the web console. You can create [deployment strategies](https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/building_applications/deployments#deployment-strategies)
+manage them from the web console. You can create [deployment strategies](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/deployments#deployment-strategies)
 that help reduce downtime during a change or an upgrade to the application. For
-more information about deployment, please [read this](https://docs.openshift.com/container-platform/4.17/applications/deployments/what-deployments-are.html#what-deployments-are-build-blocks).
+more information about deployment, please [read this](https://docs.openshift.com/container-platform/4.19/applications/deployments/what-deployments-are.html#what-deployments-are-build-blocks).
 
 !!! note "Benefits of Scaling"
 
@@ -534,14 +533,6 @@ Click the **Observe** tab to:
 -   See the metrics to see CPU usage, Memory usage and Bandwidth consumption.
 
 -   See the Events.
-
-    !!! note "Detailed Monitoring your project and application metrics"
-
-        On the left navigation panel of the **Developer** perspective, click
-        **Observe** to see the Dashboard, Metrics, Alerts, and Events for your project.
-        For more information about Monitoring project and application metrics
-        using the Developer perspective, please
-        [read this](https://docs.openshift.com/container-platform/4.17/applications/odc-monitoring-project-and-application-metrics-using-developer-perspective.html).
 
 ## Scaling manually
 
@@ -663,7 +654,7 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
 !!! tip "Best Practices"
 
-    Read [this document](https://docs.openshift.com/container-platform/4.17/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
+    Read [this document](https://docs.openshift.com/container-platform/4.19/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
     to learn more about best practices regarding Horizontal Pod Autoscaler (HPA)
     autoscaling.
 

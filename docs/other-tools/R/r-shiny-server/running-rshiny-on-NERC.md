@@ -31,11 +31,11 @@ in the **"Configuration"** tab, you can enter the script in the
     Please use the appropriate bash script file i.e. `install-R-Shiny-<OS>.sh` based
     on your operating system (OS):
 
-    - **AlmaLinux** → `install-R-Shiny-AlmaLinux.sh`
+    - **AlmaLinux** -> `install-R-Shiny-AlmaLinux.sh`
 
-    - **CentOS** → `install-R-Shiny-Centos.sh`
+    - **CentOS** -> `install-R-Shiny-Centos.sh`
 
-    - **Ubuntu** → `install-R-Shiny-Ubuntu.sh`
+    - **Ubuntu** -> `install-R-Shiny-Ubuntu.sh`
 
 ## Running R Shiny Server on NERC OpenShift
 
@@ -121,7 +121,7 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
 
 !!! note "More about Writing Templates"
 
-    For more options and customization please [read this](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/using-templates.html#templates-writing_using-templates).
+    For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/using-templates.html#templates-writing_using-templates).
 
 1. Click the "Import YAML" button, represented by the "+" icon in the top navigation
    bar, or navigate to the **From Local Machine** section and select **Import YAML**,
@@ -139,10 +139,9 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
 
     ![R Shiny Server Template YAML Content](images/import-rshiny-server-template-content.png)
 
-3. You need to find the Developer Catalog section and then select **All services**
-   option as shown below:
+3. You need to go to the **Home** -> **Software Catalog** menu as shown below:
 
-    ![Select All Services](images/select-service-catalog.png)
+    ![Select Software Catalog](images/select-software-catalog.png)
 
 4. Then, you will be able to use the created Developer Catalog template by searching
    for "rshiny" on catalog as shown below:

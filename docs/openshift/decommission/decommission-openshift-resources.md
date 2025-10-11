@@ -60,24 +60,30 @@ button, as shown below:
 Delete all Connections by clicking on the three dots on the right side of the
 individual connection and selecting **Delete connection**, as shown below:
 
-![Delete Connection](images/delete-data-connections-rhoai.png)
+![Delete Connection](images/delete-connections-rhoai.png)
 
 When prompted please confirm your connection name and then click "Delete data
 connection" button, as shown below:
 
-![Delete Connection Confirmation](images/delete-data-connections-rhoai-confirmation.png)
+![Delete Connection Confirmation](images/delete-connections-rhoai-confirmation.png)
 
 ### Delete all Pipelines
 
 Delete all pipelines by clicking on the three dots on the right side of the
-individual pipeline and selecting **Delete pipeline**, as shown below:
+Pipelines section and selecting **Delete pipeline server**, as shown below:
 
-![Delete Pipeline](images/delete-pipelines-rhoai.png)
+![Delete Pipeline](images/delete-pipeline-server-rhoai.png)
 
-When prompted please confirm your pipeline name and then click "Delete pipeline"
-button, as shown below:
+!!! danger "Warning"
 
-![Delete Pipeline Confirmation](images/delete-pipelines-rhoai-confirmation.png)
+    By deleting the pipeline server will delete all of its pipelines and runs
+    from the server in your project. If you delete it, you will not be able to
+    create new pipelines or pipeline runs until you create a new pipeline server.
+
+When prompted please confirm your pipeline server name and then click
+"Delete pipeline server" button, as shown below:
+
+![Delete Pipeline Confirmation](images/delete-pipeline-server-rhoai-confirmation.png)
 
 ### Delete all Models and Model Servers
 
@@ -315,14 +321,9 @@ After removing all OpenShift resources and updating all resource quotas to set
 them to zero (0), you can review and verify that these changes are reflected in
 your OpenShift Web Console as well.
 
-When you are logged-in to the NERC's OpenShift Web Console, you will be redirected
-to the **Developer** perspective which is shown selected on the perspective switcher
-located at the Left side. You need to switch to the **Administrator** perspective
-to view your Project's Resource Quota as shown below:
-
-![Perspective Switcher](images/perspective-switcher.png)
-
-On the left sidebar, navigate to _Administration -> ResourceQuotas_.
+When you are logged-in to the NERC's OpenShift Web Console, you can also view the
+resource quota for your project in the web console by navigating to
+_Administration -> ResourceQuotas_.
 
 Click on your appropriate project name, i.e., `<your_openshift_project_to_decommission>`,
 to view the Resource Quota details.

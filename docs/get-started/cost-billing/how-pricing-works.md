@@ -323,7 +323,7 @@ environment settings, and persistent volume claims (PVCs) for future use.
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
+2. In the **Navigation Menu**, navigate to the **Workloads** -> **Topology** menu.
 
 3. Click the pod or application you want to scale to see the _Overview_ panel to
     the right.

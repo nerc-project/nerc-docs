@@ -27,7 +27,7 @@ and continue with these steps once you recieve approval.
 
         ![ColdFront_Projects](images/S1_ColdFront_Projects.png)
 
-    2. Under Projects>> Click on the name of your project
+    2. Under Projects >> Click on the name of your project
        (highlighted in yellow above).
 
         ![ColdFront_Projects](images/S1_ColdFront_ManageProject.png)

@@ -262,8 +262,8 @@ created" message and the following resources listed:
 ![Resources successfully created Importing More YAML](images/minio-yaml-import-success.png)
 
 ii. Once the deployment is successful, you will be able to see all resources
-are created and grouped under "minio" application grouping on the
-**Topology View** menu, as shown below:
+are created and grouped under "minio" application grouping on the **Workloads**
+-> **Topology** menu, as shown below:
 
 ![MinIO Under Topology](images/minio-topology.png)
 

@@ -445,8 +445,8 @@ created" message and the following resources listed:
 ![Resources successfully created Importing More YAML](images/yaml-import-success.png)
 
 ii. Once the deployment is successful, you will be able to see all resources
-are created and grouped under "minio" application grouping on the
-**Topology View** menu, as shown below:
+are created and grouped under "minio" application grouping on the **Workloads**
+-> **Topology** menu, as shown below:
 
 ![MinIO Under Topology](images/minio-topology.png)
 
@@ -476,14 +476,14 @@ b. Click **Connections**. You should see one connection listed:
 
 ![Connections](images/single-data-connection.png)
 
-c. Verify the buckets are created on the MinIO Web Console:
+c. Verify the bucket is created on the MinIO Web Console:
 
 -   Click on the newly created connection from the list and then click
 the action menu (⋮) at the end of the selected connection row. Choose
-"Edit connection" from the dropdown menu. This will open a pop-up
+"Edit" from the dropdown menu. This will open a pop-up
  window as shown below:
 
-    ![Edit Connection Pop up](images/edit-data-connection.png)
+    ![Edit Connection Pop up](images/edit-connection.png)
 
 -   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
@@ -535,16 +535,32 @@ bucket: **my-storage** is visible as shown below:
 
 **Procedure**:
 
-Prepare your Jupyter notebook server for using a GPU, you need to have:
+Prepare your Jupyter notebook server for using a **GPU**, you need to have:
 
-Select the correct data science project and create workbench, see
-[Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
-for more information.
+-   Select the correct data science project and create workbench, see
+    [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+    for more information.
 
 Please ensure that you start your Jupyter notebook server with options as
 depicted in the following configuration screen. This screen provides you
 with the opportunity to select a notebook image and configure its options,
 including the Accelerator and Number of accelerators (GPUs).
+
+Click **Attach existing connections** under the **Connections** section, and attach
+the **"My Storage"** connection that was set up previously to the workbench:
+
+![Attach Existing Connection to the Workbench](images/attach-connection-to-workbench.png)
+
+Search and add "My Storage":
+
+![Attach Existing Connection to the Workbench](images/attach-existing-connection-1.png)
+
+Click on "Attach" button:
+
+![Attach Connection to the Workbench](images/attach-my-storage.png)
+
+The final workbench setup, before clicking the **Create workbench** button, should
+look like this:
 
 ![Object detection Workbench Information](images/object-detection-workbench.png)
 
@@ -553,55 +569,6 @@ For our example project, let's name it "Fraud detection". We'll select the
 a **Deployment size** of **Medium**, choose **Accelerator** of
 **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
 a **Cluster storage** space of **20GB** (Selected By Default).
-
-Here, you will use **Environment Variables** to specify the Key/Value pairs related
-to the S3-compatible object storage bucket for storing your model.
-
-To add Environment variables please follow the following steps:
-
-i. Click on **"Add variable"**.
-
-ii. Select **"Config Map"** from the dropdown for the environment variable type.
-
-iii. Choose **"Key / Value"** and enter the following keys along with their corresponding
-values, which you have retrieved while "Editing connection":
-
-![Edit Connection Pop up](images/edit-data-connection.png)
-
-**Environment Variables**:
-
-    Key: AWS_ACCESS_KEY_ID
-    Value: <Access key>
-
-    Key: AWS_SECRET_ACCESS_KEY
-    Value: <Secret key>
-
-    Key: AWS_S3_ENDPOINT
-    Value: <Endpoint>
-
-    Key: AWS_DEFAULT_REGION
-    Value: <Region>
-
-    Key: AWS_S3_BUCKET
-    Value: <Bucket>
-
-!!! note "Alternatively, Running `oc` commands"
-
-    Alternatively, you can run the following `oc` commands:
-
-    i. To get *Access key* run:
-
-    `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
-
-    ii. And to get *Secret key* run:
-
-    `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
-
-    iii. And to get *Endpoint* run:
-
-    `oc get route minio-s3 -o template --template '{{.spec.host}}'`
-
-    You need to add `https://` in the front of the endpoint host url.
 
 !!! info "Running Workbench without GPU"
 
@@ -898,10 +865,17 @@ Console:
 
 ![The NERC OpenShift Web Console Link](images/the-nerc-openshift-web-console-link.png)
 
-Ensure you are in **Developer** view and have selected the correct data science
-project. Then, click on "**+Add**" in the left menu and select "**Import from Git**".
+From your NERC's OpenShift Web Console, navigate to your project corresponding to
+the NERC RHOAI Data Science Project and select the "Import from Git" button,
+represented by the "+" icon in the top navigation bar as shown below:
 
 ![Import from Git](images/Import_from_Git.png)
+
+**Alternatively**, navigate to the **Topology** page under **Workloads**. Right-click
+on the page and select the "Import from Git" option from the **Add to Project**
+in-context menu as shown below:
+
+![Import from Git - Right-click](images/Import_from_Git-right-click.png)
 
 In the "Git Repo URL" enter: `https://github.com/nerc-project/object-detection` (this
 is the same repository you [pulled into RHOAI earlier](#importing-the-tutorial-files-into-the-jupyter-environment)).

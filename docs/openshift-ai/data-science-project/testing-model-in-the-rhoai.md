@@ -127,7 +127,8 @@ To deploy the Pre-Post Processing Service service and the Application:
     ![YAML Editor Pre-Post Processing Service Content](images/intelligent_application_deployment-yaml-content.png)
 
 -   If both deployments are successful, you will be able to see both of them grouped
-    under "intelligent-application" on the **Topology View** menu, as shown below:
+    under "intelligent-application" on the **Workloads** -> **Topology** menu,
+    as shown below:
 
     ![Intelligent Application Under Topology](images/intelligent_application-topology.png)
 

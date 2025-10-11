@@ -474,8 +474,8 @@ created" message and the following resources listed:
 ![Resources successfully created Importing More YAML](images/yaml-import-success.png)
 
 ii. Once the deployment is successful, you will be able to see all resources
-are created and grouped under "minio" application grouping on the
-**Topology View** menu, as shown below:
+are created and grouped under "minio" application grouping on the **Workloads**
+-> **Topology** menu, as shown below:
 
 ![MinIO Under Topology](images/minio-topology.png)
 
@@ -509,10 +509,10 @@ c. Verify the buckets are created on the MinIO Web Console:
 
 -   Click on any connection from the list that was created and then click
 the action menu (⋮) at the end of the selected connection row. Choose
-"Edit connection" from the dropdown menu. This will open a pop-up
+"Edit" from the dropdown menu. This will open a pop-up
  window as shown below:
 
-    ![Edit Connection Pop up](images/edit-data-connection.png)
+    ![Edit Connection Pop up](images/edit-connection.png)
 
 -   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
@@ -585,6 +585,18 @@ v. Click **Configure pipeline server**.
 vi. Wait until the loading spinner disappears and **Start by importing a pipeline**
 is displayed.
 
+!!! note "Important Note"
+
+    You must wait until the pipeline configuration is complete before you continue
+    and create your workbench. If you continue and [create your workbench](#3-creating-a-workbench-and-a-notebook)
+    **before** the pipeline server is ready, your workbench will not be able to
+    submit pipelines to it.
+
+    If you have waited **more than 5 minutes**, and the pipeline server configuration
+    does not complete, you can delete the pipeline server and create it again.
+
+    ![Delete pipeline server](images/ds-project-delete-pipeline-server.png)
+
 **Verification**:
 
 a. Navigate to the **Pipelines** tab for the project.
@@ -605,16 +617,32 @@ for the pipeline server. as shown below:
 
 **Procedure**:
 
-Prepare your Jupyter notebook server for using a GPU, you need to have:
+Prepare your Jupyter notebook server for using a **GPU**, you need to have:
 
-Select the correct data science project and create workbench, see
-[Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
-for more information.
+-   Select the correct data science project and create workbench, see
+    [Populate the data science project](../data-science-project/using-projects-the-rhoai.md#populate-the-data-science-project-with-a-workbench)
+    for more information.
 
 Please ensure that you start your Jupyter notebook server with options as
 depicted in the following configuration screen. This screen provides you
 with the opportunity to select a notebook image and configure its options,
 including the Accelerator and Number of accelerators (GPUs).
+
+Click **Attach existing connections** under the **Connections** section, and attach
+the **"My Storage"** connection that was set up previously to the workbench:
+
+![Attach Existing Connection to the Workbench](images/attach-connection-to-workbench.png)
+
+Search and add "My Storage":
+
+![Attach Existing Connection to the Workbench](images/attach-existing-connection-2.png)
+
+Click on "Attach" button:
+
+![Attach Connection to the Workbench](images/attach-my-storage.png)
+
+The final workbench setup, before clicking the **Create workbench** button, should
+look like this:
 
 ![Fraud detection Workbench Information](images/fraud-detection-workbench.png)
 
@@ -623,55 +651,6 @@ For our example project, let's name it "Fraud detection". We'll select the
 a **Deployment size** of **Small**, choose **Accelerator** of
 **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
 a **Cluster storage** space of **20GB** (Selected By Default).
-
-Here, you will use **Environment Variables** to specify the Key/Value pairs related
-to the S3-compatible object storage bucket for storing your model.
-
-To add Environment variables please follow the following steps:
-
-i. Click on **"Add variable"**.
-
-ii. Select **"Config Map"** from the dropdown for the environment variable type.
-
-iii. Choose **"Key / Value"** and enter the following keys along with their corresponding
-values, which you have retrieved while "Editing connection":
-
-![Edit Connection Pop up](images/edit-data-connection.png)
-
-**Environment Variables**:
-
-    Key: AWS_ACCESS_KEY_ID
-    Value: <Access key>
-
-    Key: AWS_SECRET_ACCESS_KEY
-    Value: <Secret key>
-
-    Key: AWS_S3_ENDPOINT
-    Value: <Endpoint>
-
-    Key: AWS_DEFAULT_REGION
-    Value: <Region>
-
-    Key: AWS_S3_BUCKET
-    Value: <Bucket>
-
-!!! note "Alternatively, Running `oc` commands"
-
-    Alternatively, you can run the following `oc` commands:
-
-    i. To get *Access key* run:
-
-    `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_USER}}' | base64 --decode`
-
-    ii. And to get *Secret key* run:
-
-    `oc get secret minio-root-user -o template --template '{{.data.MINIO_ROOT_PASSWORD}}' | base64 --decode`
-
-    iii. And to get *Endpoint* run:
-
-    `oc get route minio-s3 -o template --template '{{.spec.host}}'`
-
-    You need to add `https://` in the front of the endpoint host url.
 
 !!! info "Running Workbench without GPU"
 
@@ -1017,10 +996,10 @@ you test the model API.
 
 !!! question "Important Note"
 
-    If you create your workbench before the pipeline server is ready, your workbench
-    will not be able to submit pipelines to it. If you configured the pipeline server
-    after you created your workbench, you need to stop the workbench and then started
-    your workbench.
+    If you create your workbench before the pipeline server is ready, it won't
+    be able to submit pipelines. If the pipeline server was configured **after**
+    your workbench was created, you'll need to **stop** and then **restart**
+    your workbench. Wait until the workbench status shows as *Running*.
 
 #### Automating workflows with data science pipelines
 
@@ -1040,13 +1019,13 @@ This pipeline will:
 
 -   Save the trained model to **S3 storage** bucket.
 
-Your completed pipeline should resemble the one in the `5_Train_Save.pipeline` file.
+Your completed pipeline should resemble the one in the `6 Train Save.pipeline` file.
 
 !!! note "Note"
 
     To explore the **pipeline editor**, follow the steps in the next procedure to
     create your own pipeline. Alternatively, you can **skip the procedure** and
-    instead feel free to run and use the provided `5_Train_Save.pipeline` file.
+    instead feel free to run and use the provided `6 Train Save.pipeline` file.
 
 ##### Create a pipeline
 
@@ -1240,7 +1219,7 @@ iii. Repeat **Step ii** for each of the following Kubernetes secrets:
 
 -   **Secret Key**: AWS_S3_BUCKET
 
-iv.Select File → Save Pipeline As to save and rename the *.pipeline* file. For
+iv.Select File -> Save Pipeline As to save and rename the *.pipeline* file. For
 example, rename it to **My Train Save.pipeline**.
 
 ##### Run the Pipeline
@@ -1250,15 +1229,19 @@ You can use your own newly created pipeline or the pipeline in the provided
 
 **Procedure**:
 
-i. Click the play button in the toolbar of the pipeline editor.
+i. Click the **play** button in the toolbar of the pipeline editor.
 
 ![Pipeline Run Button](images/wb-pipeline-run-button.png)
 
-ii. Enter a name for your pipeline.
+ii. In the next popup:
 
-iii. Verify that the **Runtime Configuration**: is set to **Data Science Pipeline**.
+![pipeline expanded](images/run-pipeline-ok.png)
 
-iv. Click **OK**.
+-   Enter a name for your pipeline i.e. `My Train Save`.
+
+-   Verify that the **Runtime Configuration**: is set to **Data Science Pipeline**.
+
+-   Click **OK**.
 
 !!! failure "Troubleshooting Help"
 
@@ -1268,16 +1251,16 @@ iv. Click **OK**.
     after you created your workbench, you need to stop the workbench and then started
     your workbench.
 
-v. In the OpenShift AI dashboard, open your data science project and expand the
+iii. In the OpenShift AI dashboard, open your data science project and expand the
 newly created pipeline.
 
 ![New pipeline expanded](images/dsp-pipeline-complete.png)
 
-vi. Click **View runs**.
+iv. Click **View runs**.
 
 ![View runs for selected pipeline](images/dsp-view-run.png)
 
-vii. Click your run and then view the pipeline run in progress.
+v. Click your run and then view the pipeline run in progress.
 
 ![Pipeline run progress](images/pipeline-run-complete.png)
 
@@ -1373,6 +1356,50 @@ the following files:
 
     ![Create Pipeline Run](images/ds-pipeline-run.png)
 
+#### Schedule execution
+
+We can also **schedule** an execution so that the confidence check is executed at
+regular intervals.
+
+To do that:
+
+-   Go back to the OpenShift AI dashboard, open your data science project
+
+-   Find the pipeline you just ran in the Pipelines tab
+
+-   Click the 3 dots at the very end of the pipeline row, and click "Create schedule".
+
+    ![Create schedule](images/create-schedule.png)
+
+-   On the next screen:
+
+    i. keep the **Experiment** to `Default`,
+
+    ii. Set a **Name**,
+
+    iii. select a `Periodic` **Trigger type**,
+
+    iv. run it every **Day** with Maximum concurrent runs of **3**.
+
+    v. keep the `My Train Save` **Pipeline** and **Version** (*The Pipeline's name
+        we set while running the Pipeline for the first time*)
+
+    vi. and click **Create schedule**:
+
+    ![Daily Pipeline Run Schedule](images/dailyrun-3.png)
+
+    vii. This will shows the Graph view of the Scheduled Pipeline Run:
+
+    ![Scheduled Pipeline Run](images/dailyrun-scheduled.png)
+
+    viii. In **Data Science Pipelines** -> **Runs**, click the **Schedules** tab
+    to verify that the **Scheduled** run is visible, as shown below:
+
+    ![Schedule Run](images/schedule-run.png)
+
+    It will run daily **3** runs, and will inform us if anything goes wrong with
+    your training and saving the model process.
+
 ## Deploy the Model Application on NERC OpenShift
 
 The **model application** includes a visual user interface (UI) powered by [Gradio](https://www.gradio.app/),
@@ -1415,10 +1442,17 @@ Console:
 
 ![The NERC OpenShift Web Console Link](images/the-nerc-openshift-web-console-link.png)
 
-Ensure you are in **Developer** view and have selected the correct data science
-project. Then, click on "**+Add**" in the left menu and select "**Import from Git**".
+From your NERC's OpenShift Web Console, navigate to your project corresponding to
+the NERC RHOAI Data Science Project and select the "Import from Git" button,
+represented by the "+" icon in the top navigation bar as shown below:
 
 ![Import from Git](images/Import_from_Git.png)
+
+**Alternatively**, navigate to the **Topology** page under **Workloads**. Right-click
+on the page and select the "Import from Git" option from the **Add to Project**
+menu as shown below:
+
+![Import from Git - Right-click](images/Import_from_Git-right-click.png)
 
 In the "Git Repo URL" enter: `https://github.com/nerc-project/fraud-detection` (this
 is the same repository you [pulled into RHOAI earlier](#importing-the-tutorial-files-into-the-jupyter-environment)).

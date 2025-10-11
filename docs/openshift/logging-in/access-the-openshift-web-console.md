@@ -48,26 +48,33 @@ login page where you need to enter your institutional credentials.
     it points to your selected insitution's identity provider and redirects back
     once authenticated.
 
-Once you successfully authenticate, you should see a graphical user interface to
-visualize your project data and perform administrative, management, and troubleshooting
-tasks.
+Once you successfully authenticate, you will see a graphical user interface
+displaying a list of projects on the **Projects** page based on your **ColdFront**
+allocations, as shown below:
 
 ![OpenShift Web Console](images/openshift-web-console.png)
 
+To visualize your project data and perform administrative, management, or
+troubleshooting tasks, select a project from the list to open its detailed view
+along with the **Overview** pane, as shown below:
+
+![OpenShift Web Console Project Overview](images/openshift-web-console-project-overview.png)
+
+The **Workload** section provides a comprehensive overview of details relevant
+to project administration, including resource utilization, configuration, and
+security settings, as shown below:
+
+![OpenShift Web Console Project Workload](images/openshift-web-console-project-workload.png)
+
 !!! info "I can't find my project"
 
-    If you are a member of several projects i.e. ColdFront NERC-OCP (OpenShift)
+    If you are a member of several projects i.e. **ColdFront NERC-OCP (OpenShift)**
     allocations, you may need to switch the project before you can see and use
-    OpenShift resources you or your team has created. Clicking on the project dropdown
-    which is displayed near the top left side will popup the list of projects you
-    are in. You can search and select the new project by hovering and clicking
+    OpenShift resources you or your team has created. Clicking on the **Home** ->
+    **Projects** menu which is displayed near the top left side will show the
+    list of projects you are in. You can search and select the project by clicking
     on the project name in that list as shown below:
 
-    ![OpenStack Project List](images/openshift_project_list.png)
-
-!!! note "Important Note"
-
-    The default view for the OpenShift Container Platform web console is the **Developer**
-    perspective.
+    ![OpenShift Project List](images/openshift_project_list.png)
 
 ---

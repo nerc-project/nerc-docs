@@ -112,14 +112,12 @@ To delete all resources if not necessary just run `oc delete -f ./standalone/.`.
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
 
-2. Click on the **Perspective Switcher** drop-down menu and select **Developer**.
-
-3. In the **Navigation Menu**, click **Topology** view and make sure that you are
-    on the MLflow project.
+2. In the **Navigation Menu**, navigate to the **Workloads** -> **Topology** menu
+    and make sure that you are on the MLflow project.
 
     ![MLflow Setup Pods](images/mlflow-setup-pods.png)
 
-4. Check the `mlflow-deployment` pod circle that is in dark blue color (this means
+3. Check the `mlflow-deployment` pod circle that is in dark blue color (this means
   it has finished deploying successfully and the pod is "Running").
 
     The API is now accessible at the endpoints:

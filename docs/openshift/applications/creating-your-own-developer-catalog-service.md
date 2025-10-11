@@ -16,11 +16,10 @@ git clone https://github.com/nerc-project/rstudio-testapp.git
 
 !!! note "More about Writing Templates"
 
-    For more options and customization please [read this](https://docs.openshift.com/container-platform/4.17/applications/creating_applications/using-templates.html#templates-writing_using-templates).
+    For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/using-templates.html#templates-writing_using-templates).
 
-1. Click the "Import YAML" button, represented by the "+" icon in the top navigation
-   bar, or navigate to the **From Local Machine** section and select **Import YAML**,
-   as shown below:
+1. Click the "Import YAML" button, represented by the "+" icon in the top
+    navigation bar as shown below::
 
     ![Import YAML](images/import-yaml.png)
 
@@ -34,10 +33,9 @@ git clone https://github.com/nerc-project/rstudio-testapp.git
 
     ![RStudio Server Template YAML Content](images/import-rstudio-server-template-content.png)
 
-3. You need to find the Developer Catalog section and then select **All services**
-   option as shown below:
+3. You need to go to the **Home** -> **Software Catalog** menu as shown below:
 
-    ![Select All Services](images/select-service-catalog.png)
+    ![Select Software Catalog](images/select-software-catalog.png)
 
 4. Then, you will be able to use the created Developer Catalog template by searching
    for "rstudio" on catalog as shown below:

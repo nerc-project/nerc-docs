@@ -7,8 +7,9 @@ Make sure you are selecting "**mss-keycloak**" as shown here:
 
 ![OpenShift Login with KeyCloak](images/openshift_login.png)
 
-Once you successfully authenticate, you should see the NERC OpenShift Web Console
-as shown below:
+Once you successfully authenticate, you will see a graphical user interface
+displaying a list of projects on the **Projects** page based on your **ColdFront**
+allocations, as shown below:
 
 ![OpenShift Web Console](images/openshift-web-console.png)
 

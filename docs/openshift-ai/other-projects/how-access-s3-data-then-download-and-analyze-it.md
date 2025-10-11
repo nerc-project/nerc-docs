@@ -16,7 +16,8 @@ and Number of accelerators (GPUs).
 ![Standard Data Science Workbech Information](images/standard-data-science-workbench.png)
 
 For our example project, let's name it "Standard Data Science Workbench". We'll
-select the **Standard Data Science** image, choose a **Deployment size** of **Small**,
+select the **Standard Data Science** image with Recommended Version
+(selected by default), choose a **Deployment size** of **Small**,
 **Accelerator** as **None** (no GPU is needed for this setup), and allocate a
 **Cluster storage** space of **1GB**.
 

@@ -98,7 +98,7 @@ files located in the **standalone/deploy** folder.
     ![Rclone Web Link](images/Rclone-route-link.png)
 
 -   Users will be prompted to log in with a username and password set in
-    `02-deployment.yaml` as [environment variables](https://github.com/nerc-project/rclone-web-on-openshift/blob/main/standalone/deploy/02-deployment.yaml#L40-L43)
+    `02-deployment.yaml` as [environment variables](https://github.com/nerc-project/rclone-web-on-openshift/blob/main/standalone/deploy/02-deployment.yaml#L37-L40)
     before gaining access to the Rclone Login page, as shown below:
 
     ![Rclone Web Login](images/rclone-web-login.png)  

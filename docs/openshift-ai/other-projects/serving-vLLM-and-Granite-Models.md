@@ -214,7 +214,7 @@ set to `1`.
 
 At this point, ensure that both
 **Make deployed models available through an external route** and
-**Require token authentication** are checked. Please leave the populated
+**Require token authentication** are *checked*. Please leave the populated
 **Service account name** i.e. `default-name` as it is. Select `My Storage` as
 the **Connection** from the *Existing connection*, and for the model **Path**
 location, enter `models/granite-3.3-8b-instruct` as the folder path, as shown below:

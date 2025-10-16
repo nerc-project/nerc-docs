@@ -290,11 +290,10 @@ The deployed model is now accessible through the API endpoint of the model serve
 The information about the endpoint is different, depending on how you configured
 the model server.
 
-As in this example, you have exposed the model externally through a route, click
-on the "Internal and external endpoint details" link in the Inference endpoint
-section. A popup will display the address for the *url* and the *External (can be
-accessed from inside or outside the cluster)* for the inference endpoints as shown
-below:
+As in this example, you have **NOT exposed** the model *externally through a route*,
+click on the "Internal and external endpoint details" link in the Inference endpoint
+section. A popup will display the internal address for the *url* for the inference
+endpoint as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/flan-deployed-model-inference-endpoints.png)
 

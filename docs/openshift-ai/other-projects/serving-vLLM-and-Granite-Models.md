@@ -7,9 +7,10 @@
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.
 
--   `Granite-3.3-8B-Instruct` model: Granite-3.3-8B-Instruct is an 8-billion-parameter,
-    128K context-length language model fine-tuned for improved reasoning and
-    instruction-following capabilities. It is built on top of Granite-3.3-8B-Base.
+-   `Granite-3.3-8B-Instruct` model: [Granite-3.3-8B-Instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct)
+    is an 8-billion-parameter, 128K context-length language model fine-tuned for
+    improved reasoning and instruction-following capabilities. It is built on top
+    of `Granite-3.3-8B-Base`.
 
 **Procedure**:
 

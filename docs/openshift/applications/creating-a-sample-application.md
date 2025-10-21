@@ -61,6 +61,20 @@ tasks using both the web console and the command-line tool.
 
     In the **Git Repo URL** text box, enter your git repo url. For example: `https://github.com/myuser/mypublicrepo.git`.
 
+    !!! tip "Best Practices for Container Permissions in OpenShift"
+
+        -   On OpenShift, every container in a standard namespace (unless security
+        settings are modified) runs as a user with a random user ID (UID) and
+        group ID (GID) `0`. Therefore, any folders that need to be written to,
+        and any files that need to be modified (even temporarily), must be accessible
+        to this user.  
+
+            **The best practice is to set ownership to `1001:0` (user `default`,
+            group `0`).**
+
+        -   If this is not possible, another solution is to set the appropriate
+        permissions for all users, such as `775`.
+
 4. Click "Create" to create your application.
 
 5. Once your application has been created, you can view the details by clicking

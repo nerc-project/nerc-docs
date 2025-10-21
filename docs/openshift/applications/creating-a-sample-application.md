@@ -8,6 +8,13 @@ deploying it. This example uses the Node.js programming language, but the proces
 with other programming languages will be similar. Instructions provided show the
 tasks using both the web console and the command-line tool.
 
+!!! tips "Red Hat Tutorials"
+
+    You can follow [this tutorial](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/tutorials/tutorials-overview)
+    from Red Hat, which provides an end-to-end example of deploying an application
+    on the OpenShift Container Platform using either the OpenShift CLI (`oc`) or
+    the web console.
+
 ## Using NERC's OpenShift Web Console
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
@@ -65,10 +72,11 @@ tasks using both the web console and the command-line tool.
    on the link to go to the sample application. This will open your application
    in a new browser window. The link will look similar to `https://<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
-!!! tip "Example: Deploying a Python application"
+!!! tip "Example: Developing Applications on OpenShift"
 
-    For a quick example on how to use the "Import from Git" option to deploy a
-    sample Python application, please refer to [this guide](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/getting_started/openshift-web-console#getting-started-web-console-deploying-python-app_openshift-web-console).
+    For a quick tutorial on how to use image-based and source-based deployment
+    techniques with examples in JavaScript (Node.js), Spring Boot, or Python,
+    please refer to [this guide](https://developers.redhat.com/learn/openshift/develop-on-openshift).
 
 ### Additional resources
 

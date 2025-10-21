@@ -72,7 +72,7 @@ tasks using both the web console and the command-line tool.
 
 ### Additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/odc-creating-applications-using-developer-perspective.html).
+For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications).
 
 ## Using the CLI (oc command) on your local terminal
 
@@ -98,7 +98,7 @@ use the `--code` flag to specify the URL of the repository. For example:
 `oc new-app --code https://github.com/myuser/mypublicrepo`. If you want to use a
 different name, you can add the `--name=<newname>` argument to the `oc new-app` command.
 For example: `oc new-app --name=mytestapp https://github.com/myuser/mypublicrepo`.
-The platform will try to automatically [detect the programming language](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/creating-applications-using-cli.html#language-detection)
+The platform will try to automatically [detect the programming language](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#language-detection_creating-applications-using-cli)
 of the application code and select the latest version of the base language image
 available. If `oc new-app` can't find any suitable Source-To-Image (S2I) builder
 images based on your source code in your Git repository or unable to detect the programming
@@ -132,7 +132,7 @@ a web URL similar to `https://mytestapp-<your-namespace>.apps.shift.nerc.mghpcc.
 
 ### For more additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/creating-applications-using-cli.html).
+For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#creating-applications-using-cli).
 
 ## Using the Developer Catalog on NERC's OpenShift Web Console
 
@@ -146,7 +146,7 @@ your project.
 
     By default, the templates build using a public source repository on GitHub that
     contains the necessary application code. For more options and customization
-    please [read this](https://docs.openshift.com/container-platform/4.19/openshift_images/using-templates.html#templates-quickstart_using-templates).
+    please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#using-templates).
 
 ### Steps
 

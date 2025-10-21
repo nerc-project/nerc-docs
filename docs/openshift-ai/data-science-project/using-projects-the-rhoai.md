@@ -163,7 +163,7 @@ attached cluster storage by expanding the workbench as shown above.
 
 ### Launching a Workbench Using Your Existing Storage
 
-If you want to use previously created persistent storage that isn’t attached to
+If you want to use previously created persistent storage that isn't attached to
 any existing workbench cluster, first detach the storage configured for the new
 workbench, as shown below:
 

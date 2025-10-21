@@ -80,7 +80,7 @@ tasks using both the web console and the command-line tool.
 
 ### Additional resources
 
-For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications).
+For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#odc-creating-applications-using-developer-perspective).
 
 ## Using the CLI (oc command) on your local terminal
 

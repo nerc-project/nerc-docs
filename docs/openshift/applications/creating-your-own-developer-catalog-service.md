@@ -16,7 +16,7 @@ git clone https://github.com/nerc-project/rstudio-testapp.git
 
 !!! note "More about Writing Templates"
 
-    For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#using-templates).
+    For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#templates-writing_using-templates).
 
 1. Click the "Import YAML" button, represented by the "+" icon in the top
     navigation bar as shown below::

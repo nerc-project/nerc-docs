@@ -158,7 +158,8 @@ Enter the following information for your new model:
 
 -   **Deployment mode**: From the Deployment mode list, select **Advanced** option.
 
--   **Number of model server replicas to deploy**: `1`.
+-   **Number of model server replicas to deploy** has **Minimum replicas**: `1`
+    and **Maximum replicas**:`1`.
 
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will
     be allocated to your server. Here, you can select `Small` size.
@@ -196,9 +197,9 @@ For our example, set the **Model deployment name** to `granite`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure
 that the **Deployment mode** is set to `Advanced`.
 
-Please leave the other fields with their default settings, such as
-**Number of model server replicas to deploy** set to `1` and **Model server size**
-set to `Small`.
+Please leave the other fields at their default settings. For example, the
+**Number of model server replicas to deploy** has **Minimum replicas** set to `1`
+and **Maximum replicas** set to `1`, and the **Model server size** is set to `Small`.
 
 ![Configure and Deploy Model Info](images/configure-and-deploy-model-info.png)
 

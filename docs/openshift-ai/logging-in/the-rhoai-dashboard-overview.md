@@ -11,6 +11,8 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
     deploy various development environments (such as Jupyter Notebooks, VS Code,
     RStudio, etc.), create connections, or serve models.
 
+    More information about *Data Science Projects (DSP)* can be found [here](../data-science-project/using-projects-the-rhoai.md).
+
     !!! info "What are Workbenches?"
 
         Workbenches are development environments. They can be based on JupyterLab,
@@ -28,16 +30,21 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
         models. Users can select a model registry to view and manage your registered
         models.
 
+        !!! warning "Important Note"
+
+            This feature is not yet available to users.
+
     -   _Model deployments_: Manage and view the health and performance of your
         deployed models. Also, you can "Deploy Model" to a specific project selected
         from the dropdown menu here. Models enable you to quickly serve trained
         models for real-time inference. Each data science project can have multiple
-        model servers, and each server can host multiple models.
+        model servers, and each server can host models. More information about
+        **Model Serving** in NERC RHOAI can be found [here](../data-science-project/model-serving-in-the-rhoai.md).
 
 3.  **Data Science Pipelines**:
 
     -   _Pipelines_: Manage your pipelines for a specific project selected from the
-        dropdown menu.
+        dropdown menu.  
 
     -   _Runs_: Manage and view your runs for a specific project selected from the
         dropdown menu.
@@ -51,6 +58,10 @@ In the NERC's RHOAI dashboard, you can see multiple links on your left hand side
     processing and the full ML lifecycle-training, tuning, and serving - by prioritizing
     and distributing jobs for optimal node utilization. Advanced GPU support ensures
     the performance and scalability required for foundation-model workloads.
+
+    !!! warning "Important Note"
+
+        This feature is not yet available to users.
 
 6.  **Applications**:
 

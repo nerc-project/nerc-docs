@@ -2,10 +2,13 @@
 
 ## Add/Remove User(s) to/from a Project
 
-A user can only view projects they are on. PIs or managers can add or remove users
-from their respective projects by navigating to the Users section of the project.
+A user can only view the projects they are a member of. PIs or Project Manager(s)
+can add or remove users from their respective projects by navigating to the **Users**
+section of the project, as shown below:
 
 ![Add/Remove Users from Project](images/coldfront-add-remove-users.png)
+
+### Add User(s) to a Project
 
 Once we click on the "Add Users" button, it will show us the following search interface:
 
@@ -40,6 +43,8 @@ their Role also can be selected from the dropdown options as either User or Mana
 Once confirmed with selection of user(s) their roles and allocations, click on the
 "Add Selected Users to Project" button.
 
+### Remove User(s) from a Project
+
 Removing Users from the Project is straightforward by just clicking on the
 "Remove Users" button. Then it shows the following interface:
 
@@ -47,6 +52,11 @@ Removing Users from the Project is straightforward by just clicking on the
 
 PI or project managers can select the user(s) and then click on the "Remove Selected
 Users From Project" button.
+
+!!! note "Very Important"
+
+    If you remove a user (or users) from a project, they will automatically be
+    removed from all allocations they were previously assigned to within that project.
 
 ## User Roles
 

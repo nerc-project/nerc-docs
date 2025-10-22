@@ -47,8 +47,8 @@ shown below:
     [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC-OCP (OpenShift)**
     Resource Allocations, storage quotas are specified by the "OpenShift Request
-    on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
-    allocation attributes. If you have common questions or need more information,
+    on NESE Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota
+    (GiB)" allocation attributes. If you have common questions or need more information,
     refer to our [Billing FAQs](../../get-started/cost-billing/billing-faqs.md)
     for comprehensive answers. Keep in mind that you can easily scale and expand
     your current resource allocations within your project by following
@@ -68,8 +68,8 @@ shown below:
     cost is determined by [your requested and approved allocation values](allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
     to reserve storage from the total NESE storage pool. For **NERC-OCP-EDU (OpenShift)**
     Resource Allocations, storage quotas are specified by the "OpenShift Request
-    on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
-    allocation attributes. If you have common questions or need more information,
+    on NESE Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota
+    (GiB)" allocation attributes. If you have common questions or need more information,
     refer to our [Billing FAQs](../../get-started/cost-billing/billing-faqs.md)
     for comprehensive answers. Keep in mind that you can easily scale and expand
     your current resource allocations within your project by following

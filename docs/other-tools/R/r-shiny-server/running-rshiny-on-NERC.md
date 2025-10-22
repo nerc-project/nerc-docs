@@ -121,7 +121,7 @@ An OpenShift template file, `rshiny-server-template.yaml`, is available within t
 
 !!! note "More about Writing Templates"
 
-    For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/using-templates.html#templates-writing_using-templates).
+    For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#templates-writing_using-templates).
 
 1. Click the "Import YAML" button, represented by the "+" icon in the top navigation
    bar, or navigate to the **From Local Machine** section and select **Import YAML**,

@@ -8,6 +8,13 @@ deploying it. This example uses the Node.js programming language, but the proces
 with other programming languages will be similar. Instructions provided show the
 tasks using both the web console and the command-line tool.
 
+!!! tips "Red Hat Tutorials"
+
+    You can follow [this tutorial](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/tutorials/tutorials-overview)
+    from Red Hat, which provides an end-to-end example of deploying an application
+    on the OpenShift Container Platform using either the OpenShift CLI (`oc`) or
+    the web console.
+
 ## Using NERC's OpenShift Web Console
 
 1. Go to the [NERC's OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org).
@@ -54,6 +61,20 @@ tasks using both the web console and the command-line tool.
 
     In the **Git Repo URL** text box, enter your git repo url. For example: `https://github.com/myuser/mypublicrepo.git`.
 
+    !!! tip "Best Practices for Container Permissions in OpenShift"
+
+        -   On OpenShift, every container in a standard namespace (unless security
+        settings are modified) runs as a user with a random user ID (UID) and
+        group ID (GID) `0`. Therefore, any folders that need to be written to,
+        and any files that need to be modified (even temporarily), must be accessible
+        to this user.  
+
+            **The best practice is to set ownership to `1001:0` (user `default`,
+            group `0`).**
+
+        -   If this is not possible, another solution is to set the appropriate
+        permissions for all users, such as `775`.
+
 4. Click "Create" to create your application.
 
 5. Once your application has been created, you can view the details by clicking
@@ -65,14 +86,15 @@ tasks using both the web console and the command-line tool.
    on the link to go to the sample application. This will open your application
    in a new browser window. The link will look similar to `https://<your-application-name>-<your-namespace>.apps.shift.nerc.mghpcc.org`.
 
-!!! tip "Example: Deploying a Python application"
+!!! tip "Example: Developing Applications on OpenShift"
 
-    For a quick example on how to use the "Import from Git" option to deploy a
-    sample Python application, please refer to [this guide](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/getting_started/openshift-web-console#getting-started-web-console-deploying-python-app_openshift-web-console).
+    For a quick tutorial on how to use image-based and source-based deployment
+    techniques with examples in JavaScript (Node.js), Spring Boot, or Python,
+    please refer to [this guide](https://developers.redhat.com/learn/openshift/develop-on-openshift).
 
 ### Additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/odc-creating-applications-using-developer-perspective.html).
+For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#odc-creating-applications-using-developer-perspective).
 
 ## Using the CLI (oc command) on your local terminal
 
@@ -98,7 +120,7 @@ use the `--code` flag to specify the URL of the repository. For example:
 `oc new-app --code https://github.com/myuser/mypublicrepo`. If you want to use a
 different name, you can add the `--name=<newname>` argument to the `oc new-app` command.
 For example: `oc new-app --name=mytestapp https://github.com/myuser/mypublicrepo`.
-The platform will try to automatically [detect the programming language](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/creating-applications-using-cli.html#language-detection)
+The platform will try to automatically [detect the programming language](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#language-detection_creating-applications-using-cli)
 of the application code and select the latest version of the base language image
 available. If `oc new-app` can't find any suitable Source-To-Image (S2I) builder
 images based on your source code in your Git repository or unable to detect the programming
@@ -132,7 +154,7 @@ a web URL similar to `https://mytestapp-<your-namespace>.apps.shift.nerc.mghpcc.
 
 ### For more additional resources
 
-For more options and customization please [read this](https://docs.openshift.com/container-platform/4.19/applications/creating_applications/creating-applications-using-cli.html).
+For more options and customization please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#creating-applications-using-cli).
 
 ## Using the Developer Catalog on NERC's OpenShift Web Console
 
@@ -146,7 +168,7 @@ your project.
 
     By default, the templates build using a public source repository on GitHub that
     contains the necessary application code. For more options and customization
-    please [read this](https://docs.openshift.com/container-platform/4.19/openshift_images/using-templates.html#templates-quickstart_using-templates).
+    please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#using-templates).
 
 ### Steps
 

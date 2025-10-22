@@ -49,6 +49,28 @@ shown below:
 
 ![CILogon Page](images/CILogon.png)
 
+!!! warning "If you are not able to see the CILogon landing page"
+
+    If the default **CILogon** login page does not appear, it may be because you
+    are already logged in through another identity provider supported by CILogon.
+    Since CILogon provides authentication and authorization using institutional
+    credentials, this can sometimes cause session conflicts.
+
+    To resolve this issue, you can reset your CILogon session by following these
+    steps:
+
+    1. Visit the CILogon cookie management page: [https://cilogon.org/me](https://cilogon.org/me).
+
+    2. Click the **Delete ALL** button to remove all CILogon related data from
+    your current browser session.
+
+    3. Once the CILogon data has been cleared, go back to the [RegApp](https://regapp.mss.mghpcc.org/).
+
+    4. Log in again using your institutional credentials.
+
+    If you continue to experience issues, try clearing your browser's cache and
+    cookies, or use a different browser.
+
 Once selected, you will be redirected to your institutional or commercial identity
 provider, where you will log in, as shown here:
 

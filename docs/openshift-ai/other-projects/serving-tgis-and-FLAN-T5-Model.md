@@ -217,7 +217,8 @@ Enter the following information for your new model:
 
 -   **Deployment mode**: From the Deployment mode list, select **Advanced** option.
 
--   **Number of model server replicas to deploy**: `1`.
+-   **Number of model server replicas to deploy** has **Minimum replicas**: `1`
+    and **Maximum replicas**:`1`.
 
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will
     be allocated to your server. Here, you can select `Small` size.
@@ -253,9 +254,10 @@ For our example, set the **Model deployment name** to `flan-t5-small`, and selec
 **Serving runtime** as `TGIS Standalone ServingRuntime for KServe`. Also, ensure
 that the **Deployment mode** is set to `Advanced`.
 
-Please leave the other fields with their default settings, such as
-**Number of model server replicas to deploy** set to `1` and **Model server size**
-set to `Small`, and **Accelerator** set to `None`.
+Please leave the other fields at their default settings. For example, the
+**Number of model server replicas to deploy** has **Minimum replicas** set to `1`
+and **Maximum replicas** set to `1`, **Model server size** set to `Small`, and
+**Accelerator** set to `None`.
 
 ![Configure and Deploy Model Info](images/flan-configure-and-deploy-model-info.png)
 
@@ -290,11 +292,10 @@ The deployed model is now accessible through the API endpoint of the model serve
 The information about the endpoint is different, depending on how you configured
 the model server.
 
-As in this example, you have exposed the model externally through a route, click
-on the "Internal and external endpoint details" link in the Inference endpoint
-section. A popup will display the address for the *url* and the *External (can be
-accessed from inside or outside the cluster)* for the inference endpoints as shown
-below:
+As in this example, you have **NOT exposed** the model *externally through a route*,
+click on the "Internal and external endpoint details" link in the Inference endpoint
+section. A popup will display the internal address for the *url* for the inference
+endpoint as shown below:
 
 ![Successfully Deployed Model Inference endpoints Info](images/flan-deployed-model-inference-endpoints.png)
 

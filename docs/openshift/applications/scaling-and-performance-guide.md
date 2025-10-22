@@ -31,7 +31,7 @@ and thus only briefly mentioned here:
    format in the `metadata` hash.
 
 2. The pod restart policy with possible values `Always`, `OnFailure`, and `Never`.
-   The default value is `Always`. [Read this](https://docs.openshift.com/container-platform/4.19/nodes/pods/nodes-pods-configuring.html#nodes-pods-configuring-restart_nodes-pods-configuring)
+   The default value is `Always`. [Read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/nodes/working-with-pods#nodes-pods-configuring-restart_nodes-pods-configuring)
    to learn about "Configuring how pods behave after restart".
 
 3. OpenShift Container Platform defines a security context for containers which
@@ -487,7 +487,7 @@ in the event of a node disruption. You can deploy your application using `Deploy
 or `Deployment Config` objects to maintain the desired number of healthy pods and
 manage them from the web console. You can create [deployment strategies](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/deployments#deployment-strategies)
 that help reduce downtime during a change or an upgrade to the application. For
-more information about deployment, please [read this](https://docs.openshift.com/container-platform/4.19/applications/deployments/what-deployments-are.html#what-deployments-are-build-blocks).
+more information about deployment, please [read this](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/deployments#what-deployments-are-build-blocks).
 
 !!! note "Benefits of Scaling"
 
@@ -595,7 +595,7 @@ of the _replication controller_. For _deployment configurations_, scaling corres
 directly to the replica count of the _deployment configuration_. Note that autoscaling
 applies only to the latest deployment in the `Complete` phase.
 
-For more information on how the HPA works, read [this documentation](https://docs.openshift.com/container-platform/4.14/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-workflow-hpa_nodes-pods-autoscaling).
+For more information on how the HPA works, read [this documentation](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/nodes/working-with-pods#nodes-pods-autoscaling-workflow-hpa_nodes-pods-autoscaling).
 
 !!! warning "Very Important Note"
 
@@ -654,7 +654,7 @@ maximum numbers to maintain the specified CPU utilization across all pods.
 
 !!! tip "Best Practices"
 
-    Read [this document](https://docs.openshift.com/container-platform/4.19/nodes/pods/nodes-pods-autoscaling.html#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
+    Read [this document](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/nodes/working-with-pods#nodes-pods-autoscaling-best-practices-hpa_nodes-pods-autoscaling)
     to learn more about best practices regarding Horizontal Pod Autoscaler (HPA)
     autoscaling.
 

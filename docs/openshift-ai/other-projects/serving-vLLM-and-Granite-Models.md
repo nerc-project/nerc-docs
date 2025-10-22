@@ -7,9 +7,10 @@
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
     on NERC OpenShift Allocation.
 
--   `Granite-3.3-8B-Instruct` model: Granite-3.3-8B-Instruct is an 8-billion-parameter,
-    128K context-length language model fine-tuned for improved reasoning and
-    instruction-following capabilities. It is built on top of Granite-3.3-8B-Base.
+-   `Granite-3.3-8B-Instruct` model: [Granite-3.3-8B-Instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct)
+    is an 8-billion-parameter, 128K context-length language model fine-tuned for
+    improved reasoning and instruction-following capabilities. It is built on top
+    of `Granite-3.3-8B-Base`.
 
 **Procedure**:
 
@@ -157,7 +158,8 @@ Enter the following information for your new model:
 
 -   **Deployment mode**: From the Deployment mode list, select **Advanced** option.
 
--   **Number of model server replicas to deploy**: `1`.
+-   **Number of model server replicas to deploy** has **Minimum replicas**: `1`
+    and **Maximum replicas**:`1`.
 
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will
     be allocated to your server. Here, you can select `Small` size.
@@ -195,9 +197,9 @@ For our example, set the **Model deployment name** to `granite`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure
 that the **Deployment mode** is set to `Advanced`.
 
-Please leave the other fields with their default settings, such as
-**Number of model server replicas to deploy** set to `1` and **Model server size**
-set to `Small`.
+Please leave the other fields at their default settings. For example, the
+**Number of model server replicas to deploy** has **Minimum replicas** set to `1`
+and **Maximum replicas** set to `1`, and the **Model server size** is set to `Small`.
 
 ![Configure and Deploy Model Info](images/configure-and-deploy-model-info.png)
 
@@ -214,7 +216,7 @@ set to `1`.
 
 At this point, ensure that both
 **Make deployed models available through an external route** and
-**Require token authentication** are checked. Please leave the populated
+**Require token authentication** are *checked*. Please leave the populated
 **Service account name** i.e. `default-name` as it is. Select `My Storage` as
 the **Connection** from the *Existing connection*, and for the model **Path**
 location, enter `models/granite-3.3-8b-instruct` as the folder path, as shown below:

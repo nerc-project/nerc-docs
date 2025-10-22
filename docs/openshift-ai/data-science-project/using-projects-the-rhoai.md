@@ -33,15 +33,41 @@ Within the data science project, you can add the following configuration options
 -   **Pipelines**: A list of created and configured data science pipeline servers
     within the project.
 
--   **Models**: A list of models and model servers that your project uses. Models
-    allow you to quickly serve a trained model for real-time inference. You can
-    have multiple model servers per data science project. One model server can
-    host multiple models.
+    *Pipelines* allow you to run multiple steps in a data science workflow,
+    where each step can be represented by an individual Jupyter notebook.
 
--   **Cluster storage**: Storage for your project in your OpenShift cluster.
+    *For example*, a typical workflow might begin with data cleaning, followed
+    by model training and prediction generation. Pipelines connect these
+    notebooks together and ensure that each step runs automatically in the
+    correct sequence.
+
+-   **Models**: A list of models and model servers used within your project. Models
+    enable you to serve trained models for real-time inference. You can configure
+    multiple model servers per data science project. Once a model is built, you
+    can use it by sending input data—typically through an API—and receiving
+    predictions or results in response.  
+
+    Models are generally stored as files in *storage* systems such as an S3
+    bucket or similar data store, which are accessed through configured **connections**.
+
+    More information about **Model Serving** in NERC RHOAI can be found [here](../data-science-project/model-serving-in-the-rhoai.md).
+
+-   **Cluster storage**: Storage for your project in your OpenShift cluster. Cluster
+    storage uses a **Persistent Volume Claim (PVC)** to store your Jupyter notebooks
+    and associated data, ensuring that your work remains saved and accessible even
+    if the notebook server restarts.
 
 -   **Connections**: A list of data sources that your project uses, such as an S3
-    object bucket.
+    object bucket. *Connections* allow you to link your project to external
+    storage systems and services. Typically, models are saved using
+    **S3-compatible storage** through a connection, but connections can also
+    serve other purposes, such as:
+
+    i. **OCI-compliant registries** – Integrate with container registries.
+
+    ii. **S3-compatible object storage** – Save models, datasets, and other files.
+
+    iii. **URIs** – Connect to various external data sources.
 
 -   **Permissions**: define which users and groups can access the project.
 
@@ -123,9 +149,9 @@ the workbench name directly to access your environment.
 
 !!! tip "How can I start or stop a Workbench?"
 
-    If the status of the workbench is `Stopped`, in the Status column for the workbench,
-    click `Start`. The Status column changes from `Stopped` to `Starting` when the
-    workbench server is starting, and then to `Running` when the workbench has
+    If the workbench status is `Stopped`, click the **Start** button in the
+    **Status** column. The status will change from `Stopped` to `Starting` while
+    the workbench server is initializing, and then to `Running` once it has
     successfully started.
 
     ![Change Workbench Status](images/change-workbench-status.png)
@@ -159,9 +185,26 @@ attached cluster storage by expanding the workbench as shown above.
     it temporarily unavailable, with the downtime typically depending on the size
     increase.
 
-    Additionally, you can use previously created persistent storage that isn't
-    attached to any existing workbench cluster storage by selecting the **existing
-    persistent storage** option while creating a new workbench.
+    ![Edit Storage Size](images/edit-rhoai-workbench-storage-size.png)
+
+### Launching a Workbench Using Your Existing Storage
+
+If you want to use previously created persistent storage that isn't attached to
+any existing workbench cluster, first detach the storage configured for the new
+workbench, as shown below:
+
+![Detach Storage](images/detach-rhoai-workbench-storage.png)
+
+Once detached, click the **Attach existing storage** button. A popup will appear
+allowing you to select from the available storage options, as shown below:
+
+![Attach Existing Storage](images/attach-exiting-rhoai-workbench-storage.png)
+
+After selecting the appropriate storage from the available options, click the
+**Attach storage** button.
+
+Once the workbench is successfully created and in _Running_ status, it will include
+all previously stored data and code mapped to the newly created workbench.
 
 !!! question "Note"
 
@@ -172,7 +215,43 @@ attached cluster storage by expanding the workbench as shown above.
 
     ![Edit DSP Workbench](images/ds-project-workbench-list-edit.png)
 
-    Please make sure you set the _Running_ status of your workbench to _Stopped_
-    prior clicking the action menu (⋮) at the end of the selected workbench row.
+    Before clicking the action menu (⋮) at the end of the selected workbench row,
+    make sure to change the workbench status from *Running* to *Stopped* by
+    clicking the **Stop** button. Updating the workbench will cause it to restart,
+    so ensure that you save all your current work to avoid losing any unsaved data
+    before stopping your workbench.
+
+### How to Solve the Deleted Workbench Image Issue?
+
+While navigating to your previously set up workbenches in your RHOAI project's
+**Workbenches** section, you may encounter a deleted image error message, as
+shown below:
+
+![Deleted Workbench Image](images/deleted-workbench-image-issue.png)
+
+The recommended approach is to **Edit Workbench**. You can select the appropriate
+image and version (if available) from the available options.
+
+Before clicking the action menu (⋮) at the end of the selected workbench row, make
+sure to change the workbench status from *Running* to *Stopped* by clicking the
+**Stop** button. Updating the workbench will cause it to restart, so ensure that
+you save all your current work to avoid losing any unsaved data before stopping
+your workbench.
+
+![Edit Workbench](images/edit-workbench.png)
+
+Select the equivalent **image** and applicable **version** (*if available*) from
+the drop-down list under the **Workbench Image** section, as shown below:
+
+![Select Available Image](images/available-image-version-selection.png)
+
+Click the **Update Workbench** button.
+
+It may take some time for the changes to reflect and for the dashboard to return
+to the **Workbenches** page. Once the update is complete, click the **Start** button
+to restart the workbench.  
+
+Once the workbench status changes from *Stopped* to *Running*, you can click on
+its name link and access your workbench without any issues.
 
 ---

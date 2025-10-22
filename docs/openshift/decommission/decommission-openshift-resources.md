@@ -234,7 +234,7 @@ Each allocation, whether requested or approved, will be billed based on the
 is determined by [your requested and approved allocation values](../../get-started/allocation/allocation-details.md#pi-and-manager-allocation-view-of-openshift-resource-allocation)
 to reserve storage from the total NESE storage pool. For **NERC-OCP (OpenShift)**
 Resource Allocations, storage quotas are specified by the "OpenShift Request
-on Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
+on NESE Storage Quota (GiB)" and "OpenShift Limit on Ephemeral Storage Quota (GiB)"
 allocation attributes.
 
 Even if you have deleted all Persistent Volume Claims (PVC) in your OpenShift project.
@@ -243,7 +243,7 @@ resource allocations to zero (0) otherwise you will still be incurring a charge
 for the approved storage as explained in [Billing FAQs](../../get-started/cost-billing/billing-faqs.md).
 
 To achieve this, you must submit a final change request to reduce the
-**Storage Quotas** for "OpenShift Request on Storage Quota (GiB)" and "OpenShift
+**Storage Quotas** for "OpenShift Request on NESE Storage Quota (GiB)" and "OpenShift
 Limit on Ephemeral Storage Quota (GiB)" to zero (0) for your **NERC-OCP (OpenShift)**
 resource type. You can review and manage these resource allocations by visiting
 the [resource allocations](https://coldfront.mss.mghpcc.org/allocation/). Here,

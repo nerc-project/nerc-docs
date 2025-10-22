@@ -82,13 +82,40 @@ In the pop-up window that appears, you can specify the following details:
     ii. **Standard**: Alternatively, you can use standard deployment mode, which
             uses KServe Raw Deployment mode.
 
--   **Number of model server replicas to deploy**: This is the number of instances
-    of the model server engine that you want to deploy. You can scale it up as needed,
-    depending on the number of requests you will receive.
+-   **Number of model server replicas to deploy**: This defines the number of
+    instances of the **model server engine** you want to deploy. You can scale it
+    up as needed by specifying the **Minimum replicas** and **Maximum replicas**,
+    depending on the expected number of incoming requests.
 
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will
     be allocated to your server. Select the appropriate configuration for size and
     the complexity of your model.
+
+    !!! tips "Custom Model Server Size Option"
+
+        With the **Custom** option, you can tailor the **CPU** and **Memory** allocations
+        of your model server to match the specific needs of your workload.
+
+        ![Custom Model Server Size Option](images/model-server-size-custom-option.png)
+
+        If you select **Custom** from the dropdown menu, you can configure the
+        following settings in the **Model server size** section to customize your
+        model server:
+
+        ![Customize Model Server Size Option](images/model-server-size-customize.png)
+
+        1. **CPUs requested** – Specify the number of CPUs to allocate for your
+        model server. Use the dropdown beside this field to choose the value in
+        cores or millicores.
+
+        2. **CPU limit** – Set the maximum number of CPUs the model server can use.
+        Use the dropdown beside this field to specify the value in cores or millicores.
+
+        3. **Memory requested** – Specify the amount of memory requested for the
+        model server in gibibytes (Gi).
+
+        4. **Memory limit** – Set the maximum memory limit for the model server
+        in gibibytes (Gi).
 
 -   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
     it to leverage optimized hardware for faster inference and improved efficiency.
@@ -177,13 +204,39 @@ In the pop-up window that appears, you can specify the following details:
     options in your OpenShift Data Science deployment. This framework is used to
     deploy and serve machine learning models.
 
--   **Number of model server replicas**: This is the number of instances of the
-    model server engine that you want to deploy. You can scale it up as needed,
+-   **Number of model server replicas to deploy**: This is the number of instances
+    of the model server engine that you want to deploy. You can scale it up as needed,
     depending on the number of requests you will receive.
 
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will
     be allocated to your server. Select the appropriate configuration for size and
     the complexity of your model.
+
+    !!! tips "Custom Model Server Size Option"
+
+        With the **Custom** option, you can tailor the **CPU** and **Memory** allocations
+        of your model server to match the specific needs of your workload.
+
+        ![Custom Model Server Size Option](images/model-server-size-custom-option.png)
+
+        If you select **Custom** from the dropdown menu, you can configure the
+        following settings in the **Model server size** section to customize your
+        model server:
+
+        ![Customize Model Server Size Option](images/model-server-size-customize.png)
+
+        1. **CPUs requested** – Specify the number of CPUs to allocate for your
+        model server. Use the dropdown beside this field to choose the value in
+        cores or millicores.
+
+        2. **CPU limit** – Set the maximum number of CPUs the model server can use.
+        Use the dropdown beside this field to specify the value in cores or millicores.
+
+        3. **Memory requested** – Specify the amount of memory requested for the
+        model server in gibibytes (Gi).
+
+        4. **Memory limit** – Set the maximum memory limit for the model server
+        in gibibytes (Gi).
 
 -   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
     it to leverage optimized hardware for faster inference and improved efficiency.

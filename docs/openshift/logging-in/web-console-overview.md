@@ -1,7 +1,11 @@
 # Web Console Overview
 
-The NERC's OpenShift Container Platform (OCP) has a web-based console that can be
-used to perform common management tasks such as building and deploying applications.
+The NERC's OpenShift Container Platform (OCP) provides a web-based console that
+enables users to perform common management tasks such as building and deploying
+applications. It now features a **single unified view** within the OpenShift
+console, offering a more comprehensive and cohesive interface for all tasks. This
+enhancement simplifies navigation and allows developers and administrators to
+manage their environments seamlessly from one centralized dashboard.
 
 You can find it at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org).
 
@@ -32,7 +36,9 @@ sections of the NERC's OpenShift Web Console:
 
         You can identify the currently selected project with **tick** mark and also
         you can click on **star** icon to keep the project under your **Favorites**
-        list.
+        list:
+
+        ![Project Favorite List](images/project-fav-list.png)
 
 3. User Preferences - Shown the option to get and copy the OpenShift Command Line
    _oc login command_ and set your individual console preferences including default
@@ -69,12 +75,37 @@ the project by clicking on the project name in that list as shown below:
 Clicking on the **Home** -> **Search** menu allows you to search any resources
 based on search criteria like Label or Name.
 
+#### Software Catalog
+
+Easily discover, explore, and deploy tools from a centralized catalog built to
+streamline your workflow
+
+-   Centralizes all available software for faster discovery and access.
+
+-   Improved categorization for easier browsing.
+
+-   Supports consistent deployment flows.
+
+![Software Catalog](images/software-catalog.png)
+
 #### Events
 
-Clicking on the **Home** -> **Search** menu provides you with a Dashboard to view
+Clicking on the **Home** -> **Events** menu provides you with a Dashboard to view
 the resource usage and also other metrics and events that occured on your project.
 Here you can identify, monitor, and inspect the usage of Memory, CPU, Network,
 and Storage in your project.
+
+### Favorites
+
+Pin frequently used items to the top for quick access whenever you need them.
+
+![Adding to Favorites](images/add-ocp-favorites.png)
+
+-   Reduce time spent searching for commonly used pages and resources.
+
+-   Customize the interface to match your personal workflow.
+
+![OCP new unified perspective](images/ocp-favorites.png)
 
 ### Helm
 

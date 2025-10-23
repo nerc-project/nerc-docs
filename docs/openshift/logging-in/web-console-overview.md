@@ -142,6 +142,10 @@ into your application as files or environment variables.
 This menu allows you to view or create a new ConfigMap by entering manually YAML
 or JSON definitions, or by dragging and dropping a file into the editor.
 
+### Storage
+
+Read more about **Storage** [here](../storage/storage-overview.md).
+
 ### Builds
 
 This menu provides tools for building and deploying applications. You can use it

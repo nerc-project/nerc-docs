@@ -80,9 +80,19 @@ workflow.
 
     ![GitHub Secrets](images/github-secrets.png)
 
+    !!! note "Important Note"
+
+        If you are going to use the GitHub Container Registry (GHCR) then you
+        don't need to set other **Registry related secrets** i.e.
+        `IMAGE_REGISTRY_USER` and `MY_REGISTRY_PASSWORD`. These two additional
+        secrets also need to set if you want to use either **Quay.io** or **Dockerhub**
+        registry.
+
 7.  Enable and Update GitHub Actions Pipeline on your own forked repo:
 
     -   Enable the OpenShift Workflow in the Actions tab of in your GitHub repository.
+
+        ![Enable Workflow](images/enable-workflow.png)
 
     -   Update the provided sample OpenShift workflow YAML file i.e. `openshift.yml`,
         which is located at "`https://github.com/<github_username>/simple-node-app/actions/workflows/openshift.yml`".

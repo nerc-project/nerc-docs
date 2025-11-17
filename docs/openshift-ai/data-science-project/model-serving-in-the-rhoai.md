@@ -88,7 +88,7 @@ In the pop-up window that appears, you can specify the following details:
     depending on the expected number of incoming requests.
 
     !!! tips "Intelligent Auto-Scaling and Scale-to-Zero for Significant Cost Savings"
-        
+
         Once you deploy your model and obtain the inference endpoints, you can
         edit the deployment and set the **Minimum replicas** to 0. This enables
         intelligent auto-scaling of your model's compute resources (CPU, GPU,
@@ -97,7 +97,7 @@ In the pop-up window that appears, you can specify the following details:
         zero during inactivity, eliminating idle compute costs—especially
         beneficial for GPU workloads. The model then scales back up instantly as
         soon as a new request arrives.
-    
+
         ![Minimal Replicas Zero](images/min-replicas-0.png)
 
 -   **Model server size**: This is the amount of resources, CPU, and RAM that will

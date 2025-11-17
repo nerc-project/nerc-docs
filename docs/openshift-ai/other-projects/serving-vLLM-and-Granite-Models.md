@@ -241,7 +241,7 @@ bring back the same configuration pop-up window we used earlier. This menu also
 has the option for you to **Delete** the deployed model.
 
 !!! tips "Intelligent Auto-Scaling and Scale-to-Zero for Significant Cost Savings"
-        
+
     Once you deploy your model and obtain the inference endpoints, you can edit
     the deployment and set the **Minimum replicas** to 0. This enables intelligent
     auto-scaling of your model's compute resources (CPU, GPU, RAM, etc.), allowing

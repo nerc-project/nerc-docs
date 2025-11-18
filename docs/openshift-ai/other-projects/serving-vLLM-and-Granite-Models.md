@@ -240,6 +240,16 @@ by clicking on the three dots on the right side, and selecting **Edit**. This wi
 bring back the same configuration pop-up window we used earlier. This menu also
 has the option for you to **Delete** the deployed model.
 
+!!! tips "Intelligent Auto-Scaling and Scale-to-Zero for Significant Cost Savings"
+
+    Once you deploy your model and obtain the inference endpoints, you can edit
+    the deployment and set the **Minimum replicas** to 0. This enables intelligent
+    auto-scaling of your model's compute resources (CPU, GPU, RAM, etc.), allowing
+    replicas to scale up during high traffic and scale down when idle. With
+    `scale-to-zero` enabled, the system reduces pods to zero during inactivity,
+    eliminating idle compute costs—especially beneficial for GPU workloads. The
+    model then scales back up instantly as soon as a new request arrives.
+
 ## Check the Model API
 
 The deployed model is now accessible through the API endpoint of the model server.

@@ -58,14 +58,14 @@ To download a model from Hugging Face:
 
 3. First you need to generate an access token:
 
--   Go to [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+    -   Go to [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
 
--   Click on the "Create new token" button.
+    -   Click on the "Create new token" button.
 
--   Create a "Read" access token by selecting **Read** for **Token type** and then
-    give it a *Token name*.
+    -   Create a "Read" access token by selecting **Read** for **Token type**
+        and then give it a *Token name*.
 
--   Copy the generated *Access Token* i.e. `Access_Token`.
+    -   Copy the generated *Access Token* i.e. `Access_Token`.
 
 Now that you have an *Access Token*, you can download the model using that token
 by either using **Git** or using the **Hugging Face CLI** as described below:

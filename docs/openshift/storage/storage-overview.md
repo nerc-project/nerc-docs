@@ -175,6 +175,37 @@ examples of access modes:
 | ReadWriteMany (RWX)     | Allows multiple nodes to read from and write to the volume simultaneously.                       |
 | ReadWriteOncePod (RWOP) | Allows read-write access to the volume by multiple pods running on the same node simultaneously. |
 
+!!! danger "Very Important: ReadWriteMany (RWX) storage is currently not available."
+
+    If your workload requires shared storage across multiple pods, you may use
+    one of the following supported alternatives on NERC:
+
+    **1. NERC OpenStack Object Storage (Swift):**
+
+    - Suitable for applications that can work with object-based storage.
+
+    - Ideal for storing large datasets, logs, checkpoints, or artifacts.
+
+    For more details on how to set up persistent storage using OpenStack Object
+    Storage (Swift), follow this [user guide](../../openstack/persistent-storage/object-storage.md).
+
+    **2. MinIO-based Storage on NERC OpenShift (OCP):**
+
+    - Provides an S3-compatible interface within the OpenShift environment.
+
+    - Useful for applications that require S3 APIs or a scalable, bucket-based
+    storage solution.
+
+    For more details on setting up persistent storage using MinIO-based storage,
+    follow this [user guide](minio.md) or review example projects:  
+
+    - [Credit Card Fraud Detection Application](../../openshift-ai/other-projects/fraud-detection-predictive-ai-app.md#12-using-a-script-to-set-up-local-s3-storage-minio)  
+
+    - [Object Detection Application Using YOLOv5 Model](../../openshift-ai/other-projects/object-detection-app-using-yolo5.md#12-using-a-script-to-set-up-local-s3-storage-minio)
+
+    **These options offer reliable and scalable alternatives until official ReadWriteMany
+    (RWX) persistent storage class support becomes available soon on the NERC OCP.**
+
 #### How to specify Persistent storage using YAML?
 
 Create a **PersistentVolumeClaim** and mount it in your Pod/Deployment. The cluster's

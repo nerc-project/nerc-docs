@@ -182,22 +182,34 @@ examples of access modes:
 
     **1. NERC OpenStack Object Storage (Swift):**
 
-    - Suitable for applications that can work with object-based storage.
+    **Prerequisites**: You must have an active [OpenStack Resource Allocation](../../get-started/allocation/requesting-an-allocation.md#request-a-new-openstack-resource-allocation-for-an-openstack-project)
+    on your project to use NERC OpenStack Object Storage (Swift). The **"OpenStack
+    Swift Quota (GiB)"** attribute specifies the capacity of your object storage quota.  
 
-    - Ideal for storing large datasets, logs, checkpoints, or artifacts.
+    !!! note "Very Important Note"
+
+        On NERC OpenStack, Object Storage (Swift) and Block Storage (Volumes/Cinder)
+        are managed by separate allocation quota attributes: "OpenStack Swift Quota
+        (GiB)" and "OpenStack Volume Quota (GiB)" respectively.
 
     For more details on how to set up persistent storage using OpenStack Object
-    Storage (Swift), follow this [user guide](../../openstack/persistent-storage/object-storage.md).
+    Storage (Swift), follow this [**user guide**](../../openstack/persistent-storage/object-storage.md).
 
     **2. MinIO-based Storage on NERC OpenShift (OCP):**
 
-    - Provides an S3-compatible interface within the OpenShift environment.
+    **Prerequisites**: You must have an active [OpenShift Resource Allocation](../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
+    on your project. The **"OpenShift Request on NESE Storage Quota (GiB)"** attribute
+    specifies the capacity of your storage quota for that allocation.
 
-    - Useful for applications that require S3 APIs or a scalable, bucket-based
-    storage solution.
+    !!! note "Very Important Note"
+
+        On NERC OpenShift, the "OpenStack Swift Quota (GiB)" allocation
+        attribute is used by MinIO-based storage, which mounts a PersistentVolume
+        via a PVC into the running Pod.
 
     For more details on setting up persistent storage using MinIO-based storage,
-    follow this [user guide](minio.md) or review example projects:  
+    follow this [**user guide**](minio.md). You may also review how it is configured
+    in the following example projects:
 
     - [Credit Card Fraud Detection Application](../../openshift-ai/other-projects/fraud-detection-predictive-ai-app.md#12-using-a-script-to-set-up-local-s3-storage-minio)  
 

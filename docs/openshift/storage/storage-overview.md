@@ -182,30 +182,41 @@ examples of access modes:
 
     **1. NERC OpenStack Object Storage (Swift):**
 
-    **Prerequisites**: You must have an active [OpenStack Resource Allocation](../../get-started/allocation/requesting-an-allocation.md#request-a-new-openstack-resource-allocation-for-an-openstack-project)
-    on your project to use NERC OpenStack Object Storage (Swift). The **"OpenStack
-    Swift Quota (GiB)"** attribute specifies the capacity of your object storage quota.  
+    -   **Prerequisites**:
+
+        You must have at least one active **NERC (OpenStack)** type resource allocation.
+        You can refer to [this documentation](../../get-started/allocation/requesting-an-allocation.md#request-a-new-openstack-resource-allocation-for-an-openstack-project)
+        on how to get allocation and request "NERC (OpenStack)" type resource allocations
+        on your project. The **"OpenStack Swift Quota (GiB)"** attribute defines
+        the total object storage quota assigned to your allocation.
 
     !!! note "Very Important Note"
 
-        On NERC OpenStack, Object Storage (Swift) and Block Storage (Volumes/Cinder)
-        are managed by separate allocation quota attributes: "OpenStack Swift Quota
-        (GiB)" and "OpenStack Volume Quota (GiB)" respectively.
+        For any **NERC (OpenStack)** resource allocation, *Object Storage (Swift)*
+        and *Block Storage (Volumes/Cinder)* are managed through separate allocation
+        quota attributes: **"OpenStack Swift Quota (GiB)"** for object storage and
+        **"OpenStack Volume Quota (GiB)"** for block storage.
 
     For more details on how to set up persistent storage using OpenStack Object
     Storage (Swift), follow this [**user guide**](../../openstack/persistent-storage/object-storage.md).
 
-    **2. MinIO-based Storage on NERC OpenShift (OCP):**
+    **2. MinIO-based Local S3-Compatible Object Storage on NERC OpenShift (OCP):**
 
-    **Prerequisites**: You must have an active [OpenShift Resource Allocation](../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
-    on your project. The **"OpenShift Request on NESE Storage Quota (GiB)"** attribute
-    specifies the capacity of your storage quota for that allocation.
+    -   **Prerequisites**:
+
+        You must have at least one active **NERC-OCP (OpenShift)** type resource
+        allocation. You can refer to [this documentation](../../get-started/allocation/requesting-an-allocation.md#request-a-new-openshift-resource-allocation-for-an-openshift-project)
+        on how to get allocation and request "NERC-OCP (OpenShift)" type resource
+        allocations on your project. The **"OpenShift Request on NESE Storage Quota
+        (GiB)"** attribute defines the total storage quota assigned to your allocation.
 
     !!! note "Very Important Note"
 
-        On NERC OpenShift, the "OpenStack Swift Quota (GiB)" allocation
-        attribute is used by MinIO-based storage, which mounts a PersistentVolume
-        via a PVC into the running Pod.
+        For any **NERC-OCP (OpenShift)** resource allocation, the **"OpenShift
+        Request on NESE Storage Quota (GiB)"** attribute defines the total storage
+        capacity available to your allocation. This quota is used by MinIO-based
+        storage, which mounts a *PersistentVolume* through a PVC into the running
+        Pod.
 
     For more details on setting up persistent storage using MinIO-based storage,
     follow this [**user guide**](minio.md). You may also review how it is configured

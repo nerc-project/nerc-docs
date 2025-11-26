@@ -73,20 +73,21 @@ workflow.
     cd simple-node-app
     ```
 
-6.  Run either `setsecret.cmd` file if you are using **Windows** or `setsecret.sh`
-    file if you are using **Linux** based machine. Once executed, verify Github Secrets
-    are set Properly under your github repo's
+6.  Run either the `setsecret.cmd` file if you are using Windows or the `setsecret.sh`
+    file if you are on a Linux-based machine. Once executed, verify that the GitHub
+    Secrets are set properly under your repository's
     _settings >> secrets and variables >> Actions_ as shown here:
 
     ![GitHub Secrets](images/github-secrets.png)
 
     !!! note "Important Note"
 
-        If you are going to use the GitHub Container Registry (GHCR) then you
-        don't need to set other **Registry related secrets** i.e.
-        `IMAGE_REGISTRY_USER` and `MY_REGISTRY_PASSWORD`. These two additional
-        secrets also need to set if you want to use either **Quay.io** or **Dockerhub**
-        registry.
+        If you are using the **GitHub Container Registry (GHCR)**, you do **not**
+        need to set other registry-related secrets, such as `IMAGE_REGISTRY_USER`
+        and `MY_REGISTRY_PASSWORD`, as they are obtained directly from your repository.
+
+        These two additional secrets are required only if you plan to use **Quay.io**
+        or **Dockerhub** registries.
 
 7.  Enable and Update GitHub Actions Pipeline on your own forked repo:
 
@@ -108,8 +109,15 @@ workflow.
             4. Log in to your NERC OpenShift cluster's project space
             5. Create an OpenShift app from the image and expose it to the internet
 
-8.  Edit the top-level 'env' section as marked with '🖊️' if the defaults are not
-    suitable for your project.
+8.  Edit the top-level `env` section as marked with '🖊️' in the `openshift.yml`
+    file if the default values are not suitable for your project.  
+
+    !!! warning "Very Important Note"
+
+        In the provided sample OpenShift workflow YAML file (`openshift.yml`),
+        uncomment the lines for your chosen registry: `GitHub Container Registry
+        (GHCR)`, `quay.io`, or `docker.io`. By default, `GHCR` is used as the
+        appropriate lines are already uncommented.
 
 9.  (Optional) Edit the build-image step to build your project:
 
@@ -121,6 +129,13 @@ workflow.
     run as shown below:
 
     ![GitHub Actions Successfully Complete](images/github-actions-successful.png)
+
+    !!! tips "Troubleshooting"
+
+        Repositories on `GitHub Container Registry (GHCR)`, `quay.io`, and `docker.io`
+        are **private by default**. This means that when you push an image for the
+        first time, you must change its visibility to **Public** for the pipeline
+        to work successfully.
 
 11. Verify that you can see the newly deployed application on the NERC's OpenShift
     Container Platform at [https://console.apps.shift.nerc.mghpcc.org](https://console.apps.shift.nerc.mghpcc.org)

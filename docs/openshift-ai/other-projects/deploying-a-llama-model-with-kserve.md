@@ -143,8 +143,8 @@ set to `1`.
 At this point, ensure that both
 **Make deployed models available through an external route** and
 **Require token authentication** are *checked*. Please leave the populated
-**Service account name** i.e. `default-name` as it is. Select `Llama 3.2 3B Modelcar` as
-the **Connection** from the *Existing connection*, as shown below:
+**Service account name** i.e. `default-name` as it is. Select `Llama 3.2 3B Modelcar`
+as the **Connection** from the *Existing connection*, as shown below:
 
 ![Deploy Model 2](images/deploy-model-2.png)
 

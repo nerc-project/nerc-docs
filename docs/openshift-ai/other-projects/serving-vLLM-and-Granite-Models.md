@@ -156,7 +156,8 @@ Enter the following information for your new model:
 
 -   **Model framework (name - version)**: This is pre-selected as `vLLM`.
 
--   **Deployment mode**: From the Deployment mode list, select **Advanced** option.
+-   **Deployment mode**: From the Deployment mode list, select **Advanced** option
+- uses *Knative Serverless*.
 
 -   **Number of model server replicas to deploy** has **Minimum replicas**: `1`
     and **Maximum replicas**:`1`.
@@ -195,7 +196,7 @@ Enter the following information for your new model:
 
 For our example, set the **Model deployment name** to `granite`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure
-that the **Deployment mode** is set to `Advanced`.
+that the **Deployment mode** is set to `Advanced` - uses *Knative Serverless*.
 
 Please leave the other fields at their default settings. For example, the
 **Number of model server replicas to deploy** has **Minimum replicas** set to `1`

@@ -869,7 +869,8 @@ For **Serving runtime**, select **OpenVINO Model Server**.
 
 For **Model framework (name - version)**, select **onnx-1**.
 
-For **Deployment mode**, select **Advanced** (*selected by default*).
+For **Deployment mode**, select **Advanced** (*selected by default*) - uses
+*Knative Serverless*.
 
 For **Existing connection**, select **My Storage**.
 

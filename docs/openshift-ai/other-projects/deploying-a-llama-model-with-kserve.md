@@ -295,7 +295,7 @@ For a more user-friendly experience, integrate with Open WebUI as follows:
     vllmToken: ""
     ```
 
-3. Install **Helm chart**
+3. Install **Helm chart**.
 
     Deploy Open WebUI using Helm with your configuration:
 

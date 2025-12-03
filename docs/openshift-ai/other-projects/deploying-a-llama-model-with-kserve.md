@@ -57,7 +57,7 @@ To create this connection in your project, enter the following URI and use
 
 ![Create Connection](images/create-connection-using-uri.png)
 
-```
+```sh
 oci://quay.io/jharmison/models:redhatai--llama-3_2-3b-instruct-fp8-modelcar
 ```
 
@@ -271,7 +271,7 @@ curl -k -X POST https://<url>/v1/completions \
     }'
 ```
 
-## Web interface integration using [Open WebUI](https://docs.openwebui.com/) 
+## Web interface integration using [Open WebUI](https://docs.openwebui.com/)
 
 For a more user-friendly experience, integrate with Open WebUI as follows:
 
@@ -305,7 +305,7 @@ For a more user-friendly experience, integrate with Open WebUI as follows:
 
     **Output:**
 
-    ```
+    ```sh
     NAME: openwebui
     LAST DEPLOYED: Tue Dec  2 22:52:06 2025
     NAMESPACE: <your-namespace>

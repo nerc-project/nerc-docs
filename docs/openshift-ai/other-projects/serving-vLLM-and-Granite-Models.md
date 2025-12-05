@@ -2,6 +2,10 @@
 
 **Prerequisites**:
 
+-   You have enabled the **Single-model Serving** platform. For more information
+    about enabling the single-model serving platform, see
+    [Setting up the Single-model Server platform](../data-science-project/model-serving-in-the-rhoai.md#setting-up-the-single-model-server).
+
 -   Before proceeding, confirm that you have an active GPU quota that has been approved
     for your current NERC OpenShift Allocation through NERC ColdFront. Read
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
@@ -133,66 +137,61 @@ huggingface-cli download ibm-granite/granite-3.3-8b-instruct
 
 3. Click the **Models** tab.
 
-4. Perform one of the following actions:
+4. Click the **Deploy model** button.
 
-    -   If you see a **​​Single-model serving platform** tile, click **Select single-model**
-        on the tile and then click the **Deploy model** button.
-
-        ![Add A Single-model Server](images/add-a-single-model-server.png)
-
-    -   If you do not see any tiles i.e. "Single-model serving platform" is already
-        selected, click the **Deploy model** button.
-
-        ![Single-model serving platform](images/single-model-serving.png)
+    ![Single-model serving platform](images/single-model-serving.png)
 
 5. The **Deploy model** dialog opens.
 
-Enter the following information for your new model:
+    Enter the following information for your new model:
 
--   **Model deployment name**: Enter a unique name for the model that you are
-    deploying (e.g., "granite").
+    -   **Model deployment name**: Enter a unique name for the model that you are
+        deploying (e.g., "granite").
 
--   **Serving runtime**: Select **vLLM NVIDIA GPU ServingRuntime for KServe** runtime.
+    -   **Serving runtime**: Select **vLLM NVIDIA GPU ServingRuntime for KServe**
+        runtime.
 
--   **Model framework (name - version)**: This is pre-selected as `vLLM`.
+    -   **Model framework (name - version)**: This is pre-selected as `vLLM`.
 
--   **Deployment mode**: From the Deployment mode list, select **Advanced** option
-- uses *Knative Serverless*.
+    -   **Deployment mode**: From the Deployment mode list, select **Advanced**
+        option - uses *Knative Serverless*.
 
--   **Number of model server replicas to deploy** has **Minimum replicas**: `1`
-    and **Maximum replicas**:`1`.
+    -   **Number of model server replicas to deploy** has **Minimum replicas**:
+        `1` and **Maximum replicas**:`1`.
 
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Here, you can select `Small` size.
+    -   **Model server size**: This is the amount of resources, CPU, and RAM that
+        will be allocated to your server. Here, you can select `Small` size.
 
--   **Accelerator**: Select `NVIDIA A100 GPU`.
+    -   **Accelerator**: Select `NVIDIA A100 GPU`.
 
--   **Number of accelerators**: `1`.
+    -   **Number of accelerators**: `1`.
 
--   **Model route**: Select the checkbox for "Make deployed models available through
-    an external route" this will enable us to send requests to the model endpoint
-    from outside the cluster.
+    -   **Model route**: Select the checkbox for "Make deployed models available
+        through an external route" this will enable us to send requests to the model
+        endpoint from outside the cluster.
 
--   **Token authentication**: Select the checkbox for "Require token authentication"
-    if you want to secure or restrict access to the model by forcing requests to
-    provide an authorization token, which is important for security. While selecting
-    it, you can keep the populated Service account name i.e. `default-name`.
+    -   **Token authentication**: Select the checkbox for "Require token authentication"
+        if you want to secure or restrict access to the model by forcing requests
+        to provide an authorization token, which is important for security. While
+        selecting it, you can keep the populated Service account name i.e. `default-name`.
 
--   **Source model location**:
+    -   **Source model location**:
 
-    i.  Select the **Connection** option from the dropdown list that you created
-        [as described here](#set-up-local-s3-storage-minio-and-connection) to store
-        the model by using the **Existing connection** option Connection dropdown
-        list i.e. `My Storage`.
+        i.  Select the **Connection** option from the dropdown list that you created
+            [as described here](#set-up-local-s3-storage-minio-and-connection) to
+            store the model by using the **Existing connection** option Connection
+            dropdown list i.e. `My Storage`.
 
-    Alternatively, you can create a new connection directly from this menu by
-    selecting **Create connection** option.
+        Alternatively, you can create a new connection directly from this menu by
+        selecting **Create connection** option.
 
-    ii. **Path**: If your model is not located at the root of the bucket of your
-        connection, you must enter the path to the folder it is in i.e. `models/granite-3.3-8b-instruct`.
+        ii. **Path**: If your model is not located at the root of the bucket of
+            your connection, you must enter the path to the folder it is in i.e.
+            `models/granite-3.3-8b-instruct`.
 
--   **Configuration parameters**: You can customize the runtime parameters in the
-    Configuration parameters section. You don't need to add any arguments here.
+    -   **Configuration parameters**: You can customize the runtime parameters in
+        the Configuration parameters section. **You don't need to add any arguments
+        here.**
 
 For our example, set the **Model deployment name** to `granite`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure

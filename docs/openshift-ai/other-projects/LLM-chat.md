@@ -89,7 +89,7 @@ or `oc delete all,pvc -l app=llama-cpp`.
 
 For more details, refer to this [documentation](https://github.com/nerc-project/llm-on-nerc/blob/main/llm-servers/llama.cpp/README.md).
 
-!!! info "Another LLM Server with WebUI to Chat"
+!!! info "Another LLM Server with Open WebUI to Chat"
 
     Similar to `llama.cpp`, you can set up an example deployment of the [Ollama](https://github.com/ollama/ollama)
     server on the NERC OpenShift environment by following [these steps](https://github.com/nerc-project/llm-on-nerc/blob/main/llm-servers/ollama/README.md).

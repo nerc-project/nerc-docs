@@ -7,6 +7,10 @@ resource scaling, and support for distributed computing.
 
 **Prerequisites**:
 
+-   You have enabled the **Single-model Serving** platform. For more information
+    about enabling the single-model serving platform, see
+    [Setting up the Single-model Server platform](../data-science-project/model-serving-in-the-rhoai.md#setting-up-the-single-model-server).
+
 -   Before proceeding, confirm that you have an active GPU quota that has been approved
     for your current NERC OpenShift Allocation through NERC ColdFront. Read
     more about [How to Access GPU Resources](../../openshift/gpus/intro-to-gpus-on-nerc-ocp.md#accessing-gpu-resources)
@@ -41,25 +45,41 @@ In your OpenShift AI project, go to the **Connections** tab and click the
 
 ![Select URI for Connection Type](images/select-uri-for-connection.png)
 
-!!! note "Connection Types"
-
-    OpenShift AI supports three connection types for accessing model images:
-
-    -   **OCI-compliant registry**: For proprietary images requiring authentication.
-
-    -   **S3 compatible object storage**: For cloud storage solutions.
-
-    -   **URI**: For publicly available resources, **which is the one used in this
-    demonstration**.
-
-To create this connection in your project, enter the following URI and use
-`Llama 3.2 3B Modelcar` as the connection name, as shown below:
-
-![Create Connection](images/create-connection-using-uri.png)
+To create this connection in your project, enter the following URI:
 
 ```sh
 oci://quay.io/jharmison/models:redhatai--llama-3_2-3b-instruct-fp8-modelcar
 ```
+
+and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
+
+![Create Connection](images/create-connection-using-uri.png)
+
+!!! note "Important Note: ModelCar Requirements & Guidance"
+
+    You have several options for deploying models to your OpenShift AI cluster.
+    We recommend using **[ModelCar](https://kserve.github.io/website/docs/model-serving/storage/providers/oci#using-modelcars)**
+    because it removes the need to manually download models from Hugging Face,
+    upload them to S3, or manage access permissions. With ModelCar, you can package
+    models as OCI images and pull them at runtime or precache them. This simplifies
+    versioning, improves traceability, and integrates cleanly into CI/CD workflows.
+    ModelCar images also ensure reproducibility and maintain versioned model releases.
+
+    You can deploy our own model using a ModelCar container, which packages all
+    model files into an OCI container image. To learn more about ModelCar containers,
+    read this article **[Build and deploy a ModelCar container in OpenShift AI](https://developers.redhat.com/articles/2025/01/30/build-and-deploy-modelcar-container-openshift-ai)**.
+    It explains the benefits of ModelCar containers, how to build a ModelCar image,
+    and how to deploy it with OpenShift AI.
+
+    For additional patterns and prebuilt ModelCar images, explore the Red Hat AI
+    Services **[ModelCar Catalog repository](https://github.com/redhat-ai-services/modelcar-catalog)**
+    on GitHub. Prebuilt images from this catalog are also available in the
+    **[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
+    on Quay. However, note that all these images are compiled for the **x86 architecture**.
+    If you're targeting ARM, you'll need to rebuild these images on an ARM machine,
+    as demonstrated in **[this guide](https://pandeybk.medium.com/serving-vllm-and-granite-models-on-arm-with-red-hat-openshift-ai-0178adba550e)**.
+
+    Additionally, you may find it helpful to read **[Optimize and deploy LLMs for production with OpenShift AI](https://developers.redhat.com/articles/2025/10/06/optimize-and-deploy-llms-production-openshift-ai)**.
 
 ## Setting up Single-model Server and Deploy the model
 
@@ -73,61 +93,54 @@ oci://quay.io/jharmison/models:redhatai--llama-3_2-3b-instruct-fp8-modelcar
 
 3. Click the **Models** tab.
 
-4. Perform one of the following actions:
+4. Click the **Deploy model** button.
 
-    -   If you see a **​​Single-model serving platform** tile, click **Select single-model**
-        on the tile and then click the **Deploy model** button.
-
-        ![Add A Single-model Server](images/add-a-single-model-server.png)
-
-    -   If you do not see any tiles i.e. "Single-model serving platform" is already
-        selected, click the **Deploy model** button.
-
-        ![Single-model serving platform](images/single-model-serving.png)
+    ![Single-model serving platform](images/single-model-serving.png)
 
 5. The **Deploy model** dialog opens.
 
-Enter the following information for your new model:
+    Enter the following information for your new model:
 
--   **Model deployment name**: Enter a unique name for the model that you are
-    deploying (e.g., "mini-llama-demo").
+    -   **Model deployment name**: Enter a unique name for the model that you are
+        deploying (e.g., "mini-llama-demo").
 
--   **Serving runtime**: Select **vLLM NVIDIA GPU ServingRuntime for KServe** runtime.
+    -   **Serving runtime**: Select **vLLM NVIDIA GPU ServingRuntime for KServe**
+        runtime.
 
--   **Model framework (name - version)**: This is pre-selected as `vLLM`.
+    -   **Model framework (name - version)**: This is pre-selected as `vLLM`.
 
--   **Deployment mode**: From the Deployment mode list, select **Advanced**
-option - uses *Knative Serverless*.
+    -   **Deployment mode**: From the Deployment mode list, select **Advanced**
+        option - uses *Knative Serverless*.
 
--   **Number of model server replicas to deploy** has **Minimum replicas**: `1`
-    and **Maximum replicas**:`1`.
+    -   **Number of model server replicas to deploy** has **Minimum replicas**:
+        `1` and **Maximum replicas**:`1`.
 
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Here, you can select `Medium` size.
--   **Accelerator**: Select `NVIDIA A100 GPU`.
+    -   **Model server size**: This is the amount of resources, CPU, and RAM that
+        will be allocated to your server. Here, you can select `Medium` size.
 
--   **Number of accelerators**: `1`.
+    -   **Accelerator**: Select `NVIDIA A100 GPU`.
 
--   **Model route**: Select the checkbox for "Make deployed models available through
-    an external route" this will enable us to send requests to the model endpoint
-    from outside the cluster.
+    -   **Number of accelerators**: `1`.
 
--   **Token authentication**: Select the checkbox for "Require token authentication"
-    if you want to secure or restrict access to the model by forcing requests to
-    provide an authorization token, which is important for security. While selecting
-    it, you can keep the populated Service account name i.e. `default-name`.
+    -   **Model route**: Select the checkbox for "Make deployed models available
+        through an external route" this will enable us to send requests to the model
+        endpoint from outside the cluster.
 
--   **Source model location**:
+    -   **Token authentication**: Select the checkbox for "Require token authentication"
+        if you want to secure or restrict access to the model by forcing requests
+        to provide an authorization token, which is important for security. While
+        selecting it, you can keep the populated Service account name i.e. `default-name`.
 
-    i.  Select the **Connection** option from the dropdown list that you created
-        [as described here](#establishing-model-connections) to store
-        the model by using the **Existing connection** option Connection dropdown
-        list i.e. `Llama 3.2 3B Modelcar`.
+    -   **Source model location**: Select the **Connection** option from the dropdown
+        list that you created [as described here](#establishing-model-connections)
+        to store the model by using the **Existing connection** option Connection
+        dropdown list i.e. `Llama 3.2 3B Modelcar`.
 
--   **Configuration parameters**: You can customize the runtime parameters in the
-    Configuration parameters section. You don't need to add any arguments here.
+    -   **Configuration parameters**: You can customize the runtime parameters in
+        the Configuration parameters section. **You don't need to add any arguments
+        here.**
 
-For our example, set the **Model deployment name** to `granite`, and select
+For our example, set the **Model deployment name** to `mini-llama-demo`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure
 that the **Deployment mode** is set to `Advanced` - uses *Knative Serverless*.
 
@@ -167,13 +180,18 @@ has the option for you to **Delete** the deployed model.
 
 !!! tips "Intelligent Auto-Scaling and Scale-to-Zero for Significant Cost Savings"
 
-    Once you deploy your model and obtain the inference endpoints, you can edit
-    the deployment and set the **Minimum replicas** to 0. This enables intelligent
-    auto-scaling of your model's compute resources (CPU, GPU, RAM, etc.), allowing
-    replicas to scale up during high traffic and scale down when idle. With
-    `scale-to-zero` enabled, the system reduces pods to zero during inactivity,
-    eliminating idle compute costs—especially beneficial for GPU workloads. The
-    model then scales back up instantly as soon as a new request arrives.
+    Once you have deployed your model and obtained the inference endpoints, you
+    can modify the model configuration to set the **Minimum replicas** to **0**,
+    then redeploy it as shown below:
+
+    ![Scale-to-zero With Min replicas to 0](images/scale-to-zero-with-min-replicas-0.png)
+
+    This enables intelligent auto-scaling of your model's compute resources
+    (CPU, GPU, RAM, etc.), allowing replicas to scale up during high traffic and
+    scale down when idle. With `scale-to-zero` enabled, the system reduces pods
+    to zero during inactivity, eliminating idle compute costs - especially beneficial
+    for GPU workloads. The model then scales back up instantly as soon as a new
+    request arrives.
 
 ## Testing your deployment
 
@@ -184,7 +202,7 @@ and click on the pod that corresponds to the model deployment name, as shown bel
 
 ![Locate your Llama model server in the Pods tab](images/llama-model-deployment-pod.png)
 
-Access the pod’s terminal by clicking the **Terminal** tab, then run a *curl* command
+Access the pod's terminal by clicking the **Terminal** tab, then run a *curl* command
 to test internal communication.
 
 The **vLLM runtime** uses **OpenAI's API** format, making integration straightforward.
@@ -271,9 +289,10 @@ curl -k -X POST https://<url>/v1/completions \
     }'
 ```
 
-## Web interface integration using [Open WebUI](https://docs.openwebui.com/)
+## Web interface integration using Open WebUI
 
-For a more user-friendly experience, integrate with Open WebUI as follows:
+For a more user-friendly experience, integrate with [Open WebUI](https://docs.openwebui.com/)
+as follows:
 
 1. **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc.git).
 

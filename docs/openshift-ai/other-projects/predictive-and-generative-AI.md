@@ -98,6 +98,17 @@ such as chatbots, document processing, and AI-powered automation.
     You can deploy and run the AnythingLLM directly on the NERC RHOAI by following
     [these intructions](LLM-client-AnythingLLM.md).
 
+-   **Open WebUI**:
+
+    [Open WebUI](https://docs.openwebui.com/) is an extensible, feature-rich,
+    and user-friendly self-hosted AI platform designed to operate entirely offline.
+    It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**,
+    with **built-in inference engine** for *RAG*, making it a
+    **powerful AI deployment solution**.
+
+    You can deploy and run the Open WebUI directly on the NERC OpenShift using
+    [Helm](https://helm.sh/) by following [these intructions](deploying-a-llama-model-with-kserve.md#web-interface-integration-using-open-webui).
+
 ### Language Model Evaluation
 
 ⦿ **Overview**

@@ -55,31 +55,20 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
 
 ![Create Connection](images/create-connection-using-uri.png)
 
-!!! note "Important Note: ModelCar Requirements & Guidance"
+!!! info "Model Connection Hosted on Local S3 Compatible Object Storage (MinIO)"
 
-    You have several options for deploying models to your OpenShift AI cluster.
-    We recommend using **[ModelCar](https://kserve.github.io/website/docs/model-serving/storage/providers/oci#using-modelcars)**
-    because it removes the need to manually download models from Hugging Face,
-    upload them to S3, or manage access permissions. With ModelCar, you can package
-    models as OCI images and pull them at runtime or precache them. This simplifies
-    versioning, improves traceability, and integrates cleanly into CI/CD workflows.
-    ModelCar images also ensure reproducibility and maintain versioned model releases.
+    NERC's RHOAI also offers flexible options for establishing model connections,
+    allowing you to choose the approach that best fits your deployment environment.
 
-    You can deploy our own model using a ModelCar container, which packages all
-    model files into an OCI container image. To learn more about ModelCar containers,
-    read this article **[Build and deploy a ModelCar container in OpenShift AI](https://developers.redhat.com/articles/2025/01/30/build-and-deploy-modelcar-container-openshift-ai)**.
-    It explains the benefits of ModelCar containers, how to build a ModelCar image,
-    and how to deploy it with OpenShift AI.
-
-    For additional patterns and prebuilt ModelCar images, explore the Red Hat AI
-    Services **[ModelCar Catalog repository](https://github.com/redhat-ai-services/modelcar-catalog)**
-    on GitHub. Prebuilt images from this catalog are also available in the
+    If you prefer not to use prebuilt images, the
     **[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
-    on Quay. However, note that all these images are compiled for the **x86 architecture**.
-    If you're targeting ARM, you'll need to rebuild these images on an ARM machine,
-    as demonstrated in **[this guide](https://pandeybk.medium.com/serving-vllm-and-granite-models-on-arm-with-red-hat-openshift-ai-0178adba550e)**.
+    on  Quay.io which provides convenient access to a growing collection of ready-to-use
+    models. You can integrate with a locally hosted S3-compatible object storage
+    system, such as [MinIO](../../openshift/storage/minio.md), to store and access
+    your model artifacts directly within your infrastructure.
 
-    Additionally, you may find it helpful to read **[Optimize and deploy LLMs for production with OpenShift AI](https://developers.redhat.com/articles/2025/10/06/optimize-and-deploy-llms-production-openshift-ai)**.
+    Please follow **[this user guide](serving-vLLM-and-Granite-Models.md#set-up-local-s3-compatible-object-storage-minio)**
+    for detailed instructions.
 
 ## Setting up Single-model Server and Deploy the model
 
@@ -136,9 +125,9 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
         to store the model by using the **Existing connection** option Connection
         dropdown list i.e. `Llama 3.2 3B Modelcar`.
 
-    -   **Configuration parameters**: You can customize the runtime parameters in
-        the Configuration parameters section. **You don't need to add any arguments
-        here.**
+    -   **Configuration parameters**: You can customize the runtime parameters
+        in the **Additional serving runtime arguments** field. **You don't need
+        to add any arguments here.**
 
 For our example, set the **Model deployment name** to `mini-llama-demo`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure

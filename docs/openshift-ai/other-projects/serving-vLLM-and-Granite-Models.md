@@ -18,7 +18,23 @@
 
 **Procedure**:
 
-## Set up local S3 storage (MinIO) and Connection
+## Establishing model connections
+
+NERC's RHOAI provides flexible options for establishing model connections, allowing
+you to choose the approach that best fits your deployment environment. You can
+integrate with a locally hosted S3-compatible object storage system - such as
+[MinIO](../../openshift/storage/minio.md) - to store and access your model artifacts
+directly within your infrastructure. Alternatively, you can reference a publicly
+available Uniform Resource Identifier (URI) that points to a **ModelCar container
+image**. Prebuilt images from this ecosystem are also available in the
+**[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
+on Quay, providing convenient access to a growing collection of ready-to-use models.
+This approach enables seamless retrieval of fully packaged model files without
+relying on locally managed storage. Together, these options give you the flexibility
+to manage model assets in a way that aligns with your operational, security, and
+performance requirements.
+
+### Set up local S3 compatible object storage (MinIO)
 
 1.  Navigating to the OpenShift AI dashboard.
 
@@ -28,15 +44,50 @@
 2.  Using a script to set up local S3 storage (MinIO) on your Data Science Project
     in the NERC RHOAI as [described here](../../openshift-ai/other-projects/object-detection-app-using-yolo5.md#12-using-a-script-to-set-up-local-s3-storage-minio).
 
-3.  Once your local S3 Object storage using MinIO is completed, you can browse to
-    the **MinIO Web Console** using the provided URL. Enter the **Access Key** as
-    the **Username** and the **Secret Key** as the **Password**. This will open
-    the **Object Browser**, where you should verify that the bucket: **my-storage**
-    is visible as shown below:
+    **Verification**:
+
+    -   This action automatically creates a **Connection** based on your local S3-compatible
+        object storage (MinIO), which will then appear under the **Connections**
+        tab.
+
+        Navigate to the **Connections** tab. You should see one connection listed:
+        *My Storage* as shown below:
+
+        ![Connections](images/single-data-connection.png)
+
+    -   Click on the newly created connection from the list and then click the action
+        menu (⋮) at the end of the selected connection row. Choose "Edit" from the
+        dropdown menu. This will open a pop-up window as shown below:
+
+        ![Edit Connection Pop up](images/edit-connection.png)
+
+    -   Note both *Access key* (by clicking eye icon near the end of the textbox)
+        and *Secret key*.
+
+    -   Once successfully initiated, click on the **minio** deployment and select
+        the "Resources" tab to review created *Pods*, *Services*, and *Routes*.
+
+        ![MinIO Deployemnt Resources](images/minio-deployment-resources.png)
+
+        Please note the **minio-console** route URL by navigating to the "Routes"
+        section under the _Location_ path. When you click on the **minio-console**
+        route URL, it will open the MinIO web console that looks like below:
+
+        ![MinIO Web Console](images/minio-web-console.png)
+
+        !!! info "MinIO Web Console Login Credential"
+
+            The Username and Password for the MinIO Web Console can be obtained
+            from the Connection's **Access key** and **Secret key** that you noted
+            earlier. Use the **Access key** as the **Username** and the
+            **Secret key** as the **Password** when signing in.
+
+3.  Once you log in to the MinIO Web Console, the **Object Browser** will open.
+    From here, verify that the bucket **my-storage** is visible, as shown below:
 
     ![MinIO Object Browser](images/minio-single-object-browser.png)
 
-## Downloading Model
+#### Downloading Model
 
 While you're not strictly required to use object storage to serve models in
 OpenShift AI, doing so simplifies things in terms of scalability and flexibility.
@@ -74,7 +125,7 @@ To download a model from Hugging Face:
 Now that you have an *Access Token*, you can download the model using that token
 by either using **Git** or using the **Hugging Face CLI** as described below:
 
-### Using Git with Access Token
+##### Using Git with Access Token
 
 ```sh
 git clone https://<your-username>:<Access_Token>@huggingface.co/<model_repo_path>
@@ -86,7 +137,7 @@ For example, this looks like as shown below:
 git clone https://<your-username>:<Access_Token>@huggingface.co/ibm-granite/granite-3.3-8b-instruct
 ```
 
-### Using the Hugging Face CLI
+##### Using the Hugging Face CLI
 
 First, install the CLI:
 
@@ -106,7 +157,7 @@ Then download a model:
 huggingface-cli download ibm-granite/granite-3.3-8b-instruct
 ```
 
-## Uploading the Model to the S3 storage (MinIO)
+#### Uploading the Model to the S3 storage (MinIO)
 
 -   Select existing bucket named "my-storage".
 
@@ -124,6 +175,58 @@ huggingface-cli download ibm-granite/granite-3.3-8b-instruct
 -   Wait for the upload to finish, this will take a while.
 
     ![Uploaded Granite Model Success](images/minio-granite-model-uploaded.png)
+
+### Set up URI
+
+**Alternatively,** for the Granite model, you can use a publicly available container
+image from the **Quay.io** registry: **[quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct](https://quay.io/repository/redhat-ai-services/modelcar-catalog?tag=granite-3.3-8b-instruct)**.
+
+Create a **Connection** to a ModelCar container image, which is an **OCI-compliant**
+container that packages a machine learning model along with its runtime environment
+and dependencies for consistent deployment.
+
+#### Adding a Connection based on URI
+
+In your OpenShift AI project, navigate to the **Connections** tab. and click the
+"Create Connection" and then choose the **URI** connection type as shown below:
+
+![Select URI for Connection Type](images/select-uri-for-connection.png)
+
+To create this connection in your project, enter the following URI:
+
+```sh
+oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct
+```
+
+and use `Granite 3.3 8B Instruct Modelcar` as the connection name, as shown below:
+
+![Create Connection](images/create-granite-connection-using-uri.png)
+
+!!! note "Important Note: ModelCar Requirements & Guidance"
+
+    You have several options for deploying models to your OpenShift AI cluster.
+    We recommend using **[ModelCar](https://kserve.github.io/website/docs/model-serving/storage/providers/oci#using-modelcars)**
+    because it removes the need to manually download models from Hugging Face,
+    upload them to S3, or manage access permissions. With ModelCar, you can package
+    models as OCI images and pull them at runtime or precache them. This simplifies
+    versioning, improves traceability, and integrates cleanly into CI/CD workflows.
+    ModelCar images also ensure reproducibility and maintain versioned model releases.
+
+    You can deploy our own model using a ModelCar container, which packages all
+    model files into an OCI container image. To learn more about ModelCar containers,
+    read this article **[Build and deploy a ModelCar container in OpenShift AI](https://developers.redhat.com/articles/2025/01/30/build-and-deploy-modelcar-container-openshift-ai)**.
+    It explains the benefits of ModelCar containers, how to build a ModelCar image,
+    and how to deploy it with OpenShift AI.
+
+    For additional patterns and prebuilt ModelCar images, explore the Red Hat AI
+    Services **[ModelCar Catalog repository](https://github.com/redhat-ai-services/modelcar-catalog)**
+    on GitHub. Prebuilt images from this catalog are also available in the
+    **[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
+    on Quay. However, note that all these images are compiled for the **x86 architecture**.
+    If you're targeting ARM, you'll need to rebuild these images on an ARM machine,
+    as demonstrated in **[this guide](https://pandeybk.medium.com/serving-vllm-and-granite-models-on-arm-with-red-hat-openshift-ai-0178adba550e)**.
+
+    Additionally, you may find it helpful to read **[Optimize and deploy LLMs for production with OpenShift AI](https://developers.redhat.com/articles/2025/10/06/optimize-and-deploy-llms-production-openshift-ai)**.
 
 ## Setting up Single-model Server and Deploy the model
 
@@ -160,7 +263,7 @@ huggingface-cli download ibm-granite/granite-3.3-8b-instruct
         `1` and **Maximum replicas**:`1`.
 
     -   **Model server size**: This is the amount of resources, CPU, and RAM that
-        will be allocated to your server. Here, you can select `Small` size.
+        will be allocated to your server. Here, you can select `Medium` size.
 
     -   **Accelerator**: Select `NVIDIA A100 GPU`.
 
@@ -177,21 +280,45 @@ huggingface-cli download ibm-granite/granite-3.3-8b-instruct
 
     -   **Source model location**:
 
-        i.  Select the **Connection** option from the dropdown list that you created
-            [as described here](#set-up-local-s3-storage-minio-and-connection) to
-            store the model by using the **Existing connection** option Connection
-            dropdown list i.e. `My Storage`.
+        If you set up the **Connection** using a locally hosted S3-compatible object
+        storage system (MinIO) - then configure the following:
 
-        Alternatively, you can create a new connection directly from this menu by
-        selecting **Create connection** option.
+        i.  Select the **Connection** option from the dropdown list that you
+            created [as described here](#set-up-local-s3-compatible-object-storage-minio)
+            to store the model by using the **Existing connection** option Connection
+            dropdown list i.e. `My Storage`.
 
         ii. **Path**: If your model is not located at the root of the bucket of
             your connection, you must enter the path to the folder it is in i.e.
             `models/granite-3.3-8b-instruct`.
 
-    -   **Configuration parameters**: You can customize the runtime parameters in
-        the Configuration parameters section. **You don't need to add any arguments
-        here.**
+        -   **Configuration parameters**: You can customize the runtime parameters
+            in the **Additional serving runtime arguments** field. **You don't
+            need to add any arguments here.**
+
+        **Alternatively**, if you set up the **Connection** using **the URI**, then
+        select the **Connection** option from the dropdown list that you created
+        [as described here](#set-up-uri) to store the model by using the
+        **Existing connection** option Connection dropdown list i.e.
+        `Granite 3.3 8B Instruct Modelcar`.
+
+        -   **Configuration parameters**: In the **Additional serving runtime arguments**
+            field, specify the following recommended arguments:
+
+            ```yaml
+            --dtype=half
+            --max-model-len=20000
+            --gpu-memory-utilization=0.95
+            --enable-chunked-prefill
+            --enable-auto-tool-choice
+            --tool-call-parser=llama3_json
+            --chat-template=/app/data/template/tool_chat_template_llama3.2_json.jinja
+            ```
+
+        !!! note "Creating a New Connection"
+
+            Alternatively, you can create a new connection directly from this menu
+            by selecting **Create connection** option.
 
 For our example, set the **Model deployment name** to `granite`, and select
 **Serving runtime** as `vLLM NVIDIA GPU ServingRuntime for KServe`. Also, ensure
@@ -199,29 +326,43 @@ that the **Deployment mode** is set to `Advanced` - uses *Knative Serverless*.
 
 Please leave the other fields at their default settings. For example, the
 **Number of model server replicas to deploy** has **Minimum replicas** set to `1`
-and **Maximum replicas** set to `1`, and the **Model server size** is set to `Small`.
+and **Maximum replicas** set to `1`, and the **Model server size** is set to `Medium`.
 
 ![Configure and Deploy Model Info](images/configure-and-deploy-model-info.png)
 
 Choose `NVIDIA A100 GPU` as the **Accelerator**, with the **Number of accelerators**
 set to `1`.
 
-!!! tip "How to use `NVIDIA V100 GPU` instead of using `NVIDIA A100 GPU`?"
-
-    You can Choose `NVIDIA V100 GPU` as the **Accelerator** and add `--dtype=half`
-    as *Additional serving runtime arguments* under **Configuration parameters**
-    section when deploying the model as shown below:
-
-    ![Model Deployment using V100 Accelerator](images/model-deploy-using-v100.png)
-
 At this point, ensure that both
 **Make deployed models available through an external route** and
 **Require token authentication** are *checked*. Please leave the populated
-**Service account name** i.e. `default-name` as it is. Select `My Storage` as
-the **Connection** from the *Existing connection*, and for the model **Path**
-location, enter `models/granite-3.3-8b-instruct` as the folder path, as shown below:
+**Service account name** i.e. `default-name` as it is.
+
+If you set up the **Connection** using a locally hosted S3-compatible object
+storage system (MinIO), select `My Storage` as the Connection from
+*Existing connections*. For the model Path location, enter `models/granite-3.3-8b-instruct`
+as the folder path, as shown below:
 
 ![Configure and Deploy Model Route Connection Info](images/configure-and-deploy-model-route-connection-info.png)
+
+**Alternatively**, if you set up the **Connection** using **the URI**, select
+`Granite 3.3 8B Instruct Modelcar` as the Connection from *Existing connections*.
+In the **Additional serving runtime arguments** field under **Configuration parameters**
+section, specify the following recommended arguments:
+
+```yaml
+--dtype=half
+--max-model-len=20000
+--gpu-memory-utilization=0.95
+--enable-chunked-prefill
+--enable-auto-tool-choice
+--tool-call-parser=llama3_json
+--chat-template=/app/data/template/tool_chat_template_llama3.2_json.jinja
+```
+
+**Ensure it appears as follows:**
+
+![URI Connection Config](images/uri-connection-config.png)
 
 When you are ready to deploy your model, select the **Deploy** button.
 

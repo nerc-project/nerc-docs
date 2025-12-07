@@ -112,21 +112,20 @@ It also provides the advantage of keeping a static local copy within the cluster
 after a lengthy download, so you don't need to repeatedly fetch the model from
 the internet whenever you restart it.
 
-To download a model from Hugging Face:
+To download a model from **Hugging Face Hub**:
 
 1. Navigate to [https://huggingface.co/](https://huggingface.co/).
 
 2. Search for the model you'd like to deploy.
 
     For this example, we'll use the **`Llama-3.2-3B-Instruct-FP8`** model, available
-    here:
-    👉 [https://huggingface.co/RedHatAI/Llama-3.2-3B-Instruct-FP8/tree/main](https://huggingface.co/RedHatAI/Llama-3.2-3B-Instruct-FP8/tree/main).
+    here: **[https://huggingface.co/RedHatAI/Llama-3.2-3B-Instruct-FP8/tree/main](https://huggingface.co/RedHatAI/Llama-3.2-3B-Instruct-FP8/tree/main)**.
 
-    !!! note "Important"
+    !!! note "Very Important"
 
         Even though this example uses the `Llama-3.2-3B-Instruct-FP8` LLM, the same
         mechanism can be applied to any other LLMs as well. Explore the Red Hat
-        AI validated models collections on [Hugging Face](https://huggingface.co/collections/RedHatAI).
+        AI validated models collections on **[Hugging Face Hub](https://huggingface.co/collections/RedHatAI)**.
 
 3. First you need to generate an access token:
 
@@ -140,7 +139,7 @@ To download a model from Hugging Face:
     -   Copy the generated *Access Token* i.e. `Access_Token`.
 
 Now that you have an *Access Token*, you can download the model using that token
-by either using **Git** or using the **Hugging Face CLI** as described below:
+by either using **Git** or using the **Hugging Face Hub CLI** as described below:
 
 ##### Using Git with Access Token
 
@@ -154,25 +153,61 @@ For example, this looks like as shown below:
 git clone https://<your-username>:<Access_Token>@huggingface.co/RedHatAI/Llama-3.2-3B-Instruct-FP8
 ```
 
-##### Using the Hugging Face CLI
+##### Using the Hugging Face Hub CLI
 
-First, install the CLI:
+Use our one-liner installers to set up the `hf` CLI without touching your Python
+environment:
+
+**On macOS and Linux:**
 
 ```sh
-pip install huggingface_hub
+curl -LsSf https://hf.co/cli/install.sh | bash
+```
+
+**On Windows:**
+
+```sh
+powershell -ExecutionPolicy ByPass -c "irm https://hf.co/cli/install.ps1 | iex"
 ```
 
 Login with your token:
 
 ```sh
-huggingface-cli login
+hf auth login
 ```
 
-Then download a model:
+This command will prompt you for a token. Copy-paste yours *Access Token* and press
+*Enter*. Then, you'll be asked if the token should also be saved as a git credential.
+Press *Enter* again (default to yes) if you plan to use git locally. Finally, it
+will call the Hub to check that your token is valid and save it locally.
 
 ```sh
-huggingface-cli download RedHatAI/Llama-3.2-3B-Instruct-FP8
+_|    _|  _|    _|    _|_|_|    _|_|_|  _|_|_|  _|      _|    _|_|_|      _|_|_|_|    _|_|      _|_|_|  _|_|_|_|
+_|    _|  _|    _|  _|        _|          _|    _|_|    _|  _|            _|        _|    _|  _|        _|
+_|_|_|_|  _|    _|  _|  _|_|  _|  _|_|    _|    _|  _|  _|  _|  _|_|      _|_|_|    _|_|_|_|  _|        _|_|_|
+_|    _|  _|    _|  _|    _|  _|    _|    _|    _|    _|_|  _|    _|      _|        _|    _|  _|        _|
+_|    _|    _|_|      _|_|_|    _|_|_|  _|_|_|  _|      _|    _|_|_|      _|        _|    _|    _|_|_|  _|_|_|_|
+
+To log in, `huggingface_hub` requires a token generated from https://huggingface.co/settings/tokens .
+Enter your token (input will not be visible):
+Add token as git credential? (Y/n)
+Token is valid (permission: write).
+Your token has been saved in your configured git credential helpers (store).
+Your token has been saved to /home/wauplin/.cache/huggingface/token
+Login successful
 ```
+
+Then download a model using `hf download` command from the Hub directly.
+
+```sh
+hf download RedHatAI/Llama-3.2-3B-Instruct-FP8
+```
+
+!!! tip "More about the Hugging Face Hub CLI"
+
+    This guide highlights the key capabilities of the `hf` CLI. For a full list
+    of commands, options, and advanced usage, refer to the complete
+    [CLI reference](https://huggingface.co/docs/huggingface_hub/en/package_reference/cli).
 
 #### Uploading the Model to the S3 storage (MinIO)
 
@@ -223,7 +258,7 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
 
     You have several options for deploying models to your OpenShift AI cluster.
     We recommend using **[ModelCar](https://kserve.github.io/website/docs/model-serving/storage/providers/oci#using-modelcars)**
-    because it removes the need to manually download models from Hugging Face,
+    because it removes the need to manually download models from Hugging Face Hub,
     upload them to S3, or manage access permissions. With ModelCar, you can package
     models as OCI images and pull them at runtime or precache them. This simplifies
     versioning, improves traceability, and integrates cleanly into CI/CD workflows.
@@ -241,7 +276,7 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
     **[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
     on *Quay.io*.
 
-    !!! tip "Use Any Model from the ModelCar Catalog registry."
+    !!! tip "Use Any Other Available Model from the ModelCar Catalog registry."
 
         **You can use any model from the ModelCar Catalog registry in a similar way.**
         For example, for the `Granite-3.3-8B-Instruct` model, you can use the publicly

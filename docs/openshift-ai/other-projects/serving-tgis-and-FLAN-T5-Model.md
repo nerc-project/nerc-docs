@@ -160,8 +160,8 @@ First, let's navigate to the relevant notebooks.
 3. Follow the instructions directly in the notebook.
 
 4. The instructions will guide you through downloading the model from
-**Hugging Face** model hub and uploading it to your `models` bucket, which is located
-within your main bucket mapped through the Connection.
+**Hugging Face Hub** model hub and uploading it to your `models` bucket, which is
+located within your main bucket mapped through the Connection.
 
 ![Jupyter Notebook - notebook-download-save](images/wb-notebook-download-save.png)
 

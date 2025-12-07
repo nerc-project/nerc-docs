@@ -45,7 +45,7 @@ located in the **standalone** folder.
 
 This deployment sets up a ready-to-use container runtime that pulls the
 **Mistral-7B-Instruct-v0.3.Q4_K_M.gguf** pre-trained foundational model from
-[Hugging Face](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3).
+[Hugging Face Hub](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3).
 
 !!! info "About Mistral-7B Model"
 

@@ -694,7 +694,7 @@ as follows:
 
 -   **Verify and test** the model's API inference endpoints.
 
--   Web interface integration of the deployed model using Open WebUI
+-   Web interface integration of the deployed model using [Open WebUI](https://github.com/nerc-project/llm-on-nerc/tree/main/llm-clients/openwebui).
 
 This process ensures that AI workloads run seamlessly in restricted or disconnected
 environments, allowing you to securely leverage validated and optimized AI models.

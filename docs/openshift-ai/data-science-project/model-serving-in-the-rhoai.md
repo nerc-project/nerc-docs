@@ -91,14 +91,17 @@ component.
     -   **Model framework (name - version)**: This will be auto selected based on
         your Serving runtime selection.
 
-    -   **Deployment mode**: Deployment modes define which technology stack will
-        be used to deploy a model, offering different levels of management and scalability.
+    -   **Deployment mode**: Deployment modes determine the technology stack used
+        to deploy a model, providing different levels of management, flexibility,
+        and scalability. You can read more about KServe deployment modes
+        [here](https://opendatahub.io/docs/deploying-models/#about-kserve-deployment-modes_odh-user).
+
         The options available are:
 
-        i. **Advanced**: Advanced deployment mode uses *Knative Serverless*. By
-            default, KServe integrates with Red Hat OpenShift Serverless and Red
-            Hat OpenShift Service Mesh to deploy models on the single-model serving
-            platform.
+        i. **Advanced**: Advanced deployment mode uses **Knative Serverless**. By
+            default, KServe integrates with **Red Hat OpenShift Serverless** and
+            **Red Hat OpenShift Service Mesh** to deploy models on the single-model
+            serving platform.
 
         - **Number of model server replicas to deploy**: This defines the number
             of instances of the **model server engine** you want to deploy.
@@ -107,7 +110,7 @@ component.
             by specifying the **Minimum replicas** and **Maximum replicas**, depending
             on the expected number of incoming requests.
 
-            !!! tips "Auto-Scaling & Scale-to-Zero for Significant Cost Savings"
+            !!! tip "Auto-Scaling & Scale-to-Zero for Significant Cost Savings"
 
                 Once you deploy your model and obtain the inference endpoints, you
                 can edit the deployment and set the **Minimum replicas** to 0. This
@@ -121,7 +124,7 @@ component.
                 ![Minimal Replicas Zero](images/min-replicas-0.png)
 
         ii. **Standard**: Alternatively, you can use standard deployment mode, which
-                uses KServe Raw Deployment mode.
+                uses **KServe RawDeployment** mode.
 
         - **Number of model server replicas to deploy**: This defines the number
             of instances of the **model server engine** you want to deploy.
@@ -135,7 +138,7 @@ component.
         will be allocated to your server. Select the appropriate configuration for
         size and the complexity of your model.
 
-        !!! tips "Custom Model Server Size Option"
+        !!! tip "Custom Model Server Size Option"
 
             With the **Custom** option, you can tailor the **CPU** and **Memory**
             allocations of your model server to match the specific needs of your
@@ -209,11 +212,21 @@ component.
 
 !!! tip "Serving vLLM and Large Language Models (LLMs) with Red Hat OpenShift AI"
 
-    To learn more about using single-model serving with the **vLLM runtime**,
-    GPU acceleration, and **Granite** foundation models, refer to the [Serving vLLM and Granite Models Guide](../other-projects/serving-vLLM-and-Granite-Models.md).
+    To learn how to deploy a **Llama 3.2 3B** quantized model - or any other
+    **Large Language Model (LLM)** - with GPU acceleration, refer to the
+    [Deploying Llama 3.2 with KServe Guide](../other-projects/deploying-a-llama-model-with-kserve.md).
 
-    To learn how to deploy a **Llama 3.2 3B** quantized model using GPU acceleration
-    and the **URI connection type** with the **vLLM runtime**, refer to the [Deploying Llama 3.2 with KServe Guide](../other-projects/deploying-a-llama-model-with-kserve.md).
+    This guide also includes examples that demonstrate how to serve models
+    using different **Connection types**, such as:
+
+    -   A locally hosted **S3-compatible object storage** system like
+    [MinIO](../../openshift/storage/minio.md) - to store and access your model artifacts
+    directly within your own project.
+
+    -   A **URI** that references a **ModelCar Container Image**.
+
+    All deployment scenarios use the **vLLM runtime**, ensuring efficient and scalable
+    model serving on OpenShift AI.
 
     To deploy a lightweight **FLAN-T5 Small** model **without GPU acceleration**
     using the **TGIS Standalone ServingRuntime for KServe**, refer to the [Serving Text Generation Inference Service (TGIS) and FLAN-T5 Small Model](../other-projects/serving-tgis-and-FLAN-T5-Model.md).
@@ -286,7 +299,7 @@ component.
         will be allocated to your server. Select the appropriate configuration for
         size and the complexity of your model.
 
-        !!! tips "Custom Model Server Size Option"
+        !!! tip "Custom Model Server Size Option"
 
             With the **Custom** option, you can tailor the **CPU** and **Memory**
             allocations of your model server to match the specific needs of your
@@ -383,18 +396,21 @@ as shown below:
 
 !!! tip "Other Connection Types"
 
-    OpenShift AI supports three connection types for accessing model images:
+    OpenShift AI supports three connection types for accessing model:
 
     -   **OCI-compliant registry**: For proprietary images requiring authentication.
-        If you selected **OCI-compliant registry** in the preceding step, in the
-        OCI storage location field, enter the URI.
+        If you selected **OCI-compliant registry**, in the **Registry host** field,
+        enter the path to the OCI-compliant registry where model is stored. Deploying
+        models from *OCI containers* is also known as **Modelcars** in KServe.
 
     -   **S3 compatible object storage**: For cloud storage solutions, **which is
-        the one used in this demonstration**.
+        the one used in this demonstration**. For S3-compatible object storage,
+        in the **Path** field, enter the folder path that contains the model in
+        your specified data source.
 
     -   **URI**: For publicly available resources. If you selected **URI** in the
-        preceding step, in the URI field, enter the Uniform Resource Identifier
-        (URI).
+        preceding step, in the URI field, enter the model Uniform Resource Identifier
+        (URI) where the model is located.
 
 Within this window, enter the information about the S3-compatible object bucket
 where the model is stored. Enter the following information:

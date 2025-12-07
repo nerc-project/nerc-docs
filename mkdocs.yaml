@@ -141,7 +141,6 @@ nav:
                     - Generative AI tutorial:
                         - Large Language Model (LLM) - Chat: openshift-ai/other-projects/LLM-chat.md
                         - Retrieval Augumented Generation (RAG) - Talk with your PDF: openshift-ai/other-projects/RAG-talk-with-your-pdf.md
-                        - Serving vLLM and Granite Models: openshift-ai/other-projects/serving-vLLM-and-Granite-Models.md
                         - Deploying a Llama model with KServe: openshift-ai/other-projects/deploying-a-llama-model-with-kserve.md
                         - Serving Text Generation Inference Service (TGIS) and FLAN-T5 Small Model: openshift-ai/other-projects/serving-tgis-and-FLAN-T5-Model.md
                     - LLM Client - AnythingLLM: openshift-ai/other-projects/LLM-client-AnythingLLM.md

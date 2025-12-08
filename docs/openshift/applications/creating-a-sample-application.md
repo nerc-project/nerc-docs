@@ -8,7 +8,7 @@ deploying it. This example uses the Node.js programming language, but the proces
 with other programming languages will be similar. Instructions provided show the
 tasks using both the web console and the command-line tool.
 
-!!! tips "Red Hat Tutorials"
+!!! tip "Red Hat Tutorials"
 
     You can follow [this tutorial](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/tutorials/tutorials-overview)
     from Red Hat, which provides an end-to-end example of deploying an application

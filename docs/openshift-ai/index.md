@@ -54,7 +54,7 @@ the list below.
 
 - [Retrieval Augumented Generation (RAG) - Talk with your PDF](other-projects/RAG-talk-with-your-pdf.md)
 
-- [Serving vLLM and Granite Models](other-projects/serving-vLLM-and-Granite-Models.md)
+- [Deploying a Llama model with KServe](other-projects/deploying-a-llama-model-with-kserve.md)
 
 - [Serving Text Generation Inference Service (TGIS) and FLAN-T5 Small Model](other-projects/serving-tgis-and-FLAN-T5-Model.md)
 

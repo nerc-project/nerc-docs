@@ -464,7 +464,8 @@ will open the MinIO web console that looks like below:
 !!! info "MinIO Web Console Login Credential"
 
     The Username and Password for the MinIO web console can be retrieved from
-    the Connection's **Access key** and **Secret key**.
+    the Connection's **Access key** and **Secret key**. Enter the **Access Key**
+    as the **Username** and the **Secret Key** as the **Password**.
 
 iii. Navigate back to the OpenShift AI dashboard.
 
@@ -480,12 +481,11 @@ c. Verify the bucket is created on the MinIO Web Console:
 
 -   Click on the newly created connection from the list and then click
 the action menu (⋮) at the end of the selected connection row. Choose
-"Edit" from the dropdown menu. This will open a pop-up
- window as shown below:
+"Edit" from the dropdown menu. This will open a pop-up window as shown below:
 
     ![Edit Connection Pop up](images/edit-connection.png)
 
--   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
+-   Note both *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
 
     !!! note "Alternatively, Run `oc` commands to get *Access key* and *Secret key*"

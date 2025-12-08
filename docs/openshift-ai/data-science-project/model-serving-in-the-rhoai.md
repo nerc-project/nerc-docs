@@ -50,132 +50,186 @@ component.
     deployment, select the **Single-model serving platform**. This option is recommended
     for **production use**.
 
-In the "Single-model serving platform" tile, click **Select single-model**.
+#### Setting up the Single-model Server
 
-You will be able to deploy the model by clicking the **Deploy model** button, as
-shown below:
+1. In the left menu, click **Data science projects**.
 
-![Single-model serving platform](images/single-model-serving.png)
+    The **Data science projects** page opens.
 
-In the pop-up window that appears, you can specify the following details:
+2. Click the name of the project that you want to deploy a model in.
 
--   **Model deployment name**: This is the name of the inference service created
-    when the model is deployed.
+    A project details page opens.
 
--   **Serving runtime**: Select a model-serving runtime framework from the available
-    options in your OpenShift Data Science deployment. This framework is used to
-    deploy and serve machine learning models. For LLMs that need maximum scalability
-    and throughput, OpenShift AI offers parallelized, multi-node serving with
-    **vLLM runtimes** to handle high volumes of concurrent, real-time requests.
+3. Click the **Models** tab.
 
--   **Model framework (name - version)**: This will be auto selected based on your
-    Serving runtime selection.
+4. Perform one of the following actions:
 
--   **Deployment mode**: Deployment modes define which technology stack will be
-    used to deploy a model, offering different levels of management and scalability.
-    The options available are:
+    -   If you see a **​​Single-model serving platform** tile, click **Select single-model**
+        on the tile and then click the **Deploy model** button.
 
-    i. **Advanced**: Advanced deployment mode uses *Knative Serverless*. By default,
-            KServe integrates with Red Hat OpenShift Serverless and Red Hat OpenShift
-            Service Mesh to deploy models on the single-model serving platform.
+        ![Add A Single-model Server](images/add-a-single-model-server.png)
 
-    ii. **Standard**: Alternatively, you can use standard deployment mode, which
-            uses KServe Raw Deployment mode.
+    -   If you don't see any tiles, ensure that you've already selected the
+        "Single-model serving platform" then click the **Deploy model** button.
 
--   **Number of model server replicas to deploy**: This defines the number of
-    instances of the **model server engine** you want to deploy. You can scale it
-    up as needed by specifying the **Minimum replicas** and **Maximum replicas**,
-    depending on the expected number of incoming requests.
+        ![Single-model serving platform](images/single-model-serving.png)
 
-    !!! tips "Intelligent Auto-Scaling and Scale-to-Zero for Significant Cost Savings"
+5. The **Deploy model** dialog opens.
 
-        Once you deploy your model and obtain the inference endpoints, you can
-        edit the deployment and set the **Minimum replicas** to 0. This enables
-        intelligent auto-scaling of your model's compute resources (CPU, GPU,
-        RAM, etc.), allowing replicas to scale up during high traffic and scale
-        down when idle. With `scale-to-zero` enabled, the system reduces pods to
-        zero during inactivity, eliminating idle compute costs—especially
-        beneficial for GPU workloads. The model then scales back up instantly as
-        soon as a new request arrives.
+    In the pop-up window that appears, you can specify the following details:
 
-        ![Minimal Replicas Zero](images/min-replicas-0.png)
+    -   **Model deployment name**: This is the name of the inference service created
+        when the model is deployed.
 
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Select the appropriate configuration for size and
-    the complexity of your model.
+    -   **Serving runtime**: Select a model-serving runtime framework from the available
+        options in your OpenShift Data Science deployment. This framework is used
+        to deploy and serve machine learning models. For LLMs that need maximum
+        scalability and throughput, OpenShift AI offers parallelized, multi-node
+        serving with **vLLM runtimes** to handle high volumes of concurrent, real-time
+        requests.
 
-    !!! tips "Custom Model Server Size Option"
+    -   **Model framework (name - version)**: This will be auto selected based on
+        your Serving runtime selection.
 
-        With the **Custom** option, you can tailor the **CPU** and **Memory** allocations
-        of your model server to match the specific needs of your workload.
+    -   **Deployment mode**: Deployment modes determine the technology stack used
+        to deploy a model, providing different levels of management, flexibility,
+        and scalability. You can read more about KServe deployment modes
+        [here](https://opendatahub.io/docs/deploying-models/#about-kserve-deployment-modes_odh-user).
 
-        ![Custom Model Server Size Option](images/model-server-size-custom-option.png)
+        The options available are:
 
-        If you select **Custom** from the dropdown menu, you can configure the
-        following settings in the **Model server size** section to customize your
-        model server:
+        i. **Advanced**: Advanced deployment mode uses **Knative Serverless**. By
+            default, KServe integrates with **Red Hat OpenShift Serverless** and
+            **Red Hat OpenShift Service Mesh** to deploy models on the single-model
+            serving platform.
 
-        ![Customize Model Server Size Option](images/model-server-size-customize.png)
+        - **Number of model server replicas to deploy**: This defines the number
+            of instances of the **model server engine** you want to deploy.
 
-        1. **CPUs requested** – Specify the number of CPUs to allocate for your
-        model server. Use the dropdown beside this field to choose the value in
-        cores or millicores.
+            Using the "**Advanced**" deployment mode, you can scale it up as needed
+            by specifying the **Minimum replicas** and **Maximum replicas**, depending
+            on the expected number of incoming requests.
 
-        2. **CPU limit** – Set the maximum number of CPUs the model server can use.
-        Use the dropdown beside this field to specify the value in cores or millicores.
+            !!! tip "Auto-Scaling & Scale-to-Zero for Significant Cost Savings"
 
-        3. **Memory requested** – Specify the amount of memory requested for the
-        model server in gibibytes (Gi).
+                Once you deploy your model and obtain the inference endpoints, you
+                can edit the deployment and set the **Minimum replicas** to 0. This
+                enables intelligent auto-scaling of your model's compute resources
+                (CPU, GPU, RAM, etc.), allowing replicas to scale up during high
+                traffic and scale down when idle. With `scale-to-zero` enabled,
+                the system reduces pods to zero during inactivity, eliminating
+                idle compute costs—especially beneficial for GPU workloads. The
+                model then scales back up instantly as soon as a new request arrives.
 
-        4. **Memory limit** – Set the maximum memory limit for the model server
-        in gibibytes (Gi).
+                ![Minimal Replicas Zero](images/min-replicas-0.png)
 
--   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
-    it to leverage optimized hardware for faster inference and improved efficiency.
+        ii. **Standard**: Alternatively, you can use standard deployment mode, which
+                uses **KServe RawDeployment** mode.
 
-    !!! warning "Serving Runtime and Accelerator Compatibility"
+        - **Number of model server replicas to deploy**: This defines the number
+            of instances of the **model server engine** you want to deploy.
 
-        If you need to use an **Accelerator**, it is recommended to select a compatible
-        **Serving runtime** for optimal performance. Also, **Number of accelerators**
-        (GPUs) is based on your available quota for GPUs for your project.
+            In "**Standard**" deployment mode, you cannot scale the number of replicas
+            up or down, unlike in "**Advanced**" deployment mode.
 
--   **Model route**: select the
-    **Make deployed models available through an external route** checkbox, if you
-    want the serving endpoint (the model serving API) to be accessible outside
-    of the OpenShift cluster through an external route.
+            ![Number of model server replicas to deploy](images/no-of-model-server-replicas.png)
 
--   **Token authorization**: To require token authentication for inference requests
-    to the deployed model, perform the following actions:
+    -   **Model server size**: This is the amount of resources, CPU, and RAM that
+        will be allocated to your server. Select the appropriate configuration for
+        size and the complexity of your model.
 
-    i. Select **Require token authentication**.
+        !!! tip "Custom Model Server Size Option"
 
-    ii. In the **Service account name** field, enter the service account name that
-    the token will be generated for.
+            With the **Custom** option, you can tailor the **CPU** and **Memory**
+            allocations of your model server to match the specific needs of your
+            workload.
 
-    iii. To add an additional service account, click **Add a service account** and
-    enter another service account name.
+            ![Custom Model Server Size Option](images/model-server-size-custom-option.png)
 
--   **Source model location**: To specify the location of your model, either select
-    an existing connection you previously created or create a new one.
+            If you select **Custom** from the dropdown menu, you can configure the
+            following settings in the **Model server size** section to customize
+            your model server:
 
-    !!! warning "Very Important"
+            ![Customize Model Server Size Option](images/model-server-size-customize.png)
 
-        If your connection type is an **S3-compatible object storage**, you must
-        provide the folder path that contains your data file. The
-        **OpenVINO Model Server** runtime has specific requirements for how you
-        specify the model path. For more information, see known issue [RHOAIENG-3025](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html-single/release_notes/index#known-issues_RHOAIENG-3025_relnotes)
-        in the OpenShift AI release notes.
+            1. **CPUs requested** – Specify the number of CPUs to allocate for your
+            model server. Use the dropdown beside this field to choose the value
+            in cores or millicores.
 
--   **Optional**: Customize the runtime parameters in the Configuration parameters
-    section.
+            2. **CPU limit** – Set the maximum number of CPUs the model server can
+            use. Use the dropdown beside this field to specify the value in cores
+            or millicores.
 
-After adding and selecting options within the **Deploy model** pop-up window,
-click **Deploy** to create the model server.
+            3. **Memory requested** – Specify the amount of memory requested for
+            the model server in gibibytes (Gi).
 
-!!! tip "Serving vLLM and Granite Models with Red Hat OpenShift AI"
+            4. **Memory limit** – Set the maximum memory limit for the model server
+            in gibibytes (Gi).
 
-    To learn more about how to use single-model serving with the **vLLM runtime**
-    and **Granite** foundation models, check out [this detailed user guide](../other-projects/serving-vLLM-and-Granite-Models.md).
+    -   **Accelerator**: This allows you to add a **GPU** to your model server,
+        enabling it to leverage optimized hardware for faster inference and improved
+        efficiency.
+
+        !!! warning "Serving Runtime and Accelerator Compatibility"
+
+            If you need to use an **Accelerator**, it is recommended to select a
+            compatible **Serving runtime** for optimal performance. Also,
+            **Number of accelerators** (GPUs) is based on your available quota for
+            GPUs for your project.
+
+    -   **Model route**: select the
+        **Make deployed models available through an external route** checkbox, if
+        you want the serving endpoint (the model serving API) to be accessible outside
+        of the OpenShift cluster through an external route.
+
+    -   **Token authorization**: To require token authentication for inference requests
+        to the deployed model, perform the following actions:
+
+        i. Select **Require token authentication**.
+
+        ii. In the **Service account name** field, enter the service account name
+        that the token will be generated for.
+
+        iii. To add an additional service account, click **Add a service account**
+        and enter another service account name.
+
+    -   **Source model location**: To specify the location of your model, either
+        select an existing connection you previously created or create a new one.
+
+        !!! warning "Very Important"
+
+            If your connection type is an **S3-compatible object storage**, you
+            must provide the folder path that contains your data file. The
+            **OpenVINO Model Server** runtime has specific requirements for how you
+            specify the model path. For more information, see known issue [RHOAIENG-3025](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html-single/release_notes/index#known-issues_RHOAIENG-3025_relnotes)
+            in the OpenShift AI release notes.
+
+    -   **Optional**: Customize the runtime parameters in the Configuration parameters
+        section.
+
+    After adding and selecting options within the **Deploy model** pop-up window,
+    click **Deploy** to create the model server.
+
+!!! tip "Serving vLLM and Large Language Models (LLMs) with Red Hat OpenShift AI"
+
+    To learn how to deploy a **Llama 3.2 3B** quantized model - or any other
+    **Large Language Model (LLM)** - with GPU acceleration, refer to the
+    [Deploying Llama 3.2 with KServe Guide](../other-projects/deploying-a-llama-model-with-kserve.md).
+
+    This guide also includes examples that demonstrate how to serve models
+    using different **Connection types**, such as:
+
+    -   A locally hosted **S3-compatible object storage** system like
+    [MinIO](../../openshift/storage/minio.md) - to store and access your model artifacts
+    directly within your own project.
+
+    -   A **URI** that references a **ModelCar Container Image**.
+
+    All deployment scenarios use the **vLLM runtime**, ensuring efficient and scalable
+    model serving on OpenShift AI.
+
+    To deploy a lightweight **FLAN-T5 Small** model **without GPU acceleration**
+    using the **TGIS Standalone ServingRuntime for KServe**, refer to the [Serving Text Generation Inference Service (TGIS) and FLAN-T5 Small Model](../other-projects/serving-tgis-and-FLAN-T5-Model.md).
 
 ### 2. Multi-model Serving
 
@@ -202,76 +256,99 @@ component.
     the **Multi-model serving platform**. This option is ideal when deploying more
     than 1,000 small or medium-sized models and aiming to reduce resource consumption.
 
-In the **Multi-model serving platform** tile, click **Select multi-model**.
+#### Setting up the Multi-model Server
 
-You will be able to create a new model server by clicking the **Add model server**
-button, as shown below:
+1. In the left menu, click **Data science projects**.
 
-![Multi-model serving platform](images/add-multi-model-server.png)
+    The **Data science projects** page opens.
 
-In the pop-up window that appears, you can specify the following details:
+2. Click the name of the project that you want to deploy a model in.
 
--   **Model server name**: Enables users to enter a unique name for the model server.
+    A project details page opens.
 
--   **Serving runtime**: Select a model-serving runtime framework from the available
-    options in your OpenShift Data Science deployment. This framework is used to
-    deploy and serve machine learning models.
+3. Click the **Models** tab.
 
--   **Number of model server replicas to deploy**: This is the number of instances
-    of the model server engine that you want to deploy. You can scale it up as needed,
-    depending on the number of requests you will receive.
+4. Perform one of the following actions:
 
--   **Model server size**: This is the amount of resources, CPU, and RAM that will
-    be allocated to your server. Select the appropriate configuration for size and
-    the complexity of your model.
+    -   If you see a **​Multi-model serving platform** tile, click **Select multi-model**.
 
-    !!! tips "Custom Model Server Size Option"
+        ![Select multi-model](images/select-multi-model.png)
 
-        With the **Custom** option, you can tailor the **CPU** and **Memory** allocations
-        of your model server to match the specific needs of your workload.
+    -   If you don't see any tiles, ensure that you've already selected the
+        "​Multi-model serving platform".  
 
-        ![Custom Model Server Size Option](images/model-server-size-custom-option.png)
+    -   You will be able to create a new model server by clicking the
+        **Add model server** button, as shown below:
 
-        If you select **Custom** from the dropdown menu, you can configure the
-        following settings in the **Model server size** section to customize your
-        model server:
+        ![Multi-model serving platform](images/add-multi-model-server.png)  
 
-        ![Customize Model Server Size Option](images/model-server-size-customize.png)
+5. In the pop-up window that appears, you can specify the following details:
 
-        1. **CPUs requested** – Specify the number of CPUs to allocate for your
-        model server. Use the dropdown beside this field to choose the value in
-        cores or millicores.
+    -   **Model server name**: Enables users to enter a unique name for the model
+        server.
 
-        2. **CPU limit** – Set the maximum number of CPUs the model server can use.
-        Use the dropdown beside this field to specify the value in cores or millicores.
+    -   **Serving runtime**: Select a model-serving runtime framework from the available
+        options in your OpenShift Data Science deployment. This framework is used
+        to deploy and serve machine learning models.
 
-        3. **Memory requested** – Specify the amount of memory requested for the
-        model server in gibibytes (Gi).
+    -   **Number of model server replicas to deploy**: This is the number of instances
+        of the model server engine that you want to deploy. You can scale it up
+        as needed, depending on the number of requests you will receive.
 
-        4. **Memory limit** – Set the maximum memory limit for the model server
-        in gibibytes (Gi).
+    -   **Model server size**: This is the amount of resources, CPU, and RAM that
+        will be allocated to your server. Select the appropriate configuration for
+        size and the complexity of your model.
 
--   **Accelerator**: This allows you to add a **GPU** to your model server, enabling
-    it to leverage optimized hardware for faster inference and improved efficiency.
+        !!! tip "Custom Model Server Size Option"
 
-    !!! warning "Serving Runtime and Accelerator Compatibility"
+            With the **Custom** option, you can tailor the **CPU** and **Memory**
+            allocations of your model server to match the specific needs of your
+            workload.
 
-        If you need to use an **Accelerator**, it is recommended to select a compatible
-        **Serving runtime** for optimal performance. Also, **Number of accelerators**
-        (GPUs) is based on your available quota for GPUs for your project.
+            ![Custom Model Server Size Option](images/model-server-size-custom-option.png)
 
--   **Model route**: Check this box if you want the serving endpoint (the model serving
-    API) to be accessible outside of the OpenShift cluster through an external route.
+            If you select **Custom** from the dropdown menu, you can configure the
+            following settings in the **Model server size** section to customize
+            your model server:
 
--   **Token authorization**: Check this box if you want to secure or restrict access
-    to the model by forcing requests to provide an authorization token.
+            ![Customize Model Server Size Option](images/model-server-size-customize.png)
 
-After adding and selecting options within the **Add model server** pop-up
-window, click **Add** to create the model server.
+            1. **CPUs requested** – Specify the number of CPUs to allocate for your
+            model server. Use the dropdown beside this field to choose the value
+            in cores or millicores.
+
+            2. **CPU limit** – Set the maximum number of CPUs the model server can
+            use. Use the dropdown beside this field to specify the value in cores
+            or millicores.
+
+            3. **Memory requested** – Specify the amount of memory requested for
+            the model server in gibibytes (Gi).
+
+            4. **Memory limit** – Set the maximum memory limit for the model server
+            in gibibytes (Gi).
+
+    -   **Accelerator**: This allows you to add a **GPU** to your model server,
+        enabling it to leverage optimized hardware for faster inference and improved
+        efficiency.
+
+        !!! warning "Serving Runtime and Accelerator Compatibility"
+
+            If you need to use an **Accelerator**, it is recommended to select a
+            compatible **Serving runtime** for optimal performance. Also,
+            **Number of accelerators** (GPUs) is based on your available quota for
+            GPUs for your project.
+
+    -   **Model route**: Check this box if you want the serving endpoint (the model
+        serving API) to be accessible outside of the OpenShift cluster through an
+        external route.
+
+    -   **Token authorization**: Check this box if you want to secure or restrict
+        access to the model by forcing requests to provide an authorization token.
+
+    After adding and selecting options within the **Add model server** pop-up
+    window, click **Add** to create the model server.
 
 ---
-
-#### Setting up Multi-model Server
 
 For our example project, we will choose "Multi-model serving platform" and then
 add a new model server and let's name the **Model server** "coolstore-modelserver".
@@ -316,6 +393,24 @@ types. Please select "S3 compatible object storage - v1" as your *Connection typ
 as shown below:
 
 ![Connection Type Selection Options](images/connection-type-selection.png)
+
+!!! tip "Other Connection Types"
+
+    OpenShift AI supports three connection types for accessing model:
+
+    -   **OCI-compliant registry**: For proprietary images requiring authentication.
+        If you selected **OCI-compliant registry**, in the **Registry host** field,
+        enter the path to the OCI-compliant registry where model is stored. Deploying
+        models from *OCI containers* is also known as **Modelcars** in KServe.
+
+    -   **S3 compatible object storage**: For cloud storage solutions, **which is
+        the one used in this demonstration**. For S3-compatible object storage,
+        in the **Path** field, enter the folder path that contains the model in
+        your specified data source.
+
+    -   **URI**: For publicly available resources. If you selected **URI** in the
+        preceding step, in the URI field, enter the model Uniform Resource Identifier
+        (URI) where the model is located.
 
 Within this window, enter the information about the S3-compatible object bucket
 where the model is stored. Enter the following information:
@@ -382,12 +477,6 @@ After completing the required fields, click **Create**. You should now see the
 connection displayed in the main project window as shown below:
 
 ![New Connection Info](images/data-connection-info.png)
-
-!!! tip "Other Connection Type"
-
-    If you selected **URI** in the preceding step, in the URI field, enter the
-    Uniform Resource Identifier (URI). If you selected **OCI-compliant registry**
-    in the preceding step, in the OCI storage location field, enter the URI.
 
 ## Deploy the model
 

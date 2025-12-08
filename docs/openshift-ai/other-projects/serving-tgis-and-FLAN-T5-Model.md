@@ -160,8 +160,8 @@ First, let's navigate to the relevant notebooks.
 3. Follow the instructions directly in the notebook.
 
 4. The instructions will guide you through downloading the model from
-**Hugging Face** and uploading it to your `models` bucket, which is located
-within your main bucket mapped through the Connection.
+**Hugging Face Hub** model hub and uploading it to your `models` bucket, which is
+located within your main bucket mapped through the Connection.
 
 ![Jupyter Notebook - notebook-download-save](images/wb-notebook-download-save.png)
 
@@ -246,9 +246,9 @@ models/flan-t5-small/tokenizer_config.json
             your connection, you must enter the path to the folder it is in i.e.
             `models/flan-t5-small`.
 
-    -   **Configuration parameters**: You can customize the runtime parameters in
-        the Configuration parameters section. **You don't need to add any arguments
-        here.**
+    -   **Configuration parameters**: You can customize the runtime parameters
+        in the **Additional serving runtime arguments** field. **You don't need
+        to add any arguments here.**
 
 For our example, set the **Model deployment name** to `flan-t5-small`, and select
 **Serving runtime** as `TGIS Standalone ServingRuntime for KServe`. Also, ensure

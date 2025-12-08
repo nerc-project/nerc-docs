@@ -130,7 +130,7 @@ workflow.
 
     ![GitHub Actions Successfully Complete](images/github-actions-successful.png)
 
-    !!! tips "Troubleshooting"
+    !!! tip "Troubleshooting"
 
         Repositories on `GitHub Container Registry (GHCR)`, `quay.io`, and `docker.io`
         are **private by default**. This means that when you push an image for the

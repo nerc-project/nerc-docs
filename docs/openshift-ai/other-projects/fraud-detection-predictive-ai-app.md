@@ -514,7 +514,7 @@ the action menu (⋮) at the end of the selected connection row. Choose
 
     ![Edit Connection Pop up](images/edit-connection.png)
 
--   Note both  *Access key* (by clicking eye icon near the end of the textbox) and
+-   Note both *Access key* (by clicking eye icon near the end of the textbox) and
 *Secret key*.
 
     !!! note "Alternatively, Run `oc` commands to get *Access key* and *Secret key*"

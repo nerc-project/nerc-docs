@@ -193,7 +193,7 @@ Enter your token (input will not be visible):
 Add token as git credential? (Y/n)
 Token is valid (permission: write).
 Your token has been saved in your configured git credential helpers (store).
-Your token has been saved to /home/wauplin/.cache/huggingface/token
+Your token has been saved to /home/<your-user-name>/.cache/huggingface/token
 Login successful
 ```
 
@@ -227,6 +227,8 @@ hf download RedHatAI/Llama-3.2-3B-Instruct-FP8
 -   Wait for the upload to finish, this will take a while.
 
     ![Uploaded Llama Model Success](images/minio-llama-model-uploaded.png)
+
+!!!
 
 ### Set up URI
 

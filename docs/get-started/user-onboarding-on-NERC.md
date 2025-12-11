@@ -39,12 +39,17 @@ The overall user flow can be summarized using the following sequence diagram:
 
 3. Wait until the PI request gets approved by the **NERC's admin**.
 
-4. Once a PI request is **approved**, **PI** can add a new project and also search
-    and add user(s) to the project - Other **general user(s)** can also see the project(s)
-    once they are added to a project via: [https://coldfront.mss.mghpcc.org](https://coldfront.mss.mghpcc.org/).
+4. Once a PI request is **approved**, **PI** can add a **new project** and also
+    search and add user(s) to the project - Other **general user(s)** can also
+    see the project(s) once they are added to a project via: [https://coldfront.mss.mghpcc.org](https://coldfront.mss.mghpcc.org/).
 
     For detailed instructions about **NERC's ColdFront** and how to use it, refer
     to [this guide](allocation/coldfront.md).
+
+    !!! danger "Very Important: Project Title Length Limitation"
+
+        Please ensure that the project title is both concise and does not exceed
+        a length of **25 characters**.
 
 5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**,
     **NERC-OCP (OpenShift)** or **NERC-OCP-EDU (OpenShift)** for the newly added

@@ -252,7 +252,7 @@ how the calculation works for OpenShift and OpenStack.
 
 Using [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/), now makes
 it easier to keep track of your daily usage charges for each allocation. A new
-allocation attribute `Cumulative Daily Charges for Month` is available directly
+allocation attribute **`Cumulative Daily Charges for Month`** is available directly
 within the *Allocation Detail* page, giving you a transparent, **day-by-day** view
 of **your monthly costs**.
 
@@ -271,9 +271,7 @@ NERC via [RegApp](https://regapp.mss.mghpcc.org/).
 
 ![Cumulative Daily Charges for Month](images/cumulative-daily-charge-for-month.png)
 
-### Understanding the New Attribute Format
-
-represents the cost accumulated as of the end of that day
+### Understanding the "Cumulative Daily Charges for Month" Attribute Format
 
 The `Cumulative Daily Charges for Month` allocation attribute stores daily running
 totals in a simple, **date-indexed (UTC)** format, along with the **total cost in
@@ -313,30 +311,30 @@ You can use the daily cumulative totals to:
 
 -   Communicate usage patterns and trends to your **team or project members**.
 
-## Coming Soon: Monthly Allocation Alert Emails
+## Monthly Allocation Alert Emails
 
-A new automated alert feature is coming soon to help PIs and Project Manager(s)
-stay informed about budget overruns. We will introduce a new *Allocation Attribute*
-labeled `Monthly Allocation Cost Alert`, which allows PIs or Managers to set a
-threshold value. When the **Cumulative Daily Charges for Month** *exceed this value*,
-an **email notification** will be **sent** to the **PI and Project Manager(s)**.
+In addition, a new *Allocation Attribute* labeled **`Monthly Allocation Cost Alert`**
+is now available to support *automated cost-alert notifications* for **PIs and Project
+Manager(s)**. To activate the notifications, PIs or Project Manager(s) simply need
+to set this attribute on their allocation.
 
-Additionally, a new *Allocation Attribute* labeled `Previous Charges` will display
-historical cumulative charges from prior periods for reference.
+The **`Cumulative Daily Charges for Month`** attribute allows PIs or Manager(s)
+to define a monthly cost threshold. If the **`Monthly Allocation Cost Alert`** is
+enabled, once the cumulative daily charges exceed this threshold, an automated
+**email notification** will be sent to the **PI and Project Manager(s)**, helping
+them stay informed about potential budget overruns.
 
 If an allocation has the `Monthly Allocation Cost Alert` attribute configured,
 ColdFront will:
 
--   Monitor the total billable cost for the month.
+-   Monitor the total billable cost for the month to maintain better control over
+    spending and ensure proper oversight.
 
 -   Send alert email notifications to the PI and Project Manager(s) when the allocation's
     monthly limit is exceeded.
 
 -   Ensure PIs are aware of over-usage through systematic alerts, so they don't
     need to wait until the end of the monthly billing cycle to see the charges.
-
-Once this feature launches, users will only need to set the `Monthly Allocation
-Cost Alert` attribute on their allocation to activate the email notifications.
 
 ## How to Pay?
 

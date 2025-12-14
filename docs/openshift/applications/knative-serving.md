@@ -339,6 +339,19 @@ x-envoy-upstream-service-time: 5627
 Hello Serverless!
 ```
 
+!!! tip "Controlling Knative Service Visibility (Internal vs External Access)"
+
+    Use the following commands to control service visibility:
+
+    ```sh
+    kn service update test-webapp --cluster-local      # Make the service internal
+    kn service update test-webapp --no-cluster-local   # Expose the service externally
+    ```
+
+    The `--cluster-local` flag makes the Knative Service accessible only within
+    the cluster, preventing external access. The `--no-cluster-local` flag exposes
+    the service externally, allowing it to be accessed through an external route.
+
 **5. Cleanup:**
 
 Delete the resources that were created after testing successful:

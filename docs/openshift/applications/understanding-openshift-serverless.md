@@ -67,15 +67,16 @@ and microservices to small, single-purpose functions.
 
 It has **three primary components**:
 
-- [**Serving**](https://knative.dev/docs/serving/): Enables rapid deployment and
-automatic scaling of containers through a request-driven model, serving workloads based on demand.
+-   [**Serving**](https://knative.dev/docs/serving/): Enables rapid deployment and
+    automatic scaling of containers through a request-driven model, serving workloads
+    based on demand.
 
-- [**Eventing**](https://knative.dev/docs/eventing/): Provides the infrastructure
-to consume and produce events that trigger applications. Applications can be
-triggered by internal event sources, cloud services, or Red Hat AMQ streams.
+-   [**Eventing**](https://knative.dev/docs/eventing/): Provides the infrastructure
+    to consume and produce events that trigger applications. Applications can be
+    triggered by internal event sources, cloud services, or Red Hat AMQ streams.
 
-- [**Functions**](https://knative.dev/docs/functions/): Offers a flexible approach
-to building source code into containers.
+-   [**Functions**](https://knative.dev/docs/functions/): Offers a flexible approach
+    to building source code into containers.
 
 ### What is OpenShift Serverless?
 
@@ -117,11 +118,11 @@ With serverless, infrastructure management is handled for you. You simply provid
 a container image and run it on the cluster - everything else is automatically managed.
 
 In Knative, deployment is even simpler: you define a small resource file called
-a **[Knative Service](#knative-serving)**, which specifies the container image to
-run. When applied to the cluster, the Knative Operator automatically creates all
-necessary resources, including the deployment, service, route (if needed), and a
-configuration resource. The configuration resource also manages revisions, making
-it easy to roll back to previous versions when required.
+a **[Knative Service](#knative-functions)**, which specifies the container image
+to run. When applied to the cluster, the Knative Operator automatically creates
+all necessary resources, including the deployment, service, route (if needed),
+and a configuration resource. The configuration resource also manages revisions,
+making it easy to roll back to previous versions when required.
 
 ![Knative Deployment](images/knative_deployment.png)
 
@@ -146,9 +147,11 @@ Knative serverless application components:
 
 The main components of the OpenShift Serverless architecture are:
 
-**Knative Serving**: Enables developers to create cloud-native applications using
-a serverless architecture. It provides Custom Resource Definitions (CRDs) that
-developers can use to deploy serverless containers, manage pod scaling, and more.
+### Knative Serving
+
+Enables developers to create cloud-native applications using a serverless architecture.
+It provides **Custom Resource Definitions (CRDs)** that developers can use to deploy
+serverless containers, manage pod scaling, and more.
 
 Knative Serving is responsible for:
 
@@ -167,14 +170,15 @@ deployment, dynamically scaling with traffic, and supporting traffic-split rollo
 
 **[Watch a video about Knative Serving](https://www.youtube.com/watch?v=oKIHoDzw1RI)**
 
-**Knative Eventing**: Provides the infrastructure for building and deploying
-event-driven applications. It allows developers to define event sources and sinks
-and offers mechanisms to route events to functions, applications, or other event
-sinks.
+### Knative Eventing
+
+Provides the infrastructure for building and deploying *event-driven applications*.
+It allows developers to define event sources and sinks and offers mechanisms to
+route events to functions, applications, or other event sinks.
 
 Knative Eventing is an event-driven platform that uses CloudEvents with a simple
 *HTTP* interface. It enables late-binding of event sources and consumers, allowing
-services to be loosely coupled, independently deployed, and connected without 
+services to be loosely coupled, independently deployed, and connected without
 modifying producers or consumers.  
 
 **Event Mesh:** Supports responsive, scalable, and resilient architectures by

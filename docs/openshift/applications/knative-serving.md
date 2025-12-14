@@ -18,7 +18,7 @@ In this tutorial, you will:
 -   Run different revisions of a service via `blue-green` deployments and `canary`
     release.
 
-## **Prerequisites**:
+## **Prerequisites**
 
 -   Setup the OpenShift CLI (`oc`) Tools locally and configure the OpenShift CLI
     to enable `oc` commands. Refer to [this user guide](../../openshift/logging-in/setup-the-openshift-cli.md).
@@ -28,14 +28,15 @@ In this tutorial, you will:
     client `kn` allows you to create Knative resources from the command line or
     from within Shell scripts. Follow the [official documentation](https://docs.redhat.com/en/documentation/red_hat_openshift_serverless/1.37/html/installing_openshift_serverless/installing-kn)
     to download and install the Knative CLI.
-    
+
     You can verify the Knative CLI installation by running the following command:
 
     ```sh
     kn version
     ```
 
-    For more information regarding the [CLI commands](https://docs.redhat.com/en/documentation/red_hat_openshift_serverless/1.37/html/knative_cli/index) available for Knative Functions, Serving, and Eventing.
+    For more information regarding the [CLI commands](https://docs.redhat.com/en/documentation/red_hat_openshift_serverless/1.37/html/knative_cli/index)
+    available for Knative Functions, Serving, and Eventing.
 
 ## Using Knative Serving
 
@@ -180,7 +181,7 @@ spec:
           ...
           annotations:
             serving.knative.openshift.io/enablePassthrough: 'true'
-            ...        
+            ...  
     ...
     ```
 
@@ -252,7 +253,7 @@ spec:
 EOF
 ```
 
-**3. Verification**
+**3. Verification:**
 
 Applying the application service configuration from the previous step creates a
 route, service, revision, and other resources managed by Knative Serving. You can
@@ -274,7 +275,7 @@ verify these components using the following command:
     ```
 
     **Revisions:**
-    
+
     ```sh
     kn revision list
     ```
@@ -328,7 +329,7 @@ oc exec deployment/curl -it -- curl -ik $EXTERNAL_URL
 **Output:**
 
 ```sh
-HTTP/2 200 
+HTTP/2 200
 content-length: 17
 content-type: text/plain; charset=utf-8
 date: Sat, 13 Dec 2025 21:31:58 GMT
@@ -810,14 +811,14 @@ view:
 
 3. Go to "Actions" -> "Edit Service":
     ![Edit Knative Service](images/knative-service-edit.png)
-    
+
     Then modify the service configuration in the *YAML* editor, and click **Save**.
-    For example, change the `timeoutseconds` from `300` to `301`.   
+    For example, change the `timeoutseconds` from `300` to `301`.  
 
     ![Edit Knative Service YAML](images/knative-service-yaml-edit.png)
 
     This change in the configuration triggers a new revision.
-    
+
     In the **Topology** view, the latest revision is displayed and the **Resources**
     tab for the service now displays the two revisions as shown below:
 
@@ -988,7 +989,7 @@ of real user traffic before a full rollout.
         If you do not plan to roll back to the **first revision**, you can remove
         it instead of setting its traffic to 0%. Non-routable revisions are automatically
         garbage-collected.
-  
+
 11. Visit the **URL of the first revision** to confirm that no traffic is being
     routed to the old version of the application.
 

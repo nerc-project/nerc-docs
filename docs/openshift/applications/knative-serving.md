@@ -456,7 +456,7 @@ the following syntax:
 === "Using the Knative CLI"
 
     ```sh
-    kn service create <service_name> --image <image_uri> --scale-min 1 --scale-min 3
+    kn service create <service_name> --image <image_uri> --scale-min 1 --scale-max 3
     ```
 
 === "Using YAML"

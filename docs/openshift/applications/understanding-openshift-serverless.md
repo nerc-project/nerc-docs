@@ -35,7 +35,7 @@ The following are key features of a serverless model:
 | **Simplified Deployment** | Functions can be deployed using GitOps, a command-line interface (CLI), or Kubernetes manifests, without requiring changes to existing DevOps practices. |
 | **Event-Driven** | A serverless model relies on triggers to execute code, such as API requests or events from a message queue. It processes demand alerts or user requests as they arrive, reducing idle resource costs. |
 | **Scale to Zero** | Automatic scaling ensures that services run only when needed, making this model ideal for bursty traffic. The ability to scale to zero means code executes only in response to events - and resources are automatically released once execution completes. |
-| **Improved Response Times** | Cold start optimizations ensure financial logic spins up quickly when a user interacts. |
+| **Improved Response Times** | The application starts faster when a user accesses it, reducing wait time. |
 | **Enhanced Resilience** | Stateless functions, autoscaling, and built-in failover mean fewer single points of failure - and more robust uptime. |
 
 ## Benefits of Serverless

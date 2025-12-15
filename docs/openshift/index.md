@@ -18,11 +18,13 @@ the list below.
 ## OpenShift Web Console
 
 - [Access the NERC's OpenShift Web Console](logging-in/access-the-openshift-web-console.md)
+
 - [Web Console Overview](logging-in/web-console-overview.md)
 
 ## OpenShift command-line interface (CLI) Tools
 
 - [OpenShift CLI Tools Overview](logging-in/the-openshift-cli.md)
+
 - [How to Setup the OpenShift CLI Tools](logging-in/setup-the-openshift-cli.md)
 
 ## Creating Your First Application on OpenShift
@@ -36,6 +38,12 @@ the list below.
 - [Editing your applications](applications/editing-applications.md)
 
 - [Scaling and Performance Guide](applications/scaling-and-performance-guide.md)
+
+## Serverless Computing
+
+- [Understanding OpenShift Serverless](applications/understanding-openshift-serverless.md)
+
+- [Knative Serving User Guide: Deploying and Managing Serverless Workloads](applications/knative-serving.md)
 
 ## Set up Domain Name for Your Application
 

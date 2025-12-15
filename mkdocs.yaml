@@ -108,6 +108,9 @@ nav:
           - Editing Applications:
                 - Editing your applications: openshift/applications/editing-applications.md
                 - Scaling and Performance Guide: openshift/applications/scaling-and-performance-guide.md
+          - Serverless Computing:
+                - Understanding OpenShift Serverless: openshift/applications/understanding-openshift-serverless.md
+                - "Knative Serving User Guide: Deploying and Managing Serverless Workloads": openshift/applications/knative-serving.md
           - Set up Domain Name for Your Application:  openshift/domain-name-system/domain-name-for-your-application.md
           - GPUs:
                 - Introduction to GPUs on NERC OpenShift: openshift/gpus/intro-to-gpus-on-nerc-ocp.md
@@ -204,6 +207,8 @@ theme:
         # - navigation.tabs
         # - navigation.tabs.sticky
         # - navigation.expand
+        - content.code.annotate
+        - content.tabs.link
 extra_css:
     - stylesheets/extra.css
 extra_javascript:
@@ -228,6 +233,9 @@ markdown_extensions:
     - attr_list
     - md_in_html
     - pymdownx.blocks.caption
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.superfences
 
 plugins:
     - material/search

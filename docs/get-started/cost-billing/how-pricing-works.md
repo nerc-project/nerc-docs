@@ -315,14 +315,9 @@ You can use the daily cumulative totals to:
 
 In addition, a new *Allocation Attribute* labeled **`Monthly Allocation Cost Alert`**
 is now available to support *automated cost-alert notifications* for **PIs and Project
-Manager(s)**. To activate the notifications, PIs or Project Manager(s) simply need
-to set this attribute on their allocation.
-
-The **`Cumulative Daily Charges for Month`** attribute allows PIs or Manager(s)
-to define a monthly cost threshold. If the **`Monthly Allocation Cost Alert`** is
-enabled, once the cumulative daily charges exceed this threshold, an automated
-**email notification** will be sent to the **PI and Project Manager(s)**, helping
-them stay informed about potential budget overruns.
+Manager(s)**, helping them stay informed about potential budget overruns. To activate
+the **email notifications** , PIs or Project Manager(s) simply need to set this
+attribute on their allocation.
 
 If an allocation has the `Monthly Allocation Cost Alert` attribute configured,
 ColdFront will:

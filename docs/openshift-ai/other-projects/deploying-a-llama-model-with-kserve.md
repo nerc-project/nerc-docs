@@ -193,7 +193,7 @@ Enter your token (input will not be visible):
 Add token as git credential? (Y/n)
 Token is valid (permission: write).
 Your token has been saved in your configured git credential helpers (store).
-Your token has been saved to /home/wauplin/.cache/huggingface/token
+Your token has been saved to /home/<your_username>/.cache/huggingface/token
 Login successful
 ```
 
@@ -493,8 +493,8 @@ below:
     that you can be easily accessed from outside the cluster e.g. `https://mini-llama-demo-name-of-your-project.apps.shift.nerc.mghpcc.org`.
 
 -   Get the **Authorization Token** for your deployed model by clicking on dropdown
-    *arrow icon* to the left of your deployed model name i.e. "granite". Your
-    Authorization Token is located at the "Token authentication" section under
+    *arrow icon* to the left of your deployed model name i.e. "mini-llama-demo".
+    Your Authorization Token is located at the "Token authentication" section under
     "Token secret", you can just copy the token i.e. `YOUR_BEARER_TOKEN` directly
     from the UI.
 

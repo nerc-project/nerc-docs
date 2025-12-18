@@ -16,9 +16,9 @@ Clicking on the "Add a project" button will show the interface below:
 !!! danger "Very Important: Project Title Length Limitation"
 
     Please ensure that the project title is both concise and does not exceed a
-    length of **25 characters**.
+    length of **45 characters**.
 
-PIs need to specify an appropriate title (**less than 25 characters**), description
+PIs need to specify an appropriate title (**less than 45 characters**), description
 of their research work that will be performed on the NERC (in one or two paragraphs),
 the field(s) of science or research domain(s), and then click the "Save" button.
 Once saved successfully, PIs effectively become the "manager" of the project, and

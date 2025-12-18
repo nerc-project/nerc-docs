@@ -49,7 +49,7 @@ The overall user flow can be summarized using the following sequence diagram:
     !!! danger "Very Important: Project Title Length Limitation"
 
         Please ensure that the project title is both concise and does not exceed
-        a length of **25 characters**.
+        a length of **45 characters**.
 
 5. **PI or project Manager** can request resource allocation either **NERC (OpenStack)**,
     **NERC-OCP (OpenShift)** or **NERC-OCP-EDU (OpenShift)** for the newly added

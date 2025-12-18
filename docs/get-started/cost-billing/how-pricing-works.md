@@ -313,11 +313,24 @@ You can use the daily cumulative totals to:
 
 ## Monthly Allocation Alert Emails
 
-In addition, a new *Allocation Attribute* labeled **`Monthly Allocation Cost Alert`**
-is now available to support *automated cost-alert notifications* for **PIs and Project
-Manager(s)**, helping them stay informed about potential budget overruns. To activate
-the **email notifications** , PIs or Project Manager(s) simply need to set this
-attribute on their allocation.
+In addition, a new *Allocation Attribute* labeled **Monthly Allocation Cost Alert**
+is now available to provide *automated cost alert notifications* for Project
+**PIs and Manager(s)**, as shown below:
+
+![Monthly Allocation Cost Alert](images/monthly-allocation-cost-alert.png)
+
+This attribute helps users monitor potential budget overruns by allowing them to
+set a **threshold amount in USD**. When the cumulative charges for the month
+**exceed** this value, email alerts are automatically sent to the Project
+**PIs and Manager(s)**.
+
+!!! warning "Important Note"
+
+    By default, the **`Monthly Allocation Cost Alert`** allocation attribute is
+    set to `0` for all existing allocations. In this state, **no email notifications
+    will be sent**. To enable alerts, Project **PIs or Manager(s)** must set a
+    preferred threshold value (**in USD**) for this attribute by submitting a
+    **[Change Request](../allocation/allocation-change-request.md)**.
 
 If an allocation has the `Monthly Allocation Cost Alert` attribute configured,
 ColdFront will:
@@ -325,11 +338,12 @@ ColdFront will:
 -   Monitor the total billable cost for the month to maintain better control over
     spending and ensure proper oversight.
 
--   Send alert email notifications to the PI and Project Manager(s) when the allocation's
-    monthly limit is exceeded.
+-   Send alert email notifications to the Project **PI and Manager(s)** when the
+    allocation's monthly charges exceed the configured threshold.
 
--   Ensure PIs are aware of over-usage through systematic alerts, so they don't
-    need to wait until the end of the monthly billing cycle to see the charges.
+-   Ensure Project **PIs and Manager(s)** are promptly informed of over-usage through
+    automated email alerts, eliminating the need to wait until the end of the
+    monthly billing cycle to review charges.
 
 ## How to Pay?
 

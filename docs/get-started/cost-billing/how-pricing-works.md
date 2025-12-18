@@ -248,6 +248,103 @@ how the calculation works for OpenShift and OpenStack.
     of SU) \* (time Pod was running), summed up to project level rounded up to the
     whole hour.
 
+## Where Can I View My Current Usage Invoice?
+
+Using [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/), now makes
+it easier to keep track of your daily usage charges for each allocation. A new
+allocation attribute **`Cumulative Daily Charges for Month`** is available directly
+within the *Allocation Detail* page, giving you a transparent, **day-by-day** view
+of **your monthly costs**.
+
+**Steps:**
+
+1. Log in to the [NERC ColdFront interface](https://coldfront.mss.mghpcc.org/)
+using the same institutional authentication method you used when registering with
+NERC via [RegApp](https://regapp.mss.mghpcc.org/).
+
+2. Navigate to Projects and open the project associated with your allocation.
+
+3. Select the *specific Allocation* you want to review.
+
+4. In the **Allocation Detail** page, look for the *Allocation Attribute* labeled:
+`Cumulative Daily Charges for Month` as shown below:
+
+![Cumulative Daily Charges for Month](images/cumulative-daily-charge-for-month.png)
+
+### Understanding the "Cumulative Daily Charges for Month" Attribute Format
+
+The `Cumulative Daily Charges for Month` allocation attribute stores daily running
+totals in a simple, **date-indexed (UTC)** format, along with the **total cost in
+USD**.
+
+```sh
+YYYY-MM-DD: TOTAL USD
+```
+
+Each entry reflects the **total accumulated billable charges for that month as of
+the end of that specific day**. These values are refreshed nightly by a scheduled
+**CronJob**, ensuring that the cumulative totals remain up to date.
+
+For example:
+
+```sh
+2025-12-07: 123.00 USD
+```
+
+This indicates that **as of December 7, 2025**, the total billable usage for that
+allocation for the month has reached **123.00 USD**.
+
+!!! info "Cumulative Daily Charges for Month"
+
+    The value of this quota attribute is updated nightly to incorporate the latest
+    available invoice data, ensuring daily cumulative totals remain current.
+
+### How to Use this Information
+
+You can use the daily cumulative totals to:
+
+-   Monitor your **month-to-date spending** with near real-time visibility.
+
+-   Identify any **unusual spikes or sudden changes** in usage.
+
+-   Plan workloads and **manage your budget more effectively**.
+
+-   Communicate usage patterns and trends to your **team or project members**.
+
+## Monthly Allocation Alert Emails
+
+In addition, a new *Allocation Attribute* labeled **Monthly Allocation Cost Alert**
+is now available to provide *automated cost alert notifications* for Project
+**PIs and Manager(s)**, as shown below:
+
+![Monthly Allocation Cost Alert](images/monthly-allocation-cost-alert.png)
+
+This attribute helps users monitor potential budget overruns by allowing them to
+set a **threshold amount in USD**. When the cumulative charges for the month
+**exceed** this value, email alerts are automatically sent to the Project
+**PIs and Manager(s)**.
+
+!!! warning "Important Note"
+
+    By default, the **`Monthly Allocation Cost Alert`** allocation attribute is
+    set to `0` for all existing allocations. In this state, **no email notifications
+    will be sent**. To enable alerts, Project **PIs or Manager(s)** must set a
+    preferred threshold value (**in USD**) for this attribute by submitting a
+    **[Change Request](../allocation/allocation-change-request.md)**.
+
+If an allocation has the `Monthly Allocation Cost Alert` attribute configured,
+ColdFront will:
+
+-   Monitor the total billable cost for the month to maintain better control over
+    spending and ensure proper oversight.
+
+-   Send alert email notifications to the Project **PI and Manager(s)** when the
+    allocation's monthly charges exceed the configured threshold.
+
+-   Ensure Project **PIs and Manager(s)** are promptly informed of over-usage through
+    automated email alerts, eliminating the need to wait until the end of the
+    monthly billing cycle to review charges.
+
 ## How to Pay?
 
 To ensure a comprehensive understanding of the billing process and payment options

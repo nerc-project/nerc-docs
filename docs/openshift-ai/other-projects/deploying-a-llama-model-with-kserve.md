@@ -78,17 +78,22 @@ with your operational, security, and performance requirements.
 
         ![Edit Connection Pop up](images/edit-connection.png)
 
-    -   Note both *Access key* (by clicking eye icon near the end of the textbox)
-        and *Secret key*.
+    -   Note both `Access key` (by clicking eye icon near the end of the textbox)
+        and `Secret key`.
 
     -   Once successfully initiated, click on the **minio** deployment and select
         the "Resources" tab to review created *Pods*, *Services*, and *Routes*.
 
         ![MinIO Deployemnt Resources](images/minio-deployment-resources.png)
 
-        Please note the **minio-console** route URL by navigating to the "Routes"
-        section under the _Location_ path. When you click on the **minio-console**
-        route URL, it will open the MinIO web console that looks like below:
+        The **`minio-s3`** route URL (found under "Routes" -> `minio-s3` -> _Location_
+        path) is used to interact with the MinIO API **programmatically** and will
+        serve as the `S3_ENDPOINT`. Make sure to note this **S3_ENDPOINT**, as it
+        will be required when uploading the model to the S3 (MinIO) bucket using
+        a Python script.
+
+        The **`minio-console`** route URL, also under "Routes" -> `minio-console`
+        -> _Location_, opens the MinIO web console when clicked as shown below:
 
         ![MinIO Web Console](images/minio-web-console.png)
 
@@ -227,6 +232,128 @@ hf download RedHatAI/Llama-3.2-3B-Instruct-FP8
 -   Wait for the upload to finish, this will take a while.
 
     ![Uploaded Llama Model Success](images/minio-llama-model-uploaded.png)
+
+    !!! tip "Uploading the Model to the S3 storage (MinIO) Bucket using Python Script"
+
+        You can easily upload your *locally downloaded model files* to your
+        [local S3-compatible object storage (MinIO)](#set-up-local-s3-compatible-object-storage-minio)
+        bucket using Python. Configure the Python script below with your previously
+        noted **S3_ENDPOINT**, **Access Key**, and **Secret Key**, then point it
+        to your model folder downloaded from the **Hugging Face Hub**. The following
+        Python script will automatically upload all files while preserving the
+        folder structure. Save it locally as `<script_name>.py` and run it using:
+
+        ```bash
+        python <script_name>.py
+        ```
+
+        ??? note "Python Script to Upload Model to the S3 storage (MinIO) Bucket"
+
+            ```python
+            import os
+            import boto3
+            import botocore
+
+            # ----------------- Configuration -----------------
+            ACCESS_KEY = '<ACCESS_KEY>'       # Replace with your **Access Key**
+            SECRET_KEY = '<SECRET_KEY>'       # Replace with your **Secret Key**
+            S3_ENDPOINT = '<S3_ENDPOINT>'     # Replace with your **S3_ENDPOINT**
+            REGION_NAME = 'us-east-1'
+            BUCKET_NAME = 'my-storage'  # Replace with your existing bucket where the model will be stored
+
+            if not all([ACCESS_KEY, SECRET_KEY, S3_ENDPOINT, REGION_NAME, BUCKET_NAME]):
+                raise ValueError(
+                    "One or more S3 connection variables are empty. "
+                    "Please check your S3 configuration."
+                )
+
+            # ----------------- Initialize S3 -----------------
+            session = boto3.session.Session(
+                aws_access_key_id=ACCESS_KEY,
+                aws_secret_access_key=SECRET_KEY
+            )
+
+            s3_resource = session.resource(
+                's3',
+                endpoint_url=S3_ENDPOINT,
+                region_name=REGION_NAME,
+                config=botocore.client.Config(signature_version='s3v4')
+            )
+
+            bucket = s3_resource.Bucket(BUCKET_NAME)
+
+            # ----------------- Helper Functions -----------------
+            def ensure_s3_prefix_exists(bucket, prefix: str):
+                """
+                Ensure an S3 prefix exists by creating a zero-byte object
+                if no objects already exist under the prefix.
+                """
+                prefix = prefix.rstrip("/") + "/"
+                objs = list(bucket.objects.filter(Prefix=prefix))
+                if not objs:
+                    bucket.put_object(Key=prefix)
+                    print(f"Created S3 prefix: {prefix}")
+                else:
+                    print(f"S3 prefix already exists: {prefix}")
+
+
+            def upload_file_to_s3(local_file: str, s3_prefix: str):
+                """
+                Upload a single file to S3 under the specified prefix.
+                """
+                filename = os.path.basename(local_file)
+                s3_key = os.path.join(s3_prefix, filename).replace("\\", "/")
+                print(f"Uploading {local_file} -> {s3_key}")
+                bucket.upload_file(local_file, s3_key)
+                return 1
+
+
+            def upload_directory_to_s3(local_directory: str, s3_prefix: str):
+                """
+                Upload all files from a local directory to S3 under the given prefix.
+                Preserves folder structure.
+                """
+                num_files = 0
+                for root, _, files in os.walk(local_directory):
+                    for filename in files:
+                        file_path = os.path.join(root, filename)
+                        relative_path = os.path.relpath(file_path, local_directory)
+                        s3_key = os.path.join(s3_prefix, relative_path).replace("\\", "/")
+                        print(f"Uploading {file_path} -> {s3_key}")
+                        bucket.upload_file(file_path, s3_key)
+                        num_files += 1
+                return num_files
+
+
+            def list_objects(prefix: str):
+                """List all objects under the given S3 prefix."""
+                for obj in bucket.objects.filter(Prefix=prefix):
+                    print(obj.key)
+
+
+            # ----------------- Main Logic -----------------
+            LOCAL_MODELS_DIR = "Llama-3.2-3B-Instruct-FP8"      # Replace with your source local model directory
+            S3_MODELS_PREFIX = "models/Llama-3.2-3B-Instruct-FP8"  # Replace with your destination model directory on S3
+
+            if not os.path.isdir(LOCAL_MODELS_DIR):
+                raise ValueError(
+                    f"The directory '{LOCAL_MODELS_DIR}' does not exist. "
+                    "Did you finish downloading or training the model?"
+                )
+
+            # Ensure S3 "directory" exists
+            ensure_s3_prefix_exists(bucket, S3_MODELS_PREFIX)
+
+            # Upload all model files
+            num_files_uploaded = upload_directory_to_s3(LOCAL_MODELS_DIR, S3_MODELS_PREFIX)
+
+            if num_files_uploaded == 0:
+                raise ValueError(
+                    "No files were uploaded. Did you finish saving the model to the directory?"
+                )
+
+            print(f"Successfully uploaded {num_files_uploaded} files to S3.")
+            ```
 
 ### Set up URI
 

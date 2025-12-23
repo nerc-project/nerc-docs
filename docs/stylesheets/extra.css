@@ -1,12 +1,17 @@
 .md-logo img {
     width: 68px !important;
     height: 24px !important;
+    border-radius: 0px !important;
 }
 
 .md-footer {
     background-color: rgb(228 228 228 / 87%);
     color: var(--md-footer-fg-color);
     padding: 25px 0px 25px 0px;
+}
+
+.md-footer img {
+    border-radius: 0px !important;
 }
 
 footer [class^="footer-"] {
@@ -66,6 +71,11 @@ footer .footer-center {
     top: 8%;
     left: 40%;
     /* margin: -25px 0 0 -35px; */
+}
+
+/* Apply to every <img> tag on the page */
+img {
+  border-radius: 10px; /* Adjust the pixel value for more or less rounding */
 }
 
 /* img {

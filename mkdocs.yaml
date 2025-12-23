@@ -211,8 +211,10 @@ theme:
         - content.tabs.link
 extra_css:
     - stylesheets/extra.css
+    - stylesheets/snow.css
 extra_javascript:
     - javascripts/extra.js
+    - javascripts/snow.js
 extra:
     font:
         text: Roboto

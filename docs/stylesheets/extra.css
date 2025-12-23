@@ -68,6 +68,11 @@ footer .footer-center {
     /* margin: -25px 0 0 -35px; */
 }
 
+/* Apply to every <img> tag on the page */
+img {
+  border-radius: 10px; /* Adjust the pixel value for more or less rounding */
+}
+
 /* img {
     display: block;
     float: none;

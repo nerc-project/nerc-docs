@@ -1,11 +1,12 @@
 # NERC Getting Started Index
 
-If you're just starting out, we recommend starting from [User Onboarding Process Overview](user-onboarding-on-NERC.md)
-and going through the tutorial in order.
+If you're just starting out, we recommend starting from
+[User Onboarding Process Overview](user-onboarding-on-NERC.md) and going through
+the tutorial in order.
 
 If you just need to review a specific step, you can find the page you need in
 the list below.
-                
+
 ## Cost & Billing
 
 - [How does NERC pricing work?](cost-billing/how-pricing-works.md)

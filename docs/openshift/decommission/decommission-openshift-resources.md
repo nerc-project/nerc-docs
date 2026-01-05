@@ -227,6 +227,22 @@ Please check all the resources currently being used by your project by running
     the `oc get all` command, is a **REQUIRED** resource, and so you don't need
     to clean it up.
 
+## Optional: Remove User(s) from your ColdFront Project
+
+Removing users from your ColdFront project via the [NERC's ColdFront interface](https://coldfront.mss.mghpcc.org/)
+is straightforward. Simply click the "Remove Users" button for the corresponding
+project. This will display the following interface:
+
+![Remove User(s) From A Project](images/coldfront-remove-users-from-a-project.png)
+
+PI or project managers can select the user(s) and then click on the "Remove Selected
+Users From Project" button.
+
+!!! note "Very Important"
+
+    If you remove a user (or users) from a project, they will automatically be
+    removed from all allocations they were previously assigned to within that project.
+
 ## Use ColdFront to reduce the Storage Quota to Zero
 
 Each allocation, whether requested or approved, will be billed based on the

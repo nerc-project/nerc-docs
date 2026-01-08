@@ -16,104 +16,7 @@ below.
     OpenShift CLI Tools](../logging-in/setup-the-openshift-cli.md)
     for more information.
 
-## Delete all Data Science Project resources from the NERC's Red Hat OpenShift AI
-
-Navigate to the NERC's Red Hat OpenShift AI (RHOAI) dashboard from [the NERC's
-OpenShift Web Console](https://console.apps.shift.nerc.mghpcc.org)
-via the web browser as [described here](../../openshift-ai/logging-in/access-the-rhoai-dashboard.md).
-
-Once you gain access to the NERC's RHOAI dashboard, you can click on specific Data
-Science Project (DSP) corresponding to the appropriate allocation of resources you
-want to clean up, as [described here](../../openshift-ai/data-science-project/using-projects-the-rhoai.md#selecting-your-data-science-project).
-
-The NERC RHOAI dashboard will look like the one shown below, displaying all consumed
-resources:
-
-![RHOAI Dashboard Before](images/rhoai-dashboard-before.png)
-
-### Delete all Workbenches
-
-Delete all workbenches by clicking on the three dots on the right side of the
-individual workbench and selecting **Delete workbench**, as shown below:
-
-![Delete Workbench](images/delete-workbench-rhoai.png)
-
-When prompted please confirm your workbench name and then click "Delete workbench"
-button, as shown below:
-
-![Delete Workbench Confirmation](images/delete-workbench-rhoai-confirmation.png)
-
-### Delete all Cluster Storage
-
-Delete all cluster storage by clicking on the three dots on the right side of the
-individual cluster storage and selecting **Delete storage**, as shown below:
-
-![Delete Cluster Storage Confirmation](images/cluster-storage-delete-rhoai.png)
-
-When prompted please confirm your cluster storage name and then click "Delete storage"
-button, as shown below:
-
-![Delete Cluster Storage Confirmation](images/cluster-storage-delete-rhoai-confirmation.png)
-
-### Delete all Connections
-
-Delete all Connections by clicking on the three dots on the right side of the
-individual connection and selecting **Delete connection**, as shown below:
-
-![Delete Connection](images/delete-connections-rhoai.png)
-
-When prompted please confirm your connection name and then click "Delete data
-connection" button, as shown below:
-
-![Delete Connection Confirmation](images/delete-connections-rhoai-confirmation.png)
-
-### Delete all Pipelines
-
-Delete all pipelines by clicking on the three dots on the right side of the
-Pipelines section and selecting **Delete pipeline server**, as shown below:
-
-![Delete Pipeline](images/delete-pipeline-server-rhoai.png)
-
-!!! danger "Warning"
-
-    By deleting the pipeline server will delete all of its pipelines and runs
-    from the server in your project. If you delete it, you will not be able to
-    create new pipelines or pipeline runs until you create a new pipeline server.
-
-When prompted please confirm your pipeline server name and then click
-"Delete pipeline server" button, as shown below:
-
-![Delete Pipeline Confirmation](images/delete-pipeline-server-rhoai-confirmation.png)
-
-### Delete all Models and Model Servers
-
-Delete all model servers by clicking on the three dots on the right side of the
-individual pipeline and selecting **Delete model server**, as shown below:
-
-![Delete Model Server](images/delete-model-server-rhoai.png)
-
-When prompted please confirm your model server name and then click "Delete model
-server" button, as shown below:
-
-![Delete Model Server Confirmation](images/delete-model-server-rhoai-confirmation.png)
-
-!!! note "Important Note"
-
-    Deleting Model Server will automatically delete **ALL** Models deployed on the
-    model server.
-
-Finally, the NERC RHOAI dashboard will look clean and empty without any resources,
-as shown below:
-
-![RHOAI Dashboard After](images/rhoai-dashboard-after.png)
-
-Now, you can return to **"OpenShift Web Console"** by using the application launcher
-icon (the black-and-white icon that looks like a grid), and choosing the "OpenShift
-Console" as shown below:
-
-![The NERC OpenShift Web Console Link](images/the-nerc-openshift-web-console-link.png)
-
-## Delete all resources from the NERC OpenShift
+## Delete all resources from the NERC OpenShift and OpenShift AI
 
 Run `oc login` in your local machine's terminal using your own token to authenticate
 and access all your projects on the NERC OpenShift as
@@ -195,10 +98,6 @@ Please review all resources currently being used by your project by running
 Run the `oc delete` command to delete all resource objects specified as
 parameters after `--all` within your selected project (namespace).
 
-    oc delete pod,deployment,deploymentconfig,pvc,route,service,build,buildconfig,
-    statefulset,replicaset,replicationcontroller,job,cronjob,imagestream,revision,
-    configuration,notebook --all
-
 !!! danger "Danger"
 
     The `oc delete` operation will cause all resources specfied will be deleted.
@@ -213,6 +112,27 @@ parameters after `--all` within your selected project (namespace).
 
     Make sure to backup any important data or configurations before executing this
     command to prevent accidental data loss.
+
+```sh
+oc delete pod,deployment,deploymentconfig,pvc,route,service,build,buildconfig,
+statefulset,replicaset,replicationcontroller,job,cronjob,imagestream,revision,
+configuration,notebook --all
+```
+
+!!! tip "How to Delete All Allocations on a Project at Once"
+
+    If you have multiple allocations within a ColdFront project and want to delete
+    all allocations associated with that project, you can run the following script.
+
+    ```sh
+    # pattern used for the "Allocated Project Name" attribute for the Allocation
+    # that is based on the ColdFront Project Title
+    pattern="^<your_openshift_project_to_decommission>"
+    for proj in $(oc get projects -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | grep "$pattern"); do
+        echo "deleting resources"
+        oc -n "$proj" delete pod,deployment,deploymentconfig,pvc,route,service,build,buildconfig,statefulset,replicaset,replicationcontroller,job,cronjob,imagestream,revision,configuration,notebook --all --ignore-not-found --wait=true || true
+    done
+    ```
 
 Please check all the resources currently being used by your project by running
 `oc get all`, as shown below:

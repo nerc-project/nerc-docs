@@ -796,14 +796,15 @@ as follows:
 
 2. Prepare `values.yaml` to connect the Open WebUI to the Deployed vLLM Model.
 
-    Edit the `values.yaml` file to specify your running vLLM model and external
-    endpoint and token:
+    Edit the `values.yaml` file and locate the following entries.
 
     ```yaml
-    vllmEndpoint: https://<external-url>/v1
+    vllmEndpoint: http://vllm.example.svc:8000/v1
     vllmModel: granite-3.3-2b-instruct
     vllmToken: ""
     ```
+
+    Update them to specify your running external endpoint, vLLM model, and token:
 
     For e.g.:
 

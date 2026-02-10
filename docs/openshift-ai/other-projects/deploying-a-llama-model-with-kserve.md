@@ -421,6 +421,19 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
         oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct
         ```
 
+        In the **Additional serving runtime arguments** field under **Configuration
+        parameters** section, specify the following recommended arguments:
+
+        ```yaml
+        --dtype=half
+        --max-model-len=20000
+        --gpu-memory-utilization=0.95
+        --enable-chunked-prefill
+        --enable-auto-tool-choice
+        --tool-call-parser=llama3_json
+        --chat-template=/app/data/template/tool_chat_template_llama3.2_json.jinja
+        ```
+
     However, note that all these images are compiled for the **x86 architecture**.
     If you're targeting ARM, you'll need to rebuild these images on an ARM machine,
     as demonstrated in **[this guide](https://pandeybk.medium.com/serving-vllm-and-granite-models-on-arm-with-red-hat-openshift-ai-0178adba550e)**.
@@ -531,6 +544,14 @@ and **Maximum replicas** set to `1`, and the **Model server size** is set to `Me
 
 Choose `NVIDIA A100 GPU` as the **Accelerator**, with the **Number of accelerators**
 set to `1`.
+
+!!! warning "How to Use the NVIDIA V100 GPU Accelerator to Reduce Costs?"
+
+    You can use the **NVIDIA V100 GPU** to reduce costs when deploying your model.  
+    To do this, make sure you select the **Serving Runtime** as
+    `(V100 Support) vLLM NVIDIA GPU ServingRuntime for KServe`, which is customized
+    to support the NVIDIA V100 GPU architecture. Then, choose **NVIDIA A100 GPU**
+    as the **Accelerator** and set the **Number of accelerators** to `1`.
 
 At this point, ensure that both
 **Make deployed models available through an external route** and
@@ -775,13 +796,22 @@ as follows:
 
 2. Prepare `values.yaml` to connect the Open WebUI to the Deployed vLLM Model.
 
-    Edit the `values.yaml` file to specify your running vLLM model and external
-    endpoint and token:
+    Edit the `values.yaml` file and locate the following entries.
 
     ```yaml
     vllmEndpoint: http://vllm.example.svc:8000/v1
     vllmModel: granite-3.3-2b-instruct
     vllmToken: ""
+    ```
+
+    Update them to specify your running external endpoint, vLLM model, and token:
+
+    For e.g.:
+
+    ```yaml
+    vllmEndpoint: https://mini-llama-demo-<your-namespace>.apps.shift.nerc.mghpcc.org/v1
+    vllmModel: mini-llama-demo
+    vllmToken: "<YOUR_BEARER_TOKEN>"
     ```
 
 3. Install **Helm chart**.

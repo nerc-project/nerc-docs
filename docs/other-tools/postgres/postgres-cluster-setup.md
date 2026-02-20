@@ -300,7 +300,7 @@ Let's create the `pgAdmin` database browser.
 -   Create a secret for pgAdmin password:
 
     ```sh
-    export PGADMIN_PASSWORD='mypgadminpassword' #pragma: allowlist secret
+    export PGADMIN_PASSWORD='<your-pgadmin-password>'
     ```
 
 -   Create a secret for pgAdmin password:

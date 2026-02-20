@@ -300,7 +300,7 @@ Let's create the `pgAdmin` database browser.
 -   Create a secret for pgAdmin password:
 
     ```sh
-    export PGADMIN_PASSWORD='mypgadminpassword'
+    export PGADMIN_PASSWORD='mypgadminpassword' #pragma: allowlist secret
     ```
 
 -   Create a secret for pgAdmin password:
@@ -397,12 +397,12 @@ Let's create the `pgAdmin` database browser.
 
     Browse to the retrieved `pgAdmin` URL in your web browser to access the database
     explorer.
-    
+
     ![pgAdmin Database Explorer](images/pgadmin-database-explorer.png)
-    
+
     Use the following credentials to log in to the `pgAdmin` database explorer:
 
-    **username:** admin@example.com
+    **username:** <admin@example.com>
 
     **password:** $PGADMIN_PASSWORD
 
@@ -488,7 +488,7 @@ have been following along with the example, you can delete your cluster by simpl
 running:
 
 ```sh
-oc delete postgrescluster hippo-pg 
+oc delete postgrescluster hippo-pg
 ```
 
 This removes the *PostgresCluster* resource and all associated components managed

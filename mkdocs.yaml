@@ -184,6 +184,7 @@ nav:
           - MLflow:
                 - MLflow Overview: other-tools/mlflow/mlflow-overview.md
                 - MLflow Server Setup: other-tools/mlflow/mlflow-server-setup.md
+          - PostgresSQL Cluster: other-tools/postgres/postgres-cluster-setup.md
           - Setup NFS Server and Client: other-tools/nfs/nfs-server-client-setup.md
 theme:
     name: material

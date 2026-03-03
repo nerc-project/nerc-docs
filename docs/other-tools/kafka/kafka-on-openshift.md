@@ -60,8 +60,8 @@ namespace.
     For example:
 
     ```sh
-    oc login https://api.shift.nerc.mghpcc.org:6443
-    oc project ds551-kafka
+    oc login https://api.edu.nerc.mghpcc.org:6443
+    oc project ds551-2026-spring-9ab13b
     ```
 
 -   Download the Strimzi installation YAML files. Always check the
@@ -69,7 +69,7 @@ namespace.
     for the latest version:
 
     ```sh
-    STRIMZI_VERSION="0.45.0"
+    STRIMZI_VERSION="0.50.1"
     wget https://github.com/strimzi/strimzi-kafka-operator/releases/download/${STRIMZI_VERSION}/strimzi-${STRIMZI_VERSION}.tar.gz
     tar -xzf strimzi-${STRIMZI_VERSION}.tar.gz
     cd strimzi-${STRIMZI_VERSION}
@@ -80,20 +80,26 @@ namespace.
         Check the [Strimzi compatibility matrix](https://strimzi.io/downloads/) to
         confirm the Strimzi version supports the Kafka version and Kubernetes/OpenShift
         version running on NERC. Mismatched versions can prevent the operator from
-        starting.
+        starting. For Kafka 4.0+, use Strimzi 0.50.0 or later.
 
 -   Update the installation files to use your project namespace. Replace all
     occurrences of `myproject` with your actual namespace:
 
     ```sh
-    sed -i 's/namespace: .*/namespace: <your-project>/' install/cluster-operator/*RoleBinding*.yaml
+    sed -i '' 's/namespace: .*/namespace: <your-project>/' install/cluster-operator/*RoleBinding*.yaml
     ```
 
     For example:
 
     ```sh
-    sed -i 's/namespace: .*/namespace: ds551-kafka/' install/cluster-operator/*RoleBinding*.yaml
+    sed -i '' 's/namespace: .*/namespace: ds551-2026-spring-9ab13b/' install/cluster-operator/*RoleBinding*.yaml
     ```
+
+    !!! important "Make sure to update the namespace"
+
+        The `-n <your-project>` flag explicitly specifies the namespace for all
+        subsequent `oc` commands. Always include this flag when working with multiple
+        projects to avoid accidentally operating on the wrong namespace.
 
 -   Apply the Strimzi Cluster Operator installation files:
 
@@ -121,13 +127,33 @@ namespace.
 ### Create a Kafka Cluster
 
 Once the Strimzi Operator is running, you can deploy a Kafka cluster by creating
-a `Kafka` custom resource.
+a `Kafka` custom resource and a `KafkaNodePool` resource.
 
--   Create a file named `kafka-cluster.yaml` with the following minimal cluster
-    definition. This deploys a single-broker Kafka cluster with 3 ZooKeeper replicas
-    and ephemeral (non-persistent) storage suitable for development and testing:
+!!! warning "Important: KafkaNodePool is Required"
+
+    As of Kafka 4.0+, Strimzi uses `KafkaNodePool` to define broker and controller nodes.
+    Both resources must be created together. The `KafkaNodePool` should define at least
+    one node pool with both `broker` and `controller` roles for KRaft mode operation.
+    Without a KafkaNodePool, the Kafka cluster will not deploy.
+
+-   Create a file named `kafka-cluster.yaml` with the Kafka cluster definition:
 
     ```yaml
+    apiVersion: kafka.strimzi.io/v1
+    kind: KafkaNodePool
+    metadata:
+      name: dual-role
+      namespace: <your-project>
+      labels:
+        strimzi.io/cluster: my-cluster
+    spec:
+      replicas: 1
+      roles:
+        - broker
+        - controller
+      storage:
+        type: ephemeral
+    ---
     apiVersion: kafka.strimzi.io/v1beta2
     kind: Kafka
     metadata:
@@ -135,8 +161,7 @@ a `Kafka` custom resource.
       namespace: <your-project>
     spec:
       kafka:
-        version: 3.8.0
-        replicas: 1
+        version: 4.1.1
         listeners:
           - name: plain
             port: 9092
@@ -152,12 +177,6 @@ a `Kafka` custom resource.
           transaction.state.log.min.isr: 1
           default.replication.factor: 1
           min.insync.replicas: 1
-        storage:
-          type: ephemeral
-      zookeeper:
-        replicas: 3
-        storage:
-          type: ephemeral
       entityOperator:
         topicOperator: {}
         userOperator: {}
@@ -165,12 +184,16 @@ a `Kafka` custom resource.
 
     !!! warning "Very Important Note"
 
-        This configuration uses `ephemeral` storage, meaning all Kafka data will
-        be lost if pods restart. For persistent storage across pod restarts, change
-        the `storage` type to `persistent-claim` and specify a `size` and
-        `storageClass`. See the
-        [Strimzi storage documentation](https://strimzi.io/docs/operators/latest/full/deploying.html#type-EphemeralStorage-reference)
-        for details.
+        - Kafka 4.0+ requires `KafkaNodePool` with both `broker` and `controller` roles
+          for KRaft (Kraft Raft) consensus mode operation.
+        - This configuration uses `ephemeral` storage, meaning all Kafka data will
+          be lost if pods restart. For persistent storage across pod restarts, change
+          the `storage` type to `persistent-claim` and specify a `size` and
+          `storageClass`. See the
+          [Strimzi storage documentation](https://strimzi.io/docs/operators/latest/full/deploying.html#type-EphemeralStorage-reference)
+          for details.
+        - Make sure the `KafkaNodePool` metadata includes the label `strimzi.io/cluster: my-cluster`
+          to link it to the Kafka resource.
 
 -   Apply the Kafka cluster definition:
 
@@ -189,12 +212,16 @@ a `Kafka` custom resource.
 
     ```
     NAME                                          READY   STATUS    RESTARTS   AGE
+    my-cluster-dual-role-0                        1/1     Running   0          3m
     my-cluster-entity-operator-6d7f9c7d4b-xqtlp   2/2     Running   0          2m
-    my-cluster-kafka-0                             1/1     Running   0          3m
-    my-cluster-zookeeper-0                         1/1     Running   0          4m
-    my-cluster-zookeeper-1                         1/1     Running   0          4m
-    my-cluster-zookeeper-2                         1/1     Running   0          4m
     ```
+
+    !!! note "Note about Kafka 4.0+ Differences"
+
+        In Kafka 4.0+:
+        - There are **no ZooKeeper pods**. The broker manages its own metadata using KRaft.
+        - Pod names follow the pattern `<cluster-name>-<nodepool-name>-<id>`.
+        - With this single-node setup using `dual-role`, you'll see pods named `my-cluster-dual-role-0`.
 
 ### Create a Kafka Topic
 
@@ -237,30 +264,60 @@ a `Kafka` custom resource.
 
 ## Test the Kafka Cluster
 
-Strimzi ships with example producer and consumer jobs you can use to verify your
-cluster is working correctly.
+Strimzi ships with pre-built container images with Kafka command-line tools that
+you can use to verify your cluster is working correctly.
+
+!!! note "API Deprecation Warnings"
+
+    You may see deprecation warnings about Kafka API versions during deployment and testing.
+    These are safe to ignore. The deprecation warnings occur because the v1beta2 API version
+    is being phased out in favor of v1. Your cluster will still function correctly.
 
 ### Run a Producer
 
--   Start a producer pod that sends 100 messages to `my-topic`:
+The producer tool lets you send messages to a Kafka topic. In interactive mode, you can
+type messages directly:
+
+-   Start a producer pod in interactive mode:
 
     ```sh
     oc run kafka-producer -ti \
-      --image=quay.io/strimzi/kafka:0.45.0-kafka-3.8.0 \
+      --image=quay.io/strimzi/kafka:0.50.1-kafka-4.1.1 \
       --rm=true --restart=Never \
-      -- bin/kafka-console-producer.sh \
-      --bootstrap-server my-cluster-kafka-bootstrap:9092 \
-      --topic my-topic
+      -n <your-project> \
+      -- bash -c 'bin/kafka-console-producer.sh \
+        --bootstrap-server my-cluster-kafka-bootstrap:9092 \
+        --topic my-topic'
     ```
 
--   Type a few test messages at the prompt and press `Enter` after each:
+    The `-ti` flags enable **interactive terminal mode**, which allows you to type messages
+    at a prompt. The `--rm=true` flag automatically removes the pod after it exits.
+
+-   At the prompt, type test messages and press `Enter` after each one:
 
     ```
     > Hello from NERC OpenShift!
     > This is a Kafka test message.
     ```
 
-    Press `Ctrl+C` to stop the producer.
+    Press `Ctrl+C` to stop the producer and exit.
+
+    !!! warning "Important: Interactive Mode (`-ti --rm`)"
+
+        The `-ti --rm` flags work together to create an interactive session that automatically
+        cleans up the pod. Do not use these flags in scripts or CI/CD pipelines—instead,
+        pipe your messages to stdin or use a heredoc. For example:
+
+        ```sh
+        echo -e "message1\nmessage2" | oc run kafka-producer \
+          --image=quay.io/strimzi/kafka:0.50.1-kafka-4.1.1 \
+          --restart=Never \
+          -n <your-project> \
+          -i \
+          -- bin/kafka-console-producer.sh \
+            --bootstrap-server my-cluster-kafka-bootstrap:9092 \
+            --topic my-topic
+        ```
 
 ### Run a Consumer
 
@@ -268,12 +325,13 @@ cluster is working correctly.
 
     ```sh
     oc run kafka-consumer -ti \
-      --image=quay.io/strimzi/kafka:0.45.0-kafka-3.8.0 \
+      --image=quay.io/strimzi/kafka:0.50.1-kafka-4.1.1 \
       --rm=true --restart=Never \
-      -- bin/kafka-console-consumer.sh \
-      --bootstrap-server my-cluster-kafka-bootstrap:9092 \
-      --topic my-topic \
-      --from-beginning
+      -n <your-project> \
+      -- bash -c 'bin/kafka-console-consumer.sh \
+        --bootstrap-server my-cluster-kafka-bootstrap:9092 \
+        --topic my-topic \
+        --from-beginning'
     ```
 
     You should see the messages published by the producer:
@@ -287,7 +345,7 @@ cluster is working correctly.
 
     !!! tip "Consumer Groups"
 
-        To simulate multiple consumers sharing a topic workload, add the flag
+        To test multiple consumers sharing a topic workload, add the flag
         `--group <group-name>` to the consumer command. Each consumer in the same
         group will receive messages from a distinct subset of partitions.
 
@@ -339,8 +397,11 @@ When you are finished, remove all Kafka resources to free up project quota:
 # Delete the Kafka topic
 oc delete kafkatopic my-topic -n <your-project>
 
-# Delete the Kafka cluster (also removes ZooKeeper and Entity Operator pods)
+# Delete the Kafka cluster (also removes Entity Operator pods)
 oc delete kafka my-cluster -n <your-project>
+
+# If using KafkaNodePool (in some configurations), delete it as well
+oc delete kafkanodepool dual-role -n <your-project> 2>/dev/null || true
 
 # Remove the Strimzi Operator
 oc delete -f install/cluster-operator/ -n <your-project>

@@ -3,25 +3,26 @@
 ## Apache Kafka Overview
 
 [Apache Kafka](https://kafka.apache.org/) is a distributed event streaming platform
-capable of handling trillions of events per day. Originally developed at LinkedIn and
-open-sourced in 2011, Kafka is designed for high-throughput, fault-tolerant, and
-scalable real-time data pipelines and streaming applications.
+capable of handling trillions of events per day. Originally developed at LinkedIn
+and open-sourced in 2011, Kafka is designed for high-throughput, fault-tolerant,
+and scalable real-time data pipelines and streaming applications.
 
 Kafka uses a **publish-subscribe** model organized around the following core concepts:
 
 - **Broker**: A Kafka server that stores and serves messages.
-- **Topic**: A named stream to which producers publish records and from which consumers
-  read records.
+- **Topic**: A named stream to which producers publish records and from which
+  consumers read records.
 - **Partition**: Topics are split into partitions for parallelism and fault tolerance.
 - **Producer**: A client application that publishes records to one or more topics.
 - **Consumer**: A client application that subscribes to topics and processes records.
-- **Consumer Group**: A group of consumers that collectively consume a topic, with each
-  partition assigned to exactly one member.
+- **Consumer Group**: A group of consumers that collectively consume a topic, with
+  each partition assigned to exactly one member.
 
 Running Kafka on [NERC OpenShift](https://nerc-project.github.io/nerc-docs/openshift/)
 is the recommended approach for course workloads requiring persistent, scalable message
-streaming. This guide uses the **[Strimzi Operator](https://strimzi.io/)**, which is
-the standard Kubernetes-native method for deploying Kafka on OpenShift.
+streaming. This guide uses the **[Strimzi Operator](https://strimzi.io/)**,
+which is the standard Kubernetes-native method for deploying Kafka on OpenShift
+on NERC.
 
 ## Prerequisites
 
@@ -115,7 +116,7 @@ namespace.
 
     The output should look similar to:
 
-    ```
+    ```text
     NAME                                        READY   STATUS    RESTARTS   AGE
     strimzi-cluster-operator-7d96bf8c59-kfzwp   1/1     Running   0          45s
     ```
@@ -210,7 +211,7 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
 
     A healthy cluster will show output similar to:
 
-    ```
+    ```text
     NAME                                          READY   STATUS    RESTARTS   AGE
     my-cluster-dual-role-0                        1/1     Running   0          3m
     my-cluster-entity-operator-6d7f9c7d4b-xqtlp   2/2     Running   0          2m
@@ -257,7 +258,7 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
 
     Expected output:
 
-    ```
+    ```text
     NAME       CLUSTER      PARTITIONS   REPLICATION FACTOR   READY
     my-topic   my-cluster   3            1                    True
     ```
@@ -275,8 +276,8 @@ you can use to verify your cluster is working correctly.
 
 ### Run a Producer
 
-The producer tool lets you send messages to a Kafka topic. In interactive mode, you can
-type messages directly:
+The producer tool lets you send messages to a Kafka topic. In interactive mode,
+you can type messages directly:
 
 -   Start a producer pod in interactive mode:
 
@@ -290,12 +291,13 @@ type messages directly:
         --topic my-topic'
     ```
 
-    The `-ti` flags enable **interactive terminal mode**, which allows you to type messages
-    at a prompt. The `--rm=true` flag automatically removes the pod after it exits.
+    The `-ti` flags enable **interactive terminal mode**, which allows you to type
+    messages at a prompt. The `--rm=true` flag automatically removes the pod after
+    it exits.
 
 -   At the prompt, type test messages and press `Enter` after each one:
 
-    ```
+    ```text
     > Hello from NERC OpenShift!
     > This is a Kafka test message.
     ```
@@ -304,8 +306,9 @@ type messages directly:
 
     !!! warning "Important: Interactive Mode (`-ti --rm`)"
 
-        The `-ti --rm` flags work together to create an interactive session that automatically
-        cleans up the pod. Do not use these flags in scripts or CI/CD pipelines—instead,
+        The `-ti --rm` flags work together to create an interactive session that
+        automatically cleans up the pod. Do not use these flags in scripts or
+        CI/CD pipelines—instead,
         pipe your messages to stdin or use a heredoc. For example:
 
         ```sh
@@ -336,7 +339,7 @@ type messages directly:
 
     You should see the messages published by the producer:
 
-    ```
+    ```text
     Hello from NERC OpenShift!
     This is a Kafka test message.
     ```
@@ -354,7 +357,7 @@ type messages directly:
 Applications running inside the same OpenShift project can reach the Kafka broker
 using the internal bootstrap address:
 
-```
+```text
 my-cluster-kafka-bootstrap:9092   # plaintext (no TLS)
 my-cluster-kafka-bootstrap:9093   # TLS
 ```

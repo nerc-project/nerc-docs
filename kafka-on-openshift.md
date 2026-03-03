@@ -412,3 +412,5 @@ oc delete -f install/cluster-operator/ -n <your-project>
     Deleting the Kafka cluster with ephemeral storage permanently destroys all
     messages stored in that cluster. Make sure you have consumed or exported any
     data you need before running these commands.
+
+---

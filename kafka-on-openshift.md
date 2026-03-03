@@ -152,7 +152,8 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
         - broker
         - controller
       storage:
-        type: ephemeral
+        type: persistent-claim
+        size: 1Gi
     ---
     apiVersion: kafka.strimzi.io/v1beta2
     kind: Kafka
@@ -186,11 +187,10 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
 
         - Kafka 4.0+ requires `KafkaNodePool` with both `broker` and `controller` roles
           for KRaft (Kraft Raft) consensus mode operation.
-        - This configuration uses `ephemeral` storage, meaning all Kafka data will
-          be lost if pods restart. For persistent storage across pod restarts, change
-          the `storage` type to `persistent-claim` and specify a `size` and
-          `storageClass`. See the
-          [Strimzi storage documentation](https://strimzi.io/docs/operators/latest/full/deploying.html#type-EphemeralStorage-reference)
+        - This configuration uses persistent storage (1Gi) suitable for testing and demo purposes.
+          For production or larger workloads, increase the `size` value or use a specific `storageClass`.
+          See the
+          [Strimzi storage documentation](https://strimzi.io/docs/operators/latest/full/deploying.html#type-PersistentClaimStorage-reference)
           for details.
         - Make sure the `KafkaNodePool` metadata includes the label `strimzi.io/cluster: my-cluster`
           to link it to the Kafka resource.

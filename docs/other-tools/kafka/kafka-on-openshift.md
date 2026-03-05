@@ -3,11 +3,10 @@
 ## Apache Kafka Overview
 
 [Apache Kafka](https://kafka.apache.org/) is a distributed event streaming platform
-capable of handling trillions of events per day. Originally developed at LinkedIn
-and open-sourced in 2011, Kafka is designed for high-throughput, fault-tolerant,
-and scalable real-time data pipelines and streaming applications.
+capable of handling high-throughput, fault-tolerant streaming workloads. Kafka is
+designed for real-time data pipelines and streaming applications.
 
-Kafka uses a **publish-subscribe** model organized around the following core concepts:
+Core concepts:
 
 - **Broker**: A Kafka server that stores and serves messages.
 - **Topic**: A named stream to which producers publish records and from which
@@ -15,127 +14,44 @@ Kafka uses a **publish-subscribe** model organized around the following core con
 - **Partition**: Topics are split into partitions for parallelism and fault tolerance.
 - **Producer**: A client application that publishes records to one or more topics.
 - **Consumer**: A client application that subscribes to topics and processes records.
-- **Consumer Group**: A group of consumers that collectively consume a topic, with
-  each partition assigned to exactly one member.
+- **Consumer Group**: A group of consumers that collectively consume a topic.
 
 Running Kafka on [NERC OpenShift](https://nerc-project.github.io/nerc-docs/openshift/)
-is the recommended approach for course workloads requiring persistent, scalable message
-streaming. This guide uses the **[Strimzi Operator](https://strimzi.io/)**,
-which is the standard Kubernetes-native method for deploying Kafka on OpenShift
-on NERC.
+is accomplished using the **Strimzi Operator**, which is the standard Kubernetes-native
+method for deploying Kafka on OpenShift.
 
 ## Prerequisites
 
-Before proceeding, ensure you have:
+For this guide, you will need:
 
-- Access to a [NERC OpenShift project](https://nerc-project.github.io/nerc-docs/openshift/logging-in/access-the-openshift-web-console/)
-- The `oc` CLI installed and authenticated to the NERC OpenShift cluster
-- Sufficient quota in your project (at least 3 vCPUs and 6 GiB memory recommended
-  for a minimal Kafka cluster)
+- Access to a NERC OpenShift project with Kafka already deployed
+  (provided by your instructor)
+- The bootstrap server address and CA certificate credentials
+  (provided by your instructor)
+- Your `TEAM_ID` (for authentication to the Kafka broker)
+- The `oc` CLI installed (optional, only if you want to inspect the
+  cluster status)
 
-!!! note "Checking Your Quota"
+!!! note "Kafka Infrastructure is Pre-Deployed"
 
-    You can view your project's resource quota by running:
+    The Strimzi Operator is already installed cluster-wide on NERC OpenShift.
+    You do **not** need to install the operator yourself. However, you **will**
+    need to create your own Kafka cluster and topics in your project namespace
+    using the provided YAML manifests below.
 
-    ```sh
-    oc describe quota -n <your-project>
-    ```
+## Create a Kafka Cluster
 
-    If you need additional resources, contact your project PI or NERC support.
-
-## Deploy Kafka Using the Strimzi Operator
-
-Strimzi provides a Kubernetes Operator that manages the full lifecycle of Kafka
-clusters on OpenShift. On NERC OpenShift, you will install Strimzi into your own
-namespace.
-
-### Install the Strimzi Operator
-
--   Log in to the NERC OpenShift cluster and switch to your project namespace:
-
-    ```sh
-    oc login <your-openshift-api-url>
-    oc project <your-project>
-    ```
-
-    For example:
-
-    ```sh
-    oc login https://api.edu.nerc.mghpcc.org:6443
-    oc project ds551-2026-spring-9ab13b
-    ```
-
--   Download the Strimzi installation YAML files. Always check the
-    [Strimzi releases page](https://github.com/strimzi/strimzi-kafka-operator/releases)
-    for the latest version:
-
-    ```sh
-    STRIMZI_VERSION="0.50.1"
-    wget https://github.com/strimzi/strimzi-kafka-operator/releases/download/${STRIMZI_VERSION}/strimzi-${STRIMZI_VERSION}.tar.gz
-    tar -xzf strimzi-${STRIMZI_VERSION}.tar.gz
-    cd strimzi-${STRIMZI_VERSION}
-    ```
-
-    !!! warning "Very Important Note"
-
-        Check the [Strimzi compatibility matrix](https://strimzi.io/downloads/) to
-        confirm the Strimzi version supports the Kafka version and Kubernetes/OpenShift
-        version running on NERC. Mismatched versions can prevent the operator from
-        starting. For Kafka 4.0+, use Strimzi 0.50.0 or later.
-
--   Update the installation files to use your project namespace. Replace all
-    occurrences of `myproject` with your actual namespace:
-
-    ```sh
-    sed -i '' 's/namespace: .*/namespace: <your-project>/' install/cluster-operator/*RoleBinding*.yaml
-    ```
-
-    For example:
-
-    ```sh
-    sed -i '' 's/namespace: .*/namespace: ds551-2026-spring-9ab13b/' install/cluster-operator/*RoleBinding*.yaml
-    ```
-
-    !!! important "Make sure to update the namespace"
-
-        The `-n <your-project>` flag explicitly specifies the namespace for all
-        subsequent `oc` commands. Always include this flag when working with multiple
-        projects to avoid accidentally operating on the wrong namespace.
-
--   Apply the Strimzi Cluster Operator installation files:
-
-    ```sh
-    oc apply -f install/cluster-operator/ -n <your-project>
-    ```
-
--   Verify the operator pod is running:
-
-    ```sh
-    oc get pods -n <your-project> -l name=strimzi-cluster-operator
-    ```
-
-    The output should look similar to:
-
-    ```text
-    NAME                                        READY   STATUS    RESTARTS   AGE
-    strimzi-cluster-operator-7d96bf8c59-kfzwp   1/1     Running   0          45s
-    ```
-
-    !!! note "Note"
-
-        It may take 1–2 minutes for the operator pod to reach `Running` status.
-
-### Create a Kafka Cluster
-
-Once the Strimzi Operator is running, you can deploy a Kafka cluster by creating
-a `Kafka` custom resource and a `KafkaNodePool` resource.
+Once the Strimzi Operator is available (which it is cluster-wide), you can deploy
+a Kafka cluster in your project namespace by creating a `Kafka` custom resource
+and a `KafkaNodePool` resource.
 
 !!! warning "Important: KafkaNodePool is Required"
 
-    As of Kafka 4.0+, Strimzi uses `KafkaNodePool` to define broker and controller nodes.
-    Both resources must be created together. The `KafkaNodePool` should define at least
-    one node pool with both `broker` and `controller` roles for KRaft mode operation.
-    Without a KafkaNodePool, the Kafka cluster will not deploy.
+    As of Kafka 4.0+, Strimzi uses `KafkaNodePool` to define broker and controller
+    nodes. Both resources must be created together. The `KafkaNodePool` should
+    define at least one node pool with both `broker` and `controller` roles for
+    KRaft mode operation. Without a KafkaNodePool, the Kafka cluster will not
+    deploy.
 
 -   Create a file named `kafka-cluster.yaml` with the Kafka cluster definition:
 
@@ -156,7 +72,7 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
         type: persistent-claim
         size: 1Gi
     ---
-    apiVersion: kafka.strimzi.io/v1beta2
+    apiVersion: kafka.strimzi.io/v1
     kind: Kafka
     metadata:
       name: my-cluster
@@ -186,15 +102,13 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
 
     !!! warning "Very Important Note"
 
-        - Kafka 4.0+ requires `KafkaNodePool` with both `broker` and `controller` roles
-          for KRaft (Kraft Raft) consensus mode operation.
-        - This configuration uses persistent storage (1Gi) suitable for testing and demo purposes.
-          For production or larger workloads, increase the `size` value or use a specific `storageClass`.
-          See the
-          [Strimzi storage documentation](https://strimzi.io/docs/operators/latest/full/deploying.html#type-PersistentClaimStorage-reference)
-          for details.
-        - Make sure the `KafkaNodePool` metadata includes the label `strimzi.io/cluster: my-cluster`
-          to link it to the Kafka resource.
+        - Kafka 4.0+ requires `KafkaNodePool` with both `broker` and `controller`
+          roles for KRaft (Kraft Raft) consensus mode operation.
+        - This configuration uses persistent storage (1Gi) suitable for testing
+          and demo purposes. For production or larger workloads, increase the
+          `size` value or use a specific `storageClass`.
+        - Make sure the `KafkaNodePool` metadata includes the label
+          `strimzi.io/cluster: my-cluster` to link it to the Kafka resource.
 
 -   Apply the Kafka cluster definition:
 
@@ -220,16 +134,19 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
     !!! note "Note about Kafka 4.0+ Differences"
 
         In Kafka 4.0+:
-        - There are **no ZooKeeper pods**. The broker manages its own metadata using KRaft.
-        - Pod names follow the pattern `<cluster-name>-<nodepool-name>-<id>`.
-        - With this single-node setup using `dual-role`, you'll see pods named `my-cluster-dual-role-0`.
+        - There are **no ZooKeeper pods**. The broker manages its own metadata
+          using KRaft.
+        - Pod names follow the pattern
+          `<cluster-name>-<nodepool-name>-<id>`.
+        - With this single-node setup using `dual-role`, you'll see pods named
+          `my-cluster-dual-role-0`.
 
-### Create a Kafka Topic
+## Create a Kafka Topic
 
 -   Create a file named `kafka-topic.yaml`:
 
     ```yaml
-    apiVersion: kafka.strimzi.io/v1beta2
+    apiVersion: kafka.strimzi.io/v1
     kind: KafkaTopic
     metadata:
       name: my-topic
@@ -262,8 +179,6 @@ a `Kafka` custom resource and a `KafkaNodePool` resource.
     NAME       CLUSTER      PARTITIONS   REPLICATION FACTOR   READY
     my-topic   my-cluster   3            1                    True
     ```
-
-## Test the Kafka Cluster
 
 Strimzi ships with pre-built container images with Kafka command-line tools that
 you can use to verify your cluster is working correctly.
@@ -394,7 +309,8 @@ for msg in consumer:
 
 ## Clean Up Resources
 
-When you are finished, remove all Kafka resources to free up project quota:
+When you are finished, remove all Kafka resources from your namespace to free
+up project quota:
 
 ```sh
 # Delete the Kafka topic
@@ -405,9 +321,6 @@ oc delete kafka my-cluster -n <your-project>
 
 # If using KafkaNodePool (in some configurations), delete it as well
 oc delete kafkanodepool dual-role -n <your-project> 2>/dev/null || true
-
-# Remove the Strimzi Operator
-oc delete -f install/cluster-operator/ -n <your-project>
 ```
 
 !!! danger "Very Important Note"
@@ -415,5 +328,8 @@ oc delete -f install/cluster-operator/ -n <your-project>
     Deleting the Kafka cluster with ephemeral storage permanently destroys all
     messages stored in that cluster. Make sure you have consumed or exported any
     data you need before running these commands.
+
+    Do **not** delete the Strimzi Operator itself—it is cluster-wide and shared
+    by all namespaces.
 
 ---

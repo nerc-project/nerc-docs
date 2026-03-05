@@ -24,10 +24,13 @@ method for deploying Kafka on OpenShift.
 
 For this guide, you will need:
 
-- Access to a NERC OpenShift project with Kafka already deployed (provided by your instructor)
-- The bootstrap server address and CA certificate credentials (provided by your instructor)
+- Access to a NERC OpenShift project with Kafka already deployed
+  (provided by your instructor)
+- The bootstrap server address and CA certificate credentials
+  (provided by your instructor)
 - Your `TEAM_ID` (for authentication to the Kafka broker)
-- The `oc` CLI installed (optional, only if you want to inspect the cluster status)
+- The `oc` CLI installed (optional, only if you want to inspect the
+  cluster status)
 
 !!! note "Kafka Infrastructure is Pre-Deployed"
 
@@ -164,5 +167,29 @@ for msg in consumer:
     created automatically by Strimzi. It is only reachable from within the same
     project namespace. If you need external access, configure a `route` or
     `loadbalancer` type listener in the Kafka CR.
+
+## Clean Up Resources
+
+When you are finished, remove all Kafka resources to free up project quota:
+
+```sh
+# Delete the Kafka topic
+oc delete kafkatopic my-topic -n <your-project>
+
+# Delete the Kafka cluster (also removes Entity Operator pods)
+oc delete kafka my-cluster -n <your-project>
+
+# If using KafkaNodePool (in some configurations), delete it as well
+oc delete kafkanodepool dual-role -n <your-project> 2>/dev/null || true
+
+# Remove the Strimzi Operator
+oc delete -f install/cluster-operator/ -n <your-project>
+```
+
+!!! danger "Very Important Note"
+
+    Deleting the Kafka cluster with ephemeral storage permanently destroys all
+    messages stored in that cluster. Make sure you have consumed or exported any
+    data you need before running these commands.
 
 ---

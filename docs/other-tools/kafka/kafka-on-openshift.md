@@ -72,7 +72,7 @@ and a `KafkaNodePool` resource.
         type: persistent-claim
         size: 1Gi
     ---
-    apiVersion: kafka.strimzi.io/v1beta2
+    apiVersion: kafka.strimzi.io/v1
     kind: Kafka
     metadata:
       name: my-cluster
@@ -146,7 +146,7 @@ and a `KafkaNodePool` resource.
 -   Create a file named `kafka-topic.yaml`:
 
     ```yaml
-    apiVersion: kafka.strimzi.io/v1beta2
+    apiVersion: kafka.strimzi.io/v1
     kind: KafkaTopic
     metadata:
       name: my-topic

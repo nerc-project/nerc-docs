@@ -185,11 +185,13 @@ run as shown below:
 
 !!! tip "Troubleshooting: Private Container Registries"
 
-    Repositories on **GitHub Container Registry (GHCR)**, **Quay.io**, and
-    **Docker Hub** are often **private by default**. If your pipeline fails
-    to pull an **Private** registry image, ensure you have either changed the
-    repository visibility to **Public** or configured OpenShift to authenticate
-    with the **Private** registry as [described here](#how-to-deploy-private-container-images-to-openshift).
+    Repositories on **GitHub Container Registry (GHCR)**, **quay.io**, and **docker.io**
+    are often **private by default**. This means that when you push an image for
+    the first time, you may need to change its visibility to **Public** for the
+    pipeline to work successfully. If your pipeline fails to pull an image from
+    a **private registry**, ensure that you have either set the repository visibility
+    to **Public** or configured **OpenShift** to authenticate with the private
+    registry, as described [here](#how-to-deploy-private-container-images-to-openshift).
 
 #### 11. Verify Deployed App in NERC OpenShift Console
 

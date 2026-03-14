@@ -189,7 +189,7 @@ run as shown below:
     **Docker Hub** are often **private by default**. If your pipeline fails
     to pull an **Private** registry image, ensure you have either changed the
     repository visibility to **Public** or configured OpenShift to authenticate
-    with the registry as [described here](#how-to-deploy-private-container-images-to-openshift).
+    with the **Private** registry as [described here](#how-to-deploy-private-container-images-to-openshift).
 
 #### 11. Verify Deployed App in NERC OpenShift Console
 

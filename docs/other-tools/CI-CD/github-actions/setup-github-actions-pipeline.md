@@ -74,8 +74,8 @@ To create a fork of the example `simple-node-app` repository:
 
     !!! tip "Unselect Copy the `main` branch only Option"
 
-        When forking the repository, make sure to **unselect the
-        "Copy the `main` branch only" option**. If this option is left enabled,
+        When forking the repository, make sure to **unselect the "Copy the `main`
+        branch only" option**. If this option is left enabled (**selected by default**),
         only the default `main` branch will be copied, and other branches - such
         as `with_pvc`, which contains important CI/CD workflows for using a
         **Persistent Volume Claim (PVC)** - will not be included.
@@ -188,7 +188,7 @@ file if the default values are not suitable for your project.
 Optionally edit the build-image step to build your project:
 
 The default build type uses a Dockerfile at the root of the repository,
-but can be replaced with a different file, a source-to-image (S2i) build, or
+but can be replaced with a different file, a source-to-image (S2I) build, or
 a step-by-step [buildah](https://buildah.io/) build.
 
 #### 10. Commit and Push Workflow to Trigger Pipeline

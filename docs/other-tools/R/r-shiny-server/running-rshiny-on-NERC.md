@@ -64,6 +64,23 @@ To create a fork of the example `rshiny-testapp` repository:
 
     ![How to Fork Github Repo](images/rshiny-repo-fork-github.png)
 
+    !!! tip "Deploying R Shiny App Using GitHub Actions CI/CD"
+
+        When forking the repository, make sure to **unselect the "Copy the `main`
+        branch only" option**. If this option is left enabled (**selected by default**),
+        only the default `main` branch will be copied, and other branches - such
+        as `rshiny_with_ci_cd`, which contains important CI/CD workflows using
+        **GitHub Actions** with support for a **Persistent Volume Claim (PVC)**
+        - will not be included.
+
+        ![Unselect Copy the `main` branch only Option](images/rshiny-repo-fork-github-all-branches.png)
+
+        Unselecting this option ensures that **all branches are copied**, preserving
+        the complete repository history and structure needed for proper development
+        and deployment. This is especially important if you plan to deploy your
+        **R Shiny application to your OpenShift project using GitHub Actions CI/CD**,
+        as described in [Deploying R Shiny app using GitHub Actions CI/CD](../../CI-CD/github-actions/setup-github-actions-pipeline.md#deploy-an-application-to-your-nerc-openshift-project).
+
 Clone your forked _rshiny-testapp_ git repository:
 
 ```sh

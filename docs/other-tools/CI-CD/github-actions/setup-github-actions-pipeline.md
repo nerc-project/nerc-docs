@@ -72,6 +72,21 @@ To create a fork of the example `simple-node-app` repository:
 
     ![How to Fork Github Repo](images/github-repo-fork.png)
 
+    !!! tip "Unselect Copy the `main` branch only Option"
+
+        When forking the repository, make sure to **unselect the
+        "Copy the `main` branch only" option**. If this option is left enabled,
+        only the default `main` branch will be copied, and other branches - such
+        as `with_pvc`, which contains important CI/CD workflows for using a
+        **Persistent Volume Claim (PVC)** - will not be included.
+
+        ![Unselect Copy the `main` branch only Option](images/github-repo-fork-all-branches.png)
+
+        Unselecting this option ensures that **all branches are copied**, preserving
+        the complete repository history and structure needed for proper development
+        and deployment. This is especially important if you plan to follow the
+        optional PVC setup described in [Step 5](#5-clone-your-forked-simple-node-app-repo-optional-pvc-setup).
+
 #### 5. Clone Your Forked `simple-node-app` Repo (Optional PVC Setup)
 
 Clone your forked _simple-node-app_ git repository:

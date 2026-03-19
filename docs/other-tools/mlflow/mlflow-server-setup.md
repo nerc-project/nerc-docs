@@ -236,9 +236,20 @@ as shown below:
 
 !!! info "Very Important"
 
-    There are ways we can improve this setup - for example, by adding basic
-    authentication to the MLflow GUI to ensure that only authorized users can
-    access it.
+    There are ways we can improve this setup—for example, by adding basic
+    authentication to the MLflow GUI so that only authorized users can
+    access it. You can use the [`mlflow-with-oauth` branch](https://github.com/nerc-project/llm-on-nerc/tree/mlflow-with-oauth/mlflow) to enable MLflow with the
+    [OpenShift OAuth server](https://github.com/openshift/oauth-proxy).
+
+    Securing the MLflow interface is strongly recommended, especially in
+    multi-user or shared cluster environments. Without authentication,
+    experiment metadata, model artifacts, and potentially sensitive
+    configuration details may be visible to anyone who can reach the service
+    endpoint. By integrating with the OpenShift OAuth, you can rely on your
+    existing institutional identity and access controls, ensuring that only
+    approved users can log in, track experiments, and manage runs. This not
+    only improves security but also makes it easier to audit and attribute
+    changes to specific users.
 
 For more details, refer to this [documentation](https://github.com/nerc-project/llm-on-nerc/blob/main/mlflow/README.md).
 

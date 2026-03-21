@@ -253,7 +253,13 @@ PostgreSQL database:
 -   **jdbc-uri**: A [PostgreSQL JDBC connection URI](https://jdbc.postgresql.org/documentation/use/)
     for connecting via a JDBC driver.
 
-### Connect via `psql` in the local Terminal
+### PostgreSQL Connection Methods
+
+These options describe different ways to connect to your PostgreSQL cluster, whether
+directly via the `psql` command-line tool, through a secure port-forwarding setup,
+or using a graphical interface like `pgAdmin` as explained below:
+
+#### Connect via `psql` in the local Terminal
 
 If you are on the same network as your PostgreSQL cluster, you can connect directly
 to it using the following command:
@@ -262,7 +268,7 @@ to it using the following command:
 psql $(oc get secrets hippo-pg-pguser-postgres -o go-template='{{.data.uri | base64decode}}')
 ```
 
-### Connect Using a Port-Forward
+#### Connect Using a Port-Forward
 
 To access PostgreSQL Cluster without public exposure, you can use port forwarding
 to the cluster's primary pod - on port `5432`:
@@ -290,7 +296,7 @@ PGDATABASE=$(oc get secrets "${PG_CLUSTER_USER_SECRET_NAME}" -o go-template='{{.
 psql -h localhost -p 5432
 ```
 
-### Connecting With `pgAdmin`
+#### Connecting With `pgAdmin`
 
 Crunchy Postgres for Kubernetes also provides a `pgAdmin` image for users who
 prefer working with a graphical user interface.
@@ -467,7 +473,12 @@ shown below:
 
 ![Connection Successful](images/pgadmin.png)
 
-### Deleting the `pgAdmin`
+### Cleanup Process
+
+These steps outline how to remove deployed PostgreSQL resources, including deleting
+the `pgAdmin` interface and removing the PostgreSQL cluster, as explained below:
+
+#### Deleting the `pgAdmin`
 
 If `pgAdmin` was created as a *PGAdmin* custom resource, you can delete it by running:
 
@@ -481,7 +492,7 @@ If `pgAdmin` was exposed with a *Route*, you can also delete the route:
 oc delete route route-pgadmin
 ```
 
-### Delete the Postgres Cluster
+#### Delete the Postgres Cluster
 
 There comes a time when it is necessary to delete your Postgres Cluster. If you
 have been following along with the example, you can delete your cluster by simply

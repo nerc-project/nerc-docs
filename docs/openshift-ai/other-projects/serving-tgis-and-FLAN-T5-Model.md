@@ -18,7 +18,7 @@
 
 At a high level, we will:
 
--   Download a model from Huggingface
+-   Download a model from Hugging Face
 
 -   Deploy the model by using single-model serving with a serving runtime
 
@@ -337,5 +337,11 @@ in disconnected OpenShift AI environments involves the following steps:
 
 This process ensures that AI workloads run seamlessly in restricted or disconnected
 environments, allowing you to securely leverage validated and optimized AI models.
+
+!!! tip "Hugging Face Text Generation Inference (TGI) Standalone Setup"
+
+    Alternatively, you can set up Hugging Face Text Generation Inference (TGI)
+    directly in your OpenShift project instead of using RHOAI. For detailed setup
+    instructions and configuration, refer to the guide [here](https://github.com/nerc-project/llm-on-nerc/blob/main/llm-servers/hf-tgi/README.md).
 
 ---

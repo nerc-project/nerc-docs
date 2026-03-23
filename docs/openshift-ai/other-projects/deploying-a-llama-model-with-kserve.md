@@ -430,8 +430,8 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
         --gpu-memory-utilization=0.95
         --enable-chunked-prefill
         --enable-auto-tool-choice
-        --tool-call-parser=llama3_json
-        --chat-template=/app/data/template/tool_chat_template_llama3.2_json.jinja
+        --tool-call-parser=granite
+        --chat-template=/app/data/template/tool_chat_template_granite.jinja
         ```
 
     However, note that all these images are compiled for the **x86 architecture**.
@@ -583,6 +583,15 @@ section, specify the following recommended arguments:
 **Ensure it appears as follows:**
 
 ![URI Connection Config](images/uri-connection-config.png)
+
+!!! tip "Important Note"
+
+    This setup creates a "generic" Serving Runtime for **Function Calling**, allowing
+    you to customize additional **Serving Runtime** arguments depending on the model
+    used.
+
+    For additional details about template models and using Function Calling, check
+    the [vLLM Function Calling documentation](https://docs.vllm.ai/en/latest/features/tool_calling/#automatic-function-calling).
 
 When you are ready to deploy your model, select the **Deploy** button.
 

@@ -204,8 +204,17 @@ component.
             specify the model path. For more information, see known issue [RHOAIENG-3025](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html-single/release_notes/index#known-issues_RHOAIENG-3025_relnotes)
             in the OpenShift AI release notes.
 
-    -   **Optional**: Customize the runtime parameters in the Configuration parameters
+    -   **Optional**: Customize runtime settings in the **Configuration Parameters**
         section.
+
+        **Configuration Parameters**: Adjust runtime behavior using the **Additional
+        Serving Runtime Arguments** field. However, **no arguments are required
+        by default**.
+
+        **Additional Serving Runtime Arguments**: These parameters define how the
+        deployed model operates. Any changes apply only to the current deployment.
+        You can also review the **Predefined Arguments** for the selected serving
+        runtime. To override any of them, provide a new value in this field.
 
     After adding and selecting options within the **Deploy model** pop-up window,
     click **Deploy** to create the model server.

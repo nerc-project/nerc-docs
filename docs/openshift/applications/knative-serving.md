@@ -188,33 +188,33 @@ spec:
 **For example,** we are going to deploy a *Knative Serving service*, see its use
 of Configuration and Revision.
 
-=== "Using the Knative CLI"
+> **Using the Knative CLI**
 
-    ```sh
-    kn service create test-webapp \
-      --annotation-service serving.knative.openshift.io/enablePassthrough=true \
-      --env RESPONSE="Hello Serverless!" \
-      --image docker.io/openshift/hello-openshift
-    ```
+```sh
+kn service create test-webapp \
+  --annotation-service serving.knative.openshift.io/enablePassthrough=true \
+  --env RESPONSE="Hello Serverless!" \
+  --image docker.io/openshift/hello-openshift
+```
 
-=== "Using YAML"
+> **Using YAML**
 
-    ```yaml
-    apiVersion: serving.knative.dev/v1
-    kind: Service
-    metadata:
-      name: test-webapp
-      annotations:
-        serving.knative.openshift.io/enablePassthrough: 'true'
+```yaml
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: test-webapp
+  annotations:
+    serving.knative.openshift.io/enablePassthrough: 'true'
+spec:
+  template:
     spec:
-      template:
-        spec:
-          containers:
-            - image: docker.io/openshift/hello-openshift
-              env:
-                - name: RESPONSE
-                  value: "Hello Serverless!"
-    ```
+      containers:
+        - image: docker.io/openshift/hello-openshift
+          env:
+            - name: RESPONSE
+              value: "Hello Serverless!"
+```
 
 The OpenShift Web Console will display the Knative Service (`KSVC`) as shown below:
 
@@ -259,65 +259,62 @@ Applying the application service configuration from the previous step creates a
 route, service, revision, and other resources managed by Knative Serving. You can
 verify these components using the following command:
 
-=== "Using the Knative CLI"
+> **Using the Knative CLI**
 
-    **Service:**
+**Service:**
 
-    ```sh
-    kn service list
-    ```
+```sh
+kn service list
+```
 
-    **Output:**
+**Output:**
 
-    ```sh
-    NAME          URL                                                               LATEST              AGE     CONDITIONS   READY   REASON
-    test-webapp   https://test-webapp-<your-namespace>.apps.shift.nerc.mghpcc.org   test-webapp-00001   3m16s   3 OK / 3     True
-    ```
+```sh
+NAME          URL                                                               LATEST              AGE   CONDITIONS   READY   REASON
+test-webapp   https://test-webapp-<your-namespace>.apps.shift.nerc.mghpcc.org   test-webapp-00001   3m16s   3 OK 3     True
+```
 
-    **Revisions:**
+**Revisions:**
 
-    ```sh
-    kn revision list
-    ```
+```sh
+kn revision list
+```
 
-    **Output:**
+**Output:**
 
-    ```sh
-    NAME                SERVICE       TRAFFIC   TAGS   GENERATION   AGE     CONDITIONS   READY   REASON
-    test-webapp-00001   test-webapp   100%             1            3m17s   4 OK / 4     True
-    ```
+```sh
+NAME                SERVICE       TRAFFIC   TAGS   GENERATION   AGE     CONDITIONS   READY   REASON
+test-webapp-00001   test-webapp   100%             1            3m17s   4 OK / 4     True
+```
 
-=== "Using YAML"
+> **Using YAML**
 
-    **Service:**
+**Service:**
 
-    ```sh
-    oc get serving
-    ```
+```sh
+oc get serving
+```
 
-    **Output:**
+**Output:**
 
-    ```sh
-    NAME                                    URL                                                               READY   REASON
-    route.serving.knative.dev/test-webapp   https://test-webapp-<your-namespace>.apps.shift.nerc.mghpcc.org   True
+```sh
+NAME                                    URL                                                               READY   REASON
+route.serving.knative.dev/test-webapp   https://test-webapp-<your-namespace>.apps.shift.nerc.mghpcc.org   Tru
+NAME                                            LATESTCREATED       LATESTREADY         READY   REASON
+configuration.serving.knative.dev/test-webapp   test-webapp-00001   test-webapp-00001   Tru
+NAME                                             CONFIG NAME   GENERATION   READY   REASON   ACTUAL REPLICAS   DESIREREPLICAS
+revision.serving.knative.dev/test-webapp-00001   test-webapp   1            True             0  
+NAME                                      URL                                                             LATESTCREATED       LATESTREADY         READY   REASON
+service.serving.knative.dev/test-webapp   https://test-webapp-<your-namespace>.apps.shift.nerc.mghpcc.org test-webapp-00001   test-webapp-00001   True
+```
 
-    NAME                                            LATESTCREATED       LATESTREADY         READY   REASON
-    configuration.serving.knative.dev/test-webapp   test-webapp-00001   test-webapp-00001   True
+**Revisions:**
 
-    NAME                                             CONFIG NAME   GENERATION   READY   REASON   ACTUAL REPLICAS   DESIRED REPLICAS
-    revision.serving.knative.dev/test-webapp-00001   test-webapp   1            True             0                 0
-
-    NAME                                      URL                                                               LATESTCREATED       LATESTREADY         READY   REASON
-    service.serving.knative.dev/test-webapp   https://test-webapp-<your-namespace>.apps.shift.nerc.mghpcc.org   test-webapp-00001   test-webapp-00001   True
-    ```
-
-    **Revisions:**
-
-    ```sh
-    oc get rev \
-      --selector=serving.knative.dev/service=test-webapp \
-      --sort-by="{.metadata.creationTimestamp}"
-    ```
+```sh
+oc get rev \
+  --selector=serving.knative.dev/service=test-webapp \
+  --sort-by="{.metadata.creationTimestamp}"
+```
 
 **4. Invoke Service:**
 
@@ -356,18 +353,18 @@ Hello Serverless!
 
 Delete the resources that were created after testing successful:
 
-=== "Using the Knative CLI"
+> **Using the Knative CLI**
 
-    ```sh
-    kn service delete test-webapp
-    ```
+```sh
+kn service delete test-webapp
+```
 
-=== "Using YAML"
+> **Using YAML**
 
-    ```sh
-    oc delete deployment/curl
-    oc delete ksvc/test-webapp
-    ```
+```sh
+oc delete deployment/curl
+oc delete ksvc/test-webapp
+```
 
 ### Creating a service using offline mode
 
@@ -453,64 +450,64 @@ This enables compute resources to be used strictly on an **as-needed basis**.
 For example, to specify a minimum of **1 pod** and a maximum of **3 pods**, add
 the following syntax:
 
-=== "Using the Knative CLI"
+> **Using the Knative CLI**
 
-    ```sh
-    kn service create <service_name> --image <image_uri> --scale-min 1 --scale-max 3
-    ```
+```sh
+kn service create <service_name> --image <image_uri> --scale-min 1 --scale-max 3
+```
 
-=== "Using YAML"
+> **Using YAML**
 
-    ```yaml
-    ...
-    spec:
-      template:
-        metadata:
-          ...
-          annotations:
-            autoscaling.Knative.dev/min-scale: "1"
-            autoscaling.knative.dev/max-scale: "3"
-            ...
-    ...
-    ```
+```yaml
+...
+spec:
+  template:
+    metadata:
+      ...
+      annotations:
+        autoscaling.Knative.dev/min-scale: "1"
+        autoscaling.knative.dev/max-scale: "3"
+        ...
+...
+```
 
 When testing, add the annotations to set `min-scale` to `1`, so the pod **never**
 shuts down. This lets you more easily access logs or open a terminal to examine
 the state of your function container.
 
-=== "Using the Knative CLI"
+> **Using the Knative CLI**
 
-    ```sh
-    kn service create test-webapp \
-      --annotation-service serving.knative.openshift.io/enablePassthrough=true \
-      --env RESPONSE="Hello Serverless!" \
-      --image docker.io/openshift/hello-openshift \
-      --scale-min 1 \
-      --scale-max 3
-    ```
+```sh
+kn service create test-webapp \
+  --annotation-service serving.knative.openshift.io/enablePassthrough=true \
+  --env RESPONSE="Hello Serverless!" \
+  --image docker.io/openshift/hello-openshift \
+  --scale-min 1 \
+  --scale-max 3
+```
 
-=== "Using YAML"
+> **Using YAML**
 
-    ```yaml
-    apiVersion: serving.knative.dev/v1
-    kind: Service
+```yaml
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: test-webapp
+  annotations:
+    serving.knative.openshift.io/enablePassthrough: 'true'
+spec:
+  template:
     metadata:
-      name: test-webapp
       annotations:
-        serving.knative.openshift.io/enablePassthrough: 'true'
+        autoscaling.Knative.dev/min-scale: "1"
+        autoscaling.knative.dev/max-scale: "3"
     spec:
-      template:
-        metadata:
-          annotations:
-            autoscaling.Knative.dev/min-scale: "1"
-            autoscaling.knative.dev/max-scale: "3"
-        spec:
-          containers:
-            - image: docker.io/openshift/hello-openshift
-              env:
-                - name: RESPONSE
-                  value: "Hello Serverless!"
-    ```
+      containers:
+        - image: docker.io/openshift/hello-openshift
+          env:
+            - name: RESPONSE
+              value: "Hello Serverless!"
+```
 
 ### Concurrency
 
@@ -525,25 +522,25 @@ handle at a given time. It can be configured as either a soft limit or a hard li
     `kn service` command with the appropriate flags, as shown below where the
     concurrency target is set to **50 requests**.
 
-    === "Using the Knative CLI"
+    > **Using the Knative CLI**
 
-        ```sh
-        kn service create <service_name> --image <image_uri> --concurrency-target 50
-        ```
+    ```sh
+    kn service create <service_name> --image <image_uri> --concurrency-target 50
+    ```
 
-    === "Using YAML"
+    > **Using YAML**
 
-        ```yaml
-        ...
-        spec:
-          template:
-            metadata:
-              ...
-              annotations:
-                autoscaling.knative.dev/target: "50"
-                ...
-        ...
-        ```
+    ```yaml
+    ...
+    spec:
+      template:
+        metadata:
+          ...
+          annotations:
+            autoscaling.knative.dev/target: "50"
+            ...
+    ...
+    ```
 
 -   **Hard limit**: A strictly enforced maximum number of concurrent requests. Once
     the limit is reached, additional requests are queued until capacity becomes
@@ -553,24 +550,24 @@ handle at a given time. It can be configured as either a soft limit or a hard li
     the `containerConcurrency` spec, or by using the `kn service` command with the
     correct flags, as shown below where the concurrency limit is set to **50 requests**.
 
-    === "Using the Knative CLI"
+    > **Using the Knative CLI**
 
-        ```sh
-        kn service create <service_name> --image <image_uri> --concurrency-limit 50
-        ```
+    ```sh
+    kn service create <service_name> --image <image_uri> --concurrency-limit 50
+    ```
 
-    === "Using YAML"
+    > **Using YAML**
 
-        ```yaml
+    ```yaml
+    ...
+    spec:
+      template:
         ...
         spec:
-          template:
-            ...
-            spec:
-              containerConcurrency: 50
-              ...
-        ...
-        ```
+          containerConcurrency: 50
+          ...
+    ...
+    ```
 
 ## Traffic splitting
 

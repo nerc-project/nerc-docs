@@ -83,7 +83,7 @@ Before proceeding, ensure you have:
 
 ## Create a Kafka Cluster
 
-Once the Strimzi Operator is available (which it is cluster-wide), you can deploy
+As the **Strimzi Operator** is available (which it is cluster-wide), you can deploy
 a Kafka cluster in your project namespace by creating a `Kafka` custom resource
 and a `KafkaNodePool` resource.
 
@@ -111,7 +111,7 @@ and a `KafkaNodePool` resource.
         - controller
         - broker
       storage:
-        type: ephemeral
+        type: ephemeral # Recommended for development only
         size: 1Gi
     ---
     apiVersion: kafka.strimzi.io/v1
@@ -372,8 +372,32 @@ oc delete kafkanodepool dual-role -n <your-project-namespace> 2>/dev/null || tru
 
 !!! danger "Very Important Note"
 
-    Deleting the Kafka cluster with ephemeral storage permanently destroys all
-    messages stored in that cluster. Make sure you have consumed or exported any
-    data you need before running these commands.
+    Deleting a Kafka cluster configured with **ephemeral storage** permanently removes
+    all messages in that cluster. Ensure you have consumed or backed up any required
+    data before proceeding.
+
+    To create a **persistent Kafka cluster**, use **persistent-claim storage**:
+
+    Persistent Volume Claims (PVCs) use Storage Classes (or the cluster default)
+    to dynamically provision and bind durable storage to Kafka brokers.
+
+    Strimzi allows you to specify the Storage Class, enabling the use of network
+    or local persistent volumes.
+
+    Example configuration:
+
+    ```yaml
+    ...
+    apiVersion: kafka.strimzi.io/v1
+    kind: KafkaNodePool
+    ...
+    spec:
+      ...
+      storage:
+        type: persistent-claim  # Use Persistent Volume Claims
+        size: 1Gi               # Storage per broker
+        # class: "premium-storage"  # Optional StorageClass
+    ...
+    ```
 
 ---

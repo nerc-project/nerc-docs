@@ -11,6 +11,8 @@ on your NERC OpenStack.
 
 To get started, you will need to clone the repository using:
 
+> **<https://github.com/nerc-project/terraform-nerc-r-shiny>**
+
 ```sh
 git clone https://github.com/nerc-project/terraform-nerc-r-shiny.git
 ```
@@ -59,6 +61,8 @@ To get started, fork the `rshiny-testapp` App in your own Github account.
 To create a fork of the example `rshiny-testapp` repository:
 
 -   Go to [https://github.com/nerc-project/rshiny-testapp](https://github.com/nerc-project/rshiny-testapp).
+
+    > **<https://github.com/nerc-project/rshiny-testapp>**
 
 -   Click the "Fork" button to create a fork in your own GitHub account, e.g. "`https://github.com/<github_username>/rshiny-testapp`".
 
@@ -135,6 +139,8 @@ initiates and deploys a Shiny application from that template.
 An OpenShift template file, `rshiny-server-template.yaml`, is available within the
 [Git Repository](https://github.com/nerc-project/rshiny-testapp) under the
 `openshift` directory.
+
+> **<https://github.com/nerc-project/rshiny-testapp>**
 
 !!! note "More about Writing Templates"
 

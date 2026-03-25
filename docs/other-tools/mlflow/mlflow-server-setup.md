@@ -30,7 +30,9 @@ S3 bucket is required.
 
 ### Deployment procedure
 
-1. **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc.git).
+1. **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc).
+
+    > **<https://github.com/nerc-project/llm-on-nerc>**
 
     To get started, clone the repository using:
 

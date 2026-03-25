@@ -133,6 +133,8 @@ On the toolbar, click the Git Clone icon:
 
 Enter the following **Git Repo URL**: [https://github.com/nerc-project/llm-on-nerc](https://github.com/nerc-project/llm-on-nerc)
 
+> **<https://github.com/nerc-project/llm-on-nerc>**
+
 Check the Include submodules option, and then click Clone.
 
 ![Clone A Repo](images/clone-a-repo.png)

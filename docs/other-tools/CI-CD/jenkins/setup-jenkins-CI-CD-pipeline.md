@@ -234,6 +234,8 @@ To create a fork of the example `nodeapp` repository:
 
 1.  Go to [https://github.com/nerc-project/nodeapp](https://github.com/nerc-project/nodeapp).
 
+    > **<https://github.com/nerc-project/nodeapp>**
+
 2.  Click the "Fork" button to create a fork in your own GitHub account, e.g. "`https://github.com/<github_username>/nodeapp`".
 
     ![How to Fork Github Repo](images/github-repo-fork.png)

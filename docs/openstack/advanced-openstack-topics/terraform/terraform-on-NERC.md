@@ -30,6 +30,8 @@ To get started, clone the repository using:
 git clone https://github.com/nerc-project/terraform-nerc.git
 ```
 
+> **<https://github.com/nerc-project/terraform-nerc>**
+
 Then run this base template for terraform to provision some basic NERC's OpenStack
 resources within this repo.
 
@@ -45,6 +47,8 @@ To get started, clone the repository using:
 ```sh
 git clone https://github.com/nerc-project/terraform-nerc-r-shiny.git
 ```
+
+> **<https://github.com/nerc-project/terraform-nerc-r-shiny>**
 
 Then you can run this template locally using terraform to provision
 [R Shiny server](https://www.rstudio.com/products/shiny/shiny-server/) on NERC's

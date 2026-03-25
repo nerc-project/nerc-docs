@@ -623,6 +623,8 @@ On the toolbar, click the Git Clone icon:
 
 Enter the following **Git Repo URL**: [https://github.com/nerc-project/object-detection](https://github.com/nerc-project/object-detection)
 
+> **<https://github.com/nerc-project/object-detection>**
+
 Check the Include submodules option, and then click Clone.
 
 ![Clone A Repo](images/clone-a-repo.png)

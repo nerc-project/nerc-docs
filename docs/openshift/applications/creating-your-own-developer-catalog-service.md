@@ -8,6 +8,8 @@ the RStudio server from that template.
 This example template file is readily accessible from the
 [Git Repository](https://github.com/nerc-project/rstudio-testapp).
 
+> **<https://github.com/nerc-project/rstudio-testapp>**
+
 To get started, clone the repository using:
 
 ```sh

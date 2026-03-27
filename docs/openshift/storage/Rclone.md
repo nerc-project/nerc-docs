@@ -62,7 +62,9 @@ is mature, open-source software originally inspired by **rsync** and written in 
 
 #### Steps
 
-1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift.git).
+1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/rclone-web-on-openshift).
+
+    > **<https://github.com/nerc-project/rclone-web-on-openshift>**
 
     To get started, clone the repository using:
 

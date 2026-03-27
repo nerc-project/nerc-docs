@@ -59,7 +59,9 @@ tasks using both the web console and the command-line tool.
 
     -    **Option 3:** Using the DevFile that is found in the Git Repo.
 
-    In the **Git Repo URL** text box, enter your git repo url. For example: `https://github.com/myuser/mypublicrepo.git`.
+    In the **Git Repo URL** text box, enter your git repo url. For example: `https://github.com/<github_username>/mypublicrepo`.
+
+    > **`https://github.com/<github_username>/mypublicrepo`**
 
     !!! tip "Best Practices for Container Permissions in OpenShift"
 
@@ -117,9 +119,11 @@ the following command:
 
 iii. If you want to create an application from an existing Git repository, you can
 use the `--code` flag to specify the URL of the repository. For example:
-`oc new-app --code https://github.com/myuser/mypublicrepo`. If you want to use a
-different name, you can add the `--name=<newname>` argument to the `oc new-app` command.
-For example: `oc new-app --name=mytestapp https://github.com/myuser/mypublicrepo`.
+`oc new-app --code https://github.com/<github_username>/mypublicrepo`. If you want
+to use a different name, you can add the `--name=<newname>` argument to the
+`oc new-app` command.
+
+For example: `oc new-app --name=mytestapp https://github.com/<github_username>/mypublicrepo`.
 The platform will try to automatically [detect the programming language](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/building_applications/creating-applications#language-detection_creating-applications-using-cli)
 of the application code and select the latest version of the base language image
 available. If `oc new-app` can't find any suitable Source-To-Image (S2I) builder
@@ -128,7 +132,7 @@ language or detects the wrong one, you can always specify the image you want to 
 as part of the new-app argument, with `oc new-app <image url>~<git url>`. If it is
 using a test application based on Node.js, we could use the same command as before
 but add `nodejs~` before the URL of the Git repository.
-For example: `oc new-app nodejs~https://github.com/myuser/mypublicrepo`.
+For example: `oc new-app nodejs~https://github.com/<github_username>/mypublicrepo`.
 
 !!! note "Important Note"
 

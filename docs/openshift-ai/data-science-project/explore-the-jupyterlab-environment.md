@@ -39,7 +39,7 @@ panel, where you can create and manage your project directories.
     For detailed guidance on using notebooks on NERC RHOAI JupyterLab, please
     refer to [this documentation](../data-science-project/explore-the-jupyterlab-environment.md#working-with-notebooks).
 
-## Clone a Git repository
+## Clone a GitHub Repository
 
 You can clone a Git repository in JupyterLab through the left-hand **toolbar** or
 the **Git** menu option in the main menu as shown below:
@@ -57,6 +57,8 @@ Then click on **Clone a Repository** as shown below:
 
 Enter the git repository URL, which points to the end-to-end ML workflows demo
 project i.e. [https://github.com/nerc-project/nerc_rhoai_mlops](https://github.com/nerc-project/nerc_rhoai_mlops).
+
+> **<https://github.com/nerc-project/nerc_rhoai_mlops>**
 
 Then click **Clone** button, as shown below:
 

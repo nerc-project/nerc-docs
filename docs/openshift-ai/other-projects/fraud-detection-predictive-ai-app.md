@@ -705,6 +705,8 @@ On the toolbar, click the Git Clone icon:
 
 Enter the following **Git Repo URL**: [https://github.com/nerc-project/fraud-detection](https://github.com/nerc-project/fraud-detection)
 
+> **<https://github.com/nerc-project/fraud-detection>**
+
 Check the Include submodules option, and then click Clone.
 
 ![Clone A Repo](images/clone-a-repo.png)
@@ -1454,6 +1456,8 @@ on the page and select the "Import from Git" option from the **Add to Project**
 menu as shown below:
 
 ![Import from Git - Right-click](images/Import_from_Git-right-click.png)
+
+> **<https://github.com/nerc-project/fraud-detection>**
 
 In the "Git Repo URL" enter: `https://github.com/nerc-project/fraud-detection` (this
 is the same repository you [pulled into RHOAI earlier](#importing-the-tutorial-files-into-the-jupyter-environment)).

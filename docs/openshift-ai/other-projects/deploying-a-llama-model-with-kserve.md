@@ -794,7 +794,9 @@ curl -k -X POST https://<external-url>/v1/chat/completions \
 For a more user-friendly experience, integrate with [Open WebUI](https://docs.openwebui.com/)
 as follows:
 
-1. **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc.git).
+1. **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc).
+
+    > **<https://github.com/nerc-project/llm-on-nerc>**
 
     To get started, clone the repository using:
 

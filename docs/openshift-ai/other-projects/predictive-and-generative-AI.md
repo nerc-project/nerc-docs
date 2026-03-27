@@ -62,7 +62,7 @@ On NERC, we offer various solutions to handle LLM serving.
 
     #### As a Standalone Deployment
 
-    In [this repository](https://github.com/nerc-project/llm-on-nerc.git), you
+    In [this repository](https://github.com/nerc-project/llm-on-nerc), you
     will find:
 
     - **Deployment Recipes** for various LLM servers as standalone deployments.

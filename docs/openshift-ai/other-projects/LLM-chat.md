@@ -8,7 +8,7 @@ the GGML project, a general-purpose tensor library.
 The library includes command-line tools as well as a server featuring a simple
 web interface.
 
-## Standalone Deployment of `llama.cpp` Model Server
+## A Standalone Deployment of `llama.cpp` Model Server
 
 -   **Prerequisites**:
 
@@ -17,7 +17,9 @@ web interface.
 
 ### Deployment Steps
 
-1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc.git).
+1.  **Clone** or navigate to [this repository](https://github.com/nerc-project/llm-on-nerc).
+
+    > **<https://github.com/nerc-project/llm-on-nerc>**
 
     To get started, clone the repository using:
 

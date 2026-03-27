@@ -67,6 +67,8 @@ To create a fork of the example `simple-node-app` repository:
 
 -   Go to [https://github.com/nerc-project/simple-node-app](https://github.com/nerc-project/simple-node-app).
 
+    > **<https://github.com/nerc-project/simple-node-app>**
+
 -   Click the "Fork" button to create a fork in your own GitHub account, e.g.
     "`https://github.com/<github_username>/simple-node-app`".
 
@@ -108,7 +110,7 @@ cd simple-node-app
     ```
 
     This branch includes the necessary
-    **[GitHub Actions workflow file](https://github.com/<github_username>/simple-node-app/blob/with_pvc/.github/workflows/openshift.yml)**
+    **[GitHub Actions workflow file](`https://github.com/<github_username>/simple-node-app/blob/with_pvc/.github/workflows/openshift.yml`)**
     for mounting a PVC inside the container so that data can be
     **persisted across pod restarts and container rebuilds**.
 

@@ -127,6 +127,8 @@ control plane.
 
 -   Clone the _Kubespray_ git repository:
 
+    > **<https://github.com/kubernetes-sigs/kubespray>**
+
     ```sh
     git clone https://github.com/kubernetes-sigs/kubespray.git
     cd kubespray

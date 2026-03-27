@@ -38,6 +38,8 @@ the list below.
 
 - [Configure a Jupyter Notebook to use GPUs for AI/ML modeling](other-projects/configure-jupyter-notebook-use-gpus-aiml-modeling.md)
 
+- [Connect to RHOAI Workbench Kernel from local VS Code](other-projects/connect-vscode-to-rhoai-wb.md)
+
 ## Predictive & Generative AI on NERC
 
 - [Predictive & Generative AI (LLM & RAG) in Action](other-projects/predictive-and-generative-AI.md)

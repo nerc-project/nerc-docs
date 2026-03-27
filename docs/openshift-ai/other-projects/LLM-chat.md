@@ -8,7 +8,7 @@ the GGML project, a general-purpose tensor library.
 The library includes command-line tools as well as a server featuring a simple
 web interface.
 
-## Standalone Deployment of `llama.cpp` Model Server
+## A Standalone Deployment of `llama.cpp` Model Server
 
 -   **Prerequisites**:
 

@@ -21,7 +21,7 @@ for reproducing and understanding the results of a machine learning experiment.
 To manage and store these artifacts in a scalable, durable, and secure manner, an
 S3 bucket is required.
 
-## Standalone Deployment of `MLflow` Server
+## A Standalone Deployment of `MLflow` Server
 
 -   **Prerequisites**:
 
@@ -254,5 +254,6 @@ as shown below:
     changes to specific users.
 
 For more details, refer to this [documentation](https://github.com/nerc-project/llm-on-nerc/blob/main/mlflow/README.md).
+You can also install MLflow using a Helm chart, as explained [here](https://github.com/nerc-project/llm-on-nerc/blob/main/mlflow/README.md#using-helm-to-install).
 
 ---

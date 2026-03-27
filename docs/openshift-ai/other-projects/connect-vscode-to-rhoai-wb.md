@@ -57,21 +57,21 @@ Use the following steps to connect your local VS Code to RHOAI Workbench kernel:
         oc project
         Using project "<your-project-namespace>" on server "https://api.shift.nerc.mghpcc.org:6443".
 
--   Start port-forwarding to your workbench pod
+-   Start port-forwarding to your workbench pod:
 
-    *   List all the pods in your project. The pod running your workbench is named
+    i.  List all the pods in your project. The pod running your workbench is named
         based on your workbench name in RHOAI. For example, `object-detection-0`
         corresponds to a workbench named `Object Detection`.
 
-        >   **Note:** Capital letters are converted to lowercase, and spaces are
-            replaced with hyphens (`-`).
+    ![Port-forward to wb pod](images/port-forwarding.png)
 
-    *   Enable port-forwarding to your workbench pod. You need to forward to the
+    > **Note:** Capital letters are converted to lowercase, and spaces are replaced
+    with hyphens (`-`).
+
+    ii. Enable port-forwarding to your workbench pod. You need to forward to the
         port the pod is listening on. It is usually `8888` for RHOAI workbench.
         You can find this port from the service in your project with name same
         as your workbench.
-
-        ![Port-forward to wb pod](images/port-forwarding.png)
 
 -   Open the Jupyter notebook in your local VS Code
 
@@ -92,10 +92,9 @@ Use the following steps to connect your local VS Code to RHOAI Workbench kernel:
 
     ![Existing Jupyter Server URL](images/jupyter-server-url.png)
 
--   A prompt saying
-
-    `Connecting over HTTP without a token may be an insecure connection. Do you
-    want to connect to a possibly insecure server?` is displayed. select `Yes`
+-   A prompt saying: `Connecting over HTTP without a token may be an insecure
+    connection. Do you want to connect to a possibly insecure server?` is displayed.
+    select `Yes`.
 
     ![Insecure connection prompt](images/connect-over-http.png)
 

@@ -71,10 +71,10 @@ be populated with documents.
     ![RAG Workbench Information](images/RAG-Jupyter-Notebook-Workbench.png)
 
     For our example project, let's name it "RAG Workbench". We'll select the
-    **TensorFlow** image with Recommended Version (selected by default), choose
-    a **Deployment size** of **Medium**, **Accelerator** as **None** (no GPU is
-    needed for this setup) and allocate a **Cluster storage** space of **20GB**
-    (Selected By Default).
+    **Jupyter | TensorFlow | CUDA | Python 3.12** image with Recommended Version
+    (selected by default), choose a **Deployment size** of **Medium**, **Accelerator**
+    as **None** (no GPU is needed for this setup) and allocate a **Cluster storage**
+    space of **20GB** (Selected By Default).
 
     !!! tip "Tip"
 

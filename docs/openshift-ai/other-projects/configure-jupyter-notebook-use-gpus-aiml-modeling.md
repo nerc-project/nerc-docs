@@ -21,9 +21,10 @@ and Number of accelerators (GPUs).
 ![PyTorch Workbench Information](images/pytorch-workbench.png)
 
 For our example project, let's name it "PyTorch Workbench". We'll select the
-**PyTorch** image, choose a **Deployment size** of **Small**, choose **Accelerator**
-of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate a
-**Cluster storage** space of **20GB** (Selected By Default).
+**Jupyter | PyTorch | CUDA | Python 3.12** image, choose a **Deployment size**
+of **Small**, choose **Accelerator** of **NVIDIA V100 GPU**,
+**Number of accelerators** as **1**, and allocate a **Cluster storage** space of
+**20GB** (Selected By Default).
 
 !!! tip "Hardware Acceleration using GPU"
 

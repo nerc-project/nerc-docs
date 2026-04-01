@@ -381,64 +381,78 @@ and use `Llama 3.2 3B Modelcar` as the connection name, as shown below:
 
 ![Create Connection](images/create-connection-using-uri.png)
 
-!!! note "Important Note: ModelCar Requirements & Guidance"
+##### Using Publicly Available ModelCar Catalog registry
 
-    You have several options for deploying models to your OpenShift AI cluster.
-    We recommend using **[ModelCar](https://kserve.github.io/website/docs/model-serving/storage/providers/oci#using-modelcars)**
-    because it removes the need to manually download models from Hugging Face Hub,
-    upload them to S3, or manage access permissions. With ModelCar, you can package
-    models as OCI images and pull them at runtime or precache them. This simplifies
-    versioning, improves traceability, and integrates cleanly into CI/CD workflows.
-    ModelCar images also ensure reproducibility and maintain versioned model releases.
+You have several options for deploying models to your OpenShift AI cluster.
+We recommend using **[ModelCar](https://kserve.github.io/website/docs/model-serving/storage/providers/oci#using-modelcars)**
+because it removes the need to manually download models from Hugging Face Hub,
+upload them to S3, or manage access permissions. With ModelCar, you can package
+models as OCI images and pull them at runtime or precache them. This simplifies
+versioning, improves traceability, and integrates cleanly into CI/CD workflows.
+ModelCar images also ensure reproducibility and maintain versioned model releases.
 
-    You can deploy our own model using a ModelCar container, which packages all
-    model files into an OCI container image. To learn more about ModelCar containers,
-    read this article **[Build and deploy a ModelCar container in OpenShift AI](https://developers.redhat.com/articles/2025/01/30/build-and-deploy-modelcar-container-openshift-ai)**.
-    It explains the benefits of ModelCar containers, how to build a ModelCar image,
-    and how to deploy it with OpenShift AI.
+You can deploy your own model using a ModelCar container, which packages all
+model files into an OCI container image. To learn more about ModelCar containers,
+read this article **[Build and deploy a ModelCar container in OpenShift AI](https://developers.redhat.com/articles/2025/01/30/build-and-deploy-modelcar-container-openshift-ai)**.
 
-    For additional patterns and prebuilt ModelCar images, explore the Red Hat AI
-    Services **[ModelCar Catalog repository](https://github.com/redhat-ai-services/modelcar-catalog)**
-    on GitHub. Prebuilt images from this catalog are also available in the  
-    **[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
-    on *Quay.io*.
+It explains the benefits of ModelCar containers, how to build a ModelCar image,
+and how to deploy it with OpenShift AI.
 
-    !!! tip "Use Any Other Available Model from the ModelCar Catalog registry."
+For additional patterns and prebuilt ModelCar images, explore the Red Hat AI
+Services **[ModelCar Catalog repository](https://github.com/redhat-ai-services/modelcar-catalog)**
+on GitHub. Prebuilt images from this catalog are also available in the
+**[ModelCar Catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog)**
+on *Quay.io*.
 
-        **You can use any model from the ModelCar Catalog registry in a similar way.**
-        For example, for the `Granite-3.3-8B-Instruct` model, you can use the publicly
-        available container image from the **Quay.io** registry: **[quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct](https://quay.io/repository/redhat-ai-services/modelcar-catalog?tag=granite-3.3-8b-instruct)**.
+!!! tip "Use Any Other Available Model from the ModelCar Catalog registry."
 
-        The **[Granite-3.3-8B-Instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct)**
-        model is an 8-billion-parameter, 128K context-length language model fine-tuned
-        for improved reasoning and instruction-following capabilities. It is built
-        on top of the `Granite-3.3-8B-Base` model.
+    **You can use any model from the ModelCar Catalog registry in a similar way.**
+    For example, for the `Granite-3.3-8B-Instruct` model, you can use the publicly
+    available container image from the **Quay.io** registry: **[quay.io/redhat-ai-services/modelcar-catalog:granite-33-8b-instruct](https://quay.io/repository/redhat-ai-services/modelcar-catalog?tag=granite-3.3-8b-instruct)**.
 
-        To create a connection for the `Granite-3.3-8B-Instruct` model, use the
-        following URI:
+    The **[Granite-3.3-8B-Instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct)**
+    model is an 8-billion-parameter, 128K context-length language model fine-tuned
+    for improved reasoning and instruction-following capabilities. It is built
+    on top of the `Granite-3.3-8B-Base` model.
 
-        ```sh
-        oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct
-        ```
+    To create a connection for the `Granite-3.3-8B-Instruct` model, use the
+    following URI:
 
-        In the **Additional serving runtime arguments** field under **Configuration
-        parameters** section, specify the following recommended arguments:
+    ```sh
+    oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct
+    ```
 
-        ```yaml
-        --dtype=half
-        --max-model-len=20000
-        --gpu-memory-utilization=0.95
-        --enable-chunked-prefill
-        --enable-auto-tool-choice
-        --tool-call-parser=granite
-        --chat-template=/app/data/template/tool_chat_template_granite.jinja
-        ```
+    In the **Additional serving runtime arguments** field under **Configuration
+    parameters** section, specify the following recommended arguments:
 
-    However, note that all these images are compiled for the **x86 architecture**.
-    If you're targeting ARM, you'll need to rebuild these images on an ARM machine,
-    as demonstrated in **[this guide](https://pandeybk.medium.com/serving-vllm-and-granite-models-on-arm-with-red-hat-openshift-ai-0178adba550e)**.
+    ```yaml
+    --dtype=half
+    --max-model-len=20000
+    --gpu-memory-utilization=0.95
+    --enable-chunked-prefill
+    --enable-auto-tool-choice
+    --tool-call-parser=granite
+    --chat-template=/app/data/template/tool_chat_template_granite.jinja
+    ```
 
-    Additionally, you may find it helpful to read **[Optimize and deploy LLMs for production with OpenShift AI](https://developers.redhat.com/articles/2025/10/06/optimize-and-deploy-llms-production-openshift-ai)**.
+Additionally, you may find it helpful to read **[Optimize and deploy LLMs for
+production with OpenShift AI](https://developers.redhat.com/articles/2025/10/06/optimize-and-deploy-llms-production-openshift-ai)**.
+
+##### Using Model Catalog
+
+Recent version of RHOAI include support for the **Model Catalog**, enabling users
+to easily discover, evaluate, and deploy generative AI models from a centralized
+interface. This feature provides access to models from multiple providers such
+as Red Hat, IBM, Meta, NVIDIA, Mistral AI, and Google, with built-in benchmarking
+based on open-source evaluation datasets to compare performance and quality. It
+simplifies the workflow by allowing data scientists and AI engineers to select
+suitable models, register them in a model registry, and deploy them directly to
+a serving runtime.
+
+![Model Catalog](images/model-catalog.png)
+
+Models can be deployed directly from the model catalog to streamline the deployment
+process. For more details, refer to the [**official documentation**](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.0/html-single/working_with_model_registries/index#deploying-a-model-from-the-model-catalog_model-registry).
 
 ## Setting up Single-model Server and Deploy the model
 

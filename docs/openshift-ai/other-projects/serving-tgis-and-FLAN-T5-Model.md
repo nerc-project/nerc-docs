@@ -82,8 +82,8 @@ look like this:
 ![TGIS Workbench Information](images/tgis-workbench.png)
 
 For our example project, let's name it "TGIS Workbench". We'll
-select the **Standard Data Science** image with Recommended Version
-(selected by default), choose a **Deployment size** of **Small**,
+select the **Jupyter | Data Science | CPU | Python 3.12** image with Recommended
+Version (selected by default), choose a **Deployment size** of **Small**,
 **Accelerator** as **None** (no GPU is needed for this setup), and allocate
 a **Cluster storage** space of **20GB** (Selected By Default).
 

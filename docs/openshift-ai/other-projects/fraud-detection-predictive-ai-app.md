@@ -647,10 +647,10 @@ look like this:
 ![Fraud detection Workbench Information](images/fraud-detection-workbench.png)
 
 For our example project, let's name it "Fraud detection". We'll select the
-**TensorFlow** image with Recommended Version (selected by default), choose
-a **Deployment size** of **Small**, choose **Accelerator** of
-**NVIDIA V100 GPU**, **Number of accelerators** as **1**, and allocate
-a **Cluster storage** space of **20GB** (Selected By Default).
+****Jupyter | TensorFlow | CUDA | Python 3.12** image with Recommended Version
+(selected by default), choose a **Deployment size** of **Small**, choose
+**Accelerator** of **NVIDIA V100 GPU**, **Number of accelerators** as **1**, and
+allocate a **Cluster storage** space of **20GB** (Selected By Default).
 
 !!! info "Running Workbench without GPU"
 

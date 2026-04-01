@@ -73,7 +73,7 @@ Use the following steps to connect your local VS Code to RHOAI Workbench kernel:
         You can find this port from the service in your project with name same
         as your workbench.
 
--   Open the Jupyter notebook in your local VS Code
+-   Open the Jupyter notebook in your local VS Code:
 
     ![Jupyter Notebook](images/jupyter-nb.png)
 

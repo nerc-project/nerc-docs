@@ -131,7 +131,7 @@ On the Create workbench page, complete the following information.
 
 Once you have entered the information for your workbench, click **Create**.
 
-![Fill Workbench Information](images/tensor             flow-workbench.png)
+![Fill Workbench Information](images/tensorflow-workbench.png)
 
 For our example project, let's name it "Tensorflow Workbench". We'll select the
 **Jupyter | TensorFlow | CUDA | Python 3.12** image, choose a  

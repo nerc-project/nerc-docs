@@ -252,6 +252,21 @@ the following tasks:
         In this YAML file, the size of the storage is set as 10Gi. Change it if
         you need to.
 
+        To maintain a **full management Web UI** - including integrated support
+        for **Identity Management, Policies, Monitoring, Events, and advanced
+        Configuration** - you should pin your `minio` container to the
+        `RELEASE.2025-04-22T22-12-26Z` tag instead of using the `latest` tag
+        in your `YAML` file:
+
+        `image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z`
+
+        In more recent versions, the web interface typically reverts to a
+        simplified "Object Browser," which would otherwise force you to use
+        the `mc` **command-line tool** for all administrative tasks. For
+        specific operations, you can refer to the `mc admin`
+        [command reference](https://docs.min.io/enterprise/aistor-object-store/reference/cli/admin/)
+        to manage your deployment via the terminal.
+
 5.  Click **Create**.
 
 **Verification**:

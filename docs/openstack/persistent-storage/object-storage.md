@@ -273,8 +273,11 @@ This is a python client for the Swift API. There's a [Python API](https://github
 #### Install [Python Swift Client page at PyPi](https://pypi.org/project/python-swiftclient/)
 
 -   Once virtual environment is activated, install `python-swiftclient` and `python-keystoneclient`
+    by running the following command:
 
-pip install python-swiftclient python-keystoneclient
+    ```sh
+    pip install python-swiftclient python-keystoneclient
+    ```
 
 -   Swift authenticates using a user, tenant, and key, which map to your OpenStack
     username, project,and password.

@@ -120,6 +120,14 @@ in your namespace and linking it to your service account.
     This ensures OpenShift authenticates with the Registry to bypass anonymous
     rate limits when pulling images.
 
+    !!! note "Deploying Private Container Images to OpenShift"
+
+        To deploy a private container image from registries such as `ghcr.io`,
+        `quay.io`, or `docker.io`, you need to create a Docker registry pull
+        secret so the cluster can authenticate during deployment. For more details,
+        refer to the user guide: [How to Deploy Private Container Images to
+        OpenShift](../../other-tools/CI-CD/github-actions/setup-github-actions-pipeline.md#how-to-deploy-private-container-images-to-openshift).
+
 ### Reference Image Pull Secret in YAML Deployment Files
 
 Alternatively, instead of directly applying the *Image Pull Secret* to your

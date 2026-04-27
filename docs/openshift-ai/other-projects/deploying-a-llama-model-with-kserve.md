@@ -567,6 +567,14 @@ set to `1`.
     to support the NVIDIA V100 GPU architecture. Then, choose **NVIDIA A100 GPU**
     as the **Accelerator** and set the **Number of accelerators** to `1`.
 
+    While using this runtime, in the **Additional serving runtime arguments** field
+    under the **Configuration parameters** section, specify the following recommended
+    argument:
+
+    ```yaml
+    --dtype=half
+    ```
+
 At this point, ensure that both
 **Make deployed models available through an external route** and
 **Require token authentication** are *checked*. Please leave the populated

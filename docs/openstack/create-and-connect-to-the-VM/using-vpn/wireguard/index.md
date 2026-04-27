@@ -126,7 +126,7 @@ To deactivate config: `wg-quick down /path/to/file_name.config`
 
 !!! note "Important Note"
 
-    You need to contact your project administrator to get your own WireGUard
+    You need to contact your project administrator to get your own WireGuard
     configuration file (file with .conf extension). Download it and Keep it in
     your local machine so in next steps we can use this configuration client
     profile file.
@@ -240,7 +240,7 @@ Use `wg-quick down mac_client` to take the VPN connection down.
 
     **OR,**
 
-    Find and click the WireGUard GUI from your Launchpad and then either click
+    Find and click the WireGuard GUI from your Launchpad and then either click
     on **Add Tunnel -> Import tunnel(s) from file…** or, just click on "**Import
     tunnel(s) from file**" button located at the center.
 

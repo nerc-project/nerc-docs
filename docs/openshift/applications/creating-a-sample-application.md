@@ -134,12 +134,16 @@ using a test application based on Node.js, we could use the same command as befo
 but add `nodejs~` before the URL of the Git repository.
 For example: `oc new-app nodejs~https://github.com/<github_username>/mypublicrepo`.
 
-!!! note "Important Note"
+!!! note "Important Note: How to Deploy from Private Git Repositories"
 
     If you are using a private remote Git repository, you can use the
     `--source-secret` flag to specify an existing source clone secret that
     will get injected into your **BuildConfig** to access the repository.
     For example: `oc new-app https://github.com/myuser/yourprivaterepo --source-secret=yoursecret`.
+
+    For reference, you can read [this blog post](https://www.redhat.com/en/blog/private-git-repositories-part-1-best-practices),
+    which shows how to use your private Git repository with the OpenShift Online
+    web console.
 
 iv. Once your application has been created, You can run `oc status` to see if your
 application was successfully built and deployed. Builds and deployments can sometimes

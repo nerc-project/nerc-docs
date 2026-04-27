@@ -101,8 +101,9 @@ basic components of OpenShift:
 
 ### 5. Health Monitoring
 
-OpenShift uses **Health Check** probes to keep the deployment healthy OpenShift
-uses health checks. Together, these probes improve reliability and reduce downtime.
+OpenShift uses **health check probes** to ensure deployments remain healthy and
+reliable. These probes work together to improve application stability and reduce
+downtime.
 
 -   **Readiness Probe**: Ensures the application is ready before receiving traffic.
 

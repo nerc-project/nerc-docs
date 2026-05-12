@@ -26,7 +26,7 @@ as [described here](allocation/manage-users-to-a-project.md#user-roles).
 
 ## Getting Started
 
-Any faculty, staff, student, and external collaborator must request a user account
+Any faculty, staff, student, and external collaborator must register a user account
 through the [MGHPCC Shared Services (MGHPCC-SS) Account Portal](https://regapp.mss.mghpcc.org/),
 also known as **"RegApp"**. This is a web-based, single point-of-entry to the NERC
 system that displays a user welcome page. The welcome page of the account

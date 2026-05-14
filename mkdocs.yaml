@@ -113,6 +113,8 @@ nav:
           - Serverless Computing:
                 - Understanding OpenShift Serverless: openshift/applications/understanding-openshift-serverless.md
                 - "Knative Serving User Guide: Deploying and Managing Serverless Workloads": openshift/applications/knative-serving.md
+          - Pipeline Orchestration:
+                - Using Tekton Pipelines on NERC OpenShift: openshift/applications/tekton-pipelines.md
           - Set up Domain Name for Your Application:  openshift/domain-name-system/domain-name-for-your-application.md
           - GPUs:
                 - Introduction to GPUs on NERC OpenShift: openshift/gpus/intro-to-gpus-on-nerc-ocp.md

@@ -36,7 +36,7 @@ Before proceeding, confirm that you have:
     ```sh
     oc login --token=<your_token> --server=https://api.shift.nerc.mghpcc.org:6443
     Logged into "https://api.shift.nerc.mghpcc.org:6443" as "<your_account>" using
-	the token provided.  
+    the token provided.  
     ```
 
 3. Select your project.
@@ -52,26 +52,26 @@ Before proceeding, confirm that you have:
     ```sh
     oc project
     Using project "<your-project-namespace>" on server "https://api.shift.nerc.mghpcc.org:6443".
-	```
+    ```
 
 5. Identify the pod, container, PVC, source directory, and destination directory.
 
-	```sh
-	oc get pods
-	```
+    ```sh
+    oc get pods
+    ```
 
-	To list the containers in a pod:
+    To list the containers in a pod:
 
-	```sh
-	oc get pod <pod-name> \
-	-o jsonpath='{.spec.containers[*].name}{"\n"}'
-	```
+    ```sh
+    oc get pod <pod-name> \
+    -o jsonpath='{.spec.containers[*].name}{"\n"}'
+    ```
 
-	To see the volumes and mount locations used by a pod:
+    To see the volumes and mount locations used by a pod:
 
-	```sh
-	oc describe pod <pod-name>
-	```
+    ```sh
+    oc describe pod <pod-name>
+    ```
 
 ## Use Persistent Storage
 
@@ -251,7 +251,7 @@ oc cp ./input.csv <pod-name>:/data/input.csv \
 !!! note "Important Note"
 
     `oc cp` requires the `tar` command to be available inside the container. It
-	can fail with minimal or distroless container images that do not contain `tar`.
+    can fail with minimal or distroless container images that do not contain `tar`.
 
 ### Using `tar` with `oc exec`
 
@@ -359,10 +359,10 @@ Deleting the transfer pod does not delete the PVC.
 !!! note "Important Note"
 
     A `ReadWriteOnce` PVC might not be mountable by the application pod and transfer
-	pod simultaneously, depending on the storage system and where the pods are scheduled.
+    pod simultaneously, depending on the storage system and where the pods are scheduled.
 
     You may need to stop or scale down the application before starting the transfer
-	pod.
+    pod.
 
     For example:
 
@@ -377,7 +377,7 @@ Deleting the transfer pod does not delete the PVC.
     ```
 
     **NOTE:** Stop applications before copying live database files or other data
-	that must remain internally consistent.
+    that must remain internally consistent.
 
 ### Transferring Between Two PVCs
 
@@ -448,14 +448,14 @@ oc delete pod pvc-transfer
 
 !!! tip "Important Note"
 
-	This procedure copies the contents. It does not transfer ownership of the source
-	PVC or delete its data.
+    This procedure copies the contents. It does not transfer ownership of the source
+    PVC or delete its data.
 
-	To delete the PVC completely, run:
+    To delete the PVC completely, run:
 
-	```sh
-	oc delete pvc <your-pvc-name>
-	```
+    ```sh
+    oc delete pvc <your-pvc-name>
+    ```
 
 ## For Object Storage Setup on NERC OCP
 
@@ -573,7 +573,7 @@ Or you can copy this content to a new config file and then use the
     Run `rclone config` to setup. See [rclone config docs](https://rclone.org/docs/)
     for more details.
 
-##### Using Rclone
+##### Using Rclone Subcommands
 
 `rclone` supports many subcommands (see
 [the complete list of Rclone subcommands](https://rclone.org/docs/#subcommands)).
@@ -624,9 +624,12 @@ rclone sync /data/results/ <nerc>:<bucket>/results/ \
 
 !!! warning "Very Important"
 
-    `rclone sync` can delete destination objects that do not exist in the source. Use `rclone copy` when you do not want deletion behavior.
+    `rclone sync` can delete destination objects that do not exist in the source.
+    Use `rclone copy` when you do not want deletion behavior.
 
-Do not place object-storage credentials directly in a container image or commit them to Git. Store them in an OpenShift Secret and mount the Secret into the transfer pod.
+Do not place object-storage credentials directly in a container image or commit
+them to Git. Store them in an OpenShift Secret and mount the Secret into the transfer
+pod.
 
 ## Verifying a Transfer
 

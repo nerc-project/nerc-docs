@@ -40,6 +40,10 @@ nav:
                 - Best Practices for My Institution: get-started/best-practices/best-practices-for-my-institution.md
                 - Best Practices for Harvard University: get-started/best-practices/best-practices-for-harvard.md
                 - Best Practices for Boston University: get-started/best-practices/best-practices-for-bu.md
+    - NERC Migration Guides:
+          - Migration Guides: migration-guides/index.md          -
+          - OpenStack: migration-guides/openstack.md
+          - OpenShift &amp; OpenShift AI: migration-guides/ocp-and-rhoai.md
     - OpenStack:
           - OpenStack: openstack/index.md
           - Logging In:

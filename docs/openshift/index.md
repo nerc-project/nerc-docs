@@ -61,6 +61,8 @@ the list below.
 
 - [Rclone](storage/Rclone.md)
 
+- [Data Transfer](storage/data-transfer-from-to-openshift.md)
+
 ## Deleting Applications
 
 - [Deleting your applications](applications/deleting-applications.md)

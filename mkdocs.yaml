@@ -120,6 +120,7 @@ nav:
                 - Storage Overview: openshift/storage/storage-overview.md
                 - Minio: openshift/storage/minio.md
                 - Rclone: openshift/storage/Rclone.md
+                - Data Transfer: openshift/storage/data-transfer-from-to-openshift.md
           - Deleting Applications:
                 - Deleting your applications: openshift/applications/deleting-applications.md
           - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md

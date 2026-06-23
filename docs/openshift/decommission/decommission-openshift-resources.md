@@ -7,7 +7,7 @@ below.
 
 -   **Backup**: Back up any critical data or configurations stored on the resources
     that going to be decommissioned. This ensures that important information is not
-    lost during the process.
+    lost during the process as [described here](../storage/data-transfer-from-to-openshift.md).
 
 -   **Kubernetes Objects (Resources)**: Please review all OpenShift Kubernetes Objects
     (Resources) to ensure they are not actively used and ready to be decommissioned.

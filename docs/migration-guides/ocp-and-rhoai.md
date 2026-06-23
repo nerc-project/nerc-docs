@@ -5,12 +5,29 @@ OpenShift (OCP) and Red Hat OpenShift AI (RHOAI) platforms.
 
 ## Overview
 
-Migrating from NERC OpenShift and/or RHOAI involves two main phases:
+Migrating from NERC OpenShift and/or RHOAI involves four main phases:
 
-1. **Data Migration** — Transfer your data from OpenShift persistent storage,
-object storage (MinIO), and RHOAI workbenches/notebooks to your target platform.
+1. **Bulk-Export All Project Configurations** — Export all application setups,
+   configurations, and secrets into a reusable YAML file.
 
-2. **Decommissioning** — Delete all resources and archive your ColdFront project.
+2. **Data Migration** — Transfer your data from OpenShift persistent storage,
+   object storage (MinIO), and RHOAI workbenches/notebooks to your target platform.
+
+3. **Backup Internal Container Images** — Pull images from the internal OpenShift
+   registry and push them to an external registry.
+
+4. **Decommissioning** — Delete all resources and archive your ColdFront project.
+
+## Bulk-Export All Project Configurations
+
+Export all application setups, configurations, and secrets within a specific
+project into a single reusable YAML file:
+
+```sh
+oc get all,pod,deployment,deploymentconfig,pvc,route,service,build,buildconfig,
+statefulset,replicaset,replicationcontroller,job,cronjob,imagestream,revision,
+configuration,notebook -o yaml > openshift_backup.yaml
+```
 
 ## Data Migration
 
@@ -80,7 +97,8 @@ For users of Red Hat OpenShift AI (RHOAI):
    and export any stored artifacts, trained models, or pipelines.
 
 3. **Cluster storage** — All RHOAI cluster storage is backed by PVCs in your
-   OpenShift project. You can download the data as described in
+   OpenShift project to store your Jupyter notebooks and associated data, ensuring
+   that your work remains persistent. You can download the data as described in
    [Persistent Storage (PVCs)](#persistent-storage-pvcs) above.
 
 !!! note "Important"
@@ -88,6 +106,23 @@ For users of Red Hat OpenShift AI (RHOAI):
     The PVC backing a workbench's cluster storage includes all files uploaded to
     that workbench. When you download the PVC data, you will also get all
     notebooks, applications, and data stored on that workbench.
+
+## Backup Internal Container Images
+
+If you have images stored in the internal OpenShift registry (ImageStreams),
+pull them locally and push them to an external registry:
+
+```sh
+# Log in to the OpenShift registry via docker or podman
+podman login -u $(oc whoami) -p $(oc whoami -t) $(oc registry info)
+
+# Pull the image to your local machine
+podman pull $(oc registry info)/<project-name>/<image-name>:<tag>
+
+# Tag and push to an external registry (e.g., Quay or Docker Hub)
+podman tag $(oc registry info)/<project-name>/<image-name>:<tag> quay.io/<username>/<image-name>:<tag>
+podman push quay.io/<username>/<image-name>:<tag>
+```
 
 ## Decommissioning
 

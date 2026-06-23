@@ -1,7 +1,7 @@
 # Migrate from NERC OpenStack
 
-This guide covers the process of migrating your workloads and data off the NERC
-OpenStack platform. It covers data migration, resource cleanup, and project decommissioning.
+This guide covers migrating your workloads and data off the NERC
+OpenStack platform, including data migration, resource cleanup, and project decommissioning.
 
 ## Overview
 
@@ -17,8 +17,6 @@ project.
 
 Before decommissioning your resources, ensure all critical data has been migrated
 to your target environment.
-
-NERC provides several methods for transferring data:
 
 ### Data Transfer from VMs
 
@@ -48,8 +46,8 @@ guide:
 
 !!! note "Data on Detached Volumes"
 
-    If you have a detached volume with data that needs to be migrated, attach it
-    to a running VM as described in the
+    If you have a detached volume with data to migrate, attach it to a running VM
+    as described in the
     [Attach a Volume to an Instance guide](../openstack/persistent-storage/attach-the-volume-to-an-instance.md),
     then use any of the clients listed above to transfer the data from the VM to
     your target location.
@@ -87,7 +85,7 @@ using any of the clients documented in the
     described in the
     [Mount The Object Storage to an Instance guide](../openstack/persistent-storage/mount-the-object-storage.md),
     then use any of the clients listed in [Data Transfer from VMs](#data-transfer-from-vms)
-    to download the data from the VM, just like data on a mounted volume.
+    to download the data from the VM, just like a mounted volume.
 
 ## Decommissioning
 

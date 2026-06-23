@@ -37,7 +37,7 @@ from OCP and RHOAI.
 
 ### Persistent Storage (PVCs)
 
-Data stored on PVCs should be copied to a pod's filesystem and then transferred
+Copy data from PVCs to a pod's filesystem and then transfer it
 to your target system. Refer to the
 [Use Persistent Storage section](../openshift/storage/data-transfer-from-to-openshift.md#use-persistent-storage)
 of the Data Transfer guide for detailed instructions on the following methods:
@@ -69,7 +69,7 @@ table.
 ### Object Storage (MinIO)
 
 If you use [MinIO](../openshift/storage/minio.md) for object storage on your
-OpenShift project, data can be exported using the following approaches documented
+OpenShift project, export your data using the following approaches documented
 in the
 [For Object Storage Setup on NERC OCP](../openshift/storage/data-transfer-from-to-openshift.md#for-object-storage-setup-on-nerc-ocp)
 section:
@@ -110,7 +110,7 @@ For users of Red Hat OpenShift AI (RHOAI):
 ## Backup Internal Container Images
 
 If you have images stored in the internal OpenShift registry (ImageStreams),
-pull them locally and push them to an external registry:
+pull them to your local machine and push them to an external registry:
 
 ```sh
 # Log in to the OpenShift registry via docker or podman

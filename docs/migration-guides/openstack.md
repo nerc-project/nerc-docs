@@ -28,26 +28,66 @@ use one of the following methods documented in the
 guide:
 
 -   **Globus** — Preferred method for large datasets; handles retries, error recovery,
-and provides status updates.
+    and provides status updates. Set up a personal Globus endpoint on your VM.
 
--   **Object Storage (Swift/S3)** — Upload data to NERC object storage containers,
-then download to your target system.
+-   **SCP** — Secure copy for smaller files (<~10 GB) using SSH.
 
--   **Volume transfer** — Transfer an entire volume (with all its data) to another
-project.
+-   **tar+ssh** — Stream a tar archive over SSH for efficient directory transfers.
 
--   **Standard network transfer** — Use `scp`, `rsync`, or other standard tools.
+-   **rsync** — Fast, delta-transfer synchronization; ideal for repeat or incremental
+    transfers.
+
+-   **Rclone** — Sync, copy, or mount the VM's filesystem via SFTP for transfer to
+    any supported destination.
+
+-   **WinSCP** (Windows) — GUI-based SFTP/SCP client for drag-and-drop transfers.
+
+-   **Cyberduck** (macOS/Windows) — GUI-based SFTP/FTP client.
+
+-   **Filezilla** (cross-platform) — Open-source SFTP/FTP client.
+
+!!! note "Data on Detached Volumes"
+
+    If you have a detached volume with data that needs to be migrated, attach it
+    to a running VM as described in the
+    [Attach a Volume to an Instance guide](../openstack/persistent-storage/attach-the-volume-to-an-instance.md),
+    then use any of the clients listed above to transfer the data from the VM to
+    your target location.
 
 ### Object Storage Data
 
-Data stored in OpenStack Object Storage (Swift) containers can be:
+Data stored in OpenStack Object Storage (Swift) containers can be migrated
+using any of the clients documented in the
+[Object Storage guide](../openstack/persistent-storage/object-storage.md):
 
--   Downloaded directly via the Horizon dashboard or Swift/S3 API.
+-   **Horizon Dashboard** — Download files through the web interface.
 
--   Migrated using `juicefs sync` as described in the
-[Mount The Object Storage guide](../openstack/persistent-storage/mount-the-object-storage.md#juicefs-sync).
+-   **OpenStack CLI** — Use `openstack object store` commands to download objects.
 
--   Transferred to any S3-compatible target using S3 clients.
+-   **Swift Interface** — Use the `swift` command-line client (`python-swiftclient`)
+    to download or sync data.
+
+-   **AWS CLI** — Use S3-compatible `aws s3` commands with the NERC endpoint.
+
+-   **s3cmd** — Sync or copy data from containers to your local system or another
+    S3 target.
+
+-   **Rclone** — Sync, copy, or mount object storage for transfer to any supported
+    destination.
+
+-   **Python libraries (Boto3, Minio)** — Programmatically download objects using
+    the S3 API.
+
+-   **GUI tools (WinSCP, Cyberduck)** — Connect via S3 protocol for a file-browser
+    experience.
+
+!!! note "Mount Object Storage to a VM"
+
+    You can also mount your object storage container to a running instance as
+    described in the
+    [Mount The Object Storage to an Instance guide](../openstack/persistent-storage/mount-the-object-storage.md),
+    then use any of the clients listed in [Data Transfer from VMs](#data-transfer-from-vms)
+    to download the data from the VM, just like data on a mounted volume.
 
 ## Decommissioning
 

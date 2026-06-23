@@ -18,50 +18,76 @@ Before decommissioning your resources, ensure all critical data has been migrate
 to your target environment. NERC provides several methods for transferring data
 from OCP and RHOAI.
 
-### Data Transfer from OpenShift
+### Persistent Storage (PVCs)
 
-Refer to the [Data Transfer To and From NERC OpenShift](../openshift/storage/data-transfer-from-to-openshift.md)
-guide for detailed instructions on the following methods:
+Data stored on PVCs should be copied to a pod's filesystem and then transferred
+to your target system. Refer to the
+[Use Persistent Storage section](../openshift/storage/data-transfer-from-to-openshift.md#use-persistent-storage)
+of the Data Transfer guide for detailed instructions on the following methods:
 
 -   **`oc rsync`** — Recommended for transferring directories between your local
-machine and a pod. Efficient for repeat transfers as it only copies changed files.
+    machine and a pod. Efficient for repeat transfers as it only copies changed
+    files. See [Using `oc rsync`](../openshift/storage/data-transfer-from-to-openshift.md#using-oc-rsync).
 
 -   **`oc cp`** — Convenient for copying individual files or small directories
-to/from a container.
+    to/from a container. See
+    [Copying a Single File](../openshift/storage/data-transfer-from-to-openshift.md#copying-a-single-file).
 
--   **Object storage with `rclone`** — Use [Rclone](../openshift/storage/Rclone.md)
-for large or resumable transfers. Rclone can copy data between MinIO, S3-compatible
-storage, and your target system.
+-   **`tar` with `oc exec`** — Stream a tar archive through a pod for efficient
+    directory transfers. See
+    [Using `tar` with `oc exec`](../openshift/storage/data-transfer-from-to-openshift.md#using-tar-with-oc-exec).
 
--   **Globus** — Preferred method for large datasets (see the OpenStack data transfer
-guide for Globus setup, as the same Globus endpoint can be used).
+-   **Transfer data directly to a PVC** — Run a temporary pod that mounts the PVC
+    and transfer data using `oc rsync` or `oc cp`. See
+    [Transferring Data Directly to a PVC](../openshift/storage/data-transfer-from-to-openshift.md#transferring-data-directly-to-a-pvc).
 
-### Persistent Volume Claims (PVCs)
+-   **Transfer between two PVCs** — Run a pod that mounts both PVCs and copy data
+    between them. See
+    [Transferring Between Two PVCs](../openshift/storage/data-transfer-from-to-openshift.md#transferring-between-two-pvcs).
 
-Data stored on PVCs should be copied to a pod's filesystem (via `oc rsync` or
-`oc cp`) and then transferred to your target system. Alternatively, use `rclone`
-configured with MinIO credentials to move data directly from MinIO-backed PVCs.
+For help choosing the right method, see the
+[Choosing a Transfer Method](../openshift/storage/data-transfer-from-to-openshift.md#choosing-a-transfer-method)
+table.
 
-### MinIO Object Storage
+### Object Storage (MinIO)
 
-If you use MinIO for object storage, refer to the [MinIO guide](../openshift/storage/minio.md)
-for accessing and exporting your data. Rclone can be configured to sync data from
-MinIO to any S3-compatible target.
+If you use [MinIO](../openshift/storage/minio.md) for object storage on your
+OpenShift project, data can be exported using the following approaches documented
+in the
+[For Object Storage Setup on NERC OCP](../openshift/storage/data-transfer-from-to-openshift.md#for-object-storage-setup-on-nerc-ocp)
+section:
 
-### RHOAI Workbenches and Notebooks
+-   **MinIO Web Console** — Upload and download data through the browser-based
+    interface. See [Using MinIO](../openshift/storage/data-transfer-from-to-openshift.md#using-minio).
+
+-   **Rclone** — Sync, copy, or mount object storage for transfer to any supported
+    destination. See [Using Rclone](../openshift/storage/data-transfer-from-to-openshift.md#using-rclone).
+
+-   **Rclone workbench (RHOAI)** — Deploy an Rclone-based workbench through RHOAI
+    to manage transfers via a web interface. See
+    [Using RHOAI Rclone Workbench](../openshift/storage/Rclone.md).
+
+### RHOAI Workbenches, Notebooks, and Cluster Storage
 
 For users of Red Hat OpenShift AI (RHOAI):
 
 1. **Notebook data** — Connect to your JupyterLab environment (see
-[Explore the JupyterLab Environment](../openshift-ai/data-science-project/explore-the-jupyterlab-environment.md))
-and download any data, models, or notebooks from the workbench's filesystem.
+   [Explore the JupyterLab Environment](../openshift-ai/data-science-project/explore-the-jupyterlab-environment.md))
+   and download any data, models, or notebooks from the workbench's filesystem.
 
 2. **Data Science Projects** — Review your data science project resources (see
-[Using Your Data Science Project (DSP)](../openshift-ai/data-science-project/using-projects-the-rhoai.md))
-and export any stored artifacts, trained models, or pipelines.
+   [Using Your Data Science Project (DSP)](../openshift-ai/data-science-project/using-projects-the-rhoai.md))
+   and export any stored artifacts, trained models, or pipelines.
 
-3. **S3 data** — If you access data via S3 within RHOAI, see the guide on
-[how to access, download, and analyze data for S3 usage](../openshift-ai/other-projects/how-access-s3-data-then-download-and-analyze-it.md).
+3. **Cluster storage** — All RHOAI cluster storage is backed by PVCs in your
+   OpenShift project. You can download the data as described in
+   [Persistent Storage (PVCs)](#persistent-storage-pvcs) above.
+
+!!! note "Important"
+
+    The PVC backing a workbench's cluster storage includes all files uploaded to
+    that workbench. When you download the PVC data, you will also get all
+    notebooks, applications, and data stored on that workbench.
 
 ## Decommissioning
 

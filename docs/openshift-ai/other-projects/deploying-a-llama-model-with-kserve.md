@@ -84,7 +84,7 @@ with your operational, security, and performance requirements.
     -   Once successfully initiated, click on the **minio** deployment and select
         the "Resources" tab to review created *Pods*, *Services*, and *Routes*.
 
-        ![MinIO Deployemnt Resources](images/minio-deployment-resources.png)
+        ![MinIO Deployment Resources](images/minio-deployment-resources.png)
 
         The **`minio-s3`** route URL (found under "Routes" -> `minio-s3` -> _Location_
         path) is used to interact with the MinIO API **programmatically** and will

@@ -453,7 +453,7 @@ are created and grouped under "minio" application grouping on the **Workloads**
 Once successfully initiated, click on the **minio** deployment and select the
 "Resources" tab to review created *Pods*, *Services*, and *Routes*.
 
-![MinIO Deployemnt Resources](images/minio-deployment-resources.png)
+![MinIO Deployment Resources](images/minio-deployment-resources.png)
 
 Please note the **minio-console** route URL by navigating to the "Routes" section
 under the _Location_ path. When you click on the **minio-console** route URL, it

@@ -55,7 +55,7 @@ Crowdstrike can be downloaded from our repository at:
 for all devices owned by Harvard staff/faculty and available for all operating
 systems.
 
-!!! note "Please note"
+!!! note "Please Note"
 
     To acess this repository you need to be in **Harvard Campus Network**.
 

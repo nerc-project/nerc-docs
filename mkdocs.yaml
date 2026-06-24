@@ -40,6 +40,9 @@ nav:
                 - Best Practices for My Institution: get-started/best-practices/best-practices-for-my-institution.md
                 - Best Practices for Harvard University: get-started/best-practices/best-practices-for-harvard.md
                 - Best Practices for Boston University: get-started/best-practices/best-practices-for-bu.md
+    - NERC Migration Guides:
+          - OpenStack: migration-guides/openstack.md
+          - OpenShift &amp; OpenShift AI: migration-guides/ocp-and-rhoai.md
     - OpenStack:
           - OpenStack: openstack/index.md
           - Logging In:
@@ -120,6 +123,7 @@ nav:
                 - Storage Overview: openshift/storage/storage-overview.md
                 - Minio: openshift/storage/minio.md
                 - Rclone: openshift/storage/Rclone.md
+                - Data Transfer: openshift/storage/data-transfer-from-to-openshift.md
           - Deleting Applications:
                 - Deleting your applications: openshift/applications/deleting-applications.md
           - Decommission OpenShift Resources: openshift/decommission/decommission-openshift-resources.md

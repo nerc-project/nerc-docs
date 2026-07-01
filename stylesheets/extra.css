@@ -1,0 +1,87 @@
+.md-logo img {
+    width: 68px !important;
+    height: 24px !important;
+    border-radius: 0px !important;
+}
+
+.md-footer {
+    background-color: rgb(228 228 228 / 87%);
+    color: var(--md-footer-fg-color);
+    padding: 25px 0px 25px 0px;
+}
+
+.md-footer img {
+    border-radius: 0px !important;
+}
+
+footer [class^="footer-"] {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+}
+
+footer .footer-left {
+    float: left;
+}
+
+footer .footer-right {
+    float: right;
+    /* padding-top: 25px; */
+}
+
+footer .footer-center {
+    padding-top: 25px;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border: 5px solid #ffff00;
+    padding: 10px;
+}
+
+.parent {
+    /* background: #CCCCCC; */
+    /* height: 100px; */
+    height: 55px;
+    /* width: 200px; */
+    position: relative;
+}
+
+.maintain {
+    position: absolute;
+    top: 5%;
+    /* left: 50%; */
+    /* margin: -25px 0 0 -35px; */
+}
+
+.upgrade {
+    position: absolute;
+    top: 5%;
+    left: 62%;
+    /* margin: -25px 0 0 -35px; */
+}
+
+.child {
+    /* background: #ffff00;
+    width: 70px;
+    height: 70px; */
+    position: absolute;
+    top: 8%;
+    left: 40%;
+    /* margin: -25px 0 0 -35px; */
+}
+
+/* Apply to every <img> tag on the page */
+img {
+  border-radius: 10px; /* Adjust the pixel value for more or less rounding */
+}
+
+/* img {
+    display: block;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+} */
